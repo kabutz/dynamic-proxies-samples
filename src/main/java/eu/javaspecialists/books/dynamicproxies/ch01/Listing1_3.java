@@ -8,7 +8,7 @@ public class Listing1_3 {
             public void f();
         }
         public class B implements A {
-            public void f() { /* do something */}
+            public void f() { /* do something */ }
         }
         public class C implements A {
             private A a;
@@ -27,7 +27,7 @@ public class Listing1_3 {
             public void f();
         }
         public class B implements A {
-            public void f() { /* do something */}
+            public void f() { /* do something */ }
         }
         public class C implements A {
             private A a;
@@ -40,9 +40,7 @@ public class Listing1_3 {
         class D extends C {
             public D(A a) { super(a); }
             public void g() {
-                /* decorate the other operation
-                in some way, then call the
-                other operation() */
+                /* decorate in some way, then call f() */
                 f();
             }
         }

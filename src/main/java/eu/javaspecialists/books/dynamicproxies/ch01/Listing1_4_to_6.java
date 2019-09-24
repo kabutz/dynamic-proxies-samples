@@ -46,7 +46,7 @@ public class Listing1_4_to_6 {
     static
     // tag::main[]
     public class Main {
-        public static void main(String[] args) {
+        public static void main(String... args) {
             Worker service = new VirtualWorkerNotThreadSafe();
             service.doSomething();
         }

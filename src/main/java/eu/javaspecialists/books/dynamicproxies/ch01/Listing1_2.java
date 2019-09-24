@@ -7,7 +7,7 @@ public class Listing1_2 {
     }
 
     public class ConcreteComponent implements Component {
-        public void operation() {/* do something */}
+        public void operation() { /* do something */ }
     }
 
     public class Decorator implements Component {
@@ -29,8 +29,7 @@ public class Listing1_2 {
         }
 
         public void anotherOperation() {
-            /* decorate the other operation in some way,
-            then call the other operation() */
+            /* decorate in some way, then call operation() */
             operation();
         }
     }
