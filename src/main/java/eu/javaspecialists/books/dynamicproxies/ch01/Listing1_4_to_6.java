@@ -1,13 +1,13 @@
 package eu.javaspecialists.books.dynamicproxies.ch01;
 
 public class Listing1_4_to_6 {
-    // tag::worker[]
+    // tag::Worker[]
     public interface Worker {
         public void doSomething();
     }
-    // end::worker[]
+    // end::Worker[]
     static
-    // tag::workerimpl[]
+    // tag::WorkerImpl[]
     public class WorkerImpl implements Worker {
         public WorkerImpl() {
             System.out.println("WorkerImpl = constructed");
@@ -17,9 +17,9 @@ public class Listing1_4_to_6 {
             System.out.println("doSomething => WorkerImpl");
         }
     }
-    // end::workerimpl[]
+    // end::WorkerImpl[]
     static
-    // tag::virtualworker[]
+    // tag::VirtualWorker[]
     public abstract class VirtualWorker implements Worker {
         protected abstract Worker realSubject();
         @Override
@@ -27,10 +27,10 @@ public class Listing1_4_to_6 {
             realSubject().doSomething();
         }
     }
-    // end::virtualworker[]
+    // end::VirtualWorker[]
 
     static
-    // tag::virtualworkernotthreadsafe[]
+    // tag::VirtualWorkerNotThreadSafe[]
     public class VirtualWorkerNotThreadSafe extends VirtualWorker {
         private Worker subject;
         @Override
@@ -41,16 +41,15 @@ public class Listing1_4_to_6 {
             return subject;
         }
     }
-    // end::virtualworkernotthreadsafe[]
+    // end::VirtualWorkerNotThreadSafe[]
 
     static
-    // tag::main[]
+    // tag::Main[]
     public class Main {
         public static void main(String... args) {
             Worker service = new VirtualWorkerNotThreadSafe();
             service.doSomething();
         }
     }
-    // end::main[]
-
+    // end::Main[]
 }

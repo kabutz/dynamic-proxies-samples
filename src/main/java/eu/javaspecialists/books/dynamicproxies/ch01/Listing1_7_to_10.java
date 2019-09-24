@@ -9,17 +9,17 @@ import java.io.*;
 import java.net.*;
 
 public class Listing1_7_to_10 {
-    // tag::service[]
+    // tag::Service[]
     @WebService
     @SOAPBinding(style = SOAPBinding.Style.RPC)
     public interface Service {
         @WebMethod
         public String work(String txt);
     }
-    // end::service[]
+    // end::Service[]
 
     static
-    // tag::serviceimpl[]
+    // tag::ServiceImpl[]
     @WebService(endpointInterface = "eu.javaspecialists.Service")
     public class ServiceImpl implements Service {
         @Override
@@ -28,22 +28,22 @@ public class Listing1_7_to_10 {
             return "ServiceImpl - " + txt;
         }
     }
-    // end::serviceimpl[]
+    // end::ServiceImpl[]
 
 
     static
-    // tag::servicepublisher[]
+    // tag::ServicePublisher[]
     public class ServicePublisher {
         public static void main(String... args) {
             Endpoint.publish("http://localhost:9999/ws/service",
                 new ServiceImpl());
         }
     }
-    // end::servicepublisher[]
+    // end::ServicePublisher[]
 
     static
 
-    // tag::serviceremoteproxy[]
+    // tag::ServiceRemoteProxy[]
     public class ServiceRemoteProxy implements Service {
         private final URL url;
         private final Service realSubject;
@@ -59,10 +59,10 @@ public class Listing1_7_to_10 {
             return realSubject.work(txt);
         }
     }
-    // end::serviceremoteproxy[]
+    // end::ServiceRemoteProxy[]
 
     static
-    // tag::main[]
+    // tag::Main[]
     public class Main {
         public static void main(String... args) throws IOException {
             Service proxy = new ServiceRemoteProxy();
@@ -70,5 +70,5 @@ public class Listing1_7_to_10 {
                 + proxy.work("Hello"));
         }
     }
-    // end::main[]
+    // end::Main[]
 }
