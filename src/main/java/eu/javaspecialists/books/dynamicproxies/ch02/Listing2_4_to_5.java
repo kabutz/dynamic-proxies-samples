@@ -1,30 +1,77 @@
-/*
- * Copyright (c) 2015. Heinz Max Kabutz , Sven Ruppert
- *   We licenses
- *   this file to you under the Apache License, Version 2.0 (the "License");
- *   you may not use this file except in compliance with the License. You may
- *   obtain a copy of the License at
- *
- *   http://www.apache.org/licenses/LICENSE-2.0
- *
- *   Unless required by applicable law or agreed to in writing, software
- *   distributed under the License is distributed on an "AS IS" BASIS,
- *   WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- *   See the License for the specific language governing permissions and
- *   limitations under the License.
- */
+package eu.javaspecialists.books.dynamicproxies.ch02;
 
-package eu.javaspecialists.books.dynamicproxies.shortcut.chap3.chap_3_2;
 
-/**
- * Created by sven on 20.01.15.
- */
-
+import eu.javaspecialists.books.dynamicproxies.ch02.Listing2_1.*;
 import org.junit.*;
+
+import java.util.*;
 
 import static org.junit.Assert.*;
 
-public class EqualsTest {
+public class Listing2_4_to_5 {
+    // tag::A[]
+    // subject
+    public interface A {
+    }
+    // end::A[]
+
+    static
+// tag::B[]
+    // real subject
+    public final class B implements A {
+        private final int i;
+        public B(int i) { this.i = i; }
+        public boolean equals(Object o) {
+            if (this == o) return true;
+            if (!(o instanceof A)) return false;
+
+            if (getClass() == o.getClass()) {
+                B b = (B) o;
+                return i == b.i;
+            }
+
+            return o.equals(this);
+        }
+
+        public int hashCode() {
+            return i;
+        }
+    }
+    // end::B[]
+    static
+// tag::C[]
+    // proxy
+    public final class C implements A {
+        private final A a;
+        public C(A a) {
+            this.a = Objects.requireNonNull(a);
+        }
+        public boolean equals(Object o) {
+            return a.equals(o);
+        }
+        public int hashCode() {
+            return a.hashCode();
+        }
+    }
+    // end::C[]
+    static
+    // proxy
+// tag::D[]
+    public final class D implements A {
+        private final A a;
+        public D(A a) {
+            this.a = Objects.requireNonNull(a);
+        }
+        public boolean equals(Object o) {
+            return a.equals(o);
+        }
+
+        public int hashCode() {
+            return a.hashCode();
+        }
+    }
+// end::D[]
+
     private static final boolean USE_DYNAMIC_PROXIES = false;
 
     private A[] create() {
@@ -168,5 +215,4 @@ public class EqualsTest {
         assertTrue(proxy2.equals(proxy2));
         assertTrue(proxy3.equals(proxy3));
     }
-
 }

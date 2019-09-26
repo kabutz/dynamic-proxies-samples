@@ -24,6 +24,6 @@ import java.time.*;
 public class Subject_A implements Subject {
   @Override
   public String doSomething(LocalDateTime date) {
-    return "Subject_A " + date;
+    return "RealSubject " + date;
   }
 }

@@ -16,6 +16,8 @@
 
 package eu.javaspecialists.books.dynamicproxies.shortcut.chap3.chap_3_2;
 
+import java.util.*;
+
 /**
  * Created by sven on 20.01.15.
  */
@@ -23,12 +25,11 @@ public class D implements A {
   private final A a;
 
   public D(A a) {
-    this.a = a;
+    this.a = Objects.requireNonNull(a);
   }
 
   public boolean equals(Object o) {
-//        return a.equals(o);
-    return o.equals(a);
+        return a.equals(o);
   }
 
   public int hashCode() {
