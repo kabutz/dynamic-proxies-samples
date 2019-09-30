@@ -1,7 +1,7 @@
 package eu.javaspecialists.books.dynamicproxies.ch01;
 
-import java.awt.event.*;
-import java.util.*;
+import java.awt.event.KeyEvent;
+import java.util.EventListener;
 
 public class Listing1_0 {
     // tag::listing[]

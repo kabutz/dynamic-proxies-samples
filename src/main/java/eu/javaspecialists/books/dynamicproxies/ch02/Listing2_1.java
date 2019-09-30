@@ -1,6 +1,6 @@
 package eu.javaspecialists.books.dynamicproxies.ch02;
 
-import java.lang.reflect.*;
+import java.lang.reflect.Proxy;
 
 public class Listing2_1 {
     // tag::Subject[]

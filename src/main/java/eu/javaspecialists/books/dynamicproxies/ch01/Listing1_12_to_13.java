@@ -1,6 +1,6 @@
 package eu.javaspecialists.books.dynamicproxies.ch01;
 
-import java.time.*;
+import java.time.LocalDateTime;
 
 public class Listing1_12_to_13 {
     public interface Service {
@@ -204,7 +204,8 @@ public class Listing1_12_to_13 {
                 .build();
             // end::secureProxy[]
 
-            System.out.println(secureProxy.work("AA").equals("ServiceImpl - AA"));
+            System.out.println(secureProxy.work("AA").equals("ServiceImpl - " +
+                "AA"));
 
         }
     }

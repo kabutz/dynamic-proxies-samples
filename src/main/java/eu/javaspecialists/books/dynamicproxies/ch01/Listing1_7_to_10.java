@@ -1,12 +1,14 @@
 package eu.javaspecialists.books.dynamicproxies.ch01;
 
 
-import javax.jws.*;
-import javax.jws.soap.*;
-import javax.xml.namespace.*;
-import javax.xml.ws.*;
-import java.io.*;
-import java.net.*;
+import javax.jws.WebMethod;
+import javax.jws.WebService;
+import javax.jws.soap.SOAPBinding;
+import javax.xml.namespace.QName;
+import javax.xml.ws.Endpoint;
+import java.io.IOException;
+import java.net.MalformedURLException;
+import java.net.URL;
 
 public class Listing1_7_to_10 {
     // tag::Service[]

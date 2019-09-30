@@ -1,10 +1,10 @@
 package eu.javaspecialists.books.dynamicproxies.ch02;
 
 
-import eu.javaspecialists.books.dynamicproxies.ch02.Listing2_1.*;
-import org.junit.*;
+import eu.javaspecialists.books.dynamicproxies.ch02.Listing2_1.Proxies;
+import org.junit.Test;
 
-import java.util.*;
+import java.util.Objects;
 
 import static org.junit.Assert.*;
 
@@ -16,7 +16,7 @@ public class Listing2_4_to_5 {
     // end::A[]
 
     static
-// tag::B[]
+    // tag::B[]
     // real subject
     public final class B implements A {
         private final int i;
@@ -39,7 +39,7 @@ public class Listing2_4_to_5 {
     }
     // end::B[]
     static
-// tag::C[]
+    // tag::C[]
     // proxy
     public final class C implements A {
         private final A a;
@@ -56,7 +56,7 @@ public class Listing2_4_to_5 {
     // end::C[]
     static
     // proxy
-// tag::D[]
+    // tag::D[]
     public final class D implements A {
         private final A a;
         public D(A a) {
@@ -70,7 +70,7 @@ public class Listing2_4_to_5 {
             return a.hashCode();
         }
     }
-// end::D[]
+    // end::D[]
 
     private static final boolean USE_DYNAMIC_PROXIES = false;
 
@@ -129,7 +129,8 @@ public class Listing2_4_to_5 {
     }
 
     private void testTransitivity(String description, A x, A y, A z) {
-        if (x.equals(y) && y.equals(z)) assertTrue(description, x.equals(z));
+        if (x.equals(y) && y.equals(z))
+            assertTrue(description, x.equals(z));
     }
 
     @Test
@@ -152,7 +153,8 @@ public class Listing2_4_to_5 {
     }
 
     private A makeProxy(A a) {
-        return USE_DYNAMIC_PROXIES ? Proxies.makeSimpleProxy(A.class, a) : new C(a);
+        return USE_DYNAMIC_PROXIES ? Proxies.makeSimpleProxy(A.class, a) :
+            new C(a);
     }
 
     @Test

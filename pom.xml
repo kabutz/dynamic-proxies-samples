@@ -86,10 +86,10 @@
             <artifactId>junit</artifactId>
         </dependency>
         <dependency>
-          <groupId>com.sun.xml.ws</groupId>
-          <artifactId>jaxws-ri</artifactId>
-          <version>2.3.0</version>
-          <type>pom</type>
+            <groupId>com.sun.xml.ws</groupId>
+            <artifactId>jaxws-ri</artifactId>
+            <version>2.3.0</version>
+            <type>pom</type>
         </dependency>
     </dependencies>
 
@@ -169,12 +169,14 @@
         <repository>
             <id>releases</id>
             <name>RapidPM Releases</name>
-            <url>http://${nexus.ip}/nexus/content/repositories/releases</url>
+            <url>http://${nexus.ip}/nexus/content/repositories/releases
+            </url>
         </repository>
         <snapshotRepository>
             <id>snapshots</id>
             <name>RapidPM Snapshots</name>
-            <url>http://${nexus.ip}/nexus/content/repositories/snapshots</url>
+            <url>http://${nexus.ip}/nexus/content/repositories/snapshots
+            </url>
         </snapshotRepository>
     </distributionManagement>
     <profiles>

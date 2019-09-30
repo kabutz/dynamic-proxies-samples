@@ -20,5 +20,4 @@ public class Listing2_2<T> {
         return true;
     }
 
-
 }

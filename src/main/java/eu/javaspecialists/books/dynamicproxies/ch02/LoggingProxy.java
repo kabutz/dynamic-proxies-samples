@@ -1,9 +1,12 @@
 package eu.javaspecialists.books.dynamicproxies.ch02;
 
-import java.lang.reflect.*;
-import java.util.*;
-import java.util.concurrent.*;
-import java.util.logging.*;
+import java.lang.reflect.InvocationHandler;
+import java.lang.reflect.Method;
+import java.lang.reflect.Proxy;
+import java.util.Arrays;
+import java.util.Map;
+import java.util.concurrent.ConcurrentHashMap;
+import java.util.logging.Logger;
 
 public class LoggingProxy {
     public static <P> P makeLoggingProxy(Class<P> clazz, P p, Logger log) {
@@ -14,7 +17,7 @@ public class LoggingProxy {
         ));
     }
     public static void main(String... args) {
-// tag::main()[]
+        // tag::main()[]
         InvocationHandler handler = new LoggingInvocationHandler(
             Logger.getGlobal(),
             new ConcurrentHashMap<>());
@@ -26,7 +29,7 @@ public class LoggingProxy {
         map.put("one", 1);
         map.put("two", 2);
         System.out.println(map);
-// end::main()[]
+        // end::main()[]
     }
 
     static
