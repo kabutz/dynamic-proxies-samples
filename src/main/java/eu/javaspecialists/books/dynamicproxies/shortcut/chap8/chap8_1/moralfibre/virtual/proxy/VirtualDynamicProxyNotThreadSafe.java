@@ -1,44 +1,48 @@
 /*
  * Copyright (c) 2014. Heinz Max Kabutz , Sven Ruppert
  *   We licenses
- *   this file to you under the Apache License, Version 2.0 (the "License");
- *   you may not use this file except in compliance with the License. You may
+ *   this file to you under the Apache License, Version 2.0 (the
+ * "License");
+ *   you may not use this file except in compliance with the License.
+ * You may
  *   obtain a copy of the License at
  *
  *   http://www.apache.org/licenses/LICENSE-2.0
  *
  *   Unless required by applicable law or agreed to in writing, software
  *   distributed under the License is distributed on an "AS IS" BASIS,
- *   WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ *   WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or
+ * implied.
  *   See the License for the specific language governing permissions and
  *   limitations under the License.
  */
 
 package eu.javaspecialists.books.dynamicproxies.shortcut.chap8.chap8_1.moralfibre.virtual.proxy;
 
-import java.lang.reflect.*;
+import java.lang.reflect.InvocationHandler;
+import java.lang.reflect.Method;
 
 /**
  * Created by Sven Ruppert on 14.01.14.
  */
 public class VirtualDynamicProxyNotThreadSafe implements InvocationHandler {
-  private final Class realSubjectClass;
-  private Object realSubject;
+    private final Class realSubjectClass;
+    private Object realSubject;
 
-  public VirtualDynamicProxyNotThreadSafe(Class realSubjectClass) {
-    this.realSubjectClass = realSubjectClass;
-  }
-
-  private Object realSubject() throws Exception {
-    if (realSubject == null) {
-      realSubject = realSubjectClass.newInstance();
+    public VirtualDynamicProxyNotThreadSafe(Class realSubjectClass) {
+        this.realSubjectClass = realSubjectClass;
     }
-    return realSubject;
-  }
 
-  public Object invoke(
-    Object proxy, Method method, Object[] args)
-    throws Throwable {
-    return method.invoke(realSubject(), args);
-  }
+    private Object realSubject() throws Exception {
+        if (realSubject == null) {
+            realSubject = realSubjectClass.newInstance();
+        }
+        return realSubject;
+    }
+
+    public Object invoke(
+        Object proxy, Method method, Object[] args)
+        throws Throwable {
+        return method.invoke(realSubject(), args);
+    }
 }
