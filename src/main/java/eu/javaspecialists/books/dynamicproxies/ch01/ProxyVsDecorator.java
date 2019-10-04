@@ -1,6 +1,6 @@
 package eu.javaspecialists.books.dynamicproxies.ch01;
 
-public class Listing1_3 {
+public class ProxyVsDecorator {
     public static class Proxy {
         // tag::listing1[]
         // Proxy

@@ -1,6 +1,6 @@
 package eu.javaspecialists.books.dynamicproxies.ch01;
 
-public class Listing1_1 {
+public class ProxyInJava {
     // tag::listing[]
     public interface Subject {
         public void request();

@@ -1,4 +1,4 @@
-package eu.javaspecialists.books.dynamicproxies.ch02;
+package eu.javaspecialists.books.dynamicproxies.ch03;
 
 import java.lang.reflect.InvocationHandler;
 import java.lang.reflect.Method;

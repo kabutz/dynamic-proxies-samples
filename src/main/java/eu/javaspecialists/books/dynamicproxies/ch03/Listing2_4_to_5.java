@@ -1,7 +1,7 @@
-package eu.javaspecialists.books.dynamicproxies.ch02;
+package eu.javaspecialists.books.dynamicproxies.ch03;
 
 
-import eu.javaspecialists.books.dynamicproxies.ch02.Listing2_1.Proxies;
+import eu.javaspecialists.books.dynamicproxies.ch03.Listing2_1.Proxies;
 import org.junit.Test;
 
 import java.util.Objects;

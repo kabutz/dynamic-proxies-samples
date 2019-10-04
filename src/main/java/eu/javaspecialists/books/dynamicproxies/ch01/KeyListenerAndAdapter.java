@@ -3,7 +3,7 @@ package eu.javaspecialists.books.dynamicproxies.ch01;
 import java.awt.event.KeyEvent;
 import java.util.EventListener;
 
-public class Listing1_0 {
+public class KeyListenerAndAdapter {
     // tag::listing[]
     public interface KeyListener extends EventListener {
         public void keyTyped(KeyEvent e);

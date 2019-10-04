@@ -1,4 +1,4 @@
-package eu.javaspecialists.books.dynamicproxies.ch02;
+package eu.javaspecialists.books.dynamicproxies.ch03;
 
 
 public class Listing2_2<T> {

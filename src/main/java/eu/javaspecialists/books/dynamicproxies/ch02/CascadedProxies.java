@@ -1,8 +1,8 @@
-package eu.javaspecialists.books.dynamicproxies.ch01;
+package eu.javaspecialists.books.dynamicproxies.ch02;
 
 import java.time.LocalDateTime;
 
-public class Listing1_12_to_13 {
+public class CascadedProxies {
     public interface Service {
         public String work(String txt);
     }

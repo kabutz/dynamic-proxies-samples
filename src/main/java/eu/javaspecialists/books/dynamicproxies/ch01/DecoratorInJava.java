@@ -1,6 +1,6 @@
 package eu.javaspecialists.books.dynamicproxies.ch01;
 
-public class Listing1_2 {
+public class DecoratorInJava {
     // tag::listing[]
     public interface Component {
         public void operation();

@@ -1,4 +1,4 @@
-package eu.javaspecialists.books.dynamicproxies.ch03;
+package eu.javaspecialists.books.dynamicproxies.ch04;
 
 import java.util.Collection;
 import java.util.function.IntFunction;
