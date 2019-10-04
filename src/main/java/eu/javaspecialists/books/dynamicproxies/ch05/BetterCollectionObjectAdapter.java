@@ -17,7 +17,7 @@
  *   limitations under the License.
  */
 
-package eu.javaspecialists.books.dynamicproxies.shortcut.chap_5_0;
+package eu.javaspecialists.books.dynamicproxies.ch05;
 
 import java.lang.reflect.Array;
 import java.util.Collection;

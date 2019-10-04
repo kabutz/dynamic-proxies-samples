@@ -1,6 +1,6 @@
 package eu.javaspecialists.books.dynamicproxies;
 
-import eu.javaspecialists.books.dynamicproxies.ch03.Listing2_1;
+import eu.javaspecialists.books.dynamicproxies.ch03.DynamicProxies;
 
 /**
  * Facade for all our dynamic proxies and related pattern implementations.
@@ -8,7 +8,7 @@ import eu.javaspecialists.books.dynamicproxies.ch03.Listing2_1;
 public class Proxies {
     private Proxies() {}
     public static <P> P makeSimpleProxy(Class<P> clazz, P p) {
-        return Listing2_1.Proxies.makeSimpleProxy(clazz, p);
+        return DynamicProxies.Proxies.makeSimpleProxy(clazz, p);
     }
 
     public static <P> P createDynamicFilter(Class<P> filter,

@@ -19,7 +19,7 @@
 
 package eu.javaspecialists.books.dynamicproxies.shortcut.chap_6_0;
 
-import eu.javaspecialists.books.dynamicproxies.shortcut.chap_5_0.BetterCollection;
+import eu.javaspecialists.books.dynamicproxies.ch05.BetterCollection;
 
 import java.lang.reflect.Array;
 import java.util.ArrayList;
