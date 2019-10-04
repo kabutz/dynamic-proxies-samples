@@ -1,7 +1,7 @@
 package eu.javaspecialists.books.dynamicproxies.ch03;
 
 
-public class Listing2_2<T> {
+public class CastingInClass<T> {
 
     // tag::cast()[]
     @SuppressWarnings("unchecked")

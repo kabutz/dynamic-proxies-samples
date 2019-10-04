@@ -1,14 +1,14 @@
 package eu.javaspecialists.books.dynamicproxies.ch03;
 
 
-import eu.javaspecialists.books.dynamicproxies.ch03.Listing2_1.Proxies;
+import eu.javaspecialists.books.dynamicproxies.ch03.DynamicProxies.Proxies;
 import org.junit.Test;
 
 import java.util.Objects;
 
 import static org.junit.Assert.*;
 
-public class Listing2_3 {
+public class BrokenEqualsInProxy {
     // tag::A[]
     // subject
     public interface A {

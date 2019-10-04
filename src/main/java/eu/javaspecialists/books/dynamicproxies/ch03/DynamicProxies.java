@@ -2,7 +2,7 @@ package eu.javaspecialists.books.dynamicproxies.ch03;
 
 import java.lang.reflect.Proxy;
 
-public class Listing2_1 {
+public class DynamicProxies {
     // tag::Subject[]
     public interface Subject {
         String doSomething(String str);
