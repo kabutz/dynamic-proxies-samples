@@ -1,0 +1,52 @@
+/*
+ * Copyright (C) 2000-2019 Heinz Max Kabutz
+ *
+ * See the NOTICE file distributed with this work for additional
+ * information regarding copyright ownership.  Heinz Max Kabutz licenses
+ * this file to you under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License. You may
+ * obtain a copy of the License at
+ *
+ * http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
+package eu.javaspecialists.books.dynamicproxies.ch07;
+
+import java.util.*;
+
+// tag::Company[]
+public class Company {
+    private final String name;
+    private final MoralFiber moralFiber;
+    private double cash;
+    public Company(String name, double cash, MoralFiber moralFiber) {
+        this.name = name;
+        this.cash = cash;
+        this.moralFiber = moralFiber;
+        System.out.println("Company constructed: " + this);
+    }
+    public void damageEnvironment() {
+        cash += 4000000;
+        System.out.println("Company.damageEnvironment(): " + this);
+    }
+    public void makeMoney() {
+        cash += 1000000;
+        System.out.println("Company.makeMoney(): " + this);
+    }
+    public void becomeFocusOfMediaAttention() {
+        cash -= moralFiber.actSociallyResponsibly();
+        cash -= moralFiber.cleanupEnvironment();
+        cash -= moralFiber.empowerEmployees();
+        System.out.println("Look how good we are... " + this);
+    }
+    public String toString() {
+        return String.format(Locale.US, "%s has $ %.2f", name, cash);
+    }
+}
+// end::Company[]
