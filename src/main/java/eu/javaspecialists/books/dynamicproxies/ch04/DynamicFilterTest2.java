@@ -18,15 +18,16 @@
 
 package eu.javaspecialists.books.dynamicproxies.ch04;
 
-import java.util.Arrays;
+import java.util.*;
 
-public class DynamicFilterTest {
+public class DynamicFilterTest2 {
     public static void main(String... args) {
-        ImmutableCollection<String> names =
+        ImmutableCollection2<String> names =
             Proxies.createDynamicFilter(
-                ImmutableCollection.class,
+                ImmutableCollection2.class,
                 Arrays.asList("Peter", "Paul", "Mary")
             );
+        names.set(0, "John");
 //         names.remove("Peter"); // does not compile
         System.out.println(names);
         System.out.println("Do we have Mary? " + names.contains("Mary"));

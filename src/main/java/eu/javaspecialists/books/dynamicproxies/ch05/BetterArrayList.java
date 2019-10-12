@@ -21,34 +21,34 @@ package eu.javaspecialists.books.dynamicproxies.ch05;
 import java.lang.reflect.*;
 import java.util.*;
 
+// tag::BetterArrayList[]
 public class BetterArrayList<T> extends ArrayList<T> {
-    private final Class<T> valueType;
+    private final Class<T> type;
 
-    public BetterArrayList(int initialCapacity, Class<T> valueType) {
+    public BetterArrayList(int initialCapacity, Class<T> type) {
         super(initialCapacity);
-        this.valueType = valueType;
+        this.type = type;
     }
 
-    public BetterArrayList(Class<T> valueType) {
-        this.valueType = valueType;
+    public BetterArrayList(Class<T> type) {
+        super();
+        this.type = type;
     }
 
-    public BetterArrayList(Collection<? extends T> ts,
-                           Class<T> valueType) {
+    public BetterArrayList(Collection<? extends T> ts, Class<T> type) {
         super(ts);
-        this.valueType = valueType;
+        this.type = type;
     }
 
-    // You can modify the return type of
-    // an overridden method in
-    // Java 5, with some restrictions.
+    // You can modify the return type of an overridden method in Java 5,
+    // with some restrictions.
     public T[] toArray() {
-        return toArray((T[]) Array.newInstance(valueType, size()));
+        return toArray((T[]) Array.newInstance(type, size()));
     }
 
     public static void main(String[] args) {
         BetterArrayList<String> names =
-                new BetterArrayList<String>(String.class);
+                new BetterArrayList<>(String.class);
         names.add("Wolfgang");
         names.add("Leander");
         names.add("Klaus");
@@ -59,3 +59,4 @@ public class BetterArrayList<T> extends ArrayList<T> {
         }
     }
 }
+// end::BetterArrayList[]
