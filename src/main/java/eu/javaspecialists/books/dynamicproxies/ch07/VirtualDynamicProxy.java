@@ -18,26 +18,22 @@
 
 package eu.javaspecialists.books.dynamicproxies.ch07;
 
+// tag::VirtualDynamicProxy[]
 import java.lang.reflect.*;
+import java.util.function.*;
 
-//new Company("Cretesoft",20000.0, new VirtualMoralFibreLockFree())
-
-public class VirtualDynamicProxyNotThreadSafe implements InvocationHandler {
-    private final Class<?> realSubjectClass;
-    private Object realSubject;
-    public VirtualDynamicProxyNotThreadSafe(Class<?> realSubjectClass) {
-        this.realSubjectClass = realSubjectClass;
-
+public abstract class VirtualDynamicProxy<P> implements InvocationHandler {
+    private final Supplier<P> subjectSupplier;
+    public VirtualDynamicProxy(Supplier<P> subjectSupplier) {
+        this.subjectSupplier = subjectSupplier;
     }
-    private Object realSubject() throws Exception {
-        if (realSubject == null) {
-            realSubject = realSubjectClass.newInstance();
-        }
-        return realSubject;
+    protected abstract P realSubject();
+    public final P makeRealSubject() {
+        return subjectSupplier.get();
     }
-    public Object invoke(Object proxy, Method method, Object[] args)
+    public final Object invoke(Object proxy, Method method, Object[] args)
             throws Throwable {
         return method.invoke(realSubject(), args);
     }
-
 }
+// end::VirtualDynamicProxy[]

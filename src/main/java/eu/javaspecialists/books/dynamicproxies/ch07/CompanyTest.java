@@ -26,7 +26,7 @@ public class CompanyTest {
         company.makeMoney();
         company.damageEnvironment();
         company.becomeFocusOfMediaAttention();
-
+/*
         var company2 = new Company("Cretesoft2", 20000.0,
                 ProxyGenerator.make(MoralFiber.class,
                         RealMoralFiber.class, Concurrency.NONE));
@@ -35,6 +35,7 @@ public class CompanyTest {
         company2.makeMoney();
         company2.damageEnvironment();
         company2.becomeFocusOfMediaAttention();
+ */
     }
 }
 // end::CompanyTest[]

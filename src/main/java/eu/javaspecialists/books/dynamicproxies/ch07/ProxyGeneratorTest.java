@@ -23,6 +23,7 @@ import javax.swing.table.*;
 import java.util.concurrent.*;
 
 public class ProxyGeneratorTest {
+    /*
 
     public static void main(String[] args) {
         for (Concurrency type : Concurrency.values()) {
@@ -59,5 +60,6 @@ public class ProxyGeneratorTest {
         System.out.println();
 
     }
+     */
 
 }

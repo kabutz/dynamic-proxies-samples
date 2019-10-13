@@ -21,15 +21,17 @@ package eu.javaspecialists.books.dynamicproxies.ch07;
 // tag::VirtualProxySourceGenerator[]
 import java.io.*;
 import java.lang.reflect.*;
+import java.util.function.*;
 
-public abstract class VirtualProxySourceGenerator {
-    protected final Class<?> subject;
-    protected final Class<?> realSubject;
+public abstract class VirtualProxySourceGenerator<P> {
+    private final Class<P> subject;
+    private final Class<? extends P> realSubject;
     private final String proxy;
     private CharSequence charSequence;
 
     public VirtualProxySourceGenerator(
-            Class<?> subject, Class<?> realSubject, Concurrency type) {
+            Class<P> subject, Class<? extends P> realSubject,
+            Concurrency type) {
         this.subject = subject;
         this.realSubject = realSubject;
         this.proxy = makeProxyName(subject, type);
@@ -70,7 +72,6 @@ public abstract class VirtualProxySourceGenerator {
     protected String getSubjectName() {
         return subject.getName();
     }
-
 
     protected String getRealSubjectName() {
         return realSubject.getName();

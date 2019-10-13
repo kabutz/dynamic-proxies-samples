@@ -20,7 +20,7 @@ package eu.javaspecialists.books.dynamicproxies.ch07;
 
 // tag::GeneratorTest[]
 public class GeneratorTest {
-    public static void main(String[] args) throws Exception {
+    public static void main(String[] args) throws ReflectiveOperationException {
         Class<?> testClass = Generator.make("WatchThis",
                // Java 13 preview Text Blocks - JEP355
                """
@@ -39,7 +39,7 @@ public class GeneratorTest {
                  }
                }
                """);
-        Runnable r = (Runnable) testClass.newInstance();
+        Runnable r = (Runnable) testClass.getConstructor().newInstance();
         Class<? extends Runnable> clazz = r.getClass();
         System.out.println("Our class: " + clazz.getName());
         System.out.println("Classloader: " + clazz.getClassLoader());

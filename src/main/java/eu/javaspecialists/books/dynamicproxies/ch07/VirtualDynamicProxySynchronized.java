@@ -18,21 +18,27 @@
 
 package eu.javaspecialists.books.dynamicproxies.ch07;
 
-// tag::Util[]
-// most likely don't need this - Class.getCanonicalName() does this I think
-public class Util {
-    public static String prettyPrint(Class<?> clazz) {
-        return prettyPrint(clazz, ""); }
-    public static String prettyPrint(Class<?> c, String postfix) {
-        if (c.isArray()) {
-            return prettyPrint(c.getComponentType(), postfix + "[]");
-        } else {
-            Package pack = c.getPackage();
-            if (pack != null && pack.getName().equals("java.lang")) {
-                return c.getSimpleName() + postfix;
+// tag::VirtualDynamicProxySynchronized[]
+import java.lang.reflect.*;
+import java.util.function.*;
+
+public class VirtualDynamicProxySynchronized<P>
+        extends VirtualDynamicProxy<P> {
+    private volatile P realSubject;
+    private final Object initializationLock = new Object();
+    public VirtualDynamicProxySynchronized(Supplier<P> subjectSupplier) {
+        super(subjectSupplier);
+    }
+    protected P realSubject() {
+        var result = realSubject;
+        if (result == null) {
+            synchronized (initializationLock) {
+                if ((result = realSubject) == null) {
+                     realSubject = result = makeRealSubject();
+                }
             }
-            return c.getName() + postfix;
         }
+        return result;
     }
 }
-// end::Util[]
+// end::VirtualDynamicProxySynchronized[]

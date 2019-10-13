@@ -18,13 +18,13 @@
 
 package eu.javaspecialists.books.dynamicproxies.ch07;
 
-// tag::VirtualProxySourceGeneratorBasic[]
 import java.io.*;
 
-class VirtualProxySourceGeneratorBasic
-        extends VirtualProxySourceGenerator {
-    public VirtualProxySourceGeneratorBasic(Class<?> subject,
-                                            Class<?> realSubject) {
+// tag::VirtualProxySourceGeneratorBasic[]
+class VirtualProxySourceGeneratorBasic<P>
+        extends VirtualProxySourceGenerator<P> {
+    public VirtualProxySourceGeneratorBasic(
+            Class<P> subject, Class<? extends P> realSubject) {
         super(subject, realSubject, Concurrency.NONE);
     }
     protected void addRealSubjectCreation(PrintWriter out) {

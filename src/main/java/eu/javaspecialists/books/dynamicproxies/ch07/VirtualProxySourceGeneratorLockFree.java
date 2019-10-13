@@ -18,13 +18,13 @@
 
 package eu.javaspecialists.books.dynamicproxies.ch07;
 
-// tag::VirtualProxySourceGeneratorLockFree[]
 import java.io.*;
 
-class VirtualProxySourceGeneratorLockFree
-        extends VirtualProxySourceGenerator {
+// tag::VirtualProxySourceGeneratorLockFree[]
+class VirtualProxySourceGeneratorLockFree<P>
+        extends VirtualProxySourceGenerator<P> {
     public VirtualProxySourceGeneratorLockFree(
-            Class<?> subject, Class<?> realSubject) {
+            Class<P> subject, Class<? extends P> realSubject) {
         super(subject, realSubject, Concurrency.LOCK_FREE);
     }
     protected void addImports(PrintWriter out) {

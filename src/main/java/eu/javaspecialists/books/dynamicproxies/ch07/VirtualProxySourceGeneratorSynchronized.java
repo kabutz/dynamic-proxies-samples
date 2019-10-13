@@ -18,13 +18,13 @@
 
 package eu.javaspecialists.books.dynamicproxies.ch07;
 
-// tag::VirtualProxySourceGeneratorSynchronized[]
 import java.io.*;
 
-class VirtualProxySourceGeneratorSynchronized
-        extends VirtualProxySourceGenerator {
-    public VirtualProxySourceGeneratorSynchronized(Class<?> subject,
-                                                   Class<?> realSubject) {
+// tag::VirtualProxySourceGeneratorSynchronized[]
+class VirtualProxySourceGeneratorSynchronized<P>
+        extends VirtualProxySourceGenerator<P> {
+    public VirtualProxySourceGeneratorSynchronized(
+            Class<P> subject, Class<? extends P> realSubject) {
         super(subject, realSubject, Concurrency.SYNCHRONIZED);
     }
     protected void addRealSubjectCreation(PrintWriter out) {

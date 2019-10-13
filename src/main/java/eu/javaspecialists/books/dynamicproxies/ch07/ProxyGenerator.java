@@ -20,60 +20,61 @@ package eu.javaspecialists.books.dynamicproxies.ch07;
 
 import java.lang.reflect.*;
 import java.util.*;
-import java.util.concurrent.*;
+import java.util.function.*;
 
 public class ProxyGenerator {
+    /*
     private static final Map<ClassLoader, Map<CacheKey, Class<?>>> cache =
             new WeakHashMap<>();
     public static <T> T make(Class<T> subject,
-                             Class<? extends T> realClass,
+                             Supplier<? extends T> supplier,
                              Concurrency concurrency, ProxyType type) {
-        return make(subject.getClassLoader(), subject, realClass,
+        return make(subject.getClassLoader(), subject, supplier,
                 concurrency, type);
     }
     public static <T> T make(
-            Class<T> subject, Class<? extends T> realClass,
+            Class<T> subject, Supplier<? extends T> supplier,
             Concurrency concurrency) {
-        return make(subject, realClass, concurrency, ProxyType.STATIC);
+        return make(subject, supplier, concurrency, ProxyType.STATIC);
     }
     public static <T> T make(ClassLoader loader, Class<T> subject,
-                             Class<? extends T> realClass,
+                             Supplier<? extends T> supplier,
                              Concurrency concurrency, ProxyType type) {
         Object proxy = null;
         if (type == ProxyType.STATIC) {
-            proxy = createStaticProxy(subject, realClass,
-                    concurrency);
+            proxy = createStaticProxy(subject, supplier, concurrency);
         } else if (type == ProxyType.DYNAMIC) {
-            proxy = createDynamicProxy(loader, subject, realClass,
+            proxy = createDynamicProxy(loader, subject, supplier,
                     concurrency);
         }
         return subject.cast(proxy);
     }
-    private static Object createStaticProxy(
-            Class<?> subject, Class<?> realClass,
+    private static <T> T createStaticProxy(
+            Class<T> subject, Supplier<? extends T> supplier,
             Concurrency concurrency) {
-        Map<CacheKey, Class<?>> clcache;
-        synchronized (cache) {
-            clcache = cache.get(loader);
-            if (clcache == null) {
-                cache.put(loader, clcache = new HashMap<>());
-            }
-        }
+        //        Map<CacheKey, Class<?>> clcache;
+        //        synchronized (cache) {
+        //            clcache = cache.get(loader);
+        //            if (clcache == null) {
+        //                cache.put(loader, clcache = new HashMap<>());
+        //            }
+        //        }
         try {
             Class<?> clazz;
-            CacheKey key = new CacheKey(subject, concurrency);
-            synchronized (clcache) {
-                clazz = clcache.get(key);
-                if (clazz == null) {
-                    VirtualProxySourceGenerator vpsg = create(subject,
-                            realClass, concurrency);
-                    clazz = Generator.make(vpsg.getProxyName(),
-                            vpsg.getCharSequence());
-                    clcache.put(key, clazz);
-                }
+            //            CacheKey key = new CacheKey(subject,
+            //            concurrency);
+            //            synchronized (clcache) {
+            //                clazz = clcache.get(key);
+            //                if (clazz == null) {
+            VirtualProxySourceGenerator vpsg = create(subject,
+                    supplier, concurrency);
+            clazz = Generator.make(vpsg.getProxyName(),
+                    vpsg.getCharSequence());
+            //                    clcache.put(key, clazz);
+            //                }
 
-            }
-            return clazz.newInstance();
+            //            }
+            return subject.cast(clazz.newInstance());
         } catch (RuntimeException e) {
             throw e;
         } catch (Exception e) {
@@ -81,34 +82,40 @@ public class ProxyGenerator {
         }
 
     }
-    private static VirtualProxySourceGenerator create(
-            Class<?> subject, Class<?> realClass,
+    private static <T> VirtualProxySourceGenerator create(
+            Class<?> subject, Supplier<? extends T> supplier,
             Concurrency concurrency) {
-        switch (concurrency) {
-            case NONE:
-                return new VirtualProxySourceGeneratorBasic(subject,
-                        realClass);
-            case LOCK_FREE:
-                return new VirtualProxySourceGeneratorLockFree(subject,
-                        realClass);
-            case SYNCHRONIZED:
-                return new VirtualProxySourceGeneratorSynchronized(subject, realClass);
-            default:
-                throw new IllegalArgumentException(
-                        "Unsupported Concurrency: " + concurrency);
-        }
+        return switch (concurrency) {
+            case NONE -> new VirtualProxySourceGeneratorBasic(
+                    subject, supplier);
+            case LOCK_FREE -> new VirtualProxySourceGeneratorLockFree(
+                    subject, supplier);
+            case SYNCHRONIZED -> new VirtualProxySourceGeneratorSynchronized(
+                    subject, supplier);
+            default -> throw new IllegalArgumentException(
+                    "Unsupported Concurrency: " + concurrency);
+        };
     }
-    private static Object createDynamicProxy(
-            ClassLoader loader, Class<?> subject, Class<?> realClass,
+    private static <P> P createDynamicProxy(
+            ClassLoader loader, Class<P> subject,
+            Supplier<? extends P> realSupplier,
             Concurrency concurrency) {
-        if (concurrency != Concurrency.NONE) {
-            throw new IllegalArgumentException("Unsupported Concurrency:" +
-                                                       " " + concurrency);
-        }
-        return Proxy.newProxyInstance(
+        InvocationHandler handler = getDynamicProxyHandler(
+                concurrency, realSupplier);
+        return subject.cast(Proxy.newProxyInstance(
                 loader,
                 new Class<?>[] {subject},
-                new VirtualDynamicProxyNotThreadSafe(realClass));
+                handler));
+    }
+    private static <P> InvocationHandler getDynamicProxyHandler(
+            Concurrency concurrency, Supplier<? extends P> supplier) {
+        return switch (concurrency) {
+            default -> throw new IllegalArgumentException(
+                    "Unsupported Concurrency: " + concurrency);
+            case NONE -> new VirtualDynamicProxyBasic<>(supplier);
+            case SYNCHRONIZED -> new VirtualDynamicProxySynchronized<>(supplier);
+            case LOCK_FREE -> new VirtualDynamicProxyLockFree<>(supplier);
+        };
     }
     private static class CacheKey {
         private final Class<?> subject;
@@ -128,4 +135,5 @@ public class ProxyGenerator {
             return 31 * subject.hashCode() + concurrency.hashCode();
         }
     }
+     */
 }

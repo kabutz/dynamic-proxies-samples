@@ -19,12 +19,11 @@
 package eu.javaspecialists.books.dynamicproxies.ch07;
 
 import javax.tools.*;
-import java.net.*;
 import java.util.*;
 
 public class ClassTest {
-    public static void main(String... args) throws IllegalAccessException, InstantiationException {
-
+    public static void main(String... args)
+            throws ReflectiveOperationException {
         JavaCompiler jc = ToolProvider.getSystemJavaCompiler();
         if (jc == null) {
             throw new UnsupportedOperationException(
@@ -81,7 +80,7 @@ public class ClassTest {
                     "Could not create proxy - compile failed");
         }
         Class<?> testClass = res;
-        Runnable r = (Runnable) testClass.newInstance();
+        Runnable r = (Runnable) testClass.getConstructor().newInstance();
         Class<? extends Runnable> clazz = r.getClass();
         System.out.println("Our class: " + clazz.getName());
         System.out.println("Classloader: " + clazz.getClassLoader());
@@ -92,8 +91,7 @@ public class ClassTest {
 
     private static class ProxyClassLoader extends ClassLoader {
         public Class<?> defineClass(String name, byte[] b)
-                throws ClassFormatError
-        {
+                throws ClassFormatError {
             return defineClass(name, b, 0, b.length, null);
         }
     }
