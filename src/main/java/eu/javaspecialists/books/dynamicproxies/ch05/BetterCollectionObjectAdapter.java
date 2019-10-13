@@ -18,27 +18,23 @@
 
 package eu.javaspecialists.books.dynamicproxies.ch05;
 
-import java.lang.reflect.Array;
-import java.util.Collection;
-import java.util.Iterator;
-import java.util.LinkedList;
+// tag::BetterCollectionObjectAdapter[]
+import java.lang.reflect.*;
+import java.util.*;
 
-/**
- * Created by Sven Ruppert on 05.01.14.
- */
-public class BetterCollectionObjectAdapter<T> implements BetterCollection<T> {
-    private final Collection<T> adaptee;
-    private final Class<T> valueType;
+public class BetterCollectionObjectAdapter<E> implements BetterCollection<E> {
+    private final Collection<E> adaptee;
+    private final Class<E> valueType;
 
-    public BetterCollectionObjectAdapter(Collection<T> adaptee,
-                                         Class<T> valueType) {
+    public BetterCollectionObjectAdapter(Collection<E> adaptee,
+                                         Class<E> valueType) {
         this.adaptee = adaptee;
         this.valueType = valueType;
     }
 
-    public T[] toArray() {
+    public E[] toArray() {
         return adaptee.toArray(
-            (T[]) Array.newInstance(valueType, adaptee.size()));
+                (E[]) Array.newInstance(valueType, adaptee.size()));
     }
 
     // this is a typical problem with the Object Adapter Design
@@ -55,7 +51,7 @@ public class BetterCollectionObjectAdapter<T> implements BetterCollection<T> {
         return adaptee.contains(o);
     }
 
-    public Iterator<T> iterator() {
+    public Iterator<E> iterator() {
         return adaptee.iterator();
     }
 
@@ -63,8 +59,8 @@ public class BetterCollectionObjectAdapter<T> implements BetterCollection<T> {
         return adaptee.toArray(ts);
     }
 
-    public boolean add(T t) {
-        return adaptee.add(t);
+    public boolean add(E e) {
+        return adaptee.add(e);
     }
 
     public boolean remove(Object o) {
@@ -75,8 +71,8 @@ public class BetterCollectionObjectAdapter<T> implements BetterCollection<T> {
         return adaptee.containsAll(c);
     }
 
-    public boolean addAll(Collection<? extends T> ts) {
-        return adaptee.addAll(ts);
+    public boolean addAll(Collection<? extends E> es) {
+        return adaptee.addAll(es);
     }
 
     public boolean removeAll(Collection<?> c) {
@@ -90,20 +86,5 @@ public class BetterCollectionObjectAdapter<T> implements BetterCollection<T> {
     public void clear() {
         adaptee.clear();
     }
-
-
-    public static void main(String[] args) {
-        BetterCollection<String> names =
-            new BetterCollectionObjectAdapter<>(
-                new LinkedList<>(), String.class);
-        names.add("Wolfgang");
-        names.add("Leander");
-        names.add("Klaus");
-        names.add("Reinhard");
-        String[] nameArray = names.toArray();
-        for (String s : nameArray) {
-            System.out.println(s);
-        }
-    }
-
 }
+// end::BetterCollectionObjectAdapter[]

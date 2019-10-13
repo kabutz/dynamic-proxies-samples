@@ -18,10 +18,24 @@
 
 package eu.javaspecialists.books.dynamicproxies.ch05;
 
-// tag::BetterCollection[]
-import java.util.*;
+import java.util.concurrent.*;
 
-public interface BetterCollection<E> extends Collection<E> {
-    E[] toArray();
+public class BetterCollectionObjectAdapterTest {
+    public static void main(String... args) {
+        // tag::main()[]
+        BetterCollection<String> names =
+                new BetterCollectionObjectAdapter<>(
+                        ConcurrentHashMap.newKeySet(),
+                        String.class
+                );
+        names.add("Wolfgang");
+        names.add("Leander");
+        names.add("Klaus");
+        names.add("Reinhard");
+        String[] nameArray = names.toArray();
+        for (String s : nameArray) {
+            System.out.println(s);
+        }
+        // end::main()[]
+    }
 }
-// end::BetterCollection[]

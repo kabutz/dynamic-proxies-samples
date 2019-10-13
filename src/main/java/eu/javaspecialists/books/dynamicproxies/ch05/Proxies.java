@@ -18,10 +18,15 @@
 
 package eu.javaspecialists.books.dynamicproxies.ch05;
 
-// tag::BetterCollection[]
-import java.util.*;
+import java.lang.reflect.*;
 
-public interface BetterCollection<E> extends Collection<E> {
-    E[] toArray();
+// tag::Proxies[]
+public class Proxies {
+    public static <E> E adapt(Object adaptee, Class<E> target,
+                              Object adapter) {
+        return target.cast(Proxy.newProxyInstance(
+                target.getClassLoader(), new Class[] {target},
+                new ObjectAdapterHandler(adapter, adaptee)));
+    }
 }
-// end::BetterCollection[]
+// end::Proxies[]

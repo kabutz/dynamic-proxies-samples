@@ -18,10 +18,17 @@
 
 package eu.javaspecialists.books.dynamicproxies.ch05;
 
-// tag::BetterCollection[]
-import java.util.*;
+// tag::BetterConcurrentSkipListSet[]
+import java.lang.reflect.*;
+import java.util.concurrent.*;
 
-public interface BetterCollection<E> extends Collection<E> {
-    E[] toArray();
+public class BetterConcurrentSkipListSet<E> extends ConcurrentSkipListSet<E>
+        implements BetterCollection<E> {
+    private final Class<?> type;
+    public BetterConcurrentSkipListSet(Class<?> type) {this.type = type;}
+    @Override
+    public E[] toArray() {
+        return toArray((E[]) Array.newInstance(type, size()));
+    }
 }
-// end::BetterCollection[]
+// end::BetterConcurrentSkipListSet[]
