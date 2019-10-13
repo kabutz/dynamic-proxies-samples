@@ -1,2 +1,3 @@
 dynamic-proxies-samples.i*
 target
+*.class
