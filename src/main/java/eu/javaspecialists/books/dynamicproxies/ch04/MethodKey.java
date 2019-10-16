@@ -23,15 +23,16 @@ import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 // tag::MethodKey[]
-final class MethodKey implements Comparable<MethodKey> {
-    private final Method method;
+public final class MethodKey implements Comparable<MethodKey> {
     private final String id;
     public MethodKey(Method method) {
-        this.method = method;
-        id = Stream.of(method.getParameterTypes())
+        this(method.getName(), method.getParameterTypes());
+    }
+    public MethodKey(String name, Class<?>... parameterTypes) {
+        id = Stream.of(parameterTypes)
             .map(Class::getName)
             .collect(Collectors.joining(", ",
-                method.getName() + "(", ")"));
+                name + "(", ")"));
     }
     public boolean equals(Object o) {
         if (!(o instanceof MethodKey)) return false;

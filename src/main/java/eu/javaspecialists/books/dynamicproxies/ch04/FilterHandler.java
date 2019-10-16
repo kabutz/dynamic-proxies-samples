@@ -98,31 +98,6 @@ class FilterHandler implements InvocationHandler {
         MethodKey key = new MethodKey(method);
         return methodMap.get(key).invoke(component, args);
     }
-
-    private static class MethodKey implements Comparable<MethodKey> {
-        private final Method method;
-        private final String id;
-        public MethodKey(Method method) {
-            this.method = method;
-            id = Stream.of(method.getParameterTypes())
-                .map(Class::getName)
-                .collect(Collectors.joining(", ",
-                    method.getName() + "(", ")"));
-        }
-        public boolean equals(Object o) {
-            if (!(o instanceof MethodKey)) return false;
-            return id.equals(((MethodKey) o).id);
-        }
-        public int hashCode() {
-            return id.hashCode();
-        }
-        public int compareTo(MethodKey mk) {
-            return id.compareTo(mk.id);
-        }
-        public String toString() {
-            return id;
-        }
-    }
 }
 // end::FilterHandler[]
 
