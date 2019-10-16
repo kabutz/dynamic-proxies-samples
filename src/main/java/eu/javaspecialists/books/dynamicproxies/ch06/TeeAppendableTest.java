@@ -16,16 +16,22 @@
  * limitations under the License.
  */
 
-package eu.javaspecialists.books.dynamicproxies.shortcut.chap07_0;
+package eu.javaspecialists.books.dynamicproxies.ch06;
 
-import java.time.LocalDateTime;
+import java.io.*;
 
-/**
- * Created by Sven Ruppert on 14.04.2014.
- */
-public class Subject_A implements Subject {
-    @Override
-    public String doSomething(LocalDateTime date) {
-        return "RealSubject " + date;
+public class TeeAppendableTest {
+    public static void main(String... args) throws IOException {
+        TeeAppendable tee = new TeeAppendable();
+        StringWriter sw = new StringWriter();
+        tee.add(new OutputStreamWriter(System.out));
+        tee.add(new FileWriter("output.txt"));
+        tee.add(sw);
+
+        var out = new PrintWriter(new WriterAppendableAdapter<>(tee));
+        out.println("Hello World");
+        out.flush();
+
+        System.out.println("sw = " + sw);
     }
 }

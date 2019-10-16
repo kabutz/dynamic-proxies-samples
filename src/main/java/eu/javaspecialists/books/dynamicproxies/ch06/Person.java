@@ -16,16 +16,13 @@
  * limitations under the License.
  */
 
-package eu.javaspecialists.books.dynamicproxies.shortcut.chap07_0;
+package eu.javaspecialists.books.dynamicproxies.ch06;
 
-import java.time.LocalDateTime;
-
-/**
- * Created by Sven Ruppert on 14.04.2014.
- */
-public class Subject_C implements Subject {
+public class Person implements Contact {
+    private final String email;
+    public Person(String email) {this.email = email;}
     @Override
-    public String doSomething(LocalDateTime date) {
-        return "Subject_C " + date;
+    public void sendMail(String message) {
+        System.out.println("Sending " + message + " to " + email);
     }
 }

@@ -16,13 +16,21 @@
  * limitations under the License.
  */
 
-package eu.javaspecialists.books.dynamicproxies.shortcut.chap07_0;
+package eu.javaspecialists.books.dynamicproxies.ch06;
 
-import java.time.LocalDateTime;
+import eu.javaspecialists.books.dynamicproxies.ch04.*;
 
-/**
- * Created by Sven Ruppert on 14.04.2014.
- */
-public interface Subject {
-    public String doSomething(LocalDateTime date);
+import java.util.*;
+import java.util.function.*;
+
+public interface Contact extends Composite<Contact> {
+    void sendMail(String message);
+    default int countLeaves() { return 1; }
+
+    static Map<MethodKey, BinaryOperator<Object>> getMergers() {
+        return Map.of(
+                new MethodKey("countLeaves"),
+                (r1, r2) -> (int) r1 + (int) r2
+        );
+    }
 }

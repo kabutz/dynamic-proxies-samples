@@ -16,16 +16,22 @@
  * limitations under the License.
  */
 
-package eu.javaspecialists.books.dynamicproxies.shortcut.chap07_0;
+package eu.javaspecialists.books.dynamicproxies.ch06;
 
-import java.time.LocalDateTime;
+import eu.javaspecialists.books.dynamicproxies.ch04.*;
 
-/**
- * Created by Sven Ruppert on 14.04.2014.
- */
-public class Subject_B implements Subject {
-    @Override
-    public String doSomething(LocalDateTime date) {
-        return "Subject_B " + date;
+import java.util.*;
+import java.util.function.*;
+
+public interface Composite<T> {
+    default void add(T t) {}
+    default boolean remove(T t) { return false; }
+
+    /**
+     * Any subinterfaces can define a static getMergers() method to
+     * return a map of methods to their result merge function.
+     */
+    static Map<MethodKey, BinaryOperator<Object>> getMergers() {
+        return Map.of();
     }
 }
