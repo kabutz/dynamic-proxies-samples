@@ -19,10 +19,10 @@
 package eu.javaspecialists.books.dynamicproxies.ch03;
 
 
-import eu.javaspecialists.books.dynamicproxies.ch03.DynamicProxies.Proxies;
-import org.junit.Test;
+import eu.javaspecialists.books.dynamicproxies.*;
+import org.junit.*;
 
-import java.util.Objects;
+import java.util.*;
 
 import static org.junit.Assert.*;
 
@@ -100,15 +100,15 @@ public class BrokenEqualsInProxy {
 
         private A[] create() {
             A temp;
-            return new A[]{
-                temp = new B(42),
-                makeProxy(temp),
-                temp = makeProxy(temp),
-                temp = makeProxy(temp),
-                makeProxy(temp),
-                temp = new B(57),
-                makeProxy(temp),
-                makeProxy(temp),
+            return new A[] {
+                    temp = new B(42),
+                    makeProxy(temp),
+                    temp = makeProxy(temp),
+                    temp = makeProxy(temp),
+                    makeProxy(temp),
+                    temp = new B(57),
+                    makeProxy(temp),
+                    makeProxy(temp),
             };
         }
 
@@ -177,9 +177,8 @@ public class BrokenEqualsInProxy {
         }
 
         private A makeProxy(A a) {
-            return USE_DYNAMIC_PROXIES ? Proxies.makeSimpleProxy(A.class
-                , a) :
-                new C(a);
+            return USE_DYNAMIC_PROXIES ? Proxies.simpleProxy(A.class, a) :
+                           new C(a);
         }
 
         @Test

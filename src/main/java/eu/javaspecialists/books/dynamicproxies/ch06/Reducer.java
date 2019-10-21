@@ -18,11 +18,31 @@
 
 package eu.javaspecialists.books.dynamicproxies.ch06;
 
-public class Person implements Contact {
-    private final String email;
-    public Person(String email) {this.email = email;}
-    @Override
-    public void sendMail(String message) {
-        System.out.println("Sending " + message + " to " + email);
+// tag::listing[]
+import java.util.function.*;
+
+public class Reducer {
+    private final Object identity;
+    private final BinaryOperator<Object> merger;
+    public Reducer(Object identity, BinaryOperator<Object> merger) {
+        this.merger = merger;
+        this.identity = identity;
     }
+    public Object getIdentity() {
+        return identity;
+    }
+    public BinaryOperator<Object> getMerger() {
+        return merger;
+    }
+    public static final Reducer NULL_REDUCER = new Reducer(
+            null, (o1, o2) -> null
+    );
+    /**
+     * Actual result will be substituted with the proxy instance.
+     */
+    public static final Reducer PROXY_INSTANCE_REDUCER = new Reducer(
+            null, (o1, o2) -> null
+    );
 }
+
+// end::listing[]

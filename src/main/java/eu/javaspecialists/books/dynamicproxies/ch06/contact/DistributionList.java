@@ -16,17 +16,33 @@
  * limitations under the License.
  */
 
-package eu.javaspecialists.books.dynamicproxies.ch05;
+package eu.javaspecialists.books.dynamicproxies.ch06.contact;
 
-import java.lang.reflect.*;
+// tag::listing[]
+import java.util.*;
 
-// tag::Proxies[]
-public class Proxies {
-    public static <E> E adapt(Object adaptee, Class<E> target,
-                              Object adapter) {
-        return target.cast(Proxy.newProxyInstance(
-                target.getClassLoader(), new Class[] {target},
-                new ObjectAdapterHandler(adapter, adaptee)));
+public class DistributionList implements Contact {
+    private final Collection<Contact> contacts = new ArrayList<>();
+
+    @Override
+    public void add(Contact c) {
+        contacts.add(c);
+    }
+    @Override
+    public boolean remove(Contact c) {
+        return contacts.remove(c);
+    }
+    @Override
+    public void sendMail(String message) {
+        contacts.forEach(contact -> contact.sendMail(message));
+    }
+    @Override
+    public int count() {
+        int leaves = 0;
+        for (Contact contact : contacts) {
+            leaves += contact.count();
+        }
+        return leaves;
     }
 }
-// end::Proxies[]
+// end::listing[]

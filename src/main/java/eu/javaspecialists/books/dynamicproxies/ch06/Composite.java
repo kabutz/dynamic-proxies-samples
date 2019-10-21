@@ -18,20 +18,22 @@
 
 package eu.javaspecialists.books.dynamicproxies.ch06;
 
-import eu.javaspecialists.books.dynamicproxies.ch04.*;
+import eu.javaspecialists.books.dynamicproxies.*;
 
 import java.util.*;
-import java.util.function.*;
 
+// tag::listing[]
 public interface Composite<T> {
     default void add(T t) {}
     default boolean remove(T t) { return false; }
 
     /**
      * Any subinterfaces can define a static getMergers() method to
-     * return a map of methods to their result merge function.
+     * return a map of methods to their result merge function.  Keys
+     * are MethodKeys that identify the methods by name and parameter
+     * types.  Values are Reducer objects containing an identity and a
+     * BinaryOperator defined on Object.
      */
-    static Map<MethodKey, BinaryOperator<Object>> getMergers() {
-        return Map.of();
-    }
+    static Map<MethodKey, Reducer> getMergers() { return Map.of();}
 }
+// end::listing[]

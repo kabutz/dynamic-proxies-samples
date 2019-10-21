@@ -18,7 +18,7 @@
 
 package eu.javaspecialists.books.dynamicproxies.ch03;
 
-import java.lang.reflect.Proxy;
+import eu.javaspecialists.books.dynamicproxies.*;
 
 public class DynamicProxies {
     // tag::Subject[]
@@ -40,34 +40,21 @@ public class DynamicProxies {
     }
     // end::RealSubject[]
     static
-    // tag::Proxies[]
-    public class Proxies { // Façade Design Pattern
-        private Proxies() {}
-        public static <P> P makeSimpleProxy(Class<P> clazz, P p) {
-            return clazz.cast(Proxy.newProxyInstance(
-                clazz.getClassLoader(),
-                new Class<?>[]{clazz},
-                (proxy, method, args) -> method.invoke(p, args)
-            ));
-        }
-    }
-    // end::Proxies[]
-    static
     public class Main {
         public static void main(String... args) {
             // tag::main()[]
-            Subject subject = Proxies
-                .makeSimpleProxy(Subject.class, new RealSubject());
+            Subject subject = Proxies.simpleProxy(
+                    Subject.class, new RealSubject());
             String hello = subject.doSomething("Hello");
             System.out.println("hello = " + hello);
             System.out.println(subject);
             System.out.println(subject.getClass());
 
             // Output:
-            //str = Hello
-            //hello = Hello_DONE
-            //RealSubject
-            //class com.sun.proxy.$Proxy0
+            // str = Hello
+            // hello = Hello_DONE
+            // RealSubject
+            // class com.sun.proxy.$Proxy0
             // end::main()[]
         }
     }

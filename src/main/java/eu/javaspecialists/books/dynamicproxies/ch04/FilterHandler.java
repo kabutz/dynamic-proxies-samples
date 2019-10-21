@@ -18,16 +18,16 @@
 
 package eu.javaspecialists.books.dynamicproxies.ch04;
 
+import eu.javaspecialists.books.dynamicproxies.*;
+
 import java.lang.reflect.InvocationHandler;
 import java.lang.reflect.Method;
 import java.lang.reflect.Modifier;
 import java.util.HashMap;
 import java.util.Map;
-import java.util.stream.Collectors;
-import java.util.stream.Stream;
 
 // tag::FilterHandler[]
-class FilterHandler implements InvocationHandler {
+public class FilterHandler implements InvocationHandler {
     private final Map<MethodKey, Method> methodMap;
     private final Object component;
 

@@ -16,21 +16,16 @@
  * limitations under the License.
  */
 
-package eu.javaspecialists.books.dynamicproxies.ch06;
+package eu.javaspecialists.books.dynamicproxies.ch06.contact;
 
-import eu.javaspecialists.books.dynamicproxies.ch04.*;
+import eu.javaspecialists.books.dynamicproxies.*;
+import eu.javaspecialists.books.dynamicproxies.ch06.*;
 
 import java.util.*;
-import java.util.function.*;
 
+// tag::listing[]
 public interface Contact extends Composite<Contact> {
     void sendMail(String message);
-    default int countLeaves() { return 1; }
-
-    static Map<MethodKey, BinaryOperator<Object>> getMergers() {
-        return Map.of(
-                new MethodKey("countLeaves"),
-                (r1, r2) -> (int) r1 + (int) r2
-        );
-    }
+    default int count() { return 1; }
 }
+// end::listing[]

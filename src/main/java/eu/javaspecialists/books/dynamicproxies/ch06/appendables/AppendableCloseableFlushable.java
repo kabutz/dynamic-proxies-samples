@@ -16,26 +16,27 @@
  * limitations under the License.
  */
 
-package eu.javaspecialists.books.dynamicproxies.ch04;
+package eu.javaspecialists.books.dynamicproxies.ch06.appendables;
 
 import eu.javaspecialists.books.dynamicproxies.*;
+import eu.javaspecialists.books.dynamicproxies.ch06.*;
 
+import java.io.*;
 import java.util.*;
 
-public class DynamicFilterTest2 {
-    public static void main(String... args) {
-        ImmutableCollection2<String> names =
-                Proxies.dynamicFilter(
-                        ImmutableCollection2.class,
-                        Arrays.asList("Peter", "Paul", "Mary")
-                );
-        names.set(0, "John");
-        // names.remove("Peter"); // does not compile
-        System.out.println(names);
-        System.out.println("Do we have Mary? " + names.contains("Mary"));
-        System.out.println("Are there names? " + names.isEmpty());
-        System.out.println("Printing the names:");
-        names.forEach(System.out::println);
-        System.out.println("Class: " + names.getClass());
+// tag::listing[]
+public interface AppendableCloseableFlushable
+        <E extends Appendable & Closeable & Flushable> extends
+        Appendable, Closeable, Flushable, Composite<E> {
+    static Map<MethodKey, Reducer> getMergers() {
+        return Map.of(
+                new MethodKey("append", CharSequence.class),
+                Reducer.PROXY_INSTANCE_REDUCER,
+                new MethodKey("append",
+                        CharSequence.class, int.class, int.class),
+                Reducer.PROXY_INSTANCE_REDUCER,
+                new MethodKey("append", char.class),
+                Reducer.PROXY_INSTANCE_REDUCER);
     }
 }
+// end::listing[]

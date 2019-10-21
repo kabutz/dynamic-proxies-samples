@@ -18,6 +18,8 @@
 
 package eu.javaspecialists.books.dynamicproxies.ch05;
 
+import eu.javaspecialists.books.dynamicproxies.*;
+
 import java.lang.reflect.*;
 import java.util.*;
 

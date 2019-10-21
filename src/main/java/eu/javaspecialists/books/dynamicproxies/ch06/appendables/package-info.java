@@ -16,11 +16,11 @@
  * limitations under the License.
  */
 
-package eu.javaspecialists.books.dynamicproxies.shortcut.chap3.chap_3_0;
+package eu.javaspecialists.books.dynamicproxies.ch06.appendables;
 
-/**
- * Created by Sven Ruppert on 14.04.2014.
+/*
+    Tried to create a TeeOutputStream type of composite, but the problem is
+    that OutputStream is not an interface, so dynamic proxies did not work.
+    Tried also with Appendable / Closeable / Flushable and even though the
+    generics are brutal, it seems to work :-)
  */
-public interface Subject {
-    String doSomething(String str);
-}

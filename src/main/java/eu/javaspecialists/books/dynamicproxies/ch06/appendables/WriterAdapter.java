@@ -16,32 +16,31 @@
  * limitations under the License.
  */
 
-package eu.javaspecialists.books.dynamicproxies.shortcut.chap3.chap_3_2;
+package eu.javaspecialists.books.dynamicproxies.ch06.appendables;
 
-/**
- * Created by sven on 20.01.15.
- */
-// real subject
-public final class B implements A {
-    private final int i;
+import java.io.*;
 
-    public B(int i) {
-        this.i = i;
+// tag::listing[]
+public class WriterAdapter<T extends Appendable & Closeable & Flushable>
+        extends Writer {
+    private final T adaptee;
+
+    public WriterAdapter(T adaptee) {
+        this.adaptee = adaptee;
     }
-
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (!(o instanceof A)) return false;
-
-        if (getClass() == o.getClass()) {
-            B b = (B) o;
-            return i == b.i;
+    @Override
+    public void write(char[] cbuf, int off, int len) throws IOException {
+        for (int i = off; i < off + len; i++) {
+            adaptee.append(cbuf[i]);
         }
-
-        return o.equals(this);
     }
-
-    public int hashCode() {
-        return i;
+    @Override
+    public void flush() throws IOException {
+        adaptee.flush();
+    }
+    @Override
+    public void close() throws IOException {
+        adaptee.close();
     }
 }
+// end::listing[]

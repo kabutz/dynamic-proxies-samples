@@ -16,22 +16,33 @@
  * limitations under the License.
  */
 
-package eu.javaspecialists.books.dynamicproxies.ch06;
+package eu.javaspecialists.books.dynamicproxies.ch06.appendables;
 
 import java.io.*;
 
-public class TeeAppendableTest {
+public class AppendableTest {
     public static void main(String... args) throws IOException {
-        TeeAppendable tee = new TeeAppendable();
+        // tag::listing[]
+        // "var" is a lifesaver here.  The "correct" definition would be
+        // TeeAppendable<Appendable & Closeable & Flushable>, but that is
+        // not possible in Java.  "var" takes care of it for us.
+        var tee = new TeeAppendable<>();
         StringWriter sw = new StringWriter();
         tee.add(new OutputStreamWriter(System.out));
         tee.add(new FileWriter("output.txt"));
         tee.add(sw);
 
-        var out = new PrintWriter(new WriterAppendableAdapter<>(tee));
+        var out = new PrintWriter(new WriterAdapter<>(tee));
         out.println("Hello World");
         out.flush();
 
+        tee.append("TestingAppender")
+                .append('\n')
+                .append("Does this work?")
+                .append('\n');
+        tee.flush();
+
         System.out.println("sw = " + sw);
+        // end::listing[]
     }
 }

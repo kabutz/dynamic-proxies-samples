@@ -16,27 +16,16 @@
  * limitations under the License.
  */
 
-package eu.javaspecialists.books.dynamicproxies.shortcut.chap2.c_2_3.bank;
+package eu.javaspecialists.books.dynamicproxies.ch06.contact;
 
-/**
- * Created by Alexander Bischof on 03.09.14.
- */
-public class Konto implements IKonto {
-
-    private double kontostand;
-
+// tag::listing[]
+public class Person implements Contact {
+    private final String email;
+    public Person(String email) {this.email = email;}
     @Override
-    public void einzahlen(double betrag) {
-        kontostand += betrag;
-    }
-
-    @Override
-    public void auszahlen(double betrag) {
-        kontostand -= betrag;
-    }
-
-    @Override
-    public double getKontostand() {
-        return kontostand;
+    public void sendMail(String message) {
+        // connecting to JavaMail and off goes the post ...
+        System.out.println("Sending " + message + " to " + email);
     }
 }
+// end::listing[]
