@@ -16,11 +16,13 @@
  * limitations under the License.
  */
 
-package eu.javaspecialists.books.dynamicproxies.ch02;
+package eu.javaspecialists.books.dynamicproxies.ch03;
+
+import eu.javaspecialists.books.dynamicproxies.*;
 
 import java.util.function.*;
 
-public class VirtualProxy {
+public class VirtualProxyTest {
     // tag::Map[]
     public interface Map<K, V> {
         int size();
@@ -99,15 +101,16 @@ public class VirtualProxy {
     static
     public class Main {
         public static void main(String... args) {
-            // tag::Main[]
-            Map<String, Integer> map = new VirtualMap<>(HashMap::new);
+            // tag::main()[]
+            Map<String, Integer> map =
+                    Proxies.virtualProxy(Map.class, HashMap::new);
             System.out.println("Virtual Map created");
             map.put("one", 1);
             map.put("life", 42);
             System.out.println("map.get(\"life\") = " + map.get("life"));
             map.clear();
             System.out.println("map.size() = " + map.size());
-            // end::Main[]
+            // end::main()[]
         }
     }
 }

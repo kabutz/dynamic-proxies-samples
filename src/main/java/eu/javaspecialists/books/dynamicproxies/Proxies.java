@@ -25,6 +25,7 @@ import eu.javaspecialists.books.dynamicproxies.ch06.*;
 
 import java.lang.reflect.*;
 import java.util.*;
+import java.util.function.*;
 import java.util.logging.*;
 
 /**
@@ -46,11 +47,18 @@ public class Proxies {
     }
     // end::simpleProxy()[]
 
-    // tag::loggingProxy[]
+    // tag::loggingProxy()[]
     public static <P> P loggingProxy(Class<P> clazz, P p, Logger log) {
         return castedProxy(clazz, new LoggingInvocationHandler(log, p));
     }
-    // end::loggingProxy[]
+    // end::loggingProxy()[]
+
+    // tag::virtualProxy()[]
+    public static <P> P virtualProxy(Class<P> clazz,
+                                     Supplier<? extends P> supplier) {
+        return castedProxy(clazz, new VirtualProxyHandler<P>(supplier));
+    }
+    // end::virtualProxy()[]
 
     // tag::dynamicFilter()[]
     public static <P> P dynamicFilter(Class<P> filter, Object component) {
