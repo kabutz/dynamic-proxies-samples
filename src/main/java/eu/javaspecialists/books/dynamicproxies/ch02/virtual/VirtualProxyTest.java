@@ -16,23 +16,21 @@
  * limitations under the License.
  */
 
-package eu.javaspecialists.books.dynamicproxies.ch02.remote;
-
-import javax.xml.ws.*;
-
-import static spark.Spark.*;
+package eu.javaspecialists.books.dynamicproxies.ch02.virtual;
 
 // tag::listing[]
-public class ServicePublisher {
+public class VirtualProxyTest {
     public static void main(String... args) {
-        Canada canada = new RealCanada();
-        get("/canGetVisa/:name/:married/:rich", (req, res) -> {
-            String name = req.params("name");
-            boolean married = "true".equals(req.params("married"));
-            boolean rich = "true".equals(req.params("rich"));
-            return canada.canGetVisa(name, married, rich);
-        });
+        CustomMap<String, Integer> map =
+                new VirtualCustomMap<>(CustomHashMap::new);
+        System.out.println("Virtual Map created");
+        map.put("one", 1);
+        map.put("life", 42);
+        System.out.println("map.get(\"life\") = " + map.get("life"));
+        System.out.println("map.size() = " + map.size());
+        System.out.println("clearing map");
+        map.clear();
+        System.out.println("map.size() = " + map.size());
     }
 }
 // end::listing[]
-

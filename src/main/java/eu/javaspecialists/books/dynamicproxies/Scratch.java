@@ -16,22 +16,11 @@
  * limitations under the License.
  */
 
-package eu.javaspecialists.books.dynamicproxies.ch01;
+package eu.javaspecialists.books.dynamicproxies;
 
-import java.awt.event.KeyEvent;
-import java.util.EventListener;
+import javax.swing.*;
 
-public class KeyListenerAndAdapter {
-    // tag::listing[]
-    public interface KeyListener extends EventListener {
-        public void keyTyped(KeyEvent e);
-        public void keyPressed(KeyEvent e);
-        public void keyReleased(KeyEvent e);
+public class Scratch {
+    public static void main(String... args) {
     }
-    public abstract class KeyAdapter implements KeyListener {
-        public void keyTyped(KeyEvent e) {}
-        public void keyPressed(KeyEvent e) {}
-        public void keyReleased(KeyEvent e) {}
-    }
-    // end::listing[]
 }

@@ -18,7 +18,7 @@
 
 package eu.javaspecialists.books.dynamicproxies.ch02;
 
-import eu.javaspecialists.books.dynamicproxies.ch02.VirtualProxy.*;
+import eu.javaspecialists.books.dynamicproxies.ch02.virtual.*;
 
 import java.util.concurrent.locks.*;
 import java.util.stream.*;
@@ -26,9 +26,9 @@ import java.util.stream.*;
 public class ProtectionProxy {
     static
     // tag::SynchronizedMap[]
-    public class SynchronizedMap<K, V> implements Map<K, V> {
-        private final Map<K, V> realMap;
-        public SynchronizedMap(Map<K, V> realMap) {
+    public class CustomSynchronizedMap<K, V> implements CustomMap<K, V> {
+        private final CustomMap<K, V> realMap;
+        public CustomSynchronizedMap(CustomMap<K, V> realMap) {
             this.realMap = realMap;
         }
         @Override
@@ -56,10 +56,10 @@ public class ProtectionProxy {
 
     static
     // tag::ReentrantLockMap[]
-    public class ReentrantLockMap<K, V> implements Map<K, V> {
+    public class CustomReentrantLockMap<K, V> implements CustomMap<K, V> {
         private final Lock lock = new ReentrantLock();
-        private final Map<K, V> realMap;
-        public ReentrantLockMap(Map<K, V> realMap) {
+        private final CustomMap<K, V> realMap;
+        public CustomReentrantLockMap(CustomMap<K, V> realMap) {
             this.realMap = realMap;
         }
         @Override
@@ -112,9 +112,9 @@ public class ProtectionProxy {
 
     static
     // tag::UnmodifiableMap[]
-    public class UnmodifiableMap<K, V> implements Map<K, V> {
-        private final Map<K, V> realMap;
-        public UnmodifiableMap(Map<K, V> realMap) {
+    public class CustomUnmodifiableMap<K, V> implements CustomMap<K, V> {
+        private final CustomMap<K, V> realMap;
+        public CustomUnmodifiableMap(CustomMap<K, V> realMap) {
             this.realMap = realMap;
         }
         @Override
@@ -144,12 +144,12 @@ public class ProtectionProxy {
     // tag::Main[]
     public class Main {
         public static void main(String... args) {
-            test(new HashMap<>());
-            test(new SynchronizedMap<>(new HashMap<>()));
-            test(new ReentrantLockMap<>(new HashMap<>()));
-            test(new UnmodifiableMap<>(new HashMap<>()));
+            test(new CustomHashMap<>());
+            test(new CustomSynchronizedMap<>(new CustomHashMap<>()));
+            test(new CustomReentrantLockMap<>(new CustomHashMap<>()));
+            test(new CustomUnmodifiableMap<>(new CustomHashMap<>()));
         }
-        private static void test(Map<Integer, Integer> squares) {
+        private static void test(CustomMap<Integer, Integer> squares) {
             IntStream.range(0, 46000)
                     .parallel()
                     .forEach(i -> squares.put(i, i * i));

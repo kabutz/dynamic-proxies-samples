@@ -21,13 +21,18 @@ package eu.javaspecialists.books.dynamicproxies.ch02.remote;
 
 import java.io.*;
 
-// tag::Client[]
+// tag::listing[]
 public class Client {
     public static void main(String... args) throws IOException {
-        Canada proxy = new CanadianEmbassyInRome();
-        boolean visa = proxy.canGetVisa("Heinz Kabutz", true, false);
-        System.out.println("visa = " + visa);
+        Canada canada = new CanadianEmbassy();
+        boolean visaObtained = canada.canGetVisa(
+                "Heinz Kabutz", true, false);
+        System.out.println("visaObtained = " + visaObtained);
+        System.out.println("Wins lottery ...");
+         visaObtained = canada.canGetVisa(
+                "Heinz Kabutz", true, true);
+        System.out.println("visaObtained = " + visaObtained);
     }
 }
-// end::Client[]
+// end::listing[]
 

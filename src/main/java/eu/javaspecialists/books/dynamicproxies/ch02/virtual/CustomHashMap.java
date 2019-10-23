@@ -16,23 +16,35 @@
  * limitations under the License.
  */
 
-package eu.javaspecialists.books.dynamicproxies.ch02.remote;
+package eu.javaspecialists.books.dynamicproxies.ch02.virtual;
 
-import javax.xml.ws.*;
-
-import static spark.Spark.*;
+import java.util.*;
 
 // tag::listing[]
-public class ServicePublisher {
-    public static void main(String... args) {
-        Canada canada = new RealCanada();
-        get("/canGetVisa/:name/:married/:rich", (req, res) -> {
-            String name = req.params("name");
-            boolean married = "true".equals(req.params("married"));
-            boolean rich = "true".equals(req.params("rich"));
-            return canada.canGetVisa(name, married, rich);
-        });
+public class CustomHashMap<K, V> implements CustomMap<K, V> {
+    private final HashMap<K, V> map = new HashMap<>();
+    public CustomHashMap() {
+        System.out.println("CustomHashMap constructed");
+    }
+    @Override
+    public int size() {
+        return map.size();
+    }
+    @Override
+    public V get(Object key) {
+        return map.get(key);
+    }
+    @Override
+    public V put(K key, V value) {
+        return map.put(key, value);
+    }
+    @Override
+    public V remove(Object key) {
+        return map.remove(key);
+    }
+    @Override
+    public void clear() {
+        map.clear();
     }
 }
 // end::listing[]
-
