@@ -18,7 +18,6 @@
 
 package eu.javaspecialists.books.dynamicproxies.ch02.remote;
 
-
 import java.io.*;
 
 // tag::listing[]
@@ -29,7 +28,7 @@ public class Client {
                 "Heinz Kabutz", true, false);
         System.out.println("visaObtained = " + visaObtained);
         System.out.println("Wins lottery ...");
-         visaObtained = canada.canGetVisa(
+        visaObtained = canada.canGetVisa(
                 "Heinz Kabutz", true, true);
         System.out.println("visaObtained = " + visaObtained);
     }

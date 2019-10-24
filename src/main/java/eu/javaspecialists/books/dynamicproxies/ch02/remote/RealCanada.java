@@ -18,8 +18,6 @@
 
 package eu.javaspecialists.books.dynamicproxies.ch02.remote;
 
-import javax.jws.*;
-
 // tag::listing[]
 public class RealCanada implements Canada {
     public boolean canGetVisa(String name,

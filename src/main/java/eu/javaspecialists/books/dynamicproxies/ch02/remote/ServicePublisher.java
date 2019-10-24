@@ -18,8 +18,6 @@
 
 package eu.javaspecialists.books.dynamicproxies.ch02.remote;
 
-import javax.xml.ws.*;
-
 import static spark.Spark.*;
 
 // tag::listing[]
