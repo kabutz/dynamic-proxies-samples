@@ -16,23 +16,18 @@
  * limitations under the License.
  */
 
-package eu.javaspecialists.books.dynamicproxies.ch02;
+package eu.javaspecialists.books.dynamicproxies.ch02.protection;
 
-import eu.javaspecialists.books.dynamicproxies.ch02.ProtectionProxy.*;
 import eu.javaspecialists.books.dynamicproxies.ch02.virtual.*;
 
-public class CascadedProxies {
+import java.util.*;
+
+// tag::listing[]
+public class UnmodifiableTest {
     public static void main(String... args) {
-        // tag::main()[]
-        CustomMap<Integer, Integer> map = new CustomSynchronizedMap<>(
-                new VirtualCustomMap<>(CustomHashMap::new));
-        System.out.println("Actual HashMap has not been created yet");
-
-        map.put(4, 16); // this will create the actual hash map
-        map.put(100, 10000);
-        map.put(16, 256);
-
-        System.out.println(map);
-        // end::main()[]
+        ConcurrentTest.check(new UnmodifiableCustomMap<>(
+                new CustomHashMap<>()
+        ));
     }
 }
+// end::listing[]
