@@ -51,5 +51,9 @@ public class VirtualCustomMap<K, V> implements CustomMap<K, V> {
     public void clear() {
         getRealMap().clear();
     }
+    @Override
+    public void forEach(BiConsumer<? super K, ? super V> action) {
+        getRealMap().forEach(action);
+    }
 }
 // end::listing[]

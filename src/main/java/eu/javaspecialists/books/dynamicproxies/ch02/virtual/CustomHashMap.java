@@ -19,10 +19,11 @@
 package eu.javaspecialists.books.dynamicproxies.ch02.virtual;
 
 import java.util.*;
+import java.util.function.*;
 
 // tag::listing[]
 public class CustomHashMap<K, V> implements CustomMap<K, V> {
-    private final HashMap<K, V> map = new HashMap<>();
+    private final Map<K, V> map = new HashMap<>();
     public CustomHashMap() {
         System.out.println("CustomHashMap constructed");
     }
@@ -45,6 +46,10 @@ public class CustomHashMap<K, V> implements CustomMap<K, V> {
     @Override
     public void clear() {
         map.clear();
+    }
+    @Override
+    public void forEach(BiConsumer<? super K, ? super V> action) {
+        map.forEach(action);
     }
 }
 // end::listing[]

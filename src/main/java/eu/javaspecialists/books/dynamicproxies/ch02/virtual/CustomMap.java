@@ -18,6 +18,8 @@
 
 package eu.javaspecialists.books.dynamicproxies.ch02.virtual;
 
+import java.util.function.*;
+
 // tag::listing[]
 public interface CustomMap<K, V> {
     int size();
@@ -25,6 +27,7 @@ public interface CustomMap<K, V> {
     V put(K key, V value);
     V remove(Object key);
     void clear();
+    void forEach(BiConsumer<? super K, ? super V> action);
     // etc.
 }
 // end::listing[]
