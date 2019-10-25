@@ -39,6 +39,7 @@ public class InputStreamExample {
                             throw new UncheckedIOException(e);
                         }
                     });
+            out.writeInt(-1); // our EOF marker
         }
         // end::out[]
 
@@ -52,7 +53,8 @@ public class InputStreamExample {
                         new GZIPInputStream(
                                 new FileInputStream("data.bin.gz"))))) {
             long total = 0;
-            while (in.available() > 0) {
+            int value;
+            while((value = in.readInt()) != -1) {
                 total += in.readInt();
             }
             System.out.println("total = " + total);
