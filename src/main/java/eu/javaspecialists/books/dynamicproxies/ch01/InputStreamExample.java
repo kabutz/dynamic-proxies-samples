@@ -31,7 +31,7 @@ public class InputStreamExample {
                 new BufferedOutputStream(
                         new GZIPOutputStream(
                                 new FileOutputStream("data.bin.gz"))))) {
-            ThreadLocalRandom.current().ints(10_000_000, 0, 1000)
+            ThreadLocalRandom.current().ints(10_000_000, 0, 1_000)
                     .forEach(i -> {
                         try {
                             out.writeInt(i);
