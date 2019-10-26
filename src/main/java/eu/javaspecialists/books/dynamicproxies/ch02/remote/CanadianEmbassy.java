@@ -21,6 +21,7 @@ package eu.javaspecialists.books.dynamicproxies.ch02.remote;
 import java.io.*;
 import java.net.*;
 import java.net.http.*;
+import java.nio.charset.*;
 import java.util.concurrent.*;
 
 // tag::listing[]
@@ -29,10 +30,11 @@ public class CanadianEmbassy implements Canada {
             HttpClient.newBuilder()
                     .followRedirects(HttpClient.Redirect.NORMAL)
                     .build();
-    private static String url(String name, boolean married, boolean rich)
-            throws UnsupportedEncodingException {
+    private static String url(
+            String name, boolean married, boolean rich) {
         return String.format("http://0.0.0.0:4567/canGetVisa/%s/%b/%b",
-                URLEncoder.encode(name, "UTF-8"), married, rich);
+                URLEncoder.encode(name, StandardCharsets.UTF_8),
+                married, rich);
     }
     @Override
     public boolean canGetVisa(String name, boolean married, boolean rich) {
