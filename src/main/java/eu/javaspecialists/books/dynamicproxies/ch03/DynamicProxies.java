@@ -23,17 +23,17 @@ import eu.javaspecialists.books.dynamicproxies.*;
 public class DynamicProxies {
     // tag::Subject[]
     public interface Subject {
-        String doSomething(String str);
+        String uppercaseTrim(String str);
     }
     // end::Subject[]
     static
     // tag::RealSubject[]
     public class RealSubject implements Subject {
         @Override
-        public String doSomething(String str) {
-            System.out.println("str = " + str);
-            return str + "_DONE";
+        public String uppercaseTrim(String str) {
+            return str.trim().toUpperCase();
         }
+        @Override
         public String toString() {
             return "RealSubject";
         }
@@ -45,16 +45,10 @@ public class DynamicProxies {
             // tag::main()[]
             Subject subject = Proxies.simpleProxy(
                     Subject.class, new RealSubject());
-            String hello = subject.doSomething("Hello");
-            System.out.println("hello = " + hello);
+            String hello = subject.uppercaseTrim("  Hello\t\t");
+            System.out.println("hello = \"" + hello + "\"");
             System.out.println(subject);
             System.out.println(subject.getClass());
-
-            // Output:
-            // str = Hello
-            // hello = Hello_DONE
-            // RealSubject
-            // class com.sun.proxy.$Proxy0
             // end::main()[]
         }
     }

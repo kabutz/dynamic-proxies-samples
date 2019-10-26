@@ -19,30 +19,42 @@
 package eu.javaspecialists.books.dynamicproxies.ch03;
 
 import java.lang.reflect.*;
-import java.util.*;
 import java.util.logging.*;
+import java.util.stream.*;
 
 // tag::listing[]
 public class LoggingInvocationHandler implements InvocationHandler {
     private final Logger log;
-    private final Object o;
-    public LoggingInvocationHandler(Logger log, Object o) {
+    private final Object obj;
+    public LoggingInvocationHandler(Logger log, Object obj) {
         this.log = log;
-        this.o = o;
+        this.obj = obj;
     }
-    public Object invoke(Object proxy,
-                         Method method,
+    @Override
+    public Object invoke(Object proxy, Method method,
                          Object[] args) throws Throwable {
-        log.info(() -> "Entering " + method + " with parameters " +
-            Arrays.toString(args));
-        long start = System.nanoTime();
+        log.info(() -> "Entering " + toString(method, args));
+        long start = nanoTime();
         try {
-            return method.invoke(o, args);
+            return method.invoke(obj, args);
         } finally {
-            long nanos = System.nanoTime() - start;
-            log.info(() -> "Exiting " + method + " with parameters " +
-                Arrays.toString(args) + " took " + nanos + "ns");
+            long nanos = start == 0 ? 0 : nanoTime() - start;
+            log.info(() -> "Exiting " + toString(method, args));
+            log.fine(() -> "Execution took " + nanos + "ns");
         }
+    }
+    private long nanoTime() {
+        // optimization - nanoTime() is an expensive native call
+        return log.isLoggable(Level.FINE) ? System.nanoTime() : 0;
+    }
+    private final static Object[] EMPTY = {};
+    private String toString(Method method, Object[] args) {
+        if (args == null) args = EMPTY;
+        return Stream.of(args).map(String::valueOf)
+                       .collect(Collectors.joining(", ",
+                               method.getDeclaringClass().getName()
+                                       + "." + method.getName() + "(",
+                               ")"));
     }
 }
 // end::listing[]

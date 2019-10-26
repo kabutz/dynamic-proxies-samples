@@ -18,26 +18,22 @@
 
 package eu.javaspecialists.books.dynamicproxies.ch03;
 
-import java.lang.reflect.InvocationHandler;
-import java.lang.reflect.Proxy;
-import java.util.Map;
-import java.util.concurrent.ConcurrentHashMap;
-import java.util.logging.Logger;
+import eu.javaspecialists.books.dynamicproxies.ch02.virtual.*;
+import org.junit.*;
 
-public class LoggingProxy {
-    public static void main(String... args) {
-        // tag::main()[]
-        InvocationHandler handler = new LoggingInvocationHandler(
-            Logger.getGlobal(),
-            new ConcurrentHashMap<>());
-        Map<String, Integer> map = (Map<String, Integer>)
-            Proxy.newProxyInstance(
-                Map.class.getClassLoader(),
-                new Class<?>[]{Map.class},
-                handler);
-        map.put("one", 1);
-        map.put("two", 2);
-        System.out.println(map);
-        // end::main()[]
+import java.lang.reflect.*;
+import java.util.*;
+
+public class BrokenProxyExample {
+    @Test(expected = IllegalArgumentException.class)
+    public void incorrectClassLoader() {
+        Object obj =
+                // tag::listing[]
+                Proxy.newProxyInstance(
+                        Map.class.getClassLoader(),
+                        new Class<?>[] {CustomMap.class},
+                        (proxy, method, args) -> null
+                );
+        // end::listing[]
     }
 }
