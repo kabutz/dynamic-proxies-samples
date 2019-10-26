@@ -35,41 +35,46 @@ public class Proxies {
     private Proxies() {}
 
     // tag::simpleProxy()[]
-    public static <P> P simpleProxy(Class<P> clazz, P p) {
-        return castedProxy(clazz,
+    public static <P> P simpleProxy(Class<P> proxiedInterface, P p) {
+        return castProxy(proxiedInterface,
                 (proxy, method, args) -> method.invoke(p, args)
         );
     }
-    public static <P> P castedProxy(Class<P> clazz, InvocationHandler h) {
-        return clazz.cast(Proxy.newProxyInstance(
-                clazz.getClassLoader(), new Class<?>[] {clazz}, h
+    private static <P> P castProxy(Class<P> proxiedInterface,
+                                  InvocationHandler handler) {
+        return proxiedInterface.cast(Proxy.newProxyInstance(
+                proxiedInterface.getClassLoader(),
+                new Class<?>[] {proxiedInterface}, handler
         ));
     }
     // end::simpleProxy()[]
 
     // tag::loggingProxy()[]
-    public static <P> P loggingProxy(Class<P> clazz, P p, Logger log) {
-        return castedProxy(clazz, new LoggingInvocationHandler(log, p));
+    public static <P> P loggingProxy(Class<P> proxiedInterface,
+                                     P p, Logger log) {
+        return castProxy(proxiedInterface,
+                new LoggingInvocationHandler(log, p));
     }
     // end::loggingProxy()[]
 
     // tag::virtualProxy()[]
-    public static <P> P virtualProxy(Class<P> clazz,
+    public static <P> P virtualProxy(Class<P> proxiedInterface,
                                      Supplier<? extends P> supplier) {
-        return castedProxy(clazz, new VirtualProxyHandler<P>(supplier));
+        return castProxy(proxiedInterface,
+                new VirtualProxyHandler<P>(supplier));
     }
     // end::virtualProxy()[]
 
     // tag::dynamicFilter()[]
     public static <P> P dynamicFilter(Class<P> filter, Object component) {
-        return castedProxy(filter, new FilterHandler(filter, component));
+        return castProxy(filter, new FilterHandler(filter, component));
     }
     // end::dynamicFilter()[]
 
     // tag::adapt()[]
     public static <E> E adapt(Object adaptee, Class<E> target,
                               Object adapter) {
-        return castedProxy(target,
+        return castProxy(target,
                 new ObjectAdapterHandler(adapter, adaptee));
     }
     // end::adapt()[]
@@ -80,7 +85,7 @@ public class Proxies {
     }
     public static <E extends Composite<E>> E compose(
             Class<E> target, Map<MethodKey, Reducer> mergers) {
-        return castedProxy(target,
+        return castProxy(target,
                 new CompositeHandler(target, mergers));
     }
     // end::compose()[]
