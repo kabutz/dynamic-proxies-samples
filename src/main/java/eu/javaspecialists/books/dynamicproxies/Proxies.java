@@ -40,7 +40,7 @@ public class Proxies {
                 (proxy, method, args) -> method.invoke(p, args)
         );
     }
-    private static <P> P castProxy(Class<P> proxiedInterface,
+    public static <P> P castProxy(Class<P> proxiedInterface,
                                   InvocationHandler handler) {
         return proxiedInterface.cast(Proxy.newProxyInstance(
                 proxiedInterface.getClassLoader(),
