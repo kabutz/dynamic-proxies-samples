@@ -36,6 +36,7 @@ public class Proxies {
 
     // tag::simpleProxy()[]
     public static <P> P simpleProxy(Class<P> proxiedInterface, P p) {
+        Objects.requireNonNull(p, "p==null");
         return castProxy(proxiedInterface,
                 (proxy, method, args) -> method.invoke(p, args)
         );
@@ -52,6 +53,7 @@ public class Proxies {
     // tag::loggingProxy()[]
     public static <P> P loggingProxy(Class<P> proxiedInterface,
                                      P p, Logger log) {
+        Objects.requireNonNull(p, "p==null");
         return castProxy(proxiedInterface,
                 new LoggingInvocationHandler(log, p));
     }
@@ -60,6 +62,7 @@ public class Proxies {
     // tag::virtualProxy()[]
     public static <P> P virtualProxy(Class<P> proxiedInterface,
                                      Supplier<? extends P> supplier) {
+        Objects.requireNonNull(supplier, "supplier==null");
         return castProxy(proxiedInterface,
                 new VirtualProxyHandler<P>(supplier));
     }
@@ -67,6 +70,7 @@ public class Proxies {
 
     // tag::dynamicFilter()[]
     public static <P> P dynamicFilter(Class<P> filter, Object component) {
+        Objects.requireNonNull(component, "component==null");
         return castProxy(filter, new FilterHandler(filter, component));
     }
     // end::dynamicFilter()[]
@@ -74,6 +78,8 @@ public class Proxies {
     // tag::adapt()[]
     public static <E> E adapt(Object adaptee, Class<E> target,
                               Object adapter) {
+        Objects.requireNonNull(adaptee, "adaptee==null");
+        Objects.requireNonNull(adapter, "adapter==null");
         return castProxy(target,
                 new ObjectAdapterHandler(adapter, adaptee));
     }
@@ -89,5 +95,4 @@ public class Proxies {
                 new CompositeHandler(target, mergers));
     }
     // end::compose()[]
-
 }
