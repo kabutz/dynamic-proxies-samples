@@ -54,7 +54,7 @@ public class InputStreamExample {
                                 new FileInputStream("data.bin.gz"))))) {
             long total = 0;
             int value;
-            while((value = in.readInt()) != -1) {
+            while ((value = in.readInt()) != -1) {
                 total += in.readInt();
             }
             System.out.println("total = " + total);
