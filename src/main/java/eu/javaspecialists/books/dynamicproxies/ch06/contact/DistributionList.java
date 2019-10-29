@@ -22,7 +22,7 @@ package eu.javaspecialists.books.dynamicproxies.ch06.contact;
 import java.util.*;
 
 public class DistributionList implements Contact {
-    private final Collection<Contact> contacts = new ArrayList<>();
+    private final List<Contact> contacts = new ArrayList<>();
 
     @Override
     public void add(Contact c) {

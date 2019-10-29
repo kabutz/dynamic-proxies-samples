@@ -25,7 +25,8 @@ import java.io.*;
 public class AppendableDynamicTest {
     public static void main(String... args) throws IOException {
         // tag::listing[]
-        var tee = Proxies.compose(AppendableCloseableFlushable.class);
+        var tee = Proxies.compose(AppendableCloseableFlushable.class,
+                AppendableCloseableFlushable.getReducers());
         StringWriter sw = new StringWriter();
         tee.add(new OutputStreamWriter(System.out));
         tee.add(new FileWriter("output.txt"));

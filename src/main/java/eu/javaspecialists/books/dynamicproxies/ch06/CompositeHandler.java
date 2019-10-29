@@ -25,24 +25,15 @@ import java.util.*;
 
 // tag::listing[]
 public class CompositeHandler implements InvocationHandler {
-    private final Map<MethodKey, Reducer> mergers;
-    private final Collection<Object> children = new ArrayList<>();
+    private final Map<MethodKey, Reducer> reducers;
+    private final List<Object> children = new ArrayList<>();
 
     public <E extends Composite<E>> CompositeHandler(
-            Class<E> target, Map<MethodKey, Reducer> mergers) {
+            Class<E> target, Map<MethodKey, Reducer> reducers) {
         if (!Composite.class.isAssignableFrom(target))
             throw new IllegalArgumentException(
                     "target is not derived from Composite");
-        this.mergers = mergers != null ? mergers : findGetMergers(target);
-    }
-
-    private Map<MethodKey, Reducer> findGetMergers(Class<?> target) {
-        try {
-            Method mergersMethod = target.getMethod("getMergers");
-            return (Map<MethodKey, Reducer>) mergersMethod.invoke(null);
-        } catch (ReflectiveOperationException e) {
-            return Map.of();
-        }
+        this.reducers = reducers == null ? Map.of() : reducers;
     }
 
     @Override
@@ -59,8 +50,8 @@ public class CompositeHandler implements InvocationHandler {
                 super(cause);
             }
         }
-        Reducer reducer = mergers.getOrDefault(new MethodKey(method),
-                Reducer.NULL_REDUCER);
+        Reducer reducer = reducers.getOrDefault(
+                new MethodKey(method), Reducer.NULL_REDUCER);
         try {
             Object result =
                     children.stream()

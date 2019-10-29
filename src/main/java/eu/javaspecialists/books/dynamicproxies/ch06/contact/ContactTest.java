@@ -21,27 +21,27 @@ package eu.javaspecialists.books.dynamicproxies.ch06.contact;
 public class ContactTest {
     public static void main(String... args) {
         // tag::listing[]
-        Contact tjsn = new DistributionList();
-        System.out.println(tjsn.count());
-        tjsn.add(new Person("john@aol.com"));
-        tjsn.sendMail("Hello there 1");
-        System.out.println(tjsn.count());
+        Contact java_specialists_newsletter = new DistributionList();
+        System.out.println(java_specialists_newsletter.count());
+        java_specialists_newsletter.add(new Person("john@aol.com"));
+        java_specialists_newsletter.sendMail("Hello there 1");
+        System.out.println(java_specialists_newsletter.count());
 
-        DistributionList students = new DistributionList();
-        tjsn.add(students);
-        students.add(new Person("peter@absa.co.za"));
-        students.add(new Person("mzani@absa.co.za"));
+        DistributionList all_students = new DistributionList();
+        java_specialists_newsletter.add(all_students);
+        all_students.add(new Person("peter@absa.co.za"));
+        all_students.add(new Person("mzani@absa.co.za"));
 
-        tjsn.sendMail("Hello there 2");
-        System.out.println(tjsn.count());
+        java_specialists_newsletter.sendMail("Hello there 2");
+        System.out.println(java_specialists_newsletter.count());
 
-        Contact extreme_java = new DistributionList();
-        extreme_java.add(new Person("John@standardbank.co.za"));
-        extreme_java.add(new Person("Hlope@standardbank.co.za"));
-        students.add(extreme_java);
+        Contact extreme_java_students = new DistributionList();
+        all_students.add(extreme_java_students);
+        extreme_java_students.add(new Person("John@fnb.co.za"));
+        extreme_java_students.add(new Person("Hlope@fnb.co.za"));
 
-        tjsn.sendMail("Hello there 3");
-        System.out.println(tjsn.count());
+        java_specialists_newsletter.sendMail("Hello there 3");
+        System.out.println(java_specialists_newsletter.count());
         // end::listing[]
     }
 }
