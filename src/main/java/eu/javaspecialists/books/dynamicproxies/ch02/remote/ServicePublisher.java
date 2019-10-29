@@ -24,6 +24,7 @@ import static spark.Spark.*;
 public class ServicePublisher {
     public static void main(String... args) {
         Canada canada = new RealCanada();
+        port(8080);
         get("/canGetVisa/:name/:married/:rich", (req, res) -> {
             String name = req.params("name");
             boolean married = "true".equals(req.params("married"));
