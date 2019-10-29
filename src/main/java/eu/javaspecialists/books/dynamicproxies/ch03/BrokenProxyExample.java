@@ -28,12 +28,23 @@ public class BrokenProxyExample {
     @Test(expected = IllegalArgumentException.class)
     public void incorrectClassLoader() {
         Object obj =
-                // tag::listing[]
+                // tag::broken[]
                 Proxy.newProxyInstance(
                         Map.class.getClassLoader(),
                         new Class<?>[] {CustomMap.class},
                         (proxy, method, args) -> null
                 );
-        // end::listing[]
+        // end::broken[]
+    }
+    @Test
+    public void correctClassLoader() {
+        Object obj =
+                // tag::correct[]
+                Proxy.newProxyInstance(
+                        CustomMap.class.getClassLoader(),
+                        new Class<?>[] {CustomMap.class},
+                        (proxy, method, args) -> null
+                );
+        // end::correct[]
     }
 }
