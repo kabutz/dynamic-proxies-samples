@@ -16,33 +16,26 @@
  * limitations under the License.
  */
 
-package eu.javaspecialists.books.dynamicproxies.ch03;
-
-import eu.javaspecialists.books.dynamicproxies.ch02.virtual.*;
-import org.junit.*;
+package eu.javaspecialists.books.dynamicproxies.ch03.gotchas.scratch;
 
 import java.lang.reflect.*;
-import java.util.*;
 
-public class BrokenProxyExample {
-   @Test(expected = IllegalArgumentException.class)
-   public void incorrectClassLoader() {
-      // tag::broken[]
-      Proxy.newProxyInstance(
-            Map.class.getClassLoader(),
-            new Class<?>[] {CustomMap.class},
-            (proxy, method, args) -> null
-      );
-      // end::broken[]
-   }
-   @Test
-   public void correctClassLoader() {
-      // tag::correct[]
-      Proxy.newProxyInstance(
-            CustomMap.class.getClassLoader(),
-            new Class<?>[] {CustomMap.class},
-            (proxy, method, args) -> null
-      );
-      // end::correct[]
+public class Hackity {
+   public static void main(String... args) throws ClassNotFoundException {
+      Class<?> intf = Class.forName("java.util.stream.Sink");
+      InvocationHandler h = new InvocationHandler() {
+         @Override
+         public Object invoke(Object proxy, Method method,
+                              Object[] args) throws Throwable {
+            System.out.println("Hackity.invoke");
+
+            return null;
+         }
+      };
+      Object proxy = Proxy.newProxyInstance(intf.getClassLoader(),
+            new Class<?>[] {intf},
+            h);
+      System.out.println(proxy.getClass());
+      System.out.println(h.getClass().getClassLoader());
    }
 }

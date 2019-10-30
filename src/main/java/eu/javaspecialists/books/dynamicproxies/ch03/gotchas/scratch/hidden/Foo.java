@@ -16,10 +16,8 @@
  * limitations under the License.
  */
 
-package eu.javaspecialists.books.dynamicproxies.ch03.scratch.hidden;
+package eu.javaspecialists.books.dynamicproxies.ch03.gotchas.scratch.hidden;
 
-public class Test {
-   static {
-      System.out.println("Test.static initializer");
-   }
+interface Foo {
+   void bar();
 }

@@ -16,8 +16,21 @@
  * limitations under the License.
  */
 
-package eu.javaspecialists.books.dynamicproxies.ch03.scratch.hidden;
+package eu.javaspecialists.books.dynamicproxies.ch03.gotchas;
 
-interface Foo {
-   void bar();
+import eu.javaspecialists.books.dynamicproxies.*;
+
+import java.io.*;
+
+// tag::listing[]
+public class UndeclaredExceptionThrown {
+   public static void main(String... args) {
+      Runnable job = Proxies.castProxy(
+            Runnable.class,
+            (proxy, method, params) -> {
+               throw new IOException("bad exception");
+            });
+      job.run();
+   }
 }
+// end::listing[]

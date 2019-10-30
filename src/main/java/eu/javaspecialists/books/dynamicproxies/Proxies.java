@@ -18,7 +18,9 @@
 
 package eu.javaspecialists.books.dynamicproxies;
 
-import eu.javaspecialists.books.dynamicproxies.ch03.*;
+import eu.javaspecialists.books.dynamicproxies.ch03.logging.*;
+import eu.javaspecialists.books.dynamicproxies.ch03.protection.*;
+import eu.javaspecialists.books.dynamicproxies.ch03.virtual.*;
 import eu.javaspecialists.books.dynamicproxies.ch04.*;
 import eu.javaspecialists.books.dynamicproxies.ch05.*;
 import eu.javaspecialists.books.dynamicproxies.ch06.*;

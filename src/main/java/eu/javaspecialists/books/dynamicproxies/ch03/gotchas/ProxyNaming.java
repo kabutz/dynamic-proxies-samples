@@ -16,22 +16,25 @@
  * limitations under the License.
  */
 
-package eu.javaspecialists.books.dynamicproxies.ch03;
+package eu.javaspecialists.books.dynamicproxies.ch03.gotchas;
 
-import java.lang.reflect.*;
+import eu.javaspecialists.books.dynamicproxies.*;
 
 // tag::listing[]
-public class SynchronizedHandler<E> implements InvocationHandler {
-   private final E realSubject;
-   public SynchronizedHandler(E realSubject) {
-      this.realSubject = realSubject;
+public class ProxyNaming {
+   public interface Public {
+      void open();
    }
-   @Override
-   public Object invoke(Object proxy, Method method, Object[] args)
-         throws Throwable {
-      synchronized (proxy) {
-         return method.invoke(realSubject, args);
-      }
+   interface Hidden {
+      void mystery();
+   }
+   public static void main(String... args) {
+      System.out.println(Proxies.simpleProxy(
+            Public.class, () -> {}
+      ).getClass());
+      System.out.println(Proxies.simpleProxy(
+            Hidden.class, () -> {}
+      ).getClass());
    }
 }
 // end::listing[]

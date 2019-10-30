@@ -16,7 +16,7 @@
  * limitations under the License.
  */
 
-package eu.javaspecialists.books.dynamicproxies.ch03.scratch;
+package eu.javaspecialists.books.dynamicproxies.ch03.gotchas.scratch;
 
 import eu.javaspecialists.books.dynamicproxies.*;
 

@@ -16,8 +16,20 @@
  * limitations under the License.
  */
 
-package eu.javaspecialists.books.dynamicproxies.ch03.scratch;
+package eu.javaspecialists.books.dynamicproxies.ch03.protection;
 
-interface Bar {
-   int bar();
+import eu.javaspecialists.books.dynamicproxies.*;
+import eu.javaspecialists.books.dynamicproxies.ch02.protection.*;
+import eu.javaspecialists.books.dynamicproxies.ch02.virtual.*;
+
+// tag::listing[]
+public class SynchronizedVirtualTest {
+   public static void main(String... args) {
+      var map = Proxies.synchronizedProxy(CustomMap.class,
+            Proxies.virtualProxy(CustomMap.class,
+                  CustomHashMap::new));
+      ConcurrentTest.check(map);
+      System.out.println("map = " + map);
+   }
 }
+// end::listing[]

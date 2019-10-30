@@ -16,21 +16,22 @@
  * limitations under the License.
  */
 
-package eu.javaspecialists.books.dynamicproxies.ch03;
+package eu.javaspecialists.books.dynamicproxies.ch03.protection;
 
-import eu.javaspecialists.books.dynamicproxies.*;
-
-import java.io.*;
+import java.lang.reflect.*;
 
 // tag::listing[]
-public class UndeclaredExceptionThrown {
-   public static void main(String... args) {
-      Runnable job = Proxies.castProxy(
-            Runnable.class,
-            (proxy, method, params) -> {
-               throw new IOException("bad exception");
-            });
-      job.run();
+public class SynchronizedHandler<E> implements InvocationHandler {
+   private final E realSubject;
+   public SynchronizedHandler(E realSubject) {
+      this.realSubject = realSubject;
+   }
+   @Override
+   public Object invoke(Object proxy, Method method, Object[] args)
+         throws Throwable {
+      synchronized (proxy) {
+         return method.invoke(realSubject, args);
+      }
    }
 }
 // end::listing[]

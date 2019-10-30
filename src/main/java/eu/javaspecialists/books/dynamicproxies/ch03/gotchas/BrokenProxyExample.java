@@ -16,28 +16,33 @@
  * limitations under the License.
  */
 
-package eu.javaspecialists.books.dynamicproxies.ch03;
+package eu.javaspecialists.books.dynamicproxies.ch03.gotchas;
+
+import eu.javaspecialists.books.dynamicproxies.ch02.virtual.*;
+import org.junit.*;
 
 import java.lang.reflect.*;
 import java.util.*;
-import java.util.concurrent.*;
-import java.util.logging.*;
 
-public class LoggingProxyTest {
-   public static void main(String... args) {
-      // tag::main()[]
-      var handler = new LoggingInvocationHandler(
-            Logger.getGlobal(),
-            new ConcurrentHashMap<>());
-      var map = (Map<String, Integer>)
-                      Proxy.newProxyInstance(
-                            Map.class.getClassLoader(),
-                            new Class<?>[] {Map.class},
-                            handler);
-      map.put("one", 1);
-      map.put("two", 2);
-      System.out.println(map);
-      map.clear();
-      // end::main()[]
+public class BrokenProxyExample {
+   @Test(expected = IllegalArgumentException.class)
+   public void incorrectClassLoader() {
+      // tag::broken[]
+      Proxy.newProxyInstance(
+            Map.class.getClassLoader(),
+            new Class<?>[] {CustomMap.class},
+            (proxy, method, args) -> null
+      );
+      // end::broken[]
+   }
+   @Test
+   public void correctClassLoader() {
+      // tag::correct[]
+      Proxy.newProxyInstance(
+            CustomMap.class.getClassLoader(),
+            new Class<?>[] {CustomMap.class},
+            (proxy, method, args) -> null
+      );
+      // end::correct[]
    }
 }

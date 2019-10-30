@@ -16,26 +16,28 @@
  * limitations under the License.
  */
 
-package eu.javaspecialists.books.dynamicproxies.ch03.scratch;
+package eu.javaspecialists.books.dynamicproxies.ch03.logging;
 
 import java.lang.reflect.*;
+import java.util.*;
+import java.util.concurrent.*;
+import java.util.logging.*;
 
-public class Hackity {
-   public static void main(String... args) throws ClassNotFoundException {
-      Class<?> intf = Class.forName("java.util.stream.Sink");
-      InvocationHandler h = new InvocationHandler() {
-         @Override
-         public Object invoke(Object proxy, Method method,
-                              Object[] args) throws Throwable {
-            System.out.println("Hackity.invoke");
-
-            return null;
-         }
-      };
-      Object proxy = Proxy.newProxyInstance(intf.getClassLoader(),
-            new Class<?>[] {intf},
-            h);
-      System.out.println(proxy.getClass());
-      System.out.println(h.getClass().getClassLoader());
+public class LoggingProxyTest {
+   public static void main(String... args) {
+      // tag::main()[]
+      var handler = new LoggingInvocationHandler(
+            Logger.getGlobal(),
+            new ConcurrentHashMap<>());
+      var map = (Map<String, Integer>)
+                      Proxy.newProxyInstance(
+                            Map.class.getClassLoader(),
+                            new Class<?>[] {Map.class},
+                            handler);
+      map.put("one", 1);
+      map.put("two", 2);
+      System.out.println(map);
+      map.clear();
+      // end::main()[]
    }
 }
