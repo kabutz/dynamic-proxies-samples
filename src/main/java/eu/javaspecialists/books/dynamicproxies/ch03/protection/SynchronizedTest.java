@@ -16,27 +16,18 @@
  * limitations under the License.
  */
 
-package eu.javaspecialists.books.dynamicproxies.ch07;
+package eu.javaspecialists.books.dynamicproxies.ch03.protection;
 
-// tag::GeneratedJavaSourceFile[]
-import javax.tools.*;
-import java.io.*;
-import java.net.*;
+import eu.javaspecialists.books.dynamicproxies.*;
+import eu.javaspecialists.books.dynamicproxies.ch02.protection.*;
+import eu.javaspecialists.books.dynamicproxies.ch02.virtual.*;
 
-public class GeneratedJavaSourceFile extends SimpleJavaFileObject {
-   private CharSequence javaSource;
-   public GeneratedJavaSourceFile(String className,
-                                  CharSequence javaSource) {
-      super(URI.create(className + ".java"), Kind.SOURCE);
-      this.javaSource = javaSource;
-   }
-   @Override
-   public CharSequence getCharContent(boolean ignoreEncodeErrors)
-         throws IOException {
-      return javaSource;
+// tag::listing[]
+public class SynchronizedTest {
+   public static void main(String... args) {
+      ConcurrentTest.check(Proxies.synchronizedProxy(
+            CustomMap.class, new CustomHashMap<>()
+      ));
    }
 }
-// end::GeneratedJavaSourceFile[]
-
-
-
+// end::listing[]
