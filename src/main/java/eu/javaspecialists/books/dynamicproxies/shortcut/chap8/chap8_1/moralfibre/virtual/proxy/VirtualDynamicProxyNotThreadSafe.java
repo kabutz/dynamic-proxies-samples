@@ -18,30 +18,29 @@
 
 package eu.javaspecialists.books.dynamicproxies.shortcut.chap8.chap8_1.moralfibre.virtual.proxy;
 
-import java.lang.reflect.InvocationHandler;
-import java.lang.reflect.Method;
+import java.lang.reflect.*;
 
 /**
  * Created by Sven Ruppert on 14.01.14.
  */
 public class VirtualDynamicProxyNotThreadSafe implements InvocationHandler {
-    private final Class realSubjectClass;
-    private Object realSubject;
+   private final Class realSubjectClass;
+   private Object realSubject;
 
-    public VirtualDynamicProxyNotThreadSafe(Class realSubjectClass) {
-        this.realSubjectClass = realSubjectClass;
-    }
+   public VirtualDynamicProxyNotThreadSafe(Class realSubjectClass) {
+      this.realSubjectClass = realSubjectClass;
+   }
 
-    private Object realSubject() throws Exception {
-        if (realSubject == null) {
-            realSubject = realSubjectClass.newInstance();
-        }
-        return realSubject;
-    }
+   private Object realSubject() throws Exception {
+      if (realSubject == null) {
+         realSubject = realSubjectClass.newInstance();
+      }
+      return realSubject;
+   }
 
-    public Object invoke(
-        Object proxy, Method method, Object[] args)
-        throws Throwable {
-        return method.invoke(realSubject(), args);
-    }
+   public Object invoke(
+         Object proxy, Method method, Object[] args)
+         throws Throwable {
+      return method.invoke(realSubject(), args);
+   }
 }

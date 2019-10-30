@@ -22,27 +22,27 @@ package eu.javaspecialists.books.dynamicproxies.ch06.contact;
 import java.util.*;
 
 public class DistributionList implements Contact {
-    private final List<Contact> contacts = new ArrayList<>();
+   private final List<Contact> contacts = new ArrayList<>();
 
-    @Override
-    public void add(Contact c) {
-        contacts.add(c);
-    }
-    @Override
-    public boolean remove(Contact c) {
-        return contacts.remove(c);
-    }
-    @Override
-    public void sendMail(String body) {
-        contacts.forEach(contact -> contact.sendMail(body));
-    }
-    @Override
-    public int count() {
-        int leaves = 0;
-        for (var contact : contacts) {
-            leaves += contact.count();
-        }
-        return leaves;
-    }
+   @Override
+   public void add(Contact c) {
+      contacts.add(c);
+   }
+   @Override
+   public boolean remove(Contact c) {
+      return contacts.remove(c);
+   }
+   @Override
+   public void sendMail(String body) {
+      contacts.forEach(contact -> contact.sendMail(body));
+   }
+   @Override
+   public int count() {
+      int leaves = 0;
+      for (var contact : contacts) {
+         leaves += contact.count();
+      }
+      return leaves;
+   }
 }
 // end::listing[]

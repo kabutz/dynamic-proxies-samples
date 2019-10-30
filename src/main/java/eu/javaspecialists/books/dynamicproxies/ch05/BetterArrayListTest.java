@@ -19,18 +19,18 @@
 package eu.javaspecialists.books.dynamicproxies.ch05;
 
 public class BetterArrayListTest {
-    public static void main(String... args) {
-        // tag::main()[]
-        BetterArrayList<String> names =
-                new BetterArrayList<>(String.class);
-        names.add("Wolfgang");
-        names.add("Leander");
-        names.add("Klaus");
-        names.add("Reinhard");
-        String[] nameArray = names.toArray();
-        for (String s : nameArray) {
-            System.out.println(s);
-        }
-        // end::main()[]
-    }
+   public static void main(String... args) {
+      // tag::main()[]
+      BetterArrayList<String> names =
+            new BetterArrayList<>(String.class);
+      names.add("Wolfgang");
+      names.add("Leander");
+      names.add("Klaus");
+      names.add("Reinhard");
+      String[] nameArray = names.toArray();
+      for (String s : nameArray) {
+         System.out.println(s);
+      }
+      // end::main()[]
+   }
 }

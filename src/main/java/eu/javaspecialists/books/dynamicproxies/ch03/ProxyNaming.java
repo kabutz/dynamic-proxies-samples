@@ -22,19 +22,19 @@ import eu.javaspecialists.books.dynamicproxies.*;
 
 // tag::listing[]
 public class ProxyNaming {
-    public interface Public {
-        void open();
-    }
-    interface Hidden {
-        void mystery();
-    }
-    public static void main(String... args) {
-        System.out.println(Proxies.simpleProxy(
-                Public.class, () -> {}
-        ).getClass());
-        System.out.println(Proxies.simpleProxy(
-                Hidden.class, () -> {}
-        ).getClass());
-    }
+   public interface Public {
+      void open();
+   }
+   interface Hidden {
+      void mystery();
+   }
+   public static void main(String... args) {
+      System.out.println(Proxies.simpleProxy(
+            Public.class, () -> {}
+      ).getClass());
+      System.out.println(Proxies.simpleProxy(
+            Hidden.class, () -> {}
+      ).getClass());
+   }
 }
 // end::listing[]

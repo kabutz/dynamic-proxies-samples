@@ -22,8 +22,8 @@ import eu.javaspecialists.books.dynamicproxies.ch02.virtual.*;
 
 // tag::listing[]
 public class CustomHashMapTest {
-    public static void main(String... args) {
-        ConcurrentTest.check(new CustomHashMap<>());
-    }
+   public static void main(String... args) {
+      ConcurrentTest.check(new CustomHashMap<>());
+   }
 }
 // end::listing[]

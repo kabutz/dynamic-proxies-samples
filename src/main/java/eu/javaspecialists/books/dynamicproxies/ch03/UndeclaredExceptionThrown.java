@@ -24,13 +24,13 @@ import java.io.*;
 
 // tag::listing[]
 public class UndeclaredExceptionThrown {
-    public static void main(String... args) {
-        Runnable job = Proxies.castProxy(
-                Runnable.class,
-                (proxy, method, params) -> {
-                    throw new IOException("bad exception");
-                });
-        job.run();
-    }
+   public static void main(String... args) {
+      Runnable job = Proxies.castProxy(
+            Runnable.class,
+            (proxy, method, params) -> {
+               throw new IOException("bad exception");
+            });
+      job.run();
+   }
 }
 // end::listing[]

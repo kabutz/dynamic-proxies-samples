@@ -18,27 +18,25 @@
 
 package eu.javaspecialists.books.dynamicproxies.shortcut.chap8.chap8_1.moralfibre.virtual;
 
-import eu.javaspecialists.books.dynamicproxies.shortcut.chap8.chap8_1.moralfibre.MoralFibre;
-import eu.javaspecialists.books.dynamicproxies.shortcut.chap8.chap8_1.moralfibre.MoralFibreImpl;
-import eu.javaspecialists.books.dynamicproxies.shortcut.chap8.chap8_1.moralfibre.VirtualMoralFibre;
+import eu.javaspecialists.books.dynamicproxies.shortcut.chap8.chap8_1.moralfibre.*;
 
-import java.util.concurrent.atomic.AtomicReference;
+import java.util.concurrent.atomic.*;
 
 /**
  * Created by Sven Ruppert on 14.01.14.
  */
 public class VirtualMoralFibreLockFree extends VirtualMoralFibre {
-    private final AtomicReference<MoralFibre> realSubject =
-        new AtomicReference<MoralFibre>();
+   private final AtomicReference<MoralFibre> realSubject =
+         new AtomicReference<MoralFibre>();
 
-    protected MoralFibre realSubject() {
-        MoralFibre subject = realSubject.get();
-        if (subject == null) {
-            subject = new MoralFibreImpl();
-            if (!realSubject.compareAndSet(null, subject)) {
-                subject = realSubject.get();
-            }
-        }
-        return subject;
-    }
+   protected MoralFibre realSubject() {
+      MoralFibre subject = realSubject.get();
+      if (subject == null) {
+         subject = new MoralFibreImpl();
+         if (!realSubject.compareAndSet(null, subject)) {
+            subject = realSubject.get();
+         }
+      }
+      return subject;
+   }
 }

@@ -19,7 +19,7 @@
 package eu.javaspecialists.books.dynamicproxies.ch03.scratch.hidden;
 
 public class Test {
-    static {
-        System.out.println("Test.static initializer");
-    }
+   static {
+      System.out.println("Test.static initializer");
+   }
 }

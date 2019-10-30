@@ -22,25 +22,25 @@ package eu.javaspecialists.books.dynamicproxies.ch06;
 import java.util.function.*;
 
 public class Reducer {
-    private final Object identity;
-    private final BinaryOperator<Object> merger;
-    public Reducer(Object identity,
-                   BinaryOperator<Object> merger) {
-        this.merger = merger;
-        this.identity = identity;
-    }
-    public Object getIdentity() {
-        return identity;
-    }
-    public BinaryOperator<Object> getMerger() {
-        return merger;
-    }
-    public static final Reducer NULL_REDUCER =
-            new Reducer(null, (o1, o2) -> null);
-    /**
-     * Result will be substituted with the proxy instance.
-     */
-    public static final Reducer PROXY_INSTANCE_REDUCER =
-            new Reducer(null, (o1, o2) -> null);
+   private final Object identity;
+   private final BinaryOperator<Object> merger;
+   public Reducer(Object identity,
+                  BinaryOperator<Object> merger) {
+      this.merger = merger;
+      this.identity = identity;
+   }
+   public Object getIdentity() {
+      return identity;
+   }
+   public BinaryOperator<Object> getMerger() {
+      return merger;
+   }
+   public static final Reducer NULL_REDUCER =
+         new Reducer(null, (o1, o2) -> null);
+   /**
+    * Result will be substituted with the proxy instance.
+    */
+   public static final Reducer PROXY_INSTANCE_REDUCER =
+         new Reducer(null, (o1, o2) -> null);
 }
 // end::listing[]

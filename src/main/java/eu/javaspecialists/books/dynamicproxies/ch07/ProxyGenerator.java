@@ -18,10 +18,6 @@
 
 package eu.javaspecialists.books.dynamicproxies.ch07;
 
-import java.lang.reflect.*;
-import java.util.*;
-import java.util.function.*;
-
 public class ProxyGenerator {
     /*
     private static final Map<ClassLoader, Map<CacheKey, Class<?>>> cache =
@@ -90,7 +86,8 @@ public class ProxyGenerator {
                     subject, supplier);
             case LOCK_FREE -> new VirtualProxySourceGeneratorLockFree(
                     subject, supplier);
-            case SYNCHRONIZED -> new VirtualProxySourceGeneratorSynchronized(
+            case SYNCHRONIZED -> new
+            VirtualProxySourceGeneratorSynchronized(
                     subject, supplier);
             default -> throw new IllegalArgumentException(
                     "Unsupported Concurrency: " + concurrency);
@@ -113,7 +110,8 @@ public class ProxyGenerator {
             default -> throw new IllegalArgumentException(
                     "Unsupported Concurrency: " + concurrency);
             case NONE -> new VirtualDynamicProxyBasic<>(supplier);
-            case SYNCHRONIZED -> new VirtualDynamicProxySynchronized<>(supplier);
+            case SYNCHRONIZED -> new VirtualDynamicProxySynchronized<>
+            (supplier);
             case LOCK_FREE -> new VirtualDynamicProxyLockFree<>(supplier);
         };
     }

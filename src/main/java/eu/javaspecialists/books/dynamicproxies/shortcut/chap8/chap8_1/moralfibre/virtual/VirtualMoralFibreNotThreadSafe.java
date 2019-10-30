@@ -19,20 +19,18 @@
 package eu.javaspecialists.books.dynamicproxies.shortcut.chap8.chap8_1.moralfibre.virtual;
 
 
-import eu.javaspecialists.books.dynamicproxies.shortcut.chap8.chap8_1.moralfibre.MoralFibre;
-import eu.javaspecialists.books.dynamicproxies.shortcut.chap8.chap8_1.moralfibre.MoralFibreImpl;
-import eu.javaspecialists.books.dynamicproxies.shortcut.chap8.chap8_1.moralfibre.VirtualMoralFibre;
+import eu.javaspecialists.books.dynamicproxies.shortcut.chap8.chap8_1.moralfibre.*;
 
 /**
  * Created by Sven Ruppert on 14.01.14.
  */
 public class VirtualMoralFibreNotThreadSafe extends VirtualMoralFibre {
-    private MoralFibre realSubject;
+   private MoralFibre realSubject;
 
-    protected MoralFibre realSubject() {
-        if (realSubject == null) {
-            realSubject = new MoralFibreImpl();
-        }
-        return realSubject;
-    }
+   protected MoralFibre realSubject() {
+      if (realSubject == null) {
+         realSubject = new MoralFibreImpl();
+      }
+      return realSubject;
+   }
 }

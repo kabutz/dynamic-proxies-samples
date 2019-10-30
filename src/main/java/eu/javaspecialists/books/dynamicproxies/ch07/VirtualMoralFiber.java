@@ -20,15 +20,15 @@ package eu.javaspecialists.books.dynamicproxies.ch07;
 
 // tag::VirtualMoralFiber[]
 public abstract class VirtualMoralFiber implements MoralFiber {
-    protected abstract MoralFiber realSubject();
-    public final double actSociallyResponsibly() {
-        return realSubject().actSociallyResponsibly();
-    }
-    public final double empowerEmployees() {
-        return realSubject().empowerEmployees();
-    }
-    public final double cleanupEnvironment() {
-        return realSubject().cleanupEnvironment();
-    }
+   protected abstract MoralFiber realSubject();
+   public final double actSociallyResponsibly() {
+      return realSubject().actSociallyResponsibly();
+   }
+   public final double empowerEmployees() {
+      return realSubject().empowerEmployees();
+   }
+   public final double cleanupEnvironment() {
+      return realSubject().cleanupEnvironment();
+   }
 }
 // end::VirtualMoralFiber[]

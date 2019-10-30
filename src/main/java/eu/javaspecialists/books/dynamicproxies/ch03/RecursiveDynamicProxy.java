@@ -26,34 +26,34 @@ import java.util.function.*;
 
 // tag::listing[]
 public class RecursiveDynamicProxy {
-    public static void main(String... args) {
-        IntFunction<BigInteger> factorial =
-                Proxies.castProxy(IntFunction.class,
-                        new Factorial());
-        System.out.println(factorial.apply(5));
-    }
+   public static void main(String... args) {
+      IntFunction<BigInteger> factorial =
+            Proxies.castProxy(IntFunction.class,
+                  new Factorial());
+      System.out.println(factorial.apply(5));
+   }
 
-    private static class Factorial implements InvocationHandler {
-        private final static MethodKey apply =
-                new MethodKey("apply", int.class);
-        @Override
-        public Object invoke(Object proxy,
-                             Method method,
-                             Object[] params) throws Throwable {
-            if (new MethodKey(method).equals(apply)) {
-                int n = (int) params[0];
-                if (n == 0) {
-                    Thread.dumpStack();
-                    return BigInteger.ONE;
-                }
-                BigInteger other = (BigInteger) method.invoke(
-                        proxy, n - 1);
-                return BigInteger.valueOf(n).multiply(other);
-            } else {
-                throw new UnsupportedOperationException(
-                        "only apply(int) supported");
+   private static class Factorial implements InvocationHandler {
+      private final static MethodKey apply =
+            new MethodKey("apply", int.class);
+      @Override
+      public Object invoke(Object proxy,
+                           Method method,
+                           Object[] params) throws Throwable {
+         if (new MethodKey(method).equals(apply)) {
+            int n = (int) params[0];
+            if (n == 0) {
+               Thread.dumpStack();
+               return BigInteger.ONE;
             }
-        }
-    }
+            BigInteger other = (BigInteger) method.invoke(
+                  proxy, n - 1);
+            return BigInteger.valueOf(n).multiply(other);
+         } else {
+            throw new UnsupportedOperationException(
+                  "only apply(int) supported");
+         }
+      }
+   }
 }
 // end::listing[]

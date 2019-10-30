@@ -20,19 +20,19 @@ package eu.javaspecialists.books.dynamicproxies.ch07;
 
 // tag::VirtualMoralFibreSynchronized[]
 public class VirtualMoralFibreSynchronized {
-    private volatile MoralFiber realSubject;
-    private final Object initializationLock = new Object();
-    protected MoralFiber realSubject() {
-        var result = realSubject;
-        if (result == null) {
-            synchronized (initializationLock) {
-                result = realSubject;
-                if (result == null) {
-                    result = realSubject = new RealMoralFiber();
-                }
+   private volatile MoralFiber realSubject;
+   private final Object initializationLock = new Object();
+   protected MoralFiber realSubject() {
+      var result = realSubject;
+      if (result == null) {
+         synchronized (initializationLock) {
+            result = realSubject;
+            if (result == null) {
+               result = realSubject = new RealMoralFiber();
             }
-        }
-        return result;
-    }
+         }
+      }
+      return result;
+   }
 }
 // end::VirtualMoralFibreSynchronized[]

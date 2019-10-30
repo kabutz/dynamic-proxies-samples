@@ -18,27 +18,26 @@
 
 package eu.javaspecialists.books.dynamicproxies.ch03;
 
-import java.lang.reflect.InvocationHandler;
-import java.lang.reflect.Proxy;
-import java.util.Map;
-import java.util.concurrent.ConcurrentHashMap;
-import java.util.logging.Logger;
+import java.lang.reflect.*;
+import java.util.*;
+import java.util.concurrent.*;
+import java.util.logging.*;
 
 public class LoggingProxyTest {
-    public static void main(String... args) {
-        // tag::main()[]
-        var handler = new LoggingInvocationHandler(
+   public static void main(String... args) {
+      // tag::main()[]
+      var handler = new LoggingInvocationHandler(
             Logger.getGlobal(),
             new ConcurrentHashMap<>());
-        var map = (Map<String, Integer>)
-            Proxy.newProxyInstance(
-                Map.class.getClassLoader(),
-                new Class<?>[]{Map.class},
-                handler);
-        map.put("one", 1);
-        map.put("two", 2);
-        System.out.println(map);
-        map.clear();
-        // end::main()[]
-    }
+      var map = (Map<String, Integer>)
+                      Proxy.newProxyInstance(
+                            Map.class.getClassLoader(),
+                            new Class<?>[] {Map.class},
+                            handler);
+      map.put("one", 1);
+      map.put("two", 2);
+      System.out.println(map);
+      map.clear();
+      // end::main()[]
+   }
 }

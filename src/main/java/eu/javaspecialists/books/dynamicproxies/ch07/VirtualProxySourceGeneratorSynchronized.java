@@ -22,14 +22,14 @@ import java.io.*;
 
 // tag::VirtualProxySourceGeneratorSynchronized[]
 class VirtualProxySourceGeneratorSynchronized<P>
-        extends VirtualProxySourceGenerator<P> {
-    public VirtualProxySourceGeneratorSynchronized(
-            Class<P> subject, Class<? extends P> realSubject) {
-        super(subject, realSubject, Concurrency.SYNCHRONIZED);
-    }
-    protected void addRealSubjectCreation(PrintWriter out) {
-        out.println(
-                """
+      extends VirtualProxySourceGenerator<P> {
+   public VirtualProxySourceGeneratorSynchronized(
+         Class<P> subject, Class<? extends P> realSubject) {
+      super(subject, realSubject, Concurrency.SYNCHRONIZED);
+   }
+   protected void addRealSubjectCreation(PrintWriter out) {
+      out.println(
+            """
                 private volatile $name realSubject;
                 private final Object initializationLock = new Object();
                 private $name realSubject() {
@@ -45,7 +45,7 @@ class VirtualProxySourceGeneratorSynchronized<P>
                     return result;
                 }
                 """.replace("$name", getSubjectName())
-                        .replace("$realName", getRealSubjectName()));
-    }
+                  .replace("$realName", getRealSubjectName()));
+   }
 }
 // end::VirtualProxySourceGeneratorSynchronized[]

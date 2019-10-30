@@ -19,5 +19,5 @@
 package eu.javaspecialists.books.dynamicproxies.ch07;
 
 public enum ProxyType {
-    STATIC, DYNAMIC
+   STATIC, DYNAMIC
 }

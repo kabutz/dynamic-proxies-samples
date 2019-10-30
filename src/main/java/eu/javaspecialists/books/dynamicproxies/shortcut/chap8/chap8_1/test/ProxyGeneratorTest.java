@@ -18,53 +18,50 @@
 
 package eu.javaspecialists.books.dynamicproxies.shortcut.chap8.chap8_1.test;
 
-import eu.javaspecialists.books.dynamicproxies.shortcut.chap8.chap8_1.Concurrency;
-import eu.javaspecialists.books.dynamicproxies.shortcut.chap8.chap8_1.moralfibre.MoralFibre;
-import eu.javaspecialists.books.dynamicproxies.shortcut.chap8.chap8_1.moralfibre.MoralFibreImpl;
-import eu.javaspecialists.books.dynamicproxies.shortcut.chap8.chap8_1.moralfibre.virtual.proxy.generator.ProxyGenerator;
+import eu.javaspecialists.books.dynamicproxies.shortcut.chap8.chap8_1.*;
+import eu.javaspecialists.books.dynamicproxies.shortcut.chap8.chap8_1.moralfibre.*;
+import eu.javaspecialists.books.dynamicproxies.shortcut.chap8.chap8_1.moralfibre.virtual.proxy.generator.*;
 
 import javax.swing.*;
-import javax.swing.table.AbstractTableModel;
-import javax.swing.table.DefaultTableModel;
-import java.util.concurrent.ConcurrentHashMap;
-import java.util.concurrent.ConcurrentMap;
+import javax.swing.table.*;
+import java.util.concurrent.*;
 
 /**
  * Created by Sven Ruppert on 14.01.14.
  */
 public class ProxyGeneratorTest {
 
-    public static void main(String[] args) {
-        for (Concurrency type : Concurrency.values()) {
-            test(type);
-        }
-    }
+   public static void main(String[] args) {
+      for (Concurrency type : Concurrency.values()) {
+         test(type);
+      }
+   }
 
-    private static void test(Concurrency concurrency) {
-        System.out.println();
-        System.out.println("Concurrency: " + concurrency);
-        MoralFibre mf = ProxyGenerator.make(MoralFibre.class,
+   private static void test(Concurrency concurrency) {
+      System.out.println();
+      System.out.println("Concurrency: " + concurrency);
+      MoralFibre mf = ProxyGenerator.make(MoralFibre.class,
             MoralFibreImpl.class, concurrency);
-        System.out.println("Moral Fibre: " + mf.getClass());
-        System.out.println(mf);
-        mf.actSociallyResponsibly();
-        System.out.println();
+      System.out.println("Moral Fibre: " + mf.getClass());
+      System.out.println(mf);
+      mf.actSociallyResponsibly();
+      System.out.println();
 
-        ConcurrentMap<String, Integer> map =
+      ConcurrentMap<String, Integer> map =
             ProxyGenerator.make(ConcurrentMap.class,
-                ConcurrentHashMap.class, concurrency);
-        System.out.println(map.getClass());
-        map.put("Hello", 23);
-        map.put("Hello2", 24);
-        map.put("Hello3", 25);
-        System.out.println(map);
-        System.out.println();
+                  ConcurrentHashMap.class, concurrency);
+      System.out.println(map.getClass());
+      map.put("Hello", 23);
+      map.put("Hello2", 24);
+      map.put("Hello3", 25);
+      System.out.println(map);
+      System.out.println();
 
-        AbstractTableModel model =
+      AbstractTableModel model =
             ProxyGenerator.make(AbstractTableModel.class,
-                DefaultTableModel.class, concurrency);
-        System.out.println(model.getClass());
-        JTable table = new JTable(model);
-        System.out.println();
-    }
+                  DefaultTableModel.class, concurrency);
+      System.out.println(model.getClass());
+      JTable table = new JTable(model);
+      System.out.println();
+   }
 }

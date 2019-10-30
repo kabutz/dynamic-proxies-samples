@@ -22,9 +22,9 @@ package eu.javaspecialists.books.dynamicproxies.shortcut.chap8.chap8_1.moralfibr
  * Created by Sven Ruppert on 14.01.14.
  */
 public interface MoralFibre {
-    double actSociallyResponsibly();
+   double actSociallyResponsibly();
 
-    double empowerEmployees();
+   double empowerEmployees();
 
-    double cleanupEnvironment();
+   double cleanupEnvironment();
 }

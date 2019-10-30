@@ -19,5 +19,5 @@
 package eu.javaspecialists.books.dynamicproxies.ch07;
 
 public interface ClassDefiner {
-    Class<?> defineClass(String name, byte[] b) throws ClassFormatError;
+   Class<?> defineClass(String name, byte[] b) throws ClassFormatError;
 }

@@ -26,33 +26,32 @@ import java.util.concurrent.*;
 
 // tag::listing[]
 public class CanadianEmbassy implements Canada {
-    private final HttpClient httpClient =
-            HttpClient.newBuilder()
-                    .followRedirects(HttpClient.Redirect.NORMAL)
-                    .build();
-    private static String url(
-            String name, boolean married, boolean rich) {
-        return String.format("http://0.0.0.0:8080/canGetVisa/%s/%b/%b",
-                URLEncoder.encode(name, StandardCharsets.UTF_8),
-                married, rich);
-    }
-    @Override
-    public boolean canGetVisa(String name, boolean married, boolean rich) {
-        try {
-            var request =
-                    HttpRequest.newBuilder()
-                            .uri(URI.create(url(name, married, rich)))
-                            .build();
-            var result = httpClient.send(
-                    request, HttpResponse.BodyHandlers.ofString()
-            ).body();
-            return "true".equals(result);
-        } catch (IOException e) {
-            throw new UncheckedIOException(e);
-        } catch (InterruptedException e) {
-            Thread.currentThread().interrupt();
-            throw new CancellationException("interrupted");
-        }
-    }
+   private final HttpClient httpClient =
+         HttpClient.newBuilder()
+               .followRedirects(HttpClient.Redirect.NORMAL)
+               .build();
+   @Override
+   public boolean canGetVisa(String name,
+                             boolean married,
+                             boolean rich) {
+      try {
+         var encoded_name = URLEncoder.encode(name,
+               StandardCharsets.UTF_8);
+         var url = "http://0.0.0.0:8080/canGetVisa/" +
+                         encoded_name + "/" +
+                         married + "/" + rich;
+         var req = HttpRequest.newBuilder()
+                         .uri(URI.create(url))
+                         .build();
+         var res = httpClient.send(
+               req, HttpResponse.BodyHandlers.ofString());
+         return "true".equals(res.body());
+      } catch (IOException e) {
+         throw new UncheckedIOException(e);
+      } catch (InterruptedException e) {
+         Thread.currentThread().interrupt();
+         throw new CancellationException("interrupted");
+      }
+   }
 }
 // end::listing[]

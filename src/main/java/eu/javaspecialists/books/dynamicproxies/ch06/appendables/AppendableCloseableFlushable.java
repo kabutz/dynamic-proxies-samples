@@ -26,17 +26,17 @@ import java.util.*;
 
 // tag::listing[]
 public interface AppendableCloseableFlushable
-        <E extends Appendable & Closeable & Flushable> extends
-        Appendable, Closeable, Flushable, Composite<E> {
-    static Map<MethodKey, Reducer> getReducers() {
-        return Map.of(
-                new MethodKey("append", CharSequence.class),
-                Reducer.PROXY_INSTANCE_REDUCER,
-                new MethodKey("append",
-                        CharSequence.class, int.class, int.class),
-                Reducer.PROXY_INSTANCE_REDUCER,
-                new MethodKey("append", char.class),
-                Reducer.PROXY_INSTANCE_REDUCER);
-    }
+      <E extends Appendable & Closeable & Flushable> extends
+      Appendable, Closeable, Flushable, Composite<E> {
+   static Map<MethodKey, Reducer> getReducers() {
+      return Map.of(
+            new MethodKey("append", CharSequence.class),
+            Reducer.PROXY_INSTANCE_REDUCER,
+            new MethodKey("append",
+                  CharSequence.class, int.class, int.class),
+            Reducer.PROXY_INSTANCE_REDUCER,
+            new MethodKey("append", char.class),
+            Reducer.PROXY_INSTANCE_REDUCER);
+   }
 }
 // end::listing[]

@@ -19,25 +19,25 @@
 package eu.javaspecialists.books.dynamicproxies.shortcut.chap8.chap8_0;
 
 import javax.tools.*;
-import java.io.IOException;
+import java.io.*;
 
 /**
  * Created by Sven Ruppert on 06.01.14.
  */
 public class GeneratingJavaFileManager extends ForwardingJavaFileManager<JavaFileManager> {
-    private final GeneratedClassFile gcf;
+   private final GeneratedClassFile gcf;
 
-    public GeneratingJavaFileManager(
-        StandardJavaFileManager sjfm,
-        GeneratedClassFile gcf) {
-        super(sjfm);
-        this.gcf = gcf;
-    }
+   public GeneratingJavaFileManager(
+         StandardJavaFileManager sjfm,
+         GeneratedClassFile gcf) {
+      super(sjfm);
+      this.gcf = gcf;
+   }
 
-    public JavaFileObject getJavaFileForOutput(
-        Location location, String className,
-        JavaFileObject.Kind kind, FileObject sibling)
-        throws IOException {
-        return gcf;
-    }
+   public JavaFileObject getJavaFileForOutput(
+         Location location, String className,
+         JavaFileObject.Kind kind, FileObject sibling)
+         throws IOException {
+      return gcf;
+   }
 }

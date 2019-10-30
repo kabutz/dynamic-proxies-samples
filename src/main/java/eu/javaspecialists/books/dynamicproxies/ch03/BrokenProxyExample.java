@@ -25,24 +25,24 @@ import java.lang.reflect.*;
 import java.util.*;
 
 public class BrokenProxyExample {
-    @Test(expected = IllegalArgumentException.class)
-    public void incorrectClassLoader() {
-        // tag::broken[]
-        Proxy.newProxyInstance(
-                Map.class.getClassLoader(),
-                new Class<?>[] {CustomMap.class},
-                (proxy, method, args) -> null
-        );
-        // end::broken[]
-    }
-    @Test
-    public void correctClassLoader() {
-        // tag::correct[]
-        Proxy.newProxyInstance(
-                CustomMap.class.getClassLoader(),
-                new Class<?>[] {CustomMap.class},
-                (proxy, method, args) -> null
-        );
-        // end::correct[]
-    }
+   @Test(expected = IllegalArgumentException.class)
+   public void incorrectClassLoader() {
+      // tag::broken[]
+      Proxy.newProxyInstance(
+            Map.class.getClassLoader(),
+            new Class<?>[] {CustomMap.class},
+            (proxy, method, args) -> null
+      );
+      // end::broken[]
+   }
+   @Test
+   public void correctClassLoader() {
+      // tag::correct[]
+      Proxy.newProxyInstance(
+            CustomMap.class.getClassLoader(),
+            new Class<?>[] {CustomMap.class},
+            (proxy, method, args) -> null
+      );
+      // end::correct[]
+   }
 }

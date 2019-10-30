@@ -18,10 +18,6 @@
 
 package eu.javaspecialists.books.dynamicproxies.ch07;
 
-import javax.swing.*;
-import javax.swing.table.*;
-import java.util.concurrent.*;
-
 public class ProxyGeneratorTest {
     /*
 

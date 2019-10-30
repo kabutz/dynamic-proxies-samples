@@ -23,56 +23,56 @@ import java.lang.reflect.*;
 import java.util.*;
 
 public class ObjectAdapterHandler implements InvocationHandler {
-    private final Object adapter;
-    private final Object adaptee;
-    private Map<MethodIdentifier, Method> adaptedMethods;
-    public ObjectAdapterHandler(Object adapter, Object adaptee) {
-        this.adapter = adapter;
-        this.adaptee = adaptee;
-        adaptedMethods = new HashMap<>();
-        for (Method method : adapter.getClass().getDeclaredMethods()) {
-            if (!Modifier.isPublic(method.getModifiers()))
-                throw new IllegalArgumentException(
-                        "Method should be public: " + method
-                );
-            var key = new MethodIdentifier(method);
-            if (adaptedMethods.putIfAbsent(key, method) != null) {
-                throw new IllegalArgumentException(
-                        "Duplicate method: " + method
-                );
-            }
-        }
-    }
-    public Object invoke(Object proxy, Method method,
-                         Object[] args) throws Throwable {
-        try {
-            Method other = adaptedMethods.get(new MethodIdentifier(method));
-            if (other != null) {
-                return other.invoke(adapter, args);
-            } else {
-                return method.invoke(adaptee, args);
-            }
-        } catch (InvocationTargetException e) {
-            throw e.getCause();
-        }
-    }
-    private static final class MethodIdentifier {
-        private final String name;
-        private final Class<?>[] parameters;
-        public MethodIdentifier(Method m) {
-            name = m.getName();
-            parameters = m.getParameterTypes();
-        }
-        // we can save time by assuming that we only compare against
-        // other MethodIdentifier objects
-        public boolean equals(Object o) {
-            MethodIdentifier mid = (MethodIdentifier) o;
-            return name.equals(mid.name) &&
-                           Arrays.equals(parameters, mid.parameters);
-        }
-        public int hashCode() {
-            return name.hashCode();
-        }
-    }
+   private final Object adapter;
+   private final Object adaptee;
+   private Map<MethodIdentifier, Method> adaptedMethods;
+   public ObjectAdapterHandler(Object adapter, Object adaptee) {
+      this.adapter = adapter;
+      this.adaptee = adaptee;
+      adaptedMethods = new HashMap<>();
+      for (Method method : adapter.getClass().getDeclaredMethods()) {
+         if (!Modifier.isPublic(method.getModifiers()))
+            throw new IllegalArgumentException(
+                  "Method should be public: " + method
+            );
+         var key = new MethodIdentifier(method);
+         if (adaptedMethods.putIfAbsent(key, method) != null) {
+            throw new IllegalArgumentException(
+                  "Duplicate method: " + method
+            );
+         }
+      }
+   }
+   public Object invoke(Object proxy, Method method,
+                        Object[] args) throws Throwable {
+      try {
+         Method other = adaptedMethods.get(new MethodIdentifier(method));
+         if (other != null) {
+            return other.invoke(adapter, args);
+         } else {
+            return method.invoke(adaptee, args);
+         }
+      } catch (InvocationTargetException e) {
+         throw e.getCause();
+      }
+   }
+   private static final class MethodIdentifier {
+      private final String name;
+      private final Class<?>[] parameters;
+      public MethodIdentifier(Method m) {
+         name = m.getName();
+         parameters = m.getParameterTypes();
+      }
+      // we can save time by assuming that we only compare against
+      // other MethodIdentifier objects
+      public boolean equals(Object o) {
+         MethodIdentifier mid = (MethodIdentifier) o;
+         return name.equals(mid.name) &&
+                      Arrays.equals(parameters, mid.parameters);
+      }
+      public int hashCode() {
+         return name.hashCode();
+      }
+   }
 }
 // end::ObjectAdapterHandler[]

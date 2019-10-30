@@ -18,24 +18,24 @@
 
 package eu.javaspecialists.books.dynamicproxies.shortcut.chap8.chap8_0;
 
-import javax.tools.SimpleJavaFileObject;
-import java.io.IOException;
-import java.net.URI;
+import javax.tools.*;
+import java.io.*;
+import java.net.*;
 
 /**
  * Created by Sven Ruppert on 06.01.14.
  */
 public class GeneratedJavaSourceFile extends SimpleJavaFileObject {
-    private CharSequence javaSource;
+   private CharSequence javaSource;
 
-    public GeneratedJavaSourceFile(String className,
-                                   CharSequence javaSource) {
-        super(URI.create(className + ".java"), Kind.SOURCE);
-        this.javaSource = javaSource;
-    }
+   public GeneratedJavaSourceFile(String className,
+                                  CharSequence javaSource) {
+      super(URI.create(className + ".java"), Kind.SOURCE);
+      this.javaSource = javaSource;
+   }
 
-    public CharSequence getCharContent(boolean ignoreEncodeErrors)
-        throws IOException {
-        return javaSource;
-    }
+   public CharSequence getCharContent(boolean ignoreEncodeErrors)
+         throws IOException {
+      return javaSource;
+   }
 }

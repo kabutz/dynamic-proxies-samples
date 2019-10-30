@@ -22,10 +22,10 @@ import eu.javaspecialists.books.dynamicproxies.ch02.virtual.*;
 
 // tag::listing[]
 public class SynchronizedTest {
-    public static void main(String... args) {
-        ConcurrentTest.check(new SynchronizedCustomMap<>(
-                new CustomHashMap<>()
-        ));
-    }
+   public static void main(String... args) {
+      ConcurrentTest.check(new SynchronizedCustomMap<>(
+            new CustomHashMap<>()
+      ));
+   }
 }
 // end::listing[]

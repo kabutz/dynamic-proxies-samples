@@ -20,14 +20,12 @@ package eu.javaspecialists.books.dynamicproxies.ch02.protection;
 
 import eu.javaspecialists.books.dynamicproxies.ch02.virtual.*;
 
-import java.util.*;
-
 // tag::listing[]
 public class UnmodifiableTest {
-    public static void main(String... args) {
-        ConcurrentTest.check(new UnmodifiableCustomMap<>(
-                new CustomHashMap<>()
-        ));
-    }
+   public static void main(String... args) {
+      ConcurrentTest.check(new UnmodifiableCustomMap<>(
+            new CustomHashMap<>()
+      ));
+   }
 }
 // end::listing[]

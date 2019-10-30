@@ -22,16 +22,16 @@ import static spark.Spark.*;
 
 // tag::listing[]
 public class ServicePublisher {
-    public static void main(String... args) {
-        Canada canada = new RealCanada();
-        port(8080);
-        get("/canGetVisa/:name/:married/:rich", (req, res) -> {
-            String name = req.params("name");
-            boolean married = "true".equals(req.params("married"));
-            boolean rich = "true".equals(req.params("rich"));
-            return canada.canGetVisa(name, married, rich);
-        });
-    }
+   public static void main(String... args) {
+      Canada canada = new RealCanada();
+      port(8080);
+      get("/canGetVisa/:name/:married/:rich", (req, res) -> {
+         var name = req.params("name");
+         var married = "true".equals(req.params("married"));
+         var rich = "true".equals(req.params("rich"));
+         return canada.canGetVisa(name, married, rich);
+      });
+   }
 }
 // end::listing[]
 

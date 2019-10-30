@@ -22,17 +22,17 @@ package eu.javaspecialists.books.dynamicproxies.ch07;
 import java.util.concurrent.atomic.*;
 
 public class VirtualMoralFiberLockFree extends VirtualMoralFiber {
-    private final AtomicReference<MoralFiber> ref =
-            new AtomicReference<>();
-    protected MoralFiber realSubject() {
-        var result = ref.get();
-        if (result == null) {
-            result = new RealMoralFiber();
-            // do a Compare And Swap (CAS)
-            var swapResult = ref.compareAndExchange(null, result);
-            if (swapResult != null) result = swapResult;
-        }
-        return result;
-    }
+   private final AtomicReference<MoralFiber> ref =
+         new AtomicReference<>();
+   protected MoralFiber realSubject() {
+      var result = ref.get();
+      if (result == null) {
+         result = new RealMoralFiber();
+         // do a Compare And Swap (CAS)
+         var swapResult = ref.compareAndExchange(null, result);
+         if (swapResult != null) result = swapResult;
+      }
+      return result;
+   }
 }
 // end::VirtualMoralFiberLockFree[]

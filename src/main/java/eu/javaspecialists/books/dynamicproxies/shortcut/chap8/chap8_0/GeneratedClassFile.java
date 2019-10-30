@@ -18,28 +18,26 @@
 
 package eu.javaspecialists.books.dynamicproxies.shortcut.chap8.chap8_0;
 
-import javax.tools.JavaFileObject;
-import javax.tools.SimpleJavaFileObject;
-import java.io.ByteArrayOutputStream;
-import java.io.OutputStream;
-import java.net.URI;
+import javax.tools.*;
+import java.io.*;
+import java.net.*;
 
 /**
  * Created by Sven Ruppert on 06.01.14.
  */
 public class GeneratedClassFile extends SimpleJavaFileObject {
-    private final ByteArrayOutputStream outputStream =
-        new ByteArrayOutputStream();
+   private final ByteArrayOutputStream outputStream =
+         new ByteArrayOutputStream();
 
-    public GeneratedClassFile() {
-        super(URI.create("generated.class"), JavaFileObject.Kind.CLASS);
-    }
+   public GeneratedClassFile() {
+      super(URI.create("generated.class"), JavaFileObject.Kind.CLASS);
+   }
 
-    public OutputStream openOutputStream() {
-        return outputStream;
-    }
+   public OutputStream openOutputStream() {
+      return outputStream;
+   }
 
-    public byte[] getClassAsBytes() {
-        return outputStream.toByteArray();
-    }
+   public byte[] getClassAsBytes() {
+      return outputStream.toByteArray();
+   }
 }

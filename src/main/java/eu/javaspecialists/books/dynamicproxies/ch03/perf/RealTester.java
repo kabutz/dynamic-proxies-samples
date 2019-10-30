@@ -20,10 +20,10 @@ package eu.javaspecialists.books.dynamicproxies.ch03.perf;
 
 // tag::listing[]
 public class RealTester implements Tester {
-    private long counter = 0;
-    @Override
-    public long increment() {
-        return counter++;
-    }
+   private long counter = 0;
+   @Override
+   public long increment() {
+      return counter++;
+   }
 }
 // end::listing[]

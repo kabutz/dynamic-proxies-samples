@@ -18,33 +18,31 @@
 
 package eu.javaspecialists.books.dynamicproxies.shortcut.chap8.chap8_1.test;
 
-import eu.javaspecialists.books.dynamicproxies.shortcut.chap8.chap8_1.Company;
-import eu.javaspecialists.books.dynamicproxies.shortcut.chap8.chap8_1.Concurrency;
-import eu.javaspecialists.books.dynamicproxies.shortcut.chap8.chap8_1.moralfibre.MoralFibre;
-import eu.javaspecialists.books.dynamicproxies.shortcut.chap8.chap8_1.moralfibre.MoralFibreImpl;
-import eu.javaspecialists.books.dynamicproxies.shortcut.chap8.chap8_1.moralfibre.virtual.proxy.generator.ProxyGenerator;
+import eu.javaspecialists.books.dynamicproxies.shortcut.chap8.chap8_1.*;
+import eu.javaspecialists.books.dynamicproxies.shortcut.chap8.chap8_1.moralfibre.*;
+import eu.javaspecialists.books.dynamicproxies.shortcut.chap8.chap8_1.moralfibre.virtual.proxy.generator.*;
 
 /**
  * Created by Sven Ruppert on 14.01.14.
  */
 public class CompanyTest {
 
-    public static void main(String[] args) {
-        Company company = new Company("Cretesoft", 10000.0,
+   public static void main(String[] args) {
+      Company company = new Company("Cretesoft", 10000.0,
             new MoralFibreImpl());
-        company.makeMoney();
-        company.damageEnvironment();
-        company.becomeFocusOfMediaAttention();
+      company.makeMoney();
+      company.damageEnvironment();
+      company.becomeFocusOfMediaAttention();
 
-        Company company2 = new Company("Cretesoft2", 20000.0,
+      Company company2 = new Company("Cretesoft2", 20000.0,
             ProxyGenerator.make(MoralFibre.class,
-                MoralFibreImpl.class,
-                Concurrency.NONE));
-        company2.makeMoney();
-        company2.makeMoney();
-        company2.makeMoney();
-        company2.damageEnvironment();
-        company2.becomeFocusOfMediaAttention();
-    }
+                  MoralFibreImpl.class,
+                  Concurrency.NONE));
+      company2.makeMoney();
+      company2.makeMoney();
+      company2.makeMoney();
+      company2.damageEnvironment();
+      company2.becomeFocusOfMediaAttention();
+   }
 
 }

@@ -18,14 +18,11 @@
 
 package eu.javaspecialists.books.dynamicproxies.ch06.contact;
 
-import eu.javaspecialists.books.dynamicproxies.*;
 import eu.javaspecialists.books.dynamicproxies.ch06.*;
-
-import java.util.*;
 
 // tag::listing[]
 public interface Contact extends Composite<Contact> {
-    void sendMail(String body);
-    default int count() { return 1; }
+   void sendMail(String body);
+   default int count() { return 1; }
 }
 // end::listing[]

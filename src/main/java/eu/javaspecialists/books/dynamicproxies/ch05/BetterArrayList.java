@@ -23,27 +23,27 @@ import java.util.*;
 
 // tag::BetterArrayList[]
 public class BetterArrayList<E> extends ArrayList<E> {
-    private final Class<E> type;
+   private final Class<E> type;
 
-    public BetterArrayList(int initialCapacity, Class<E> type) {
-        super(initialCapacity);
-        this.type = type;
-    }
+   public BetterArrayList(int initialCapacity, Class<E> type) {
+      super(initialCapacity);
+      this.type = type;
+   }
 
-    public BetterArrayList(Class<E> type) {
-        super();
-        this.type = type;
-    }
+   public BetterArrayList(Class<E> type) {
+      super();
+      this.type = type;
+   }
 
-    public BetterArrayList(Collection<? extends E> ts, Class<E> type) {
-        super(ts);
-        this.type = type;
-    }
+   public BetterArrayList(Collection<? extends E> ts, Class<E> type) {
+      super(ts);
+      this.type = type;
+   }
 
-    // You can modify the return type of an overridden method in Java 5,
-    // with some restrictions.
-    public E[] toArray() {
-        return toArray((E[]) Array.newInstance(type, size()));
-    }
+   // You can modify the return type of an overridden method in Java 5,
+   // with some restrictions.
+   public E[] toArray() {
+      return toArray((E[]) Array.newInstance(type, size()));
+   }
 }
 // end::BetterArrayList[]

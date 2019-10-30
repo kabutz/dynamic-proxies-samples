@@ -18,32 +18,30 @@
 
 package eu.javaspecialists.books.dynamicproxies.shortcut.chap8.chap8_1.moralfibre.virtual;
 
-import eu.javaspecialists.books.dynamicproxies.shortcut.chap8.chap8_1.moralfibre.MoralFibre;
-import eu.javaspecialists.books.dynamicproxies.shortcut.chap8.chap8_1.moralfibre.MoralFibreImpl;
+import eu.javaspecialists.books.dynamicproxies.shortcut.chap8.chap8_1.moralfibre.*;
 
-import java.util.concurrent.locks.Lock;
-import java.util.concurrent.locks.ReentrantLock;
+import java.util.concurrent.locks.*;
 
 /**
  * Created by Sven Ruppert on 14.01.14.
  */
 public class VirtualMoralFibreThreadSafe {
-    private volatile MoralFibre realSubject;
-    private final Lock initializationLock = new ReentrantLock();
+   private volatile MoralFibre realSubject;
+   private final Lock initializationLock = new ReentrantLock();
 
-    protected MoralFibre realSubject() {
-        MoralFibre result = realSubject;
-        if (result == null) {
-            initializationLock.lock();
-            try {
-                result = realSubject;
-                if (result == null) {
-                    result = realSubject = new MoralFibreImpl();
-                }
-            } finally {
-                initializationLock.unlock();
+   protected MoralFibre realSubject() {
+      MoralFibre result = realSubject;
+      if (result == null) {
+         initializationLock.lock();
+         try {
+            result = realSubject;
+            if (result == null) {
+               result = realSubject = new MoralFibreImpl();
             }
-        }
-        return result;
-    }
+         } finally {
+            initializationLock.unlock();
+         }
+      }
+      return result;
+   }
 }

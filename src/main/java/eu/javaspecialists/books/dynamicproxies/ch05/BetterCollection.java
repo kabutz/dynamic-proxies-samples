@@ -22,6 +22,6 @@ package eu.javaspecialists.books.dynamicproxies.ch05;
 import java.util.*;
 
 public interface BetterCollection<E> extends Collection<E> {
-    E[] toArray();
+   E[] toArray();
 }
 // end::BetterCollection[]

@@ -23,20 +23,20 @@ import java.util.function.*;
 
 // tag::listing[]
 public class VirtualProxyHandler<E> implements InvocationHandler {
-    private final Supplier<? extends E> subjectFactory;
-    private E realSubject;
+   private final Supplier<? extends E> subjectFactory;
+   private E realSubject;
 
-    public VirtualProxyHandler(Supplier<? extends E> subjectFactory) {
-        this.subjectFactory = subjectFactory;
-    }
-    private E realSubject() {
-        if (realSubject == null) realSubject = subjectFactory.get();
-        return realSubject;
-    }
-    @Override
-    public Object invoke(Object proxy, Method method, Object[] args)
-            throws Throwable {
-        return method.invoke(realSubject(), args);
-    }
+   public VirtualProxyHandler(Supplier<? extends E> subjectFactory) {
+      this.subjectFactory = subjectFactory;
+   }
+   private E realSubject() {
+      if (realSubject == null) realSubject = subjectFactory.get();
+      return realSubject;
+   }
+   @Override
+   public Object invoke(Object proxy, Method method, Object[] args)
+         throws Throwable {
+      return method.invoke(realSubject(), args);
+   }
 }
 // end::listing[]

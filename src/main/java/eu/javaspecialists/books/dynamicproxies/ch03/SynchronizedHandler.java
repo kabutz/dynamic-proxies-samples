@@ -16,10 +16,22 @@
  * limitations under the License.
  */
 
-package eu.javaspecialists.books.dynamicproxies.ch03.perf;
+package eu.javaspecialists.books.dynamicproxies.ch03;
+
+import java.lang.reflect.*;
 
 // tag::listing[]
-public interface Tester {
-   long increment();
+public class SynchronizedHandler<E> implements InvocationHandler {
+   private final E realSubject;
+   public SynchronizedHandler(E realSubject) {
+      this.realSubject = realSubject;
+   }
+   @Override
+   public Object invoke(Object proxy, Method method, Object[] args)
+         throws Throwable {
+      synchronized (proxy) {
+         return method.invoke(realSubject, args);
+      }
+   }
 }
 // end::listing[]

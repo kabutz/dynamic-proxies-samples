@@ -25,22 +25,22 @@ import static javax.swing.SwingConstants.*;
 import static javax.swing.WindowConstants.*;
 
 public class CheckBoxButton {
-    public static void main(String... args) {
-        SwingUtilities.invokeLater(() -> {
-            var frame = new JFrame("CheckBoxButton");
-            frame.setLayout(new FlowLayout());
+   public static void main(String... args) {
+      SwingUtilities.invokeLater(() -> {
+         var frame = new JFrame("CheckBoxButton");
+         frame.setLayout(new FlowLayout());
 
-            // tag::listing[]
-            var button = new JButton();
-            button.setLayout(new GridLayout(0, 1));
-            button.add(new JLabel("Delete All Files", CENTER));
-            button.add(new JCheckBox("Are you sure?"));
-            // end::listing[]
+         // tag::listing[]
+         var button = new JButton();
+         button.setLayout(new GridLayout(0, 1));
+         button.add(new JLabel("Delete All Files", CENTER));
+         button.add(new JCheckBox("Are you sure?"));
+         // end::listing[]
 
-            frame.add(button);
-            frame.setSize(400, 400);
-            frame.setDefaultCloseOperation(EXIT_ON_CLOSE);
-            frame.setVisible(true);
-        });
-    }
+         frame.add(button);
+         frame.setSize(400, 400);
+         frame.setDefaultCloseOperation(EXIT_ON_CLOSE);
+         frame.setVisible(true);
+      });
+   }
 }

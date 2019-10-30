@@ -19,5 +19,5 @@
 package eu.javaspecialists.books.dynamicproxies.ch03.scratch.hidden;
 
 interface Foo {
-    void bar();
+   void bar();
 }

@@ -19,29 +19,29 @@
 package eu.javaspecialists.books.dynamicproxies.ch06.contact;
 
 public class ContactTest {
-    public static void main(String... args) {
-        // tag::listing[]
-        Contact java_specialists_newsletter = new DistributionList();
-        System.out.println(java_specialists_newsletter.count());
-        java_specialists_newsletter.add(new Person("john@aol.com"));
-        java_specialists_newsletter.sendMail("Hello there 1");
-        System.out.println(java_specialists_newsletter.count());
+   public static void main(String... args) {
+      // tag::listing[]
+      Contact java_specialists_newsletter = new DistributionList();
+      System.out.println(java_specialists_newsletter.count());
+      java_specialists_newsletter.add(new Person("john@aol.com"));
+      java_specialists_newsletter.sendMail("Hello there 1");
+      System.out.println(java_specialists_newsletter.count());
 
-        DistributionList all_students = new DistributionList();
-        java_specialists_newsletter.add(all_students);
-        all_students.add(new Person("peter@absa.co.za"));
-        all_students.add(new Person("mzani@absa.co.za"));
+      DistributionList all_students = new DistributionList();
+      java_specialists_newsletter.add(all_students);
+      all_students.add(new Person("peter@absa.co.za"));
+      all_students.add(new Person("mzani@absa.co.za"));
 
-        java_specialists_newsletter.sendMail("Hello there 2");
-        System.out.println(java_specialists_newsletter.count());
+      java_specialists_newsletter.sendMail("Hello there 2");
+      System.out.println(java_specialists_newsletter.count());
 
-        Contact extreme_java_students = new DistributionList();
-        all_students.add(extreme_java_students);
-        extreme_java_students.add(new Person("John@fnb.co.za"));
-        extreme_java_students.add(new Person("Hlope@fnb.co.za"));
+      Contact extreme_java_students = new DistributionList();
+      all_students.add(extreme_java_students);
+      extreme_java_students.add(new Person("John@fnb.co.za"));
+      extreme_java_students.add(new Person("Hlope@fnb.co.za"));
 
-        java_specialists_newsletter.sendMail("Hello there 3");
-        System.out.println(java_specialists_newsletter.count());
-        // end::listing[]
-    }
+      java_specialists_newsletter.sendMail("Hello there 3");
+      System.out.println(java_specialists_newsletter.count());
+      // end::listing[]
+   }
 }

@@ -22,28 +22,28 @@ import java.io.*;
 
 // tag::listing[]
 public class WriterAdapter<T extends Appendable &
-                                     Closeable &
-                                     Flushable>
-        extends Writer {
-    private final T adaptee;
+                                   Closeable &
+                                   Flushable>
+      extends Writer {
+   private final T adaptee;
 
-    public WriterAdapter(T adaptee) {
-        this.adaptee = adaptee;
-    }
-    @Override
-    public void write(char[] cbuf, int off, int len)
-            throws IOException {
-        for (int i = off; i < off + len; i++) {
-            adaptee.append(cbuf[i]);
-        }
-    }
-    @Override
-    public void flush() throws IOException {
-        adaptee.flush();
-    }
-    @Override
-    public void close() throws IOException {
-        adaptee.close();
-    }
+   public WriterAdapter(T adaptee) {
+      this.adaptee = adaptee;
+   }
+   @Override
+   public void write(char[] cbuf, int off, int len)
+         throws IOException {
+      for (int i = off; i < off + len; i++) {
+         adaptee.append(cbuf[i]);
+      }
+   }
+   @Override
+   public void flush() throws IOException {
+      adaptee.flush();
+   }
+   @Override
+   public void close() throws IOException {
+      adaptee.close();
+   }
 }
 // end::listing[]

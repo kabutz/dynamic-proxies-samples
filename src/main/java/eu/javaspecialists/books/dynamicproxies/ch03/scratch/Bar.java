@@ -19,5 +19,5 @@
 package eu.javaspecialists.books.dynamicproxies.ch03.scratch;
 
 interface Bar {
-    int bar();
+   int bar();
 }

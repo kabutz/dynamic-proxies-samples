@@ -20,8 +20,8 @@ package eu.javaspecialists.books.dynamicproxies.ch07;
 
 // tag::MoralFiber[]
 public interface MoralFiber {
-    double actSociallyResponsibly();
-    double empowerEmployees();
-    double cleanupEnvironment();
+   double actSociallyResponsibly();
+   double empowerEmployees();
+   double cleanupEnvironment();
 }
 // end::MoralFiber[]

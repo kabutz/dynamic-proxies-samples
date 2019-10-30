@@ -25,30 +25,30 @@ import java.util.*;
 
 // tag::BetterCollectionFactory[]
 public class BetterCollectionFactory {
-    public static <E> BetterCollection<E> asBetterCollection(
-            Collection<E> adaptee, Class<E> valueType) {
-        return Proxies.adapt(adaptee,
-                BetterCollection.class,
-                // this anonymous inner class contains the method that
-                // we want to adapt
-                new Object() {
-                    public E[] toArray() {
-                        return adaptee.toArray((E[]) Array.newInstance(
-                                valueType, adaptee.size()));
-                    }
-                    // Whilst we are at it, we could also make it into
-                    // a checked collection, see java.util.Collections
-                    // for an example.
-                    public boolean add(E e) {
-                        if (!valueType.isInstance(e))
-                            throw new ClassCastException(
-                                    "Attempt to insert " + e.getClass() +
-                                            " value into collection " +
-                                            "with value type " + valueType);
-                        return adaptee.add(e);
-                    }
-                    // addAll() left as an exercise for the reader :-)
-                });
-    }
+   public static <E> BetterCollection<E> asBetterCollection(
+         Collection<E> adaptee, Class<E> valueType) {
+      return Proxies.adapt(adaptee,
+            BetterCollection.class,
+            // this anonymous inner class contains the method that
+            // we want to adapt
+            new Object() {
+               public E[] toArray() {
+                  return adaptee.toArray((E[]) Array.newInstance(
+                        valueType, adaptee.size()));
+               }
+               // Whilst we are at it, we could also make it into
+               // a checked collection, see java.util.Collections
+               // for an example.
+               public boolean add(E e) {
+                  if (!valueType.isInstance(e))
+                     throw new ClassCastException(
+                           "Attempt to insert " + e.getClass() +
+                                 " value into collection " +
+                                 "with value type " + valueType);
+                  return adaptee.add(e);
+               }
+               // addAll() left as an exercise for the reader :-)
+            });
+   }
 }
 // end::BetterCollectionFactory[]
