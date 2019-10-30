@@ -27,7 +27,7 @@ public class AppendableTest {
         // TeeAppendable<Appendable & Closeable & Flushable>, but that is
         // not possible in Java.  "var" takes care of it for us.
         var tee = new TeeAppendable<>();
-        StringWriter sw = new StringWriter();
+        var sw = new StringWriter();
         tee.add(new OutputStreamWriter(System.out));
         tee.add(new FileWriter("output.txt"));
         tee.add(sw);

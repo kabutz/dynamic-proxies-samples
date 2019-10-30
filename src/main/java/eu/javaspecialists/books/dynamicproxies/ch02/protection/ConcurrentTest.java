@@ -36,7 +36,7 @@ public class ConcurrentTest {
             System.out.println(e); // carry on with check
         }
         // count actual entries
-        LongAdder entries = new LongAdder();
+        var entries = new LongAdder();
         map.forEach((k, v) -> entries.increment());
 
         System.out.println("entries = " + entries.intValue());

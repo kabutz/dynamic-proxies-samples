@@ -27,10 +27,10 @@ import java.util.logging.Logger;
 public class LoggingProxyTest {
     public static void main(String... args) {
         // tag::main()[]
-        InvocationHandler handler = new LoggingInvocationHandler(
+        var handler = new LoggingInvocationHandler(
             Logger.getGlobal(),
             new ConcurrentHashMap<>());
-        Map<String, Integer> map = (Map<String, Integer>)
+        var map = (Map<String, Integer>)
             Proxy.newProxyInstance(
                 Map.class.getClassLoader(),
                 new Class<?>[]{Map.class},

@@ -23,9 +23,9 @@ public class Person implements Contact {
     private final String email;
     public Person(String email) {this.email = email;}
     @Override
-    public void sendMail(String message) {
+    public void sendMail(String body) {
         // connecting to JavaMail and off it goes ...
-        System.out.println("Sending " + message + " to " + email);
+        System.out.println("Sending " + body + " to " + email);
     }
 }
 // end::listing[]

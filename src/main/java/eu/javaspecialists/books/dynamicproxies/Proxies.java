@@ -60,8 +60,9 @@ public class Proxies {
     // end::loggingProxy()[]
 
     // tag::virtualProxy()[]
-    public static <P> P virtualProxy(Class<P> proxiedInterface,
-                                     Supplier<? extends P> supplier) {
+    public static <P> P virtualProxy(
+            Class<P> proxiedInterface,
+            Supplier<? extends P> supplier) {
         Objects.requireNonNull(supplier, "supplier==null");
         return castProxy(proxiedInterface,
                 new VirtualProxyHandler<P>(supplier));
@@ -69,9 +70,11 @@ public class Proxies {
     // end::virtualProxy()[]
 
     // tag::dynamicFilter()[]
-    public static <P> P dynamicFilter(Class<P> filter, Object component) {
+    public static <P> P dynamicFilter(
+            Class<P> filter, Object component) {
         Objects.requireNonNull(component, "component==null");
-        return castProxy(filter, new FilterHandler(filter, component));
+        return castProxy(filter,
+                new FilterHandler(filter, component));
     }
     // end::dynamicFilter()[]
 
@@ -86,7 +89,8 @@ public class Proxies {
     // end::adapt()[]
 
     // tag::compose()[]
-    public static <E extends Composite<E>> E compose(Class<E> target) {
+    public static <E extends Composite<E>> E compose(
+            Class<E> target) {
         return compose(target, null);
     }
     public static <E extends Composite<E>> E compose(

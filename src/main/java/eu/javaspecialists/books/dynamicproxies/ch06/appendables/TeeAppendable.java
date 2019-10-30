@@ -38,27 +38,27 @@ public class TeeAppendable<E extends Appendable & Closeable & Flushable>
 
     @Override
     public Appendable append(CharSequence csq) throws IOException {
-        for (Appendable child : children) child.append(csq);
+        for (var child : children) child.append(csq);
         return this;
     }
     @Override
     public Appendable append(CharSequence csq, int start, int end)
             throws IOException {
-        for (Appendable child : children) child.append(csq, start, end);
+        for (var child : children) child.append(csq, start, end);
         return this;
     }
     @Override
     public Appendable append(char c) throws IOException {
-        for (Appendable child : children) child.append(c);
+        for (var child : children) child.append(c);
         return this;
     }
     @Override
     public void close() throws IOException {
-        for (Closeable child : children) child.close();
+        for (var child : children) child.close();
     }
     @Override
     public void flush() throws IOException {
-        for (Flushable child : children) child.flush();
+        for (var child : children) child.flush();
     }
 }
 // end::listing[]

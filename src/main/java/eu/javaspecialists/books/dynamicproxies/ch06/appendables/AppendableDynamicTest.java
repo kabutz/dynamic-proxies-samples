@@ -27,7 +27,7 @@ public class AppendableDynamicTest {
         // tag::listing[]
         var tee = Proxies.compose(AppendableCloseableFlushable.class,
                 AppendableCloseableFlushable.getReducers());
-        StringWriter sw = new StringWriter();
+        var sw = new StringWriter();
         tee.add(new OutputStreamWriter(System.out));
         tee.add(new FileWriter("output.txt"));
         tee.add(sw);

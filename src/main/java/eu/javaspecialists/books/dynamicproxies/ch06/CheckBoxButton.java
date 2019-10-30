@@ -27,11 +27,11 @@ import static javax.swing.WindowConstants.*;
 public class CheckBoxButton {
     public static void main(String... args) {
         SwingUtilities.invokeLater(() -> {
-            JFrame frame = new JFrame("CheckBoxButton");
+            var frame = new JFrame("CheckBoxButton");
             frame.setLayout(new FlowLayout());
 
             // tag::listing[]
-            JButton button = new JButton();
+            var button = new JButton();
             button.setLayout(new GridLayout(0, 1));
             button.add(new JLabel("Delete All Files", CENTER));
             button.add(new JCheckBox("Are you sure?"));

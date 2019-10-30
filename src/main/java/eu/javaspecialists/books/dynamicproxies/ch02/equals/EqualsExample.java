@@ -27,11 +27,10 @@ import static org.junit.Assert.*;
 // tag::listing[]
 public class EqualsExample {
     public static void main(String... args) {
-        CustomMap<Integer, Integer> real = new CustomHashMap<>();
+        var real = new CustomHashMap<Integer, Integer>();
         for (int i = 0; i < 10; i++) real.put(i, i * i);
-        CustomMap<Integer, Integer> proxy =
-                new UnmodifiableCustomMap<>(real);
-        CustomMap<Integer, Integer> empty = new CustomHashMap<>();
+        var proxy = new UnmodifiableCustomMap<>(real);
+        var empty = new CustomHashMap<Integer, Integer>();
 
         // reflexive
         assertEquals(real, real);
@@ -42,8 +41,8 @@ public class EqualsExample {
         assertEquals(proxy, real);
 
         // transitive
-        assertTrue((real.equals(empty) && empty.equals(proxy))
-                           == real.equals(proxy));
+        if (real.equals(empty) && empty.equals(proxy))
+            assertEquals(real, proxy);
     }
 }
 // end::listing[]

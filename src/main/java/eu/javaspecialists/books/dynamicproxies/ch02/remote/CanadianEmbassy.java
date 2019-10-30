@@ -39,12 +39,13 @@ public class CanadianEmbassy implements Canada {
     @Override
     public boolean canGetVisa(String name, boolean married, boolean rich) {
         try {
-            HttpRequest request =
+            var request =
                     HttpRequest.newBuilder()
                             .uri(URI.create(url(name, married, rich)))
                             .build();
-            String result = httpClient.send(
-                    request, HttpResponse.BodyHandlers.ofString()).body();
+            var result = httpClient.send(
+                    request, HttpResponse.BodyHandlers.ofString()
+            ).body();
             return "true".equals(result);
         } catch (IOException e) {
             throw new UncheckedIOException(e);

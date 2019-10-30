@@ -22,6 +22,7 @@ import eu.javaspecialists.books.dynamicproxies.*;
 
 import java.lang.reflect.*;
 import java.util.*;
+import java.util.function.*;
 
 // tag::listing[]
 public class CompositeHandler implements InvocationHandler {
@@ -37,7 +38,8 @@ public class CompositeHandler implements InvocationHandler {
     }
 
     @Override
-    public Object invoke(Object proxy, Method method, Object[] args)
+    public Object invoke(Object proxy,
+                         Method method, Object[] args)
             throws Throwable {
         if (matches(method, "add")) {
             children.add(args[0]);
@@ -50,24 +52,26 @@ public class CompositeHandler implements InvocationHandler {
                 super(cause);
             }
         }
-        Reducer reducer = reducers.getOrDefault(
+        var reducer = reducers.getOrDefault(
                 new MethodKey(method), Reducer.NULL_REDUCER);
         try {
-            Object result =
+            Function<Object, Object> mapFunction = child -> {
+                try {
+                    return method.invoke(child, args);
+                } catch (IllegalAccessException e) {
+                    throw new UncheckedException(e);
+                } catch (InvocationTargetException e) {
+                    throw new UncheckedException(
+                            e.getCause());
+                }
+            };
+            var result =
                     children.stream()
-                            .map(child -> {
-                                try {
-                                    return method.invoke(child, args);
-                                } catch (IllegalAccessException e) {
-                                    throw new UncheckedException(e);
-                                } catch (InvocationTargetException e) {
-                                    throw new UncheckedException(
-                                            e.getCause());
-                                }
-                            })
+                            .map(mapFunction)
                             .reduce(reducer.getIdentity(),
                                     reducer.getMerger());
-            if (reducer == Reducer.PROXY_INSTANCE_REDUCER) return proxy;
+            if (reducer == Reducer.PROXY_INSTANCE_REDUCER)
+                return proxy;
             return result;
         } catch (UncheckedException ex) {
             throw ex.getCause();
@@ -77,7 +81,8 @@ public class CompositeHandler implements InvocationHandler {
     private boolean matches(Method method, String name) {
         return name.equals(method.getName())
                        && method.getParameterCount() == 1
-                       && method.getParameterTypes()[0] == Object.class;
+                       && method.getParameterTypes()[0]
+                                  == Object.class;
     }
 }
 // end::listing[]

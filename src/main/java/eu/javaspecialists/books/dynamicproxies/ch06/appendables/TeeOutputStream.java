@@ -26,7 +26,8 @@ import java.util.*;
 // tag::listing[]
 public class TeeOutputStream extends OutputStream
         implements Composite<OutputStream> {
-    private final Collection<OutputStream> streams = new ArrayList<>();
+    private final Collection<OutputStream> streams =
+            new ArrayList<>();
     @Override
     public void add(OutputStream out) {
         streams.add(out);
@@ -37,19 +38,19 @@ public class TeeOutputStream extends OutputStream
     }
     @Override
     public void write(int b) throws IOException {
-        for (OutputStream out : streams) {
+        for (var out : streams) {
             out.write(b);
         }
     }
     @Override
     public void flush() throws IOException {
-        for (OutputStream out : streams) {
+        for (var out : streams) {
             out.flush();
         }
     }
     @Override
     public void close() throws IOException {
-        for (OutputStream out : streams) {
+        for (var out : streams) {
             out.close();
         }
     }

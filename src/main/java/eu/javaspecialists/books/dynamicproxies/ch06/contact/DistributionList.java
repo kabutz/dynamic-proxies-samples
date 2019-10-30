@@ -33,13 +33,13 @@ public class DistributionList implements Contact {
         return contacts.remove(c);
     }
     @Override
-    public void sendMail(String message) {
-        contacts.forEach(contact -> contact.sendMail(message));
+    public void sendMail(String body) {
+        contacts.forEach(contact -> contact.sendMail(body));
     }
     @Override
     public int count() {
         int leaves = 0;
-        for (Contact contact : contacts) {
+        for (var contact : contacts) {
             leaves += contact.count();
         }
         return leaves;

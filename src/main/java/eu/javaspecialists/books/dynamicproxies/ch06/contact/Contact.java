@@ -25,7 +25,7 @@ import java.util.*;
 
 // tag::listing[]
 public interface Contact extends Composite<Contact> {
-    void sendMail(String message);
+    void sendMail(String body);
     default int count() { return 1; }
 }
 // end::listing[]
