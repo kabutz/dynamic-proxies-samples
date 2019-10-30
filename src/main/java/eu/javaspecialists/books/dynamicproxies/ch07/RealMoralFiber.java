@@ -26,14 +26,17 @@ public class RealMoralFiber implements MoralFiber {
       System.out.println("MoralFibre Created!");
    }
    // AIDS orphans
+   @Override
    public double actSociallyResponsibly() {
       return costOfMoralFibre.length / 3;
    }
    // shares to employees
+   @Override
    public double empowerEmployees() {
       return costOfMoralFibre.length / 3;
    }
    // oiled sea birds
+   @Override
    public double cleanupEnvironment() {
       return costOfMoralFibre.length / 3;
    }

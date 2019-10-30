@@ -20,6 +20,7 @@ package eu.javaspecialists.books.dynamicproxies.ch02.remote;
 
 // tag::listing[]
 public class RealCanada implements Canada {
+   @Override
    public boolean canGetVisa(String name,
                              boolean married,
                              boolean rich) {

@@ -34,6 +34,7 @@ public class GeneratingJavaFileManager extends ForwardingJavaFileManager<JavaFil
       this.gcf = gcf;
    }
 
+   @Override
    public JavaFileObject getJavaFileForOutput(
          Location location, String className,
          JavaFileObject.Kind kind, FileObject sibling)

@@ -38,6 +38,7 @@ public class VirtualDynamicProxyNotThreadSafe implements InvocationHandler {
       return realSubject;
    }
 
+   @Override
    public Object invoke(
          Object proxy, Method method, Object[] args)
          throws Throwable {

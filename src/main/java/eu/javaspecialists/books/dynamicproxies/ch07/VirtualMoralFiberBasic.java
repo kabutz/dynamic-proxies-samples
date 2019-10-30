@@ -21,6 +21,7 @@ package eu.javaspecialists.books.dynamicproxies.ch07;
 // tag::VirtualMoralFiberBasic[]
 public class VirtualMoralFiberBasic extends VirtualMoralFiber {
    private MoralFiber realSubject;
+   @Override
    protected MoralFiber realSubject() {
       if (realSubject == null) {
          realSubject = new RealMoralFiber();

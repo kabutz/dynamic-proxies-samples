@@ -27,6 +27,7 @@ class VirtualProxySourceGeneratorSynchronized<P>
          Class<P> subject, Class<? extends P> realSubject) {
       super(subject, realSubject, Concurrency.SYNCHRONIZED);
    }
+   @Override
    protected void addRealSubjectCreation(PrintWriter out) {
       out.println(
             """

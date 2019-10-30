@@ -33,6 +33,7 @@ public class GeneratedClassFile extends SimpleJavaFileObject {
       super(URI.create("generated.class"), JavaFileObject.Kind.CLASS);
    }
 
+   @Override
    public OutputStream openOutputStream() {
       return outputStream;
    }

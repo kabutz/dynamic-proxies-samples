@@ -30,6 +30,7 @@ public class GeneratingJavaFileManager extends
       super(sjfm);
       this.gcf = gcf;
    }
+   @Override
    public JavaFileObject getJavaFileForOutput(
          Location location, String className, JavaFileObject.Kind kind,
          FileObject sibling) throws IOException {

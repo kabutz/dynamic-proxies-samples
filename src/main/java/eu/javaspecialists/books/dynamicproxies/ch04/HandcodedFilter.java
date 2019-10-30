@@ -30,36 +30,47 @@ public class HandcodedFilter<E> implements ImmutableCollection<E> {
       this.c = c;
    }
 
+   @Override
    public int size() {
       return c.size();
    }
+   @Override
    public boolean isEmpty() {
       return c.isEmpty();
    }
+   @Override
    public boolean contains(Object o) {
       return c.contains(o);
    }
+   @Override
    public Object[] toArray() {
       return c.toArray();
    }
+   @Override
    public <T> T[] toArray(T[] a) {
       return c.toArray(a);
    }
+   @Override
    public <T> T[] toArray(IntFunction<T[]> generator) {
       return c.toArray(generator);
    }
+   @Override
    public boolean containsAll(Collection<?> c) {
       return this.c.containsAll(c);
    }
+   @Override
    public Spliterator<E> spliterator() {
       return c.spliterator();
    }
+   @Override
    public Stream<E> stream() {
       return c.stream();
    }
+   @Override
    public Stream<E> parallelStream() {
       return c.parallelStream();
    }
+   @Override
    public void forEach(Consumer<? super E> action) {
       c.forEach(action);
    }

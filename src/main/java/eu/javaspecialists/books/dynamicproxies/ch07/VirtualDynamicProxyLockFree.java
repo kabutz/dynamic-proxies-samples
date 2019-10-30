@@ -28,6 +28,7 @@ public class VirtualDynamicProxyLockFree<P> extends VirtualDynamicProxy<P> {
    public VirtualDynamicProxyLockFree(Supplier<P> realSubjectSupplier) {
       super(realSubjectSupplier);
    }
+   @Override
    protected P realSubject() {
       var result = ref.get();
       if (result == null) {

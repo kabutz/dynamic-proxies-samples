@@ -139,6 +139,7 @@ public class ProxyGenerator {
          this.concurrency = concurrency;
       }
 
+      @Override
       public boolean equals(Object o) {
          if (this == o) return true;
          if (o == null || getClass() != o.getClass()) return false;
@@ -147,6 +148,7 @@ public class ProxyGenerator {
          return subject.equals(that.subject);
       }
 
+      @Override
       public int hashCode() {
          return 31 * subject.hashCode() + concurrency.hashCode();
       }

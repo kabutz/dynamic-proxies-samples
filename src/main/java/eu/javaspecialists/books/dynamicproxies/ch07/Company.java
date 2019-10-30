@@ -45,6 +45,7 @@ public class Company {
       cash -= moralFiber.empowerEmployees();
       System.out.println("Look how good we are... " + this);
    }
+   @Override
    public String toString() {
       return String.format(Locale.US, "%s has $ %.2f", name, cash);
    }

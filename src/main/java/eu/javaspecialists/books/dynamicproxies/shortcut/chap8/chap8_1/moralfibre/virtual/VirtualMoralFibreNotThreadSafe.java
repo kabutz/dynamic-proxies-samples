@@ -27,6 +27,7 @@ import eu.javaspecialists.books.dynamicproxies.shortcut.chap8.chap8_1.moralfibre
 public class VirtualMoralFibreNotThreadSafe extends VirtualMoralFibre {
    private MoralFibre realSubject;
 
+   @Override
    protected MoralFibre realSubject() {
       if (realSubject == null) {
          realSubject = new MoralFibreImpl();

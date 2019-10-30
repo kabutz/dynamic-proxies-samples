@@ -43,6 +43,7 @@ public class ObjectAdapterHandler implements InvocationHandler {
          }
       }
    }
+   @Override
    public Object invoke(Object proxy, Method method,
                         Object[] args) throws Throwable {
       try {
@@ -65,11 +66,13 @@ public class ObjectAdapterHandler implements InvocationHandler {
       }
       // we can save time by assuming that we only compare against
       // other MethodIdentifier objects
+      @Override
       public boolean equals(Object o) {
          MethodIdentifier mid = (MethodIdentifier) o;
          return name.equals(mid.name) &&
                       Arrays.equals(parameters, mid.parameters);
       }
+      @Override
       public int hashCode() {
          return name.hashCode();
       }

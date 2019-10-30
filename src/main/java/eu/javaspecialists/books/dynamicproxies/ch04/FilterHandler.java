@@ -89,6 +89,7 @@ public class FilterHandler implements InvocationHandler {
                                      & method.getDeclaringClass().getModifiers());
    }
 
+   @Override
    public Object invoke(Object proxy,
                         Method method,
                         Object[] args) throws Throwable {

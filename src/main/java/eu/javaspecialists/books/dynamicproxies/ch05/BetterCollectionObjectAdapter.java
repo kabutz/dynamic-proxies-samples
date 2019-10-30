@@ -32,6 +32,7 @@ public class BetterCollectionObjectAdapter<E> implements BetterCollection<E> {
       this.valueType = valueType;
    }
 
+   @Override
    public E[] toArray() {
       return adaptee.toArray(
             (E[]) Array.newInstance(valueType, adaptee.size()));
@@ -39,50 +40,62 @@ public class BetterCollectionObjectAdapter<E> implements BetterCollection<E> {
 
    // this is a typical problem with the Object Adapter Design
    // Pattern - you have implement all the methods :-(
+   @Override
    public int size() {
       return adaptee.size();
    }
 
+   @Override
    public boolean isEmpty() {
       return adaptee.isEmpty();
    }
 
+   @Override
    public boolean contains(Object o) {
       return adaptee.contains(o);
    }
 
+   @Override
    public Iterator<E> iterator() {
       return adaptee.iterator();
    }
 
+   @Override
    public <T> T[] toArray(T[] ts) {
       return adaptee.toArray(ts);
    }
 
+   @Override
    public boolean add(E e) {
       return adaptee.add(e);
    }
 
+   @Override
    public boolean remove(Object o) {
       return adaptee.remove(o);
    }
 
+   @Override
    public boolean containsAll(Collection<?> c) {
       return adaptee.containsAll(c);
    }
 
+   @Override
    public boolean addAll(Collection<? extends E> es) {
       return adaptee.addAll(es);
    }
 
+   @Override
    public boolean removeAll(Collection<?> c) {
       return adaptee.removeAll(c);
    }
 
+   @Override
    public boolean retainAll(Collection<?> c) {
       return adaptee.retainAll(c);
    }
 
+   @Override
    public void clear() {
       adaptee.clear();
    }

@@ -26,6 +26,7 @@ public class VirtualDynamicProxyBasic<P> extends VirtualDynamicProxy<P> {
    public VirtualDynamicProxyBasic(Supplier<P> subjectSupplier) {
       super(subjectSupplier);
    }
+   @Override
    protected P realSubject() {
       if (realSubject == null) {
          realSubject = makeRealSubject();

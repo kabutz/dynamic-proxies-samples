@@ -33,6 +33,7 @@ class VirtualProxySourceGeneratorNotThreadsafe
       super(subject, realSubject, Concurrency.NONE);
    }
 
+   @Override
    protected void addRealSubjectCreation(PrintWriter out,
                                          String name,
                                          String realName) {

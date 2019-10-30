@@ -29,6 +29,7 @@ public class GeneratedClassFile extends SimpleJavaFileObject {
    public GeneratedClassFile() {
       super(URI.create("generated.class"), Kind.CLASS);
    }
+   @Override
    public OutputStream openOutputStream() { return outputStream; }
    public byte[] getClassAsBytes() { return outputStream.toByteArray(); }
 }

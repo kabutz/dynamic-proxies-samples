@@ -28,10 +28,12 @@ public class TeeAppendable<E extends Appendable & Closeable & Flushable>
       implements Appendable, Closeable, Flushable, Composite<E> {
    private final Collection<E> children = new ArrayList<>();
 
+   @Override
    public void add(E child) {
       children.add(child);
    }
 
+   @Override
    public boolean remove(E child) {
       return children.remove(child);
    }

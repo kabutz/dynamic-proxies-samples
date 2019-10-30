@@ -31,6 +31,7 @@ public abstract class VirtualDynamicProxy<P> implements InvocationHandler {
    public final P makeRealSubject() {
       return subjectSupplier.get();
    }
+   @Override
    public final Object invoke(Object proxy, Method method, Object[] args)
          throws Throwable {
       return method.invoke(realSubject(), args);

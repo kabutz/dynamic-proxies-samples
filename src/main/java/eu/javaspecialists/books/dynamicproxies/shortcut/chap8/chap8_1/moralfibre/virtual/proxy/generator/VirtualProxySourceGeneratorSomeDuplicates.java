@@ -32,11 +32,13 @@ class VirtualProxySourceGeneratorSomeDuplicates
       super(subject, realSubject, Concurrency.SOME_DUPLICATES);
    }
 
+   @Override
    protected void addImports(PrintWriter out) {
       out.println("import java.util.concurrent.atomic.*;");
       out.println();
    }
 
+   @Override
    protected void addRealSubjectCreation(PrintWriter out,
                                          String name,
                                          String realName) {

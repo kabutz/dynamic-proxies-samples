@@ -24,14 +24,17 @@ package eu.javaspecialists.books.dynamicproxies.shortcut.chap8.chap8_1.moralfibr
 public abstract class VirtualMoralFibre implements MoralFibre {
    protected abstract MoralFibre realSubject();
 
+   @Override
    public final double actSociallyResponsibly() {
       return realSubject().actSociallyResponsibly();
    }
 
+   @Override
    public final double empowerEmployees() {
       return realSubject().empowerEmployees();
    }
 
+   @Override
    public final double cleanupEnvironment() {
       return realSubject().cleanupEnvironment();
    }

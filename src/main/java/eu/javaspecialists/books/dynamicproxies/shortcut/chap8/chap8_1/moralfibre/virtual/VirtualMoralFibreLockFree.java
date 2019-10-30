@@ -29,6 +29,7 @@ public class VirtualMoralFibreLockFree extends VirtualMoralFibre {
    private final AtomicReference<MoralFibre> realSubject =
          new AtomicReference<MoralFibre>();
 
+   @Override
    protected MoralFibre realSubject() {
       MoralFibre subject = realSubject.get();
       if (subject == null) {

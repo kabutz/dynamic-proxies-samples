@@ -27,10 +27,12 @@ class VirtualProxySourceGeneratorLockFree<P>
          Class<P> subject, Class<? extends P> realSubject) {
       super(subject, realSubject, Concurrency.LOCK_FREE);
    }
+   @Override
    protected void addImports(PrintWriter out) {
       out.println("import java.util.concurrent.atomic.*;");
       out.println();
    }
+   @Override
    protected void addRealSubjectCreation(PrintWriter out) {
       out.println(
             """

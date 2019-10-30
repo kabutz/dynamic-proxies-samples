@@ -42,6 +42,7 @@ public class BetterArrayList<E> extends ArrayList<E> {
 
    // You can modify the return type of an overridden method in Java 5,
    // with some restrictions.
+   @Override
    public E[] toArray() {
       return toArray((E[]) Array.newInstance(type, size()));
    }

@@ -32,11 +32,13 @@ class VirtualProxySourceGeneratorNoDuplicates
       super(subject, realSubject, Concurrency.NO_DUPLICATES);
    }
 
+   @Override
    protected void addImports(PrintWriter out) {
       out.println("import java.util.concurrent.locks.*;");
       out.println();
    }
 
+   @Override
    protected void addRealSubjectCreation(PrintWriter out,
                                          String name,
                                          String realName) {

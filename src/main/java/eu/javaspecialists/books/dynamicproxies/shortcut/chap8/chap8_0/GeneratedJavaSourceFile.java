@@ -34,6 +34,7 @@ public class GeneratedJavaSourceFile extends SimpleJavaFileObject {
       this.javaSource = javaSource;
    }
 
+   @Override
    public CharSequence getCharContent(boolean ignoreEncodeErrors)
          throws IOException {
       return javaSource;

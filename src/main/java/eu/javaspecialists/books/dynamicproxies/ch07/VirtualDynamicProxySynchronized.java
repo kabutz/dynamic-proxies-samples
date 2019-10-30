@@ -28,6 +28,7 @@ public class VirtualDynamicProxySynchronized<P>
    public VirtualDynamicProxySynchronized(Supplier<P> subjectSupplier) {
       super(subjectSupplier);
    }
+   @Override
    protected P realSubject() {
       var result = realSubject;
       if (result == null) {

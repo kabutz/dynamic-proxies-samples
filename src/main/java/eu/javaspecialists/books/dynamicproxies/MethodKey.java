@@ -33,16 +33,20 @@ public final class MethodKey implements Comparable<MethodKey> {
                  .collect(Collectors.joining(", ",
                        name + "(", ")"));
    }
+   @Override
    public boolean equals(Object o) {
       if (!(o instanceof MethodKey)) return false;
       return id.equals(((MethodKey) o).id);
    }
+   @Override
    public int hashCode() {
       return id.hashCode();
    }
+   @Override
    public int compareTo(MethodKey mk) {
       return id.compareTo(mk.id);
    }
+   @Override
    public String toString() {
       return id;
    }

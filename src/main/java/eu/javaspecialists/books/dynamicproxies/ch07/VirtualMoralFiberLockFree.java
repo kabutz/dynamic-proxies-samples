@@ -24,6 +24,7 @@ import java.util.concurrent.atomic.*;
 public class VirtualMoralFiberLockFree extends VirtualMoralFiber {
    private final AtomicReference<MoralFiber> ref =
          new AtomicReference<>();
+   @Override
    protected MoralFiber realSubject() {
       var result = ref.get();
       if (result == null) {
