@@ -16,7 +16,7 @@
  * limitations under the License.
  */
 
-package eu.javaspecialists.books.dynamicproxies.ch05;
+package eu.javaspecialists.books.dynamicproxies.ch05.bettercollection;
 
 import java.lang.reflect.*;
 import java.util.*;

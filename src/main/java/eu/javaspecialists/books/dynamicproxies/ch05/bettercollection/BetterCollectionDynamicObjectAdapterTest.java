@@ -16,19 +16,26 @@
  * limitations under the License.
  */
 
-package eu.javaspecialists.books.dynamicproxies.ch05;
+package eu.javaspecialists.books.dynamicproxies.ch05.bettercollection;
 
-// tag::BetterConcurrentSkipListSet[]
-import java.lang.reflect.*;
-import java.util.concurrent.*;
+import java.util.*;
 
-public class BetterConcurrentSkipListSet<E> extends ConcurrentSkipListSet<E>
-      implements BetterCollection<E> {
-   private final Class<?> type;
-   public BetterConcurrentSkipListSet(Class<?> type) {this.type = type;}
-   @Override
-   public E[] toArray() {
-      return toArray((E[]) Array.newInstance(type, size()));
+public class BetterCollectionDynamicObjectAdapterTest {
+   public static void main(String... args) {
+      // tag::main()[]
+      BetterCollection<String> names =
+            BetterCollectionFactory.asBetterCollection(
+                  new HashSet<>(), String.class);
+      names.add("Wolfgang");
+      names.add("Leander");
+      names.add("Klaus");
+      names.add("Reinhard");
+      String[] nameArray = names.toArray();
+      for (String s : nameArray) {
+         System.out.println(s);
+      }
+
+      ((Collection) names).add(42); // this will fail
+      // end::main()[]
    }
 }
-// end::BetterConcurrentSkipListSet[]

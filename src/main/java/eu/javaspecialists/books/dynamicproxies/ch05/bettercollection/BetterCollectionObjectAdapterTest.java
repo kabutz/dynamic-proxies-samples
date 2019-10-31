@@ -16,13 +16,18 @@
  * limitations under the License.
  */
 
-package eu.javaspecialists.books.dynamicproxies.ch05;
+package eu.javaspecialists.books.dynamicproxies.ch05.bettercollection;
 
-public class BetterArrayListTest {
+import java.util.concurrent.*;
+
+public class BetterCollectionObjectAdapterTest {
    public static void main(String... args) {
       // tag::main()[]
-      BetterArrayList<String> names =
-            new BetterArrayList<>(String.class);
+      BetterCollection<String> names =
+            new BetterCollectionObjectAdapter<>(
+                  ConcurrentHashMap.newKeySet(),
+                  String.class
+            );
       names.add("Wolfgang");
       names.add("Leander");
       names.add("Klaus");
