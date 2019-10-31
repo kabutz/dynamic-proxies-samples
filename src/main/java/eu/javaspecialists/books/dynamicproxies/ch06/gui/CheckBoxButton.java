@@ -16,7 +16,7 @@
  * limitations under the License.
  */
 
-package eu.javaspecialists.books.dynamicproxies.ch06;
+package eu.javaspecialists.books.dynamicproxies.ch06.gui;
 
 import javax.swing.*;
 import java.awt.*;
