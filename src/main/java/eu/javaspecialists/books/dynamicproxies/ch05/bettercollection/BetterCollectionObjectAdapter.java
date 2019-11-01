@@ -35,7 +35,7 @@ public class BetterCollectionObjectAdapter<E> implements BetterCollection<E> {
   @Override
   public E[] toArray() {
     return adaptee.toArray(
-        (E[]) Array.newInstance(valueType, adaptee.size()));
+        (E[]) Array.newInstance(valueType, 0));
   }
 
   // this is a typical problem with the Object Adapter Design

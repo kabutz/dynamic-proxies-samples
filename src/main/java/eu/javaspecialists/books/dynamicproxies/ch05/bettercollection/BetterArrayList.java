@@ -31,7 +31,7 @@ public class BetterArrayList<E> extends ArrayList<E> {
 
   @Override
   public E[] toArray() {
-    return toArray((E[]) Array.newInstance(type, size()));
+    return toArray((E[]) Array.newInstance(type, 0));
   }
 }
 // end::BetterArrayList[]

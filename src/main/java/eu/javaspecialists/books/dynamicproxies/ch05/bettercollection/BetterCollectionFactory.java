@@ -42,7 +42,7 @@ public class BetterCollectionFactory {
     }
     public E[] toArray() {
       return adaptee.toArray((E[]) Array.newInstance(
-          valueType, adaptee.size()));
+          valueType, 0));
     }
     // Whilst we are at it, we could also make it into
     // a checked collection, see java.util.Collections
