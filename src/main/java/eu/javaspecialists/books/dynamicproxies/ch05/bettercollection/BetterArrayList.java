@@ -18,20 +18,25 @@
 
 package eu.javaspecialists.books.dynamicproxies.ch05.bettercollection;
 
-import java.lang.reflect.*;
 import java.util.*;
 
 // tag::listing[]
 public class BetterArrayList<E> extends ArrayList<E> {
-  private final Class<E> type;
+  private final E[] seedArray;
 
-  public BetterArrayList(Class<E> type) {
-    this.type = type;
+  public BetterArrayList(E[] seedArray) {
+    if (seedArray.length != 0)
+      throw new IllegalArgumentException(
+          "seedArray must be empty");
+    this.seedArray = seedArray;
   }
 
   @Override
   public E[] toArray() {
-    return toArray((E[]) Array.newInstance(type, 0));
+    // NOTE: Shipilev showed that this is the fastest way to
+    // create a typed array from a collection in his benchmark
+    // https://shipilev.net/blog/2016/arrays-wisdom-ancients/
+    return toArray(seedArray);
   }
 }
 // end::BetterArrayList[]

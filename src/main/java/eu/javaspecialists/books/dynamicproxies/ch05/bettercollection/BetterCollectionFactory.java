@@ -20,29 +20,30 @@ package eu.javaspecialists.books.dynamicproxies.ch05.bettercollection;
 
 import eu.javaspecialists.books.dynamicproxies.*;
 
-import java.lang.reflect.*;
 import java.util.*;
 
 // tag::listing[]
 public class BetterCollectionFactory {
   public static <E> BetterCollection<E> asBetterCollection(
-      Collection<E> adaptee, Class<E> valueType) {
+      Collection<E> adaptee, E[] seedArray) {
     return Proxies.adapt(BetterCollection.class, adaptee,
         // this anonymous inner class contains the method that
         // we want to adapt
-        new AdaptationObject<>(adaptee, valueType));
+        new AdaptationObject<>(adaptee, seedArray));
   }
   public static class AdaptationObject<E> {
     private final Collection<E> adaptee;
-    private final Class<E> valueType;
+    private final E[] seedArray;
+    private final Class<?> valueType;
     public AdaptationObject(Collection<E> adaptee,
-                            Class<E> valueType) {
+                            E[] seedArray) {
       this.adaptee = adaptee;
-      this.valueType = valueType;
+      this.seedArray = seedArray;
+      this.valueType = seedArray.getClass()
+                           .getComponentType();
     }
     public E[] toArray() {
-      return adaptee.toArray((E[]) Array.newInstance(
-          valueType, 0));
+      return adaptee.toArray(seedArray);
     }
     // Whilst we are at it, we could also make it into
     // a checked collection, see java.util.Collections

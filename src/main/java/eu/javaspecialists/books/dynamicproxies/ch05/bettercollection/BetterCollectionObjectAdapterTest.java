@@ -26,7 +26,7 @@ public class BetterCollectionObjectAdapterTest {
     BetterCollection<String> names =
         new BetterCollectionObjectAdapter<>(
             ConcurrentHashMap.newKeySet(),
-            String.class
+            new String[0]
         );
     names.add("Wolfgang");
     names.add("Leander");

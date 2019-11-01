@@ -24,18 +24,17 @@ import java.util.*;
 
 public class BetterCollectionObjectAdapter<E> implements BetterCollection<E> {
   private final Collection<E> adaptee;
-  private final Class<E> valueType;
+  private final E[] seedArray;
 
   public BetterCollectionObjectAdapter(Collection<E> adaptee,
-                                       Class<E> valueType) {
+                                       E[] seedArray) {
     this.adaptee = adaptee;
-    this.valueType = valueType;
+    this.seedArray = seedArray;
   }
 
   @Override
   public E[] toArray() {
-    return adaptee.toArray(
-        (E[]) Array.newInstance(valueType, 0));
+    return adaptee.toArray(seedArray);
   }
 
   // this is a typical problem with the Object Adapter Design

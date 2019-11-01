@@ -25,13 +25,13 @@ import java.util.concurrent.*;
 public class BetterConcurrentSkipListSet<E>
     extends ConcurrentSkipListSet<E>
     implements BetterCollection<E> {
-  private final Class<E> type;
-  public BetterConcurrentSkipListSet(Class<E> type) {
-    this.type = type;
+  private final E[] seedArray;
+  public BetterConcurrentSkipListSet(E[] seedArray) {
+    this.seedArray = seedArray;
   }
   @Override
   public E[] toArray() {
-    return toArray((E[]) Array.newInstance(type, 0));
+    return toArray(seedArray);
   }
 }
 // end::listing[]

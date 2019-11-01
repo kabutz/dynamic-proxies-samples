@@ -22,7 +22,7 @@ public class BetterConcurrentSkipListTest {
   public static void main(String... args) {
     // tag::listing[]
     BetterConcurrentSkipListSet<String> names =
-        new BetterConcurrentSkipListSet<>(String.class);
+        new BetterConcurrentSkipListSet<>(new String[0]);
     names.add("Wolfgang");
     names.add("Leander");
     names.add("Klaus");

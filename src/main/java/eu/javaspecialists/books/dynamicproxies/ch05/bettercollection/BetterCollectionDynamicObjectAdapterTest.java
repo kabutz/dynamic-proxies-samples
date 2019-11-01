@@ -25,7 +25,7 @@ public class BetterCollectionDynamicObjectAdapterTest {
     // tag::listing[]
     BetterCollection<String> names =
         BetterCollectionFactory.asBetterCollection(
-            new HashSet<>(), String.class);
+            new HashSet<>(), new String[0]);
     names.add("Wolfgang");
     names.add("Leander");
     names.add("Klaus");

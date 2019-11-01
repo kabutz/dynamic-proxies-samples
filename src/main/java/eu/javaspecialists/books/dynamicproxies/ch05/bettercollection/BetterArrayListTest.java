@@ -22,7 +22,7 @@ public class BetterArrayListTest {
   public static void main(String... args) {
     // tag::listing[]
     BetterArrayList<String> names =
-        new BetterArrayList<>(String.class);
+        new BetterArrayList<>(new String[0]);
     names.add("Wolfgang");
     names.add("Leander");
     names.add("Klaus");
