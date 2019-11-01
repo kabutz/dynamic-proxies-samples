@@ -18,64 +18,90 @@
 
 package eu.javaspecialists.books.dynamicproxies.ch05;
 
-// tag::ObjectAdapterHandler[]
+import eu.javaspecialists.books.dynamicproxies.*;
+
 import java.lang.reflect.*;
 import java.util.*;
+import java.util.function.*;
+import java.util.stream.*;
 
+// tag::listing[]
 public class ObjectAdapterHandler implements InvocationHandler {
-   private final Object adapter;
    private final Object adaptee;
-   private Map<MethodIdentifier, Method> adaptedMethods;
-   public ObjectAdapterHandler(Object adapter, Object adaptee) {
-      this.adapter = adapter;
+   private final Object adapter;
+   private final Map<MethodKey, Method> adapteeMethodMap;
+   private final Map<MethodKey, Method> adapterMethodMap;
+   public ObjectAdapterHandler(Class<?> target,
+                               Object adaptee,
+                               Object adapter) {
       this.adaptee = adaptee;
-      adaptedMethods = new HashMap<>();
-      for (Method method : adapter.getClass().getDeclaredMethods()) {
-         if (!Modifier.isPublic(method.getModifiers()))
-            throw new IllegalArgumentException(
-                  "Method should be public: " + method
-            );
-         var key = new MethodIdentifier(method);
-         if (adaptedMethods.putIfAbsent(key, method) != null) {
-            throw new IllegalArgumentException(
-                  "Duplicate method: " + method
-            );
-         }
+      this.adapter = adapter;
+
+      var adapteeClass = adaptee.getClass();
+      if (classNonPublic(adapteeClass) &&
+                !target.isInstance(adaptee))
+         throw new IllegalArgumentException(
+               "Adaptee must either implement target interface" +
+                     " or be of a public class"
+         );
+
+      var adapterClass = adapter.getClass();
+      if (classNonPublic(adapterClass)) {
+         throw new IllegalArgumentException(
+               "Adapter object must be of a public class");
       }
+
+      var targetMethodMap = getMethodMap(target);
+      adapteeMethodMap = getMethodMap(adapteeClass);
+      adapterMethodMap = getMethodMap(adapterClass);
+
+      if (classNonPublic(adapterClass)) {
+         // use target interface methods
+         adapterMethodMap.replaceAll(
+               (key, value) -> targetMethodMap.get(key));
+      }
+
+      targetMethodMap.keySet().removeAll(
+            adapteeMethodMap.keySet()
+      );
+      targetMethodMap.keySet().removeAll(
+            adapterMethodMap.keySet()
+      );
+
+      if (!targetMethodMap.isEmpty())
+         throw new IllegalArgumentException(
+               "Target methods not implemented: " +
+                     targetMethodMap.keySet());
+   }
+   private boolean classNonPublic(Class<?> clazz) {
+      return !Modifier.isPublic(clazz.getModifiers());
+   }
+   private Set<MethodKey> getMethodKeys(Class<?> clazz) {
+      return Stream.of(clazz.getMethods())
+                   .map(MethodKey::new)
+                   .collect(Collectors.toSet());
+   }
+   private Map<MethodKey, Method> getMethodMap(Class<?> clazz) {
+      return Stream.of(clazz.getMethods())
+                   .collect(Collectors.toMap(MethodKey::new,
+                         Function.identity()));
    }
    @Override
    public Object invoke(Object proxy, Method method,
                         Object[] args) throws Throwable {
       try {
-         Method other = adaptedMethods.get(new MethodIdentifier(method));
-         if (other != null) {
-            return other.invoke(adapter, args);
-         } else {
-            return method.invoke(adaptee, args);
+         var key = new MethodKey(method);
+         var otherMethod = adapterMethodMap.get(key);
+         if (otherMethod != null) {
+            return otherMethod.invoke(adapter, args);
          }
+         otherMethod = adapteeMethodMap.get(key);
+         if (otherMethod != null)
+            return otherMethod.invoke(adaptee, args);
+         return method.invoke(adaptee, args);
       } catch (InvocationTargetException e) {
          throw e.getCause();
       }
    }
-   private static final class MethodIdentifier {
-      private final String name;
-      private final Class<?>[] parameters;
-      public MethodIdentifier(Method m) {
-         name = m.getName();
-         parameters = m.getParameterTypes();
-      }
-      // we can save time by assuming that we only compare against
-      // other MethodIdentifier objects
-      @Override
-      public boolean equals(Object o) {
-         MethodIdentifier mid = (MethodIdentifier) o;
-         return name.equals(mid.name) &&
-                      Arrays.equals(parameters, mid.parameters);
-      }
-      @Override
-      public int hashCode() {
-         return name.hashCode();
-      }
-   }
 }
-// end::ObjectAdapterHandler[]
+// end::listing[]
