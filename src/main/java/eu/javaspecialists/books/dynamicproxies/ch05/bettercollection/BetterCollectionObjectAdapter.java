@@ -18,11 +18,12 @@
 
 package eu.javaspecialists.books.dynamicproxies.ch05.bettercollection;
 
-// tag::listing[]
 import java.lang.reflect.*;
 import java.util.*;
 
-public class BetterCollectionObjectAdapter<E> implements BetterCollection<E> {
+// tag::listing[]
+public class BetterCollectionObjectAdapter<E>
+    implements BetterCollection<E> {
   private final Collection<E> adaptee;
   private final E[] seedArray;
 
@@ -37,8 +38,8 @@ public class BetterCollectionObjectAdapter<E> implements BetterCollection<E> {
     return adaptee.toArray(seedArray);
   }
 
-  // this is a typical problem with the Object Adapter Design
-  // Pattern - you have implement all the methods :-(
+  // this is a typical problem with the object adapter design
+  // pattern - we have to implement all the methods :-(
   @Override
   public int size() {
     return adaptee.size();

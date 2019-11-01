@@ -34,7 +34,7 @@ public class BetterArrayList<E> extends ArrayList<E> {
   @Override
   public E[] toArray() {
     // NOTE: Shipilev showed that this is the fastest way to
-    // create a typed array from a collection in his benchmark
+    // create a typed array from a collection:
     // https://shipilev.net/blog/2016/arrays-wisdom-ancients/
     return toArray(seedArray);
   }
