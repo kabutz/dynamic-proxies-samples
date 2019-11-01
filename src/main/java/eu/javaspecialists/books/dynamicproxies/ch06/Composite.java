@@ -20,7 +20,7 @@ package eu.javaspecialists.books.dynamicproxies.ch06;
 
 // tag::listing[]
 public interface Composite<T> {
-   default void add(T t) {}
-   default boolean remove(T t) { return false; }
+  default void add(T t) {}
+  default boolean remove(T t) { return false; }
 }
 // end::listing[]

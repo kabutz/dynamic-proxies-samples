@@ -22,19 +22,19 @@ package eu.javaspecialists.books.dynamicproxies.shortcut.chap8.chap8_1;
  * Created by Sven Ruppert on 14.01.14.
  */
 public class Util {
-   public static String prettyPrint(Class clazz) {
-      return prettyPrint(clazz, "");
-   }
+  public static String prettyPrint(Class clazz) {
+    return prettyPrint(clazz, "");
+  }
 
-   public static String prettyPrint(Class c, String postfix) {
-      if (c.isArray()) {
-         return prettyPrint(c.getComponentType(), postfix + "[]");
-      } else {
-         Package pack = c.getPackage();
-         if (pack != null && pack.getName().equals("java.lang")) {
-            return c.getSimpleName() + postfix;
-         }
-         return c.getName() + postfix;
+  public static String prettyPrint(Class c, String postfix) {
+    if (c.isArray()) {
+      return prettyPrint(c.getComponentType(), postfix + "[]");
+    } else {
+      Package pack = c.getPackage();
+      if (pack != null && pack.getName().equals("java.lang")) {
+        return c.getSimpleName() + postfix;
       }
-   }
+      return c.getName() + postfix;
+    }
+  }
 }

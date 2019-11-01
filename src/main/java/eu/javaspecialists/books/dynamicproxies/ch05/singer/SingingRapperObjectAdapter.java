@@ -19,12 +19,12 @@
 package eu.javaspecialists.books.dynamicproxies.ch05.singer;
 
 public class SingingRapperObjectAdapter implements Singer {
-   private final Rapper adaptee;
-   public SingingRapperObjectAdapter(Rapper adaptee) {
-      this.adaptee = adaptee;
-   }
-   @Override
-   public void sing() {
-      adaptee.talk();
-   }
+  private final Rapper adaptee;
+  public SingingRapperObjectAdapter(Rapper adaptee) {
+    this.adaptee = adaptee;
+  }
+  @Override
+  public void sing() {
+    adaptee.talk();
+  }
 }

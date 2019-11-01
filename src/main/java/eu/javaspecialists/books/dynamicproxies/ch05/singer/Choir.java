@@ -21,13 +21,13 @@ package eu.javaspecialists.books.dynamicproxies.ch05.singer;
 import java.util.*;
 
 public class Choir {
-   private final Collection<Singer> singers =
-         new ArrayList<>();
+  private final Collection<Singer> singers =
+      new ArrayList<>();
 
-   public void add(Singer singer) {singers.add(singer);}
-   public void remove(Singer singer) {singers.remove(singer);}
+  public void add(Singer singer) {singers.add(singer);}
+  public void remove(Singer singer) {singers.remove(singer);}
 
-   public void singAll() {
-      singers.forEach(Singer::sing);
-   }
+  public void singAll() {
+    singers.forEach(Singer::sing);
+  }
 }

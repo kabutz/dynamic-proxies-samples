@@ -25,20 +25,20 @@ import java.io.*;
  * Created by Sven Ruppert on 06.01.14.
  */
 public class GeneratingJavaFileManager extends ForwardingJavaFileManager<JavaFileManager> {
-   private final GeneratedClassFile gcf;
+  private final GeneratedClassFile gcf;
 
-   public GeneratingJavaFileManager(
-         StandardJavaFileManager sjfm,
-         GeneratedClassFile gcf) {
-      super(sjfm);
-      this.gcf = gcf;
-   }
+  public GeneratingJavaFileManager(
+      StandardJavaFileManager sjfm,
+      GeneratedClassFile gcf) {
+    super(sjfm);
+    this.gcf = gcf;
+  }
 
-   @Override
-   public JavaFileObject getJavaFileForOutput(
-         Location location, String className,
-         JavaFileObject.Kind kind, FileObject sibling)
-         throws IOException {
-      return gcf;
-   }
+  @Override
+  public JavaFileObject getJavaFileForOutput(
+      Location location, String className,
+      JavaFileObject.Kind kind, FileObject sibling)
+      throws IOException {
+    return gcf;
+  }
 }

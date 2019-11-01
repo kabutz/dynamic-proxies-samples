@@ -26,22 +26,22 @@ import java.util.concurrent.locks.*;
  * Created by Sven Ruppert on 14.01.14.
  */
 public class VirtualMoralFibreThreadSafe {
-   private volatile MoralFibre realSubject;
-   private final Lock initializationLock = new ReentrantLock();
+  private volatile MoralFibre realSubject;
+  private final Lock initializationLock = new ReentrantLock();
 
-   protected MoralFibre realSubject() {
-      MoralFibre result = realSubject;
-      if (result == null) {
-         initializationLock.lock();
-         try {
-            result = realSubject;
-            if (result == null) {
-               result = realSubject = new MoralFibreImpl();
-            }
-         } finally {
-            initializationLock.unlock();
-         }
+  protected MoralFibre realSubject() {
+    MoralFibre result = realSubject;
+    if (result == null) {
+      initializationLock.lock();
+      try {
+        result = realSubject;
+        if (result == null) {
+          result = realSubject = new MoralFibreImpl();
+        }
+      } finally {
+        initializationLock.unlock();
       }
-      return result;
-   }
+    }
+    return result;
+  }
 }

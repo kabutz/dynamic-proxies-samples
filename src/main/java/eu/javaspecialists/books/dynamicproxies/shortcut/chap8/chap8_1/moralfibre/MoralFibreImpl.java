@@ -22,28 +22,28 @@ package eu.javaspecialists.books.dynamicproxies.shortcut.chap8.chap8_1.moralfibr
  * Created by Sven Ruppert on 14.01.14.
  */
 public class MoralFibreImpl implements MoralFibre {
-   // very expensive to create moral fibre!
-   private byte[] costOfMoralFibre = new byte[900 * 1000];
+  // very expensive to create moral fibre!
+  private byte[] costOfMoralFibre = new byte[900 * 1000];
 
-   {
-      System.out.println("Moral Fibre Created!");
-   }
+  {
+    System.out.println("Moral Fibre Created!");
+  }
 
-   // AIDS orphans
-   @Override
-   public double actSociallyResponsibly() {
-      return costOfMoralFibre.length / 3;
-   }
+  // AIDS orphans
+  @Override
+  public double actSociallyResponsibly() {
+    return costOfMoralFibre.length / 3;
+  }
 
-   // shares to employees
-   @Override
-   public double empowerEmployees() {
-      return costOfMoralFibre.length / 3;
-   }
+  // shares to employees
+  @Override
+  public double empowerEmployees() {
+    return costOfMoralFibre.length / 3;
+  }
 
-   // oiled sea birds
-   @Override
-   public double cleanupEnvironment() {
-      return costOfMoralFibre.length / 3;
-   }
+  // oiled sea birds
+  @Override
+  public double cleanupEnvironment() {
+    return costOfMoralFibre.length / 3;
+  }
 }

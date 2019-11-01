@@ -19,8 +19,8 @@
 package eu.javaspecialists.books.dynamicproxies.ch05.singer;
 
 public class Bass implements Singer {
-   @Override
-   public void sing() {
-      System.out.println("Bass.sing()");
-   }
+  @Override
+  public void sing() {
+    System.out.println("Bass.sing()");
+  }
 }

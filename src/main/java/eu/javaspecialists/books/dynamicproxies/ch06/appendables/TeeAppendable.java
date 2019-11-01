@@ -25,42 +25,42 @@ import java.util.*;
 
 // tag::listing[]
 public class TeeAppendable<E extends Appendable & Closeable & Flushable>
-      implements Appendable, Closeable, Flushable, Composite<E> {
-   private final Collection<E> children = new ArrayList<>();
+    implements Appendable, Closeable, Flushable, Composite<E> {
+  private final Collection<E> children = new ArrayList<>();
 
-   @Override
-   public void add(E child) {
-      children.add(child);
-   }
+  @Override
+  public void add(E child) {
+    children.add(child);
+  }
 
-   @Override
-   public boolean remove(E child) {
-      return children.remove(child);
-   }
+  @Override
+  public boolean remove(E child) {
+    return children.remove(child);
+  }
 
-   @Override
-   public Appendable append(CharSequence csq) throws IOException {
-      for (var child : children) child.append(csq);
-      return this;
-   }
-   @Override
-   public Appendable append(CharSequence csq, int start, int end)
-         throws IOException {
-      for (var child : children) child.append(csq, start, end);
-      return this;
-   }
-   @Override
-   public Appendable append(char c) throws IOException {
-      for (var child : children) child.append(c);
-      return this;
-   }
-   @Override
-   public void close() throws IOException {
-      for (var child : children) child.close();
-   }
-   @Override
-   public void flush() throws IOException {
-      for (var child : children) child.flush();
-   }
+  @Override
+  public Appendable append(CharSequence csq) throws IOException {
+    for (var child : children) child.append(csq);
+    return this;
+  }
+  @Override
+  public Appendable append(CharSequence csq, int start, int end)
+      throws IOException {
+    for (var child : children) child.append(csq, start, end);
+    return this;
+  }
+  @Override
+  public Appendable append(char c) throws IOException {
+    for (var child : children) child.append(c);
+    return this;
+  }
+  @Override
+  public void close() throws IOException {
+    for (var child : children) child.close();
+  }
+  @Override
+  public void flush() throws IOException {
+    for (var child : children) child.flush();
+  }
 }
 // end::listing[]

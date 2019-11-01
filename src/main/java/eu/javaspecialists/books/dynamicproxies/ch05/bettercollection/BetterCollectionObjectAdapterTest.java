@@ -21,21 +21,21 @@ package eu.javaspecialists.books.dynamicproxies.ch05.bettercollection;
 import java.util.concurrent.*;
 
 public class BetterCollectionObjectAdapterTest {
-   public static void main(String... args) {
-      // tag::listing[]
-      BetterCollection<String> names =
-            new BetterCollectionObjectAdapter<>(
-                  ConcurrentHashMap.newKeySet(),
-                  String.class
-            );
-      names.add("Wolfgang");
-      names.add("Leander");
-      names.add("Klaus");
-      names.add("Reinhard");
-      String[] nameArray = names.toArray();
-      for (String name : nameArray) {
-         System.out.println(name.toUpperCase());
-      }
-      // end::listing[]
-   }
+  public static void main(String... args) {
+    // tag::listing[]
+    BetterCollection<String> names =
+        new BetterCollectionObjectAdapter<>(
+            ConcurrentHashMap.newKeySet(),
+            String.class
+        );
+    names.add("Wolfgang");
+    names.add("Leander");
+    names.add("Klaus");
+    names.add("Reinhard");
+    String[] nameArray = names.toArray();
+    for (String name : nameArray) {
+      System.out.println(name.toUpperCase());
+    }
+    // end::listing[]
+  }
 }

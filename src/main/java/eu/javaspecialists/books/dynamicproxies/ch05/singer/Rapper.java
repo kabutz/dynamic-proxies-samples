@@ -19,7 +19,7 @@
 package eu.javaspecialists.books.dynamicproxies.ch05.singer;
 
 public class Rapper {
-   public void talk() {
-      System.out.println("Vulgar lyrics deleted...");
-   }
+  public void talk() {
+    System.out.println("Vulgar lyrics deleted...");
+  }
 }

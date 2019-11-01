@@ -20,25 +20,25 @@ package eu.javaspecialists.books.dynamicproxies.ch07;
 
 // tag::RealMoralFiber[]
 public class RealMoralFiber implements MoralFiber {
-   // very expensive to create moral fiber!
-   private byte[] costOfMoralFibre = new byte[900 * 1000];
-   {
-      System.out.println("MoralFibre Created!");
-   }
-   // AIDS orphans
-   @Override
-   public double actSociallyResponsibly() {
-      return costOfMoralFibre.length / 3;
-   }
-   // shares to employees
-   @Override
-   public double empowerEmployees() {
-      return costOfMoralFibre.length / 3;
-   }
-   // oiled sea birds
-   @Override
-   public double cleanupEnvironment() {
-      return costOfMoralFibre.length / 3;
-   }
+  // very expensive to create moral fiber!
+  private byte[] costOfMoralFibre = new byte[900 * 1000];
+  {
+    System.out.println("MoralFibre Created!");
+  }
+  // AIDS orphans
+  @Override
+  public double actSociallyResponsibly() {
+    return costOfMoralFibre.length / 3;
+  }
+  // shares to employees
+  @Override
+  public double empowerEmployees() {
+    return costOfMoralFibre.length / 3;
+  }
+  // oiled sea birds
+  @Override
+  public double cleanupEnvironment() {
+    return costOfMoralFibre.length / 3;
+  }
 }
 // end::RealMoralFiber[]

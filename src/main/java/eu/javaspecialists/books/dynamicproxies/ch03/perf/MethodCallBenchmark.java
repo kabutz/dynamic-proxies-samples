@@ -27,46 +27,46 @@ import java.util.concurrent.*;
 @OutputTimeUnit(TimeUnit.NANOSECONDS)
 @State(Scope.Benchmark)
 public class MethodCallBenchmark {
-   // direct call to RealTester
-   private final RealTester realTester = new RealTester();
+  // direct call to RealTester
+  private final RealTester realTester = new RealTester();
 
-   // static proxies
-   private final Tester staticProxy = new ProxyTester();
-   private final Tester methodReference = realTester::increment;
+  // static proxies
+  private final Tester staticProxy = new ProxyTester();
+  private final Tester methodReference = realTester::increment;
 
-   // dynamic proxies
-   private final Tester dynamicProxyDirectCall =
-         Proxies.castProxy(Tester.class,
-               (proxy, method, args) ->
-                     realTester.increment());
-   private final Tester dynamicProxyReflectiveCall =
-         Proxies.castProxy(Tester.class,
-               (proxy, method, args) ->
-                     method.invoke(realTester, args));
+  // dynamic proxies
+  private final Tester dynamicProxyDirectCall =
+      Proxies.castProxy(Tester.class,
+          (proxy, method, args) ->
+              realTester.increment());
+  private final Tester dynamicProxyReflectiveCall =
+      Proxies.castProxy(Tester.class,
+          (proxy, method, args) ->
+              method.invoke(realTester, args));
 
-   @Benchmark
-   public long directCall() {
-      return realTester.increment();
-   }
-   @Benchmark
-   public long staticProxy() {
-      return staticProxy.increment();
-   }
-   @Benchmark
-   public long methodReference() {
-      return methodReference.increment();
-   }
-   @Benchmark
-   public long dynamicProxyThenDirectCall() {
-      return dynamicProxyDirectCall.increment();
-   }
-   @Benchmark
-   public long dynamicProxyThenReflectiveCall() {
-      return dynamicProxyReflectiveCall.increment();
-   }
+  @Benchmark
+  public long directCall() {
+    return realTester.increment();
+  }
+  @Benchmark
+  public long staticProxy() {
+    return staticProxy.increment();
+  }
+  @Benchmark
+  public long methodReference() {
+    return methodReference.increment();
+  }
+  @Benchmark
+  public long dynamicProxyThenDirectCall() {
+    return dynamicProxyDirectCall.increment();
+  }
+  @Benchmark
+  public long dynamicProxyThenReflectiveCall() {
+    return dynamicProxyReflectiveCall.increment();
+  }
 
-   public static void main(String... args) throws Exception {
-      org.openjdk.jmh.Main.main(args);
-   }
+  public static void main(String... args) throws Exception {
+    org.openjdk.jmh.Main.main(args);
+  }
 }
 // end::listing[]

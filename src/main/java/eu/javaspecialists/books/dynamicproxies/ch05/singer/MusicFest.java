@@ -19,16 +19,16 @@
 package eu.javaspecialists.books.dynamicproxies.ch05.singer;
 
 public class MusicFest {
-   public static void main(String... args) {
-      var choir = new Choir();
+  public static void main(String... args) {
+    var choir = new Choir();
 
-      choir.add(new Bass());
-      choir.add(new Soprano());
-      choir.add(new Tenor());
+    choir.add(new Bass());
+    choir.add(new Soprano());
+    choir.add(new Tenor());
 
-      choir.add(new SingingRapperClassAdapter());
-      choir.add(new SingingRapperObjectAdapter(new Rapper()));
+    choir.add(new SingingRapperClassAdapter());
+    choir.add(new SingingRapperObjectAdapter(new Rapper()));
 
-      choir.singAll();
-   }
+    choir.singAll();
+  }
 }

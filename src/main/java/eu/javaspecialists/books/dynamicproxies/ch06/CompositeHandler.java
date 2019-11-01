@@ -26,63 +26,63 @@ import java.util.function.*;
 
 // tag::listing[]
 public class CompositeHandler implements InvocationHandler {
-   private final Map<MethodKey, Reducer> reducers;
-   private final List<Object> children = new ArrayList<>();
+  private final Map<MethodKey, Reducer> reducers;
+  private final List<Object> children = new ArrayList<>();
 
-   public <E extends Composite<E>> CompositeHandler(
-         Class<E> target, Map<MethodKey, Reducer> reducers) {
-      if (!Composite.class.isAssignableFrom(target))
-         throw new IllegalArgumentException(
-               "target is not derived from Composite");
-      this.reducers = reducers == null ? Map.of() : reducers;
-   }
+  public <E extends Composite<E>> CompositeHandler(
+      Class<E> target, Map<MethodKey, Reducer> reducers) {
+    if (!Composite.class.isAssignableFrom(target))
+      throw new IllegalArgumentException(
+          "target is not derived from Composite");
+    this.reducers = reducers == null ? Map.of() : reducers;
+  }
 
-   @Override
-   public Object invoke(Object proxy,
-                        Method method, Object[] args)
-         throws Throwable {
-      if (matches(method, "add")) {
-         children.add(args[0]);
-         return null;
-      } else if (matches(method, "remove")) {
-         return children.remove(args[0]);
+  @Override
+  public Object invoke(Object proxy,
+                       Method method, Object[] args)
+      throws Throwable {
+    if (matches(method, "add")) {
+      children.add(args[0]);
+      return null;
+    } else if (matches(method, "remove")) {
+      return children.remove(args[0]);
+    }
+    class UncheckedException extends RuntimeException {
+      public UncheckedException(Throwable cause) {
+        super(cause);
       }
-      class UncheckedException extends RuntimeException {
-         public UncheckedException(Throwable cause) {
-            super(cause);
-         }
-      }
-      var reducer = reducers.getOrDefault(
-            new MethodKey(method), Reducer.NULL_REDUCER);
-      try {
-         Function<Object, Object> mapFunction = child -> {
-            try {
-               return method.invoke(child, args);
-            } catch (IllegalAccessException e) {
-               throw new UncheckedException(e);
-            } catch (InvocationTargetException e) {
-               throw new UncheckedException(
-                     e.getCause());
-            }
-         };
-         var result =
-               children.stream()
-                     .map(mapFunction)
-                     .reduce(reducer.getIdentity(),
-                           reducer.getMerger());
-         if (reducer == Reducer.PROXY_INSTANCE_REDUCER)
-            return proxy;
-         return result;
-      } catch (UncheckedException ex) {
-         throw ex.getCause();
-      }
-   }
+    }
+    var reducer = reducers.getOrDefault(
+        new MethodKey(method), Reducer.NULL_REDUCER);
+    try {
+      Function<Object, Object> mapFunction = child -> {
+        try {
+          return method.invoke(child, args);
+        } catch (IllegalAccessException e) {
+          throw new UncheckedException(e);
+        } catch (InvocationTargetException e) {
+          throw new UncheckedException(
+              e.getCause());
+        }
+      };
+      var result =
+          children.stream()
+              .map(mapFunction)
+              .reduce(reducer.getIdentity(),
+                  reducer.getMerger());
+      if (reducer == Reducer.PROXY_INSTANCE_REDUCER)
+        return proxy;
+      return result;
+    } catch (UncheckedException ex) {
+      throw ex.getCause();
+    }
+  }
 
-   private boolean matches(Method method, String name) {
-      return name.equals(method.getName())
-                   && method.getParameterCount() == 1
-                   && method.getParameterTypes()[0]
-                            == Object.class;
-   }
+  private boolean matches(Method method, String name) {
+    return name.equals(method.getName())
+               && method.getParameterCount() == 1
+               && method.getParameterTypes()[0]
+                      == Object.class;
+  }
 }
 // end::listing[]

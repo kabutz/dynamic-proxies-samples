@@ -22,32 +22,32 @@ import java.util.*;
 
 // tag::Company[]
 public class Company {
-   private final String name;
-   private final MoralFiber moralFiber;
-   private double cash;
-   public Company(String name, double cash, MoralFiber moralFiber) {
-      this.name = name;
-      this.cash = cash;
-      this.moralFiber = moralFiber;
-      System.out.println("Company constructed: " + this);
-   }
-   public void damageEnvironment() {
-      cash += 4000000;
-      System.out.println("Company.damageEnvironment(): " + this);
-   }
-   public void makeMoney() {
-      cash += 1000000;
-      System.out.println("Company.makeMoney(): " + this);
-   }
-   public void becomeFocusOfMediaAttention() {
-      cash -= moralFiber.actSociallyResponsibly();
-      cash -= moralFiber.cleanupEnvironment();
-      cash -= moralFiber.empowerEmployees();
-      System.out.println("Look how good we are... " + this);
-   }
-   @Override
-   public String toString() {
-      return String.format(Locale.US, "%s has $ %.2f", name, cash);
-   }
+  private final String name;
+  private final MoralFiber moralFiber;
+  private double cash;
+  public Company(String name, double cash, MoralFiber moralFiber) {
+    this.name = name;
+    this.cash = cash;
+    this.moralFiber = moralFiber;
+    System.out.println("Company constructed: " + this);
+  }
+  public void damageEnvironment() {
+    cash += 4000000;
+    System.out.println("Company.damageEnvironment(): " + this);
+  }
+  public void makeMoney() {
+    cash += 1000000;
+    System.out.println("Company.makeMoney(): " + this);
+  }
+  public void becomeFocusOfMediaAttention() {
+    cash -= moralFiber.actSociallyResponsibly();
+    cash -= moralFiber.cleanupEnvironment();
+    cash -= moralFiber.empowerEmployees();
+    System.out.println("Look how good we are... " + this);
+  }
+  @Override
+  public String toString() {
+    return String.format(Locale.US, "%s has $ %.2f", name, cash);
+  }
 }
 // end::Company[]

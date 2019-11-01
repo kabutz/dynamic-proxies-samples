@@ -22,16 +22,16 @@ import java.io.*;
 
 // tag::listing[]
 public class Client {
-   public static void main(String... args) throws IOException {
-      Canada canada = new CanadianEmbassy();
-      boolean visaObtained = canada.canGetVisa(
-            "Heinz Kabutz", true, false);
-      System.out.println("visaObtained = " + visaObtained);
-      System.out.println("Wins lottery ...");
-      visaObtained = canada.canGetVisa(
-            "Heinz Kabutz", true, true);
-      System.out.println("visaObtained = " + visaObtained);
-   }
+  public static void main(String... args) throws IOException {
+    Canada canada = new CanadianEmbassy();
+    boolean visaObtained = canada.canGetVisa(
+        "Heinz Kabutz", true, false);
+    System.out.println("visaObtained = " + visaObtained);
+    System.out.println("Wins lottery ...");
+    visaObtained = canada.canGetVisa(
+        "Heinz Kabutz", true, true);
+    System.out.println("visaObtained = " + visaObtained);
+  }
 }
 // end::listing[]
 

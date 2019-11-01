@@ -19,18 +19,18 @@
 package eu.javaspecialists.books.dynamicproxies.ch05.bettercollection;
 
 public class BetterConcurrentSkipListTest {
-   public static void main(String... args) {
-      // tag::listing[]
-      BetterConcurrentSkipListSet<String> names =
-            new BetterConcurrentSkipListSet<>(String.class);
-      names.add("Wolfgang");
-      names.add("Leander");
-      names.add("Klaus");
-      names.add("Reinhard");
-      String[] nameArray = names.toArray();
-      for (String name : nameArray) {
-         System.out.println(name.toUpperCase());
-      }
-      // end::listing[]
-   }
+  public static void main(String... args) {
+    // tag::listing[]
+    BetterConcurrentSkipListSet<String> names =
+        new BetterConcurrentSkipListSet<>(String.class);
+    names.add("Wolfgang");
+    names.add("Leander");
+    names.add("Klaus");
+    names.add("Reinhard");
+    String[] nameArray = names.toArray();
+    for (String name : nameArray) {
+      System.out.println(name.toUpperCase());
+    }
+    // end::listing[]
+  }
 }

@@ -22,10 +22,10 @@ import eu.javaspecialists.books.dynamicproxies.ch02.virtual.*;
 
 // tag::listing[]
 public class UnmodifiableTest {
-   public static void main(String... args) {
-      ConcurrentTest.check(new UnmodifiableCustomMap<>(
-            new CustomHashMap<>()
-      ));
-   }
+  public static void main(String... args) {
+    ConcurrentTest.check(new UnmodifiableCustomMap<>(
+        new CustomHashMap<>()
+    ));
+  }
 }
 // end::listing[]

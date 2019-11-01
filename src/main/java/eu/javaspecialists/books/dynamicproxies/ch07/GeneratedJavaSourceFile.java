@@ -24,17 +24,17 @@ import java.io.*;
 import java.net.*;
 
 public class GeneratedJavaSourceFile extends SimpleJavaFileObject {
-   private CharSequence javaSource;
-   public GeneratedJavaSourceFile(String className,
-                                  CharSequence javaSource) {
-      super(URI.create(className + ".java"), Kind.SOURCE);
-      this.javaSource = javaSource;
-   }
-   @Override
-   public CharSequence getCharContent(boolean ignoreEncodeErrors)
-         throws IOException {
-      return javaSource;
-   }
+  private CharSequence javaSource;
+  public GeneratedJavaSourceFile(String className,
+                                 CharSequence javaSource) {
+    super(URI.create(className + ".java"), Kind.SOURCE);
+    this.javaSource = javaSource;
+  }
+  @Override
+  public CharSequence getCharContent(boolean ignoreEncodeErrors)
+      throws IOException {
+    return javaSource;
+  }
 }
 // end::GeneratedJavaSourceFile[]
 

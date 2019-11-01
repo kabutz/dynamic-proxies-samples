@@ -23,15 +23,15 @@ import java.util.*;
 
 // tag::listing[]
 public class BetterArrayList<E> extends ArrayList<E> {
-   private final Class<E> type;
+  private final Class<E> type;
 
-   public BetterArrayList(Class<E> type) {
-      this.type = type;
-   }
+  public BetterArrayList(Class<E> type) {
+    this.type = type;
+  }
 
-   @Override
-   public E[] toArray() {
-      return toArray((E[]) Array.newInstance(type, size()));
-   }
+  @Override
+  public E[] toArray() {
+    return toArray((E[]) Array.newInstance(type, size()));
+  }
 }
 // end::BetterArrayList[]

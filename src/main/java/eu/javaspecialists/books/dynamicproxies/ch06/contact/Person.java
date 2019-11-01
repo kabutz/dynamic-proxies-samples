@@ -20,12 +20,12 @@ package eu.javaspecialists.books.dynamicproxies.ch06.contact;
 
 // tag::listing[]
 public class Person implements Contact {
-   private final String email;
-   public Person(String email) {this.email = email;}
-   @Override
-   public void sendMail(String body) {
-      // connecting to JavaMail and off it goes ...
-      System.out.println("Sending " + body + " to " + email);
-   }
+  private final String email;
+  public Person(String email) {this.email = email;}
+  @Override
+  public void sendMail(String body) {
+    // connecting to JavaMail and off it goes ...
+    System.out.println("Sending " + body + " to " + email);
+  }
 }
 // end::listing[]

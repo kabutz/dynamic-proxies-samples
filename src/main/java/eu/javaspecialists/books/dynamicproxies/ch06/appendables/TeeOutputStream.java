@@ -25,34 +25,34 @@ import java.util.*;
 
 // tag::listing[]
 public class TeeOutputStream extends OutputStream
-      implements Composite<OutputStream> {
-   private final Collection<OutputStream> streams =
-         new ArrayList<>();
-   @Override
-   public void add(OutputStream out) {
-      streams.add(out);
-   }
-   @Override
-   public boolean remove(OutputStream out) {
-      return streams.remove(out);
-   }
-   @Override
-   public void write(int b) throws IOException {
-      for (var out : streams) {
-         out.write(b);
-      }
-   }
-   @Override
-   public void flush() throws IOException {
-      for (var out : streams) {
-         out.flush();
-      }
-   }
-   @Override
-   public void close() throws IOException {
-      for (var out : streams) {
-         out.close();
-      }
-   }
+    implements Composite<OutputStream> {
+  private final Collection<OutputStream> streams =
+      new ArrayList<>();
+  @Override
+  public void add(OutputStream out) {
+    streams.add(out);
+  }
+  @Override
+  public boolean remove(OutputStream out) {
+    return streams.remove(out);
+  }
+  @Override
+  public void write(int b) throws IOException {
+    for (var out : streams) {
+      out.write(b);
+    }
+  }
+  @Override
+  public void flush() throws IOException {
+    for (var out : streams) {
+      out.flush();
+    }
+  }
+  @Override
+  public void close() throws IOException {
+    for (var out : streams) {
+      out.close();
+    }
+  }
 }
 // end::listing[]

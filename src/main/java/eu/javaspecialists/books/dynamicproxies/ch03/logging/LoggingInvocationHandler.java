@@ -24,37 +24,37 @@ import java.util.stream.*;
 
 // tag::listing[]
 public class LoggingInvocationHandler implements InvocationHandler {
-   private final Logger log;
-   private final Object obj;
-   public LoggingInvocationHandler(Logger log, Object obj) {
-      this.log = log;
-      this.obj = obj;
-   }
-   @Override
-   public Object invoke(Object proxy, Method method,
-                        Object[] args) throws Throwable {
-      log.info(() -> "Entering " + toString(method, args));
-      long start = nanoTime();
-      try {
-         return method.invoke(obj, args);
-      } finally {
-         long nanos = start == 0 ? 0 : nanoTime() - start;
-         log.info(() -> "Exiting " + toString(method, args));
-         log.fine(() -> "Execution took " + nanos + "ns");
-      }
-   }
-   private long nanoTime() {
-      // optimization - nanoTime() is an expensive native call
-      return log.isLoggable(Level.FINE) ? System.nanoTime() : 0;
-   }
-   private final static Object[] EMPTY = {};
-   private String toString(Method method, Object[] args) {
-      if (args == null) args = EMPTY;
-      return Stream.of(args).map(String::valueOf)
-                   .collect(Collectors.joining(", ",
-                         method.getDeclaringClass().getName()
-                               + "." + method.getName() + "(",
-                         ")"));
-   }
+  private final Logger log;
+  private final Object obj;
+  public LoggingInvocationHandler(Logger log, Object obj) {
+    this.log = log;
+    this.obj = obj;
+  }
+  @Override
+  public Object invoke(Object proxy, Method method,
+                       Object[] args) throws Throwable {
+    log.info(() -> "Entering " + toString(method, args));
+    long start = nanoTime();
+    try {
+      return method.invoke(obj, args);
+    } finally {
+      long nanos = start == 0 ? 0 : nanoTime() - start;
+      log.info(() -> "Exiting " + toString(method, args));
+      log.fine(() -> "Execution took " + nanos + "ns");
+    }
+  }
+  private long nanoTime() {
+    // optimization - nanoTime() is an expensive native call
+    return log.isLoggable(Level.FINE) ? System.nanoTime() : 0;
+  }
+  private final static Object[] EMPTY = {};
+  private String toString(Method method, Object[] args) {
+    if (args == null) args = EMPTY;
+    return Stream.of(args).map(String::valueOf)
+               .collect(Collectors.joining(", ",
+                   method.getDeclaringClass().getName()
+                       + "." + method.getName() + "(",
+                   ")"));
+  }
 }
 // end::listing[]

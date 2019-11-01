@@ -21,25 +21,25 @@ package eu.javaspecialists.books.dynamicproxies.ch05.singer;
 import eu.javaspecialists.books.dynamicproxies.*;
 
 public class MusicFestDynamic {
-   public static void main(String... args) {
-      var choir = new Choir();
+  public static void main(String... args) {
+    var choir = new Choir();
 
-      choir.add(new Bass());
-      choir.add(new Soprano());
-      choir.add(new Tenor());
+    choir.add(new Bass());
+    choir.add(new Soprano());
+    choir.add(new Tenor());
 
-      var rapper = new Rapper();
-      // pretty pointless with just a single method
-      choir.add(Proxies.adapt(Singer.class, rapper,
-            new MyObject(rapper)));
+    var rapper = new Rapper();
+    // pretty pointless with just a single method
+    choir.add(Proxies.adapt(Singer.class, rapper,
+        new MyObject(rapper)));
 
-      choir.singAll();
-   }
-   public static class MyObject {
-      private final Rapper rapper;
-      public MyObject(Rapper rapper) {this.rapper = rapper;}
-      public void sing() {
-         rapper.talk();
-      }
-   }
+    choir.singAll();
+  }
+  public static class MyObject {
+    private final Rapper rapper;
+    public MyObject(Rapper rapper) {this.rapper = rapper;}
+    public void sing() {
+      rapper.talk();
+    }
+  }
 }

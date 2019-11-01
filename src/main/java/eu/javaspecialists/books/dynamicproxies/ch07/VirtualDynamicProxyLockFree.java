@@ -23,21 +23,21 @@ import java.util.concurrent.atomic.*;
 import java.util.function.*;
 
 public class VirtualDynamicProxyLockFree<P> extends VirtualDynamicProxy<P> {
-   private final AtomicReference<P> ref =
-         new AtomicReference<>();
-   public VirtualDynamicProxyLockFree(Supplier<P> realSubjectSupplier) {
-      super(realSubjectSupplier);
-   }
-   @Override
-   protected P realSubject() {
-      var result = ref.get();
-      if (result == null) {
-         result = makeRealSubject();
-         // do a Compare And Swap (CAS)
-         var swapResult = ref.compareAndExchange(null, result);
-         if (swapResult != null) result = swapResult;
-      }
-      return result;
-   }
+  private final AtomicReference<P> ref =
+      new AtomicReference<>();
+  public VirtualDynamicProxyLockFree(Supplier<P> realSubjectSupplier) {
+    super(realSubjectSupplier);
+  }
+  @Override
+  protected P realSubject() {
+    var result = ref.get();
+    if (result == null) {
+      result = makeRealSubject();
+      // do a Compare And Swap (CAS)
+      var swapResult = ref.compareAndExchange(null, result);
+      if (swapResult != null) result = swapResult;
+    }
+    return result;
+  }
 }
 // end::VirtualDynamicProxyBasic[]

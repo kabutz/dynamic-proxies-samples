@@ -22,7 +22,7 @@ import eu.javaspecialists.books.dynamicproxies.ch06.*;
 
 // tag::listing[]
 public interface Contact extends Composite<Contact> {
-   void sendMail(String body);
-   default int count() { return 1; }
+  void sendMail(String body);
+  default int count() { return 1; }
 }
 // end::listing[]

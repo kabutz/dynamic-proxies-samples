@@ -24,64 +24,64 @@ import java.util.concurrent.*;
 import java.util.concurrent.atomic.*;
 
 public class MethodCallTest {
-   private static final AtomicLong counter = new AtomicLong();
+  private static final AtomicLong counter = new AtomicLong();
 
-   public static void main(String... args) {
-      for (int i = 0; i < 30; i++) {
-         test();
+  public static void main(String... args) {
+    for (int i = 0; i < 30; i++) {
+      test();
+    }
+  }
+
+  private static void test() {
+    Tester[] testers = {
+        Proxies.simpleProxy(Tester.class, new RealTester()),
+        Proxies.virtualProxy(Tester.class, RealTester::new),
+        Proxies.castProxy(Tester.class,
+            (proxy, method, args1) -> increment()),
+        MethodCallTest::increment,
+        () -> increment(),
+        new RealTester(),
+    };
+    ThreadLocalRandom.current().ints(1_000_000 * testers.length, 0,
+        testers.length)
+        .forEach(i -> testers[i].increment());
+    System.out.println("counter = " + counter);
+
+    long[] times = new long[testers.length];
+    for (int repeat = 0; repeat < 10; repeat++) {
+      for (int index = 0; index < testers.length; index++) {
+        Tester tester = testers[index];
+        long time = System.nanoTime();
+        try {
+          for (int i = 0; i < 10_000_000; i++) {
+            tester.increment();
+          }
+        } finally {
+          time = System.nanoTime() - time;
+          times[index] += time;
+        }
       }
-   }
+    }
+    for (int i = 0; i < testers.length; i++) {
+      Tester tester = testers[i];
+      System.out.printf("%s %dms%n",
+          tester.getClass().getCanonicalName()
+          , times[i] / 1_000_000);
+    }
+  }
 
-   private static void test() {
-      Tester[] testers = {
-            Proxies.simpleProxy(Tester.class, new RealTester()),
-            Proxies.virtualProxy(Tester.class, RealTester::new),
-            Proxies.castProxy(Tester.class,
-                  (proxy, method, args1) -> increment()),
-            MethodCallTest::increment,
-            () -> increment(),
-            new RealTester(),
-      };
-      ThreadLocalRandom.current().ints(1_000_000 * testers.length, 0,
-            testers.length)
-            .forEach(i -> testers[i].increment());
-      System.out.println("counter = " + counter);
+  public interface Tester {
+    long increment();
+  }
 
-      long[] times = new long[testers.length];
-      for (int repeat = 0; repeat < 10; repeat++) {
-         for (int index = 0; index < testers.length; index++) {
-            Tester tester = testers[index];
-            long time = System.nanoTime();
-            try {
-               for (int i = 0; i < 10_000_000; i++) {
-                  tester.increment();
-               }
-            } finally {
-               time = System.nanoTime() - time;
-               times[index] += time;
-            }
-         }
-      }
-      for (int i = 0; i < testers.length; i++) {
-         Tester tester = testers[i];
-         System.out.printf("%s %dms%n",
-               tester.getClass().getCanonicalName()
-               , times[i] / 1_000_000);
-      }
-   }
+  public static class RealTester implements Tester {
+    @Override
+    public long increment() {
+      return MethodCallTest.increment();
+    }
+  }
 
-   public interface Tester {
-      long increment();
-   }
-
-   public static class RealTester implements Tester {
-      @Override
-      public long increment() {
-         return MethodCallTest.increment();
-      }
-   }
-
-   public static long increment() {
-      return counter.incrementAndGet();
-   }
+  public static long increment() {
+    return counter.incrementAndGet();
+  }
 }

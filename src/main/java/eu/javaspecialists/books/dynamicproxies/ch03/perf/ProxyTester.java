@@ -20,10 +20,10 @@ package eu.javaspecialists.books.dynamicproxies.ch03.perf;
 
 // tag::listing[]
 public class ProxyTester implements Tester {
-   private final RealTester tester = new RealTester();
-   @Override
-   public long increment() {
-      return tester.increment();
-   }
+  private final RealTester tester = new RealTester();
+  @Override
+  public long increment() {
+    return tester.increment();
+  }
 }
 // end::listing[]

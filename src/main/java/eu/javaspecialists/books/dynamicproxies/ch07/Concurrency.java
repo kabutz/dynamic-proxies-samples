@@ -20,6 +20,6 @@ package eu.javaspecialists.books.dynamicproxies.ch07;
 
 // tag::Concurrency[]
 public enum Concurrency {
-   NONE, LOCK_FREE, SYNCHRONIZED;
+  NONE, LOCK_FREE, SYNCHRONIZED;
 }
 // end::Concurrency[]

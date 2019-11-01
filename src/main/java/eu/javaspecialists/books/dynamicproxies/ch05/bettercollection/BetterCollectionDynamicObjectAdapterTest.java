@@ -21,21 +21,21 @@ package eu.javaspecialists.books.dynamicproxies.ch05.bettercollection;
 import java.util.*;
 
 public class BetterCollectionDynamicObjectAdapterTest {
-   public static void main(String... args) {
-      // tag::listing[]
-      BetterCollection<String> names =
-            BetterCollectionFactory.asBetterCollection(
-                  new HashSet<>(), String.class);
-      names.add("Wolfgang");
-      names.add("Leander");
-      names.add("Klaus");
-      names.add("Reinhard");
-      String[] nameArray = names.toArray();
-      for (String name : nameArray) {
-         System.out.println(name.toUpperCase());
-      }
+  public static void main(String... args) {
+    // tag::listing[]
+    BetterCollection<String> names =
+        BetterCollectionFactory.asBetterCollection(
+            new HashSet<>(), String.class);
+    names.add("Wolfgang");
+    names.add("Leander");
+    names.add("Klaus");
+    names.add("Reinhard");
+    String[] nameArray = names.toArray();
+    for (String name : nameArray) {
+      System.out.println(name.toUpperCase());
+    }
 
-      ((Collection) names).add(42); // this will fail
-      // end::listing[]
-   }
+    ((Collection) names).add(42); // this will fail
+    // end::listing[]
+  }
 }

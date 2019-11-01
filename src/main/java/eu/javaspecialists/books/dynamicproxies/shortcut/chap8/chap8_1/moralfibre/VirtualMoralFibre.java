@@ -22,20 +22,20 @@ package eu.javaspecialists.books.dynamicproxies.shortcut.chap8.chap8_1.moralfibr
  * Created by Sven Ruppert on 14.01.14.
  */
 public abstract class VirtualMoralFibre implements MoralFibre {
-   protected abstract MoralFibre realSubject();
+  protected abstract MoralFibre realSubject();
 
-   @Override
-   public final double actSociallyResponsibly() {
-      return realSubject().actSociallyResponsibly();
-   }
+  @Override
+  public final double actSociallyResponsibly() {
+    return realSubject().actSociallyResponsibly();
+  }
 
-   @Override
-   public final double empowerEmployees() {
-      return realSubject().empowerEmployees();
-   }
+  @Override
+  public final double empowerEmployees() {
+    return realSubject().empowerEmployees();
+  }
 
-   @Override
-   public final double cleanupEnvironment() {
-      return realSubject().cleanupEnvironment();
-   }
+  @Override
+  public final double cleanupEnvironment() {
+    return realSubject().cleanupEnvironment();
+  }
 }

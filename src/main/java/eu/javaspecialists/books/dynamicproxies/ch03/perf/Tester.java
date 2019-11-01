@@ -20,6 +20,6 @@ package eu.javaspecialists.books.dynamicproxies.ch03.perf;
 
 // tag::listing[]
 public interface Tester {
-   long increment();
+  long increment();
 }
 // end::listing[]

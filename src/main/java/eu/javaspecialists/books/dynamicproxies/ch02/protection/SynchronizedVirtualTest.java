@@ -22,12 +22,12 @@ import eu.javaspecialists.books.dynamicproxies.ch02.virtual.*;
 
 // tag::listing[]
 public class SynchronizedVirtualTest {
-   public static void main(String... args) {
-      var map =
-            new SynchronizedCustomMap<Integer, Integer>(
-                  new VirtualCustomMap<>(CustomHashMap::new));
-      ConcurrentTest.check(map);
-      System.out.println("map = " + map);
-   }
+  public static void main(String... args) {
+    var map =
+        new SynchronizedCustomMap<Integer, Integer>(
+            new VirtualCustomMap<>(CustomHashMap::new));
+    ConcurrentTest.check(map);
+    System.out.println("map = " + map);
+  }
 }
 // end::listing[]

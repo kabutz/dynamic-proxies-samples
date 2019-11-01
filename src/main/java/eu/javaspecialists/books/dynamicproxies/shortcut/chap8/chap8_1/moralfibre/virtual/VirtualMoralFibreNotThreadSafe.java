@@ -25,13 +25,13 @@ import eu.javaspecialists.books.dynamicproxies.shortcut.chap8.chap8_1.moralfibre
  * Created by Sven Ruppert on 14.01.14.
  */
 public class VirtualMoralFibreNotThreadSafe extends VirtualMoralFibre {
-   private MoralFibre realSubject;
+  private MoralFibre realSubject;
 
-   @Override
-   protected MoralFibre realSubject() {
-      if (realSubject == null) {
-         realSubject = new MoralFibreImpl();
-      }
-      return realSubject;
-   }
+  @Override
+  protected MoralFibre realSubject() {
+    if (realSubject == null) {
+      realSubject = new MoralFibreImpl();
+    }
+    return realSubject;
+  }
 }

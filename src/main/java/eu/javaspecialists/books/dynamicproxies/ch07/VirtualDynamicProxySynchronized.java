@@ -22,23 +22,23 @@ package eu.javaspecialists.books.dynamicproxies.ch07;
 import java.util.function.*;
 
 public class VirtualDynamicProxySynchronized<P>
-      extends VirtualDynamicProxy<P> {
-   private volatile P realSubject;
-   private final Object initializationLock = new Object();
-   public VirtualDynamicProxySynchronized(Supplier<P> subjectSupplier) {
-      super(subjectSupplier);
-   }
-   @Override
-   protected P realSubject() {
-      var result = realSubject;
-      if (result == null) {
-         synchronized (initializationLock) {
-            if ((result = realSubject) == null) {
-               realSubject = result = makeRealSubject();
-            }
-         }
+    extends VirtualDynamicProxy<P> {
+  private volatile P realSubject;
+  private final Object initializationLock = new Object();
+  public VirtualDynamicProxySynchronized(Supplier<P> subjectSupplier) {
+    super(subjectSupplier);
+  }
+  @Override
+  protected P realSubject() {
+    var result = realSubject;
+    if (result == null) {
+      synchronized (initializationLock) {
+        if ((result = realSubject) == null) {
+          realSubject = result = makeRealSubject();
+        }
       }
-      return result;
-   }
+    }
+    return result;
+  }
 }
 // end::VirtualDynamicProxySynchronized[]

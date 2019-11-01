@@ -22,20 +22,20 @@ import java.io.*;
 
 // tag::VirtualProxySourceGeneratorLockFree[]
 class VirtualProxySourceGeneratorLockFree<P>
-      extends VirtualProxySourceGenerator<P> {
-   public VirtualProxySourceGeneratorLockFree(
-         Class<P> subject, Class<? extends P> realSubject) {
-      super(subject, realSubject, Concurrency.LOCK_FREE);
-   }
-   @Override
-   protected void addImports(PrintWriter out) {
-      out.println("import java.util.concurrent.atomic.*;");
-      out.println();
-   }
-   @Override
-   protected void addRealSubjectCreation(PrintWriter out) {
-      out.println(
-            """
+    extends VirtualProxySourceGenerator<P> {
+  public VirtualProxySourceGeneratorLockFree(
+      Class<P> subject, Class<? extends P> realSubject) {
+    super(subject, realSubject, Concurrency.LOCK_FREE);
+  }
+  @Override
+  protected void addImports(PrintWriter out) {
+    out.println("import java.util.concurrent.atomic.*;");
+    out.println();
+  }
+  @Override
+  protected void addRealSubjectCreation(PrintWriter out) {
+    out.println(
+        """
                 private final AtomicReference<$name> ref =
                     new AtomicReference<>();
                 private $name realSubject() {
@@ -51,7 +51,7 @@ class VirtualProxySourceGeneratorLockFree<P>
                     return result;
                 }
                 """.replace("$name", getSubjectName())
-                  .replace("$realName", getRealSubjectName()));
-   }
+            .replace("$realName", getRealSubjectName()));
+  }
 }
 // end::VirtualProxySourceGeneratorLockFree[]

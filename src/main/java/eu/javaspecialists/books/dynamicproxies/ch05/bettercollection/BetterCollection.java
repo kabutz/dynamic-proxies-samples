@@ -22,7 +22,7 @@ import java.util.*;
 
 // tag::listing[]
 public interface BetterCollection<E> extends Collection<E> {
-   @Override
-   E[] toArray();
+  @Override
+  E[] toArray();
 }
 // end::listing[]

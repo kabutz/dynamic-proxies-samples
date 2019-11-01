@@ -22,5 +22,5 @@ package eu.javaspecialists.books.dynamicproxies.shortcut.chap8.chap8_1;
  * Created by Sven Ruppert on 14.01.14.
  */
 public enum ProxyType {
-   STATIC, DYNAMIC
+  STATIC, DYNAMIC
 }

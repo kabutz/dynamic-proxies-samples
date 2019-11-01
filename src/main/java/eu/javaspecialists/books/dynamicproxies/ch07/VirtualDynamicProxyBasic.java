@@ -22,16 +22,16 @@ package eu.javaspecialists.books.dynamicproxies.ch07;
 import java.util.function.*;
 
 public class VirtualDynamicProxyBasic<P> extends VirtualDynamicProxy<P> {
-   private P realSubject;
-   public VirtualDynamicProxyBasic(Supplier<P> subjectSupplier) {
-      super(subjectSupplier);
-   }
-   @Override
-   protected P realSubject() {
-      if (realSubject == null) {
-         realSubject = makeRealSubject();
-      }
-      return realSubject;
-   }
+  private P realSubject;
+  public VirtualDynamicProxyBasic(Supplier<P> subjectSupplier) {
+    super(subjectSupplier);
+  }
+  @Override
+  protected P realSubject() {
+    if (realSubject == null) {
+      realSubject = makeRealSubject();
+    }
+    return realSubject;
+  }
 }
 // end::VirtualDynamicProxyBasic[]

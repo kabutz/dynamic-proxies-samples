@@ -24,12 +24,12 @@ import eu.javaspecialists.books.dynamicproxies.ch02.virtual.*;
 
 // tag::listing[]
 public class SynchronizedVirtualTest {
-   public static void main(String... args) {
-      var map = Proxies.synchronizedProxy(CustomMap.class,
-            Proxies.virtualProxy(CustomMap.class,
-                  CustomHashMap::new));
-      ConcurrentTest.check(map);
-      System.out.println("map = " + map);
-   }
+  public static void main(String... args) {
+    var map = Proxies.synchronizedProxy(CustomMap.class,
+        Proxies.virtualProxy(CustomMap.class,
+            CustomHashMap::new));
+    ConcurrentTest.check(map);
+    System.out.println("map = " + map);
+  }
 }
 // end::listing[]

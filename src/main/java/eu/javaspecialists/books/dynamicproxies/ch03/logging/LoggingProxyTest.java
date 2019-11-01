@@ -24,20 +24,20 @@ import java.util.concurrent.*;
 import java.util.logging.*;
 
 public class LoggingProxyTest {
-   public static void main(String... args) {
-      // tag::main()[]
-      var handler = new LoggingInvocationHandler(
-            Logger.getGlobal(),
-            new ConcurrentHashMap<>());
-      var map = (Map<String, Integer>)
-                      Proxy.newProxyInstance(
-                            Map.class.getClassLoader(),
-                            new Class<?>[] {Map.class},
-                            handler);
-      map.put("one", 1);
-      map.put("two", 2);
-      System.out.println(map);
-      map.clear();
-      // end::main()[]
-   }
+  public static void main(String... args) {
+    // tag::main()[]
+    var handler = new LoggingInvocationHandler(
+        Logger.getGlobal(),
+        new ConcurrentHashMap<>());
+    var map = (Map<String, Integer>)
+                  Proxy.newProxyInstance(
+                      Map.class.getClassLoader(),
+                      new Class<?>[] {Map.class},
+                      handler);
+    map.put("one", 1);
+    map.put("two", 2);
+    System.out.println(map);
+    map.clear();
+    // end::main()[]
+  }
 }

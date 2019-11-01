@@ -22,8 +22,8 @@ import eu.javaspecialists.books.dynamicproxies.*;
 import eu.javaspecialists.books.dynamicproxies.ch02.virtual.*;
 
 public class FixedEqualsWithDynamicProxyTest extends FixedEqualsTest {
-   public FixedEqualsWithDynamicProxyTest() {
-      super(map -> Proxies.simpleProxy(CustomMap.class, map));
-   }
+  public FixedEqualsWithDynamicProxyTest() {
+    super(map -> Proxies.simpleProxy(CustomMap.class, map));
+  }
 }
 

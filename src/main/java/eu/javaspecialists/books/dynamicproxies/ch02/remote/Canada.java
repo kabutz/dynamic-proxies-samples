@@ -20,8 +20,8 @@ package eu.javaspecialists.books.dynamicproxies.ch02.remote;
 
 // tag::listing[]
 public interface Canada {
-   boolean canGetVisa(String name,
-                      boolean married,
-                      boolean rich);
+  boolean canGetVisa(String name,
+                     boolean married,
+                     boolean rich);
 }
 // end::listing[]

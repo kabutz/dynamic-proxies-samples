@@ -23,47 +23,47 @@ import java.util.concurrent.*;
 import java.util.zip.*;
 
 public class InputStreamExample {
-   public static void main(String... args) throws IOException {
-      long time = System.currentTimeMillis();
+  public static void main(String... args) throws IOException {
+    long time = System.currentTimeMillis();
 
-      // tag::out[]
-      try (var out = new DataOutputStream(
-            new BufferedOutputStream(
-                  new GZIPOutputStream(
-                        new FileOutputStream(
-                              "data.bin.gz"))))) {
-         ThreadLocalRandom.current().ints(10_000_000, 0, 1_000)
-               .forEach(i -> {
-                  try {
-                     out.writeInt(i);
-                  } catch (IOException e) {
-                     throw new UncheckedIOException(e);
-                  }
-               });
-         out.writeInt(-1); // our EOF marker
+    // tag::out[]
+    try (var out = new DataOutputStream(
+        new BufferedOutputStream(
+            new GZIPOutputStream(
+                new FileOutputStream(
+                    "data.bin.gz"))))) {
+      ThreadLocalRandom.current().ints(10_000_000, 0, 1_000)
+          .forEach(i -> {
+            try {
+              out.writeInt(i);
+            } catch (IOException e) {
+              throw new UncheckedIOException(e);
+            }
+          });
+      out.writeInt(-1); // our EOF marker
+    }
+    // end::out[]
+
+    time = System.currentTimeMillis() - time;
+    System.out.println("Finished writing in " + time + " ms");
+    time = System.currentTimeMillis();
+
+    // tag::in[]
+    try (var in = new DataInputStream(
+        new BufferedInputStream(
+            new GZIPInputStream(
+                new FileInputStream(
+                    "data.bin.gz"))))) {
+      long total = 0;
+      int value;
+      while ((value = in.readInt()) != -1) {
+        total += in.readInt();
       }
-      // end::out[]
+      System.out.println("total = " + total);
+    }
+    // end::in[]
 
-      time = System.currentTimeMillis() - time;
-      System.out.println("Finished writing in " + time + " ms");
-      time = System.currentTimeMillis();
-
-      // tag::in[]
-      try (var in = new DataInputStream(
-            new BufferedInputStream(
-                  new GZIPInputStream(
-                        new FileInputStream(
-                              "data.bin.gz"))))) {
-         long total = 0;
-         int value;
-         while ((value = in.readInt()) != -1) {
-            total += in.readInt();
-         }
-         System.out.println("total = " + total);
-      }
-      // end::in[]
-
-      time = System.currentTimeMillis() - time;
-      System.out.println("Finished reading in " + time + " ms");
-   }
+    time = System.currentTimeMillis() - time;
+    System.out.println("Finished reading in " + time + " ms");
+  }
 }

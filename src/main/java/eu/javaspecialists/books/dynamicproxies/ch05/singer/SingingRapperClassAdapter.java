@@ -19,8 +19,8 @@
 package eu.javaspecialists.books.dynamicproxies.ch05.singer;
 
 public class SingingRapperClassAdapter extends Rapper implements Singer {
-   @Override
-   public void sing() {
-      talk();
-   }
+  @Override
+  public void sing() {
+    talk();
+  }
 }

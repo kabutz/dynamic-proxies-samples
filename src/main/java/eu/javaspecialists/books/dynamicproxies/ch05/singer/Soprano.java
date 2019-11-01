@@ -19,8 +19,8 @@
 package eu.javaspecialists.books.dynamicproxies.ch05.singer;
 
 public class Soprano implements Singer {
-   @Override
-   public void sing() {
-      System.out.println("Soprano.sing()");
-   }
+  @Override
+  public void sing() {
+    System.out.println("Soprano.sing()");
+  }
 }

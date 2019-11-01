@@ -25,23 +25,23 @@ import static org.junit.Assert.*;
 
 // tag::listing[]
 public class EqualsExample {
-   public static void main(String... args) {
-      var real = new CustomHashMap<Integer, Integer>();
-      for (int i = 0; i < 10; i++) real.put(i, i * i);
-      var proxy = new UnmodifiableCustomMap<>(real);
-      var empty = new CustomHashMap<Integer, Integer>();
+  public static void main(String... args) {
+    var real = new CustomHashMap<Integer, Integer>();
+    for (int i = 0; i < 10; i++) real.put(i, i * i);
+    var proxy = new UnmodifiableCustomMap<>(real);
+    var empty = new CustomHashMap<Integer, Integer>();
 
-      // reflexive
-      assertEquals(real, real);
-      assertEquals(proxy, proxy);
+    // reflexive
+    assertEquals(real, real);
+    assertEquals(proxy, proxy);
 
-      // symmetric
+    // symmetric
+    assertEquals(real, proxy);
+    assertEquals(proxy, real);
+
+    // transitive
+    if (real.equals(empty) && empty.equals(proxy))
       assertEquals(real, proxy);
-      assertEquals(proxy, real);
-
-      // transitive
-      if (real.equals(empty) && empty.equals(proxy))
-         assertEquals(real, proxy);
-   }
+  }
 }
 // end::listing[]

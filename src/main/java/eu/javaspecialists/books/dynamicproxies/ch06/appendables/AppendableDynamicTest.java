@@ -23,26 +23,26 @@ import eu.javaspecialists.books.dynamicproxies.*;
 import java.io.*;
 
 public class AppendableDynamicTest {
-   public static void main(String... args) throws IOException {
-      // tag::listing[]
-      var tee = Proxies.compose(AppendableCloseableFlushable.class,
-            AppendableCloseableFlushable.getReducers());
-      var sw = new StringWriter();
-      tee.add(new OutputStreamWriter(System.out));
-      tee.add(new FileWriter("output.txt"));
-      tee.add(sw);
+  public static void main(String... args) throws IOException {
+    // tag::listing[]
+    var tee = Proxies.compose(AppendableCloseableFlushable.class,
+        AppendableCloseableFlushable.getReducers());
+    var sw = new StringWriter();
+    tee.add(new OutputStreamWriter(System.out));
+    tee.add(new FileWriter("output.txt"));
+    tee.add(sw);
 
-      var out = new PrintWriter(new WriterAdapter<>(tee));
-      out.println("Hello World Dynamic");
-      out.flush();
+    var out = new PrintWriter(new WriterAdapter<>(tee));
+    out.println("Hello World Dynamic");
+    out.flush();
 
-      tee.append("TestingAppenderDynamic")
-            .append('\n')
-            .append("Does this work?")
-            .append('\n');
-      tee.flush();
+    tee.append("TestingAppenderDynamic")
+        .append('\n')
+        .append("Does this work?")
+        .append('\n');
+    tee.flush();
 
-      System.out.println("sw = " + sw);
-      // end::listing[]
-   }
+    System.out.println("sw = " + sw);
+    // end::listing[]
+  }
 }

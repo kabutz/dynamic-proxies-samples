@@ -19,5 +19,5 @@
 package eu.javaspecialists.books.dynamicproxies.ch05.singer;
 
 public interface Singer {
-   void sing();
+  void sing();
 }

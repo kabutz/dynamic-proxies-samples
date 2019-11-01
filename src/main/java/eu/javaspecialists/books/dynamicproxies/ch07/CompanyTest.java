@@ -20,12 +20,12 @@ package eu.javaspecialists.books.dynamicproxies.ch07;
 
 // tag::CompanyTest[]
 public class CompanyTest {
-   public static void main(String[] args) {
-      var company = new Company("Cretesoft1", 10000.0,
-            new RealMoralFiber());
-      company.makeMoney();
-      company.damageEnvironment();
-      company.becomeFocusOfMediaAttention();
+  public static void main(String[] args) {
+    var company = new Company("Cretesoft1", 10000.0,
+        new RealMoralFiber());
+    company.makeMoney();
+    company.damageEnvironment();
+    company.becomeFocusOfMediaAttention();
 /*
         var company2 = new Company("Cretesoft2", 20000.0,
                 ProxyGenerator.make(MoralFiber.class,
@@ -36,6 +36,6 @@ public class CompanyTest {
         company2.damageEnvironment();
         company2.becomeFocusOfMediaAttention();
  */
-   }
+  }
 }
 // end::CompanyTest[]

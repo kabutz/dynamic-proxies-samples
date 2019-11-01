@@ -24,10 +24,10 @@ import eu.javaspecialists.books.dynamicproxies.ch02.virtual.*;
 
 // tag::listing[]
 public class SynchronizedTest {
-   public static void main(String... args) {
-      ConcurrentTest.check(Proxies.synchronizedProxy(
-            CustomMap.class, new CustomHashMap<>()
-      ));
-   }
+  public static void main(String... args) {
+    ConcurrentTest.check(Proxies.synchronizedProxy(
+        CustomMap.class, new CustomHashMap<>()
+    ));
+  }
 }
 // end::listing[]

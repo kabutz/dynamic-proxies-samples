@@ -22,8 +22,8 @@ import eu.javaspecialists.books.dynamicproxies.*;
 import eu.javaspecialists.books.dynamicproxies.ch02.virtual.*;
 
 public class BrokenEqualsWithDynamicProxyTest extends BrokenEqualsTest {
-   public BrokenEqualsWithDynamicProxyTest() {
-      super(map -> Proxies.simpleProxy(CustomMap.class, map));
-   }
+  public BrokenEqualsWithDynamicProxyTest() {
+    super(map -> Proxies.simpleProxy(CustomMap.class, map));
+  }
 }
 

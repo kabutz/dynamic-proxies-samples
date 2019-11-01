@@ -26,19 +26,19 @@ import java.net.*;
  * Created by Sven Ruppert on 06.01.14.
  */
 public class GeneratedClassFile extends SimpleJavaFileObject {
-   private final ByteArrayOutputStream outputStream =
-         new ByteArrayOutputStream();
+  private final ByteArrayOutputStream outputStream =
+      new ByteArrayOutputStream();
 
-   public GeneratedClassFile() {
-      super(URI.create("generated.class"), JavaFileObject.Kind.CLASS);
-   }
+  public GeneratedClassFile() {
+    super(URI.create("generated.class"), JavaFileObject.Kind.CLASS);
+  }
 
-   @Override
-   public OutputStream openOutputStream() {
-      return outputStream;
-   }
+  @Override
+  public OutputStream openOutputStream() {
+    return outputStream;
+  }
 
-   public byte[] getClassAsBytes() {
-      return outputStream.toByteArray();
-   }
+  public byte[] getClassAsBytes() {
+    return outputStream.toByteArray();
+  }
 }
