@@ -90,12 +90,12 @@ public class Proxies {
    // end::dynamicFilter()[]
 
    // tag::adapt()[]
-   public static <E> E adapt(Object adaptee, Class<E> target,
+   public static <E> E adapt(Class<E> target, Object adaptee,
                              Object adapter) {
       Objects.requireNonNull(adaptee, "adaptee==null");
       Objects.requireNonNull(adapter, "adapter==null");
       return castProxy(target,
-            new ObjectAdapterHandler(adapter, adaptee));
+            new ObjectAdapterHandler(target, adaptee, adapter));
    }
    // end::adapt()[]
 
