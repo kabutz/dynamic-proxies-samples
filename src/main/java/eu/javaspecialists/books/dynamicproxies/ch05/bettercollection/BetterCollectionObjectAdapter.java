@@ -18,7 +18,7 @@
 
 package eu.javaspecialists.books.dynamicproxies.ch05.bettercollection;
 
-// tag::BetterCollectionObjectAdapter[]
+// tag::listing[]
 import java.lang.reflect.*;
 import java.util.*;
 
@@ -100,4 +100,4 @@ public class BetterCollectionObjectAdapter<E> implements BetterCollection<E> {
       adaptee.clear();
    }
 }
-// end::BetterCollectionObjectAdapter[]
+// end::listing[]

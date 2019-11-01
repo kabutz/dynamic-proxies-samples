@@ -20,7 +20,7 @@ package eu.javaspecialists.books.dynamicproxies.ch05.bettercollection;
 
 public class BetterArrayListTest {
    public static void main(String... args) {
-      // tag::main()[]
+      // tag::listing[]
       BetterArrayList<String> names =
             new BetterArrayList<>(String.class);
       names.add("Wolfgang");
@@ -28,9 +28,9 @@ public class BetterArrayListTest {
       names.add("Klaus");
       names.add("Reinhard");
       String[] nameArray = names.toArray();
-      for (String s : nameArray) {
-         System.out.println(s);
+      for (String name : nameArray) {
+         System.out.println(name.toUpperCase());
       }
-      // end::main()[]
+      // end::listing[]
    }
 }

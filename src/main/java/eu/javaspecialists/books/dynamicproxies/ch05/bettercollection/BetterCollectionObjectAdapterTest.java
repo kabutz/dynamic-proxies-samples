@@ -22,7 +22,7 @@ import java.util.concurrent.*;
 
 public class BetterCollectionObjectAdapterTest {
    public static void main(String... args) {
-      // tag::main()[]
+      // tag::listing[]
       BetterCollection<String> names =
             new BetterCollectionObjectAdapter<>(
                   ConcurrentHashMap.newKeySet(),
@@ -33,9 +33,9 @@ public class BetterCollectionObjectAdapterTest {
       names.add("Klaus");
       names.add("Reinhard");
       String[] nameArray = names.toArray();
-      for (String s : nameArray) {
-         System.out.println(s);
+      for (String name : nameArray) {
+         System.out.println(name.toUpperCase());
       }
-      // end::main()[]
+      // end::listing[]
    }
 }

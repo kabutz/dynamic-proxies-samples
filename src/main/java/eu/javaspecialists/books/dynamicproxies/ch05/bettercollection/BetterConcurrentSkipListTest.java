@@ -18,20 +18,19 @@
 
 package eu.javaspecialists.books.dynamicproxies.ch05.bettercollection;
 
-import java.lang.reflect.*;
-import java.util.*;
-
-// tag::listing[]
-public class BetterArrayList<E> extends ArrayList<E> {
-   private final Class<E> type;
-
-   public BetterArrayList(Class<E> type) {
-      this.type = type;
-   }
-
-   @Override
-   public E[] toArray() {
-      return toArray((E[]) Array.newInstance(type, size()));
+public class BetterConcurrentSkipListTest {
+   public static void main(String... args) {
+      // tag::listing[]
+      BetterConcurrentSkipListSet<String> names =
+            new BetterConcurrentSkipListSet<>(String.class);
+      names.add("Wolfgang");
+      names.add("Leander");
+      names.add("Klaus");
+      names.add("Reinhard");
+      String[] nameArray = names.toArray();
+      for (String name : nameArray) {
+         System.out.println(name.toUpperCase());
+      }
+      // end::listing[]
    }
 }
-// end::BetterArrayList[]

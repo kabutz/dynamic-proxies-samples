@@ -22,7 +22,7 @@ import java.util.*;
 
 public class BetterCollectionDynamicObjectAdapterTest {
    public static void main(String... args) {
-      // tag::main()[]
+      // tag::listing[]
       BetterCollection<String> names =
             BetterCollectionFactory.asBetterCollection(
                   new HashSet<>(), String.class);
@@ -31,11 +31,11 @@ public class BetterCollectionDynamicObjectAdapterTest {
       names.add("Klaus");
       names.add("Reinhard");
       String[] nameArray = names.toArray();
-      for (String s : nameArray) {
-         System.out.println(s);
+      for (String name : nameArray) {
+         System.out.println(name.toUpperCase());
       }
 
       ((Collection) names).add(42); // this will fail
-      // end::main()[]
+      // end::listing[]
    }
 }

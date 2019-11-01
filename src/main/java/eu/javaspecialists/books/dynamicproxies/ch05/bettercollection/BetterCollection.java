@@ -18,11 +18,11 @@
 
 package eu.javaspecialists.books.dynamicproxies.ch05.bettercollection;
 
-// tag::BetterCollection[]
 import java.util.*;
 
+// tag::listing[]
 public interface BetterCollection<E> extends Collection<E> {
    @Override
    E[] toArray();
 }
-// end::BetterCollection[]
+// end::listing[]
