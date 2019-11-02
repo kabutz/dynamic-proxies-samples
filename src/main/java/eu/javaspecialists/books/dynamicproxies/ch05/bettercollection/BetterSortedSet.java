@@ -25,27 +25,10 @@
 
 package eu.javaspecialists.books.dynamicproxies.ch05.bettercollection;
 
-import java.util.concurrent.*;
+import java.util.*;
 
 // tag::listing[]
-public class BetterConcurrentSkipListSet<E>
-    extends ConcurrentSkipListSet<E>
-    implements BetterCollection<E> {
-  private final E[] seedArray;
-  public BetterConcurrentSkipListSet(E[] seedArray) {
-    if (seedArray.length != 0)
-      throw new IllegalArgumentException(
-          "seedArray must be empty");
-
-    this.seedArray = seedArray;
-  }
-  @Override
-  public E[] toArray() {
-    return toArray(seedArray);
-  }
-  @Override
-  public String toString() {
-    return "--" + super.toString() + "--";
-  }
+public interface BetterSortedSet<E> extends
+    SortedSet<E>, BetterCollection<E> {
 }
 // end::listing[]

@@ -30,8 +30,10 @@ public class MusicFestDynamic {
 
     var rapper = new Rapper();
     // pretty pointless with just a single method
-    choir.add(Proxies.adapt(Singer.class, rapper,
-        new MyObject(rapper)));
+    Singer singingRapper = Proxies.adapt(Singer.class, rapper,
+        new MyObject(rapper));
+    System.out.println(singingRapper);
+    choir.add(singingRapper);
 
     choir.singAll();
   }
@@ -40,6 +42,10 @@ public class MusicFestDynamic {
     public MyObject(Rapper rapper) {this.rapper = rapper;}
     public void sing() {
       rapper.talk();
+    }
+    @Override
+    public String toString() {
+      return "SingingRapper";
     }
   }
 }

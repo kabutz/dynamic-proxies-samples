@@ -20,6 +20,7 @@ package eu.javaspecialists.books.dynamicproxies.ch05.bettercollection;
 
 import java.util.*;
 
+@SuppressWarnings("unchecked")
 public class BetterCollectionDynamicObjectAdapterTest {
   public static void main(String... args) {
     // tag::listing[]
@@ -29,11 +30,13 @@ public class BetterCollectionDynamicObjectAdapterTest {
     names.add("Wolfgang");
     names.add("Leander");
     names.add("Klaus");
+    names.add("Menongahela");
     names.add("Reinhard");
     String[] nameArray = names.toArray();
     for (String name : nameArray) {
       System.out.println(name.toUpperCase());
     }
+    System.out.println(names);
 
     ((Collection) names).add(42); // this will fail
     // end::listing[]

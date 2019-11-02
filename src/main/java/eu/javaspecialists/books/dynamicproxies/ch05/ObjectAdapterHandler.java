@@ -2,17 +2,24 @@
  * Copyright (C) 2000-2019 Heinz Max Kabutz
  *
  * See the NOTICE file distributed with this work for additional
- * information regarding copyright ownership.  Heinz Max Kabutz licenses
- * this file to you under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License. You may
+ * information regarding copyright ownership.  Heinz Max
+ * Kabutz licenses
+ * this file to you under the Apache License, Version 2.0 (the
+ *  "License");
+ * you may not use this file except in compliance with the
+ * License. You may
  * obtain a copy of the License at
  *
  * http://www.apache.org/licenses/LICENSE-2.0
  *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
+ * Unless required by applicable law or agreed to in writing,
+ * software
+ * distributed under the License is distributed on an "AS IS"
+ * BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either
+ * express or implied.
+ * See the License for the specific language governing
+ * permissions and
  * limitations under the License.
  */
 
@@ -34,58 +41,20 @@ public class ObjectAdapterHandler implements InvocationHandler {
   public ObjectAdapterHandler(Class<?> target,
                               Object adaptee,
                               Object adapter) {
+    checkClassPublic(adaptee.getClass());
+    checkClassPublic(adapter.getClass());
+
     this.adaptee = adaptee;
     this.adapter = adapter;
 
-    var adapteeClass = adaptee.getClass();
-    if (classNonPublic(adapteeClass) &&
-            !target.isInstance(adaptee))
-      throw new IllegalArgumentException(
-          "Adaptee must either implement target interface" +
-              " or be of a public class"
-      );
+    adapterMethodMap = getMethodMap(adapter.getClass(), true);
+    System.out.println(adapterMethodMap);
+    adapteeMethodMap = getMethodMap(adaptee.getClass(), false);
+    System.out.println(adapteeMethodMap);
 
-    var adapterClass = adapter.getClass();
-    if (classNonPublic(adapterClass)) {
-      throw new IllegalArgumentException(
-          "Adapter object must be of a public class");
-    }
-
-    var targetMethodMap = getMethodMap(target);
-    adapteeMethodMap = getMethodMap(adapteeClass);
-    adapterMethodMap = getMethodMap(adapterClass);
-
-    if (classNonPublic(adapterClass)) {
-      // use target interface methods
-      adapterMethodMap.replaceAll(
-          (key, value) -> targetMethodMap.get(key));
-    }
-
-    targetMethodMap.keySet().removeAll(
-        adapteeMethodMap.keySet()
-    );
-    targetMethodMap.keySet().removeAll(
-        adapterMethodMap.keySet()
-    );
-
-    if (!targetMethodMap.isEmpty())
-      throw new IllegalArgumentException(
-          "Target methods not implemented: " +
-              targetMethodMap.keySet());
+    checkTargetMethodsImplemented(target);
   }
-  private boolean classNonPublic(Class<?> clazz) {
-    return !Modifier.isPublic(clazz.getModifiers());
-  }
-  private Set<MethodKey> getMethodKeys(Class<?> clazz) {
-    return Stream.of(clazz.getMethods())
-               .map(MethodKey::new)
-               .collect(Collectors.toSet());
-  }
-  private Map<MethodKey, Method> getMethodMap(Class<?> clazz) {
-    return Stream.of(clazz.getMethods())
-               .collect(Collectors.toMap(MethodKey::new,
-                   Function.identity()));
-  }
+
   @Override
   public Object invoke(Object proxy, Method method,
                        Object[] args) throws Throwable {
@@ -96,12 +65,53 @@ public class ObjectAdapterHandler implements InvocationHandler {
         return otherMethod.invoke(adapter, args);
       }
       otherMethod = adapteeMethodMap.get(key);
-      if (otherMethod != null)
-        return otherMethod.invoke(adaptee, args);
-      return method.invoke(adaptee, args);
+      return otherMethod.invoke(adaptee, args);
     } catch (InvocationTargetException e) {
       throw e.getCause();
     }
+  }
+
+  private void checkClassPublic(Class<?> clazz) {
+    if (!Modifier.isPublic(clazz.getModifiers()))
+      throw new IllegalArgumentException(
+          clazz + " needs to be public");
+  }
+
+  private Map<MethodKey, Method> getMethodMap(
+      Class<?> clazz, boolean ownMethodsOnly) {
+    Predicate<Method> includeFilter;
+    if (ownMethodsOnly)
+      includeFilter = m -> m.getDeclaringClass() == clazz;
+    else
+      includeFilter = m -> true;
+    return
+        Stream.of(clazz.getMethods())
+            .filter(includeFilter)
+            .collect(Collectors.toMap(MethodKey::new,
+                Function.identity(),
+                (method1, method2) -> {
+                  var r1 = method1.getReturnType();
+                  var r2 = method2.getReturnType();
+                  if (r2.isAssignableFrom(r1)) {
+                    return method1;
+                  } else {
+                    return method2;
+                  }
+                }));
+  }
+
+  private void checkTargetMethodsImplemented(Class<?> target) {
+    var targetMethodMap = getMethodMap(target, false);
+    targetMethodMap.keySet().removeAll(
+        adapteeMethodMap.keySet()
+    );
+    targetMethodMap.keySet().removeAll(
+        adapterMethodMap.keySet()
+    );
+    if (!targetMethodMap.isEmpty())
+      throw new IllegalArgumentException(
+          "Target methods not implemented: " +
+              targetMethodMap.keySet());
   }
 }
 // end::listing[]

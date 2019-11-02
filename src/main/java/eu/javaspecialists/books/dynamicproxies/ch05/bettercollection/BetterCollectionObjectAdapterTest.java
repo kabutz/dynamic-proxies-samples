@@ -31,11 +31,13 @@ public class BetterCollectionObjectAdapterTest {
     names.add("Wolfgang");
     names.add("Leander");
     names.add("Klaus");
+    names.add("Menongahela");
     names.add("Reinhard");
     String[] nameArray = names.toArray();
     for (String name : nameArray) {
       System.out.println(name.toUpperCase());
     }
+    System.out.println(names);
     // end::listing[]
   }
 }

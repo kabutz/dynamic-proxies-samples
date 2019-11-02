@@ -29,6 +29,10 @@ public class BetterCollectionObjectAdapter<E>
 
   public BetterCollectionObjectAdapter(Collection<E> adaptee,
                                        E[] seedArray) {
+    if (seedArray.length != 0)
+      throw new IllegalArgumentException(
+          "seedArray must be empty");
+
     this.adaptee = adaptee;
     this.seedArray = seedArray;
   }
@@ -36,6 +40,11 @@ public class BetterCollectionObjectAdapter<E>
   @Override
   public E[] toArray() {
     return adaptee.toArray(seedArray);
+  }
+
+  @Override
+  public String toString() {
+    return "--" + adaptee.toString() + "--";
   }
 
   // this is a typical problem with the object adapter design

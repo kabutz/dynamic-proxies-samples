@@ -18,11 +18,18 @@
 
 package eu.javaspecialists.books.dynamicproxies.ch05.bettercollection;
 
-public class BetterConcurrentSkipListTest {
+import jdk.swing.interop.*;
+
+import java.util.*;
+import java.util.concurrent.*;
+
+@SuppressWarnings("unchecked")
+public class BetterSetDynamicObjectAdapterTest {
   public static void main(String... args) {
     // tag::listing[]
-    BetterConcurrentSkipListSet<String> names =
-        new BetterConcurrentSkipListSet<>(new String[0]);
+    BetterSortedSet<String> names =
+        BetterCollectionFactory.asBetterSet(
+            new ConcurrentSkipListSet<>(), new String[0]);
     names.add("Wolfgang");
     names.add("Leander");
     names.add("Klaus");
@@ -33,6 +40,8 @@ public class BetterConcurrentSkipListTest {
       System.out.println(name.toUpperCase());
     }
     System.out.println(names);
+
+    ((Collection) names).add(42); // this will fail
     // end::listing[]
   }
 }

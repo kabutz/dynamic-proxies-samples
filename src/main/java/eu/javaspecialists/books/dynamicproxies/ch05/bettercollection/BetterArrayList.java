@@ -38,5 +38,10 @@ public class BetterArrayList<E> extends ArrayList<E> {
     // https://shipilev.net/blog/2016/arrays-wisdom-ancients/
     return toArray(seedArray);
   }
+
+  @Override
+  public String toString() {
+    return "--" + super.toString() + "--";
+  }
 }
 // end::BetterArrayList[]
