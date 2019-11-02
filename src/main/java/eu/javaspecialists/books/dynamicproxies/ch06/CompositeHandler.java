@@ -29,8 +29,8 @@ public class CompositeHandler implements InvocationHandler {
   private final Map<MethodKey, Reducer> reducers;
   private final List<Object> children = new ArrayList<>();
 
-  public <E extends Composite<E>> CompositeHandler(
-      Class<E> target, Map<MethodKey, Reducer> reducers) {
+  public <E extends Composite<? super E>> CompositeHandler(
+      Class<? super E> target, Map<MethodKey, Reducer> reducers) {
     if (!Composite.class.isAssignableFrom(target))
       throw new IllegalArgumentException(
           "target is not derived from Composite");

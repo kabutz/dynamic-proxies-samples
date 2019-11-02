@@ -27,7 +27,7 @@ public class ContactDynamicTest {
   public static void main(String... args) {
     // tag::listing[]
     var reducers = Map.of(
-        new MethodKey("count"),
+        new MethodKey(Contact.class, "count"),
         new Reducer(0, (r1, r2) -> (int) r1 + (int) r2)
     );
 

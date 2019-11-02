@@ -22,11 +22,11 @@ package eu.javaspecialists.books.dynamicproxies.shortcut.chap8.chap8_1;
  * Created by Sven Ruppert on 14.01.14.
  */
 public class Util {
-  public static String prettyPrint(Class clazz) {
+  public static String prettyPrint(Class<?> clazz) {
     return prettyPrint(clazz, "");
   }
 
-  public static String prettyPrint(Class c, String postfix) {
+  public static String prettyPrint(Class<?> c, String postfix) {
     if (c.isArray()) {
       return prettyPrint(c.getComponentType(), postfix + "[]");
     } else {
