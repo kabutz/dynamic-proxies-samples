@@ -29,6 +29,7 @@ public class LoggingProxyTest {
     var handler = new LoggingInvocationHandler(
         Logger.getGlobal(),
         new ConcurrentHashMap<>());
+    @SuppressWarnings("unchecked")
     var map = (Map<String, Integer>)
                   Proxy.newProxyInstance(
                       Map.class.getClassLoader(),
