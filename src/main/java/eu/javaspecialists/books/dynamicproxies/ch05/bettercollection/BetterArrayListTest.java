@@ -26,10 +26,10 @@ public class BetterArrayListTest {
     BetterArrayList<String> names =
         new BetterArrayList<>(new String[0]);
     names.add("Wolfgang");
+    names.add("Bobby Tables");
     names.add("Leander");
     names.add("Klaus");
     names.add("Menongahela");
-    names.add("Reinhard");
     String[] nameArray = names.toArray();
     for (String name : nameArray) {
       System.out.println(name.toUpperCase());
