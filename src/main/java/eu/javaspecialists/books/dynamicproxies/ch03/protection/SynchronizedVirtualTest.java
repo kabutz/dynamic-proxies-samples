@@ -27,7 +27,7 @@ import eu.javaspecialists.books.dynamicproxies.ch02.virtual.*;
 // tag::listing[]
 public class SynchronizedVirtualTest {
   public static void main(String... args) {
-    var map =
+    CustomMap<Integer, Integer> map =
         Proxies.synchronizedProxy(CustomMap.class,
             Proxies.<CustomMap<Integer, Integer>>virtualProxy(
                 CustomMap.class, CustomHashMap::new));

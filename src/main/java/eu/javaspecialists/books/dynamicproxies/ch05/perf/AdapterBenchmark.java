@@ -19,13 +19,13 @@
  */
 
 package eu.javaspecialists.books.dynamicproxies.ch05.perf;
-// tag::listing[]
 import eu.javaspecialists.books.dynamicproxies.ch05.bettercollection.*;
 import org.openjdk.jmh.annotations.*;
 
 import java.util.*;
 import java.util.concurrent.*;
 
+// tag::listing[]
 @Fork(3)
 @Warmup(iterations = 5, time = 5)
 @Measurement(iterations = 10, time = 5)
@@ -59,8 +59,9 @@ public class AdapterBenchmark {
     all.forEach(c -> c.add("John"));
     all.forEach(c -> c.add("Mary"));
     all.forEach(c -> c.add("Menongahela"));
-    all.forEach(c -> c.add("Tommy Tables"));
+    all.forEach(c -> c.add("Bobby Tables"));
   }
+
   @Benchmark
   public int plainSize() {
     return plain.size();
