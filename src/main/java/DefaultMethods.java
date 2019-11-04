@@ -18,11 +18,16 @@
  * License.
  */
 
-package eu.javaspecialists.books.dynamicproxies.ch05.singer;
+public interface DefaultMethods {
+  void foo();
+  public default void bar() {
+    System.out.println("Default bar()");
+  }
+  static void baz() {
+    System.out.println("Default baz()");
+  }
 
-public interface Singer {
-  void sing();
-  default void play() {
-    System.out.println("Happily playing");
+  private void foobar() {
+    System.out.println("Default() foobar");
   }
 }

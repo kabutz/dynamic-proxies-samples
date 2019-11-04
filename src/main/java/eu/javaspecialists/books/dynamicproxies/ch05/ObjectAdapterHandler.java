@@ -22,6 +22,7 @@ package eu.javaspecialists.books.dynamicproxies.ch05;
 
 import eu.javaspecialists.books.dynamicproxies.*;
 
+import java.lang.invoke.*;
 import java.lang.reflect.*;
 import java.util.*;
 import java.util.function.*;
@@ -33,6 +34,8 @@ public class ObjectAdapterHandler implements InvocationHandler {
   private final Object adapter;
   private final Map<MethodKey, Method> adapteeMethodMap;
   private final Map<MethodKey, Method> adapterMethodMap;
+  private final Map<MethodKey, MethodHandle> defaultMethods;
+
   public ObjectAdapterHandler(Class<?> target,
                               Object adaptee,
                               Object adapter) {
@@ -43,9 +46,8 @@ public class ObjectAdapterHandler implements InvocationHandler {
     this.adapter = adapter;
 
     adapterMethodMap = getMethodMap(adapter.getClass(), true);
-    System.out.println(adapterMethodMap);
     adapteeMethodMap = getMethodMap(adaptee.getClass(), false);
-    System.out.println(adapteeMethodMap);
+    defaultMethods = getDefaultMethodMap(target);
 
     checkTargetMethodsImplemented(target);
   }
@@ -56,11 +58,13 @@ public class ObjectAdapterHandler implements InvocationHandler {
     try {
       var key = new MethodKey(method);
       var otherMethod = adapterMethodMap.get(key);
-      if (otherMethod != null) {
+      if (otherMethod != null)
         return otherMethod.invoke(adapter, args);
-      }
       otherMethod = adapteeMethodMap.get(key);
-      return otherMethod.invoke(adaptee, args);
+      if (otherMethod != null)
+        return otherMethod.invoke(adaptee, args);
+      var otherMH = defaultMethods.get(key);
+      return otherMH.invokeWithArguments(args);
     } catch (InvocationTargetException e) {
       throw e.getCause();
     }
@@ -95,6 +99,38 @@ public class ObjectAdapterHandler implements InvocationHandler {
                 }));
   }
 
+  private static final InvocationHandler NULL_HANDLER =
+      (p, m, a) -> null;
+
+  private Map<MethodKey, MethodHandle> getDefaultMethodMap(
+      Class<?> target) {
+    var defaultTarget =
+        Proxy.newProxyInstance(target.getClassLoader(),
+            new Class<?>[] {target}, NULL_HANDLER);
+    return
+        Stream.of(target.getMethods())
+            .filter(Method::isDefault)
+            .collect(
+                Collectors.toMap(
+                    MethodKey::new,
+                    method -> createDefaultMethodHandle(target,
+                        method, defaultTarget)));
+  }
+
+  private MethodHandle createDefaultMethodHandle(
+      Class<?> target, Method method, Object defaultTarget) {
+    try {
+      // Thanks Thomas Darimont for this idea
+      var lookup = MethodHandles.lookup();
+      return MethodHandles.privateLookupIn(target, lookup)
+                 .in(target)
+                 .unreflectSpecial(method, target)
+                 .bindTo(defaultTarget);
+    } catch (IllegalAccessException e) {
+      throw new IllegalArgumentException(e);
+    }
+  }
+
   private void checkTargetMethodsImplemented(Class<?> target) {
     var targetMethodMap = getMethodMap(target, false);
     targetMethodMap.keySet().removeAll(
@@ -103,6 +139,12 @@ public class ObjectAdapterHandler implements InvocationHandler {
     targetMethodMap.keySet().removeAll(
         adapterMethodMap.keySet()
     );
+    targetMethodMap.keySet().removeAll(
+        defaultMethods.keySet()
+    );
+    targetMethodMap.values().removeIf(
+        method -> Modifier.isStatic(method.getModifiers
+                                               ()));
     if (!targetMethodMap.isEmpty())
       throw new IllegalArgumentException(
           "Target methods not implemented: " +
