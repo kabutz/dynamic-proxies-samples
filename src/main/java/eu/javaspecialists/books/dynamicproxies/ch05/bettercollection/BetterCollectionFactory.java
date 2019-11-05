@@ -67,7 +67,6 @@ public class BetterCollectionFactory {
     }
     // addAll() left as an exercise for the reader :-)
 
-
     @Override
     public String toString() {
       return "--" + adaptee + "--";

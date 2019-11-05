@@ -31,7 +31,6 @@ public class BetterConcurrentSkipListSet<E>
     if (seedArray.length != 0)
       throw new IllegalArgumentException(
           "seedArray must be empty");
-
     this.seedArray = seedArray;
   }
   @Override

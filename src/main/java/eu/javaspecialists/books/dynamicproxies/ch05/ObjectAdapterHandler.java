@@ -64,7 +64,7 @@ public class ObjectAdapterHandler implements InvocationHandler {
       if (otherMethod != null)
         return otherMethod.invoke(adaptee, args);
       var otherMH = defaultMethods.get(key);
-      return otherMH.invokeWithArguments(args);
+      return otherMH.bindTo(proxy).invokeWithArguments(args);
     } catch (InvocationTargetException e) {
       throw e.getCause();
     }
@@ -99,33 +99,26 @@ public class ObjectAdapterHandler implements InvocationHandler {
                 }));
   }
 
-  private static final InvocationHandler NULL_HANDLER =
-      (p, m, a) -> null;
-
   private Map<MethodKey, MethodHandle> getDefaultMethodMap(
       Class<?> target) {
-    var defaultTarget =
-        Proxy.newProxyInstance(target.getClassLoader(),
-            new Class<?>[] {target}, NULL_HANDLER);
     return
         Stream.of(target.getMethods())
             .filter(Method::isDefault)
             .collect(
-                Collectors.toMap(
+                Collectors.toUnmodifiableMap(
                     MethodKey::new,
                     method -> createDefaultMethodHandle(target,
-                        method, defaultTarget)));
+                        method)));
   }
 
   private MethodHandle createDefaultMethodHandle(
-      Class<?> target, Method method, Object defaultTarget) {
+      Class<?> target, Method method) {
     try {
       // Thanks Thomas Darimont for this idea
       var lookup = MethodHandles.lookup();
       return MethodHandles.privateLookupIn(target, lookup)
                  .in(target)
-                 .unreflectSpecial(method, target)
-                 .bindTo(defaultTarget);
+                 .unreflectSpecial(method, target);
     } catch (IllegalAccessException e) {
       throw new IllegalArgumentException(e);
     }
@@ -143,8 +136,7 @@ public class ObjectAdapterHandler implements InvocationHandler {
         defaultMethods.keySet()
     );
     targetMethodMap.values().removeIf(
-        method -> Modifier.isStatic(method.getModifiers
-                                               ()));
+        method -> Modifier.isStatic(method.getModifiers()));
     if (!targetMethodMap.isEmpty())
       throw new IllegalArgumentException(
           "Target methods not implemented: " +

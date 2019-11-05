@@ -22,7 +22,4 @@ package eu.javaspecialists.books.dynamicproxies.ch05.singer;
 
 public interface Singer {
   void sing();
-  default void play() {
-    System.out.println("Happily playing");
-  }
 }
