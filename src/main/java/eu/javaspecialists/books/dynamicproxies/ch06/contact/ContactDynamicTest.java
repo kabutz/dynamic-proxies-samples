@@ -33,28 +33,30 @@ public class ContactDynamicTest {
         new Reducer(0, (r1, r2) -> (int) r1 + (int) r2)
     );
 
-    Contact java_specialists_newsletter =
+    Contact javaSpecialistsNewsletter =
         Proxies.compose(Contact.class, reducers);
-    System.out.println(java_specialists_newsletter.count());
-    java_specialists_newsletter.add(new Person("john@aol.com"));
-    java_specialists_newsletter.sendMail("Hello there 1");
-    System.out.println(java_specialists_newsletter.count());
+    System.out.println(javaSpecialistsNewsletter.count());
+    javaSpecialistsNewsletter.add(new Person("john@aol.com"));
+    javaSpecialistsNewsletter.sendMail("Hello there 1");
+    System.out.println(javaSpecialistsNewsletter.count());
 
-    Contact all_students = Proxies.compose(Contact.class, reducers);
-    java_specialists_newsletter.add(all_students);
-    all_students.add(new Person("peter@absa.co.za"));
-    all_students.add(new Person("mzani@absa.co.za"));
+    Contact allStudents =
+        Proxies.compose(Contact.class, reducers);
+    allStudents.add(new Person("peter@absa.co.za"));
+    allStudents.add(new Person("mzani@absa.co.za"));
+    javaSpecialistsNewsletter.add(allStudents);
 
-    java_specialists_newsletter.sendMail("Hello there 2");
-    System.out.println(java_specialists_newsletter.count());
+    javaSpecialistsNewsletter.sendMail("Hello there 2");
+    System.out.println(javaSpecialistsNewsletter.count());
 
-    Contact extreme_java = Proxies.compose(Contact.class, reducers);
-    all_students.add(extreme_java);
-    extreme_java.add(new Person("John@standardbank.co.za"));
-    extreme_java.add(new Person("Hlope@standardbank.co.za"));
+    Contact extremeJava =
+        Proxies.compose(Contact.class, reducers);
+    extremeJava.add(new Person("John@standardbank.co.za"));
+    extremeJava.add(new Person("Hlope@standardbank.co.za"));
+    allStudents.add(extremeJava);
 
-    java_specialists_newsletter.sendMail("Hello there 3");
-    System.out.println(java_specialists_newsletter.count());
+    javaSpecialistsNewsletter.sendMail("Hello there 3");
+    System.out.println(javaSpecialistsNewsletter.count());
     // end::listing[]
   }
 }

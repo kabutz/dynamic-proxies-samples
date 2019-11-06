@@ -37,10 +37,10 @@ public class CanadianEmbassy implements Canada {
                             boolean married,
                             boolean rich) {
     try {
-      var encoded_name = URLEncoder.encode(name,
+      var encodedName = URLEncoder.encode(name,
           StandardCharsets.UTF_8);
       var url = "http://0.0.0.0:8080/canGetVisa/" +
-                    encoded_name + "/" +
+                    encodedName + "/" +
                     married + "/" + rich;
       var req = HttpRequest.newBuilder()
                     .uri(URI.create(url))
