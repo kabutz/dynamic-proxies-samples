@@ -27,5 +27,9 @@ public class ProxyTester implements Tester {
   public long increment() {
     return tester.increment();
   }
+  @Override
+  public void consumeCPU() {
+    tester.consumeCPU();
+  }
 }
 // end::listing[]

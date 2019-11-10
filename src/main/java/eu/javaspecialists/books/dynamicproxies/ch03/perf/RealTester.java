@@ -20,12 +20,20 @@
 
 package eu.javaspecialists.books.dynamicproxies.ch03.perf;
 
+import org.openjdk.jmh.infra.*;
+
+import java.util.concurrent.atomic.*;
+
 // tag::listing[]
 public class RealTester implements Tester {
   private long counter = 0;
   @Override
   public long increment() {
     return counter++;
+  }
+  @Override
+  public void consumeCPU() {
+    Blackhole.consumeCPU(2);
   }
 }
 // end::listing[]

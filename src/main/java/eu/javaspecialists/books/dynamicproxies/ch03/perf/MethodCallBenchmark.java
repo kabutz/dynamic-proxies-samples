@@ -22,53 +22,74 @@ package eu.javaspecialists.books.dynamicproxies.ch03.perf;
 
 import eu.javaspecialists.books.dynamicproxies.*;
 import org.openjdk.jmh.annotations.*;
+import org.openjdk.jmh.profile.*;
+import org.openjdk.jmh.runner.*;
+import org.openjdk.jmh.runner.options.*;
 
 import java.util.concurrent.*;
 
 // tag::listing[]
 @Fork(3)
-@Warmup(iterations = 5, time = 5)
-@Measurement(iterations = 10, time = 5)
+@Warmup(iterations = 5, time = 3)
+@Measurement(iterations = 10, time = 3)
 @BenchmarkMode(Mode.AverageTime)
 @OutputTimeUnit(TimeUnit.NANOSECONDS)
 @State(Scope.Benchmark)
+
 public class MethodCallBenchmark {
   // direct call to RealTester
   private final RealTester realTester = new RealTester();
 
   // static proxies
   private final Tester staticProxy = new ProxyTester();
-  private final Tester methodReference = realTester::increment;
 
-  // dynamic proxies
-  private final Tester dynamicProxyDirectCall =
+  //   dynamic proxies
+  private final Tester dynamicProxyDirectCallIncrement =
       Proxies.castProxy(Tester.class,
-          (proxy, method, args) ->
-              realTester.increment());
+          (proxy, method, args) -> realTester.increment());
+  private final Tester dynamicProxyDirectCallConsumeCPU =
+      Proxies.castProxy(Tester.class,
+          (proxy, method, args) -> {
+            realTester.consumeCPU();
+            return null;
+          });
   private final Tester dynamicProxyReflectiveCall =
       Proxies.castProxy(Tester.class,
           (proxy, method, args) ->
               method.invoke(realTester, args));
 
   @Benchmark
-  public long directCall() {
+  public long directCallIncrement() {
     return realTester.increment();
   }
   @Benchmark
-  public long staticProxy() {
+  public long staticProxyIncrement() {
     return staticProxy.increment();
   }
   @Benchmark
-  public long methodReference() {
-    return methodReference.increment();
+  public long dynamicProxyDirectCallIncrement() {
+    return dynamicProxyDirectCallIncrement.increment();
   }
   @Benchmark
-  public long dynamicProxyThenDirectCall() {
-    return dynamicProxyDirectCall.increment();
-  }
-  @Benchmark
-  public long dynamicProxyThenReflectiveCall() {
+  public long dynamicProxyReflectiveCallIncrement() {
     return dynamicProxyReflectiveCall.increment();
+  }
+
+  @Benchmark
+  public void directCallConsumeCPU() {
+    realTester.consumeCPU();
+  }
+  @Benchmark
+  public void staticProxyConsumeCPU() {
+    staticProxy.consumeCPU();
+  }
+  @Benchmark
+  public void dynamicProxyDirectCallConsumeCPU() {
+    dynamicProxyDirectCallConsumeCPU.consumeCPU();
+  }
+  @Benchmark
+  public void dynamicProxyReflectiveCallConsumeCPU() {
+    dynamicProxyReflectiveCall.consumeCPU();
   }
 }
 // end::listing[]
