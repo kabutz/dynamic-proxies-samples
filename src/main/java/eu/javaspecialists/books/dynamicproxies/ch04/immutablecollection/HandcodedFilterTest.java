@@ -18,22 +18,26 @@
  * License.
  */
 
-package eu.javaspecialists.books.dynamicproxies.ch07;
+package eu.javaspecialists.books.dynamicproxies.ch04.immutablecollection;
 
-// tag::VirtualDynamicProxyBasic[]
-import java.util.function.*;
+import java.util.*;
 
-public class VirtualDynamicProxyBasic<P> extends VirtualDynamicProxy<P> {
-  private P realSubject;
-  public VirtualDynamicProxyBasic(Supplier<P> subjectSupplier) {
-    super(subjectSupplier);
-  }
-  @Override
-  protected P realSubject() {
-    if (realSubject == null) {
-      realSubject = makeRealSubject();
-    }
-    return realSubject;
+public class HandcodedFilterTest {
+  public static void main(String... args) {
+    // tag::listing[]
+    ImmutableCollection<String> names =
+        new HandcodedFilter<>(
+            Arrays.asList("Peter", "Paul", "Mary"));
+    // names.remove("Peter"); // does not compile
+    System.out.println(names);
+    System.out.println("Is Mary in? " + names.contains("Mary"));
+    System.out.println("Are there names? " + names.isEmpty());
+    System.out.println("Printing the names:");
+    names.forEach(System.out::println);
+    System.out.println("Class: " + names.getClass());
+
+    names.printAll();
+    // end::listing[]
   }
 }
-// end::VirtualDynamicProxyBasic[]
+

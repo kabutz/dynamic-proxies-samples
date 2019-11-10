@@ -18,14 +18,15 @@
  * License.
  */
 
-package eu.javaspecialists.books.dynamicproxies.ch04;
+package eu.javaspecialists.books.dynamicproxies.ch04.immutablecollection;
 
 import java.util.*;
 import java.util.function.*;
 import java.util.stream.*;
 
-// tag::ImmutableCollection[]
-public interface ImmutableCollection<E> extends ImmutableIterable<E> {
+// tag::listing[]
+public interface ImmutableCollection<E>
+    extends ImmutableIterable<E> {
   int size();
   boolean isEmpty();
   boolean contains(Object o);
@@ -36,14 +37,19 @@ public interface ImmutableCollection<E> extends ImmutableIterable<E> {
   Stream<E> stream();
   Stream<E> parallelStream();
 
-  // mutators filtered away
+  // to try out default methods
+  default void printAll() {
+    forEach(System.out::println);
+  }
+
+  // mutator methods from Collection filtered away
   //    boolean add(E e);
   //    boolean remove(Object o);
-  //    boolean addAll(java.util.Collection<? extends E> c);
-  //    boolean removeAll(java.util.Collection<?> c);
+  //    boolean addAll(Collection<? extends E> c);
+  //    boolean removeAll(Collection<?> c);
   //    boolean removeIf(Predicate<? super E> filter);
-  //    boolean retainAll(java.util.Collection<?> c);
+  //    boolean retainAll(Collection<?> c);
   //    void clear();
 }
-// end::ImmutableCollection[]
+// end::listing[]
 

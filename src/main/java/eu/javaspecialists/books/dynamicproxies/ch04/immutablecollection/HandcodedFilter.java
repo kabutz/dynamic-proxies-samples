@@ -18,14 +18,15 @@
  * License.
  */
 
-package eu.javaspecialists.books.dynamicproxies.ch04;
+package eu.javaspecialists.books.dynamicproxies.ch04.immutablecollection;
 
 import java.util.*;
 import java.util.function.*;
 import java.util.stream.*;
 
-// tag::HandcodedFilter[]
-public class HandcodedFilter<E> implements ImmutableCollection<E> {
+// tag::listing[]
+public class HandcodedFilter<E>
+    implements ImmutableCollection<E> {
   private final Collection<E> c;
 
   public HandcodedFilter(Collection<E> c) {
@@ -77,5 +78,5 @@ public class HandcodedFilter<E> implements ImmutableCollection<E> {
     c.forEach(action);
   }
 }
-// end::HandcodedFilter[]
+// end::listing[]
 

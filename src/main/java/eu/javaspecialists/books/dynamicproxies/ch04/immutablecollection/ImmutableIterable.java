@@ -18,10 +18,18 @@
  * License.
  */
 
-package eu.javaspecialists.books.dynamicproxies.ch04;
+package eu.javaspecialists.books.dynamicproxies.ch04.immutablecollection;
 
-public class NonPublicClass {
-  public static void main(String... args) {
+import java.util.*;
+import java.util.function.*;
 
-  }
+// tag::listing[]
+public interface ImmutableIterable<E> {
+  void forEach(Consumer<? super E> action);
+  Spliterator<E> spliterator();
+
+  // mutator method from Iterable filtered away
+  //    Iterator<E> iterator();
 }
+// end::listing[]
+

@@ -18,18 +18,14 @@
  * License.
  */
 
-package eu.javaspecialists.books.dynamicproxies.ch04;
+package eu.javaspecialists.books.dynamicproxies.ch04.immutablecollection;
 
 import java.util.*;
-import java.util.function.*;
 
-// tag::ImmutableIterable[]
-public interface ImmutableIterable<E> {
-  void forEach(Consumer<? super E> action);
-  Spliterator<E> spliterator();
-
-  // mutators filtered away
-  //    Iterator<E> iterator();
+// tag::listing[]
+public interface MutableIterable<E>
+    extends ImmutableIterable<E> {
+  Iterator<E> iterator();
 }
-// end::ImmutableIterable[]
+// end::listing[]
 
