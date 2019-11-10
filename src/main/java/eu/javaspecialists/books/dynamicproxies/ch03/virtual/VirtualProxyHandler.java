@@ -25,20 +25,20 @@ import java.util.function.*;
 
 // tag::listing[]
 public class VirtualProxyHandler<E> implements InvocationHandler {
-  private final Supplier<? extends E> subjectFactory;
-  private E realSubject;
+  private final Supplier<? extends E> supplier;
+  private E e;
 
-  public VirtualProxyHandler(Supplier<? extends E> subjectFactory) {
-    this.subjectFactory = subjectFactory;
+  public VirtualProxyHandler(Supplier<? extends E> supplier) {
+    this.supplier = supplier;
   }
-  private E realSubject() {
-    if (realSubject == null) realSubject = subjectFactory.get();
-    return realSubject;
+  private E getE() {
+    if (e == null) e = supplier.get();
+    return e;
   }
   @Override
-  public Object invoke(Object proxy, Method method, Object[] args)
-      throws Throwable {
-    return method.invoke(realSubject(), args);
+  public Object invoke(Object proxy, Method method,
+                       Object[] args) throws Throwable {
+    return method.invoke(getE(), args);
   }
 }
 // end::listing[]
