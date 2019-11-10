@@ -20,16 +20,8 @@
 
 package eu.javaspecialists.books.dynamicproxies.ch03;
 
-import eu.javaspecialists.books.dynamicproxies.*;
-
-public class DynamicProxies {
-  public static void main(String... args) throws InterruptedException {
-    // tag::listing[]
-    Subject subject = Proxies.simpleProxy(
-        Subject.class, new RealSubject());
-    String hello = subject.uppercaseTrim("  Hello\t\t");
-    System.out.println("hello = \"" + hello + "\"");
-    System.out.println(subject);
-    // end::listing[]
-  }
+// tag::listing[]
+public interface Subject {
+  String uppercaseTrim(String str);
 }
+// end::listing[]

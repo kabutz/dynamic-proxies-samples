@@ -18,10 +18,17 @@
  * License.
  */
 
-package eu.javaspecialists.books.dynamicproxies.ch07;
+package eu.javaspecialists.books.dynamicproxies.ch03;
 
-// tag::Concurrency[]
-public enum Concurrency {
-  NONE, LOCK_FREE, SYNCHRONIZED;
+// tag::listing[]
+public class RealSubject implements Subject {
+  @Override
+  public String uppercaseTrim(String str) {
+    return str.trim().toUpperCase();
+  }
+  @Override
+  public String toString() {
+    return "RealSubject";
+  }
 }
-// end::Concurrency[]
+// end::listing[]
