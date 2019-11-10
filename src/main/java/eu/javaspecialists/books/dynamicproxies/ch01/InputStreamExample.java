@@ -29,11 +29,12 @@ public class InputStreamExample {
     long time = System.currentTimeMillis();
 
     // tag::out[]
-    try (var out = new DataOutputStream(
-        new BufferedOutputStream(
-            new GZIPOutputStream(
-                new FileOutputStream(
-                    "data.bin.gz"))))) {
+    try (
+        var out = new DataOutputStream(
+            new BufferedOutputStream(
+                new GZIPOutputStream(
+                    new FileOutputStream(
+                        "data.bin.gz"))))) {
       ThreadLocalRandom.current().ints(10_000_000, 0, 1_000)
           .forEach(i -> {
             try {
@@ -51,11 +52,12 @@ public class InputStreamExample {
     time = System.currentTimeMillis();
 
     // tag::in[]
-    try (var in = new DataInputStream(
-        new BufferedInputStream(
-            new GZIPInputStream(
-                new FileInputStream(
-                    "data.bin.gz"))))) {
+    try (
+        var fis = new FileInputStream("data.bin.gz");
+        var in = new DataInputStream(
+            new BufferedInputStream(
+                new GZIPInputStream(
+                    fis)))) {
       long total = 0;
       int value;
       while ((value = in.readInt()) != -1) {
