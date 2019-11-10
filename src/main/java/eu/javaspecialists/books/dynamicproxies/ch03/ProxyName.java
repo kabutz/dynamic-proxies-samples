@@ -18,17 +18,20 @@
  * License.
  */
 
-package eu.javaspecialists.books.dynamicproxies.ch07;
+package eu.javaspecialists.books.dynamicproxies.ch03;
 
-// tag::VirtualMoralFiberBasic[]
-public class VirtualMoralFiberBasic extends VirtualMoralFiber {
-  private MoralFiber realSubject;
-  @Override
-  protected MoralFiber realSubject() {
-    if (realSubject == null) {
-      realSubject = new RealMoralFiber();
-    }
-    return realSubject;
+import java.lang.reflect.*;
+
+// tag::listing[]
+public class ProxyName {
+  public static void main(String... args) {
+    System.out.println(
+        Proxy.newProxyInstance(
+            Subject.class.getClassLoader(),
+            new Class<?>[] {Subject.class},
+            (proxy, method, arguments) -> null
+        ).getClass()
+    );
   }
 }
-// end::VirtualMoralFiberBasic[]
+// end::listing[]
