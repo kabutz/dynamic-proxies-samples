@@ -20,7 +20,7 @@
 
 package eu.javaspecialists.books.dynamicproxies.ch06;
 
-import eu.javaspecialists.books.dynamicproxies.*;
+import eu.javaspecialists.books.dynamicproxies.util.*;
 
 import java.lang.reflect.*;
 import java.util.*;
@@ -32,7 +32,8 @@ public class CompositeHandler implements InvocationHandler {
   private final List<Object> children = new ArrayList<>();
 
   public <E extends Composite<? super E>> CompositeHandler(
-      Class<? super E> target, Map<MethodKey, Reducer> reducers) {
+      Class<? super E> target,
+      Map<MethodKey, Reducer> reducers) {
     if (!Composite.class.isAssignableFrom(target))
       throw new IllegalArgumentException(
           "target is not derived from Composite");
@@ -53,6 +54,8 @@ public class CompositeHandler implements InvocationHandler {
       public UncheckedException(Throwable cause) {
         super(cause);
       }
+      @Override
+      public Throwable fillInStackTrace() { return null; }
     }
     var reducer = reducers.getOrDefault(
         new MethodKey(method), Reducer.NULL_REDUCER);
