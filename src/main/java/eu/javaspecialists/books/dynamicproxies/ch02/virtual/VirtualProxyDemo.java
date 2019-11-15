@@ -20,7 +20,7 @@
 
 package eu.javaspecialists.books.dynamicproxies.ch02.virtual;
 
-public class VirtualProxyTest {
+public class VirtualProxyDemo {
   public static void main(String... args) {
     // tag::listing[]
     CustomMap<String, Integer> map =
