@@ -26,6 +26,7 @@ import org.openjdk.jmh.profile.*;
 import org.openjdk.jmh.runner.*;
 import org.openjdk.jmh.runner.options.*;
 
+import java.lang.invoke.*;
 import java.util.concurrent.*;
 
 // tag::listing[]
@@ -90,6 +91,18 @@ public class MethodCallBenchmark {
   @Benchmark
   public void dynamicProxyReflectiveCallConsumeCPU() {
     dynamicProxyReflectiveCall.consumeCPU();
+  }
+
+  public static void main(String... args) throws RunnerException {
+    Options opt = new OptionsBuilder()
+                      .include(MethodHandles.lookup().lookupClass().getName())
+                      .forks(1)
+                      .warmupIterations(1)
+                      .warmupTime(TimeValue.seconds(1))
+                      .measurementIterations(5)
+                      .measurementTime(TimeValue.seconds(1))
+                      .build();
+    new Runner(opt).run();
   }
 }
 // end::listing[]
