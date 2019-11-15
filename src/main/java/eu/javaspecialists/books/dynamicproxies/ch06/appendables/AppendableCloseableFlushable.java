@@ -20,8 +20,8 @@
 
 package eu.javaspecialists.books.dynamicproxies.ch06.appendables;
 
-import eu.javaspecialists.books.dynamicproxies.*;
 import eu.javaspecialists.books.dynamicproxies.ch06.*;
+import eu.javaspecialists.books.dynamicproxies.util.*;
 
 import java.io.*;
 import java.util.*;
