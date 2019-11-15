@@ -21,6 +21,7 @@
 package eu.javaspecialists.books.dynamicproxies.ch03.gotchas;
 
 import eu.javaspecialists.books.dynamicproxies.*;
+import eu.javaspecialists.books.dynamicproxies.util.*;
 
 import java.lang.reflect.*;
 import java.math.*;
