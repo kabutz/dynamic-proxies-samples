@@ -36,18 +36,16 @@ public class LoggingInvocationHandler implements InvocationHandler {
   public Object invoke(Object proxy, Method method,
                        Object[] args) throws Throwable {
     log.info(() -> "Entering " + toString(method, args));
-    long start = nanoTime();
+    // optimization - nanoTime() is an expensive native call
+    final boolean logFine = log.isLoggable(Level.FINE);
+    long start = logFine ? System.nanoTime() : 0;
     try {
       return method.invoke(obj, args);
     } finally {
-      long nanos = start == 0 ? 0 : nanoTime() - start;
+      long nanos = logFine ? System.nanoTime() - start : 0;
       log.info(() -> "Exiting " + toString(method, args));
-      log.fine(() -> "Execution took " + nanos + "ns");
+      if (logFine) log.fine(() -> "Execution took " + nanos + "ns");
     }
-  }
-  private long nanoTime() {
-    // optimization - nanoTime() is an expensive native call
-    return log.isLoggable(Level.FINE) ? System.nanoTime() : 0;
   }
   private final static Object[] EMPTY = {};
   private String toString(Method method, Object[] args) {
