@@ -24,7 +24,7 @@ import java.io.*;
 import java.util.concurrent.*;
 import java.util.zip.*;
 
-public class InputStreamExample {
+public class InputStreamDemo {
   public static void main(String... args) throws IOException {
     long time = System.currentTimeMillis();
 
