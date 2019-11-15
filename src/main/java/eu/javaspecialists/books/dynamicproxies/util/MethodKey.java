@@ -18,26 +18,26 @@
  * License.
  */
 
-package eu.javaspecialists.books.dynamicproxies;
+package eu.javaspecialists.books.dynamicproxies.util;
 
 import java.lang.reflect.*;
 import java.util.*;
 import java.util.stream.*;
 
-// tag::MethodKey[]
+// tag::listing[]
 public final class MethodKey implements Comparable<MethodKey> {
   private final String name;
   private final Class<?>[] parameterTypes;
   public MethodKey(Method method) {
     name = method.getName();
-    parameterTypes = method.getParameterTypes();
+    parameterTypes = ParameterTypesFetcher.get(method);
   }
   public MethodKey(Class<?> clazz, String name,
                    Class<?>... parameterTypes) {
     try {
-      Method method = clazz.getMethod(name, parameterTypes);
+      var method = clazz.getMethod(name, parameterTypes);
       this.name = method.getName();
-      this.parameterTypes = method.getParameterTypes();
+      this.parameterTypes = parameterTypes;
     } catch (NoSuchMethodException e) {
       throw new IllegalArgumentException(e);
     }
@@ -47,7 +47,7 @@ public final class MethodKey implements Comparable<MethodKey> {
     if (!(obj instanceof MethodKey)) {
       return false;
     }
-    MethodKey other = (MethodKey) obj;
+    var other = (MethodKey) obj;
     return name == other.name &&
                equalParamTypes(parameterTypes,
                    other.parameterTypes);
@@ -65,7 +65,7 @@ public final class MethodKey implements Comparable<MethodKey> {
   }
   @Override
   public int hashCode() {
-    return name.hashCode();
+    return name.hashCode() + parameterTypes.length;
   }
 
   @Override
@@ -84,5 +84,5 @@ public final class MethodKey implements Comparable<MethodKey> {
                    name + "(", ")"));
   }
 }
-// end::MethodKey[]
+// end::listing[]
 
