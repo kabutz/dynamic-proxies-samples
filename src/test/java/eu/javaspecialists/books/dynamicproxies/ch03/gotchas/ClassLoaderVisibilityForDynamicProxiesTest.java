@@ -26,7 +26,7 @@ import org.junit.*;
 import java.lang.reflect.*;
 import java.util.*;
 
-public class BrokenProxyExample {
+public class ClassLoaderVisibilityForDynamicProxiesTest {
   @Test(expected = IllegalArgumentException.class)
   public void incorrectClassLoader() {
     // tag::broken[]
