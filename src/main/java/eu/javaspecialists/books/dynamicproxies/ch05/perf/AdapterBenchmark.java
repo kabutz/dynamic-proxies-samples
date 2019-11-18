@@ -19,9 +19,13 @@
  */
 
 package eu.javaspecialists.books.dynamicproxies.ch05.perf;
+
 import eu.javaspecialists.books.dynamicproxies.ch05.bettercollection.*;
 import org.openjdk.jmh.annotations.*;
+import org.openjdk.jmh.runner.*;
+import org.openjdk.jmh.runner.options.*;
 
+import java.lang.invoke.*;
 import java.util.*;
 import java.util.concurrent.*;
 
@@ -51,6 +55,7 @@ public class AdapterBenchmark {
   private final Collection<Collection<String>> all =
       List.of(plain, classAdapter, objectAdapter,
           dynamicObjectAdapter);
+
 
   @Setup
   public void init() {
@@ -94,6 +99,35 @@ public class AdapterBenchmark {
   @Benchmark
   public String[] dynamicObjectAdapterToArray() {
     return dynamicObjectAdapter.toArray();
+  }
+
+  @Benchmark
+  public void plainForEach() {
+    plain.forEach(Objects::requireNonNull);
+  }
+  @Benchmark
+  public void classAdapterForEach() {
+    classAdapter.forEach(Objects::requireNonNull);
+  }
+  @Benchmark
+  public void objectAdapterForEach() {
+    objectAdapter.forEach(Objects::requireNonNull);
+  }
+  @Benchmark
+  public void dynamicObjectAdapterForEach() {
+    dynamicObjectAdapter.forEach(Objects::requireNonNull);
+  }
+
+  public static void main(String... args) throws RunnerException {
+    Options opt = new OptionsBuilder()
+                      .include(MethodHandles.lookup().lookupClass().getName())
+                      .forks(1)
+                      .warmupIterations(1)
+                      .warmupTime(TimeValue.seconds(1))
+                      .measurementIterations(5)
+                      .measurementTime(TimeValue.seconds(1))
+                      .build();
+    new Runner(opt).run();
   }
 }
 // end::listing[]
