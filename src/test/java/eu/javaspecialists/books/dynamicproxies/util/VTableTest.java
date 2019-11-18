@@ -20,7 +20,9 @@
 
 package eu.javaspecialists.books.dynamicproxies.util;
 
+import eu.javaspecialists.books.dynamicproxies.*;
 import eu.javaspecialists.books.dynamicproxies.ch03.*;
+import eu.javaspecialists.books.dynamicproxies.ch05.bettercollection.*;
 import org.junit.*;
 
 import java.lang.reflect.*;
@@ -32,7 +34,8 @@ import static org.junit.Assert.*;
 public class VTableTest {
   @Test
   public void testSimpleVTable() throws NoSuchMethodException {
-    VTable vt = new VTable.Builder(new RealSubject())
+    VTable vt = new VTable.Builder(RealSubject.class)
+                    .excludeObjectMethods()
                     .addTargetInterface(Subject.class)
                     .build();
 
@@ -56,7 +59,7 @@ public class VTableTest {
 
   @Test
   public void testObjectAdapter() throws ReflectiveOperationException {
-    VTable vt = new VTable.Builder(new ObjectAdapter())
+    VTable vt = new VTable.Builder(ObjectAdapter.class)
                     .addTargetInterface(Collection.class)
                     .build();
 
@@ -81,8 +84,9 @@ public class VTableTest {
     for (int i = 0; i < 5; i++) {
       queue.add(i);
     }
-    VTable vt = new VTable.Builder(queue)
+    VTable vt = new VTable.Builder(queue.getClass())
                     .addTargetInterface(UnmodifiableQueue.class)
+                    .excludeObjectMethods()
                     .build();
 
     assertEquals(0,
@@ -104,9 +108,8 @@ public class VTableTest {
     for (int i = 0; i < 5; i++) {
       queue.add(i);
     }
-    VTable vt = new VTable.Builder(queue)
+    VTable vt = new VTable.Builder(queue.getClass())
                     .addTargetInterface(UnmodifiableQueue.class)
-                    .inludeObjectMethods()
                     .build();
 
     Class<?> clazz = UnmodifiableQueue.class;
@@ -129,7 +132,7 @@ public class VTableTest {
 
   @Test
   public void testOverloading() throws NoSuchMethodException {
-    VTable vt = new VTable.Builder(new ArrayList<>())
+    VTable vt = new VTable.Builder(ArrayList.class)
                     .addTargetInterface(List.class)
                     .build();
 
@@ -202,4 +205,82 @@ public class VTableTest {
     ));
   }
 
+  public interface Parent {
+    default CharSequence get() {
+      return "Parent";
+    }
+  }
+
+  public interface Child extends Parent {
+    @Override
+    default String get() {
+      return "Child";
+    }
+  }
+
+  @Test
+  public void testCovariantReturnTypesDefaultMethods()
+      throws Throwable {
+    VTable vt = new VTable.Builder(Child.class)
+                    .excludeObjectMethods()
+                    .addTargetInterface(Child.class)
+                    .includeDefaultMethods()
+                    .build();
+
+    assertEquals(1, vt.size());
+
+    Child child = Proxies.simpleProxy(Child.class, null);
+
+    Method parentGetMethod = Parent.class.getMethod("get");
+    assertEquals(CharSequence.class,
+        parentGetMethod.getReturnType());
+    assertEquals(String.class,
+        vt.lookup(parentGetMethod).getReturnType());
+    assertEquals("Child", vt.lookupDefaultMethod(parentGetMethod)
+                              .bindTo(child)
+                              .invokeWithArguments((Object[]) null));
+
+    Method childGetMethod = Child.class.getMethod("get");
+    assertEquals(String.class, childGetMethod.getReturnType());
+    assertEquals(String.class,
+        vt.lookup(childGetMethod).getReturnType());
+    assertEquals("Child", vt.lookupDefaultMethod(childGetMethod)
+                              .bindTo(child)
+                              .invokeWithArguments((Object[]) null));
+  }
+
+  @Test
+  public void objectAdapterTest() {
+    HashSet<String> adaptee = new HashSet<>();
+    String[] seedArray = new String[0];
+    Object adapter =
+        new BetterCollectionFactory.AdaptationObject<>(adaptee
+            , seedArray);
+    Class<?> target = BetterCollection.class;
+
+    VTable adapterMap =
+        new VTable.Builder(adapter.getClass()) //
+            // AdaptationObject.class
+                            .addTargetInterface(target) //
+            // BetterCollection.class
+                            .build();
+    System.out.println("adapterMap:");
+    adapterMap.stream().forEach(System.out::println);
+    assertEquals(5, adapterMap.size());
+
+    VTable adapteeMap = new VTable.Builder(adaptee.getClass())
+                            .addTargetInterface(target)
+                            .build();
+    System.out.println("adapteeMap:");
+    adapteeMap.stream().forEach(System.out::println);
+    assertEquals(22, adapteeMap.size());
+
+    VTable defaultMap = new VTable.Builder(target)
+                            .addTargetInterface(target)
+                            .excludeObjectMethods()
+                            .includeDefaultMethods()
+                            .build();
+    System.out.println("defaultMap:");
+    defaultMap.streamDefaultMethods().forEach(System.out::println);
+  }
 }

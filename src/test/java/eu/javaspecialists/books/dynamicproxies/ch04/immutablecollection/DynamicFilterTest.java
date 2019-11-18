@@ -18,26 +18,23 @@
  * License.
  */
 
-package eu.javaspecialists.books.dynamicproxies.ch04;
+package eu.javaspecialists.books.dynamicproxies.ch04.immutablecollection;
 
 import eu.javaspecialists.books.dynamicproxies.*;
+import org.junit.*;
 
+import java.rmi.*;
 import java.util.*;
 
-public class DynamicFilterTest2 {
-  public static void main(String... args) {
-    ImmutableCollection2<String> names =
-        Proxies.dynamicFilter(
-            ImmutableCollection2.class,
-            Arrays.asList("Peter", "Paul", "Mary")
-        );
-    names.set(0, "John");
-    // names.remove("Peter"); // does not compile
-    System.out.println(names);
-    System.out.println("Do we have Mary? " + names.contains("Mary"));
-    System.out.println("Are there names? " + names.isEmpty());
-    System.out.println("Printing the names:");
-    names.forEach(System.out::println);
-    System.out.println("Class: " + names.getClass());
+import static org.junit.Assert.*;
+
+public class DynamicFilterTest extends ImmutableCollectionTest {
+  @Test
+  public void testDynamicFilterCreation() throws NoSuchMethodException {
+    check(Proxies.filter(
+        ImmutableCollection.class,
+        Arrays.asList("Peter", "Paul", "Mary")
+    ));
   }
+
 }
