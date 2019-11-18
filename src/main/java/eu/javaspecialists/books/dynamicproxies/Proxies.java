@@ -26,6 +26,7 @@ import eu.javaspecialists.books.dynamicproxies.ch03.virtual.*;
 import eu.javaspecialists.books.dynamicproxies.ch04.*;
 import eu.javaspecialists.books.dynamicproxies.ch05.*;
 import eu.javaspecialists.books.dynamicproxies.ch06.*;
+import eu.javaspecialists.books.dynamicproxies.util.*;
 
 import java.lang.reflect.*;
 import java.util.*;
@@ -37,17 +38,22 @@ import java.util.logging.*;
  * implementations.
  */
 public class Proxies {
+  private Proxies() {}
+
+  // tag::castProxy()[]
+  @SuppressWarnings("unchecked")
+  public static <P> P castProxy(Class<? super P> clazz,
+                                InvocationHandler h) {
+    return MethodTurboBooster.boost((P) Proxy.newProxyInstance(
+        clazz.getClassLoader(), new Class<?>[] {clazz}, h
+    ));
+  }
+  // end::castProxy()[]
+
   // tag::simpleProxy()[]
   public static <P> P simpleProxy(Class<? super P> clazz, P p) {
     return castProxy(clazz,
         (proxy, method, args) -> method.invoke(p, args)
-    );
-  }
-  @SuppressWarnings("unchecked")
-  public static <P> P castProxy(Class<? super P> clazz,
-                                InvocationHandler h) {
-    return (P) Proxy.newProxyInstance(
-        clazz.getClassLoader(), new Class<?>[] {clazz}, h
     );
   }
   // end::simpleProxy()[]
@@ -82,7 +88,7 @@ public class Proxies {
   // end::synchronizedProxy()[]
 
   // tag::dynamicFilter()[]
-  public static <P> P dynamicFilter(
+  public static <P> P filter(
       Class<? super P> filter, Object component) {
     Objects.requireNonNull(component, "component==null");
     return castProxy(filter,

@@ -22,13 +22,14 @@ package eu.javaspecialists.books.dynamicproxies.util;
 
 import java.lang.reflect.*;
 
+// tag::listing[]
 /**
  * Method turbo boosting is enabled by default.  We call
  * setAccessible(true) on Method objects. Exceptions are silently
  * ignored.
  * <p>
  * Method turbo boosting can be disabled with
- * -Deu.javaspecialists.books.dynamicproxies.util. \
+ * -Deu.javaspecialists.books.dynamicproxies.util.\
  * MethodTurboBooster.disabled=true
  */
 public class MethodTurboBooster {
@@ -96,3 +97,4 @@ public class MethodTurboBooster {
     }
   }
 }
+// end::listing[]

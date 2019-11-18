@@ -70,12 +70,12 @@ public final class MethodKey implements Comparable<MethodKey> {
 
   @Override
   public int compareTo(MethodKey that) {
-    int result = name.compareTo(that.name);
+    int result = this.name.compareTo(that.name);
     if (result != 0) return result;
-    return Arrays.toString(parameterTypes).compareTo(
-        Arrays.toString(that.parameterTypes)
-    );
+    return Arrays.compare(this.parameterTypes,
+        that.parameterTypes, Comparator.comparing(Class::getName));
   }
+
   @Override
   public String toString() {
     return Stream.of(parameterTypes)

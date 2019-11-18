@@ -18,32 +18,21 @@
  * License.
  */
 
-package eu.javaspecialists.books.dynamicproxies.shortcut.chap8.chap8_1.moralfibre.virtual.proxy;
+package eu.javaspecialists.books.dynamicproxies.util.chain;
 
 import java.lang.reflect.*;
+import java.util.*;
+import java.util.stream.*;
 
-/**
- * Created by Sven Ruppert on 14.01.14.
- */
-public class VirtualDynamicProxyNotThreadSafe implements InvocationHandler {
-  private final Class realSubjectClass;
-  private Object realSubject;
-
-  public VirtualDynamicProxyNotThreadSafe(Class realSubjectClass) {
-    this.realSubjectClass = realSubjectClass;
-  }
-
-  private Object realSubject() throws Exception {
-    if (realSubject == null) {
-      realSubject = realSubjectClass.newInstance();
-    }
-    return realSubject;
-  }
-
-  @Override
-  public Object invoke(
-      Object proxy, Method method, Object[] args)
-      throws Throwable {
-    return method.invoke(realSubject(), args);
+public class ChainChecker {
+  private ChainChecker() {}
+  public static void checkAllMethodsAreHandled(
+      ChainedInvocationHandler chain, Class<?> target) {
+    Collection<Method> unhandled =
+        chain.findUnhandledMethods(target)
+            .collect(Collectors.toList());
+    if (!unhandled.isEmpty())
+      throw new IllegalArgumentException(
+          "Target methods not implemented: " + unhandled);
   }
 }

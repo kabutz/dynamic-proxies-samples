@@ -20,21 +20,16 @@
 
 package eu.javaspecialists.books.dynamicproxies.ch05;
 
-import eu.javaspecialists.books.dynamicproxies.*;
+import eu.javaspecialists.books.dynamicproxies.util.*;
+import eu.javaspecialists.books.dynamicproxies.util.chain.*;
 
-import java.lang.invoke.*;
 import java.lang.reflect.*;
 import java.util.*;
-import java.util.function.*;
 import java.util.stream.*;
 
 // tag::listing[]
 public class ObjectAdapterHandler implements InvocationHandler {
-  private final Object adaptee;
-  private final Object adapter;
-  private final Map<MethodKey, Method> adapteeMethodMap;
-  private final Map<MethodKey, Method> adapterMethodMap;
-  private final Map<MethodKey, MethodHandle> defaultMethods;
+  private final ChainedInvocationHandler chain;
 
   public ObjectAdapterHandler(Class<?> target,
                               Object adaptee,
@@ -42,29 +37,31 @@ public class ObjectAdapterHandler implements InvocationHandler {
     checkClassPublic(adaptee.getClass());
     checkClassPublic(adapter.getClass());
 
-    this.adaptee = adaptee;
-    this.adapter = adapter;
+    VTable adapterMap = new VTable.Builder(adapter.getClass())
+                            .addTargetInterface(target)
+                            .excludeObjectMethods()
+                            .build();
+    VTable adapteeMap = new VTable.Builder(adaptee.getClass())
+                            .addTargetInterface(target)
+                            .build();
+    VTable defaultMap = new VTable.Builder(target)
+                            .addTargetInterface(target)
+                            .excludeObjectMethods()
+                            .includeDefaultMethods()
+                            .build();
 
-    adapterMethodMap = getMethodMap(adapter.getClass(), true);
-    adapteeMethodMap = getMethodMap(adaptee.getClass(), false);
-    defaultMethods = getDefaultMethodMap(target);
+    chain = new VTableHandler(adapter, adapterMap,
+        new VTableHandler(adaptee, adapteeMap,
+            new VTableDefaultMethodsHandler(defaultMap, null)));
 
-    checkTargetMethodsImplemented(target);
+    ChainChecker.checkAllMethodsAreHandled(chain, target);
   }
 
   @Override
   public Object invoke(Object proxy, Method method,
                        Object[] args) throws Throwable {
     try {
-      var key = new MethodKey(method);
-      var otherMethod = adapterMethodMap.get(key);
-      if (otherMethod != null)
-        return otherMethod.invoke(adapter, args);
-      otherMethod = adapteeMethodMap.get(key);
-      if (otherMethod != null)
-        return otherMethod.invoke(adaptee, args);
-      var otherMH = defaultMethods.get(key);
-      return otherMH.bindTo(proxy).invokeWithArguments(args);
+      return chain.invoke(proxy, method, args);
     } catch (InvocationTargetException e) {
       throw e.getCause();
     }
@@ -74,73 +71,6 @@ public class ObjectAdapterHandler implements InvocationHandler {
     if (!Modifier.isPublic(clazz.getModifiers()))
       throw new IllegalArgumentException(
           clazz + " needs to be public");
-  }
-
-  private Map<MethodKey, Method> getMethodMap(
-      Class<?> clazz, boolean ownMethodsOnly) {
-    Predicate<Method> includeFilter;
-    if (ownMethodsOnly)
-      includeFilter = m -> m.getDeclaringClass() == clazz;
-    else
-      includeFilter = m -> true;
-    return
-        Stream.of(clazz.getMethods())
-            .filter(includeFilter)
-            .collect(Collectors.toMap(MethodKey::new,
-                Function.identity(),
-                (method1, method2) -> {
-                  var r1 = method1.getReturnType();
-                  var r2 = method2.getReturnType();
-                  if (r2.isAssignableFrom(r1)) {
-                    return method1;
-                  } else {
-                    return method2;
-                  }
-                }));
-  }
-
-  private Map<MethodKey, MethodHandle> getDefaultMethodMap(
-      Class<?> target) {
-    return
-        Stream.of(target.getMethods())
-            .filter(Method::isDefault)
-            .collect(
-                Collectors.toUnmodifiableMap(
-                    MethodKey::new,
-                    method -> createDefaultMethodHandle(target,
-                        method)));
-  }
-
-  private MethodHandle createDefaultMethodHandle(
-      Class<?> target, Method method) {
-    try {
-      // Thanks Thomas Darimont for this idea
-      var lookup = MethodHandles.lookup();
-      return MethodHandles.privateLookupIn(target, lookup)
-                 .in(target)
-                 .unreflectSpecial(method, target);
-    } catch (IllegalAccessException e) {
-      throw new IllegalArgumentException(e);
-    }
-  }
-
-  private void checkTargetMethodsImplemented(Class<?> target) {
-    var targetMethodMap = getMethodMap(target, false);
-    targetMethodMap.keySet().removeAll(
-        adapteeMethodMap.keySet()
-    );
-    targetMethodMap.keySet().removeAll(
-        adapterMethodMap.keySet()
-    );
-    targetMethodMap.keySet().removeAll(
-        defaultMethods.keySet()
-    );
-    targetMethodMap.values().removeIf(
-        method -> Modifier.isStatic(method.getModifiers()));
-    if (!targetMethodMap.isEmpty())
-      throw new IllegalArgumentException(
-          "Target methods not implemented: " +
-              targetMethodMap.keySet());
   }
 }
 // end::listing[]
