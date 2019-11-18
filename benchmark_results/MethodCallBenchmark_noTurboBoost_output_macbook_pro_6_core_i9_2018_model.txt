@@ -1,0 +1,602 @@
+/Library/Java/JavaVirtualMachines/jdk-13.jdk/Contents/Home/bin/java -Deu.javaspecialists.books.dynamicproxies.Proxies.disableTurboBoost=true --enable-preview "-javaagent:/Applications/000/IntelliJ IDEA 2019.2.3.app/Contents/lib/idea_rt.jar=64724:/Applications/000/IntelliJ IDEA 2019.2.3.app/Contents/bin" -Dfile.encoding=UTF-8 -classpath "/Users/heinz/Dropbox (HIC Straws)/heinz/git/hexie/dynamic-proxies-samples/target/classes:/Users/heinz/.m2/repository/org/slf4j/slf4j-api/1.7.28/slf4j-api-1.7.28.jar:/Users/heinz/.m2/repository/junit/junit/4.11/junit-4.11.jar:/Users/heinz/.m2/repository/org/hamcrest/hamcrest-core/1.3/hamcrest-core-1.3.jar:/Users/heinz/.m2/repository/com/sparkjava/spark-core/2.8.0/spark-core-2.8.0.jar:/Users/heinz/.m2/repository/org/eclipse/jetty/jetty-server/9.4.12.v20180830/jetty-server-9.4.12.v20180830.jar:/Users/heinz/.m2/repository/javax/servlet/javax.servlet-api/3.1.0/javax.servlet-api-3.1.0.jar:/Users/heinz/.m2/repository/org/eclipse/jetty/jetty-http/9.4.12.v20180830/jetty-http-9.4.12.v20180830.jar:/Users/heinz/.m2/repository/org/eclipse/jetty/jetty-util/9.4.12.v20180830/jetty-util-9.4.12.v20180830.jar:/Users/heinz/.m2/repository/org/eclipse/jetty/jetty-io/9.4.12.v20180830/jetty-io-9.4.12.v20180830.jar:/Users/heinz/.m2/repository/org/eclipse/jetty/jetty-webapp/9.4.12.v20180830/jetty-webapp-9.4.12.v20180830.jar:/Users/heinz/.m2/repository/org/eclipse/jetty/jetty-xml/9.4.12.v20180830/jetty-xml-9.4.12.v20180830.jar:/Users/heinz/.m2/repository/org/eclipse/jetty/jetty-servlet/9.4.12.v20180830/jetty-servlet-9.4.12.v20180830.jar:/Users/heinz/.m2/repository/org/eclipse/jetty/jetty-security/9.4.12.v20180830/jetty-security-9.4.12.v20180830.jar:/Users/heinz/.m2/repository/org/eclipse/jetty/websocket/websocket-server/9.4.12.v20180830/websocket-server-9.4.12.v20180830.jar:/Users/heinz/.m2/repository/org/eclipse/jetty/websocket/websocket-common/9.4.12.v20180830/websocket-common-9.4.12.v20180830.jar:/Users/heinz/.m2/repository/org/eclipse/jetty/websocket/websocket-client/9.4.12.v20180830/websocket-client-9.4.12.v20180830.jar:/Users/heinz/.m2/repository/org/eclipse/jetty/jetty-client/9.4.12.v20180830/jetty-client-9.4.12.v20180830.jar:/Users/heinz/.m2/repository/org/eclipse/jetty/websocket/websocket-servlet/9.4.12.v20180830/websocket-servlet-9.4.12.v20180830.jar:/Users/heinz/.m2/repository/org/eclipse/jetty/websocket/websocket-api/9.4.12.v20180830/websocket-api-9.4.12.v20180830.jar:/Users/heinz/.m2/repository/org/openjdk/jmh/jmh-core/1.21/jmh-core-1.21.jar:/Users/heinz/.m2/repository/net/sf/jopt-simple/jopt-simple/4.6/jopt-simple-4.6.jar:/Users/heinz/.m2/repository/org/apache/commons/commons-math3/3.2/commons-math3-3.2.jar:/Users/heinz/.m2/repository/org/openjdk/jmh/jmh-generator-annprocess/1.21/jmh-generator-annprocess-1.21.jar" eu.javaspecialists.books.dynamicproxies.Benchmarks
+WARNING: An illegal reflective access operation has occurred
+WARNING: Illegal reflective access by org.openjdk.jmh.util.Utils (file:/Users/heinz/.m2/repository/org/openjdk/jmh/jmh-core/1.21/jmh-core-1.21.jar) to field java.io.PrintStream.charOut
+WARNING: Please consider reporting this to the maintainers of org.openjdk.jmh.util.Utils
+WARNING: Use --illegal-access=warn to enable warnings of further illegal reflective access operations
+WARNING: All illegal access operations will be denied in a future release
+# JMH version: 1.21
+# VM version: JDK 13.0.1, OpenJDK 64-Bit Server VM, 13.0.1+9
+# VM invoker: /Users/heinz/Dropbox (HIC Straws)/heinz/JavaVirtualMachines/openjdk-13.jdk/Contents/Home/bin/java
+# VM options: -Deu.javaspecialists.books.dynamicproxies.Proxies.disableTurboBoost=true --enable-preview -javaagent:/Applications/000/IntelliJ IDEA 2019.2.3.app/Contents/lib/idea_rt.jar=64724:/Applications/000/IntelliJ IDEA 2019.2.3.app/Contents/bin -Dfile.encoding=UTF-8
+# Warmup: 5 iterations, 3 s each
+# Measurement: 10 iterations, 3 s each
+# Timeout: 10 min per iteration
+# Threads: 1 thread, will synchronize iterations
+# Benchmark mode: Average time, time/op
+# Benchmark: eu.javaspecialists.books.dynamicproxies.ch03.perf.MethodCallBenchmark.directCallConsumeCPU
+
+# Run progress: 0,00% complete, ETA 00:18:00
+# Fork: 1 of 3
+# Warmup Iteration   1: 3,684 ns/op
+# Warmup Iteration   2: 3,557 ns/op
+# Warmup Iteration   3: 3,277 ns/op
+# Warmup Iteration   4: 3,290 ns/op
+# Warmup Iteration   5: 3,337 ns/op
+Iteration   1: 3,304 ns/op
+Iteration   2: 3,330 ns/op
+Iteration   3: 3,342 ns/op
+Iteration   4: 3,326 ns/op
+Iteration   5: 3,350 ns/op
+Iteration   6: 3,311 ns/op
+Iteration   7: 3,329 ns/op
+Iteration   8: 3,361 ns/op
+Iteration   9: 3,379 ns/op
+Iteration  10: 3,379 ns/op
+
+# Run progress: 4,17% complete, ETA 00:17:33
+# Fork: 2 of 3
+# Warmup Iteration   1: 3,615 ns/op
+# Warmup Iteration   2: 3,612 ns/op
+# Warmup Iteration   3: 3,360 ns/op
+# Warmup Iteration   4: 3,396 ns/op
+# Warmup Iteration   5: 3,362 ns/op
+Iteration   1: 3,366 ns/op
+Iteration   2: 3,361 ns/op
+Iteration   3: 3,390 ns/op
+Iteration   4: 3,398 ns/op
+Iteration   5: 3,407 ns/op
+Iteration   6: 3,389 ns/op
+Iteration   7: 3,413 ns/op
+Iteration   8: 3,425 ns/op
+Iteration   9: 3,407 ns/op
+Iteration  10: 3,423 ns/op
+
+# Run progress: 8,33% complete, ETA 00:16:46
+# Fork: 3 of 3
+# Warmup Iteration   1: 3,613 ns/op
+# Warmup Iteration   2: 3,692 ns/op
+# Warmup Iteration   3: 3,385 ns/op
+# Warmup Iteration   4: 3,391 ns/op
+# Warmup Iteration   5: 3,377 ns/op
+Iteration   1: 3,395 ns/op
+Iteration   2: 3,391 ns/op
+Iteration   3: 3,399 ns/op
+Iteration   4: 3,404 ns/op
+Iteration   5: 3,462 ns/op
+Iteration   6: 3,389 ns/op
+Iteration   7: 3,411 ns/op
+Iteration   8: 3,397 ns/op
+Iteration   9: 3,392 ns/op
+Iteration  10: 3,421 ns/op
+
+
+Result "eu.javaspecialists.books.dynamicproxies.ch03.perf.MethodCallBenchmark.directCallConsumeCPU":
+  3,382 ±(99.9%) 0,025 ns/op [Average]
+  (min, avg, max) = (3,304, 3,382, 3,462), stdev = 0,037
+  CI (99.9%): [3,357, 3,406] (assumes normal distribution)
+
+
+# JMH version: 1.21
+# VM version: JDK 13.0.1, OpenJDK 64-Bit Server VM, 13.0.1+9
+# VM invoker: /Users/heinz/Dropbox (HIC Straws)/heinz/JavaVirtualMachines/openjdk-13.jdk/Contents/Home/bin/java
+# VM options: -Deu.javaspecialists.books.dynamicproxies.Proxies.disableTurboBoost=true --enable-preview -javaagent:/Applications/000/IntelliJ IDEA 2019.2.3.app/Contents/lib/idea_rt.jar=64724:/Applications/000/IntelliJ IDEA 2019.2.3.app/Contents/bin -Dfile.encoding=UTF-8
+# Warmup: 5 iterations, 3 s each
+# Measurement: 10 iterations, 3 s each
+# Timeout: 10 min per iteration
+# Threads: 1 thread, will synchronize iterations
+# Benchmark mode: Average time, time/op
+# Benchmark: eu.javaspecialists.books.dynamicproxies.ch03.perf.MethodCallBenchmark.directCallIncrement
+
+# Run progress: 12,50% complete, ETA 00:16:00
+# Fork: 1 of 3
+# Warmup Iteration   1: 2,580 ns/op
+# Warmup Iteration   2: 2,574 ns/op
+# Warmup Iteration   3: 2,017 ns/op
+# Warmup Iteration   4: 1,995 ns/op
+# Warmup Iteration   5: 2,036 ns/op
+Iteration   1: 2,032 ns/op
+Iteration   2: 2,079 ns/op
+Iteration   3: 2,049 ns/op
+Iteration   4: 2,078 ns/op
+Iteration   5: 2,208 ns/op
+Iteration   6: 2,031 ns/op
+Iteration   7: 2,052 ns/op
+Iteration   8: 2,036 ns/op
+Iteration   9: 2,047 ns/op
+Iteration  10: 2,086 ns/op
+
+# Run progress: 16,67% complete, ETA 00:15:14
+# Fork: 2 of 3
+# Warmup Iteration   1: 2,589 ns/op
+# Warmup Iteration   2: 2,573 ns/op
+# Warmup Iteration   3: 2,078 ns/op
+# Warmup Iteration   4: 2,024 ns/op
+# Warmup Iteration   5: 2,138 ns/op
+Iteration   1: 2,511 ns/op
+Iteration   2: 2,400 ns/op
+Iteration   3: 2,272 ns/op
+Iteration   4: 2,258 ns/op
+Iteration   5: 2,073 ns/op
+Iteration   6: 2,053 ns/op
+Iteration   7: 2,059 ns/op
+Iteration   8: 2,043 ns/op
+Iteration   9: 2,034 ns/op
+Iteration  10: 2,033 ns/op
+
+# Run progress: 20,83% complete, ETA 00:14:28
+# Fork: 3 of 3
+# Warmup Iteration   1: 2,555 ns/op
+# Warmup Iteration   2: 2,554 ns/op
+# Warmup Iteration   3: 2,090 ns/op
+# Warmup Iteration   4: 2,055 ns/op
+# Warmup Iteration   5: 2,070 ns/op
+Iteration   1: 2,033 ns/op
+Iteration   2: 2,060 ns/op
+Iteration   3: 2,092 ns/op
+Iteration   4: 2,074 ns/op
+Iteration   5: 2,050 ns/op
+Iteration   6: 2,038 ns/op
+Iteration   7: 2,049 ns/op
+Iteration   8: 2,042 ns/op
+Iteration   9: 2,064 ns/op
+Iteration  10: 2,055 ns/op
+
+
+Result "eu.javaspecialists.books.dynamicproxies.ch03.perf.MethodCallBenchmark.directCallIncrement":
+  2,100 ±(99.9%) 0,077 ns/op [Average]
+  (min, avg, max) = (2,031, 2,100, 2,511), stdev = 0,115
+  CI (99.9%): [2,023, 2,177] (assumes normal distribution)
+
+
+# JMH version: 1.21
+# VM version: JDK 13.0.1, OpenJDK 64-Bit Server VM, 13.0.1+9
+# VM invoker: /Users/heinz/Dropbox (HIC Straws)/heinz/JavaVirtualMachines/openjdk-13.jdk/Contents/Home/bin/java
+# VM options: -Deu.javaspecialists.books.dynamicproxies.Proxies.disableTurboBoost=true --enable-preview -javaagent:/Applications/000/IntelliJ IDEA 2019.2.3.app/Contents/lib/idea_rt.jar=64724:/Applications/000/IntelliJ IDEA 2019.2.3.app/Contents/bin -Dfile.encoding=UTF-8
+# Warmup: 5 iterations, 3 s each
+# Measurement: 10 iterations, 3 s each
+# Timeout: 10 min per iteration
+# Threads: 1 thread, will synchronize iterations
+# Benchmark mode: Average time, time/op
+# Benchmark: eu.javaspecialists.books.dynamicproxies.ch03.perf.MethodCallBenchmark.dynamicProxyDirectCallConsumeCPU
+
+# Run progress: 25,00% complete, ETA 00:13:43
+# Fork: 1 of 3
+# Warmup Iteration   1: 4,143 ns/op
+# Warmup Iteration   2: 4,528 ns/op
+# Warmup Iteration   3: 3,888 ns/op
+# Warmup Iteration   4: 3,905 ns/op
+# Warmup Iteration   5: 3,918 ns/op
+Iteration   1: 3,916 ns/op
+Iteration   2: 3,915 ns/op
+Iteration   3: 3,945 ns/op
+Iteration   4: 3,946 ns/op
+Iteration   5: 3,898 ns/op
+Iteration   6: 3,924 ns/op
+Iteration   7: 3,904 ns/op
+Iteration   8: 3,899 ns/op
+Iteration   9: 3,904 ns/op
+Iteration  10: 3,916 ns/op
+
+# Run progress: 29,17% complete, ETA 00:12:57
+# Fork: 2 of 3
+# Warmup Iteration   1: 4,132 ns/op
+# Warmup Iteration   2: 4,425 ns/op
+# Warmup Iteration   3: 3,936 ns/op
+# Warmup Iteration   4: 3,904 ns/op
+# Warmup Iteration   5: 3,912 ns/op
+Iteration   1: 3,908 ns/op
+Iteration   2: 3,973 ns/op
+Iteration   3: 3,910 ns/op
+Iteration   4: 3,922 ns/op
+Iteration   5: 3,978 ns/op
+Iteration   6: 3,997 ns/op
+Iteration   7: 4,206 ns/op
+Iteration   8: 4,369 ns/op
+Iteration   9: 4,481 ns/op
+Iteration  10: 4,140 ns/op
+
+# Run progress: 33,33% complete, ETA 00:12:11
+# Fork: 3 of 3
+# Warmup Iteration   1: 4,188 ns/op
+# Warmup Iteration   2: 4,461 ns/op
+# Warmup Iteration   3: 3,930 ns/op
+# Warmup Iteration   4: 3,950 ns/op
+# Warmup Iteration   5: 4,018 ns/op
+Iteration   1: 3,954 ns/op
+Iteration   2: 3,983 ns/op
+Iteration   3: 4,019 ns/op
+Iteration   4: 3,987 ns/op
+Iteration   5: 4,027 ns/op
+Iteration   6: 4,025 ns/op
+Iteration   7: 3,961 ns/op
+Iteration   8: 3,982 ns/op
+Iteration   9: 3,982 ns/op
+Iteration  10: 3,952 ns/op
+
+
+Result "eu.javaspecialists.books.dynamicproxies.ch03.perf.MethodCallBenchmark.dynamicProxyDirectCallConsumeCPU":
+  3,997 ±(99.9%) 0,091 ns/op [Average]
+  (min, avg, max) = (3,898, 3,997, 4,481), stdev = 0,136
+  CI (99.9%): [3,907, 4,088] (assumes normal distribution)
+
+
+# JMH version: 1.21
+# VM version: JDK 13.0.1, OpenJDK 64-Bit Server VM, 13.0.1+9
+# VM invoker: /Users/heinz/Dropbox (HIC Straws)/heinz/JavaVirtualMachines/openjdk-13.jdk/Contents/Home/bin/java
+# VM options: -Deu.javaspecialists.books.dynamicproxies.Proxies.disableTurboBoost=true --enable-preview -javaagent:/Applications/000/IntelliJ IDEA 2019.2.3.app/Contents/lib/idea_rt.jar=64724:/Applications/000/IntelliJ IDEA 2019.2.3.app/Contents/bin -Dfile.encoding=UTF-8
+# Warmup: 5 iterations, 3 s each
+# Measurement: 10 iterations, 3 s each
+# Timeout: 10 min per iteration
+# Threads: 1 thread, will synchronize iterations
+# Benchmark mode: Average time, time/op
+# Benchmark: eu.javaspecialists.books.dynamicproxies.ch03.perf.MethodCallBenchmark.dynamicProxyDirectCallIncrement
+
+# Run progress: 37,50% complete, ETA 00:11:26
+# Fork: 1 of 3
+# Warmup Iteration   1: 6,672 ns/op
+# Warmup Iteration   2: 5,796 ns/op
+# Warmup Iteration   3: 5,209 ns/op
+# Warmup Iteration   4: 5,159 ns/op
+# Warmup Iteration   5: 5,186 ns/op
+Iteration   1: 5,223 ns/op
+Iteration   2: 5,124 ns/op
+Iteration   3: 5,118 ns/op
+Iteration   4: 5,091 ns/op
+Iteration   5: 5,058 ns/op
+Iteration   6: 5,223 ns/op
+Iteration   7: 5,161 ns/op
+Iteration   8: 5,115 ns/op
+Iteration   9: 5,116 ns/op
+Iteration  10: 5,246 ns/op
+
+# Run progress: 41,67% complete, ETA 00:10:40
+# Fork: 2 of 3
+# Warmup Iteration   1: 6,462 ns/op
+# Warmup Iteration   2: 5,768 ns/op
+# Warmup Iteration   3: 5,088 ns/op
+# Warmup Iteration   4: 5,133 ns/op
+# Warmup Iteration   5: 5,109 ns/op
+Iteration   1: 5,126 ns/op
+Iteration   2: 5,214 ns/op
+Iteration   3: 5,297 ns/op
+Iteration   4: 5,211 ns/op
+Iteration   5: 5,237 ns/op
+Iteration   6: 5,213 ns/op
+Iteration   7: 5,236 ns/op
+Iteration   8: 5,177 ns/op
+Iteration   9: 5,212 ns/op
+Iteration  10: 5,178 ns/op
+
+# Run progress: 45,83% complete, ETA 00:09:54
+# Fork: 3 of 3
+# Warmup Iteration   1: 6,498 ns/op
+# Warmup Iteration   2: 5,766 ns/op
+# Warmup Iteration   3: 5,237 ns/op
+# Warmup Iteration   4: 5,239 ns/op
+# Warmup Iteration   5: 5,250 ns/op
+Iteration   1: 5,263 ns/op
+Iteration   2: 5,267 ns/op
+Iteration   3: 5,191 ns/op
+Iteration   4: 5,192 ns/op
+Iteration   5: 5,190 ns/op
+Iteration   6: 5,215 ns/op
+Iteration   7: 5,248 ns/op
+Iteration   8: 5,237 ns/op
+Iteration   9: 5,220 ns/op
+Iteration  10: 5,251 ns/op
+
+
+Result "eu.javaspecialists.books.dynamicproxies.ch03.perf.MethodCallBenchmark.dynamicProxyDirectCallIncrement":
+  5,195 ±(99.9%) 0,039 ns/op [Average]
+  (min, avg, max) = (5,058, 5,195, 5,297), stdev = 0,058
+  CI (99.9%): [5,156, 5,234] (assumes normal distribution)
+
+
+# JMH version: 1.21
+# VM version: JDK 13.0.1, OpenJDK 64-Bit Server VM, 13.0.1+9
+# VM invoker: /Users/heinz/Dropbox (HIC Straws)/heinz/JavaVirtualMachines/openjdk-13.jdk/Contents/Home/bin/java
+# VM options: -Deu.javaspecialists.books.dynamicproxies.Proxies.disableTurboBoost=true --enable-preview -javaagent:/Applications/000/IntelliJ IDEA 2019.2.3.app/Contents/lib/idea_rt.jar=64724:/Applications/000/IntelliJ IDEA 2019.2.3.app/Contents/bin -Dfile.encoding=UTF-8
+# Warmup: 5 iterations, 3 s each
+# Measurement: 10 iterations, 3 s each
+# Timeout: 10 min per iteration
+# Threads: 1 thread, will synchronize iterations
+# Benchmark mode: Average time, time/op
+# Benchmark: eu.javaspecialists.books.dynamicproxies.ch03.perf.MethodCallBenchmark.dynamicProxyReflectiveCallConsumeCPU
+
+# Run progress: 50,00% complete, ETA 00:09:08
+# Fork: 1 of 3
+# Warmup Iteration   1: 5,960 ns/op
+# Warmup Iteration   2: 6,492 ns/op
+# Warmup Iteration   3: 6,254 ns/op
+# Warmup Iteration   4: 6,086 ns/op
+# Warmup Iteration   5: 6,095 ns/op
+Iteration   1: 6,165 ns/op
+Iteration   2: 6,243 ns/op
+Iteration   3: 6,271 ns/op
+Iteration   4: 6,359 ns/op
+Iteration   5: 6,286 ns/op
+Iteration   6: 6,255 ns/op
+Iteration   7: 6,224 ns/op
+Iteration   8: 6,116 ns/op
+Iteration   9: 6,071 ns/op
+Iteration  10: 6,099 ns/op
+
+# Run progress: 54,17% complete, ETA 00:08:23
+# Fork: 2 of 3
+# Warmup Iteration   1: 5,875 ns/op
+# Warmup Iteration   2: 6,613 ns/op
+# Warmup Iteration   3: 6,168 ns/op
+# Warmup Iteration   4: 6,881 ns/op
+# Warmup Iteration   5: 7,173 ns/op
+Iteration   1: 6,818 ns/op
+Iteration   2: 6,243 ns/op
+Iteration   3: 6,110 ns/op
+Iteration   4: 6,118 ns/op
+Iteration   5: 6,136 ns/op
+Iteration   6: 6,076 ns/op
+Iteration   7: 6,533 ns/op
+Iteration   8: 6,561 ns/op
+Iteration   9: 6,306 ns/op
+Iteration  10: 6,269 ns/op
+
+# Run progress: 58,33% complete, ETA 00:07:37
+# Fork: 3 of 3
+# Warmup Iteration   1: 5,866 ns/op
+# Warmup Iteration   2: 6,427 ns/op
+# Warmup Iteration   3: 6,130 ns/op
+# Warmup Iteration   4: 6,099 ns/op
+# Warmup Iteration   5: 6,061 ns/op
+Iteration   1: 6,200 ns/op
+Iteration   2: 6,228 ns/op
+Iteration   3: 6,208 ns/op
+Iteration   4: 6,149 ns/op
+Iteration   5: 6,211 ns/op
+Iteration   6: 6,233 ns/op
+Iteration   7: 6,101 ns/op
+Iteration   8: 6,106 ns/op
+Iteration   9: 6,101 ns/op
+Iteration  10: 6,064 ns/op
+
+
+Result "eu.javaspecialists.books.dynamicproxies.ch03.perf.MethodCallBenchmark.dynamicProxyReflectiveCallConsumeCPU":
+  6,229 ±(99.9%) 0,110 ns/op [Average]
+  (min, avg, max) = (6,064, 6,229, 6,818), stdev = 0,164
+  CI (99.9%): [6,119, 6,338] (assumes normal distribution)
+
+
+# JMH version: 1.21
+# VM version: JDK 13.0.1, OpenJDK 64-Bit Server VM, 13.0.1+9
+# VM invoker: /Users/heinz/Dropbox (HIC Straws)/heinz/JavaVirtualMachines/openjdk-13.jdk/Contents/Home/bin/java
+# VM options: -Deu.javaspecialists.books.dynamicproxies.Proxies.disableTurboBoost=true --enable-preview -javaagent:/Applications/000/IntelliJ IDEA 2019.2.3.app/Contents/lib/idea_rt.jar=64724:/Applications/000/IntelliJ IDEA 2019.2.3.app/Contents/bin -Dfile.encoding=UTF-8
+# Warmup: 5 iterations, 3 s each
+# Measurement: 10 iterations, 3 s each
+# Timeout: 10 min per iteration
+# Threads: 1 thread, will synchronize iterations
+# Benchmark mode: Average time, time/op
+# Benchmark: eu.javaspecialists.books.dynamicproxies.ch03.perf.MethodCallBenchmark.dynamicProxyReflectiveCallIncrement
+
+# Run progress: 62,50% complete, ETA 00:06:51
+# Fork: 1 of 3
+# Warmup Iteration   1: 9,503 ns/op
+# Warmup Iteration   2: 9,487 ns/op
+# Warmup Iteration   3: 9,059 ns/op
+# Warmup Iteration   4: 9,226 ns/op
+# Warmup Iteration   5: 9,124 ns/op
+Iteration   1: 9,235 ns/op
+Iteration   2: 9,115 ns/op
+Iteration   3: 8,978 ns/op
+Iteration   4: 9,013 ns/op
+Iteration   5: 9,044 ns/op
+Iteration   6: 9,134 ns/op
+Iteration   7: 9,095 ns/op
+Iteration   8: 9,080 ns/op
+Iteration   9: 9,016 ns/op
+Iteration  10: 9,033 ns/op
+
+# Run progress: 66,67% complete, ETA 00:06:05
+# Fork: 2 of 3
+# Warmup Iteration   1: 9,402 ns/op
+# Warmup Iteration   2: 9,474 ns/op
+# Warmup Iteration   3: 9,007 ns/op
+# Warmup Iteration   4: 9,053 ns/op
+# Warmup Iteration   5: 9,217 ns/op
+Iteration   1: 9,111 ns/op
+Iteration   2: 9,322 ns/op
+Iteration   3: 9,222 ns/op
+Iteration   4: 9,228 ns/op
+Iteration   5: 9,238 ns/op
+Iteration   6: 9,183 ns/op
+Iteration   7: 9,800 ns/op
+Iteration   8: 9,452 ns/op
+Iteration   9: 9,052 ns/op
+Iteration  10: 9,106 ns/op
+
+# Run progress: 70,83% complete, ETA 00:05:20
+# Fork: 3 of 3
+# Warmup Iteration   1: 9,552 ns/op
+# Warmup Iteration   2: 9,521 ns/op
+# Warmup Iteration   3: 9,141 ns/op
+# Warmup Iteration   4: 9,308 ns/op
+# Warmup Iteration   5: 9,294 ns/op
+Iteration   1: 9,348 ns/op
+Iteration   2: 9,235 ns/op
+Iteration   3: 9,238 ns/op
+Iteration   4: 9,191 ns/op
+Iteration   5: 9,208 ns/op
+Iteration   6: 9,255 ns/op
+Iteration   7: 9,208 ns/op
+Iteration   8: 9,415 ns/op
+Iteration   9: 9,486 ns/op
+Iteration  10: 9,038 ns/op
+
+
+Result "eu.javaspecialists.books.dynamicproxies.ch03.perf.MethodCallBenchmark.dynamicProxyReflectiveCallIncrement":
+  9,203 ±(99.9%) 0,116 ns/op [Average]
+  (min, avg, max) = (8,978, 9,203, 9,800), stdev = 0,173
+  CI (99.9%): [9,087, 9,318] (assumes normal distribution)
+
+
+# JMH version: 1.21
+# VM version: JDK 13.0.1, OpenJDK 64-Bit Server VM, 13.0.1+9
+# VM invoker: /Users/heinz/Dropbox (HIC Straws)/heinz/JavaVirtualMachines/openjdk-13.jdk/Contents/Home/bin/java
+# VM options: -Deu.javaspecialists.books.dynamicproxies.Proxies.disableTurboBoost=true --enable-preview -javaagent:/Applications/000/IntelliJ IDEA 2019.2.3.app/Contents/lib/idea_rt.jar=64724:/Applications/000/IntelliJ IDEA 2019.2.3.app/Contents/bin -Dfile.encoding=UTF-8
+# Warmup: 5 iterations, 3 s each
+# Measurement: 10 iterations, 3 s each
+# Timeout: 10 min per iteration
+# Threads: 1 thread, will synchronize iterations
+# Benchmark mode: Average time, time/op
+# Benchmark: eu.javaspecialists.books.dynamicproxies.ch03.perf.MethodCallBenchmark.staticProxyConsumeCPU
+
+# Run progress: 75,00% complete, ETA 00:04:34
+# Fork: 1 of 3
+# Warmup Iteration   1: 3,938 ns/op
+# Warmup Iteration   2: 3,960 ns/op
+# Warmup Iteration   3: 3,651 ns/op
+# Warmup Iteration   4: 3,662 ns/op
+# Warmup Iteration   5: 3,654 ns/op
+Iteration   1: 3,665 ns/op
+Iteration   2: 3,627 ns/op
+Iteration   3: 3,662 ns/op
+Iteration   4: 3,827 ns/op
+Iteration   5: 3,769 ns/op
+Iteration   6: 3,785 ns/op
+Iteration   7: 3,793 ns/op
+Iteration   8: 3,744 ns/op
+Iteration   9: 3,767 ns/op
+Iteration  10: 3,721 ns/op
+
+# Run progress: 79,17% complete, ETA 00:03:48
+# Fork: 2 of 3
+# Warmup Iteration   1: 3,927 ns/op
+# Warmup Iteration   2: 4,021 ns/op
+# Warmup Iteration   3: 3,698 ns/op
+# Warmup Iteration   4: 3,689 ns/op
+# Warmup Iteration   5: 3,683 ns/op
+Iteration   1: 3,680 ns/op
+Iteration   2: 3,707 ns/op
+Iteration   3: 3,724 ns/op
+Iteration   4: 3,679 ns/op
+Iteration   5: 3,672 ns/op
+Iteration   6: 3,673 ns/op
+Iteration   7: 3,652 ns/op
+Iteration   8: 3,650 ns/op
+Iteration   9: 3,673 ns/op
+Iteration  10: 3,679 ns/op
+
+# Run progress: 83,33% complete, ETA 00:03:03
+# Fork: 3 of 3
+# Warmup Iteration   1: 3,923 ns/op
+# Warmup Iteration   2: 3,895 ns/op
+# Warmup Iteration   3: 3,686 ns/op
+# Warmup Iteration   4: 3,685 ns/op
+# Warmup Iteration   5: 3,667 ns/op
+Iteration   1: 3,671 ns/op
+Iteration   2: 3,648 ns/op
+Iteration   3: 3,610 ns/op
+Iteration   4: 3,630 ns/op
+Iteration   5: 3,645 ns/op
+Iteration   6: 3,655 ns/op
+Iteration   7: 3,700 ns/op
+Iteration   8: 3,695 ns/op
+Iteration   9: 3,651 ns/op
+Iteration  10: 3,686 ns/op
+
+
+Result "eu.javaspecialists.books.dynamicproxies.ch03.perf.MethodCallBenchmark.staticProxyConsumeCPU":
+  3,691 ±(99.9%) 0,036 ns/op [Average]
+  (min, avg, max) = (3,610, 3,691, 3,827), stdev = 0,053
+  CI (99.9%): [3,656, 3,727] (assumes normal distribution)
+
+
+# JMH version: 1.21
+# VM version: JDK 13.0.1, OpenJDK 64-Bit Server VM, 13.0.1+9
+# VM invoker: /Users/heinz/Dropbox (HIC Straws)/heinz/JavaVirtualMachines/openjdk-13.jdk/Contents/Home/bin/java
+# VM options: -Deu.javaspecialists.books.dynamicproxies.Proxies.disableTurboBoost=true --enable-preview -javaagent:/Applications/000/IntelliJ IDEA 2019.2.3.app/Contents/lib/idea_rt.jar=64724:/Applications/000/IntelliJ IDEA 2019.2.3.app/Contents/bin -Dfile.encoding=UTF-8
+# Warmup: 5 iterations, 3 s each
+# Measurement: 10 iterations, 3 s each
+# Timeout: 10 min per iteration
+# Threads: 1 thread, will synchronize iterations
+# Benchmark mode: Average time, time/op
+# Benchmark: eu.javaspecialists.books.dynamicproxies.ch03.perf.MethodCallBenchmark.staticProxyIncrement
+
+# Run progress: 87,50% complete, ETA 00:02:17
+# Fork: 1 of 3
+# Warmup Iteration   1: 2,778 ns/op
+# Warmup Iteration   2: 2,741 ns/op
+# Warmup Iteration   3: 2,472 ns/op
+# Warmup Iteration   4: 2,497 ns/op
+# Warmup Iteration   5: 2,429 ns/op
+Iteration   1: 2,532 ns/op
+Iteration   2: 2,504 ns/op
+Iteration   3: 2,515 ns/op
+Iteration   4: 2,488 ns/op
+Iteration   5: 2,472 ns/op
+Iteration   6: 2,447 ns/op
+Iteration   7: 2,465 ns/op
+Iteration   8: 2,468 ns/op
+Iteration   9: 2,449 ns/op
+Iteration  10: 2,428 ns/op
+
+# Run progress: 91,67% complete, ETA 00:01:31
+# Fork: 2 of 3
+# Warmup Iteration   1: 2,781 ns/op
+# Warmup Iteration   2: 2,742 ns/op
+# Warmup Iteration   3: 2,459 ns/op
+# Warmup Iteration   4: 2,465 ns/op
+# Warmup Iteration   5: 2,444 ns/op
+Iteration   1: 2,472 ns/op
+Iteration   2: 2,519 ns/op
+Iteration   3: 2,510 ns/op
+Iteration   4: 2,671 ns/op
+Iteration   5: 2,849 ns/op
+Iteration   6: 2,823 ns/op
+Iteration   7: 2,645 ns/op
+Iteration   8: 2,478 ns/op
+Iteration   9: 2,461 ns/op
+Iteration  10: 2,440 ns/op
+
+# Run progress: 95,83% complete, ETA 00:00:45
+# Fork: 3 of 3
+# Warmup Iteration   1: 2,823 ns/op
+# Warmup Iteration   2: 2,839 ns/op
+# Warmup Iteration   3: 2,505 ns/op
+# Warmup Iteration   4: 2,474 ns/op
+# Warmup Iteration   5: 2,498 ns/op
+Iteration   1: 2,514 ns/op
+Iteration   2: 2,477 ns/op
+Iteration   3: 2,468 ns/op
+Iteration   4: 2,490 ns/op
+Iteration   5: 2,469 ns/op
+Iteration   6: 2,484 ns/op
+Iteration   7: 2,481 ns/op
+Iteration   8: 2,481 ns/op
+Iteration   9: 2,483 ns/op
+Iteration  10: 2,455 ns/op
+
+
+Result "eu.javaspecialists.books.dynamicproxies.ch03.perf.MethodCallBenchmark.staticProxyIncrement":
+  2,515 ±(99.9%) 0,068 ns/op [Average]
+  (min, avg, max) = (2,428, 2,515, 2,849), stdev = 0,101
+  CI (99.9%): [2,447, 2,582] (assumes normal distribution)
+
+
+# Run complete. Total time: 00:18:18
+
+REMEMBER: The numbers below are just data. To gain reusable insights, you need to follow up on
+why the numbers are the way they are. Use profilers (see -prof, -lprof), design factorial
+experiments, perform baseline and negative tests that provide experimental control, make sure
+the benchmarking environment is safe on JVM/OS/HW level, ask for reviews from the domain experts.
+Do not assume the numbers tell you what you want them to tell.
+
+Benchmark                                                 Mode  Cnt  Score   Error  Units
+MethodCallBenchmark.directCallConsumeCPU                  avgt   30  3,382 ± 0,025  ns/op
+MethodCallBenchmark.directCallIncrement                   avgt   30  2,100 ± 0,077  ns/op
+MethodCallBenchmark.dynamicProxyDirectCallConsumeCPU      avgt   30  3,997 ± 0,091  ns/op
+MethodCallBenchmark.dynamicProxyDirectCallIncrement       avgt   30  5,195 ± 0,039  ns/op
+MethodCallBenchmark.dynamicProxyReflectiveCallConsumeCPU  avgt   30  6,229 ± 0,110  ns/op
+MethodCallBenchmark.dynamicProxyReflectiveCallIncrement   avgt   30  9,203 ± 0,116  ns/op
+MethodCallBenchmark.staticProxyConsumeCPU                 avgt   30  3,691 ± 0,036  ns/op
+MethodCallBenchmark.staticProxyIncrement                  avgt   30  2,515 ± 0,068  ns/op
+
+Process finished with exit code 0
+
