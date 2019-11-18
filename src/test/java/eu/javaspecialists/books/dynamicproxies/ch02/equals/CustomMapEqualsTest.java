@@ -22,12 +22,14 @@ package eu.javaspecialists.books.dynamicproxies.ch02.equals;
 
 import eu.javaspecialists.books.dynamicproxies.ch02.equals.FixedEqualsTest.*;
 import eu.javaspecialists.books.dynamicproxies.ch02.equals.FixedEqualsWithHandwrittenProxyTest.*;
+import org.junit.*;
 
 import static org.junit.Assert.*;
 
 // tag::listing[]
-public class EqualsExample {
-  public static void main(String... args) {
+public class CustomMapEqualsTest {
+  @Test
+  public void testEqualsContract() {
     var real = new CustomHashMap<Integer, Integer>();
     for (int i = 0; i < 10; i++) real.put(i, i * i);
     var proxy = new UnmodifiableCustomMap<>(real);

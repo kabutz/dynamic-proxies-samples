@@ -21,12 +21,40 @@
 package eu.javaspecialists.books.dynamicproxies.ch02.equals;
 
 import eu.javaspecialists.books.dynamicproxies.ch02.virtual.*;
+import org.junit.*;
 
 import java.util.function.*;
 
 public class BrokenEqualsWithHandwrittenProxyTest extends BrokenEqualsTest {
   public BrokenEqualsWithHandwrittenProxyTest() {
     super(UnmodifiableCustomMap::new);
+  }
+
+  // These tests do not work
+
+  @Override
+  @Test(expected = AssertionError.class)
+  public void cascadingProxyEquals() {
+    System.out.println("cascadingProxyEquals() broken");
+    super.cascadingProxyEquals();
+  }
+  @Override
+  @Test(expected = AssertionError.class)
+  public void cascadingProxyEqualsWithD() {
+    System.out.println("cascadingProxyEqualsWithD() broken");
+    super.cascadingProxyEqualsWithD();
+  }
+  @Override
+  @Test(expected = AssertionError.class)
+  public void realEqualsProxy() {
+    System.out.println("realEqualsProxy() broken");
+    super.realEqualsProxy();
+  }
+  @Override
+  @Test(expected = AssertionError.class)
+  public void proxyEqualsReal() {
+    System.out.println("proxyEqualsReal() broken");
+    super.proxyEqualsReal();
   }
 
   static

@@ -22,10 +22,50 @@ package eu.javaspecialists.books.dynamicproxies.ch02.equals;
 
 import eu.javaspecialists.books.dynamicproxies.*;
 import eu.javaspecialists.books.dynamicproxies.ch02.virtual.*;
+import org.junit.*;
 
 public class BrokenEqualsWithDynamicProxyTest extends BrokenEqualsTest {
   public BrokenEqualsWithDynamicProxyTest() {
     super(map -> Proxies.simpleProxy(CustomMap.class, map));
+  }
+
+  // These tests do not work
+
+  @Override
+  @Test(expected = AssertionError.class)
+  public void cascadingProxyEquals() {
+    System.out.println("cascadingProxyEquals() broken");
+    super.cascadingProxyEquals();
+  }
+  @Override
+  @Test(expected = AssertionError.class)
+  public void cascadingProxyEqualsWithD() {
+    System.out.println("cascadingProxyEqualsWithD() broken");
+    super.cascadingProxyEqualsWithD();
+  }
+  @Override
+  @Test(expected = AssertionError.class)
+  public void reflexive() {
+    System.out.println("reflexive() broken");
+    super.reflexive();
+  }
+  @Override
+  @Test(expected = AssertionError.class)
+  public void symmetric() {
+    System.out.println("symmetric() broken");
+    super.symmetric();
+  }
+  @Override
+  @Test(expected = AssertionError.class)
+  public void proxyEqualsProxy() {
+    System.out.println("proxyEqualsProxy() broken");
+    super.proxyEqualsProxy();
+  }
+  @Override
+  @Test(expected = AssertionError.class)
+  public void realEqualsProxy() {
+    System.out.println("realEqualsProxy() broken");
+    super.realEqualsProxy();
   }
 }
 
