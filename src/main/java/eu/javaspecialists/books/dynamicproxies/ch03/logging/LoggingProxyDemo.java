@@ -25,12 +25,11 @@ import java.util.*;
 import java.util.concurrent.*;
 import java.util.logging.*;
 
-public class LoggingProxyTest {
+public class LoggingProxyDemo {
   public static void main(String... args) {
-    // tag::main()[]
+    // tag::listing[]
     var handler = new LoggingInvocationHandler(
-        Logger.getGlobal(),
-        new ConcurrentHashMap<>());
+        Logger.getGlobal(), new ConcurrentHashMap<>());
     @SuppressWarnings("unchecked")
     var map = (Map<String, Integer>)
                   Proxy.newProxyInstance(
@@ -41,6 +40,6 @@ public class LoggingProxyTest {
     map.put("two", 2);
     System.out.println(map);
     map.clear();
-    // end::main()[]
+    // end::listing[]
   }
 }
