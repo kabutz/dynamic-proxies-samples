@@ -21,11 +21,17 @@
 package eu.javaspecialists.books.dynamicproxies.ch02.protection;
 
 import eu.javaspecialists.books.dynamicproxies.ch02.virtual.*;
+import org.junit.*;
 
 // tag::listing[]
-public class CustomHashMapTest {
-  public static void main(String... args) {
-    ConcurrentTest.check(new CustomHashMap<>());
+public class CustomHashMapTest extends ConcurrentTest {
+  @Test
+  public void testCustomHashMap() {
+    try {
+      check(new CustomHashMap<>());  // won't work
+    } catch (AssertionError error) {
+      System.err.println(error);
+    }
   }
 }
 // end::listing[]

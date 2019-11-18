@@ -23,15 +23,17 @@ package eu.javaspecialists.books.dynamicproxies.ch03.protection;
 import eu.javaspecialists.books.dynamicproxies.*;
 import eu.javaspecialists.books.dynamicproxies.ch02.protection.*;
 import eu.javaspecialists.books.dynamicproxies.ch02.virtual.*;
+import org.junit.*;
 
 // tag::listing[]
-public class SynchronizedVirtualTest {
-  public static void main(String... args) {
+public class SynchronizedVirtualTest extends ConcurrentTest {
+  @Test
+  public void testDynamicSynchronizedVirtualProxy() {
     CustomMap<Integer, Integer> map =
         Proxies.synchronizedProxy(CustomMap.class,
             Proxies.<CustomMap<Integer, Integer>>virtualProxy(
                 CustomMap.class, CustomHashMap::new));
-    ConcurrentTest.check(map);
+    check(map);
     System.out.println("map = " + map);
   }
 }

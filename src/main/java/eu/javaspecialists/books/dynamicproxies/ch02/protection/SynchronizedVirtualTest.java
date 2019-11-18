@@ -21,14 +21,16 @@
 package eu.javaspecialists.books.dynamicproxies.ch02.protection;
 
 import eu.javaspecialists.books.dynamicproxies.ch02.virtual.*;
+import org.junit.*;
 
 // tag::listing[]
-public class SynchronizedVirtualTest {
-  public static void main(String... args) {
+public class SynchronizedVirtualTest extends ConcurrentTest {
+  @Test
+  public void testCascadedSynchronizedVirtualCustomMap() {
     var map =
         new SynchronizedCustomMap<Integer, Integer>(
             new VirtualCustomMap<>(CustomHashMap::new));
-    ConcurrentTest.check(map);
+    check(map);
     System.out.println("map = " + map);
   }
 }

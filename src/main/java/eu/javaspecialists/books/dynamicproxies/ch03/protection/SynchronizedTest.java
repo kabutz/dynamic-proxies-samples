@@ -23,11 +23,13 @@ package eu.javaspecialists.books.dynamicproxies.ch03.protection;
 import eu.javaspecialists.books.dynamicproxies.*;
 import eu.javaspecialists.books.dynamicproxies.ch02.protection.*;
 import eu.javaspecialists.books.dynamicproxies.ch02.virtual.*;
+import org.junit.*;
 
 // tag::listing[]
-public class SynchronizedTest {
-  public static void main(String... args) {
-    ConcurrentTest.check(Proxies.synchronizedProxy(
+public class SynchronizedTest extends ConcurrentTest {
+  @Test
+  public void testDynamicSynchronizedProxy() {
+    check(Proxies.synchronizedProxy(
         CustomMap.class, new CustomHashMap<>()
     ));
   }

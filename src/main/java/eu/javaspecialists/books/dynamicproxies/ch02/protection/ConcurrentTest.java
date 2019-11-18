@@ -25,24 +25,27 @@ import eu.javaspecialists.books.dynamicproxies.ch02.virtual.*;
 import java.util.concurrent.atomic.*;
 import java.util.stream.*;
 
+import static org.junit.Assert.*;
+
 // tag::listing[]
 public class ConcurrentTest {
-  public static void check(CustomMap<Integer, Integer> map) {
+  public static final int SQUARES = 46_000;
+  public void check(CustomMap<Integer, Integer> map) {
     System.out.println(
         "Checking " + map.getClass().getSimpleName());
     try {
-      IntStream.range(0, 46_000)
+      IntStream.range(0, SQUARES)
           .parallel()
           .forEach(i -> map.put(i, i * i));
     } catch (Exception e) {
-      System.out.println(e); // carry on with check
+      System.err.println(e); // carry on with check
     }
     // count actual entries
     var entries = new LongAdder();
     map.forEach((k, v) -> entries.increment());
 
-    System.out.println("entries = " + entries.intValue());
-    System.out.println("map.size() = " + map.size());
+    assertTrue("entries=" + entries + ", map.size=" + map.size(),
+        entries.intValue() == map.size());
   }
 }
 // end::listing[]
