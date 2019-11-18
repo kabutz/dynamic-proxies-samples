@@ -20,58 +20,13 @@
 
 package eu.javaspecialists.books.dynamicproxies.ch02.equals;
 
+
 import eu.javaspecialists.books.dynamicproxies.ch02.virtual.*;
 
-import java.util.*;
 import java.util.function.*;
 
 public abstract class FixedEqualsTest extends EqualsTest {
   public FixedEqualsTest(UnaryOperator<CustomMap<Integer, Integer>> proxyGenerator) {
-    super(CustomHashMap::new, proxyGenerator);
-  }
-
-  public static class CustomHashMap<K, V> implements CustomMap<K, V> {
-    private final Map<K, V> map = new HashMap<>();
-    @Override
-    public int size() {
-      return map.size();
-    }
-    @Override
-    public V get(Object key) {
-      return map.get(key);
-    }
-    @Override
-    public V put(K key, V value) {
-      return map.put(key, value);
-    }
-    @Override
-    public V remove(Object key) {
-      return map.remove(key);
-    }
-    @Override
-    public void clear() {
-      map.clear();
-    }
-    @Override
-    public void forEach(BiConsumer<? super K, ? super V> action) {
-      map.forEach(action);
-    }
-    // tag::listing[]
-    @Override
-    public boolean equals(Object o) {
-      if (this == o) return true;
-      if (!(o instanceof CustomMap)) return false;
-
-      if (getClass() == o.getClass()) {
-        CustomHashMap<?, ?> m = (CustomHashMap<?, ?>) o;
-        return map.equals(m.map);
-      }
-      return o.equals(this);
-    }
-    // end::listing[]
-    @Override
-    public int hashCode() {
-      return map.hashCode();
-    }
+    super(FixedEqualsInCustomHashMap.CustomHashMap::new, proxyGenerator);
   }
 }

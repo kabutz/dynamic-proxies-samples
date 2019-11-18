@@ -20,57 +20,8 @@
 
 package eu.javaspecialists.books.dynamicproxies.ch02.equals;
 
-import eu.javaspecialists.books.dynamicproxies.ch02.virtual.*;
-
-import java.util.function.*;
-
 public class FixedEqualsWithHandwrittenProxyTest extends FixedEqualsTest {
   public FixedEqualsWithHandwrittenProxyTest() {
-    super(UnmodifiableCustomMap::new);
-  }
-
-  static
-  public class UnmodifiableCustomMap<K, V> implements CustomMap<K, V> {
-    private final CustomMap<K, V> map;
-    public UnmodifiableCustomMap(CustomMap<K, V> map) {
-      this.map = map;
-    }
-    @Override
-    public int size() {
-      return map.size();
-    }
-    @Override
-    public V get(Object key) {
-      return map.get(key);
-    }
-    @Override
-    public V put(K key, V value) {
-      throw new UnsupportedOperationException("unmodifiable");
-    }
-    @Override
-    public V remove(Object key) {
-      throw new UnsupportedOperationException("unmodifiable");
-    }
-    @Override
-    public void clear() {
-      throw new UnsupportedOperationException("unmodifiable");
-    }
-    @Override
-    public void forEach(BiConsumer<? super K, ? super V> action) {
-      map.forEach(action);
-    }
-
-    // tag::listing[]
-    @Override
-    public boolean equals(Object o) {
-      return map.equals(o);
-    }
-    // end::listing[]
-
-    @Override
-    public int hashCode() {
-      return map.hashCode();
-    }
+    super(FixedEqualsInHandCraftedProxy.UnmodifiableCustomMap::new);
   }
 }
-

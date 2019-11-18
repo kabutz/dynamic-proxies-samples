@@ -20,8 +20,8 @@
 
 package eu.javaspecialists.books.dynamicproxies.ch02.equals;
 
-import eu.javaspecialists.books.dynamicproxies.ch02.equals.FixedEqualsTest.*;
-import eu.javaspecialists.books.dynamicproxies.ch02.equals.FixedEqualsWithHandwrittenProxyTest.*;
+import eu.javaspecialists.books.dynamicproxies.ch02.equals.FixedEqualsInCustomHashMap.*;
+import eu.javaspecialists.books.dynamicproxies.ch02.equals.FixedEqualsInHandCraftedProxy.*;
 import org.junit.*;
 
 import static org.junit.Assert.*;

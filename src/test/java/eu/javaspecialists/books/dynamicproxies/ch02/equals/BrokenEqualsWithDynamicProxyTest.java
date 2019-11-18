@@ -68,4 +68,3 @@ public class BrokenEqualsWithDynamicProxyTest extends BrokenEqualsTest {
     super.realEqualsProxy();
   }
 }
-
