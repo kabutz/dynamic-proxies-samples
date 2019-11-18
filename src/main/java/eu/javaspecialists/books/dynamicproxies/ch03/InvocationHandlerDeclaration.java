@@ -18,25 +18,16 @@
  * License.
  */
 
-package eu.javaspecialists.books.dynamicproxies.ch07;
+package eu.javaspecialists.books.dynamicproxies.ch03;
 
-// tag::VirtualDynamicProxy[]
 import java.lang.reflect.*;
-import java.util.function.*;
 
-public abstract class VirtualDynamicProxy<P> implements InvocationHandler {
-  private final Supplier<P> subjectSupplier;
-  public VirtualDynamicProxy(Supplier<P> subjectSupplier) {
-    this.subjectSupplier = subjectSupplier;
+public class InvocationHandlerDeclaration {
+  // tag::listing[]
+  public interface InvocationHandler {
+    public Object invoke(Object proxy,
+                         Method method,
+                         Object[] args) throws Throwable;
   }
-  protected abstract P realSubject();
-  public final P makeRealSubject() {
-    return subjectSupplier.get();
-  }
-  @Override
-  public final Object invoke(Object proxy, Method method, Object[] args)
-      throws Throwable {
-    return method.invoke(realSubject(), args);
-  }
+  // end::listing[]
 }
-// end::VirtualDynamicProxy[]
