@@ -20,24 +20,28 @@
 
 package eu.javaspecialists.books.dynamicproxies.ch04.immutablecollection;
 
+import eu.javaspecialists.books.dynamicproxies.*;
+
 import java.util.*;
 
-public class HandcodedFilterTest {
+public class DynamicFilterDemo {
   public static void main(String... args) {
     // tag::listing[]
     ImmutableCollection<String> names =
-        new HandcodedFilter<>(
-            Arrays.asList("Peter", "Paul", "Mary"));
+        Proxies.filter(
+            ImmutableCollection.class,
+            Arrays.asList("Peter", "Paul", "Mary")
+        );
     // names.remove("Peter"); // does not compile
     System.out.println(names);
     System.out.println("Is Mary in? " + names.contains("Mary"));
     System.out.println("Are there names? " + names.isEmpty());
     System.out.println("Printing the names:");
     names.forEach(System.out::println);
-    System.out.println("Class: " + names.getClass());
+    System.out.println(
+        "Class: " + names.getClass().getSimpleName());
 
     names.printAll();
     // end::listing[]
   }
 }
-
