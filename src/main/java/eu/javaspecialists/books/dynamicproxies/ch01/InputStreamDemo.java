@@ -53,6 +53,8 @@ public class InputStreamDemo {
 
     // tag::in[]
     try (
+        // declared "fis" separately to ensure it is closed, even
+        // if the file does not contain a proper GZIP header
         var fis = new FileInputStream("data.bin.gz");
         var in = new DataInputStream(
             new BufferedInputStream(
