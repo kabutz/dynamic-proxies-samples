@@ -26,10 +26,11 @@ import java.util.*;
 import java.util.function.*;
 import java.util.stream.*;
 
+// tag::listing[]
 public class VTable {
   public static final int NOT_FOUND = -1;
   private final Method[] entries;
-  private final Class<?>[][] parameterTypes;
+  private final Class<?>[][] paramTypes;
   private final boolean[] distinctName;
   private MethodHandle[] defaultMethods;
   private final int size;
@@ -43,7 +44,7 @@ public class VTable {
     mask = Math.max((-1 >>> Integer.numberOfLeadingZeros(
         size * 4 - 1)), 127);
     entries = new Method[mask + 1];
-    parameterTypes = new Class<?>[entries.length][];
+    paramTypes = new Class<?>[entries.length][];
     distinctName = new boolean[entries.length];
     defaultMethods = new MethodHandle[entries.length];
     for (var method : methods) {
@@ -55,18 +56,18 @@ public class VTable {
   }
 
   private void put(Method method, boolean distinct,
-                  boolean includeDefaultMethods) {
+                   boolean includeDefaultMethods) {
     int offset = offset(method);
+    var methodParamTypes = ParameterTypesFetcher.get(method);
     while (entries[offset] != null) {
       if (entries[offset].getName() == method.getName()
-              && Arrays.equals(parameterTypes[offset],
-          ParameterTypesFetcher.get(method)))
+              && matches(paramTypes[offset], methodParamTypes))
         throw new IllegalArgumentException(
             "Duplicate method found: " + new MethodKey(method));
       offset = (offset + 1) & mask;
     }
     entries[offset] = method;
-    parameterTypes[offset] = method.getParameterTypes();
+    paramTypes[offset] = methodParamTypes;
     distinctName[offset] = distinct;
     if (includeDefaultMethods && method.isDefault()) {
       defaultMethods[offset] = createDefaultMethodHandle(method);
@@ -77,7 +78,7 @@ public class VTable {
     try {
       // Thanks Thomas Darimont for this idea
       Class<?> target = method.getDeclaringClass();
-      var lookup = MethodHandles.lookup();
+      MethodHandles.Lookup lookup = MethodHandles.lookup();
       if (target.getModule().isOpen(
           method.getDeclaringClass().getPackageName(),
           VTable.class.getModule())) {
@@ -99,13 +100,14 @@ public class VTable {
 
   private int findIndex(Method method) {
     int offset = offset(method);
+    Class<?>[] methodParamTypes = null;
     Method match;
     while ((match = entries[offset]) != null) {
       if (match.getName() == method.getName()) {
         if (distinctName[offset]) return offset;
-        if (match.getParameterCount() == method.getParameterCount()
-                && matches(parameterTypes[offset],
-            ParameterTypesFetcher.get(method)))
+        if (methodParamTypes == null)
+          methodParamTypes = ParameterTypesFetcher.get(method);
+        if (matches(paramTypes[offset], methodParamTypes))
           return offset;
       }
       offset++;
@@ -124,7 +126,7 @@ public class VTable {
   }
 
   private boolean matches(Class<?>[] types1, Class<?>[] types2) {
-    // we've already checked that the length is the same
+    if (types1.length != types2.length) return false;
     for (int i = 0; i < types1.length; i++) {
       if (types1[i] != types2[i]) return false;
     }
@@ -336,3 +338,4 @@ public class VTable {
     }
   }
 }
+// end::listing[]
