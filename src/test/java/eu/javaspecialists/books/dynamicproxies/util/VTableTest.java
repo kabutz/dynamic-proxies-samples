@@ -368,4 +368,62 @@ public class VTableTest {
         vt.lookup(Supplier.class.getMethod("get"))
     );
   }
+
+  private interface StringClone {
+    String clone();
+  }
+
+  private interface CollectionClone {
+    Collection<?> clone();
+  }
+
+  private interface ObjectClone {
+    Object clone();
+  }
+
+  private static class SuperArrayDeque<E> extends ArrayDeque<E> {}
+
+  private interface SuperArrayDequeClone {
+    SuperArrayDeque<?> clone();
+  }
+
+  @Test
+  public void mismatchedReturn() {
+    System.out.println("StringClone");
+    VTable vt1 = VTables.newVTableExcludingObjectMethods(
+        ArrayDeque.class, StringClone.class);
+    assertEquals(0, vt1.size());
+
+    System.out.println("CollectionClone");
+    VTable vt2 = VTables.newVTableExcludingObjectMethods(
+        ArrayDeque.class, CollectionClone.class);
+    assertEquals(1, vt2.size());
+
+    System.out.println("ObjectClone");
+    VTable vt3 = VTables.newVTableExcludingObjectMethods(
+        ArrayDeque.class, ObjectClone.class);
+    assertEquals(1, vt3.size());
+
+    System.out.println("SuperArrayDequeClone");
+    VTable vt4 = VTables.newVTableExcludingObjectMethods(
+        ArrayDeque.class, SuperArrayDequeClone.class);
+    assertEquals(0, vt4.size());
+  }
+
+  private static class TestIterable<E> implements Iterable<E> {
+    private final Iterable<E> iterable;
+    public TestIterable(Iterable<E> iterable) {
+      this.iterable = iterable;
+    }
+    @Override
+    public Iterator<E> iterator() {
+      return iterable.iterator();
+    }
+  }
+
+  @Test
+  public void testDefaultMethods() {
+    VTable vt = VTables.newDefaultMethodVTable(Iterable.class);
+    assertEquals(2, vt.streamDefaultMethods().count());
+  }
 }
