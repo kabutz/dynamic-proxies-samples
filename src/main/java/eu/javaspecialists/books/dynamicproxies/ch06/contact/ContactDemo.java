@@ -20,29 +20,16 @@
 
 package eu.javaspecialists.books.dynamicproxies.ch06.contact;
 
-import eu.javaspecialists.books.dynamicproxies.*;
-import eu.javaspecialists.books.dynamicproxies.ch06.*;
-import eu.javaspecialists.books.dynamicproxies.util.*;
-
-import java.util.*;
-
-public class ContactDynamicTest {
+public class ContactDemo {
   public static void main(String... args) {
     // tag::listing[]
-    var reducers = Map.of(
-        new MethodKey(Contact.class, "count"),
-        new Reducer(0, (r1, r2) -> (int) r1 + (int) r2)
-    );
-
-    Contact javaSpecialistsNewsletter =
-        Proxies.compose(Contact.class, reducers);
+    Contact javaSpecialistsNewsletter = new DistributionList();
     System.out.println(javaSpecialistsNewsletter.count());
     javaSpecialistsNewsletter.add(new Person("john@aol.com"));
     javaSpecialistsNewsletter.sendMail("Hello there 1");
     System.out.println(javaSpecialistsNewsletter.count());
 
-    Contact allStudents =
-        Proxies.compose(Contact.class, reducers);
+    Contact allStudents = new DistributionList();
     allStudents.add(new Person("peter@absa.co.za"));
     allStudents.add(new Person("mzani@absa.co.za"));
     javaSpecialistsNewsletter.add(allStudents);
@@ -50,10 +37,9 @@ public class ContactDynamicTest {
     javaSpecialistsNewsletter.sendMail("Hello there 2");
     System.out.println(javaSpecialistsNewsletter.count());
 
-    Contact extremeJava =
-        Proxies.compose(Contact.class, reducers);
-    extremeJava.add(new Person("John@standardbank.co.za"));
-    extremeJava.add(new Person("Hlope@standardbank.co.za"));
+    Contact extremeJava = new DistributionList();
+    extremeJava.add(new Person("John@fnb.co.za"));
+    extremeJava.add(new Person("Hlope@fnb.co.za"));
     allStudents.add(extremeJava);
 
     javaSpecialistsNewsletter.sendMail("Hello there 3");

@@ -18,33 +18,25 @@
  * License.
  */
 
-package eu.javaspecialists.books.dynamicproxies.ch06.appendables;
+package eu.javaspecialists.books.dynamicproxies.ch06.contact;
 
 import eu.javaspecialists.books.dynamicproxies.*;
+import eu.javaspecialists.books.dynamicproxies.ch06.*;
+import eu.javaspecialists.books.dynamicproxies.util.*;
+import org.junit.*;
 
-import java.io.*;
+import java.util.*;
+import java.util.function.*;
 
-public class AppendableDynamicTest {
-  public static void main(String... args) throws IOException {
-    // tag::listing[]
-    var tee = Proxies.compose(AppendableCloseableFlushable.class,
-        AppendableCloseableFlushable.getReducers());
-    var sw = new StringWriter();
-    tee.add(new OutputStreamWriter(System.out));
-    tee.add(new FileWriter("output.txt"));
-    tee.add(sw);
+import static org.junit.Assert.*;
 
-    var out = new PrintWriter(new WriterAdapter<>(tee));
-    out.println("Hello World Dynamic");
-    out.flush();
-
-    tee.append("TestingAppenderDynamic")
-        .append('\n')
-        .append("Does this work?")
-        .append('\n');
-    tee.flush();
-
-    System.out.println("sw = " + sw);
-    // end::listing[]
+public class ContactDynamicTest extends ContactTest {
+  @Test
+  public void testDynamicComposite() {
+    var reducers = Map.of(
+        new MethodKey(Contact.class, "count"),
+        new Reducer(0, (r1, r2) -> (int) r1 + (int) r2)
+    );
+    test(() -> Proxies.compose(Contact.class, reducers));
   }
 }

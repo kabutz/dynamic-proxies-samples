@@ -20,31 +20,26 @@
 
 package eu.javaspecialists.books.dynamicproxies.ch06.appendables;
 
+import org.junit.*;
+
 import java.io.*;
 
-public class AppendableTest {
-  public static void main(String... args) throws IOException {
-    // tag::listing[]
+import static org.junit.Assert.*;
+
+public class AppendableHandCraftedTest extends AppendableTest {
+  @Test
+  public void handCraftedComposite() throws IOException {
     // "var" is a lifesaver here.  The "correct" definition would
     // be TeeAppendable<Appendable & Closeable & Flushable>, but
     // that is not possible in Java.  "var" takes care of it.
     var tee = new TeeAppendable<>();
-    var sw = new StringWriter();
-    tee.add(new OutputStreamWriter(System.out));
-    tee.add(new FileWriter("output.txt"));
-    tee.add(sw);
+    var sw1 = new StringWriter();
+    var sw2 = new StringWriter();
+    var sw3 = new StringWriter();
+    tee.add(sw1);
+    tee.add(sw2);
+    tee.add(sw3);
 
-    var out = new PrintWriter(new WriterAdapter<>(tee));
-    out.println("Hello World");
-    out.flush();
-
-    tee.append("TestingAppender")
-        .append('\n')
-        .append("Does this work?")
-        .append('\n');
-    tee.flush();
-
-    System.out.println("sw = " + sw);
-    // end::listing[]
+    test(tee, sw1, sw2, sw3);
   }
 }
