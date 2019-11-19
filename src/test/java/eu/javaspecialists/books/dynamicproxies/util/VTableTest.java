@@ -34,12 +34,27 @@ import static org.junit.Assert.*;
 public class VTableTest {
   @Test
   public void testSimpleVTable() throws NoSuchMethodException {
-    VTable vt = new VTable.Builder(RealSubject.class)
-                    .excludeObjectMethods()
-                    .addTargetInterface(Subject.class)
-                    .build();
-
+    VTable vt = VTables.newVTableExcludingObjectMethods(
+        RealSubject.class, Subject.class
+    );
     assertEquals(1, vt.size());
+
+    Method subjectMethod = Subject.class.getMethod(
+        "uppercaseTrim", String.class);
+    Method realSubjectMethod = RealSubject.class.getMethod(
+        "uppercaseTrim", String.class);
+    Method lookup = vt.lookup(subjectMethod);
+    assertEquals(lookup, realSubjectMethod);
+    assertFalse(vt.isOverloaded(subjectMethod));
+  }
+
+  @Test
+  public void testVTableIncludingObjectMethods() throws NoSuchMethodException {
+    VTable vt = VTables.newVTable(
+        RealSubject.class, Subject.class
+    );
+
+    assertEquals(4, vt.size());
 
     Method subjectMethod = Subject.class.getMethod(
         "uppercaseTrim", String.class);
@@ -59,9 +74,8 @@ public class VTableTest {
 
   @Test
   public void testObjectAdapter() throws ReflectiveOperationException {
-    VTable vt = new VTable.Builder(ObjectAdapter.class)
-                    .addTargetInterface(Collection.class)
-                    .build();
+    VTable vt = VTables.newVTable(ObjectAdapter.class,
+        Collection.class);
 
     Method clear = vt.lookup(
         Collection.class.getMethod("clear")
@@ -84,10 +98,9 @@ public class VTableTest {
     for (int i = 0; i < 5; i++) {
       queue.add(i);
     }
-    VTable vt = new VTable.Builder(queue.getClass())
-                    .addTargetInterface(UnmodifiableQueue.class)
-                    .excludeObjectMethods()
-                    .build();
+    VTable vt = VTables.newVTableExcludingObjectMethods(
+        queue.getClass(), UnmodifiableQueue.class
+    );
 
     assertEquals(0,
         vt.lookup(UnmodifiableQueue.class.getMethod("peek")).invoke(queue));
@@ -108,9 +121,8 @@ public class VTableTest {
     for (int i = 0; i < 5; i++) {
       queue.add(i);
     }
-    VTable vt = new VTable.Builder(queue.getClass())
-                    .addTargetInterface(UnmodifiableQueue.class)
-                    .build();
+    VTable vt = VTables.newVTable(
+        queue.getClass(), UnmodifiableQueue.class);
 
     Class<?> clazz = UnmodifiableQueue.class;
     assertEquals(0, invoke(vt, clazz, "peek", queue));
@@ -132,9 +144,7 @@ public class VTableTest {
 
   @Test
   public void testOverloading() throws NoSuchMethodException {
-    VTable vt = new VTable.Builder(ArrayList.class)
-                    .addTargetInterface(List.class)
-                    .build();
+    VTable vt = VTables.newVTable(ArrayList.class, List.class);
 
     overloaded(true, vt, "add", Object.class);
     overloaded(true, vt, "add", int.class, Object.class);
@@ -221,11 +231,7 @@ public class VTableTest {
   @Test
   public void testCovariantReturnTypesDefaultMethods()
       throws Throwable {
-    VTable vt = new VTable.Builder(Child.class)
-                    .excludeObjectMethods()
-                    .addTargetInterface(Child.class)
-                    .includeDefaultMethods()
-                    .build();
+    VTable vt = VTables.newDefaultMethodVTable(Child.class);
 
     assertEquals(1, vt.size());
 
@@ -258,29 +264,108 @@ public class VTableTest {
             , seedArray);
     Class<?> target = BetterCollection.class;
 
-    VTable adapterMap =
-        new VTable.Builder(adapter.getClass()) //
-            // AdaptationObject.class
-                            .addTargetInterface(target) //
-            // BetterCollection.class
-                            .build();
-    System.out.println("adapterMap:");
-    adapterMap.stream().forEach(System.out::println);
-    assertEquals(5, adapterMap.size());
+    VTable adapterVT =
+        VTables.newVTable(adapter.getClass(), target);
+    System.out.println("adapterVT:");
+    adapterVT.stream().forEach(System.out::println);
+    assertEquals(5, adapterVT.size());
 
-    VTable adapteeMap = new VTable.Builder(adaptee.getClass())
-                            .addTargetInterface(target)
-                            .build();
-    System.out.println("adapteeMap:");
-    adapteeMap.stream().forEach(System.out::println);
-    assertEquals(22, adapteeMap.size());
+    VTable adapteeVT =
+        VTables.newVTableExcludingObjectMethods(
+            adaptee.getClass(), target
+        );
+    System.out.println("adapteeVT:");
+    adapteeVT.stream().forEach(System.out::println);
+    assertEquals(22, adapteeVT.size());
 
-    VTable defaultMap = new VTable.Builder(target)
-                            .addTargetInterface(target)
-                            .excludeObjectMethods()
-                            .includeDefaultMethods()
-                            .build();
-    System.out.println("defaultMap:");
-    defaultMap.streamDefaultMethods().forEach(System.out::println);
+    VTable defaultVT = VTables.newDefaultMethodVTable(target);
+    System.out.println("defaultVT:");
+    defaultVT.streamDefaultMethods().forEach(System.out::println);
+  }
+
+  public static class AllSupplier<E> {
+    private final OptionalInt intValue;
+    private final OptionalLong longValue;
+    private final OptionalDouble doubleValue;
+    private final Optional<E> value;
+
+    public AllSupplier(OptionalInt intValue,
+                       OptionalLong longValue,
+                       OptionalDouble doubleValue,
+                       Optional<E> value) {
+      this.intValue = intValue;
+      this.longValue = longValue;
+      this.doubleValue = doubleValue;
+      this.value = value;
+    }
+
+    public int getAsInt() {
+      return intValue.getAsInt();
+    }
+
+    public long getAsLong() {
+      return longValue.getAsLong();
+    }
+
+    public double getAsDouble() {
+      return doubleValue.getAsDouble();
+    }
+
+    public E get() {
+      return value.get();
+    }
+
+    public static class Builder<E> {
+      private OptionalInt intValue = OptionalInt.empty();
+      private OptionalLong longValue = OptionalLong.empty();
+      private OptionalDouble doubleValue =
+          OptionalDouble.empty();
+      private Optional<E> value = Optional.empty();
+      public Builder<E> setInt(int value) {
+        intValue = OptionalInt.of(value);
+        return this;
+      }
+      public Builder<E> setLong(long value) {
+        longValue = OptionalLong.of(value);
+        return this;
+      }
+      public Builder<E> setDouble(double value) {
+        doubleValue = OptionalDouble.of(value);
+        return this;
+      }
+      public Builder<E> set(E value) {
+        this.value = Optional.of(value);
+        return this;
+      }
+      public AllSupplier<E> build() {
+        return new AllSupplier<>(intValue, longValue,
+            doubleValue, value);
+      }
+    }
+  }
+
+  @Test
+  public void multipleTargetInterfaces() throws NoSuchMethodException {
+    VTable vt = VTables.newVTableExcludingObjectMethods(
+        AllSupplier.class, IntSupplier.class, LongSupplier.class,
+        DoubleSupplier.class, Supplier.class);
+
+    assertEquals(4, vt.size());
+    assertEquals(
+        AllSupplier.class.getMethod("getAsInt"),
+        vt.lookup(IntSupplier.class.getMethod("getAsInt"))
+    );
+    assertEquals(
+        AllSupplier.class.getMethod("getAsLong"),
+        vt.lookup(LongSupplier.class.getMethod("getAsLong"))
+    );
+    assertEquals(
+        AllSupplier.class.getMethod("getAsDouble"),
+        vt.lookup(DoubleSupplier.class.getMethod("getAsDouble"))
+    );
+    assertEquals(
+        AllSupplier.class.getMethod("get"),
+        vt.lookup(Supplier.class.getMethod("get"))
+    );
   }
 }

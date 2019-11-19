@@ -30,17 +30,12 @@ public class FilterHandler implements InvocationHandler {
   private final ChainedInvocationHandler chain;
 
   public FilterHandler(Class<?> filter, Object component) {
-    VTable vtable = new VTable.Builder(component.getClass())
-                        .addTargetInterface(filter)
-                        .build();
-    VTable defaultTable = new VTable.Builder(filter)
-                              .addTargetInterface(filter)
-                              .excludeObjectMethods()
-                              .includeDefaultMethods()
-                              .build();
-    chain = new VTableHandler(component, vtable,
+    VTable vt = VTables.newVTable(component.getClass(), filter);
+    VTable defaultVT = VTables.newDefaultMethodVTable(filter);
+
+    chain = new VTableHandler(component, vt,
         new VTableDefaultMethodsHandler(
-            defaultTable, null));
+            defaultVT, null));
 
     ChainChecker.checkAllMethodsAreHandled(chain, filter);
   }

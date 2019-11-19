@@ -24,8 +24,6 @@ import eu.javaspecialists.books.dynamicproxies.util.*;
 import eu.javaspecialists.books.dynamicproxies.util.chain.*;
 
 import java.lang.reflect.*;
-import java.util.*;
-import java.util.stream.*;
 
 // tag::listing[]
 public class ObjectAdapterHandler implements InvocationHandler {
@@ -37,22 +35,15 @@ public class ObjectAdapterHandler implements InvocationHandler {
     checkClassPublic(adaptee.getClass());
     checkClassPublic(adapter.getClass());
 
-    VTable adapterMap = new VTable.Builder(adapter.getClass())
-                            .addTargetInterface(target)
-                            .excludeObjectMethods()
-                            .build();
-    VTable adapteeMap = new VTable.Builder(adaptee.getClass())
-                            .addTargetInterface(target)
-                            .build();
-    VTable defaultMap = new VTable.Builder(target)
-                            .addTargetInterface(target)
-                            .excludeObjectMethods()
-                            .includeDefaultMethods()
-                            .build();
+    VTable adapterVT = VTables.newVTableExcludingObjectMethods(
+        adapter.getClass(), target);
+    VTable adapteeVT = VTables.newVTable(
+        adaptee.getClass(), target);
+    VTable defaultVT = VTables.newDefaultMethodVTable(target);
 
-    chain = new VTableHandler(adapter, adapterMap,
-        new VTableHandler(adaptee, adapteeMap,
-            new VTableDefaultMethodsHandler(defaultMap, null)));
+    chain = new VTableHandler(adapter, adapterVT,
+        new VTableHandler(adaptee, adapteeVT,
+            new VTableDefaultMethodsHandler(defaultVT, null)));
 
     ChainChecker.checkAllMethodsAreHandled(chain, target);
   }

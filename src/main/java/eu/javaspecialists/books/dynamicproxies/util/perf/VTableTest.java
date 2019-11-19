@@ -60,9 +60,7 @@ public class VTableTest {
     countedNames.values().removeIf(val -> val != 1L);
     System.out.println("countedNames = " + countedNames);
 
-    VTable vtable = new VTable.Builder(instance.getClass())
-                        .addTargetInterface(clazz)
-                        .build();
+    VTable vtable = VTables.newVTable(instance.getClass(), clazz);
 
     methods = methodMap.values().toArray(Method[]::new);
     for (int i = 0; i < 10; i++) {

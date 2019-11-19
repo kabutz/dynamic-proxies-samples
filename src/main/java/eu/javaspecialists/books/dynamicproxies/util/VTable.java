@@ -234,6 +234,7 @@ public class VTable {
           targetInterfaces.stream()
               .flatMap(clazz -> Stream.of(clazz.getMethods()))
               .collect(Collectors.toList());
+      System.out.println("allMethods = " + allMethods);
       if (inludeObjectMethods) {
         for (Method method : objectMethods) {
           allMethods.add(method);
@@ -317,6 +318,5 @@ public class VTable {
           method.getModifiers()
               & method.getDeclaringClass().getModifiers());
     }
-
   }
 }
