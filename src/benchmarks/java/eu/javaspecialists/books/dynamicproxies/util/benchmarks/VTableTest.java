@@ -18,7 +18,7 @@
  * License.
  */
 
-package eu.javaspecialists.books.dynamicproxies.util.perf;
+package eu.javaspecialists.books.dynamicproxies.util.benchmarks;
 
 import eu.javaspecialists.books.dynamicproxies.util.*;
 
