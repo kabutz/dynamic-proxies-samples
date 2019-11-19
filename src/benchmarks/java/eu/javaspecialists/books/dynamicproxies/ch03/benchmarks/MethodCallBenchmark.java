@@ -18,11 +18,10 @@
  * License.
  */
 
-package eu.javaspecialists.books.dynamicproxies.ch03.perf;
+package eu.javaspecialists.books.dynamicproxies.ch03.benchmarks;
 
 import eu.javaspecialists.books.dynamicproxies.*;
 import org.openjdk.jmh.annotations.*;
-import org.openjdk.jmh.profile.*;
 import org.openjdk.jmh.runner.*;
 import org.openjdk.jmh.runner.options.*;
 

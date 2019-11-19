@@ -18,7 +18,7 @@
  * License.
  */
 
-package eu.javaspecialists.books.dynamicproxies.ch03.perf;
+package eu.javaspecialists.books.dynamicproxies.ch03.benchmarks;
 
 import java.lang.reflect.*;
 
@@ -78,6 +78,7 @@ public class ManualProxy extends Proxy implements Tester {
     }
   }
 
+  @Override
   public final void consumeCPU() {
     try {
       this.h.invoke(this, m4, null);

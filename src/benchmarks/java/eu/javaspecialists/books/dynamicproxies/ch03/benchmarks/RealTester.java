@@ -18,11 +18,20 @@
  * License.
  */
 
-package eu.javaspecialists.books.dynamicproxies.ch03.perf;
+package eu.javaspecialists.books.dynamicproxies.ch03.benchmarks;
+
+import org.openjdk.jmh.infra.*;
 
 // tag::listing[]
-public interface Tester {
-  long increment();
-  void consumeCPU();
+public class RealTester implements Tester {
+  private long counter = 0;
+  @Override
+  public long increment() {
+    return counter++;
+  }
+  @Override
+  public void consumeCPU() {
+    Blackhole.consumeCPU(2);
+  }
 }
 // end::listing[]

@@ -18,7 +18,7 @@
  * License.
  */
 
-package eu.javaspecialists.books.dynamicproxies.ch05.perf;
+package eu.javaspecialists.books.dynamicproxies.ch05.benchmarks;
 
 import eu.javaspecialists.books.dynamicproxies.ch05.bettercollection.*;
 import org.openjdk.jmh.annotations.*;

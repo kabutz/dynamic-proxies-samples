@@ -18,7 +18,7 @@
  * License.
  */
 
-package eu.javaspecialists.books.dynamicproxies.ch03.perf;
+package eu.javaspecialists.books.dynamicproxies.ch03.benchmarks;
 
 // tag::listing[]
 public class ProxyTester implements Tester {
