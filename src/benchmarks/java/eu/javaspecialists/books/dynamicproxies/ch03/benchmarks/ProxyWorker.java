@@ -21,15 +21,15 @@
 package eu.javaspecialists.books.dynamicproxies.ch03.benchmarks;
 
 // tag::listing[]
-public class ProxyTester implements Tester {
-  private final RealTester tester = new RealTester();
+public class ProxyWorker implements Worker {
+  private final RealWorker worker = new RealWorker();
   @Override
   public long increment() {
-    return tester.increment();
+    return worker.increment();
   }
   @Override
   public void consumeCPU() {
-    tester.consumeCPU();
+    worker.consumeCPU();
   }
 }
 // end::listing[]

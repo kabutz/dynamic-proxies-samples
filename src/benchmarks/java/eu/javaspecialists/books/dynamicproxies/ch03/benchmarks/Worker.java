@@ -21,7 +21,7 @@
 package eu.javaspecialists.books.dynamicproxies.ch03.benchmarks;
 
 // tag::listing[]
-public interface Tester {
+public interface Worker {
   long increment();
   void consumeCPU();
 }

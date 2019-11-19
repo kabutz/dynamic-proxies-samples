@@ -37,30 +37,30 @@ import java.util.concurrent.*;
 @State(Scope.Benchmark)
 
 public class MethodCallBenchmark {
-  // direct call to RealTester
-  private final RealTester realTester = new RealTester();
+  // direct call to RealWorker
+  private final RealWorker realWorker = new RealWorker();
 
   // static proxies
-  private final Tester staticProxy = new ProxyTester();
+  private final Worker staticProxy = new ProxyWorker();
 
   //   dynamic proxies
-  private final Tester dynamicProxyDirectCallIncrement =
-      Proxies.castProxy(Tester.class,
-          (proxy, method, args) -> realTester.increment());
-  private final Tester dynamicProxyDirectCallConsumeCPU =
-      Proxies.castProxy(Tester.class,
+  private final Worker dynamicProxyDirectCallIncrement =
+      Proxies.castProxy(Worker.class,
+          (proxy, method, args) -> realWorker.increment());
+  private final Worker dynamicProxyDirectCallConsumeCPU =
+      Proxies.castProxy(Worker.class,
           (proxy, method, args) -> {
-            realTester.consumeCPU();
+            realWorker.consumeCPU();
             return null;
           });
-  private final Tester dynamicProxyReflectiveCall =
-      Proxies.castProxy(Tester.class,
+  private final Worker dynamicProxyReflectiveCall =
+      Proxies.castProxy(Worker.class,
           (proxy, method, args) ->
-              method.invoke(realTester, args));
+              method.invoke(realWorker, args));
 
   @Benchmark
   public long directCallIncrement() {
-    return realTester.increment();
+    return realWorker.increment();
   }
   @Benchmark
   public long staticProxyIncrement() {
@@ -77,7 +77,7 @@ public class MethodCallBenchmark {
 
   @Benchmark
   public void directCallConsumeCPU() {
-    realTester.consumeCPU();
+    realWorker.consumeCPU();
   }
   @Benchmark
   public void staticProxyConsumeCPU() {

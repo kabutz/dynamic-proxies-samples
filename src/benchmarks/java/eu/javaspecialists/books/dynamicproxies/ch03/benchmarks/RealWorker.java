@@ -23,7 +23,7 @@ package eu.javaspecialists.books.dynamicproxies.ch03.benchmarks;
 import org.openjdk.jmh.infra.*;
 
 // tag::listing[]
-public class RealTester implements Tester {
+public class RealWorker implements Worker {
   private long counter = 0;
   @Override
   public long increment() {

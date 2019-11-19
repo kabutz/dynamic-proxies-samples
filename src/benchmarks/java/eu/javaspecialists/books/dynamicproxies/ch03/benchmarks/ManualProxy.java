@@ -22,7 +22,7 @@ package eu.javaspecialists.books.dynamicproxies.ch03.benchmarks;
 
 import java.lang.reflect.*;
 
-public class ManualProxy extends Proxy implements Tester {
+public class ManualProxy extends Proxy implements Worker {
   private static Method m0;
   private static Method m1;
   private static Method m2;
@@ -98,12 +98,12 @@ public class ManualProxy extends Proxy implements Tester {
                    Class.forName("java.lang.Object"));
       m2 = Class.forName("java.lang.Object")
                .getMethod("toString");
-      m3 = Class.forName("eu.javaspecialists.books" +
-                             ".dynamicproxies.ch03.perf" +
-                             ".Tester").getMethod("increment");
-      m4 = Class.forName("eu.javaspecialists.books" +
-                             ".dynamicproxies.ch03.perf" +
-                             ".Tester").getMethod("consumeCPU");
+      m3 = Class.forName(
+          "eu.javaspecialists.books.dynamicproxies.ch03" +
+              ".benchmarks.Worker").getMethod("increment");
+      m4 = Class.forName(
+          "eu.javaspecialists.books.dynamicproxies.ch03" +
+              ".benchmarks.Worker").getMethod("consumeCPU");
     } catch (NoSuchMethodException noSuchMethodException) {
       throw new NoSuchMethodError(noSuchMethodException.getMessage());
     } catch (ClassNotFoundException classNotFoundException) {
