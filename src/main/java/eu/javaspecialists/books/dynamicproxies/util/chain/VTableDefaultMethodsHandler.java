@@ -24,13 +24,14 @@ import eu.javaspecialists.books.dynamicproxies.util.*;
 
 import java.lang.invoke.*;
 import java.lang.reflect.*;
-import java.util.function.*;
 import java.util.stream.*;
 
-public class VTableDefaultMethodsHandler extends ChainedInvocationHandler {
+// tag::listing[]
+public class VTableDefaultMethodsHandler
+    extends ChainedInvocationHandler {
   private final VTable vtable;
-  public VTableDefaultMethodsHandler(VTable vtable,
-                                     ChainedInvocationHandler next) {
+  public VTableDefaultMethodsHandler(
+      VTable vtable, ChainedInvocationHandler next) {
     super(next);
     this.vtable = vtable;
   }
@@ -45,8 +46,11 @@ public class VTableDefaultMethodsHandler extends ChainedInvocationHandler {
   }
 
   @Override
-  public Stream<Method> findUnhandledMethods(Class<?> target) {
-    return super.findUnhandledMethods(target)
-               .filter(method -> vtable.lookupDefaultMethod(method) != null);
+  protected Stream<Method> findUnhandledMethods(Class<?> target) {
+    return
+        super.findUnhandledMethods(target)
+            .filter(method -> vtable.lookupDefaultMethod(method)
+                                  != null);
   }
 }
+// end::listing[]

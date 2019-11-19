@@ -37,7 +37,7 @@ public class FilterHandler implements InvocationHandler {
         new VTableDefaultMethodsHandler(
             defaultVT, null));
 
-    ChainChecker.checkAllMethodsAreHandled(chain, filter);
+    chain.checkAllMethodsAreHandled(filter);
   }
 
   @Override

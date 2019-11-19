@@ -26,6 +26,7 @@ import java.lang.reflect.*;
 import java.util.*;
 import java.util.stream.*;
 
+// tag::listing[]
 public class VTableHandler extends ChainedInvocationHandler {
   private final VTable vtable;
   private final Object target;
@@ -45,8 +46,9 @@ public class VTableHandler extends ChainedInvocationHandler {
   }
 
   @Override
-  public Stream<Method> findUnhandledMethods(Class<?> target) {
+  protected Stream<Method> findUnhandledMethods(Class<?> target) {
     return super.findUnhandledMethods(target)
         .filter(method -> vtable.lookup(method) != null);
   }
 }
+// end::listing[]

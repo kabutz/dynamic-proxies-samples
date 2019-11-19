@@ -45,7 +45,7 @@ public class ObjectAdapterHandler implements InvocationHandler {
         new VTableHandler(adaptee, adapteeVT,
             new VTableDefaultMethodsHandler(defaultVT, null)));
 
-    ChainChecker.checkAllMethodsAreHandled(chain, target);
+    chain.checkAllMethodsAreHandled(target);
   }
 
   @Override

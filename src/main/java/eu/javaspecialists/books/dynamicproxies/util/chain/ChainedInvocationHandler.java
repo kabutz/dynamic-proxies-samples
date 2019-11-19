@@ -21,9 +21,10 @@
 package eu.javaspecialists.books.dynamicproxies.util.chain;
 
 import java.lang.reflect.*;
-import java.util.function.*;
+import java.util.*;
 import java.util.stream.*;
 
+// tag::listing[]
 /**
  * Chain of responsibility design pattern for invocation
  * handlers.   The invoke method by default passes the call down
@@ -48,8 +49,18 @@ public abstract class ChainedInvocationHandler
         "No InvocationHandler for " + method);
   }
 
-  public Stream<Method> findUnhandledMethods(Class<?> target) {
+  protected Stream<Method> findUnhandledMethods(Class<?> target) {
     if (next != null) return next.findUnhandledMethods(target);
     return Stream.of(target.getMethods());
   }
+
+  public void checkAllMethodsAreHandled(Class<?> target) {
+    Collection<Method> unhandled =
+        findUnhandledMethods(target)
+            .collect(Collectors.toList());
+    if (!unhandled.isEmpty())
+      throw new IllegalArgumentException(
+          "Target methods not implemented: " + unhandled);
+  }
 }
+// end::listing[]
