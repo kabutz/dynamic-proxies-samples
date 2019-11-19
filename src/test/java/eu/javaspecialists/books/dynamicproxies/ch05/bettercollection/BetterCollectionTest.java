@@ -36,7 +36,6 @@ public class BetterCollectionTest {
     assertEquals(5, names.size());
     assertEquals(String[].class, names.toArray().getClass());
     if (names instanceof Proxy) {
-      System.out.println("Testing add with ClassCastException");
       try {
         ((Collection) names).add(42);
         fail("Should have thrown a ClassCastException");
