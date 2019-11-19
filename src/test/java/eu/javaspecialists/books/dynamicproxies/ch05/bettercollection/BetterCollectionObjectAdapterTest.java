@@ -20,26 +20,42 @@
 
 package eu.javaspecialists.books.dynamicproxies.ch05.bettercollection;
 
+import org.junit.*;
+
+import java.util.*;
 import java.util.concurrent.*;
 
-public class BetterCollectionObjectAdapterTest {
-  public static void main(String... args) {
-    // tag::listing[]
-    BetterCollection<String> names =
-        new BetterCollectionObjectAdapter<>(
-            ConcurrentHashMap.newKeySet(),
-            new String[0]
-        );
-    names.add("Wolfgang");
-    names.add("Bobby Tables");
-    names.add("Leander");
-    names.add("Klaus");
-    names.add("Menongahela");
-    String[] nameArray = names.toArray();
-    for (String name : nameArray) {
-      System.out.println(name.toUpperCase());
-    }
-    System.out.println(names);
-    // end::listing[]
+public class BetterCollectionObjectAdapterTest extends BetterCollectionTest{
+  @Test
+  public void testHashSet() {
+    testHandCrafted(new HashSet<>());
+  }
+  @Test
+  public void testConcurrentSkipListSet() {
+    testHandCrafted(new ConcurrentSkipListSet<>());
+  }
+  @Test
+  public void testConcurrentHashSet() {
+    testHandCrafted(ConcurrentHashMap.newKeySet());
+  }
+  @Test
+  public void testArrayList() {
+    testHandCrafted(new ArrayList<>());
+  }
+  @Test
+  public void testLinkedList() {
+    testHandCrafted(new LinkedList<>());
+  }
+  @Test
+  public void testVector() {
+    testHandCrafted(new Vector<>());
+  }
+  @Test
+  public void testConcurrentLinkedQueue() {
+    testHandCrafted(new ConcurrentLinkedQueue<>());
+  }
+  @Test
+  public void testArrayDeque() {
+    testHandCrafted(new ArrayDeque<>());
   }
 }

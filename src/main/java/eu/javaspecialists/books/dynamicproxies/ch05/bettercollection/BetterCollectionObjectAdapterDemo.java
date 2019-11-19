@@ -20,11 +20,16 @@
 
 package eu.javaspecialists.books.dynamicproxies.ch05.bettercollection;
 
-public class BetterConcurrentSkipListTest {
+import java.util.concurrent.*;
+
+public class BetterCollectionObjectAdapterDemo {
   public static void main(String... args) {
     // tag::listing[]
-    BetterConcurrentSkipListSet<String> names =
-        new BetterConcurrentSkipListSet<>(new String[0]);
+    BetterCollection<String> names =
+        new BetterCollectionObjectAdapter<>(
+            ConcurrentHashMap.newKeySet(),
+            new String[0]
+        );
     names.add("Wolfgang");
     names.add("Bobby Tables");
     names.add("Leander");

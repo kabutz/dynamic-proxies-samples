@@ -20,21 +20,39 @@
 
 package eu.javaspecialists.books.dynamicproxies.ch05.bettercollection;
 
-public class BetterArrayListTest {
-  public static void main(String... args) {
-    // tag::listing[]
-    BetterArrayList<String> names =
-        new BetterArrayList<>(new String[0]);
+import java.lang.reflect.*;
+import java.util.*;
+
+import static junit.framework.TestCase.*;
+
+public class BetterCollectionTest {
+  @SuppressWarnings("unchecked,rawtypes")
+  protected void test(Collection<String> names) {
     names.add("Wolfgang");
     names.add("Bobby Tables");
     names.add("Leander");
     names.add("Klaus");
     names.add("Menongahela");
-    String[] nameArray = names.toArray();
-    for (String name : nameArray) {
-      System.out.println(name.toUpperCase());
+    assertEquals(5, names.size());
+    assertEquals(String[].class, names.toArray().getClass());
+    if (names instanceof Proxy) {
+      System.out.println("Testing add with ClassCastException");
+      try {
+        ((Collection) names).add(42);
+        fail("Should have thrown a ClassCastException");
+      } catch (ClassCastException expected) {
+      }
     }
-    System.out.println(names);
-    // end::listing[]
+    assertTrue(names.toString().startsWith("--["));
+    assertTrue(names.toString().endsWith("]--"));
+  }
+
+  protected void testDynamic(Collection<String> holder) {
+    test(BetterCollectionFactory.asBetterCollection(
+        holder, new String[0]));
+  }
+  protected void testHandCrafted(Collection<String> holder) {
+    test(new BetterCollectionObjectAdapter<>(
+        holder, new String[0]));
   }
 }

@@ -20,30 +20,16 @@
 
 package eu.javaspecialists.books.dynamicproxies.ch05.bettercollection;
 
-import jdk.swing.interop.*;
+import org.junit.*;
 
-import java.util.*;
-import java.util.concurrent.*;
-
-@SuppressWarnings("unchecked")
-public class BetterSetDynamicObjectAdapterTest {
-  public static void main(String... args) {
-    // tag::listing[]
-    BetterSortedSet<String> names =
-        BetterCollectionFactory.asBetterSet(
-            new ConcurrentSkipListSet<>(), new String[0]);
-    names.add("Wolfgang");
-    names.add("Bobby Tables");
-    names.add("Leander");
-    names.add("Klaus");
-    names.add("Menongahela");
-    String[] nameArray = names.toArray();
-    for (String name : nameArray) {
-      System.out.println(name.toUpperCase());
-    }
-    System.out.println(names);
-
-    ((Collection) names).add(42); // this will fail
-    // end::listing[]
+public class BetterCollectionClassAdapterTest
+    extends BetterCollectionTest {
+  @Test
+  public void testArrayList() {
+    test(new BetterArrayList<>(new String[0]));
+  }
+  @Test
+  public void testConcurrentSkipListSet() {
+    test(new BetterConcurrentSkipListSet<>(new String[0]));
   }
 }

@@ -20,15 +20,11 @@
 
 package eu.javaspecialists.books.dynamicproxies.ch05.bettercollection;
 
-import java.util.*;
-
-@SuppressWarnings("unchecked")
-public class BetterCollectionDynamicObjectAdapterTest {
+public class BetterConcurrentSkipListDemo {
   public static void main(String... args) {
     // tag::listing[]
-    BetterCollection<String> names =
-        BetterCollectionFactory.asBetterCollection(
-            new HashSet<>(), new String[0]);
+    BetterConcurrentSkipListSet<String> names =
+        new BetterConcurrentSkipListSet<>(new String[0]);
     names.add("Wolfgang");
     names.add("Bobby Tables");
     names.add("Leander");
@@ -39,8 +35,6 @@ public class BetterCollectionDynamicObjectAdapterTest {
       System.out.println(name.toUpperCase());
     }
     System.out.println(names);
-
-    ((Collection) names).add(42); // this will fail
     // end::listing[]
   }
 }
