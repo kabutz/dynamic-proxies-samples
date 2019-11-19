@@ -260,8 +260,8 @@ public class VTableTest {
     HashSet<String> adaptee = new HashSet<>();
     String[] seedArray = new String[0];
     Object adapter =
-        new BetterCollectionFactory.AdaptationObject<>(adaptee
-            , seedArray);
+        new BetterCollectionFactory.AdaptationObject<>(
+            adaptee, seedArray);
     Class<?> target = BetterCollection.class;
 
     VTable adapterVT =
@@ -276,7 +276,7 @@ public class VTableTest {
         );
     System.out.println("adapteeVT:");
     adapteeVT.stream().forEach(System.out::println);
-    assertEquals(22, adapteeVT.size());
+    assertEquals(21, adapteeVT.size());
 
     VTable defaultVT = VTables.newDefaultMethodVTable(target);
     System.out.println("defaultVT:");

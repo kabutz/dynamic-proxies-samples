@@ -35,7 +35,7 @@ public class ObjectAdapterHandler implements InvocationHandler {
     checkClassPublic(adaptee.getClass());
     checkClassPublic(adapter.getClass());
 
-    VTable adapterVT = VTables.newVTableExcludingObjectMethods(
+    VTable adapterVT = VTables.newVTable(
         adapter.getClass(), target);
     VTable adapteeVT = VTables.newVTable(
         adaptee.getClass(), target);
