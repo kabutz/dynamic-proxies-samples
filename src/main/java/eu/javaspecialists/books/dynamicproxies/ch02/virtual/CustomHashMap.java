@@ -26,7 +26,7 @@ import java.util.function.*;
 // tag::listing[]
 public class CustomHashMap<K, V> implements CustomMap<K, V> {
   private final Map<K, V> map = new HashMap<>();
-  public CustomHashMap() {
+  {
     System.out.println("CustomHashMap constructed");
   }
   @Override
