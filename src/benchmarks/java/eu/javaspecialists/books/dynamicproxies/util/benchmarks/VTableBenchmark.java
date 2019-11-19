@@ -28,7 +28,11 @@ import java.util.concurrent.*;
 import java.util.function.*;
 import java.util.stream.*;
 
-public class VTableTest {
+/**
+ * Will be converted to a JMH benchmark in the near future (or
+ * not).
+ */
+public class VTableBenchmark {
   public static final int REPEATS = 3_000_000;
   public static void main(String... args) {
     test(NavigableSet.class, new ConcurrentSkipListSet<>());
@@ -60,12 +64,13 @@ public class VTableTest {
     countedNames.values().removeIf(val -> val != 1L);
     System.out.println("countedNames = " + countedNames);
 
-    VTable vtable = VTables.newVTable(instance.getClass(), clazz);
+    VTable vtable = VTables.newVTable(instance.getClass(),
+        clazz);
 
     methods = methodMap.values().toArray(Method[]::new);
     for (int i = 0; i < 10; i++) {
       test(methods, vtable);
-//      test(methods, methodMap);
+      //      test(methods, methodMap);
     }
   }
 
@@ -75,11 +80,11 @@ public class VTableTest {
       for (int i = 0; i < REPEATS; i++) {
         for (Method method : methods) {
           Method match = vtable.lookup(method);
-//          if (!match.equals(method)) {
-//            System.out.println("method = " + method);
-//            System.out.println("match = " + match);
-//            throw new AssertionError();
-//          }
+          //          if (!match.equals(method)) {
+          //            System.out.println("method = " + method);
+          //            System.out.println("match = " + match);
+          //            throw new AssertionError();
+          //          }
         }
       }
     } finally {
