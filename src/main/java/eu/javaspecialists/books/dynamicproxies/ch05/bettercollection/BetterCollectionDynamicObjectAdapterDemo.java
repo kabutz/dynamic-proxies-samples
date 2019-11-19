@@ -20,8 +20,13 @@
 
 package eu.javaspecialists.books.dynamicproxies.ch05.bettercollection;
 
+import eu.javaspecialists.books.dynamicproxies.util.*;
+
 import java.util.*;
 
+// To include default methods of HashSet's interfaces, use
+// --add-opens java.base/java.util=eu.javaspecialists.books.dynamicproxies
+// --add-opens java.base/java.lang=eu.javaspecialists.books.dynamicproxies
 @SuppressWarnings("unchecked")
 public class BetterCollectionDynamicObjectAdapterDemo {
   public static void main(String... args) {

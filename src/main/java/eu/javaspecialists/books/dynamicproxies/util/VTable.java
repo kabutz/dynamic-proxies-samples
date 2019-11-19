@@ -46,19 +46,16 @@ public class VTable {
     parameterTypes = new Class<?>[entries.length][];
     distinctName = new boolean[entries.length];
     defaultMethods = new MethodHandle[entries.length];
-    int clashes = 0;
     for (var method : methods) {
-      clashes += put(method,
+      put(method,
           distinctMethodNames.contains(method.getName()),
           includeDefaultMethods);
     }
     methods.forEach(MethodTurboBooster::boost);
-    System.out.println("clashes = " + clashes);
   }
 
-  private int put(Method method, boolean distinct,
+  private void put(Method method, boolean distinct,
                   boolean includeDefaultMethods) {
-    int clashes = 0;
     int offset = offset(method);
     while (entries[offset] != null) {
       if (entries[offset].getName() == method.getName()
@@ -67,7 +64,6 @@ public class VTable {
         throw new IllegalArgumentException(
             "Duplicate method found: " + new MethodKey(method));
       offset = (offset + 1) & mask;
-      clashes++;
     }
     entries[offset] = method;
     parameterTypes[offset] = method.getParameterTypes();
@@ -75,7 +71,6 @@ public class VTable {
     if (includeDefaultMethods && method.isDefault()) {
       defaultMethods[offset] = createDefaultMethodHandle(method);
     }
-    return clashes;
   }
 
   private MethodHandle createDefaultMethodHandle(Method method) {
@@ -83,9 +78,15 @@ public class VTable {
       // Thanks Thomas Darimont for this idea
       Class<?> target = method.getDeclaringClass();
       var lookup = MethodHandles.lookup();
-      return MethodHandles.privateLookupIn(target, lookup)
-                 .in(target)
-                 .unreflectSpecial(method, target);
+      if (target.getModule().isOpen(
+          method.getDeclaringClass().getPackageName(),
+          VTable.class.getModule())) {
+        return MethodHandles.privateLookupIn(target, lookup)
+                   .in(target)
+                   .unreflectSpecial(method, target);
+      } else {
+        return null;
+      }
     } catch (IllegalAccessException e) {
       throw new IllegalArgumentException(e);
     }
@@ -136,13 +137,14 @@ public class VTable {
 
   public Stream<Method> stream() {
     return Stream.of(entries)
-        .filter(Objects::nonNull);
+               .filter(Objects::nonNull);
   }
 
   public Stream<Method> streamDefaultMethods() {
-    return IntStream.iterate(0, i -> i < entries.length, i -> i + 1)
-        .filter(i -> defaultMethods[i] != null)
-        .mapToObj(i -> entries[i]);
+    return IntStream.iterate(0, i -> i < entries.length,
+        i -> i + 1)
+               .filter(i -> defaultMethods[i] != null)
+               .mapToObj(i -> entries[i]);
   }
 
   /**
@@ -234,7 +236,6 @@ public class VTable {
           targetInterfaces.stream()
               .flatMap(clazz -> Stream.of(clazz.getMethods()))
               .collect(Collectors.toList());
-      System.out.println("allMethods = " + allMethods);
       if (inludeObjectMethods) {
         for (Method method : objectMethods) {
           allMethods.add(method);
@@ -266,14 +267,29 @@ public class VTable {
 
       Collection<Method> matchedMethods =
           targetMethods.entrySet().stream()
-              .map(entry -> receiverClassMap.get(
-                  entry.getKey()))
+              .map(this::filterOnReturnType)
               .filter(Objects::nonNull)
-              // TODO: Add filter for return type
               .collect(Collectors.toList());
 
       return new VTable(matchedMethods, distinctMethodNames,
           includeDefaultMethods);
+    }
+
+    /**
+     * Ensure that receiverClassMap method return type of method
+     * can be cast to the target method return type.
+     */
+    private Method filterOnReturnType(
+        Map.Entry<MethodKey, Method> entry) {
+      var targetMethod = entry.getValue();
+      var receiverMethod = receiverClassMap.get(entry.getKey());
+      if (receiverMethod != null) {
+        var targetReturn = targetMethod.getReturnType();
+        var receiverReturn = receiverMethod.getReturnType();
+        if (targetReturn.isAssignableFrom(receiverReturn))
+          return receiverMethod;
+      }
+      return null;
     }
 
     /**
@@ -283,7 +299,7 @@ public class VTable {
     private Map<MethodKey, Method> createPublicMethodMap(
         Class<?> clazz) {
       Map<MethodKey, Method> map = new HashMap<>();
-      addReverseMethods(clazz, map);
+      addTrulyPublicMethods(clazz, map);
       return map;
     }
 
@@ -294,7 +310,7 @@ public class VTable {
      * that are public and which are defined inside public
      * classes.
      */
-    private void addReverseMethods(
+    private void addTrulyPublicMethods(
         Class<?> clazz, Map<MethodKey, Method> map) {
       if (clazz == null) return;
       for (var method : clazz.getMethods()) {
@@ -304,9 +320,9 @@ public class VTable {
         }
       }
       for (var anInterface : clazz.getInterfaces()) {
-        addReverseMethods(anInterface, map);
+        addTrulyPublicMethods(anInterface, map);
       }
-      addReverseMethods(clazz.getSuperclass(), map);
+      addTrulyPublicMethods(clazz.getSuperclass(), map);
     }
 
     /**
