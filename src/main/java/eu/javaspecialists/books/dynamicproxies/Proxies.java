@@ -87,14 +87,14 @@ public class Proxies {
   }
   // end::synchronizedProxy()[]
 
-  // tag::dynamicFilter()[]
+  // tag::filter()[]
   public static <P> P filter(
       Class<? super P> filter, Object component) {
     Objects.requireNonNull(component, "component==null");
     return castProxy(filter,
         new FilterHandler(filter, component));
   }
-  // end::dynamicFilter()[]
+  // end::filter()[]
 
   // tag::adapt()[]
   public static <E> E adapt(Class<? super E> target,

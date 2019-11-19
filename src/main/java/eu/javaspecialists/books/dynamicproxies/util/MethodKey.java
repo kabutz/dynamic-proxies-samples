@@ -73,7 +73,8 @@ public final class MethodKey implements Comparable<MethodKey> {
     int result = this.name.compareTo(that.name);
     if (result != 0) return result;
     return Arrays.compare(this.parameterTypes,
-        that.parameterTypes, Comparator.comparing(Class::getName));
+        that.parameterTypes,
+        Comparator.comparing(Class::getName));
   }
 
   @Override

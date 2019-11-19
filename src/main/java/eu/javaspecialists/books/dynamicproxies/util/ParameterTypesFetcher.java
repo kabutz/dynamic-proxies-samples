@@ -23,6 +23,7 @@ package eu.javaspecialists.books.dynamicproxies.util;
 import java.lang.invoke.*;
 import java.lang.reflect.*;
 
+// tag::listing[]
 /**
  * Fast fetching of parameter types array is disabled by default
  * and can be enabled with
@@ -78,3 +79,4 @@ public class ParameterTypesFetcher {
     }
   }
 }
+// end::listing[]
