@@ -52,8 +52,8 @@ public class ContactDynamicDemo {
 
     Contact extremeJava =
         Proxies.compose(Contact.class, reducers);
-    extremeJava.add(new Person("John@standardbank.co.za"));
-    extremeJava.add(new Person("Hlope@standardbank.co.za"));
+    extremeJava.add(new Person("John@fnb.co.za"));
+    extremeJava.add(new Person("Hlope@fnb.co.za"));
     allStudents.add(extremeJava);
 
     javaSpecialistsNewsletter.sendMail("Hello there 3");

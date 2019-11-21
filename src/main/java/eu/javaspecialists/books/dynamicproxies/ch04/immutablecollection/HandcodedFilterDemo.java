@@ -31,11 +31,11 @@ public class HandcodedFilterDemo {
     // names.remove("Peter"); // does not compile
     System.out.println(names);
     System.out.println("Is Mary in? " + names.contains("Mary"));
-    System.out.println("Are there names? " + names.isEmpty());
+    System.out.println("Are there names? " + !names.isEmpty());
     System.out.println("Printing the names:");
     names.forEach(System.out::println);
-    System.out.println(
-        "Class: " + names.getClass().getSimpleName());
+    System.out.println("Class: " +
+                           names.getClass().getSimpleName());
 
     names.printAll();
     // end::listing[]

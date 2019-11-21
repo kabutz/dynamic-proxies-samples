@@ -86,7 +86,7 @@ public class CompositeHandler implements InvocationHandler {
   private boolean matches(Method method, String name) {
     return name.equals(method.getName())
                && method.getParameterCount() == 1
-               && method.getParameterTypes()[0]
+               && ParameterTypesFetcher.get(method)[0]
                       == Object.class;
   }
 }

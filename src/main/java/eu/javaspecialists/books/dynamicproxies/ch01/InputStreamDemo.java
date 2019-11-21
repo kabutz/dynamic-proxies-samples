@@ -58,8 +58,7 @@ public class InputStreamDemo {
         var fis = new FileInputStream("data.bin.gz");
         var in = new DataInputStream(
             new BufferedInputStream(
-                new GZIPInputStream(
-                    fis)))) {
+                new GZIPInputStream(fis)))) {
       long total = 0;
       int value;
       while ((value = in.readInt()) != -1) {

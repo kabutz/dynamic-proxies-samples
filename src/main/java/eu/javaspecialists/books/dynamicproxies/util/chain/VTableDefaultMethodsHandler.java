@@ -50,7 +50,7 @@ public class VTableDefaultMethodsHandler
     return
         super.findUnhandledMethods(target)
             .filter(method -> vtable.lookupDefaultMethod(method)
-                                  != null);
+                                  == null);
   }
 }
 // end::listing[]

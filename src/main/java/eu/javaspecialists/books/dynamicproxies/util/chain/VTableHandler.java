@@ -48,7 +48,7 @@ public class VTableHandler extends ChainedInvocationHandler {
   @Override
   protected Stream<Method> findUnhandledMethods(Class<?> target) {
     return super.findUnhandledMethods(target)
-        .filter(method -> vtable.lookup(method) != null);
+        .filter(method -> vtable.lookup(method) == null);
   }
 }
 // end::listing[]
