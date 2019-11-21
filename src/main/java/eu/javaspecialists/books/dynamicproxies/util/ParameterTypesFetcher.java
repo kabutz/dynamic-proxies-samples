@@ -51,6 +51,10 @@ public class ParameterTypesFetcher {
     Class<?>[] getParameterTypes(Method method);
   }
 
+  /**
+   * Returns the parameter types by calling getParameterTypes()
+   * on the method parameter.  This should always work.
+   */
   private static class NormalParameterFetcher
       implements ParameterFetcher {
     @Override
@@ -59,6 +63,12 @@ public class ParameterTypesFetcher {
     }
   }
 
+  /**
+   * Creates a VarHandle pointing directly to the field
+   * parameterTypes stored inside Method.  Since the VarHandle is
+   * declared as final static, the cost of reading it is the same
+   * as reading an ordinary field.
+   */
   private static class FastParameterFetcher
       implements ParameterFetcher {
     private final static VarHandle METHOD_PARAMETER_TYPES;

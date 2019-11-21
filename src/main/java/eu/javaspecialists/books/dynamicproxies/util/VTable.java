@@ -27,16 +27,40 @@ import java.util.function.*;
 import java.util.stream.*;
 
 // tag::listing[]
+/**
+ * The purpose of the VTable is as a fast mapper between
+ * interface methods and receiver class methods.  To minimize
+ * object creation, we avoid a normal HashMap, choosing rather
+ * to store all the elements in equally sized arrays.  We also
+ * try to minimize clashes in the table by hashing on the method
+ * name + number of parameters.  Furthermore, we remember whether
+ * a name was distinct in the table.  If it was, we do not check
+ * that the parameters match.
+ * <p>
+ * The most important methods in terms of performance are
+ * lookup() and lookupDefaultMethod().
+ */
 public class VTable {
-  public static final int NOT_FOUND = -1;
   private final Method[] entries;
   private final Class<?>[][] paramTypes;
   private final boolean[] distinctName;
   private MethodHandle[] defaultMethods;
   private final int size;
-
   private final int mask;
 
+  /**
+   * Builds the VTable according to the collection of methods.
+   * The input for this constructor is created in the Builder
+   * class.
+   *
+   * @param methods               all the methods that need to
+   *                              be included in this VTable
+   * @param distinctMethodNames   names of methods that have
+   *                              not been overloaded
+   * @param includeDefaultMethods whether or not we want to
+   *                              include default interface
+   *                              methods
+   */
   private VTable(Collection<Method> methods,
                  Set<String> distinctMethodNames,
                  boolean includeDefaultMethods) {
@@ -55,49 +79,73 @@ public class VTable {
     methods.forEach(MethodTurboBooster::boost);
   }
 
-  private void put(Method method, boolean distinct,
-                   boolean includeDefaultMethods) {
-    int offset = offset(method);
-    var methodParamTypes = ParameterTypesFetcher.get(method);
-    while (entries[offset] != null) {
-      if (entries[offset].getName() == method.getName()
-              && matches(paramTypes[offset], methodParamTypes))
-        throw new IllegalArgumentException(
-            "Duplicate method found: " + new MethodKey(method));
-      offset = (offset + 1) & mask;
-    }
-    entries[offset] = method;
-    paramTypes[offset] = methodParamTypes;
-    distinctName[offset] = distinct;
-    if (includeDefaultMethods && method.isDefault()) {
-      defaultMethods[offset] = createDefaultMethodHandle(method);
-    }
+  /**
+   * Looks up the method in the VTable.  Returns null if it is
+   * not found.
+   */
+  public Method lookup(Method method) {
+    int index = findIndex(method);
+    return index < 0 ? null : entries[index];
   }
 
-  private MethodHandle createDefaultMethodHandle(Method method) {
-    try {
-      // Thanks Thomas Darimont for this idea
-      Class<?> target = method.getDeclaringClass();
-      MethodHandles.Lookup lookup = MethodHandles.lookup();
-      if (target.getModule().isOpen(
-          method.getDeclaringClass().getPackageName(),
-          VTable.class.getModule())) {
-        return MethodHandles.privateLookupIn(target, lookup)
-                   .in(target)
-                   .unreflectSpecial(method, target);
-      } else {
-        return null;
-      }
-    } catch (IllegalAccessException e) {
-      throw new IllegalArgumentException(e);
-    }
+  /**
+   * Looks up the default interface method in the VTable.
+   * Returns null if it is not found.
+   */
+  public MethodHandle lookupDefaultMethod(Method method) {
+    int index = findIndex(method);
+    return index < 0 ? null : defaultMethods[index];
   }
 
-  private int offset(Method method) {
-    return (method.getName().hashCode() +
-                method.getParameterCount()) & mask;
+  /**
+   * Returns the number of entries in the VTable.  The size does
+   * not change and is fixed at construction.
+   */
+  public int size() {
+    return size;
   }
 
+  /**
+   * Returns a stream of Method objects from this VTable.  Used
+   * by the ChainedInvocationHandler to verify that all methods
+   * in the target have been covered by the various VTables.
+   */
+  public Stream<Method> stream() {
+    return Stream.of(entries).filter(Objects::nonNull);
+  }
+
+  /**
+   * Returns a stream of Method objects for which we have
+   * default interface methods in this VTable.  Used by the
+   * ChainedInvocationHandler to verify that all methods in the
+   * target have been covered by the various VTables.
+   */
+  public Stream<Method> streamDefaultMethods() {
+    // Heinz: First time I've found a use case for iterate()
+    return IntStream.iterate(0, i -> i < entries.length,
+        i -> i + 1)
+               .filter(i -> defaultMethods[i] != null)
+               .mapToObj(i -> entries[i]);
+  }
+
+  /**
+   * Returns true if method is overloaded; false otherwise.
+   *
+   * @throws IllegalArgumentException if method is not in VTable
+   */
+  public boolean isOverloaded(Method method) {
+    int index = findIndex(method);
+    if (index < 0)
+      throw new IllegalArgumentException("Method not found");
+    return !distinctName[index];
+  }
+
+  /**
+   * Returns the index of the method; negative value if it was
+   * not found.  Once a method with this name is found, we check
+   * if the method was overloaded.  If it was not, then we
+   * return the offset immediately.
+   */
   private int findIndex(Method method) {
     int offset = offset(method);
     Class<?>[] methodParamTypes = null;
@@ -112,19 +160,23 @@ public class VTable {
       }
       offset++;
     }
-    return NOT_FOUND;
+    // Could not find the method, returning a negative value
+    return ~offset;
   }
 
-  public Method lookup(Method method) {
-    int index = findIndex(method);
-    return index == NOT_FOUND ? null : entries[index];
+  /**
+   * Returns the initial offset for the method, based on method
+   * name and number of parameters.
+   */
+  private int offset(Method method) {
+    return (method.getName().hashCode() +
+                method.getParameterCount()) & mask;
   }
 
-  public MethodHandle lookupDefaultMethod(Method method) {
-    int index = findIndex(method);
-    return index == NOT_FOUND ? null : defaultMethods[index];
-  }
-
+  /**
+   * Fast array comparison for parameter types.  Classes can be
+   * compared with == instead of equals().
+   */
   private boolean matches(Class<?>[] types1, Class<?>[] types2) {
     if (types1.length != types2.length) return false;
     for (int i = 0; i < types1.length; i++) {
@@ -133,43 +185,66 @@ public class VTable {
     return true;
   }
 
-  public int size() {
-    return size;
-  }
-
-  public Stream<Method> stream() {
-    return Stream.of(entries)
-               .filter(Objects::nonNull);
-  }
-
-  public Stream<Method> streamDefaultMethods() {
-    return IntStream.iterate(0, i -> i < entries.length,
-        i -> i + 1)
-               .filter(i -> defaultMethods[i] != null)
-               .mapToObj(i -> entries[i]);
+  /**
+   * Finds a free position for the entry and then inserts the
+   * values into the arrays entries, paramTypes, distinctName,
+   * and optionally, defaultMethods.  Duplicate methods are not
+   * allowed and will throw an IllegalArgumentException.
+   */
+  private void put(Method method, boolean distinct,
+                   boolean includeDefaultMethods) {
+    int index = findIndex(method);
+    if (index >= 0)
+      throw new IllegalArgumentException(
+          "Duplicate method found: " + new MethodKey(method));
+    index = ~index;
+    entries[index] = method;
+    paramTypes[index] = ParameterTypesFetcher.get(method);
+    distinctName[index] = distinct;
+    if (includeDefaultMethods && method.isDefault()) {
+      defaultMethods[index] = createDefaultMethod(method);
+    }
   }
 
   /**
-   * Returns true if method is overloaded and false if it is
-   * distinct.
-   *
-   * @throws IllegalArgumentException if method is not in VTable
+   * Returns a MethodHandle for the default interface method
+   * if it is declared and the module is open to our module;
+   * null otherwise.
    */
-  public boolean isOverloaded(Method method) {
-    int offset = offset(method);
-    Method match;
-    while ((match = entries[offset]) != null) {
-      if (match.getName() == method.getName()) {
-        return !distinctName[offset];
+  private MethodHandle createDefaultMethod(Method method) {
+    try {
+      Class<?> target = method.getDeclaringClass();
+      if (isMethodDeclaredInOpenModule(method)) {
+        // Thanks Thomas Darimont for this idea
+        MethodHandles.Lookup lookup = MethodHandles.lookup();
+        return MethodHandles.privateLookupIn(target, lookup)
+                   .in(target)
+                   .unreflectSpecial(method, target);
       }
-      offset++;
+      return null;
+    } catch (IllegalAccessException e) {
+      throw new IllegalArgumentException(e);
     }
-    throw new IllegalArgumentException("Method not found");
+  }
+
+  /**
+   * Returns true if the method is in an open module; false
+   * otherwise.  For example, if our VTable is inside module
+   * "eu.javaspecialists.books.dynamicproxies" and we want to
+   * use default methods of interfaces in java.util, we need
+   * to explicitely open that module with --add-opens \
+   * java.base/java.util=eu.javaspecialists.books.dynamicproxies
+   */
+  private boolean isMethodDeclaredInOpenModule(Method method) {
+    Class<?> target = method.getDeclaringClass();
+    String packageName = target.getPackageName();
+    Module module = VTable.class.getModule();
+    return target.getModule().isOpen(packageName, module);
   }
 
   public static class Builder {
     private static final Method[] objectMethods;
-    public static final BinaryOperator<Method> MOST_SPECIFIC_RETURN =
+    public static final BinaryOperator<Method> MOST_SPECIFIC =
         (method1, method2) -> {
           var r1 = method1.getReturnType();
           var r2 = method2.getReturnType();
@@ -196,32 +271,38 @@ public class VTable {
       }
     }
     private final Map<MethodKey, Method> receiverClassMap;
-    private Class<?> defaultMethods;
-    private Collection<Class<?>> targetInterfaces =
-        new ArrayList<>();
-    private boolean inludeObjectMethods = true;
+    private List<Class<?>> targetInterfaces = new ArrayList<>();
+    private boolean includeObjectMethods = true;
     private boolean includeDefaultMethods = false;
 
     /**
-     * @param receiver The class that receives the actual method
-     *                 calls.  Does not have to be related to the
-     *                 dynamic proxy interfaces.
+     * @param receiver The class that receives the actual
+     *                 method calls.  Does not have to be
+     *                 related to the dynamic proxy interfaces.
      */
     public Builder(Class<?> receiver) {
       receiverClassMap = createPublicMethodMap(receiver);
     }
 
+    /**
+     * Methods equals(Object), hashCode() and toString() are not
+     * added to the VTable.
+     */
     public Builder excludeObjectMethods() {
-      this.inludeObjectMethods = false;
+      this.includeObjectMethods = false;
       return this;
     }
 
-    public Builder addTargetInterface(Class<?> targetInterface) {
-      if (!targetInterface.isInterface())
+    /**
+     * One of the target interfaces that we wish to map methods
+     * to.
+     */
+    public Builder addTargetInterface(Class<?> targetIntf) {
+      if (!targetIntf.isInterface())
         throw new IllegalArgumentException(
-            targetInterface.getCanonicalName() +
+            targetIntf.getCanonicalName() +
                 " is not an interface");
-      this.targetInterfaces.add(targetInterface);
+      this.targetInterfaces.add(targetIntf);
       return this;
     }
 
@@ -238,7 +319,7 @@ public class VTable {
           targetInterfaces.stream()
               .flatMap(clazz -> Stream.of(clazz.getMethods()))
               .collect(Collectors.toList());
-      if (inludeObjectMethods) {
+      if (includeObjectMethods) {
         for (Method method : objectMethods) {
           allMethods.add(method);
         }
@@ -253,7 +334,7 @@ public class VTable {
               .collect(Collectors.toUnmodifiableMap(
                   MethodKey::new,
                   Function.identity(),
-                  MOST_SPECIFIC_RETURN));
+                  MOST_SPECIFIC));
 
       // Find all those methods that have a unique name, thus no
       // overloading.  This will speed up matching.
@@ -267,6 +348,9 @@ public class VTable {
               .map(Map.Entry::getKey)
               .collect(Collectors.toSet());
 
+      // Lastly we only include those methods that are also in
+      // the receiverClassMap and where the return type is
+      // assignment compatible with the target method.
       Collection<Method> matchedMethods =
           targetMethods.entrySet().stream()
               .map(this::filterOnReturnType)
@@ -283,10 +367,9 @@ public class VTable {
      */
     private Method filterOnReturnType(
         Map.Entry<MethodKey, Method> entry) {
-      var targetMethod = entry.getValue();
       var receiverMethod = receiverClassMap.get(entry.getKey());
       if (receiverMethod != null) {
-        var targetReturn = targetMethod.getReturnType();
+        var targetReturn = entry.getValue().getReturnType();
         var receiverReturn = receiverMethod.getReturnType();
         if (targetReturn.isAssignableFrom(receiverReturn))
           return receiverMethod;
@@ -318,7 +401,7 @@ public class VTable {
       for (var method : clazz.getMethods()) {
         if (isTrulyPublic(method)) {
           MethodKey key = new MethodKey(method);
-          map.merge(key, method, MOST_SPECIFIC_RETURN);
+          map.merge(key, method, MOST_SPECIFIC);
         }
       }
       for (var anInterface : clazz.getInterfaces()) {
