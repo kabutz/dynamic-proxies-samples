@@ -18,20 +18,20 @@
  * License.
  */
 
-package eu.javaspecialists.books.dynamicproxies.ch04;
+package eu.javaspecialists.books.dynamicproxies.ch04.infiniterandom;
 
-import java.lang.reflect.*;
-import java.util.*;
+import java.util.concurrent.*;
 
 // tag::listing[]
-public class BrokenReflection {
-  public static void main(String... args)
-      throws ReflectiveOperationException {
-    Collection<String> myWorld = Arrays.asList(
-        "hello", "world");
-    Method size = myWorld.getClass().getMethod("size");
-    System.out.println(size.invoke(myWorld));
+/**
+ * No relation to the Iterator interface.
+ */
+public class InfiniteRandomDouble {
+  public boolean hasNext() {
+    return true;
+  }
+  public Double next() {
+    return ThreadLocalRandom.current().nextDouble();
   }
 }
 // end::listing[]
-
