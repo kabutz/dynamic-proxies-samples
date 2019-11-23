@@ -158,7 +158,7 @@ public class VTable {
         if (matches(paramTypes[offset], methodParamTypes))
           return offset;
       }
-      offset++;
+      offset = (offset + 1) & mask;
     }
     // Could not find the method, returning a negative value
     return ~offset;
@@ -274,6 +274,7 @@ public class VTable {
     private List<Class<?>> targetInterfaces = new ArrayList<>();
     private boolean includeObjectMethods = true;
     private boolean includeDefaultMethods = false;
+    private boolean ignoreReturnTypes = false;
 
     /**
      * @param receiver The class that receives the actual
@@ -290,6 +291,13 @@ public class VTable {
      */
     public Builder excludeObjectMethods() {
       this.includeObjectMethods = false;
+      return this;
+    }
+
+    /**
+     */
+    public Builder ignoreReturnTypes() {
+      this.ignoreReturnTypes = true;
       return this;
     }
 
@@ -369,6 +377,7 @@ public class VTable {
         Map.Entry<MethodKey, Method> entry) {
       var receiverMethod = receiverClassMap.get(entry.getKey());
       if (receiverMethod != null) {
+        if (ignoreReturnTypes) return receiverMethod;
         var targetReturn = entry.getValue().getReturnType();
         var receiverReturn = receiverMethod.getReturnType();
         if (targetReturn.isAssignableFrom(receiverReturn))
