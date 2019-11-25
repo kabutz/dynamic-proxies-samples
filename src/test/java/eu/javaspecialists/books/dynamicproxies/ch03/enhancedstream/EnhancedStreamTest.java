@@ -20,11 +20,13 @@
 
 package eu.javaspecialists.books.dynamicproxies.ch03.enhancedstream;
 
+import eu.javaspecialists.books.dynamicproxies.util.*;
 import org.junit.*;
 
 import java.lang.reflect.*;
 import java.util.*;
 import java.util.concurrent.*;
+import java.util.function.*;
 import java.util.stream.*;
 
 import static org.junit.Assert.*;
@@ -42,6 +44,9 @@ public class EnhancedStreamTest {
         .distinct(EnhancedStreamDemo.HASH_CODE,
             EnhancedStreamDemo.EQUALS, EnhancedStreamDemo.MERGE)
         .forEach(method -> checkMethod(clazz, method));
+    EnhancedStream.of(clazz.getMethods())
+        .distinct(MethodKey::new, EnhancedStreamDemo.MERGE)
+        .forEach(method -> checkMethod(clazz, method));
   }
   private void checkMethod(Class<?> clazz, Method method) {
     try {
@@ -52,16 +57,29 @@ public class EnhancedStreamTest {
     }
   }
 
+  private static final ToIntFunction<String> HASH_CODE =
+      s -> s.toUpperCase().hashCode();
+  private static final BiPredicate<String, String> EQUALS =
+      (s1, s2) -> s1.toUpperCase().equals(s2.toUpperCase());
+
+
   @Test
   public void testBeaches() {
-    String beaches =
+    String beaches1 =
         EnhancedStream.of("Kalathas", "Stavros",
             "STAVROS", "marathi", "kalathas", "baLos", "Balos")
-            .distinct(BeachDistinctify.HASH_CODE,
-                BeachDistinctify.EQUALS,
+            .distinct(HASH_CODE, EQUALS, BeachDistinctify.MERGE)
+            .collect(Collectors.joining(", "));
+
+    assertEquals("kalathas, Stavros, marathi, baLos", beaches1);
+
+    String beaches2 =
+        EnhancedStream.of("Kalathas", "Stavros",
+            "STAVROS", "marathi", "kalathas", "baLos", "Balos")
+            .distinct(String::toUpperCase,
                 BeachDistinctify.MERGE)
             .collect(Collectors.joining(", "));
 
-    assertEquals("kalathas, Stavros, marathi, baLos", beaches);
+    assertEquals("kalathas, Stavros, marathi, baLos", beaches2);
   }
 }

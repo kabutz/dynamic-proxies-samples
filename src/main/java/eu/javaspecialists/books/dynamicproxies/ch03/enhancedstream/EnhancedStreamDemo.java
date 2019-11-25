@@ -28,7 +28,7 @@ import java.util.function.*;
 import java.util.stream.*;
 
 /**
- * Described in The Java Specialists Newsletters 274 and 275
+ * Described in The Java Specialists Newsletters:
  * https://www.javaspecialists.eu/archive/Issue274.html
  * https://www.javaspecialists.eu/archive/Issue275.html
  */

@@ -26,13 +26,53 @@ import java.util.function.*;
 import java.util.stream.*;
 
 /**
- * Described in The Java Specialists Newsletters 274 and 275
+ * Described in The Java Specialists Newsletters:
  * https://www.javaspecialists.eu/archive/Issue274.html
  * https://www.javaspecialists.eu/archive/Issue275.html
  */
 // tag::listing[]
 public class EnhancedStreamHandler<T>
     implements InvocationHandler {
+  private Stream<T> delegate;
+
+  public EnhancedStreamHandler(Stream<T> delegate) {
+    this.delegate = delegate;
+  }
+
+  @Override
+  public Object invoke(Object proxy, Method method,
+                       Object[] args) throws Throwable {
+    if (method.getReturnType() == EnhancedStream.class) {
+      if (method.equals(enhancedDistinct)) {
+        distinct((ToIntFunction<T>) args[0],
+            (BiPredicate<T, T>) args[1],
+            (BinaryOperator<T>) args[2]);
+      } else if (method.equals(enhancedDistinctWithKey)) {
+        distinct((Function<T, ?>) args[0],
+            (BinaryOperator<T>) args[1]);
+      } else {
+        Method match = methodMap.get(method);
+        this.delegate = (Stream) match.invoke(delegate, args);
+      }
+      return proxy;
+    } else {
+      return method.invoke(this.delegate, args);
+    }
+  }
+
+  private void distinct(ToIntFunction<T> hashCode,
+                        BiPredicate<T, T> equals,
+                        BinaryOperator<T> merger) {
+    distinct(t -> new Key<>(t, hashCode, equals), merger);
+  }
+  private void distinct(Function<T, ?> keyGen,
+                        BinaryOperator<T> merger) {
+    delegate = delegate.collect(Collectors.toMap(keyGen::apply,
+        Function.identity(), merger, LinkedHashMap::new))
+                   .values()
+                   .stream();
+  }
+
   private static final class Key<E> {
     private final E e;
     private final ToIntFunction<E> hashCode;
@@ -59,20 +99,16 @@ public class EnhancedStreamHandler<T>
     }
   }
 
-  private Stream<T> delegate;
-
-  public EnhancedStreamHandler(Stream<T> delegate) {
-    this.delegate = delegate;
-  }
-
   private static final Method enhancedDistinct;
+  private static final Method enhancedDistinctWithKey;
 
   static {
     try {
       enhancedDistinct = EnhancedStream.class.getMethod(
           "distinct", ToIntFunction.class, BiPredicate.class,
-          BinaryOperator.class
-      );
+          BinaryOperator.class);
+      enhancedDistinctWithKey = EnhancedStream.class.getMethod(
+          "distinct", Function.class, BinaryOperator.class);
     } catch (NoSuchMethodException e) {
       throw new Error(e);
     }
@@ -81,6 +117,7 @@ public class EnhancedStreamHandler<T>
   private static final Map<Method, Method> methodMap =
       Stream.of(EnhancedStream.class.getMethods())
           .filter(m -> !m.equals(enhancedDistinct))
+          .filter(m -> !m.equals(enhancedDistinctWithKey))
           .filter(m -> !Modifier.isStatic(m.getModifiers()))
           .collect(Collectors.toUnmodifiableMap(
               Function.identity(),
@@ -92,37 +129,5 @@ public class EnhancedStreamHandler<T>
                   throw new Error(e);
                 }
               }));
-
-  @Override
-  public Object invoke(Object proxy, Method method,
-                       Object[] args) throws Throwable {
-    if (method.equals(enhancedDistinct)) {
-      return distinct(
-          (EnhancedStream<T>) proxy,
-          (ToIntFunction<T>) args[0],
-          (BiPredicate<T, T>) args[1],
-          (BinaryOperator<T>) args[2]);
-    } else if (method.getReturnType() == EnhancedStream.class) {
-      Method match = methodMap.get(method);
-      this.delegate = (Stream) match.invoke(delegate, args);
-      return proxy;
-    } else {
-      return method.invoke(this.delegate, args);
-    }
-  }
-
-  private EnhancedStream<T> distinct(EnhancedStream<T> proxy,
-                                     ToIntFunction<T> hashCode,
-                                     BiPredicate<T, T> equals,
-                                     BinaryOperator<T> merger) {
-    delegate = delegate.collect(Collectors.toMap(
-        t -> new Key<>(t, hashCode, equals),
-        Function.identity(),
-        merger,
-        LinkedHashMap::new))
-        .values()
-        .stream();
-    return proxy;
-  }
 }
 // end::listing[]

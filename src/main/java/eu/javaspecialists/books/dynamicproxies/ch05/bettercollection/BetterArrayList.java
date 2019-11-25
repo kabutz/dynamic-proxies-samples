@@ -46,4 +46,4 @@ public class BetterArrayList<E> extends ArrayList<E> {
     return "--" + super.toString() + "--";
   }
 }
-// end::BetterArrayList[]
+// end::listing[]

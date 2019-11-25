@@ -27,7 +27,7 @@ import java.util.stream.*;
 
 // tag::listing[]
 /**
- * Described in The Java Specialists Newsletters 274 and 275
+ * Described in The Java Specialists Newsletters:
  * https://www.javaspecialists.eu/archive/Issue274.html
  * https://www.javaspecialists.eu/archive/Issue275.html
  */
@@ -36,6 +36,8 @@ public interface EnhancedStream<T> extends Stream<T> {
   EnhancedStream<T> distinct(ToIntFunction<T> hashCode,
                              BiPredicate<T, T> equals,
                              BinaryOperator<T> merger);
+  EnhancedStream<T> distinct(Function<T, ?> keyGenerator,
+                                 BinaryOperator<T> merger);
 
   // old methods with enhanced return type
   EnhancedStream<T> filter(Predicate<? super T> predicate);
