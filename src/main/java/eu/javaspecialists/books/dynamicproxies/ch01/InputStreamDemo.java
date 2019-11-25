@@ -61,7 +61,7 @@ public class InputStreamDemo {
       long total = 0;
       int value;
       while ((value = in.readInt()) != -1) {
-        total += in.readInt();
+        total += value;
       }
       System.out.println("total = " + total);
     }
