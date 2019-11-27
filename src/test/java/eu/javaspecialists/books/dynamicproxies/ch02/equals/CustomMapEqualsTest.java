@@ -32,20 +32,26 @@ public class CustomMapEqualsTest {
   public void testEqualsContract() {
     var real = new CustomHashMap<Integer, Integer>();
     for (int i = 0; i < 10; i++) real.put(i, i * i);
-    var proxy = new UnmodifiableCustomMap<>(real);
+    var proxy1 = new UnmodifiableCustomMap<>(real);
+    var proxy2 = new UnmodifiableCustomMap<>(real);
     var empty = new CustomHashMap<Integer, Integer>();
 
     // reflexive
     assertEquals(real, real);
-    assertEquals(proxy, proxy);
+    assertEquals(proxy1, proxy1);
+    assertEquals(proxy2, proxy2);
 
     // symmetric
-    assertEquals(real, proxy);
-    assertEquals(proxy, real);
+    assertEquals(real, proxy1);
+    assertEquals(proxy1, real);
+    assertEquals(proxy1, proxy2);
+    assertEquals(proxy2, proxy1);
 
     // transitive
-    if (real.equals(empty) && empty.equals(proxy))
-      assertEquals(real, proxy);
+    if (real.equals(empty) && empty.equals(proxy2))
+      assertEquals(real, proxy2);
+    if (real.equals(proxy1) && proxy1.equals(proxy2))
+      assertEquals(real, proxy2);
   }
 }
 // end::listing[]
