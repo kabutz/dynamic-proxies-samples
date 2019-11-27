@@ -44,7 +44,11 @@ public class ConcurrentTest {
     var entries = new LongAdder();
     map.forEach((k, v) -> entries.increment());
 
-    assertTrue("entries=" + entries + ", map.size=" + map.size(),
+    System.out.println("entries = " + entries);
+    System.out.println("map.size() = " + map.size());
+
+    assertTrue("entries=" + entries + ", " +
+                   "map.size=" + map.size(),
         entries.intValue() == map.size());
   }
 }
