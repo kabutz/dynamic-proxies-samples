@@ -27,6 +27,14 @@ import java.util.logging.*;
 
 public class LoggingProxyDemo {
   public static void main(String... args) {
+    Logger log = Logger.getGlobal();
+    for (Handler handler : log.getParent().getHandlers()) {
+      if (handler instanceof ConsoleHandler) {
+        handler.setLevel(Level.FINE);
+      }
+    }
+    log.setLevel(Level.FINE);
+
     // tag::listing[]
     var handler = new LoggingInvocationHandler(
         Logger.getGlobal(), new ConcurrentHashMap<>());

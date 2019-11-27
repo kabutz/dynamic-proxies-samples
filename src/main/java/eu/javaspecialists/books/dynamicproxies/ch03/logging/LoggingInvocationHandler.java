@@ -25,7 +25,8 @@ import java.util.logging.*;
 import java.util.stream.*;
 
 // tag::listing[]
-public class LoggingInvocationHandler implements InvocationHandler {
+public class LoggingInvocationHandler
+    implements InvocationHandler {
   private final Logger log;
   private final Object obj;
   public LoggingInvocationHandler(Logger log, Object obj) {
@@ -44,7 +45,7 @@ public class LoggingInvocationHandler implements InvocationHandler {
     } finally {
       long nanos = logFine ? System.nanoTime() - start : 0;
       log.info(() -> "Exiting " + toString(method, args));
-      if (logFine) log.fine(() -> "Execution took " + nanos + "ns");
+      if (logFine) log.fine(() -> "Time " + nanos + "ns");
     }
   }
   private final static Object[] EMPTY = {};
