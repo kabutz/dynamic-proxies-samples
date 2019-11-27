@@ -24,21 +24,23 @@ import java.lang.reflect.*;
 import java.util.function.*;
 
 // tag::listing[]
-public class VirtualProxyHandler<E> implements InvocationHandler {
-  private final Supplier<? extends E> supplier;
-  private E e;
+public class VirtualProxyHandler<S>
+    implements InvocationHandler {
+  private final Supplier<? extends S> subjectSupplier;
+  private S subject;
 
-  public VirtualProxyHandler(Supplier<? extends E> supplier) {
-    this.supplier = supplier;
+  public VirtualProxyHandler(
+      Supplier<? extends S> subjectSupplier) {
+    this.subjectSupplier = subjectSupplier;
   }
-  private E getE() {
-    if (e == null) e = supplier.get();
-    return e;
+  private S getSubject() {
+    if (subject == null) subject = subjectSupplier.get();
+    return subject;
   }
   @Override
   public Object invoke(Object proxy, Method method,
                        Object[] args) throws Throwable {
-    return method.invoke(getE(), args);
+    return method.invoke(getSubject(), args);
   }
 }
 // end::listing[]

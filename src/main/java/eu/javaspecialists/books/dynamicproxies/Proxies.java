@@ -42,54 +42,56 @@ public class Proxies {
 
   // tag::castProxy()[]
   @SuppressWarnings("unchecked")
-  public static <P> P castProxy(Class<? super P> clazz,
+  public static <S> S castProxy(Class<? super S> clazz,
                                 InvocationHandler h) {
-    return MethodTurboBooster.boost((P) Proxy.newProxyInstance(
+    return MethodTurboBooster.boost((S) Proxy.newProxyInstance(
         clazz.getClassLoader(), new Class<?>[] {clazz}, h
     ));
   }
   // end::castProxy()[]
 
   // tag::simpleProxy()[]
-  public static <P> P simpleProxy(Class<? super P> clazz, P p) {
-    return castProxy(clazz,
-        (proxy, method, args) -> method.invoke(p, args)
+  public static <S> S simpleProxy(
+      Class<? super S> subjectInterface, S subject) {
+    return castProxy(subjectInterface,
+        (proxy, method, args) -> method.invoke(subject, args)
     );
   }
   // end::simpleProxy()[]
 
   // tag::loggingProxy()[]
-  public static <P> P loggingProxy(
-      Class<? super P> proxiedInterface,
-      P p, Logger log) {
-    Objects.requireNonNull(p, "p==null");
-    return castProxy(proxiedInterface,
-        new LoggingInvocationHandler(log, p));
+  public static <S> S loggingProxy(
+      Class<? super S> subjectInterface,
+      S subject, Logger log) {
+    Objects.requireNonNull(subject, "subject==null");
+    return castProxy(subjectInterface,
+        new LoggingInvocationHandler(log, subject));
   }
   // end::loggingProxy()[]
 
   // tag::virtualProxy()[]
-  public static <P> P virtualProxy(
-      Class<? super P> proxiedInterface,
-      Supplier<? extends P> supplier) {
-    Objects.requireNonNull(supplier, "supplier==null");
-    return castProxy(proxiedInterface,
-        new VirtualProxyHandler<>(supplier));
+  public static <S> S virtualProxy(
+      Class<? super S> subjectInterface,
+      Supplier<? extends S> subjectSupplier) {
+    Objects.requireNonNull(subjectSupplier,
+        "subjectSupplier==null");
+    return castProxy(subjectInterface,
+        new VirtualProxyHandler<>(subjectSupplier));
   }
   // end::virtualProxy()[]
 
   // tag::synchronizedProxy()[]
-  public static <P> P synchronizedProxy(
-      Class<? super P> proxiedInterface, P p) {
-    Objects.requireNonNull(p, "p==null");
-    return castProxy(proxiedInterface,
-        new SynchronizedHandler<>(p));
+  public static <S> S synchronizedProxy(
+      Class<? super S> subjectInterface, S subject) {
+    Objects.requireNonNull(subject, "p==null");
+    return castProxy(subjectInterface,
+        new SynchronizedHandler<>(subject));
   }
   // end::synchronizedProxy()[]
 
   // tag::filter()[]
-  public static <P> P filter(
-      Class<? super P> filter, Object component) {
+  public static <F> F filter(
+      Class<? super F> filter, Object component) {
     Objects.requireNonNull(component, "component==null");
     return castProxy(filter,
         new FilterHandler(filter, component));
@@ -97,7 +99,7 @@ public class Proxies {
   // end::filter()[]
 
   // tag::adapt()[]
-  public static <E> E adapt(Class<? super E> target,
+  public static <T> T adapt(Class<? super T> target,
                             Object adaptee,
                             Object adapter) {
     Objects.requireNonNull(adaptee, "adaptee==null");
@@ -108,12 +110,12 @@ public class Proxies {
   // end::adapt()[]
 
   // tag::compose()[]
-  public static <E extends Composite<? super E>> E compose(
-      Class<E> target) {
+  public static <T extends Composite<? super T>> T compose(
+      Class<T> target) {
     return compose(target, null);
   }
-  public static <E extends Composite<? super E>> E compose(
-      Class<E> target, Map<MethodKey, Reducer> mergers) {
+  public static <T extends Composite<? super T>> T compose(
+      Class<T> target, Map<MethodKey, Reducer> mergers) {
     return castProxy(target,
         new CompositeHandler(target, mergers));
   }

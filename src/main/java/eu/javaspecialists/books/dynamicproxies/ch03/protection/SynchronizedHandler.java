@@ -23,16 +23,17 @@ package eu.javaspecialists.books.dynamicproxies.ch03.protection;
 import java.lang.reflect.*;
 
 // tag::listing[]
-public class SynchronizedHandler<E> implements InvocationHandler {
-  private final E realSubject;
-  public SynchronizedHandler(E realSubject) {
-    this.realSubject = realSubject;
+public class SynchronizedHandler<S>
+    implements InvocationHandler {
+  private final S subject;
+  public SynchronizedHandler(S subject) {
+    this.subject = subject;
   }
   @Override
-  public Object invoke(Object proxy, Method method, Object[] args)
-      throws Throwable {
+  public Object invoke(Object proxy, Method method,
+                       Object[] args) throws Throwable {
     synchronized (proxy) {
-      return method.invoke(realSubject, args);
+      return method.invoke(subject, args);
     }
   }
 }
