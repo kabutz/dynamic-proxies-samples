@@ -21,7 +21,11 @@
 package eu.javaspecialists.books.dynamicproxies.ch03;
 
 // tag::listing[]
-public class RealSubject implements Subject {
+public final class RealSubject implements Subject {
+  private final int value;
+  public RealSubject(int value) {
+    this.value = value;
+  }
   @Override
   public String uppercaseTrim(String str) {
     return str.trim().toUpperCase();
@@ -29,6 +33,15 @@ public class RealSubject implements Subject {
   @Override
   public String toString() {
     return "RealSubject";
+  }
+  @Override
+  public boolean equals(Object o) {
+    if (!(o instanceof Subject)) return false;
+    if (o.getClass() == RealSubject.class) {
+      RealSubject that = (RealSubject) o;
+      return this.value == that.value;
+    }
+    return o.equals(this);
   }
 }
 // end::listing[]

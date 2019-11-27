@@ -23,13 +23,17 @@ package eu.javaspecialists.books.dynamicproxies.ch03;
 import eu.javaspecialists.books.dynamicproxies.*;
 
 public class DynamicProxies {
-  public static void main(String... args) throws InterruptedException {
+  public static void main(String... args) {
     // tag::listing[]
+    RealSubject realSubject = new RealSubject(42);
     Subject subject = Proxies.simpleProxy(
-        Subject.class, new RealSubject());
+        Subject.class, realSubject);
     String hello = subject.uppercaseTrim("  Hello\t\t");
     System.out.println("hello = \"" + hello + "\"");
     System.out.println(subject);
+
+    System.out.println(realSubject.equals(subject));
+    System.out.println(subject.equals(realSubject));
     // end::listing[]
   }
 }
