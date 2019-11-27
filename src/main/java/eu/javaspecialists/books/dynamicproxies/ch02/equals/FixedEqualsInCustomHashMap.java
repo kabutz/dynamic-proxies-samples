@@ -62,7 +62,7 @@ public class FixedEqualsInCustomHashMap {
         CustomHashMap<?, ?> m = (CustomHashMap<?, ?>) o;
         return map.equals(m.map);
       }
-      return o.equals(this);
+      return o.equals(this); // reversing the equals() condition
     }
     // end::listing[]
     @Override
