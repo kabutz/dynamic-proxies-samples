@@ -20,6 +20,11 @@
 
 package eu.javaspecialists.books.dynamicproxies.ch05.benchmarks;
 
+/*
+ -Deu.javaspecialists.books.dynamicproxies.util.ParameterTypesFetcher.enabled=true
+ -Deu.javaspecialists.books.dynamicproxies.util.MethodTurboBooster.disabled=false
+
+ */
 import eu.javaspecialists.books.dynamicproxies.ch05.bettercollection.*;
 import org.openjdk.jmh.annotations.*;
 import org.openjdk.jmh.runner.*;
@@ -121,11 +126,12 @@ public class AdapterBenchmark {
   public static void main(String... args) throws RunnerException {
     Options opt = new OptionsBuilder()
                       .include(MethodHandles.lookup().lookupClass().getName())
-                      .forks(1)
-                      .warmupIterations(1)
-                      .warmupTime(TimeValue.seconds(1))
-                      .measurementIterations(5)
-                      .measurementTime(TimeValue.seconds(1))
+                      .forks(3)
+                      .warmupIterations(5)
+                      .warmupTime(TimeValue.seconds(3))
+                      .measurementIterations(10)
+                      .measurementTime(TimeValue.seconds(3))
+                      .addProfiler("gc")
                       .build();
     new Runner(opt).run();
   }
