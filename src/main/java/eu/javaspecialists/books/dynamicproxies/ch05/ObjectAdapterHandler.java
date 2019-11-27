@@ -32,13 +32,10 @@ public class ObjectAdapterHandler implements InvocationHandler {
   public ObjectAdapterHandler(Class<?> target,
                               Object adaptee,
                               Object adapter) {
-    checkClassPublic(adaptee.getClass());
-    checkClassPublic(adapter.getClass());
-
-    VTable adapterVT = VTables.newVTable(
-        adapter.getClass(), target);
-    VTable adapteeVT = VTables.newVTable(
-        adaptee.getClass(), target);
+    VTable adapterVT =
+        VTables.newVTable(adapter.getClass(), target);
+    VTable adapteeVT =
+        VTables.newVTable(adaptee.getClass(), target);
     VTable defaultVT = VTables.newDefaultMethodVTable(target);
 
     chain = new VTableHandler(adapter, adapterVT,
@@ -56,12 +53,6 @@ public class ObjectAdapterHandler implements InvocationHandler {
     } catch (InvocationTargetException e) {
       throw e.getCause();
     }
-  }
-
-  private void checkClassPublic(Class<?> clazz) {
-    if (!Modifier.isPublic(clazz.getModifiers()))
-      throw new IllegalArgumentException(
-          clazz + " needs to be public");
   }
 }
 // end::listing[]
