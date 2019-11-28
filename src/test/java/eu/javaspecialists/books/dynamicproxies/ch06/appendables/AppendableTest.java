@@ -29,7 +29,7 @@ public class AppendableTest {
       E tee, StringWriter sw1, StringWriter sw2,
       StringWriter sw3) throws IOException {
     var out = new PrintWriter(new WriterAdapter<>(tee));
-    out.println("Hello World");
+    out.print("Hello World\n");
     out.flush();
 
     tee.append("TestingAppender")
