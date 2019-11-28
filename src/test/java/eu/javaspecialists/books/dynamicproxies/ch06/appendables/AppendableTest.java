@@ -25,24 +25,26 @@ import java.io.*;
 import static org.junit.Assert.*;
 
 public class AppendableTest {
+
   protected <E extends Appendable & Closeable & Flushable> void test(
       E tee, StringWriter sw1, StringWriter sw2,
       StringWriter sw3) throws IOException {
     var out = new PrintWriter(new WriterAdapter<>(tee));
-    out.print("Hello World\n");
+    out.println("Hello World");
     out.flush();
 
     tee.append("TestingAppender")
-        .append('\n')
+        .append(System.lineSeparator())
         .append("Does this work?")
-        .append('\n');
+        .append(System.lineSeparator());
     tee.flush();
     tee.close();
 
     assertEquals(sw1.toString(), sw2.toString());
     assertEquals(sw1.toString(), sw3.toString());
     assertEquals(
-        "Hello World\nTestingAppender\nDoes this work?\n",
+        String.format(
+            "Hello World%nTestingAppender%nDoes this work?%n"),
         sw1.toString());
   }
 }
