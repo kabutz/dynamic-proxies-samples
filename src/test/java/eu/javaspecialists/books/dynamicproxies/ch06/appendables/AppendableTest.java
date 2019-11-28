@@ -20,9 +20,6 @@
 
 package eu.javaspecialists.books.dynamicproxies.ch06.appendables;
 
-import eu.javaspecialists.books.dynamicproxies.*;
-import org.junit.*;
-
 import java.io.*;
 
 import static org.junit.Assert.*;

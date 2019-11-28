@@ -37,10 +37,11 @@ public final class RealSubject implements Subject {
   @Override
   public boolean equals(Object o) {
     if (!(o instanceof Subject)) return false;
-    if (o.getClass() == RealSubject.class) {
+    if (getClass() == o.getClass()) {
       RealSubject that = (RealSubject) o;
       return this.value == that.value;
     }
+    // reversing equals call, see previous chapter
     return o.equals(this);
   }
 }

@@ -21,8 +21,10 @@
 package eu.javaspecialists.books.dynamicproxies.ch05.benchmarks;
 
 /*
- -Deu.javaspecialists.books.dynamicproxies.util.ParameterTypesFetcher.enabled=true
- -Deu.javaspecialists.books.dynamicproxies.util.MethodTurboBooster.disabled=false
+ -Deu.javaspecialists.books.dynamicproxies.util
+ .ParameterTypesFetcher.enabled=true
+ -Deu.javaspecialists.books.dynamicproxies.util
+ .MethodTurboBooster.disabled=false
 
  */
 import eu.javaspecialists.books.dynamicproxies.ch05.bettercollection.*;

@@ -39,7 +39,8 @@
     <version>0.1-SNAPSHOT</version>
 
     <properties>
-        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <project.build.sourceEncoding>UTF-8
+        </project.build.sourceEncoding>
     </properties>
 
     <dependencyManagement>
@@ -186,13 +187,15 @@
         <repository>
             <id>releases</id>
             <name>RapidPM Releases</name>
-            <url>http://${nexus.ip}/nexus/content/repositories/releases
+            <url>
+                http://${nexus.ip}/nexus/content/repositories/releases
             </url>
         </repository>
         <snapshotRepository>
             <id>snapshots</id>
             <name>RapidPM Snapshots</name>
-            <url>http://${nexus.ip}/nexus/content/repositories/snapshots
+            <url>
+                http://${nexus.ip}/nexus/content/repositories/snapshots
             </url>
         </snapshotRepository>
     </distributionManagement>
@@ -205,8 +208,10 @@
             <build>
                 <plugins>
                     <plugin>
-                        <groupId>org.apache.maven.plugins</groupId>
-                        <artifactId>maven-surefire-plugin</artifactId>
+                        <groupId>org.apache.maven.plugins
+                        </groupId>
+                        <artifactId>maven-surefire-plugin
+                        </artifactId>
                         <configuration>
                             <includes>
                                 <include>**/junit/**</include>
@@ -224,8 +229,10 @@
             <build>
                 <plugins>
                     <plugin>
-                        <groupId>org.apache.maven.plugins</groupId>
-                        <artifactId>maven-surefire-plugin</artifactId>
+                        <groupId>org.apache.maven.plugins
+                        </groupId>
+                        <artifactId>maven-surefire-plugin
+                        </artifactId>
                         <configuration>
                             <includes>
                                 <include>**/perf/**</include>
@@ -240,7 +247,8 @@
     <licenses>
         <license>
             <name>The Apache Software License, Version 2.0</name>
-            <url>http://www.apache.org/licenses/LICENSE-2.0.txt</url>
+            <url>http://www.apache.org/licenses/LICENSE-2.0.txt
+            </url>
             <distribution>repo</distribution>
             <comments>A business-friendly OSS license</comments>
         </license>

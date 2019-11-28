@@ -21,9 +21,6 @@
 package eu.javaspecialists.books.dynamicproxies.ch05;
 
 import eu.javaspecialists.books.dynamicproxies.*;
-import eu.javaspecialists.books.dynamicproxies.ch05.bettercollection.*;
-
-import java.util.*;
 
 // tag::listing[]
 public class AdapterPuzzle1 {

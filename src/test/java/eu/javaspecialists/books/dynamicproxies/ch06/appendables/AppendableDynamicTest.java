@@ -25,9 +25,7 @@ import org.junit.*;
 
 import java.io.*;
 
-import static org.junit.Assert.*;
-
-public class AppendableDynamicTest extends AppendableTest{
+public class AppendableDynamicTest extends AppendableTest {
   @Test
   public void dynamicComposite() throws IOException {
     var tee = Proxies.compose(AppendableCloseableFlushable.class,

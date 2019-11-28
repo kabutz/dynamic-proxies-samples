@@ -26,7 +26,9 @@ import eu.javaspecialists.books.dynamicproxies.ch02.virtual.*;
 import java.util.function.*;
 
 public abstract class BrokenEqualsTest extends EqualsTest {
-  public BrokenEqualsTest(UnaryOperator<CustomMap<Integer, Integer>> proxyGenerator) {
-    super(BrokenEqualsInCustomHashMap.CustomHashMap::new, proxyGenerator);
+  public BrokenEqualsTest(UnaryOperator<CustomMap<Integer,
+                                                     Integer>> proxyGenerator) {
+    super(BrokenEqualsInCustomHashMap.CustomHashMap::new,
+        proxyGenerator);
   }
 }

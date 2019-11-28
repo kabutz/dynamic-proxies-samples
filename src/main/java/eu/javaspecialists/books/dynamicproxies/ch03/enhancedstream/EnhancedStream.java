@@ -37,9 +37,9 @@ public interface EnhancedStream<T> extends Stream<T> {
                              BiPredicate<T, T> equals,
                              BinaryOperator<T> merger);
   EnhancedStream<T> distinct(Function<T, ?> keyGenerator,
-                                 BinaryOperator<T> merger);
+                             BinaryOperator<T> merger);
 
-  // old methods with enhanced return type
+  // inherited methods with enhanced return type
   EnhancedStream<T> filter(Predicate<? super T> predicate);
   <R> EnhancedStream<R> map(
       Function<? super T, ? extends R> mapper);

@@ -24,8 +24,6 @@ import org.junit.*;
 
 import java.io.*;
 
-import static org.junit.Assert.*;
-
 public class AppendableHandCraftedTest extends AppendableTest {
   @Test
   public void handCraftedComposite() throws IOException {

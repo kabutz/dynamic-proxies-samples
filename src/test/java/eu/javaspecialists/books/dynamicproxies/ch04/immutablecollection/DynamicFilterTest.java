@@ -23,10 +23,7 @@ package eu.javaspecialists.books.dynamicproxies.ch04.immutablecollection;
 import eu.javaspecialists.books.dynamicproxies.*;
 import org.junit.*;
 
-import java.rmi.*;
 import java.util.*;
-
-import static org.junit.Assert.*;
 
 public class DynamicFilterTest extends ImmutableCollectionTest {
   @Test

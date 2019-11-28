@@ -20,12 +20,6 @@
 
 package eu.javaspecialists.books.dynamicproxies.ch06.contact;
 
-import eu.javaspecialists.books.dynamicproxies.*;
-import eu.javaspecialists.books.dynamicproxies.ch06.*;
-import eu.javaspecialists.books.dynamicproxies.util.*;
-import org.junit.*;
-
-import java.util.*;
 import java.util.function.*;
 
 import static org.junit.Assert.*;

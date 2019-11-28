@@ -54,7 +54,7 @@ public abstract class ChainedInvocationHandler
   protected Stream<Method> findUnhandledMethods(Class<?> target) {
     if (next != null) return next.findUnhandledMethods(target);
     return Stream.of(target.getMethods())
-        .filter(m -> !Modifier.isStatic(m.getModifiers()));
+               .filter(m -> !Modifier.isStatic(m.getModifiers()));
   }
 
   /**

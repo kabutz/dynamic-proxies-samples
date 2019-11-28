@@ -27,6 +27,9 @@ import java.util.logging.*;
 
 public class LoggingProxyDemo {
   public static void main(String... args) {
+    // We can enable "fine" logging for the global logger by
+    // setting the level in the root ConsoleHandler to also
+    // be "fine".
     Logger log = Logger.getGlobal();
     for (Handler handler : log.getParent().getHandlers()) {
       if (handler instanceof ConsoleHandler) {

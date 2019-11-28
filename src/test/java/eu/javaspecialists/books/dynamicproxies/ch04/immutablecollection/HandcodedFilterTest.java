@@ -24,8 +24,6 @@ import org.junit.*;
 
 import java.util.*;
 
-import static org.junit.Assert.*;
-
 public class HandcodedFilterTest extends ImmutableCollectionTest {
   @Test
   public void testDynamicFilterCreation() throws NoSuchMethodException {

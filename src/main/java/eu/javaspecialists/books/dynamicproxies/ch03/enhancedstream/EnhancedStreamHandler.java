@@ -40,6 +40,7 @@ public class EnhancedStreamHandler<T>
   }
 
   @Override
+  @SuppressWarnings("unchecked")
   public Object invoke(Object proxy, Method method,
                        Object[] args) throws Throwable {
     if (method.getReturnType() == EnhancedStream.class) {
@@ -52,7 +53,7 @@ public class EnhancedStreamHandler<T>
             (BinaryOperator<T>) args[1]);
       } else {
         Method match = methodMap.get(method);
-        this.delegate = (Stream) match.invoke(delegate, args);
+        this.delegate = (Stream<T>) match.invoke(delegate, args);
       }
       return proxy;
     } else {
@@ -114,20 +115,25 @@ public class EnhancedStreamHandler<T>
     }
   }
 
+  // methodMap contains a map from all non-static Stream methods
+  // to the matching EnhancedStream methods
   private static final Map<Method, Method> methodMap =
-      Stream.of(EnhancedStream.class.getMethods())
-          .filter(m -> !m.equals(enhancedDistinct))
-          .filter(m -> !m.equals(enhancedDistinctWithKey))
+      Stream.of(Stream.class.getMethods())
           .filter(m -> !Modifier.isStatic(m.getModifiers()))
           .collect(Collectors.toUnmodifiableMap(
-              Function.identity(),
-              m -> {
-                try {
-                  return Stream.class.getMethod(
-                      m.getName(), m.getParameterTypes());
-                } catch (NoSuchMethodException e) {
-                  throw new Error(e);
-                }
-              }));
+              EnhancedStreamHandler::getEnhancedStreamMethod,
+              Function.identity()));
+
+  // since EnhancedStream is a subclass of Stream, it has to
+  // contain all the methods of Stream.  We can safely do the
+  // lookup, throwing an Error if we cannot find a method
+  private static Method getEnhancedStreamMethod(Method m) {
+    try {
+      return EnhancedStream.class.getMethod(
+          m.getName(), m.getParameterTypes());
+    } catch (NoSuchMethodException e) {
+      throw new Error(e);
+    }
+  }
 }
 // end::listing[]

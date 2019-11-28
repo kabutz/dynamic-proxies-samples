@@ -26,7 +26,9 @@ import eu.javaspecialists.books.dynamicproxies.ch02.virtual.*;
 import java.util.function.*;
 
 public abstract class FixedEqualsTest extends EqualsTest {
-  public FixedEqualsTest(UnaryOperator<CustomMap<Integer, Integer>> proxyGenerator) {
-    super(FixedEqualsInCustomHashMap.CustomHashMap::new, proxyGenerator);
+  public FixedEqualsTest(UnaryOperator<CustomMap<Integer,
+                                                    Integer>> proxyGenerator) {
+    super(FixedEqualsInCustomHashMap.CustomHashMap::new,
+        proxyGenerator);
   }
 }

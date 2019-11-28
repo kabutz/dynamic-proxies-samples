@@ -54,13 +54,13 @@ public class FixedEqualsInCustomHashMap {
     }
     // tag::listing[]
     @Override
-    public boolean equals(Object o) {
+    public final boolean equals(Object o) {
       if (this == o) return true;
       if (!(o instanceof CustomMap)) return false;
 
       if (getClass() == o.getClass()) {
-        CustomHashMap<?, ?> m = (CustomHashMap<?, ?>) o;
-        return map.equals(m.map);
+        CustomHashMap<?, ?> that = (CustomHashMap<?, ?>) o;
+        return this.map.equals(that.map);
       }
       return o.equals(this); // reversing the equals() condition
     }

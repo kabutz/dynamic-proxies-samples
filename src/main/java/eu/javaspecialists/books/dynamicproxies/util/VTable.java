@@ -283,6 +283,7 @@ public class VTable {
     }
 
     /**
+     *
      */
     public Builder ignoreReturnTypes() {
       this.ignoreReturnTypes = true;

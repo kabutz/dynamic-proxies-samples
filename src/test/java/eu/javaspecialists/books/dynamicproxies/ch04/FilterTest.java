@@ -25,7 +25,6 @@ import eu.javaspecialists.books.dynamicproxies.ch04.immutablecollection.*;
 import org.junit.*;
 
 import java.util.*;
-import java.util.stream.*;
 
 public class FilterTest {
   @Test(expected = IllegalArgumentException.class)

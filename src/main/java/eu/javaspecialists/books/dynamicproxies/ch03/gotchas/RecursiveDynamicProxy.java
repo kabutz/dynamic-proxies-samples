@@ -28,6 +28,10 @@ import java.math.*;
 import java.util.function.*;
 
 // tag::listing[]
+/**
+ * Ridiculous impractical example showing recursive dynamic proxy
+ * calls.  Please do not code like this!
+ */
 public class RecursiveDynamicProxy {
   public static void main(String... args) {
     IntFunction<BigInteger> factorial =

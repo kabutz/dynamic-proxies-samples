@@ -21,7 +21,7 @@
 package eu.javaspecialists.books.dynamicproxies;
 
 public class Benchmarks {
-    public static void main(String... args) throws Exception {
-      org.openjdk.jmh.Main.main(args);
-    }
+  public static void main(String... args) throws Exception {
+    org.openjdk.jmh.Main.main(args);
+  }
 }

@@ -45,7 +45,7 @@ public class CompareTester {
         int yx = comparator.compare(y, x);
         if (sgn(xy) != -sgn(yx)) {
           System.out.printf("Rule 1 violated with" +
-              " x=%s, y=%s%n", x, y);
+                                " x=%s, y=%s%n", x, y);
         }
       }
     }
@@ -63,7 +63,8 @@ public class CompareTester {
             int xz = comparator.compare(x, z);
             if (!(xz < 0)) {
               System.out.printf("Rule 2 violated with " +
-                  "x=%s, y=%s, z=%s%n", x, y, z);
+                                    "x=%s, y=%s, z=%s%n", x, y
+                  , z);
             }
           }
         }
@@ -82,7 +83,8 @@ public class CompareTester {
             int yz = comparator.compare(y, z);
             if (sgn(xz) != sgn(yz)) {
               System.out.printf("Rule 3 violated with " +
-                  "x=%s, y=%s, z=%s%n", x, y, z);
+                                    "x=%s, y=%s, z=%s%n", x, y
+                  , z);
             }
           }
         }
@@ -98,7 +100,7 @@ public class CompareTester {
         int xy = comparator.compare(x, y);
         if ((xy == 0) != x.equals(y)) {
           System.out.printf("Suggestion 1 violated with" +
-              " x=%s, y=%s%n", x, y);
+                                " x=%s, y=%s%n", x, y);
         }
       }
     }

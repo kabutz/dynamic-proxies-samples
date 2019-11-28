@@ -30,7 +30,7 @@ public class VirtualProxyDemo {
         Proxies.virtualProxy(CustomMap.class,
             CustomHashMap::new);
     System.out.println("Virtual Map created");
-    map.put("one", 1);
+    map.put("one", 1); // creating CustomHashMap as side effect
     map.put("life", 42);
     System.out.println("map.get(\"life\") = " + map.get("life"));
     System.out.println("map.size() = " + map.size());

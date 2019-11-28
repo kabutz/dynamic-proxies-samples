@@ -30,6 +30,7 @@ public class UndeclaredExceptionThrown {
     Runnable job = Proxies.castProxy(
         Runnable.class,
         (proxy, method, params) -> {
+          // will be wrapped with an UndeclaredThrowableException
           throw new IOException("bad exception");
         });
     job.run();

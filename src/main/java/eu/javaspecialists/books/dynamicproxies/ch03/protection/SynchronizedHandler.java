@@ -32,6 +32,8 @@ public class SynchronizedHandler<S>
   @Override
   public Object invoke(Object proxy, Method method,
                        Object[] args) throws Throwable {
+    // synchronize on the proxy instance, which is similar to
+    // how Vector and Collections.synchronizedList() work
     synchronized (proxy) {
       return method.invoke(subject, args);
     }

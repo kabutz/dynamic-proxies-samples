@@ -20,12 +20,10 @@
 
 package eu.javaspecialists.books.dynamicproxies.util;
 
-import eu.javaspecialists.books.dynamicproxies.ch02.equals.*;
 import org.junit.*;
 
 import java.lang.reflect.*;
 import java.util.*;
-import java.util.function.*;
 import java.util.stream.*;
 
 import static org.junit.Assert.*;

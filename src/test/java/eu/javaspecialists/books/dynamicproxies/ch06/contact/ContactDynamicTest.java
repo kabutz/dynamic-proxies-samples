@@ -26,9 +26,6 @@ import eu.javaspecialists.books.dynamicproxies.util.*;
 import org.junit.*;
 
 import java.util.*;
-import java.util.function.*;
-
-import static org.junit.Assert.*;
 
 public class ContactDynamicTest extends ContactTest {
   @Test

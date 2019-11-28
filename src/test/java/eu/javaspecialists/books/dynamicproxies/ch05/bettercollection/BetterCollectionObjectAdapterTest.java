@@ -25,7 +25,7 @@ import org.junit.*;
 import java.util.*;
 import java.util.concurrent.*;
 
-public class BetterCollectionObjectAdapterTest extends BetterCollectionTest{
+public class BetterCollectionObjectAdapterTest extends BetterCollectionTest {
   @Test
   public void testHashSet() {
     testHandCrafted(new HashSet<>());

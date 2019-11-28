@@ -48,14 +48,13 @@ public class LoggingInvocationHandler
       if (logFine) log.fine(() -> "Time " + nanos + "ns");
     }
   }
-  private final static Object[] EMPTY = {};
   private String toString(Method method, Object[] args) {
-    if (args == null) args = EMPTY;
-    return Stream.of(args).map(String::valueOf)
-               .collect(Collectors.joining(", ",
-                   method.getDeclaringClass().getName()
-                       + "." + method.getName() + "(",
-                   ")"));
+    return String.format("%s.%s(%s)",
+        method.getDeclaringClass().getCanonicalName(),
+        method.getName(),
+        args == null ? "" :
+            Stream.of(args).map(String::valueOf)
+                .collect(Collectors.joining(", ")));
   }
 }
 // end::listing[]

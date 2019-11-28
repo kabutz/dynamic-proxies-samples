@@ -20,7 +20,6 @@
 
 package eu.javaspecialists.books.dynamicproxies.ch05.bettercollection;
 
-import java.lang.reflect.*;
 import java.util.*;
 
 // tag::listing[]

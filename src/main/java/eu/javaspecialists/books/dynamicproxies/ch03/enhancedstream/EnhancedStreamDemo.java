@@ -82,7 +82,7 @@ public class EnhancedStreamDemo {
 
   public static final ToIntFunction<Method> HASH_CODE =
       method -> method.getName().hashCode() +
-          method.getParameterCount();
+                    method.getParameterCount();
 
   public static final BiPredicate<Method, Method> EQUALS =
       (method1, method2) ->
@@ -95,10 +95,10 @@ public class EnhancedStreamDemo {
   public static final BinaryOperator<Method> MERGE =
       (method1, method2) -> {
         if (method1.getReturnType()
-            .isAssignableFrom(method2.getReturnType()))
+                .isAssignableFrom(method2.getReturnType()))
           return method2;
         if (method2.getReturnType()
-            .isAssignableFrom(method1.getReturnType()))
+                .isAssignableFrom(method1.getReturnType()))
           return method1;
         throw new IllegalArgumentException(
             "Conflicting return types " +
@@ -110,7 +110,7 @@ public class EnhancedStreamDemo {
   public static final Comparator<Method> METHOD_COMPARATOR =
       Comparator.comparing(Method::getName)
           .thenComparing(method ->
-              Arrays.toString(method.getParameterTypes()));
+                             Arrays.toString(method.getParameterTypes()));
 }
 // end::listing[]
 

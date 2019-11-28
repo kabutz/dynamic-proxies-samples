@@ -29,8 +29,10 @@ import java.lang.invoke.*;
 import java.util.concurrent.*;
 
 /*
- -Deu.javaspecialists.books.dynamicproxies.util.ParameterTypesFetcher.enabled=true
- -Deu.javaspecialists.books.dynamicproxies.util.MethodTurboBooster.disabled=false
+ -Deu.javaspecialists.books.dynamicproxies.util
+ .ParameterTypesFetcher.enabled=true
+ -Deu.javaspecialists.books.dynamicproxies.util
+ .MethodTurboBooster.disabled=false
 */
 
 // tag::listing[]

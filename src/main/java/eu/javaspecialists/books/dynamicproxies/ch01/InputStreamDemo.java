@@ -34,6 +34,8 @@ public class InputStreamDemo {
             new GZIPOutputStream(
                 new FileOutputStream(
                     "data.bin.gz"))))) {
+      // write ten million random ints between 0 and 1000 to
+      // data.bin.gz, compressing the file with GZIP on the fly
       ThreadLocalRandom.current().ints(10_000_000, 0, 1_000)
           .forEach(i -> {
             try {
@@ -60,9 +62,11 @@ public class InputStreamDemo {
                 new GZIPInputStream(fis)))) {
       long total = 0;
       int value;
+      // keep reading until value == -1, our EOF marker
       while ((value = in.readInt()) != -1) {
         total += value;
       }
+      // we expect total to be approximately 5 billion
       System.out.println("total = " + total);
     }
     // end::in[]

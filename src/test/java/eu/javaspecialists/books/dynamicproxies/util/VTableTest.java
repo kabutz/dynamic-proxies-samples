@@ -224,7 +224,7 @@ public class VTableTest {
           "findIndex", Method.class);
       findIndexMethod.setAccessible(true);
       distinctNameField = VTable.class.getDeclaredField(
-            "distinctName");
+          "distinctName");
       distinctNameField.setAccessible(true);
     } catch (ReflectiveOperationException e) {
       throw new Error(e);
@@ -240,7 +240,7 @@ public class VTableTest {
     int index = (int) findIndexMethod.invoke(vt, method);
     if (index < 0)
       throw new IllegalArgumentException("Method not found");
-    return !((boolean[])distinctNameField.get(vt))[index];
+    return !((boolean[]) distinctNameField.get(vt))[index];
   }
 
 

@@ -154,7 +154,6 @@ public class EnhancedStreamBenchmark {
   }
 
 
-
   private static class EnhancedStreamStatic<T> implements Stream<T> {
     private static final class Key<E> {
       private final E e;
