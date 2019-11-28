@@ -29,12 +29,12 @@ import java.util.stream.*;
 // tag::listing[]
 /**
  * The purpose of the VTable is as a fast mapper between
- * interface methods and receiver class methods.  To minimize
+ * interface methods and receiver class methods. To minimize
  * object creation, we avoid a normal HashMap, choosing rather
- * to store all the elements in equally sized arrays.  We also
+ * to store all the elements in equally sized arrays. We also
  * try to minimize clashes in the table by hashing on the method
- * name + number of parameters.  Furthermore, we remember whether
- * a name was distinct in the table.  If it was, we do not check
+ * name + number of parameters. Furthermore, we remember whether
+ * a name was distinct in the table. If it was, we do not check
  * that the parameters match.
  * <p>
  * The most important methods in terms of performance are
@@ -126,18 +126,6 @@ public class VTable {
         i -> i + 1)
                .filter(i -> defaultMethods[i] != null)
                .mapToObj(i -> entries[i]);
-  }
-
-  /**
-   * Returns true if method is overloaded; false otherwise.
-   *
-   * @throws IllegalArgumentException if method is not in VTable
-   */
-  public boolean isOverloaded(Method method) {
-    int index = findIndex(method);
-    if (index < 0)
-      throw new IllegalArgumentException("Method not found");
-    return !distinctName[index];
   }
 
   /**
