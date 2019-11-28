@@ -43,9 +43,11 @@ public final class MethodKey implements Comparable<MethodKey> {
   public MethodKey(Class<?> clazz, String name,
                    Class<?>... paramTypes) {
     try {
+      // check that method exists in the given class
       var method = clazz.getMethod(name, paramTypes);
+      // method names are all interned in the JVM
       this.name = method.getName();
-      this.paramTypes = paramTypes;
+      this.paramTypes = Objects.requireNonNull(paramTypes);
     } catch (NoSuchMethodException e) {
       throw new IllegalArgumentException(e);
     }
@@ -56,8 +58,9 @@ public final class MethodKey implements Comparable<MethodKey> {
     if (!(obj instanceof MethodKey)) {
       return false;
     }
+    // name and paramTypes cannot be null
     var other = (MethodKey) obj;
-    return name == other.name &&
+    return name == other.name && // method names are interned
                equalParamTypes(paramTypes, other.paramTypes);
   }
 
