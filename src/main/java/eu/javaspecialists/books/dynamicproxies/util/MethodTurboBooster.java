@@ -33,17 +33,17 @@ import java.lang.reflect.*;
  * MethodTurboBooster.disabled=true
  */
 public class MethodTurboBooster {
-  private final static Booster booster =
+  private final static Booster BOOSTER =
       Boolean.getBoolean(
           MethodTurboBooster.class.getName() + ".disabled") ?
           new BoosterOff() : new BoosterOn();
 
   public static <E> E boost(E proxy) {
-    return booster.turboBoost(proxy);
+    return BOOSTER.turboBoost(proxy);
   }
 
   public static Method boost(Method method) {
-    return booster.turboBoost(method);
+    return BOOSTER.turboBoost(method);
   }
 
   private interface Booster {

@@ -65,8 +65,9 @@ public class VTable {
                  Set<String> distinctMethodNames,
                  boolean includeDefaultMethods) {
     this.size = methods.size();
-    mask = Math.max((-1 >>> Integer.numberOfLeadingZeros(
-        size * 4 - 1)), 127);
+    mask = Math.max(
+        (-1 >>> Integer.numberOfLeadingZeros(size * 4 - 1)),
+        127);
     entries = new Method[mask + 1];
     paramTypes = new Class<?>[entries.length][];
     distinctName = new boolean[entries.length];
