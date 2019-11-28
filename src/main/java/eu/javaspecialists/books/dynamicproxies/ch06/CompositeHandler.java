@@ -66,8 +66,7 @@ public class CompositeHandler implements InvocationHandler {
         } catch (IllegalAccessException e) {
           throw new UncheckedException(e);
         } catch (InvocationTargetException e) {
-          throw new UncheckedException(
-              e.getCause());
+          throw new UncheckedException(e.getCause());
         }
       };
       var result =

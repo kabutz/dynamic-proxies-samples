@@ -59,15 +59,15 @@ public class ParameterTypesFetcher {
       implements ParameterFetcher {
     @Override
     public Class<?>[] getParameterTypes(Method method) {
-      return method.getParameterTypes();
+      return method.getParameterTypes(); // clones the array
     }
   }
 
   /**
-   * Creates a VarHandle pointing directly to the field
-   * parameterTypes stored inside Method.  Since the VarHandle is
-   * declared as final static, the cost of reading it is the same
-   * as reading an ordinary field.
+   * Creates a VarHandle pointing directly to the private field
+   * parameterTypes stored inside Method. Since the VarHandle is
+   * declared as final static, the cost of reading it is the
+   * same as reading an ordinary field.
    */
   private static class FastParameterFetcher
       implements ParameterFetcher {

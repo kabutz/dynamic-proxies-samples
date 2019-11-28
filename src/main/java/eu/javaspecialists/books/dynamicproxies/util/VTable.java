@@ -151,6 +151,8 @@ public class VTable {
     }
     // Could not find the method, returning a negative value
     return ~offset;
+    // (By flipping the bits again, we know what the first
+    // available index in our elements array is)
   }
 
   /**
@@ -186,7 +188,7 @@ public class VTable {
     if (index >= 0)
       throw new IllegalArgumentException(
           "Duplicate method found: " + new MethodKey(method));
-    index = ~index;
+    index = ~index; // flip the bits again to find empty space
     entries[index] = method;
     paramTypes[index] = ParameterTypesFetcher.get(method);
     distinctName[index] = distinct;
