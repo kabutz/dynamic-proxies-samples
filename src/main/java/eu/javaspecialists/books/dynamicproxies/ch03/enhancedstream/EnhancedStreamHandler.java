@@ -44,11 +44,11 @@ public class EnhancedStreamHandler<T>
   public Object invoke(Object proxy, Method method,
                        Object[] args) throws Throwable {
     if (method.getReturnType() == EnhancedStream.class) {
-      if (method.equals(enhancedDistinct)) {
+      if (method.equals(ENHANCED_DISTINCT)) {
         distinct((ToIntFunction<T>) args[0],
             (BiPredicate<T, T>) args[1],
             (BinaryOperator<T>) args[2]);
-      } else if (method.equals(enhancedDistinctWithKey)) {
+      } else if (method.equals(ENHANCED_DISTINCT_WITH_KEY)) {
         distinct((Function<T, ?>) args[0],
             (BinaryOperator<T>) args[1]);
       } else {
@@ -100,16 +100,18 @@ public class EnhancedStreamHandler<T>
     }
   }
 
-  private static final Method enhancedDistinct;
-  private static final Method enhancedDistinctWithKey;
+  private static final Method ENHANCED_DISTINCT;
+  private static final Method ENHANCED_DISTINCT_WITH_KEY;
 
   static {
     try {
-      enhancedDistinct = EnhancedStream.class.getMethod(
-          "distinct", ToIntFunction.class, BiPredicate.class,
-          BinaryOperator.class);
-      enhancedDistinctWithKey = EnhancedStream.class.getMethod(
-          "distinct", Function.class, BinaryOperator.class);
+      ENHANCED_DISTINCT =
+          EnhancedStream.class.getMethod(
+              "distinct", ToIntFunction.class, BiPredicate.class,
+              BinaryOperator.class);
+      ENHANCED_DISTINCT_WITH_KEY =
+          EnhancedStream.class.getMethod(
+              "distinct", Function.class, BinaryOperator.class);
     } catch (NoSuchMethodException e) {
       throw new Error(e);
     }
