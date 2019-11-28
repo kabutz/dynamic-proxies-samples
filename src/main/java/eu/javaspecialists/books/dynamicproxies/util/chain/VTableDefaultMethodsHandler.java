@@ -24,6 +24,7 @@ import eu.javaspecialists.books.dynamicproxies.util.*;
 
 import java.lang.invoke.*;
 import java.lang.reflect.*;
+import java.util.*;
 import java.util.stream.*;
 
 // tag::listing[]
@@ -33,7 +34,7 @@ public class VTableDefaultMethodsHandler
   public VTableDefaultMethodsHandler(
       VTable vtable, ChainedInvocationHandler next) {
     super(next);
-    this.vtable = vtable;
+    this.vtable = Objects.requireNonNull(vtable);
   }
 
   @Override
