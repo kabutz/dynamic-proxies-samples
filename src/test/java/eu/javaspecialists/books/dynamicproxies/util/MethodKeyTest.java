@@ -66,4 +66,16 @@ public class MethodKeyTest {
 
     CompareTester.test(methodKeys);
   }
+
+  @Test
+  public void nullPointers() {
+    try {
+      new MethodKey(Object.class, "toString", null);
+      fail("Expected NullPointerException");
+    } catch(NullPointerException expected) {}
+    try {
+      new MethodKey(null, "toString");
+      fail("Expected NullPointerException");
+    } catch(NullPointerException expected) {}
+  }
 }
