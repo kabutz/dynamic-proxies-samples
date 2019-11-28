@@ -33,7 +33,7 @@ import static org.junit.Assert.*;
 
 public class VTableTest {
   @Test
-  public void testSimpleVTable() throws NoSuchMethodException {
+  public void testSimpleVTable() throws ReflectiveOperationException {
     VTable vt = VTables.newVTableExcludingObjectMethods(
         RealSubject.class, Subject.class
     );
@@ -45,11 +45,11 @@ public class VTableTest {
         "uppercaseTrim", String.class);
     Method lookup = vt.lookup(subjectMethod);
     assertEquals(lookup, realSubjectMethod);
-    assertFalse(vt.isOverloaded(subjectMethod));
+    assertFalse(isOverloaded(vt, subjectMethod));
   }
 
   @Test
-  public void testVTableIncludingObjectMethods() throws NoSuchMethodException {
+  public void testVTableIncludingObjectMethods() throws ReflectiveOperationException {
     VTable vt = VTables.newVTable(
         RealSubject.class, Subject.class
     );
@@ -62,7 +62,7 @@ public class VTableTest {
         "uppercaseTrim", String.class);
     Method lookup = vt.lookup(subjectMethod);
     assertEquals(lookup, realSubjectMethod);
-    assertFalse(vt.isOverloaded(subjectMethod));
+    assertFalse(isOverloaded(vt, subjectMethod));
   }
 
   public static class ObjectAdapter {
@@ -143,7 +143,7 @@ public class VTableTest {
   }
 
   @Test
-  public void testOverloading() throws NoSuchMethodException {
+  public void testOverloading() throws ReflectiveOperationException {
     VTable vt = VTables.newVTable(ArrayList.class, List.class);
 
     overloaded(true, vt, "add", Object.class);
@@ -209,11 +209,40 @@ public class VTableTest {
   private void overloaded(boolean expected, VTable vt,
                           String name,
                           Class<?>... parameterTypes)
-      throws NoSuchMethodException {
-    assertEquals(expected, vt.isOverloaded(
+      throws ReflectiveOperationException {
+    assertEquals(expected, isOverloaded(vt,
         List.class.getMethod(name, parameterTypes)
     ));
   }
+
+  private final static Method findIndexMethod;
+  private final static Field distinctNameField;
+
+  static {
+    try {
+      findIndexMethod = VTable.class.getDeclaredMethod(
+          "findIndex", Method.class);
+      findIndexMethod.setAccessible(true);
+      distinctNameField = VTable.class.getDeclaredField(
+            "distinctName");
+      distinctNameField.setAccessible(true);
+    } catch (ReflectiveOperationException e) {
+      throw new Error(e);
+    }
+  }
+
+  /**
+   * Returns true if method is overloaded; false otherwise.
+   *
+   * @throws IllegalArgumentException if method is not in VTable
+   */
+  private boolean isOverloaded(VTable vt, Method method) throws ReflectiveOperationException {
+    int index = (int) findIndexMethod.invoke(vt, method);
+    if (index < 0)
+      throw new IllegalArgumentException("Method not found");
+    return !((boolean[])distinctNameField.get(vt))[index];
+  }
+
 
   public interface Parent {
     default CharSequence get() {
