@@ -27,17 +27,18 @@ import java.util.stream.*;
 // tag::listing[]
 /**
  * Chain of responsibility design pattern for invocation
- * handlers.   The invoke method by default passes the call down
- * to the next element in the chain.  If no one can handle the
- * call, then that is an AssertionError.  Once the full chain is
- * constructed, we should check that all methods of the target
- * interface can be handled by our chain.
+ * handlers.   The invoke method by default passes the call to
+ * the next element in the chain.  If no one can handle the
+ * call, then that is an AssertionError.  Once the full chain
+ * is constructed, we should check that all methods of the
+ * target interface can be handled by our chain.
  */
 public abstract class ChainedInvocationHandler
     implements InvocationHandler {
   private final ChainedInvocationHandler next;
 
-  public ChainedInvocationHandler(ChainedInvocationHandler next) {
+  public ChainedInvocationHandler(
+      ChainedInvocationHandler next) {
     this.next = next;
   }
 
@@ -45,22 +46,29 @@ public abstract class ChainedInvocationHandler
   public Object invoke(Object proxy, Method method,
                        Object[] args) throws Throwable {
     if (next != null) return next.invoke(proxy, method, args);
+    // we cannot allow a method to not be handled
     throw new AssertionError(
         "No InvocationHandler for " + method);
   }
 
   protected Stream<Method> findUnhandledMethods(Class<?> target) {
     if (next != null) return next.findUnhandledMethods(target);
-    return Stream.of(target.getMethods());
+    return Stream.of(target.getMethods())
+        .filter(m -> !Modifier.isStatic(m.getModifiers()));
   }
 
+  /**
+   * Should be called on the first link of the chain once
+   * everything has been set up. Throws IllegalArgumentException
+   * if any methods are not handled by our chain.
+   */
   public void checkAllMethodsAreHandled(Class<?> target) {
     Collection<Method> unhandled =
         findUnhandledMethods(target)
             .collect(Collectors.toList());
     if (!unhandled.isEmpty())
       throw new IllegalArgumentException(
-          "Target methods not implemented: " + unhandled);
+          "Unhandled methods: " + unhandled);
   }
 }
 // end::listing[]
