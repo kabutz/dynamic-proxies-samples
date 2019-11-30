@@ -28,7 +28,7 @@ import java.util.function.*;
 import java.util.stream.*;
 
 /**
- * Described in The Java Specialists Newsletters:
+ * Described in The Java Specialists Newsletters 274 and 275
  * https://www.javaspecialists.eu/archive/Issue274.html
  * https://www.javaspecialists.eu/archive/Issue275.html
  */
@@ -110,7 +110,8 @@ public class EnhancedStreamDemo {
   public static final Comparator<Method> METHOD_COMPARATOR =
       Comparator.comparing(Method::getName)
           .thenComparing(method ->
-                             Arrays.toString(method.getParameterTypes()));
+                             Arrays.toString(
+                                 method.getParameterTypes()));
 }
 // end::listing[]
 
