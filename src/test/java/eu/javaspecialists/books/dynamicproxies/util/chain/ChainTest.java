@@ -23,6 +23,10 @@ package eu.javaspecialists.books.dynamicproxies.util.chain;
 import eu.javaspecialists.books.dynamicproxies.util.*;
 import org.junit.*;
 
+import java.lang.reflect.*;
+import java.sql.*;
+import java.util.*;
+
 import static junit.framework.TestCase.*;
 
 public class ChainTest {
@@ -59,5 +63,38 @@ public class ChainTest {
         new VTableHandler(new RealFoo(), vt,
             new VTableDefaultMethodsHandler(vt2, null));
     chain.checkAllMethodsAreHandled(Foo.class);
+  }
+
+  @Test
+  public void testHandledMultipleInterfaces() {
+    VTable vt1 = VTables.newVTable(ArrayDeque.class,
+        Deque.class);
+    VTable vt2 = VTables.newVTable(ArrayList.class, List.class);
+    Object listDeque = Proxy.newProxyInstance(
+        List.class.getClassLoader(),
+        new Class<?>[] {List.class, Deque.class},
+        (proxy, method, args) -> null
+    );
+
+    ChainedInvocationHandler chain =
+        new VTableHandler(listDeque, vt1,
+            new VTableHandler(listDeque, vt2, null));
+    chain.checkAllMethodsAreHandled(List.class, Deque.class);
+    chain.checkAllMethodsAreHandled(List.class);
+    chain.checkAllMethodsAreHandled(Deque.class);
+    chain.checkAllMethodsAreHandled(RandomAccess.class);
+
+    try {
+      chain.checkAllMethodsAreHandled(List.class,
+          SortedSet.class);
+      fail("Not all methods from SortedSet are covered");
+    } catch (IllegalArgumentException expected) {
+    }
+
+    try {
+      chain.checkAllMethodsAreHandled(Statement.class);
+      fail("Methods from Statement are not covered");
+    } catch (IllegalArgumentException expected) {
+    }
   }
 }

@@ -51,10 +51,14 @@ public abstract class ChainedInvocationHandler
         "No InvocationHandler for " + method);
   }
 
-  protected Stream<Method> findUnhandledMethods(Class<?> target) {
-    if (next != null) return next.findUnhandledMethods(target);
-    return Stream.of(target.getMethods())
-               .filter(m -> !Modifier.isStatic(m.getModifiers()));
+  protected Stream<Method> findUnhandledMethods(
+      Class<?>... targets) {
+    if (next != null) return next.findUnhandledMethods(targets);
+    return Stream.of(targets)
+               .map(Class::getMethods)
+               .flatMap(Stream::of)
+               .filter(
+                   m -> !Modifier.isStatic(m.getModifiers()));
   }
 
   /**
@@ -62,9 +66,9 @@ public abstract class ChainedInvocationHandler
    * everything has been set up. Throws IllegalArgumentException
    * if any methods are not handled by our chain.
    */
-  public void checkAllMethodsAreHandled(Class<?> target) {
+  public void checkAllMethodsAreHandled(Class<?>... targets) {
     Collection<Method> unhandled =
-        findUnhandledMethods(target)
+        findUnhandledMethods(targets)
             .collect(Collectors.toList());
     if (!unhandled.isEmpty())
       throw new IllegalArgumentException(

@@ -47,11 +47,12 @@ public class VTableDefaultMethodsHandler
   }
 
   @Override
-  protected Stream<Method> findUnhandledMethods(Class<?> target) {
-    return
-        super.findUnhandledMethods(target)
-            .filter(method -> vtable.lookupDefaultMethod(method)
-                                  == null);
+  protected Stream<Method> findUnhandledMethods(
+      Class<?>... targets) {
+    return super.findUnhandledMethods(targets)
+               .filter(
+                   method -> vtable.lookupDefaultMethod(method)
+                                 == null);
   }
 }
 // end::listing[]
