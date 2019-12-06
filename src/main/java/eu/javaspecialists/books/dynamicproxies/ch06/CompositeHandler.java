@@ -84,7 +84,10 @@ public class CompositeHandler
     try {
       // The purpose of the mapFunction is to convert checked
       // exceptions from our call to method.invoke() into
-      // an UncheckedException, which we will unwrap later
+      // an UncheckedException, which we will unwrap later.
+      // Unlike the reducers, we need to create a new lambda
+      // each time we call the invoke() method, as we need to
+      // capture the method and args parameters.
       Function<Object, Object> mapFunction = child -> {
         try {
           return method.invoke(child, args);
