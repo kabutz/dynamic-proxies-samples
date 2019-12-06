@@ -66,6 +66,31 @@ public class ChainTest {
   }
 
   @Test
+  public void testUnhandledDefaultMethodUnified() {
+    VTable vt = VTables.newVTable(RealFoo.class, Foo.class);
+    ChainedInvocationHandler chain =
+        new VTableUnifiedHandler(new RealFoo(), vt, null);
+    try {
+      chain.checkAllMethodsAreHandled(Foo.class);
+    } catch (IllegalArgumentException e) {
+      assertEquals("Unhandled methods: [public default void eu" +
+                       ".javaspecialists.books.dynamicproxies" +
+                       ".util.chain.ChainTest$Foo.bay()]",
+          e.getMessage());
+    }
+  }
+
+  @Test
+  public void testHandledDefaultMethodUnified() {
+    VTable vt = VTables.newVTable(RealFoo.class, Foo.class);
+    VTable vt2 = VTables.newDefaultMethodVTable(Foo.class);
+    ChainedInvocationHandler chain =
+        new VTableUnifiedHandler(new RealFoo(), vt,
+            new VTableUnifiedDefaultHandler(vt2, null));
+    chain.checkAllMethodsAreHandled(Foo.class);
+  }
+
+  @Test
   public void testHandledMultipleInterfaces() {
     VTable vt1 = VTables.newVTable(ArrayDeque.class,
         Deque.class);
