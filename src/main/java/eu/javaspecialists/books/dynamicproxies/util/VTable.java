@@ -130,6 +130,62 @@ public class VTable {
   }
 
   /**
+   * Finds a free position for the entry and then inserts the
+   * values into the arrays entries, paramTypes, distinctName,
+   * and optionally, defaultMethods.  Duplicate methods are not
+   * allowed and will throw an IllegalArgumentException.
+   */
+  private void put(Method method, boolean distinct,
+                   boolean includeDefaultMethods) {
+    int index = findIndex(method);
+    if (index >= 0)
+      throw new IllegalArgumentException(
+          "Duplicate method found: " + new MethodKey(method));
+    index = ~index; // flip the bits again to find empty space
+    entries[index] = method;
+    paramTypes[index] = ParameterTypesFetcher.get(method);
+    distinctName[index] = distinct;
+    if (includeDefaultMethods && method.isDefault()) {
+      defaultMethods[index] = getDefaultMethodHandle(method);
+    }
+  }
+
+  /**
+   * Returns a MethodHandle for the default interface method
+   * if it is declared and the module is open to our module;
+   * null otherwise.
+   */
+  private MethodHandle getDefaultMethodHandle(Method method) {
+    try {
+      Class<?> target = method.getDeclaringClass();
+      if (isMethodDeclaredInOpenModule(method)) {
+        // Thanks Thomas Darimont for this idea
+        MethodHandles.Lookup lookup = MethodHandles.lookup();
+        return MethodHandles.privateLookupIn(target, lookup)
+                   .unreflectSpecial(method, target);
+      }
+      return null;
+    } catch (IllegalAccessException e) {
+      throw new IllegalArgumentException(e);
+    }
+  }
+
+  /**
+   * Returns true if the method is in an open module; false
+   * otherwise.  For example, if our VTable is inside module
+   * "eu.javaspecialists.books.dynamicproxies" and we want to
+   * use default methods of interfaces in java.util, we need
+   * to explicitly open that module with --add-opens \
+   * java.base/java.util=eu.javaspecialists.books.dynamicproxies
+   */
+  private boolean isMethodDeclaredInOpenModule(Method method) {
+    Class<?> target = method.getDeclaringClass();
+    String packageName = target.getPackageName();
+    Module module = VTable.class.getModule();
+    return target.getModule().isOpen(packageName, module);
+  }
+
+  /**
    * Returns the index of the method; negative value if it was
    * not found.  Once a method with this name is found, we check
    * if the method was overloaded.  If it was not, then we
@@ -176,66 +232,8 @@ public class VTable {
     return true;
   }
 
-  /**
-   * Finds a free position for the entry and then inserts the
-   * values into the arrays entries, paramTypes, distinctName,
-   * and optionally, defaultMethods.  Duplicate methods are not
-   * allowed and will throw an IllegalArgumentException.
-   */
-  private void put(Method method, boolean distinct,
-                   boolean includeDefaultMethods) {
-    int index = findIndex(method);
-    if (index >= 0)
-      throw new IllegalArgumentException(
-          "Duplicate method found: " + new MethodKey(method));
-    index = ~index; // flip the bits again to find empty space
-    entries[index] = method;
-    paramTypes[index] = ParameterTypesFetcher.get(method);
-    distinctName[index] = distinct;
-    if (includeDefaultMethods && method.isDefault()) {
-      defaultMethods[index] = createDefaultMethod(method);
-    }
-  }
-
-  /**
-   * Returns a MethodHandle for the default interface method
-   * if it is declared and the module is open to our module;
-   * null otherwise.
-   */
-  private MethodHandle createDefaultMethod(Method method) {
-    try {
-      Class<?> target = method.getDeclaringClass();
-      if (isMethodDeclaredInOpenModule(method)) {
-        // Thanks Thomas Darimont for this idea
-        MethodHandles.Lookup lookup = MethodHandles.lookup();
-        return MethodHandles.privateLookupIn(target, lookup)
-                   .in(target)
-                   .unreflectSpecial(method, target);
-      }
-      return null;
-    } catch (IllegalAccessException e) {
-      throw new IllegalArgumentException(e);
-    }
-  }
-
-  /**
-   * Returns true if the method is in an open module; false
-   * otherwise.  For example, if our VTable is inside module
-   * "eu.javaspecialists.books.dynamicproxies" and we want to
-   * use default methods of interfaces in java.util, we need
-   * to explicitely open that module with --add-opens \
-   * java.base/java.util=eu.javaspecialists.books.dynamicproxies
-   */
-  private boolean isMethodDeclaredInOpenModule(Method method) {
-    Class<?> target = method.getDeclaringClass();
-    String packageName = target.getPackageName();
-    Module module = VTable.class.getModule();
-    return target.getModule().isOpen(packageName, module);
-  }
-
   public static class Builder {
-    private static final Method[] objectMethods;
-    public static final BinaryOperator<Method> MOST_SPECIFIC =
+    private static final BinaryOperator<Method> MOST_SPECIFIC =
         (method1, method2) -> {
           var r1 = method1.getReturnType();
           var r2 = method2.getReturnType();
@@ -250,9 +248,10 @@ public class VTable {
                     " have incompatible return types");
           }
         };
+    private static final Method[] OBJECT_METHODS;
     static {
       try {
-        objectMethods = new Method[] {
+        OBJECT_METHODS = new Method[] {
             Object.class.getMethod("toString"),
             Object.class.getMethod("hashCode"),
             Object.class.getMethod("equals", Object.class),
@@ -285,9 +284,11 @@ public class VTable {
       return this;
     }
 
-    /**
-     *
-     */
+    public Builder includeDefaultMethods() {
+      this.includeDefaultMethods = true;
+      return this;
+    }
+
     public Builder ignoreReturnTypes() {
       this.ignoreReturnTypes = true;
       return this;
@@ -306,11 +307,6 @@ public class VTable {
       return this;
     }
 
-    public Builder includeDefaultMethods() {
-      this.includeDefaultMethods = true;
-      return this;
-    }
-
     public VTable build() {
       // Build collection of all methods from the target
       // interfaces, as well as the three Object methods if
@@ -320,7 +316,7 @@ public class VTable {
               .flatMap(clazz -> Stream.of(clazz.getMethods()))
               .collect(Collectors.toList());
       if (includeObjectMethods) {
-        for (Method method : objectMethods) {
+        for (Method method : OBJECT_METHODS) {
           allMethods.add(method);
         }
       }
