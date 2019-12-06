@@ -27,29 +27,46 @@ import java.util.*;
 import java.util.function.*;
 
 // tag::listing[]
-public class CompositeHandler implements InvocationHandler {
+public class CompositeHandler
+    implements InvocationHandler {
   private final Map<MethodKey, Reducer> reducers;
-  private final List<Object> children = new ArrayList<>();
+  private final List<Object> children;
 
-  public <E extends Composite<? super E>> CompositeHandler(
+  @SuppressWarnings({"unchecked", "rawtypes"})
+  public <E extends BaseComponent<? super E>> CompositeHandler(
       Class<? super E> target,
       Map<MethodKey, Reducer> reducers) {
-    if (!Composite.class.isAssignableFrom(target))
+    if (!BaseComponent.class.isAssignableFrom(target))
       throw new IllegalArgumentException(
-          "target is not derived from Composite");
+          "target is not derived from BaseComponent");
     this.reducers = reducers == null ? Map.of() : reducers;
+    // checkedList makes sure that only subclasses of the target
+    // are added to the list of children
+    this.children = Collections.checkedList(
+        new ArrayList<>(), (Class) target
+    );
   }
 
   @Override
   public Object invoke(Object proxy,
                        Method method, Object[] args)
       throws Throwable {
+    // Look for "add(Object)" and "remove(Object)" methods
+    // from BaseComponent
     if (matches(method, "add")) {
       children.add(args[0]);
       return null;
     } else if (matches(method, "remove")) {
       return children.remove(args[0]);
     }
+
+    /**
+     * This special class defined inside the method is only
+     * visible inside the method. It is used to wrap and later
+     * unwrap checked exceptions. We override fillInStackTrace()
+     * to return null, so that we do not incur the cost of an
+     * additional stack trace.
+     */
     class UncheckedException extends RuntimeException {
       public UncheckedException(Throwable cause) {
         super(cause);
@@ -57,9 +74,17 @@ public class CompositeHandler implements InvocationHandler {
       @Override
       public Throwable fillInStackTrace() { return null; }
     }
+
+    // The reducer is used to "reduce" results from method calls
+    // to a single result.  By default we will use the
+    // NULL_REDUCER, which always returns null.  This is
+    // suitable for methods that return void.
     var reducer = reducers.getOrDefault(
         new MethodKey(method), Reducer.NULL_REDUCER);
     try {
+      // The purpose of the mapFunction is to convert checked
+      // exceptions from our call to method.invoke() into
+      // an UncheckedException, which we will unwrap later
       Function<Object, Object> mapFunction = child -> {
         try {
           return method.invoke(child, args);
@@ -69,19 +94,29 @@ public class CompositeHandler implements InvocationHandler {
           throw new UncheckedException(e.getCause());
         }
       };
-      var result =
-          children.stream()
-              .map(mapFunction)
-              .reduce(reducer.getIdentity(),
-                  reducer.getMerger());
+      // We now need to call the method on all our children and
+      // do a "reduce" on the results to return a single result.
+      var result = children.stream()
+                       .map(mapFunction)
+                       .reduce(reducer.getIdentity(),
+                           reducer.getMerger());
+      // A special case of reducer is PROXY_INSTANCE_REDUCER.
+      // When that is specified, we return the proxy instance
+      // instead.  This is useful to support fluent interfaces
+      // that return "this".
       if (reducer == Reducer.PROXY_INSTANCE_REDUCER)
         return proxy;
       return result;
     } catch (UncheckedException ex) {
+      // Lastly we unwrap the UncheckedException and throw the
+      // cause.
       throw ex.getCause();
     }
   }
 
+  /**
+   * Specific match for add(Object) and remove(Object) methods.
+   */
   private boolean matches(Method method, String name) {
     return name.equals(method.getName())
                && method.getParameterCount() == 1

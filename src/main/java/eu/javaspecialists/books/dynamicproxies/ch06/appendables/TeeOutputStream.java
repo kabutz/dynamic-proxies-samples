@@ -27,7 +27,7 @@ import java.util.*;
 
 // tag::listing[]
 public class TeeOutputStream extends OutputStream
-    implements Composite<OutputStream> {
+    implements BaseComponent<OutputStream> {
   private final Collection<OutputStream> streams =
       new ArrayList<>();
   @Override

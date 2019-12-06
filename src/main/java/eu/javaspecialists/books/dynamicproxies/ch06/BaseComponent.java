@@ -21,7 +21,7 @@
 package eu.javaspecialists.books.dynamicproxies.ch06;
 
 // tag::listing[]
-public interface Composite<T> {
+public interface BaseComponent<T> {
   default void add(T t) {}
   default boolean remove(T t) { return false; }
 }

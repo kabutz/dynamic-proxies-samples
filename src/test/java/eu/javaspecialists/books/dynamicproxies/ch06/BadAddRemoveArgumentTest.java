@@ -18,13 +18,27 @@
  * License.
  */
 
-package eu.javaspecialists.books.dynamicproxies.ch06.contact;
+package eu.javaspecialists.books.dynamicproxies.ch06;
 
-import eu.javaspecialists.books.dynamicproxies.ch06.*;
+import eu.javaspecialists.books.dynamicproxies.*;
+import eu.javaspecialists.books.dynamicproxies.ch06.contact.*;
+import org.junit.*;
 
-// tag::listing[]
-public interface Contact extends BaseComponent<Contact> {
-  void sendMail(String body);
-  default int count() { return 1; }
+import static org.junit.Assert.*;
+
+public class BadAddRemoveArgumentTest {
+  @Test
+  @SuppressWarnings({"unchecked", "rawtypes"})
+  public void testBadArguments() {
+    Contact contact = Proxies.compose(Contact.class);
+    BaseComponent bc = contact;
+    try {
+      bc.add("hello");
+      fail("Expected a ClassCastException");
+    } catch (ClassCastException expected) {
+    }
+    assertFalse(bc.remove("hello"));
+    contact.sendMail("Hello world");
+    contact.add(contact); // should work, but not very useful
+  }
 }
-// end::listing[]

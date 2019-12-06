@@ -26,8 +26,12 @@ import java.io.*;
 import java.util.*;
 
 // tag::listing[]
-public class TeeAppendable<E extends Appendable & Closeable & Flushable>
-    implements Appendable, Closeable, Flushable, Composite<E> {
+public class TeeAppendable<E extends
+                                 Appendable
+                                 & Closeable
+                                 & Flushable>
+    implements Appendable, Closeable,
+                   Flushable, BaseComponent<E> {
   private final Collection<E> children = new ArrayList<>();
 
   @Override
@@ -41,14 +45,14 @@ public class TeeAppendable<E extends Appendable & Closeable & Flushable>
   }
 
   @Override
-  public Appendable append(CharSequence csq) throws IOException {
-    for (var child : children) child.append(csq);
+  public Appendable append(CharSequence cs) throws IOException {
+    for (var child : children) child.append(cs);
     return this;
   }
   @Override
-  public Appendable append(CharSequence csq, int start, int end)
+  public Appendable append(CharSequence cs, int start, int end)
       throws IOException {
-    for (var child : children) child.append(csq, start, end);
+    for (var child : children) child.append(cs, start, end);
     return this;
   }
   @Override

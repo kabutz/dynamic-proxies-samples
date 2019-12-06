@@ -29,7 +29,7 @@ import java.util.*;
 // tag::listing[]
 public interface AppendableCloseableFlushable
     <E extends Appendable & Closeable & Flushable> extends
-    Appendable, Closeable, Flushable, Composite<E> {
+    Appendable, Closeable, Flushable, BaseComponent<E> {
   static Map<MethodKey, Reducer> getReducers() {
     return Map.of(
         new MethodKey(Appendable.class, "append",

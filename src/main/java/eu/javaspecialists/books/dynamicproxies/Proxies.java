@@ -110,11 +110,11 @@ public class Proxies {
   // end::adapt()[]
 
   // tag::compose()[]
-  public static <T extends Composite<? super T>> T compose(
+  public static <T extends BaseComponent<? super T>> T compose(
       Class<T> target) {
     return compose(target, null);
   }
-  public static <T extends Composite<? super T>> T compose(
+  public static <T extends BaseComponent<? super T>> T compose(
       Class<T> target, Map<MethodKey, Reducer> mergers) {
     return castProxy(target,
         new CompositeHandler(target, mergers));
