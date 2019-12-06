@@ -21,6 +21,7 @@
 package eu.javaspecialists.books.dynamicproxies.ch01;
 
 import java.util.*;
+import java.util.function.*;
 
 public class ChainDemo {
   private Map<String, String> map1 = new HashMap<>();
@@ -29,51 +30,24 @@ public class ChainDemo {
 
   public static void main(String... args) {
     ChainDemo demo = new ChainDemo();
-    demo.noChain("test");
+    demo.handleWithoutChain("test", ChainDemo::process);
+    demo.handleWithChain("test", ChainDemo::process);
   }
 
-  private void noChain(String key) {
-    // tag::noChain()[]
+  // tag::handleWithoutChain()[]
+  public void handleWithoutChain(
+      String key, Consumer<String> processor) {
     var item = map1.get(key);
-    if (item != null) process(item);
+    if (item != null) processor.accept(item);
     else {
       item = map2.get(key);
-      if (item != null) process(item);
+      if (item != null) processor.accept(item);
       else {
         item = map3.get(key); // ad nauseum
       }
     }
-    // end::noChain()[]
   }
-
-
-  // tag::Handler[]
-  public abstract class Handler {
-    private final Handler next;
-    public Handler(Handler next) {
-      this.next = next;
-    }
-    public void handle(String key) {
-      if (next != null) next.handle(key);
-    }
-  }
-  // end::Handler[]
-
-  // tag::MapHandler[]
-  public class MapHandler extends Handler {
-    private final Map<String, String> map;
-    public MapHandler(Map<String, String> map, Handler next) {
-      super(next);
-      this.map = map;
-    }
-    @Override
-    public void handle(String key) {
-      String item = map.get(key);
-      if (item != null) process(item);
-      else super.handle(key);
-    }
-  }
-  // end::MapHandler[]
+  // end::handleWithoutChain()[]
 
   // tag::chain[]
   private final Handler chain =
@@ -82,11 +56,12 @@ public class ChainDemo {
               new MapHandler(map3, null)));
   // end::chain[]
 
-  private void chain(String key) {
-    // tag::chain()[]
-    chain.handle(key);
-    // end::chain()[]
+  // tag::handleWithChain()[]
+  private void handleWithChain(
+      String key, Consumer<String> processor) {
+    chain.handle(key, processor);
   }
+  // end::handleWithChain()[]
 
   private static void process(String item) {
     System.out.println("Processing: " + item);
