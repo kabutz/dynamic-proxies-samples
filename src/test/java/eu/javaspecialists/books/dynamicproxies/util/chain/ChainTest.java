@@ -88,12 +88,20 @@ public class ChainTest {
       chain.checkAllMethodsAreHandled(List.class,
           SortedSet.class);
       fail("Not all methods from SortedSet are covered");
-    } catch (IllegalArgumentException expected) {
+    } catch (UnhandledMethodException expected) {
     }
 
     try {
       chain.checkAllMethodsAreHandled(Statement.class);
       fail("Methods from Statement are not covered");
+    } catch (UnhandledMethodException expected) {
+    }
+
+    try {
+      chain.checkAllMethodsAreHandled(ArrayList.class);
+      fail("Only interfaces allowed");
+    } catch (UnhandledMethodException ex) {
+      throw ex;
     } catch (IllegalArgumentException expected) {
     }
   }
