@@ -29,11 +29,11 @@ import java.util.stream.*;
 // tag::listing[]
 public class VTableHandler extends ChainedInvocationHandler {
   private final VTable vtable;
-  private final Object target;
-  public VTableHandler(Object target, VTable vtable,
+  private final Object receiver;
+  public VTableHandler(Object receiver, VTable vtable,
                        ChainedInvocationHandler next) {
     super(next);
-    this.target = Objects.requireNonNull(target);
+    this.receiver = Objects.requireNonNull(receiver);
     this.vtable = Objects.requireNonNull(vtable);
   }
 
@@ -41,7 +41,7 @@ public class VTableHandler extends ChainedInvocationHandler {
   public Object invoke(Object proxy, Method method,
                        Object[] args) throws Throwable {
     Method match = vtable.lookup(method);
-    if (match != null) return match.invoke(target, args);
+    if (match != null) return match.invoke(receiver, args);
     return super.invoke(proxy, method, args);
   }
 
