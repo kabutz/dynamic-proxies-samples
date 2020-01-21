@@ -29,9 +29,7 @@ import java.util.concurrent.*;
 // tag::listing[]
 public class CanadianEmbassy implements Canada {
   private final HttpClient httpClient =
-      HttpClient.newBuilder()
-          .followRedirects(HttpClient.Redirect.NORMAL)
-          .build();
+      HttpClient.newBuilder().build();
   @Override
   public boolean canGetVisa(String name,
                             boolean married,
