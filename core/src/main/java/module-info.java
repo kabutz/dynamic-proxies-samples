@@ -3,7 +3,6 @@ module eu.javaspecialists.books.dynamicproxies {
   requires java.logging;
   requires java.desktop;
   requires spark.core;
-  requires java.sql; // used by test
 
   exports eu.javaspecialists.books.dynamicproxies;
   exports eu.javaspecialists.books.dynamicproxies.util;
