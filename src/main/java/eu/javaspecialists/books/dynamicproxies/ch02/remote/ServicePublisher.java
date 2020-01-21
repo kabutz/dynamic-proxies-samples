@@ -20,19 +20,20 @@
 
 package eu.javaspecialists.books.dynamicproxies.ch02.remote;
 
-import static spark.Spark.*;
+import spark.*;
 
 // tag::listing[]
 public class ServicePublisher {
   public static void main(String... args) {
     Canada canada = new RealCanada();
-    port(8080);
-    get("/canGetVisa/:name/:married/:rich", (req, res) -> {
-      var name = req.params("name");
-      var married = "true".equals(req.params("married"));
-      var rich = "true".equals(req.params("rich"));
-      return canada.canGetVisa(name, married, rich);
-    });
+    Spark.port(8080);
+    Spark.get("/canGetVisa/:name/:married/:rich",
+        (req, res) -> {
+          var name = req.params("name");
+          var married = "true".equals(req.params("married"));
+          var rich = "true".equals(req.params("rich"));
+          return canada.canGetVisa(name, married, rich);
+        });
   }
 }
 // end::listing[]
