@@ -30,7 +30,7 @@ import java.util.function.*;
 public class CompositeHandler
     implements InvocationHandler {
   private final Map<MethodKey, Reducer> reducers;
-  private final List<Object> children;
+  private final List<Object> children = new ArrayList<>();
 
   @SuppressWarnings({"unchecked", "rawtypes"})
   public <E extends BaseComponent<? super E>> CompositeHandler(
@@ -40,11 +40,6 @@ public class CompositeHandler
       throw new IllegalArgumentException(
           "target is not derived from BaseComponent");
     this.reducers = reducers == null ? Map.of() : reducers;
-    // checkedList makes sure that only subclasses of the target
-    // are added to the list of children
-    this.children = Collections.checkedList(
-        new ArrayList<>(), (Class) target
-    );
   }
 
   @Override
