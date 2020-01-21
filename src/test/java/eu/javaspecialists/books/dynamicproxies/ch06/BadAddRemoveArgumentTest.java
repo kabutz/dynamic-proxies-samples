@@ -30,7 +30,8 @@ public class BadAddRemoveArgumentTest {
   @Test
   @SuppressWarnings({"unchecked", "rawtypes"})
   public void testBadArguments() {
-    Contact contact = Proxies.compose(Contact.class);
+    Contact contact = Proxies.compose(Contact.class,
+        Contact.class);
     BaseComponent bc = contact;
     try {
       bc.add("hello");

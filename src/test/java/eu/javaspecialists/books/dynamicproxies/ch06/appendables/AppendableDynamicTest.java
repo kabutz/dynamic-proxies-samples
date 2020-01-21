@@ -29,7 +29,8 @@ public class AppendableDynamicTest extends AppendableTest {
   @Test
   public void dynamicComposite() throws IOException {
     var tee = Proxies.compose(AppendableCloseableFlushable.class,
-        AppendableCloseableFlushable.getReducers());
+        AppendableCloseableFlushable.getReducers(),
+        Appendable.class, Closeable.class, Flushable.class);
     var sw1 = new StringWriter();
     var sw2 = new StringWriter();
     var sw3 = new StringWriter();

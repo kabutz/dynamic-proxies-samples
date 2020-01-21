@@ -110,14 +110,26 @@ public class Proxies {
   // end::adapt()[]
 
   // tag::compose()[]
+  private final static Class<?>[] EMPTY = {};
   public static <T extends BaseComponent<? super T>> T compose(
       Class<T> target) {
-    return compose(target, null);
+    return compose(target, null, EMPTY);
   }
   public static <T extends BaseComponent<? super T>> T compose(
       Class<T> target, Map<MethodKey, Reducer> reducers) {
+    return compose(target, reducers, EMPTY);
+  }
+  public static <T extends BaseComponent<? super T>> T compose(
+      Class<T> target, Class<?>... typeChecks) {
+    return compose(target, null, typeChecks);
+  }
+  public static <T extends BaseComponent<? super T>> T compose(
+      Class<T> target, Map<MethodKey, Reducer> reducers,
+      Class<?>... typeChecks) {
+    // all objects that we add to the composite have to implement
+    // all the interfaces in typeChecks
     return castProxy(target,
-        new CompositeHandler(target, reducers));
+        new CompositeHandler(target, reducers, typeChecks));
   }
   // end::compose()[]
 }

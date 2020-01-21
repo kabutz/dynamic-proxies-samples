@@ -31,11 +31,14 @@ public class CompositeHandler
     implements InvocationHandler {
   private final Map<MethodKey, Reducer> reducers;
   private final List<Object> children = new ArrayList<>();
+  private final Class<?>[] typeChecks;
 
   @SuppressWarnings({"unchecked", "rawtypes"})
   public <E extends BaseComponent<? super E>> CompositeHandler(
       Class<? super E> target,
-      Map<MethodKey, Reducer> reducers) {
+      Map<MethodKey, Reducer> reducers,
+      Class<?>[] typeChecks) {
+    this.typeChecks = typeChecks;
     if (!BaseComponent.class.isAssignableFrom(target))
       throw new IllegalArgumentException(
           "target is not derived from BaseComponent");
@@ -49,8 +52,8 @@ public class CompositeHandler
     // Look for "add(Object)" and "remove(Object)" methods
     // from BaseComponent
     if (matches(method, "add")) {
-      children.add(args[0]);
-      return null;
+      requiresAllInterfaces(args[0]);
+      return children.add(args[0]);
     } else if (matches(method, "remove")) {
       return children.remove(args[0]);
     }
@@ -109,6 +112,14 @@ public class CompositeHandler
       // Lastly we unwrap the UncheckedException and throw the
       // cause.
       throw ex.getCause();
+    }
+  }
+
+  private void requiresAllInterfaces(Object arg) {
+    for (var check : typeChecks) {
+      if (!check.isInstance(arg))
+        throw new ClassCastException("class " + arg.getClass()
+        + " cannot be cast to " + check);
     }
   }
 

@@ -34,6 +34,7 @@ public class ContactDynamicTest extends ContactTest {
         new MethodKey(Contact.class, "count"),
         new Reducer(0, (r1, r2) -> (int) r1 + (int) r2)
     );
-    test(() -> Proxies.compose(Contact.class, reducers));
+    test(() -> Proxies.compose(Contact.class, reducers,
+        Contact.class));
   }
 }

@@ -28,7 +28,9 @@ public class AppendableDynamicDemo {
   public static void main(String... args) throws IOException {
     // tag::listing[]
     var tee = Proxies.compose(AppendableCloseableFlushable.class,
-        AppendableCloseableFlushable.getReducers());
+        AppendableCloseableFlushable.getReducers(),
+        Appendable.class, Closeable.class, Flushable.class
+    );
     var sw = new StringWriter();
     tee.add(new OutputStreamWriter(System.out));
     tee.add(new FileWriter("output.txt"));
@@ -43,6 +45,7 @@ public class AppendableDynamicDemo {
         .append("Does this work?")
         .append('\n');
     tee.flush();
+    tee.add("Hello");
 
     System.out.println("sw = " + sw);
     // end::listing[]
