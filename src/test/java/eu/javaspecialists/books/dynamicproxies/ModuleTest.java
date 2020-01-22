@@ -29,8 +29,12 @@ import static org.junit.Assert.*;
 // tag::listing[]
 public class ModuleTest {
   @Test
-  public void testRunningInModules() {
+  public void testClassesInModule() {
     assertEquals("eu.javaspecialists.books.dynamicproxies", getClass().getModule().getName());
+  }
+  
+  @Test
+  public void mainClassesInModule() {
     assertEquals("eu.javaspecialists.books.dynamicproxies", Proxies.class.getModule().getName());
   }
 }
