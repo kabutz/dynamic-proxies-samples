@@ -1,3 +1,6 @@
 dynamic-proxies-samples.i*
 target
 *.class
+/.classpath
+/.project
+/.settings

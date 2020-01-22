@@ -120,6 +120,16 @@
                     <showDeprecation>true</showDeprecation>
                     <showWarnings>true</showWarnings>
                 </configuration>
+                <executions>
+                  <execution>
+                    <id>default-testCompile</id>
+                    <configuration>
+                      <compilerArgs>
+                        <compilerArg>--add-modules=java.sql</compilerArg>
+                      </compilerArgs>
+                    </configuration>
+                  </execution>
+                </executions>
             </plugin>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
@@ -141,8 +151,8 @@
                 <executions>
                     <execution>
                         <goals>
-                            <goal>jar</goal>
-                            <goal>test-jar</goal>
+                            <goal>jar-no-fork</goal>
+                            <goal>test-jar-no-fork</goal>
                         </goals>
                     </execution>
                 </executions>
