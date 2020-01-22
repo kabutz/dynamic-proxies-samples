@@ -20,11 +20,9 @@
 
 package eu.javaspecialists.books.dynamicproxies.ch02.remote;
 
-import java.io.*;
-
 // tag::listing[]
 public class Client {
-  public static void main(String... args) throws IOException {
+  public static void main(String... args) {
     Canada canada = new CanadianEmbassy();
     boolean visaObtained = canada.canGetVisa(
         "Heinz Kabutz", true, false);
