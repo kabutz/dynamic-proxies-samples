@@ -20,8 +20,6 @@
 
 package eu.javaspecialists.books.dynamicproxies;
 
-import eu.javaspecialists.books.dynamicproxies.ch02.equals.FixedEqualsInCustomHashMap.*;
-import eu.javaspecialists.books.dynamicproxies.ch02.equals.FixedEqualsInHandCraftedProxy.*;
 import org.junit.*;
 
 import static org.junit.Assert.*;
@@ -30,12 +28,14 @@ import static org.junit.Assert.*;
 public class ModuleTest {
   @Test
   public void testClassesInModule() {
-    assertEquals("eu.javaspecialists.books.dynamicproxies", getClass().getModule().getName());
+    assertEquals("eu.javaspecialists.books.dynamicproxies",
+        getClass().getModule().getName());
   }
-  
+
   @Test
   public void mainClassesInModule() {
-    assertEquals("eu.javaspecialists.books.dynamicproxies", Proxies.class.getModule().getName());
+    assertEquals("eu.javaspecialists.books.dynamicproxies",
+        Proxies.class.getModule().getName());
   }
 }
 // end::listing[]
