@@ -24,23 +24,16 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
-    <!--for release only-->
-    <!--<parent>-->
-    <!--<groupId>org.sonatype.oss</groupId>-->
-    <!--<artifactId>oss-parent</artifactId>-->
-    <!--<version>7</version>-->
-    <!--</parent>-->
-
-    <packaging>pom</packaging>
     <groupId>eu.javaspecialists.books.dynamicproxies</groupId>
     <artifactId>infoq-dynamic-proxies</artifactId>
     <name>infoq-dynamic-proxies</name>
     <description>InfoQ Dynamic Proxies</description>
     <version>0.1-SNAPSHOT</version>
 
+    <packaging>pom</packaging>
+
     <modules>
         <module>core</module>
-        <module>test</module>
         <module>benchmark</module>
     </modules>
 
@@ -50,34 +43,6 @@
 
     <dependencyManagement>
         <dependencies>
-            <!--<dependency>-->
-            <!--<groupId>com.oracle.javafx</groupId>-->
-            <!--<artifactId>javafx</artifactId>-->
-            <!--<version>2.2</version>-->
-            <!--<systemPath>${fx.home}/jfxrt.jar</systemPath>-->
-            <!--<scope>system</scope>-->
-            <!--</dependency>-->
-
-            <!-- Weld Container -->
-            <dependency>
-                <groupId>org.jboss.weld</groupId>
-                <artifactId>weld-core-bom</artifactId>
-                <version>2.1.0.Final</version>
-                <type>pom</type>
-                <scope>import</scope>
-            </dependency>
-            <dependency>
-                <groupId>org.jboss.weld.se</groupId>
-                <artifactId>weld-se</artifactId>
-                <version>2.1.0.Final</version>
-                <scope>compile</scope>
-            </dependency>
-            <dependency>
-                <groupId>log4j</groupId>
-                <artifactId>log4j</artifactId>
-                <version>1.2.17</version>
-                <scope>compile</scope>
-            </dependency>
             <dependency>
                 <groupId>junit</groupId>
                 <artifactId>junit</artifactId>
@@ -86,155 +51,39 @@
         </dependencies>
     </dependencyManagement>
 
-    <dependencies>
-        <dependency>
-            <groupId>org.slf4j</groupId>
-            <artifactId>slf4j-simple</artifactId>
-            <version>1.7.25</version>
-        </dependency>
-    </dependencies>
-
     <build>
-        <plugins>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-compiler-plugin</artifactId>
-                <version>3.8.1</version>
-                <configuration>
-                    <source>13</source>
-                    <target>13</target>
-                    <showDeprecation>true</showDeprecation>
-                    <showWarnings>true</showWarnings>
-                </configuration>
-            </plugin>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-jar-plugin</artifactId>
-                <version>2.4</version>
-                <executions>
-                    <execution>
-                        <goals>
-                            <goal>jar</goal>
-                            <goal>test-jar</goal>
-                        </goals>
-                    </execution>
-                </executions>
-            </plugin>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-source-plugin</artifactId>
-                <version>2.2.1</version>
-                <executions>
-                    <execution>
-                        <goals>
-                            <goal>jar</goal>
-                            <goal>test-jar</goal>
-                        </goals>
-                    </execution>
-                </executions>
-            </plugin>
-
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-surefire-plugin</artifactId>
-                <version>2.16</version>
-                <!--<dependencies>-->
-                <!--<dependency>-->
-                <!--<groupId>org.apache.maven.surefire</groupId>-->
-                <!--<artifactId>surefire-junit47</artifactId>-->
-                <!--<version>2.16</version>-->
-                <!--</dependency>-->
-                <!--</dependencies>-->
-                <configuration>
-                    <!--<skipTests>true</skipTests>-->
-                    <!--<forkCount>2.5C</forkCount>-->
-                    <!--<forkCount>1</forkCount>-->
-                    <!--<parallel>methods</parallel>-->
-                    <!--<threadCount>10</threadCount>-->
-                    <!--<reuseForks>false</reuseForks>-->
-                    <!--<argLine>-Xmx1024m -XX:MaxPermSize=256m</argLine>-->
-                    <!--<argLine>-Xmx1024m</argLine>-->
-                    <!--<forkMode>always</forkMode>-->
-                </configuration>
-            </plugin>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-repository-plugin</artifactId>
-                <version>2.3.1</version>
-            </plugin>
-        </plugins>
+        <pluginManagement>
+            <plugins>
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-compiler-plugin</artifactId>
+                    <version>3.8.1</version>
+                    <configuration>
+                        <source>13</source>
+                        <target>13</target>
+                        <showDeprecation>true</showDeprecation>
+                        <showWarnings>true</showWarnings>
+                    </configuration>
+                </plugin>
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-surefire-plugin</artifactId>
+                    <version>3.0.0-M4</version>
+                </plugin>
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-jar-plugin</artifactId>
+                    <version>3.2.0</version>
+                </plugin>
+            </plugins>
+        </pluginManagement>
     </build>
-
-    <!--for development of features/develop branch-->
-    <distributionManagement>
-        <repository>
-            <id>releases</id>
-            <name>RapidPM Releases</name>
-            <url>
-                http://${nexus.ip}/nexus/content/repositories/releases
-            </url>
-        </repository>
-        <snapshotRepository>
-            <id>snapshots</id>
-            <name>RapidPM Snapshots</name>
-            <url>
-                http://${nexus.ip}/nexus/content/repositories/snapshots
-            </url>
-        </snapshotRepository>
-    </distributionManagement>
-    <profiles>
-        <profile>
-            <id>junit</id>
-            <activation>
-                <activeByDefault>true</activeByDefault>
-            </activation>
-            <build>
-                <plugins>
-                    <plugin>
-                        <groupId>org.apache.maven.plugins
-                        </groupId>
-                        <artifactId>maven-surefire-plugin
-                        </artifactId>
-                        <configuration>
-                            <includes>
-                                <include>**/junit/**</include>
-                            </includes>
-                            <excludes>
-                                <exclude>**/perf/**</exclude>
-                            </excludes>
-                        </configuration>
-                    </plugin>
-                </plugins>
-            </build>
-        </profile>
-        <profile>
-            <id>performance</id>
-            <build>
-                <plugins>
-                    <plugin>
-                        <groupId>org.apache.maven.plugins
-                        </groupId>
-                        <artifactId>maven-surefire-plugin
-                        </artifactId>
-                        <configuration>
-                            <includes>
-                                <include>**/perf/**</include>
-                            </includes>
-                        </configuration>
-                    </plugin>
-                </plugins>
-            </build>
-        </profile>
-    </profiles>
 
     <licenses>
         <license>
             <name>The Apache Software License, Version 2.0</name>
             <url>http://www.apache.org/licenses/LICENSE-2.0.txt
             </url>
-            <distribution>repo</distribution>
-            <comments>A business-friendly OSS license</comments>
         </license>
     </licenses>
-
 </project>
