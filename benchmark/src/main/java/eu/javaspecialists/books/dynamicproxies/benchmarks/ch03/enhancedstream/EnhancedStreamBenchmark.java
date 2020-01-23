@@ -18,7 +18,7 @@
  * License.
  */
 
-package eu.javaspecialists.books.dynamicproxies.ch03.benchmarks.enhancedstream;
+package eu.javaspecialists.books.dynamicproxies.benchmarks.ch03.enhancedstream;
 
 import eu.javaspecialists.books.dynamicproxies.ch03.enhancedstream.*;
 import org.openjdk.jmh.annotations.*;

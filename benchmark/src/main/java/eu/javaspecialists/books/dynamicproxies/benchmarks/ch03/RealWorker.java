@@ -18,10 +18,20 @@
  * License.
  */
 
-package eu.javaspecialists.books.dynamicproxies;
+package eu.javaspecialists.books.dynamicproxies.benchmarks.ch03;
 
-public class Benchmarks {
-  public static void main(String... args) throws Exception {
-    org.openjdk.jmh.Main.main(args);
+import org.openjdk.jmh.infra.*;
+
+// tag::listing[]
+public class RealWorker implements Worker {
+  private long counter = 0;
+  @Override
+  public long increment() {
+    return counter++;
+  }
+  @Override
+  public void consumeCPU() {
+    Blackhole.consumeCPU(2);
   }
 }
+// end::listing[]

@@ -18,20 +18,11 @@
  * License.
  */
 
-package eu.javaspecialists.books.dynamicproxies.ch03.benchmarks;
-
-import org.openjdk.jmh.infra.*;
+package eu.javaspecialists.books.dynamicproxies.benchmarks.ch03;
 
 // tag::listing[]
-public class RealWorker implements Worker {
-  private long counter = 0;
-  @Override
-  public long increment() {
-    return counter++;
-  }
-  @Override
-  public void consumeCPU() {
-    Blackhole.consumeCPU(2);
-  }
+public interface Worker {
+  long increment();
+  void consumeCPU();
 }
 // end::listing[]

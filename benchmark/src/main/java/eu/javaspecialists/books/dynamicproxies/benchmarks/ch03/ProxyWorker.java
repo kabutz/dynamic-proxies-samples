@@ -18,11 +18,18 @@
  * License.
  */
 
-package eu.javaspecialists.books.dynamicproxies.ch03.benchmarks;
+package eu.javaspecialists.books.dynamicproxies.benchmarks.ch03;
 
 // tag::listing[]
-public interface Worker {
-  long increment();
-  void consumeCPU();
+public class ProxyWorker implements Worker {
+  private final RealWorker worker = new RealWorker();
+  @Override
+  public long increment() {
+    return worker.increment();
+  }
+  @Override
+  public void consumeCPU() {
+    worker.consumeCPU();
+  }
 }
 // end::listing[]

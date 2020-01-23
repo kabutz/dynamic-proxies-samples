@@ -32,6 +32,10 @@
 
     <artifactId>benchmark</artifactId>
 
+    <properties>
+        <jmh.version>1.21</jmh.version>
+    </properties>
+
     <dependencies>
         <dependency>
             <groupId>eu.javaspecialists.books.dynamicproxies</groupId>
@@ -45,12 +49,43 @@
         <dependency>
             <groupId>org.openjdk.jmh</groupId>
             <artifactId>jmh-core</artifactId>
-            <version>1.21</version>
+            <version>${jmh.version}</version>
         </dependency>
         <dependency>
             <groupId>org.openjdk.jmh</groupId>
             <artifactId>jmh-generator-annprocess</artifactId>
-            <version>1.21</version>
+            <version>${jmh.version}</version>
         </dependency>
     </dependencies>
+
+    <build>
+        <plugins>
+            <!-- while in the benchmarks directory ,run with: mvn exec:exec@run-benchmarks -->
+            <plugin>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>exec-maven-plugin</artifactId>
+                <version>1.6.0</version>
+                <executions>
+                    <execution>
+                        <id>run-benchmarks</id>
+                        <phase>verify</phase>
+                        <goals>
+                            <goal>exec</goal>
+                        </goals>
+                        <configuration>
+                            <executable>java</executable>
+                            <arguments>
+                                <argument>--module-path</argument>
+                                <!-- automatically creates the modulepath using all project dependencies,
+                                     also adding the project build directory -->
+                                <modulepath/>
+                                <argument>--module</argument>
+                                <argument>eu.javaspecialists.books.dynamicproxies.benchmarks/eu.javaspecialists.books.dynamicproxies.benchmarks.Benchmarks</argument>
+                            </arguments>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+        </plugins>
+    </build>
 </project>

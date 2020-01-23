@@ -18,7 +18,7 @@
  * License.
  */
 
-package eu.javaspecialists.books.dynamicproxies.ch05.benchmarks;
+package eu.javaspecialists.books.dynamicproxies.benchmarks.ch05;
 
 /*
  -Deu.javaspecialists.books.dynamicproxies.util
