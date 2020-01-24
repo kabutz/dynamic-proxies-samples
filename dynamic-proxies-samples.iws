@@ -161,7 +161,7 @@
     </configuration>
     <configuration name="AppendableDynamicDemo" type="Application" factoryName="Application" editBeforeRun="true" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="eu.javaspecialists.books.dynamicproxies.ch06.appendables.AppendableDynamicDemo" />
-      <module name="dynamic-proxies-samples" />
+      <module name="core" />
       <extension name="coverage">
         <pattern>
           <option name="PATTERN" value="eu.javaspecialists.books.dynamicproxies.ch06.appendables.*" />
@@ -178,7 +178,7 @@
       </method>
     </configuration>
     <configuration name="AppendableDynamicTest" type="JUnit" factoryName="JUnit" editBeforeRun="true" temporary="true" nameIsGenerated="true">
-      <module name="dynamic-proxies-samples" />
+      <module name="core" />
       <extension name="coverage">
         <pattern>
           <option name="PATTERN" value="eu.javaspecialists.books.dynamicproxies.ch06.appendables.*" />
@@ -199,7 +199,7 @@
       </method>
     </configuration>
     <configuration name="BadAddRemoveArgumentTest" type="JUnit" factoryName="JUnit" editBeforeRun="true" temporary="true" nameIsGenerated="true">
-      <module name="dynamic-proxies-samples" />
+      <module name="core" />
       <extension name="coverage">
         <pattern>
           <option name="PATTERN" value="eu.javaspecialists.books.dynamicproxies.ch06.*" />
@@ -220,7 +220,7 @@
       </method>
     </configuration>
     <configuration name="ModuleTest" type="JUnit" factoryName="JUnit" editBeforeRun="true" temporary="true" nameIsGenerated="true">
-      <module name="dynamic-proxies-samples" />
+      <module name="core" />
       <extension name="coverage">
         <pattern>
           <option name="PATTERN" value="eu.javaspecialists.books.dynamicproxies.*" />
@@ -254,7 +254,7 @@
       </method>
     </configuration>
     <configuration name="dynamicproxies in dynamic-proxies-samples" type="JUnit" factoryName="JUnit" editBeforeRun="true" temporary="true" nameIsGenerated="true">
-      <module name="dynamic-proxies-samples" />
+      <module name="core" />
       <option name="MAIN_CLASS_NAME" value="" />
       <option name="METHOD_NAME" value="" />
       <option name="TEST_OBJECT" value="directory" />
@@ -263,7 +263,7 @@
       <option name="TEST_SEARCH_SCOPE">
         <value defaultName="moduleWithDependencies" />
       </option>
-      <dir value="$PROJECT_DIR$/src/test/java/eu/javaspecialists/books/dynamicproxies" />
+      <dir value="$PROJECT_DIR$/core/src/test/java/eu/javaspecialists/books/dynamicproxies" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
