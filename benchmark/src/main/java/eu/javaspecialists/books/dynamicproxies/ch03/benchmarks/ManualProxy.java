@@ -18,7 +18,7 @@
  * License.
  */
 
-package eu.javaspecialists.books.dynamicproxies.benchmarks.ch03;
+package eu.javaspecialists.books.dynamicproxies.ch03.benchmarks;
 
 import java.lang.reflect.*;
 

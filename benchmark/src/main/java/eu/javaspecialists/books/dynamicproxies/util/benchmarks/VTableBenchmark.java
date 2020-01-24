@@ -18,7 +18,7 @@
  * License.
  */
 
-package eu.javaspecialists.books.dynamicproxies.benchmarks.util;
+package eu.javaspecialists.books.dynamicproxies.util.benchmarks;
 
 import eu.javaspecialists.books.dynamicproxies.util.*;
 import org.openjdk.jmh.annotations.*;
