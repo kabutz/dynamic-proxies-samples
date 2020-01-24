@@ -18,20 +18,24 @@
  * License.
  */
 
-package eu.javaspecialists.books.dynamicproxies.ch02.remote;
+package eu.javaspecialists.books.dynamicproxies;
+
+import org.junit.*;
+
+import static org.junit.Assert.*;
 
 // tag::listing[]
-public class Client {
-  public static void main(String... args) {
-    Canada canada = new CanadianEmbassy();
-    boolean visaObtained = canada.canGetVisa(
-        "Heinz Kabutz", true, false);
-    System.out.println("visaObtained = " + visaObtained);
-    System.out.println("Wins lottery ...");
-    visaObtained = canada.canGetVisa(
-        "Heinz Kabutz", true, true);
-    System.out.println("visaObtained = " + visaObtained);
+public class ModuleTest {
+  @Test
+  public void testClassesInModule() {
+    assertEquals("eu.javaspecialists.books.dynamicproxies",
+        getClass().getModule().getName());
+  }
+
+  @Test
+  public void mainClassesInModule() {
+    assertEquals("eu.javaspecialists.books.dynamicproxies",
+        Proxies.class.getModule().getName());
   }
 }
 // end::listing[]
-
