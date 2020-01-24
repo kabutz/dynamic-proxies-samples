@@ -1,15 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="e96b4487-cc12-474d-9ec9-7b1da984316d" name="Default Changelist" comment="Removed redirect setting - not necessary">
-      <change beforePath="$PROJECT_DIR$/dynamic-proxies-samples.iml" beforeDir="false" afterPath="$PROJECT_DIR$/dynamic-proxies-samples.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dynamic-proxies-samples.iws" beforeDir="false" afterPath="$PROJECT_DIR$/dynamic-proxies-samples.iws" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/eu/javaspecialists/books/dynamicproxies/Proxies.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/eu/javaspecialists/books/dynamicproxies/Proxies.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/eu/javaspecialists/books/dynamicproxies/ch02/remote/CanadianEmbassy.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/eu/javaspecialists/books/dynamicproxies/ch02/remote/CanadianEmbassy.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/eu/javaspecialists/books/dynamicproxies/ch06/CompositeHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/eu/javaspecialists/books/dynamicproxies/ch06/CompositeHandler.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/eu/javaspecialists/books/dynamicproxies/ch06/appendables/AppendableDynamicDemo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/eu/javaspecialists/books/dynamicproxies/ch06/appendables/AppendableDynamicDemo.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/eu/javaspecialists/books/dynamicproxies/ch06/BadAddRemoveArgumentTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/eu/javaspecialists/books/dynamicproxies/ch06/BadAddRemoveArgumentTest.java" afterDir="false" />
-    </list>
+    <list default="true" id="e96b4487-cc12-474d-9ec9-7b1da984316d" name="Default Changelist" comment="Removed redirect setting - not necessary" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -50,11 +42,6 @@
       <MavenImportingSettings>
         <option name="importAutomatically" value="true" />
       </MavenImportingSettings>
-    </option>
-    <option name="enabledProfiles">
-      <list>
-        <option value="junit" />
-      </list>
     </option>
   </component>
   <component name="ProjectId" id="1RSqNcfr6tNq61yPEabgLkrCS3N" />
@@ -146,9 +133,8 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="JUnit.dynamicproxies in dynamic-proxies-samples">
+  <component name="RunManager" selected="JUnit.ModuleTest">
     <configuration default="true" type="Application" factoryName="Application" editBeforeRun="true">
-      <option name="WORKING_DIRECTORY" value="file://$PROJECT_DIR$" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -177,6 +163,7 @@
       </method>
     </configuration>
     <configuration default="true" type="Application" factoryName="Application" editBeforeRun="true">
+      <option name="WORKING_DIRECTORY" value="file://$PROJECT_DIR$" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -202,16 +189,16 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="AppendableHandCraftedTest" type="JUnit" factoryName="JUnit" editBeforeRun="true" temporary="true" nameIsGenerated="true">
+    <configuration name="BadAddRemoveArgumentTest" type="JUnit" factoryName="JUnit" editBeforeRun="true" temporary="true" nameIsGenerated="true">
       <module name="dynamic-proxies-samples" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="eu.javaspecialists.books.dynamicproxies.ch06.appendables.*" />
+          <option name="PATTERN" value="eu.javaspecialists.books.dynamicproxies.ch06.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
-      <option name="PACKAGE_NAME" value="eu.javaspecialists.books.dynamicproxies.ch06.appendables" />
-      <option name="MAIN_CLASS_NAME" value="eu.javaspecialists.books.dynamicproxies.ch06.appendables.AppendableHandCraftedTest" />
+      <option name="PACKAGE_NAME" value="eu.javaspecialists.books.dynamicproxies.ch06" />
+      <option name="MAIN_CLASS_NAME" value="eu.javaspecialists.books.dynamicproxies.ch06.BadAddRemoveArgumentTest" />
       <option name="METHOD_NAME" value="" />
       <option name="TEST_OBJECT" value="class" />
       <option name="PARAMETERS" value="" />
@@ -223,16 +210,16 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="BadAddRemoveArgumentTest" type="JUnit" factoryName="JUnit" editBeforeRun="true" temporary="true" nameIsGenerated="true">
+    <configuration name="ModuleTest" type="JUnit" factoryName="JUnit" editBeforeRun="true" temporary="true" nameIsGenerated="true">
       <module name="dynamic-proxies-samples" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="eu.javaspecialists.books.dynamicproxies.ch06.*" />
+          <option name="PATTERN" value="eu.javaspecialists.books.dynamicproxies.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
-      <option name="PACKAGE_NAME" value="eu.javaspecialists.books.dynamicproxies.ch06" />
-      <option name="MAIN_CLASS_NAME" value="eu.javaspecialists.books.dynamicproxies.ch06.BadAddRemoveArgumentTest" />
+      <option name="PACKAGE_NAME" value="eu.javaspecialists.books.dynamicproxies" />
+      <option name="MAIN_CLASS_NAME" value="eu.javaspecialists.books.dynamicproxies.ModuleTest" />
       <option name="METHOD_NAME" value="" />
       <option name="TEST_OBJECT" value="class" />
       <option name="PARAMETERS" value="" />
@@ -294,19 +281,19 @@
       </method>
     </configuration>
     <list>
-      <item itemvalue="JUnit.AppendableHandCraftedTest" />
+      <item itemvalue="Application.AppendableDynamicDemo" />
       <item itemvalue="JUnit.AppendableDynamicTest" />
       <item itemvalue="JUnit.dynamicproxies in dynamic-proxies-samples" />
       <item itemvalue="JUnit.BadAddRemoveArgumentTest" />
-      <item itemvalue="Application.AppendableDynamicDemo" />
+      <item itemvalue="JUnit.ModuleTest" />
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.ModuleTest" />
         <item itemvalue="JUnit.dynamicproxies in dynamic-proxies-samples" />
         <item itemvalue="Application.AppendableDynamicDemo" />
         <item itemvalue="JUnit.BadAddRemoveArgumentTest" />
         <item itemvalue="JUnit.AppendableDynamicTest" />
-        <item itemvalue="JUnit.AppendableHandCraftedTest" />
       </list>
     </recent_temporary>
   </component>
@@ -778,7 +765,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="VTable now checks whether the default methods are open to our module before trying to call privateLookupIn" />
     <MESSAGE value="Moved check method from ChainChecker into ChainedInvocationHandler" />
     <MESSAGE value="Refactored VTable to avoid calling method.getParameterCount()" />
     <MESSAGE value="Added tags for AsciiDoctor" />
@@ -803,7 +789,8 @@
     <MESSAGE value="Added requires to java.sql used by test" />
     <MESSAGE value="Removed redirect setting - not necessary" />
     <MESSAGE value="Undid checkedList() as it was causing ClassCastException in our test case" />
-    <option name="LAST_COMMIT_MESSAGE" value="Undid checkedList() as it was causing ClassCastException in our test case" />
+    <MESSAGE value="Added --add-opens to open java.lang to our module" />
+    <option name="LAST_COMMIT_MESSAGE" value="Added --add-opens to open java.lang to our module" />
   </component>
   <component name="WindowStateProjectService">
     <state x="565" y="345" key="#Client" timestamp="1579618231941">
