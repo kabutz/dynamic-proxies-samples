@@ -6,10 +6,13 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
-        <module name="dynamic-proxies-samples" />
+        <module name="core" />
+        <module name="benchmark" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
+      <module name="benchmark" target="13" />
+      <module name="core" target="13" />
       <module name="dynamic-proxies-samples" target="13" />
     </bytecodeTargetLevel>
   </component>
@@ -21,6 +24,8 @@
   </component>
   <component name="Encoding">
     <file url="file://$PROJECT_DIR$" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/benchmark" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/core" charset="UTF-8" />
   </component>
   <component name="InspectionProjectProfileManager">
     <profile version="1.0" is_locked="true">
@@ -3188,6 +3193,8 @@
   <component name="JavacSettings">
     <option name="ADDITIONAL_OPTIONS_STRING" value="-Xlint:all" />
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
+      <module name="benchmark" options="" />
+      <module name="core" options="" />
       <module name="dynamic-proxies-samples" options="" />
     </option>
   </component>
@@ -3195,13 +3202,9 @@
     <option name="originalFiles">
       <list>
         <option value="$PROJECT_DIR$/pom.xml" />
-      </list>
-    </option>
-    <option name="ignoredFiles">
-      <set>
-        <option value="$PROJECT_DIR$/benchmark/pom.xml" />
         <option value="$PROJECT_DIR$/core/pom.xml" />
-      </set>
+        <option value="$PROJECT_DIR$/benchmark/pom.xml" />
+      </list>
     </option>
   </component>
   <component name="NodePackageJsonFileManager">
@@ -3365,6 +3368,8 @@
   </component>
   <component name="ProjectModuleManager">
     <modules>
+      <module fileurl="file://$PROJECT_DIR$/benchmark/benchmark.iml" filepath="$PROJECT_DIR$/benchmark/benchmark.iml" />
+      <module fileurl="file://$PROJECT_DIR$/core/core.iml" filepath="$PROJECT_DIR$/core/core.iml" />
       <module fileurl="file://$PROJECT_DIR$/dynamic-proxies-samples.iml" filepath="$PROJECT_DIR$/dynamic-proxies-samples.iml" />
     </modules>
   </component>
@@ -3626,17 +3631,6 @@
       </JAVADOC>
       <SOURCES>
         <root url="jar://$MAVEN_REPOSITORY$/org/slf4j/slf4j-api/1.7.25/slf4j-api-1.7.25-sources.jar!/" />
-      </SOURCES>
-    </library>
-    <library name="Maven: org.slf4j:slf4j-simple:1.7.25">
-      <CLASSES>
-        <root url="jar://$MAVEN_REPOSITORY$/org/slf4j/slf4j-simple/1.7.25/slf4j-simple-1.7.25.jar!/" />
-      </CLASSES>
-      <JAVADOC>
-        <root url="jar://$MAVEN_REPOSITORY$/org/slf4j/slf4j-simple/1.7.25/slf4j-simple-1.7.25-javadoc.jar!/" />
-      </JAVADOC>
-      <SOURCES>
-        <root url="jar://$MAVEN_REPOSITORY$/org/slf4j/slf4j-simple/1.7.25/slf4j-simple-1.7.25-sources.jar!/" />
       </SOURCES>
     </library>
   </component>

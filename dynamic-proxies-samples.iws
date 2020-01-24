@@ -1,7 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="e96b4487-cc12-474d-9ec9-7b1da984316d" name="Default Changelist" comment="Removed redirect setting - not necessary" />
+    <list default="true" id="e96b4487-cc12-474d-9ec9-7b1da984316d" name="Default Changelist" comment="Removed redirect setting - not necessary">
+      <change beforePath="$PROJECT_DIR$/dynamic-proxies-samples.iml" beforeDir="false" afterPath="$PROJECT_DIR$/dynamic-proxies-samples.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dynamic-proxies-samples.ipr" beforeDir="false" afterPath="$PROJECT_DIR$/dynamic-proxies-samples.ipr" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dynamic-proxies-samples.iws" beforeDir="false" afterPath="$PROJECT_DIR$/dynamic-proxies-samples.iws" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+    </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -40,7 +45,10 @@
   <component name="MavenImportPreferences">
     <option name="importingSettings">
       <MavenImportingSettings>
+        <option name="createModuleGroups" value="true" />
         <option name="importAutomatically" value="true" />
+        <option name="lookForNested" value="true" />
+        <option name="vmOptionsForImporter" value="-Xmx768m" />
       </MavenImportingSettings>
     </option>
   </component>
@@ -59,6 +67,7 @@
     <property name="MemberChooser.copyJavadoc" value="false" />
     <property name="MemberChooser.showClasses" value="true" />
     <property name="MemberChooser.sorted" value="false" />
+    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
     <property name="editor.config.ad.shown" value="true" />
@@ -73,7 +82,7 @@
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.3688213" />
     <property name="run.code.analysis.last.selected.profile" value="pProject Default" />
-    <property name="settings.editor.selected.configurable" value="reference.settingsdialog.IDE.editor.colors.Color Scheme Font" />
+    <property name="settings.editor.selected.configurable" value="reference.settings.project.maven.importing" />
   </component>
   <component name="RecentsManager">
     <key name="IntroduceConstantDialog.RECENTS_KEY">
@@ -135,6 +144,7 @@
   </component>
   <component name="RunManager" selected="JUnit.ModuleTest">
     <configuration default="true" type="Application" factoryName="Application" editBeforeRun="true">
+      <option name="WORKING_DIRECTORY" value="file://$PROJECT_DIR$" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -163,7 +173,6 @@
       </method>
     </configuration>
     <configuration default="true" type="Application" factoryName="Application" editBeforeRun="true">
-      <option name="WORKING_DIRECTORY" value="file://$PROJECT_DIR$" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -377,6 +386,8 @@
       <workItem from="1579512715935" duration="5000" />
       <workItem from="1579537418929" duration="3000" />
       <workItem from="1579622399015" duration="2896000" />
+      <workItem from="1579879621025" duration="581000" />
+      <workItem from="1579880215387" duration="947000" />
     </task>
     <task id="LOCAL-00079" summary="Moved unit tests to test hierarchy">
       <created>1574065021154</created>
