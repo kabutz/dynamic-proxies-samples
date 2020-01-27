@@ -27,7 +27,7 @@
     <parent>
         <artifactId>infoq-dynamic-proxies</artifactId>
         <groupId>eu.javaspecialists.books.dynamicproxies</groupId>
-        <version>0.1-SNAPSHOT</version>
+        <version>1.0.0-SNAPSHOT</version>
     </parent>
     <packaging>jar</packaging>
 
