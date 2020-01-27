@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2000-2019 Heinz Max Kabutz
+ * Copyright (C) 2020 Heinz Max Kabutz
  *
  * See the NOTICE file distributed with this work for additional
  * information regarding copyright ownership.  Heinz Max Kabutz

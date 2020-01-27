@@ -16,16 +16,18 @@
       <module name="dynamic-proxies-samples" target="13" />
     </bytecodeTargetLevel>
   </component>
-  <component name="CopyrightManager" default="infoq">
+  <component name="CopyrightManager" default="infoq2020">
     <copyright>
-      <option name="notice" value="Copyright (C) 2000-2019 Heinz Max Kabutz&#10;&#10;See the NOTICE file distributed with this work for additional &#10;information regarding copyright ownership.  Heinz Max Kabutz&#10;licenses this file to you under the Apache License, Version&#10;2.0 (the &quot;License&quot;); you may not use this file except in&#10;compliance with the License. You may obtain a copy of the&#10;License at&#10;&#10;http://www.apache.org/licenses/LICENSE-2.0&#10; &#10;Unless required by applicable law or agreed to in writing,&#10;software distributed under the License is distributed on an&#10;&quot;AS IS&quot; BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND,&#10;either express or implied.  See the License for the specific&#10;language governing permissions and limitations under the&#10;License." />
-      <option name="myName" value="infoq" />
+      <option name="notice" value="Copyright (C) 2020 Heinz Max Kabutz&#10;&#10;See the NOTICE file distributed with this work for additional &#10;information regarding copyright ownership.  Heinz Max Kabutz&#10;licenses this file to you under the Apache License, Version&#10;2.0 (the &quot;License&quot;); you may not use this file except in&#10;compliance with the License. You may obtain a copy of the&#10;License at&#10;&#10;http://www.apache.org/licenses/LICENSE-2.0&#10; &#10;Unless required by applicable law or agreed to in writing,&#10;software distributed under the License is distributed on an&#10;&quot;AS IS&quot; BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND,&#10;either express or implied.  See the License for the specific&#10;language governing permissions and limitations under the&#10;License." />
+      <option name="myName" value="infoq2020" />
     </copyright>
   </component>
   <component name="Encoding">
     <file url="file://$PROJECT_DIR$" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/benchmark" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/benchmark/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/core" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/core/src/main/java" charset="UTF-8" />
   </component>
   <component name="InspectionProjectProfileManager">
     <profile version="1.0" is_locked="true">
