@@ -70,7 +70,7 @@ public class MethodKeyTest {
   @Test
   public void nullPointers() {
     try {
-      new MethodKey(Object.class, "toString", null);
+      new MethodKey(Object.class, "toString", (Class<?>[])null);
       fail("Expected NullPointerException");
     } catch(NullPointerException expected) {}
     try {
