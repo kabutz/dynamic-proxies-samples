@@ -83,7 +83,7 @@ public class Proxies {
   // tag::synchronizedProxy()[]
   public static <S> S synchronizedProxy(
       Class<? super S> subjectInterface, S subject) {
-    Objects.requireNonNull(subject, "p==null");
+    Objects.requireNonNull(subject, "subject==null");
     return castProxy(subjectInterface,
         new SynchronizedHandler<>(subject));
   }
