@@ -3391,19 +3391,6 @@
         <root url="jar://$MAVEN_REPOSITORY$/com/sparkjava/spark-core/2.8.0/spark-core-2.8.0-sources.jar!/" />
       </SOURCES>
     </library>
-    <library name="Maven: eu.javaspecialists.books.dynamicproxies:core:1.0-SNAPSHOT">
-      <CLASSES>
-        <root url="jar://$MAVEN_REPOSITORY$/eu/javaspecialists/books/dynamicproxies/core/1.0-SNAPSHOT/core-1.0-SNAPSHOT.jar!/" />
-      </CLASSES>
-      <JAVADOC>
-        <root url="jar://$PROJECT_DIR$/core/core-1.0-SNAPSHOT-javadoc.jar!/" />
-        <root url="jar://$MAVEN_REPOSITORY$/eu/javaspecialists/books/dynamicproxies/core/1.0-SNAPSHOT/core-1.0-SNAPSHOT-javadoc.jar!/" />
-      </JAVADOC>
-      <SOURCES>
-        <root url="jar://$PROJECT_DIR$/core/core-1.0-SNAPSHOT-sources.jar!/" />
-        <root url="jar://$MAVEN_REPOSITORY$/eu/javaspecialists/books/dynamicproxies/core/1.0-SNAPSHOT/core-1.0-SNAPSHOT-sources.jar!/" />
-      </SOURCES>
-    </library>
     <library name="Maven: javax.servlet:javax.servlet-api:3.1.0">
       <CLASSES>
         <root url="jar://$MAVEN_REPOSITORY$/javax/servlet/javax.servlet-api/3.1.0/javax.servlet-api-3.1.0.jar!/" />
