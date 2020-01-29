@@ -25,9 +25,9 @@
     <modelVersion>4.0.0</modelVersion>
 
     <parent>
-        <artifactId>infoq-dynamic-proxies</artifactId>
+        <artifactId>dynamic-proxies-samples</artifactId>
         <groupId>eu.javaspecialists.books.dynamicproxies</groupId>
-        <version>0.1-SNAPSHOT</version>
+        <version>1.0.0-SNAPSHOT</version>
     </parent>
 
     <artifactId>benchmark</artifactId>

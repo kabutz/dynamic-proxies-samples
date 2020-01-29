@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2020 Heinz Max Kabutz
+ * Copyright (C) 2000-2019 Heinz Max Kabutz
  *
  * See the NOTICE file distributed with this work for additional
  * information regarding copyright ownership.  Heinz Max Kabutz
@@ -17,16 +17,17 @@
  * language governing permissions and limitations under the
  * License.
  */
-module eu.javaspecialists.books.dynamicproxies {
-  requires java.net.http;
-  requires java.logging;
-  requires java.desktop;
-  requires spark.core;
 
-  exports eu.javaspecialists.books.dynamicproxies;
-  exports eu.javaspecialists.books.dynamicproxies.util;
-  exports eu.javaspecialists.books.dynamicproxies.util.chain;
+package eu.javaspecialists.books.dynamicproxies.ch03.gotchas;
 
-  // please let us know if we need to export more by emailing
-  // heinz@javaspecialists.eu
+import eu.javaspecialists.books.dynamicproxies.*;
+
+import java.util.*;
+
+public class InterfacesOnlyPlease {
+  public static void main(String... args) {
+    List<String> list =
+        Proxies.simpleProxy(AbstractList.class,
+            new ArrayList<>());
+  }
 }
