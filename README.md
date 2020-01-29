@@ -51,3 +51,4 @@ The release jar and sources jar can be found in the target directory  and can be
  
 The release is done by the
  [Maven Release Plugin](https://maven.apache.org/maven-release/maven-release-plugin/).
+
