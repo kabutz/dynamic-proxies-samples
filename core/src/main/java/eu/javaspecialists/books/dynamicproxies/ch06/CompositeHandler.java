@@ -115,14 +115,6 @@ public class CompositeHandler
     }
   }
 
-  private void requiresAllInterfaces(Object arg) {
-    for (var check : typeChecks) {
-      if (!check.isInstance(arg))
-        throw new ClassCastException("class " + arg.getClass()
-        + " cannot be cast to " + check);
-    }
-  }
-
   /**
    * Specific match for add(Object) and remove(Object) methods.
    */
@@ -131,6 +123,14 @@ public class CompositeHandler
                && method.getParameterCount() == 1
                && ParameterTypesFetcher.get(method)[0]
                       == Object.class;
+  }
+
+  private void requiresAllInterfaces(Object arg) {
+    for (var check : typeChecks) {
+      if (!check.isInstance(arg))
+        throw new ClassCastException("class " + arg.getClass()
+        + " cannot be cast to " + check);
+    }
   }
 }
 // end::listing[]
