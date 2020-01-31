@@ -31,8 +31,8 @@ public class TeeOutputStream extends OutputStream
   private final Collection<OutputStream> streams =
       new ArrayList<>();
   @Override
-  public void add(OutputStream out) {
-    streams.add(out);
+  public boolean add(OutputStream out) {
+    return streams.add(out);
   }
   @Override
   public boolean remove(OutputStream out) {

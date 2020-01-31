@@ -35,8 +35,8 @@ public class TeeAppendable<E extends
   private final Collection<E> children = new ArrayList<>();
 
   @Override
-  public void add(E child) {
-    children.add(child);
+  public boolean add(E child) {
+    return children.add(child);
   }
 
   @Override

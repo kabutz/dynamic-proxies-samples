@@ -22,7 +22,7 @@ package eu.javaspecialists.books.dynamicproxies.ch06;
 
 // tag::listing[]
 public interface BaseComponent<T> {
-  default void add(T t) {}
+  default boolean add(T t) { return false; }
   default boolean remove(T t) { return false; }
 }
 // end::listing[]

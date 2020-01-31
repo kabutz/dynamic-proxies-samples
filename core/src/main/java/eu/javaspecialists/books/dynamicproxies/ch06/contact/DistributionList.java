@@ -27,8 +27,8 @@ public class DistributionList implements Contact {
   private final List<Contact> contacts = new ArrayList<>();
 
   @Override
-  public void add(Contact c) {
-    contacts.add(c);
+  public boolean add(Contact c) {
+    return contacts.add(c);
   }
   @Override
   public boolean remove(Contact c) {
