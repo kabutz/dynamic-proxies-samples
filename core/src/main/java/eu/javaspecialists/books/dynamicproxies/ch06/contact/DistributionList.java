@@ -40,11 +40,7 @@ public class DistributionList implements Contact {
   }
   @Override
   public int count() {
-    int leaves = 0;
-    for (var contact : contacts) {
-      leaves += contact.count();
-    }
-    return leaves;
+    return contacts.stream().mapToInt(Contact::count).sum();
   }
 }
 // end::listing[]
