@@ -20,6 +20,7 @@
 
 package eu.javaspecialists.books.dynamicproxies.ch06.contact;
 
+import java.util.concurrent.*;
 import java.util.function.*;
 
 import static org.junit.Assert.*;
@@ -65,5 +66,29 @@ public class ContactTest {
     assertEquals(5, javaSpecialistsNewsletter.count());
     javaSpecialistsNewsletter.sendMail("Hello there 3");
     assertEquals(3, john.getMessages());
+
+    testExceptions(compositeCreator);
+  }
+
+  private static class ExceptionalPerson extends Person {
+    public ExceptionalPerson(String email) {
+      super(email);
+    }
+    public void sendMail(String body) {
+      throw new IllegalMonitorStateException("No SPAM allowed");
+    }
+  }
+
+  public void testExceptions(Supplier<Contact> compositeCreator) {
+    Contact javaSpecialistsNewsletter = compositeCreator.get();
+    assertEquals(0, javaSpecialistsNewsletter.count());
+    var john = new ExceptionalPerson("john@aol.com");
+    javaSpecialistsNewsletter.add(john);
+
+    try {
+      javaSpecialistsNewsletter.sendMail("Free Offer");
+      fail("Expected an IllegalMonitorStateException");
+    } catch (IllegalMonitorStateException expected) {
+    }
   }
 }

@@ -73,6 +73,22 @@ public class CompositeHandler
       public Throwable fillInStackTrace() { return null; }
     }
 
+    // The purpose of the mapFunction is to convert checked
+    // exceptions from our call to method.invoke() into
+    // an UncheckedException, which we will unwrap later.
+    // Unlike the reducers, we need to create a new lambda
+    // each time we call the invoke() method, as we need to
+    // capture the method and args parameters.
+    Function<Object, Object> mapFunction = child -> {
+      try {
+        return method.invoke(child, args);
+      } catch (IllegalAccessException e) {
+        throw new UncheckedException(e);
+      } catch (InvocationTargetException e) {
+        throw new UncheckedException(e.getCause());
+      }
+    };
+
     // The reducer is used to "reduce" results from method calls
     // to a single result.  By default we will use the
     // NULL_REDUCER, which always returns null.  This is
@@ -80,21 +96,6 @@ public class CompositeHandler
     var reducer = reducers.getOrDefault(
         new MethodKey(method), Reducer.NULL_REDUCER);
     try {
-      // The purpose of the mapFunction is to convert checked
-      // exceptions from our call to method.invoke() into
-      // an UncheckedException, which we will unwrap later.
-      // Unlike the reducers, we need to create a new lambda
-      // each time we call the invoke() method, as we need to
-      // capture the method and args parameters.
-      Function<Object, Object> mapFunction = child -> {
-        try {
-          return method.invoke(child, args);
-        } catch (IllegalAccessException e) {
-          throw new UncheckedException(e);
-        } catch (InvocationTargetException e) {
-          throw new UncheckedException(e.getCause());
-        }
-      };
       // We now need to call the method on all our children and
       // do a "reduce" on the results to return a single result.
       var result = children.stream()
@@ -129,7 +130,8 @@ public class CompositeHandler
     for (var check : typeChecks) {
       if (!check.isInstance(arg))
         throw new ClassCastException("class " + arg.getClass()
-        + " cannot be cast to " + check);
+                                         + " cannot be cast to" +
+                                         " " + check);
     }
   }
 }
