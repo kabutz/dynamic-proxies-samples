@@ -113,7 +113,7 @@ public class Proxies {
   private final static Class<?>[] EMPTY = {};
   public static <T extends BaseComponent<? super T>> T compose(
       Class<T> target) {
-    return compose(target, null, EMPTY);
+    return compose(target, EMPTY);
   }
   public static <T extends BaseComponent<? super T>> T compose(
       Class<T> target, Map<MethodKey, Reducer> reducers) {
@@ -123,6 +123,12 @@ public class Proxies {
       Class<T> target, Class<?>... typeChecks) {
     return compose(target, null, typeChecks);
   }
+  /**
+   * @param target interface to proxy. Must extend BaseComponent
+   * @param reducers map from MethodKey to Reducer, can be null
+   * @param typeChecks object parameter passed to add() must
+   *                   implement all these interfaces
+   */
   public static <T extends BaseComponent<? super T>> T compose(
       Class<T> target, Map<MethodKey, Reducer> reducers,
       Class<?>... typeChecks) {
