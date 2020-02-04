@@ -124,9 +124,11 @@ public class Proxies {
   }
   /**
    * @param target interface to proxy. Must extend BaseComponent
-   * @param reducers map from MethodKey to Reducer, can be null
+   * @param reducers map from MethodKey to Reducer, default of
+   *                 empty map with Map.of().
    * @param typeChecks object parameter passed to add() must
-   *                   implement all these interfaces
+   *                   implement all these interfaces, default of
+   *                   only the target interface.
    */
   public static <T extends BaseComponent<? super T>> T compose(
       Class<T> target, Map<MethodKey, Reducer> reducers,
