@@ -129,9 +129,8 @@ public class CompositeHandler
   private void requiresAllInterfaces(Object arg) {
     for (var check : typeChecks) {
       if (!check.isInstance(arg))
-        throw new ClassCastException("class " + arg.getClass()
-                                         + " cannot be cast to" +
-                                         " " + check);
+        throw new ClassCastException(
+            arg.getClass() + " cannot be cast to " + check);
     }
   }
 }
