@@ -74,6 +74,7 @@ public class ContactTest {
     public ExceptionalPerson(String email) {
       super(email);
     }
+    @Override
     public void sendMail(String body) {
       throw new IllegalMonitorStateException("No SPAM allowed");
     }
