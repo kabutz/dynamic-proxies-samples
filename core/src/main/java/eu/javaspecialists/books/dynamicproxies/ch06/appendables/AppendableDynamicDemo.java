@@ -45,7 +45,6 @@ public class AppendableDynamicDemo {
         .append("Does this work?")
         .append('\n');
     tee.flush();
-    tee.add("Hello");
 
     System.out.println("sw = " + sw);
     // end::listing[]

@@ -27,6 +27,8 @@ import org.junit.*;
 
 import java.util.*;
 
+import static org.junit.Assert.*;
+
 public class ContactDynamicTest extends ContactTest {
   @Test
   public void testDynamicComposite() {
@@ -34,7 +36,18 @@ public class ContactDynamicTest extends ContactTest {
         new MethodKey(Contact.class, "count"),
         new Reducer(0, (r1, r2) -> (int) r1 + (int) r2)
     );
-    test(() -> Proxies.compose(Contact.class, reducers,
-        Contact.class));
+    test(() -> Proxies.compose(Contact.class, reducers));
+  }
+
+  @Test
+  public void testTypeSafetyOfAdd() {
+    Contact contact = Proxies.compose(Contact.class);
+    contact.add(new Person("heinz@email.com"));
+
+    try {
+      BaseComponent untyped = contact;
+      untyped.add("Hello world"); // Should ClassCastException
+      fail("Expected a ClassCastException");
+    } catch (ClassCastException success) { }
   }
 }

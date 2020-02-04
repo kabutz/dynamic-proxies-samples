@@ -110,18 +110,17 @@ public class Proxies {
   // end::adapt()[]
 
   // tag::compose()[]
-  private final static Class<?>[] EMPTY = {};
   public static <T extends BaseComponent<? super T>> T compose(
       Class<T> target) {
-    return compose(target, EMPTY);
+    return compose(target, target);
   }
   public static <T extends BaseComponent<? super T>> T compose(
       Class<T> target, Map<MethodKey, Reducer> reducers) {
-    return compose(target, reducers, EMPTY);
+    return compose(target, reducers, target);
   }
   public static <T extends BaseComponent<? super T>> T compose(
       Class<T> target, Class<?>... typeChecks) {
-    return compose(target, null, typeChecks);
+    return compose(target, Map.of(), typeChecks);
   }
   /**
    * @param target interface to proxy. Must extend BaseComponent
