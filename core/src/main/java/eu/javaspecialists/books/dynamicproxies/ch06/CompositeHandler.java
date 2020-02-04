@@ -29,9 +29,9 @@ import java.util.function.*;
 // tag::listing[]
 public class CompositeHandler
     implements InvocationHandler {
-  private final List<Object> children = new ArrayList<>();
   private final Map<MethodKey, Reducer> reducers;
   private final Class<?>[] typeChecks;
+  private final List<Object> children = new ArrayList<>();
 
   @SuppressWarnings({"unchecked", "rawtypes"})
   public <E extends BaseComponent<? super E>> CompositeHandler(
@@ -41,8 +41,8 @@ public class CompositeHandler
     if (!BaseComponent.class.isAssignableFrom(target))
       throw new IllegalArgumentException(
           "target is not derived from BaseComponent");
-    this.typeChecks = Objects.requireNonNull(typeChecks);
     this.reducers = Objects.requireNonNull(reducers);
+    this.typeChecks = Objects.requireNonNull(typeChecks);
   }
 
   @Override
