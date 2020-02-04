@@ -35,14 +35,14 @@ public class ContactDynamicDemo {
     );
 
     Contact javaSpecialistsNewsletter =
-        Proxies.compose(Contact.class, reducers, Contact.class);
+        Proxies.compose(Contact.class, reducers);
     System.out.println(javaSpecialistsNewsletter.count());
     javaSpecialistsNewsletter.add(new Person("john@aol.com"));
     javaSpecialistsNewsletter.sendMail("Hello there 1");
     System.out.println(javaSpecialistsNewsletter.count());
 
     Contact allStudents =
-        Proxies.compose(Contact.class, reducers, Contact.class);
+        Proxies.compose(Contact.class, reducers);
     allStudents.add(new Person("peter@absa.co.za"));
     allStudents.add(new Person("mzani@absa.co.za"));
     javaSpecialistsNewsletter.add(allStudents);
@@ -51,7 +51,7 @@ public class ContactDynamicDemo {
     System.out.println(javaSpecialistsNewsletter.count());
 
     Contact extremeJava =
-        Proxies.compose(Contact.class, reducers, Contact.class);
+        Proxies.compose(Contact.class, reducers);
     extremeJava.add(new Person("John@fnb.co.za"));
     extremeJava.add(new Person("Hlope@fnb.co.za"));
     allStudents.add(extremeJava);
