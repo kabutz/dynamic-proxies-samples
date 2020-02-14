@@ -18,7 +18,7 @@
  * License.
  */
 
-package eu.javaspecialists.books.dynamicproxies.ch05;
+package eu.javaspecialists.books.dynamicproxies.handlers;
 
 import eu.javaspecialists.books.dynamicproxies.util.*;
 import eu.javaspecialists.books.dynamicproxies.util.chain.*;
@@ -26,33 +26,25 @@ import eu.javaspecialists.books.dynamicproxies.util.chain.*;
 import java.lang.reflect.*;
 
 // tag::listing[]
-public class ObjectAdapterHandler implements InvocationHandler {
+public class FilterHandler implements InvocationHandler {
   private final ChainedInvocationHandler chain;
 
-  public ObjectAdapterHandler(Class<?> target,
-                              Object adaptee,
-                              Object adapter) {
-    VTable adapterVT =
-        VTables.newVTable(adapter.getClass(), target);
-    VTable adapteeVT =
-        VTables.newVTable(adaptee.getClass(), target);
-    VTable defaultVT = VTables.newDefaultMethodVTable(target);
+  public FilterHandler(Class<?> filter, Object component) {
+    VTable vt = VTables.newVTable(component.getClass(), filter);
+    VTable defaultVT = VTables.newDefaultMethodVTable(filter);
 
-    chain = new VTableHandler(adapter, adapterVT,
-        new VTableHandler(adaptee, adapteeVT,
-            new VTableDefaultMethodsHandler(defaultVT, null)));
+    chain = new VTableHandler(component, vt,
+        new VTableDefaultMethodsHandler(
+            defaultVT, null));
 
-    chain.checkAllMethodsAreHandled(target);
+    chain.checkAllMethodsAreHandled(filter);
   }
 
   @Override
-  public Object invoke(Object proxy, Method method,
+  public Object invoke(Object proxy,
+                       Method method,
                        Object[] args) throws Throwable {
-    try {
-      return chain.invoke(proxy, method, args);
-    } catch (InvocationTargetException e) {
-      throw e.getCause();
-    }
+    return chain.invoke(proxy, method, args);
   }
 }
 // end::listing[]

@@ -20,6 +20,8 @@
 
 package eu.javaspecialists.books.dynamicproxies.ch03.logging;
 
+import eu.javaspecialists.books.dynamicproxies.handlers.*;
+
 import java.lang.reflect.*;
 import java.util.*;
 import java.util.concurrent.*;

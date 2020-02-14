@@ -20,7 +20,7 @@
 
 package eu.javaspecialists.books.dynamicproxies.ch06.contact;
 
-import eu.javaspecialists.books.dynamicproxies.ch06.*;
+import eu.javaspecialists.books.dynamicproxies.handlers.*;
 
 // tag::listing[]
 public interface Contact extends BaseComponent<Contact> {

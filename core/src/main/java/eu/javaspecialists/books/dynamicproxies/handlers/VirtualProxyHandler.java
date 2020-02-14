@@ -18,11 +18,29 @@
  * License.
  */
 
-package eu.javaspecialists.books.dynamicproxies.ch06;
+package eu.javaspecialists.books.dynamicproxies.handlers;
+
+import java.lang.reflect.*;
+import java.util.function.*;
 
 // tag::listing[]
-public interface BaseComponent<T> {
-  default boolean add(T t) { return false; }
-  default boolean remove(T t) { return false; }
+public class VirtualProxyHandler<S>
+    implements InvocationHandler {
+  private final Supplier<? extends S> subjectSupplier;
+  private S subject;
+
+  public VirtualProxyHandler(
+      Supplier<? extends S> subjectSupplier) {
+    this.subjectSupplier = subjectSupplier;
+  }
+  private S getSubject() {
+    if (subject == null) subject = subjectSupplier.get();
+    return subject;
+  }
+  @Override
+  public Object invoke(Object proxy, Method method,
+                       Object[] args) throws Throwable {
+    return method.invoke(getSubject(), args);
+  }
 }
 // end::listing[]

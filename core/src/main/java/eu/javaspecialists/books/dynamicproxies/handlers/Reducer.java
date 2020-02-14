@@ -18,7 +18,11 @@
  * License.
  */
 
-package eu.javaspecialists.books.dynamicproxies.ch06;
+package eu.javaspecialists.books.dynamicproxies.handlers;
+
+/**
+ * Used by #CompositeHandler
+ */
 
 // tag::listing[]
 import java.util.function.*;

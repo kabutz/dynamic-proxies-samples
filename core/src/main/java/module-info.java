@@ -24,6 +24,7 @@ module eu.javaspecialists.books.dynamicproxies {
   requires spark.core;
 
   exports eu.javaspecialists.books.dynamicproxies;
+  exports eu.javaspecialists.books.dynamicproxies.handlers;
   exports eu.javaspecialists.books.dynamicproxies.util;
   exports eu.javaspecialists.books.dynamicproxies.util.chain;
 

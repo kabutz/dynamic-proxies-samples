@@ -18,7 +18,7 @@
  * License.
  */
 
-package eu.javaspecialists.books.dynamicproxies.ch03.logging;
+package eu.javaspecialists.books.dynamicproxies.handlers;
 
 import java.lang.reflect.*;
 import java.util.logging.*;

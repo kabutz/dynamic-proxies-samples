@@ -18,29 +18,25 @@
  * License.
  */
 
-package eu.javaspecialists.books.dynamicproxies.ch03.virtual;
+package eu.javaspecialists.books.dynamicproxies.handlers;
 
 import java.lang.reflect.*;
-import java.util.function.*;
 
 // tag::listing[]
-public class VirtualProxyHandler<S>
+public class SynchronizedHandler<S>
     implements InvocationHandler {
-  private final Supplier<? extends S> subjectSupplier;
-  private S subject;
-
-  public VirtualProxyHandler(
-      Supplier<? extends S> subjectSupplier) {
-    this.subjectSupplier = subjectSupplier;
-  }
-  private S getSubject() {
-    if (subject == null) subject = subjectSupplier.get();
-    return subject;
+  private final S subject;
+  public SynchronizedHandler(S subject) {
+    this.subject = subject;
   }
   @Override
   public Object invoke(Object proxy, Method method,
                        Object[] args) throws Throwable {
-    return method.invoke(getSubject(), args);
+    // synchronize on the proxy instance, which is similar to
+    // how Vector and Collections.synchronizedList() work
+    synchronized (proxy) {
+      return method.invoke(subject, args);
+    }
   }
 }
 // end::listing[]

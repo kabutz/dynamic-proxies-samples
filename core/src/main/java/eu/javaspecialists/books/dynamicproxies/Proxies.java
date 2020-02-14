@@ -20,12 +20,7 @@
 
 package eu.javaspecialists.books.dynamicproxies;
 
-import eu.javaspecialists.books.dynamicproxies.ch03.logging.*;
-import eu.javaspecialists.books.dynamicproxies.ch03.protection.*;
-import eu.javaspecialists.books.dynamicproxies.ch03.virtual.*;
-import eu.javaspecialists.books.dynamicproxies.ch04.*;
-import eu.javaspecialists.books.dynamicproxies.ch05.*;
-import eu.javaspecialists.books.dynamicproxies.ch06.*;
+import eu.javaspecialists.books.dynamicproxies.handlers.*;
 import eu.javaspecialists.books.dynamicproxies.util.*;
 
 import java.lang.reflect.*;
@@ -123,9 +118,10 @@ public class Proxies {
     return compose(target, Map.of(), typeChecks);
   }
   /**
-   * @param target interface to proxy. Must extend BaseComponent
-   * @param reducers map from MethodKey to Reducer, default of
-   *                 empty map with Map.of().
+   * @param target     interface to proxy. Must extend
+   *                   BaseComponent
+   * @param reducers   map from MethodKey to Reducer, default of
+   *                   empty map with Map.of().
    * @param typeChecks object parameter passed to add() must
    *                   implement all these interfaces, default of
    *                   only the target interface.

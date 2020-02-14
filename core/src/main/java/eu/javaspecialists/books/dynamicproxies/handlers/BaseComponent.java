@@ -18,25 +18,14 @@
  * License.
  */
 
-package eu.javaspecialists.books.dynamicproxies.ch03.protection;
+package eu.javaspecialists.books.dynamicproxies.handlers;
 
-import java.lang.reflect.*;
-
+/**
+ * Used by #CompositeHandler
+ */
 // tag::listing[]
-public class SynchronizedHandler<S>
-    implements InvocationHandler {
-  private final S subject;
-  public SynchronizedHandler(S subject) {
-    this.subject = subject;
-  }
-  @Override
-  public Object invoke(Object proxy, Method method,
-                       Object[] args) throws Throwable {
-    // synchronize on the proxy instance, which is similar to
-    // how Vector and Collections.synchronizedList() work
-    synchronized (proxy) {
-      return method.invoke(subject, args);
-    }
-  }
+public interface BaseComponent<T> {
+  default boolean add(T t) { return false; }
+  default boolean remove(T t) { return false; }
 }
 // end::listing[]
