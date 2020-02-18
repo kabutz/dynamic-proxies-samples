@@ -55,6 +55,7 @@
                         <configuration>
                             <compilerArgs>
                                 <compilerArg>--add-modules=java.sql</compilerArg>
+                                <compilerArg>--add-modules=java.compiler</compilerArg>
                             </compilerArgs>
                         </configuration>
                     </execution>

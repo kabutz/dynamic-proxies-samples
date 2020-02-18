@@ -28,7 +28,6 @@ module eu.javaspecialists.books.dynamicproxies {
   exports eu.javaspecialists.books.dynamicproxies.util;
   exports eu.javaspecialists.books.dynamicproxies.util.chain;
 
-  requires java.compiler;
   // please let us know if we need to export more by emailing
   // heinz@javaspecialists.eu
 }
