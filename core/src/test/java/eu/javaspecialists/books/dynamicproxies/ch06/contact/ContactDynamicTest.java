@@ -26,6 +26,7 @@ import eu.javaspecialists.books.dynamicproxies.util.*;
 import org.junit.*;
 
 import java.util.*;
+import java.util.stream.*;
 
 import static org.junit.Assert.*;
 
@@ -37,6 +38,18 @@ public class ContactDynamicTest extends ContactTest {
         new Reducer(0, (r1, r2) -> (int) r1 + (int) r2)
     );
     test(() -> Proxies.compose(Contact.class, reducers));
+  }
+
+  @Test
+  public void testDynamicCompositeMany() {
+    var reducers = Map.of(
+        new MethodKey(Contact.class, "count"),
+        new Reducer(0, (r1, r2) -> (int) r1 + (int) r2)
+    );
+    IntStream.range(0, 10000).parallel()
+        .forEach(
+            i -> test(
+                () -> Proxies.compose(Contact.class, reducers)));
   }
 
   @Test

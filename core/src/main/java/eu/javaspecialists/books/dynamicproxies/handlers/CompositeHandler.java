@@ -23,9 +23,10 @@ package eu.javaspecialists.books.dynamicproxies.handlers;
 import eu.javaspecialists.books.dynamicproxies.util.*;
 
 import java.lang.invoke.*;
-import java.lang.ref.*;
 import java.lang.reflect.*;
 import java.util.*;
+import java.util.concurrent.*;
+import java.util.concurrent.atomic.*;
 import java.util.function.*;
 
 // tag::listing[]
@@ -35,11 +36,8 @@ public class CompositeHandler
   private final Class<?>[] typeChecks;
   private final List<Object> children = new ArrayList<>();
   private final VTable defaultVT;
-  // This needs to be a WeakHashMap to prevent class loader leaks
-  private static final Map<Class<?>, Reference<VTable>>
-      childMethodMap = Collections.synchronizedMap(
-          new WeakHashMap<>());
-
+  private final Map<Class<?>, VTable> childMethodMap =
+      new ConcurrentHashMap<>();
   private final Class<?> target;
 
   @SuppressWarnings({"unchecked", "rawtypes"})
@@ -77,9 +75,8 @@ public class CompositeHandler
             } else {
               receiverClass = target;
             }
-            return new WeakReference<>(
-                VTables.newVTableExcludingObjectMethods(
-                    receiverClass, target));
+            return VTables.newVTableExcludingObjectMethods(
+                receiverClass, target);
           });
       return children.add(args[0]);
     } else if (matches(method, "remove")) {
@@ -109,7 +106,7 @@ public class CompositeHandler
     // capture the method and args parameters.
     Function<Object, Object> mapFunction = child -> {
       try {
-        VTable vt = childMethodMap.get(child.getClass()).get();
+        VTable vt = childMethodMap.get(child.getClass());
         Objects.requireNonNull(vt, "vt==null");
         Method childMethod = vt.lookup(method);
         Objects.requireNonNull(childMethod, "childMethod==null");
