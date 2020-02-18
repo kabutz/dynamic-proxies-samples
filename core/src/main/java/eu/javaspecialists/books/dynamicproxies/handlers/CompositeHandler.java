@@ -43,13 +43,6 @@ public class CompositeHandler
       Collections.synchronizedMap(new WeakHashMap<>());
 
   private final Class<?> target;
-  public static void clean() {
-    System.out.println("childMethodMap = " + childMethodMap);
-    //    childMethodMap.clear();
-    for (Class<?> aClass : childMethodMap.keySet()) {
-      // this should automatically delete old entries
-    }
-  }
 
   @SuppressWarnings({"unchecked", "rawtypes"})
   public <E extends BaseComponent<? super E>> CompositeHandler(
@@ -86,7 +79,7 @@ public class CompositeHandler
             }
             return new WeakReference<>(
                 VTables.newVTableExcludingObjectMethods(
-                    childClass, target));
+                    receiverClass, target));
           });
       return children.add(args[0]);
     } else if (matches(method, "remove")) {
