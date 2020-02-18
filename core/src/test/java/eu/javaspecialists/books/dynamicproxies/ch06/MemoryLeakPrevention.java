@@ -21,12 +21,15 @@
 package eu.javaspecialists.books.dynamicproxies.ch06;
 
 import eu.javaspecialists.books.dynamicproxies.*;
+import eu.javaspecialists.books.dynamicproxies.handlers.*;
 
 import javax.tools.*;
 import java.io.*;
 import java.lang.ref.*;
 import java.net.*;
 import java.util.*;
+
+import static org.junit.Assert.*;
 
 public class MemoryLeakPrevention {
   static class GeneratedJavaSourceFile extends SimpleJavaFileObject {
@@ -66,8 +69,7 @@ public class MemoryLeakPrevention {
     private final GeneratedClassFile gcf;
 
     public GeneratingJavaFileManager(
-        StandardJavaFileManager sjfm,
-        GeneratedClassFile gcf) {
+        StandardJavaFileManager sjfm, GeneratedClassFile gcf) {
       super(sjfm);
       this.gcf = gcf;
     }
@@ -79,7 +81,6 @@ public class MemoryLeakPrevention {
       return gcf;
     }
   }
-
 
   public static class Generator extends ClassLoader {
     private static final JavaCompiler jc;
@@ -104,7 +105,8 @@ public class MemoryLeakPrevention {
           new DiagnosticCollector<JavaFileObject>();
 
       boolean result = compile(className, javaSource, gcf, dc);
-      return processResults(className, javaSource, gcf, dc, result);
+      return processResults(className, javaSource, gcf, dc,
+          result);
     }
 
     private boolean compile(
@@ -141,47 +143,69 @@ public class MemoryLeakPrevention {
       }
     }
 
-    private Class createClass(
-        String className, GeneratedClassFile gcf) {
-      try {
-        byte[] data = gcf.getClassAsBytes();
-        return defineClass(className, data, 0, data.length);
-      } catch (RuntimeException e) {
-        throw e;
-      } catch (Exception e) {
-        throw new IllegalArgumentException("Proxy problem", e);
-      }
+    private Class createClass(String className,
+                              GeneratedClassFile gcf) {
+      byte[] data = gcf.getClassAsBytes();
+      return defineClass(className, data, 0, data.length);
     }
   }
+
+  private static WeakReference<Class<?>> makeACompositeAndUseIt(Class clazz) {
+    BaseComponent composite = Proxies.compose(clazz);
+    Object child = Proxies.compose(clazz);
+    composite.add(child);
+
+    System.out.println("composite.getClass().getName() = " + composite.getClass().getName());
+    //    System.out.println("child.getClass().getName() = " +
+    //    child.getClass().getName());
+    System.out.println("composite.getClass().getModule() = " + composite.getClass().getModule());
+    return new WeakReference<>(clazz);
+  }
+
   public static void main(String... args) throws Exception {
-    Generator gen = new Generator("mystery-meat", null);
+    new MemoryLeakPrevention().testAgainstMemoryLeak();
+  }
 
-    Class<?> clazz =
-        gen.make("A", "public interface A extends eu.javaspecialists.books.dynamicproxies.handlers.BaseComponent<A> { void foo(); }");
+  public void testAgainstMemoryLeak() throws Exception {
+    Generator gen = new Generator("mystery-meat",
+        BaseComponent.class.getClassLoader());
 
-//    Object composite = Proxies.compose(clazz);
-    Object proxy = java.lang.reflect.Proxy.newProxyInstance(
-        gen, new Class<?>[] {clazz}, (p, m, a) -> {
-          System.out.println(m);
+    //    Class clazz =
+    //        gen.make("A", "public interface A { void foo();
+    //        }");
+    Class clazz =
+        gen.make("A", "public interface A extends eu" +
+                          ".javaspecialists.books" +
+                          ".dynamicproxies.handlers" +
+                          ".BaseComponent<A> { void foo(); }").asSubclass(BaseComponent.class);
+
+    Object proxy = Proxies.castProxy(clazz,
+        (proxy1, method, args1) -> {
+          System.out.println(method);
           return null;
         });
-    System.out.println("cl = " + gen.getName());
-    System.out.println("clazz = " + clazz);
-    System.out.println("clazz.getClassLoader().getName() = " + clazz.getClassLoader().getName());
-    WeakReference<Class<?>> clazzRef =
-        new WeakReference<>(clazz);
-    clazz = null;
+    clazz.getMethod("foo").invoke(proxy);
+    System.out.println("proxy.getClass().getModule() = " + proxy.getClass().getModule());
+    System.out.println("clazz.getModule() = " + clazz.getModule());
+    System.out.println("proxy.getClass() = " + proxy.getClass());
+    System.out.println("proxy.getClass().getClassLoader()" +
+                           ".getName() = " + proxy.getClass().getClassLoader().getName());
+    proxy = null;
+    //    WeakReference<Class<?>> clazzRef =
+    //        new WeakReference<>(clazz);
     gen = null;
 
-    proxy.getClass().getMethod("foo").invoke(proxy);
-    proxy = null;
+    WeakReference<Class<?>> clazzRef =
+        makeACompositeAndUseIt(clazz);
+    clazz = null;
 
-    while (clazzRef.get() != null) {
-      System.out.println("System GC");
+    for (int i = 0; clazzRef.get() != null && i < 10; i++) {
+      //      CompositeHandler.clean();
       System.gc();
       Thread.sleep(200);
     }
 
-    System.out.println("Class and class loader unloaded");
+    assertNull("Memory leak detected, most likely in " +
+                   "CompositeHandler", clazzRef.get());
   }
 }

@@ -23,8 +23,10 @@ package eu.javaspecialists.books.dynamicproxies.handlers;
 import eu.javaspecialists.books.dynamicproxies.util.*;
 
 import java.lang.invoke.*;
+import java.lang.ref.*;
 import java.lang.reflect.*;
 import java.util.*;
+import java.util.concurrent.*;
 import java.util.function.*;
 
 // tag::listing[]
@@ -34,9 +36,20 @@ public class CompositeHandler
   private final Class<?>[] typeChecks;
   private final List<Object> children = new ArrayList<>();
   private final VTable defaultVT;
-  private static final Map<Class<?>, VTable> childMethodMap =
+//      private static final Map<Class<?>, Reference<VTable>>
+//      childMethodMap =
+//          new ConcurrentHashMap<>();
+  private static final Map<Class<?>, Reference<VTable>> childMethodMap =
       Collections.synchronizedMap(new WeakHashMap<>());
+
   private final Class<?> target;
+  public static void clean() {
+    System.out.println("childMethodMap = " + childMethodMap);
+    //    childMethodMap.clear();
+    for (Class<?> aClass : childMethodMap.keySet()) {
+      // this should automatically delete old entries
+    }
+  }
 
   @SuppressWarnings({"unchecked", "rawtypes"})
   public <E extends BaseComponent<? super E>> CompositeHandler(
@@ -64,14 +77,16 @@ public class CompositeHandler
           childClass -> {
             Module childModule = childClass.getModule();
             Module targetModule = target.getModule();
+            Class<?> receiverClass;
             if (childModule.isExported(
                 childClass.getPackageName(), targetModule)) {
-              return VTables.newVTableExcludingObjectMethods(
-                  childClass, target);
+              receiverClass = childClass;
             } else {
-              return VTables.newVTableExcludingObjectMethods(
-                  target, target);
+              receiverClass = target;
             }
+            return new WeakReference<>(
+                VTables.newVTableExcludingObjectMethods(
+                    childClass, target));
           });
       return children.add(args[0]);
     } else if (matches(method, "remove")) {
@@ -101,7 +116,7 @@ public class CompositeHandler
     // capture the method and args parameters.
     Function<Object, Object> mapFunction = child -> {
       try {
-        VTable vt = childMethodMap.get(child.getClass());
+        VTable vt = childMethodMap.get(child.getClass()).get();
         Method childMethod = vt.lookup(method);
         return childMethod.invoke(child, args);
       } catch (IllegalAccessException e) {
