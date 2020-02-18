@@ -26,7 +26,6 @@ import java.lang.invoke.*;
 import java.lang.ref.*;
 import java.lang.reflect.*;
 import java.util.*;
-import java.util.concurrent.*;
 import java.util.function.*;
 
 // tag::listing[]
@@ -36,11 +35,10 @@ public class CompositeHandler
   private final Class<?>[] typeChecks;
   private final List<Object> children = new ArrayList<>();
   private final VTable defaultVT;
-//      private static final Map<Class<?>, Reference<VTable>>
-//      childMethodMap =
-//          new ConcurrentHashMap<>();
-  private static final Map<Class<?>, Reference<VTable>> childMethodMap =
-      Collections.synchronizedMap(new WeakHashMap<>());
+  // This needs to be a WeakHashMap to prevent class loader leaks
+  private static final Map<Class<?>, Reference<VTable>>
+      childMethodMap = Collections.synchronizedMap(
+          new WeakHashMap<>());
 
   private final Class<?> target;
 
@@ -73,6 +71,8 @@ public class CompositeHandler
             Class<?> receiverClass;
             if (childModule.isExported(
                 childClass.getPackageName(), targetModule)) {
+              // only map child class methods if it is visible to
+              // the target module
               receiverClass = childClass;
             } else {
               receiverClass = target;
