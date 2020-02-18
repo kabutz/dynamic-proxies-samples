@@ -25,7 +25,6 @@ import eu.javaspecialists.books.dynamicproxies.util.*;
 import java.lang.invoke.*;
 import java.lang.reflect.*;
 import java.util.*;
-import java.util.concurrent.*;
 import java.util.function.*;
 
 // tag::listing[]
@@ -61,8 +60,20 @@ public class CompositeHandler
     // from BaseComponent
     if (matches(method, "add")) {
       requiresAllInterfaces(args[0]);
+      Class<?> childClass = args[0].getClass();
       childMethodMap.computeIfAbsent(args[0].getClass(),
-          childClazz -> VTables.newVTable(childClazz, target));
+          childClazz -> {
+            Module childModule = childClass.getModule();
+            Module targetModule = target.getModule();
+            if (childModule.isExported(
+                childClass.getPackageName(), targetModule)) {
+              return VTables.newVTableExcludingObjectMethods(
+                  childClazz, target);
+            } else {
+              return VTables.newVTableExcludingObjectMethods(
+                  target, target);
+            }
+          });
       return children.add(args[0]);
     } else if (matches(method, "remove")) {
       return children.remove(args[0]);
@@ -91,8 +102,8 @@ public class CompositeHandler
     // capture the method and args parameters.
     Function<Object, Object> mapFunction = child -> {
       try {
-        var childMethod =
-            childMethodMap.get(child.getClass()).lookup(method);
+        VTable vt = childMethodMap.get(child.getClass());
+        Method childMethod = vt.lookup(method);
         return childMethod.invoke(child, args);
       } catch (IllegalAccessException e) {
         throw new UncheckedException(e);
