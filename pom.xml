@@ -56,7 +56,7 @@
     </dependencyManagement>
 
     <build>
-        <finalName>${groupId}-${artifactId}-${version}</finalName>
+        <finalName>${project.groupId}-${project.artifactId}-${project.version}</finalName>
         <pluginManagement>
             <plugins>
                 <!-- lock down plugins versions to avoid using Maven defaults -->
