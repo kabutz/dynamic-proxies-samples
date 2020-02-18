@@ -110,7 +110,9 @@ public class CompositeHandler
     Function<Object, Object> mapFunction = child -> {
       try {
         VTable vt = childMethodMap.get(child.getClass()).get();
+        Objects.requireNonNull(vt, "vt==null");
         Method childMethod = vt.lookup(method);
+        Objects.requireNonNull(childMethod, "childMethod==null");
         return childMethod.invoke(child, args);
       } catch (IllegalAccessException e) {
         throw new UncheckedException(e);
