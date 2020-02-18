@@ -44,7 +44,7 @@ public class VTable {
   private final Method[] entries;
   private final Class<?>[][] paramTypes;
   private final boolean[] distinctName;
-  private MethodHandle[] defaultMethods;
+  private final MethodHandle[] defaultMethods;
   private final int size;
   private final int mask;
 
