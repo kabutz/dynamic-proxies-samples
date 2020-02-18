@@ -60,15 +60,14 @@ public class CompositeHandler
     // from BaseComponent
     if (matches(method, "add")) {
       requiresAllInterfaces(args[0]);
-      Class<?> childClass = args[0].getClass();
       childMethodMap.computeIfAbsent(args[0].getClass(),
-          childClazz -> {
+          childClass -> {
             Module childModule = childClass.getModule();
             Module targetModule = target.getModule();
             if (childModule.isExported(
                 childClass.getPackageName(), targetModule)) {
               return VTables.newVTableExcludingObjectMethods(
-                  childClazz, target);
+                  childClass, target);
             } else {
               return VTables.newVTableExcludingObjectMethods(
                   target, target);
