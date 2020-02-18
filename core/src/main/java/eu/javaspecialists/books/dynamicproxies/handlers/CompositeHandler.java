@@ -22,8 +22,10 @@ package eu.javaspecialists.books.dynamicproxies.handlers;
 
 import eu.javaspecialists.books.dynamicproxies.util.*;
 
+import java.lang.invoke.*;
 import java.lang.reflect.*;
 import java.util.*;
+import java.util.concurrent.*;
 import java.util.function.*;
 
 // tag::listing[]
@@ -32,6 +34,10 @@ public class CompositeHandler
   private final Map<MethodKey, Reducer> reducers;
   private final Class<?>[] typeChecks;
   private final List<Object> children = new ArrayList<>();
+  private final VTable defaultVT;
+  private static final Map<Class<?>, VTable> childMethodMap =
+      Collections.synchronizedMap(new WeakHashMap<>());
+  private final Class<?> target;
 
   @SuppressWarnings({"unchecked", "rawtypes"})
   public <E extends BaseComponent<? super E>> CompositeHandler(
@@ -41,8 +47,10 @@ public class CompositeHandler
     if (!BaseComponent.class.isAssignableFrom(target))
       throw new IllegalArgumentException(
           "target is not derived from BaseComponent");
+    this.target = target;
     this.reducers = Objects.requireNonNull(reducers);
     this.typeChecks = Objects.requireNonNull(typeChecks);
+    this.defaultVT = VTables.newDefaultMethodVTable(target);
   }
 
   @Override
@@ -53,6 +61,8 @@ public class CompositeHandler
     // from BaseComponent
     if (matches(method, "add")) {
       requiresAllInterfaces(args[0]);
+      childMethodMap.computeIfAbsent(args[0].getClass(),
+          childClazz -> VTables.newVTable(childClazz, target));
       return children.add(args[0]);
     } else if (matches(method, "remove")) {
       return children.remove(args[0]);
@@ -81,7 +91,9 @@ public class CompositeHandler
     // capture the method and args parameters.
     Function<Object, Object> mapFunction = child -> {
       try {
-        return method.invoke(child, args);
+        var childMethod =
+            childMethodMap.get(child.getClass()).lookup(method);
+        return childMethod.invoke(child, args);
       } catch (IllegalAccessException e) {
         throw new UncheckedException(e);
       } catch (InvocationTargetException e) {
@@ -96,19 +108,29 @@ public class CompositeHandler
     var reducer = reducers.getOrDefault(
         new MethodKey(method), Reducer.NULL_REDUCER);
     try {
+      MethodHandle match = defaultVT.lookupDefaultMethod(method);
+      Object defaultMethodResult;
+      if (match == null) {
+        defaultMethodResult = reducer.getIdentity();
+      } else {
+        defaultMethodResult =
+            match.bindTo(proxy).invokeWithArguments(args);
+      }
+
       // We now need to call the method on all our children and
       // do a "reduce" on the results to return a single result.
+      var merger = reducer.getMerger();
       var result = children.stream()
                        .map(mapFunction)
-                       .reduce(reducer.getIdentity(),
-                           reducer.getMerger());
+                       .reduce(reducer.getIdentity(), merger);
       // A special case of reducer is PROXY_INSTANCE_REDUCER.
       // When that is specified, we return the proxy instance
       // instead.  This is useful to support fluent interfaces
       // that return "this".
       if (reducer == Reducer.PROXY_INSTANCE_REDUCER)
         return proxy;
-      return result;
+      else
+        return merger.apply(result, defaultMethodResult);
     } catch (UncheckedException ex) {
       // Lastly we unwrap the UncheckedException and throw the
       // cause.

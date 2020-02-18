@@ -29,5 +29,9 @@ public class Person implements Contact {
     // connecting to JavaMail and off it goes ...
     System.out.println("Sending " + body + " to " + email);
   }
+  @Override
+  public int count() {
+    return 1;
+  }
 }
 // end::listing[]

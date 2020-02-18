@@ -25,6 +25,6 @@ import eu.javaspecialists.books.dynamicproxies.handlers.*;
 // tag::listing[]
 public interface Contact extends BaseComponent<Contact> {
   void sendMail(String body);
-  default int count() { return 1; }
+  int count();
 }
 // end::listing[]
