@@ -37,8 +37,8 @@ public class Proxies {
 
   // tag::castProxy()[]
   /**
-   * @param intf The interface to implement and cast to
-   * @param handler InvocationHandler for all methods
+   * @param intf       The interface to implement and cast to
+   * @param handler    InvocationHandler for all methods
    * @param extraIntfs Any additional interfaces that our dynamic
    *                   proxy should implement, e.g. Serializable
    */
@@ -52,9 +52,11 @@ public class Proxies {
     Class<?>[] intfs = new Class[extraIntfs.length + 1];
     intfs[0] = intf;
     System.arraycopy(extraIntfs, 0, intfs, 1, extraIntfs.length);
-    return MethodTurboBooster.boost((S) Proxy.newProxyInstance(
-        intf.getClassLoader(), intfs, handler
-    ));
+    return MethodTurboBooster.boost(
+        (S) Proxy.newProxyInstance(
+            intf.getClassLoader(),
+            intfs,
+            new ExceptionUnwrappingInvocationHandler(handler)));
   }
   // end::castProxy()[]
 

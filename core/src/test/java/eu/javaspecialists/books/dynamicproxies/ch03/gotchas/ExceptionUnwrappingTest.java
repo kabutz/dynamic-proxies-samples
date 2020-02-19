@@ -24,11 +24,13 @@ import eu.javaspecialists.books.dynamicproxies.*;
 import org.junit.*;
 
 import java.io.*;
+import java.lang.reflect.*;
 import java.util.*;
+import java.util.concurrent.*;
 
 import static org.junit.Assert.*;
 
-public class ExceptionUnwrapping {
+public class ExceptionUnwrappingTest {
   @Test
   public void testRuntimeExceptions() {
     try {
@@ -39,15 +41,13 @@ public class ExceptionUnwrapping {
     } catch(UnsupportedOperationException success) {
     }
   }
+
   @Test
   public void testIOException() {
     try {
       FileReaderWizard wiz = Proxies.simpleProxy(
-          FileReaderWizard.class, new FileReaderWizard() {
-            @Override
-            public void open() throws IOException {
-              throw new IOException("File has magically vanished");
-            }
+          FileReaderWizard.class, () -> {
+            throw new IOException("File has magically vanished");
           }
       );
       wiz.open();
@@ -59,4 +59,44 @@ public class ExceptionUnwrapping {
   public interface FileReaderWizard {
     void open() throws IOException;
   }
+
+  @Test
+  public void testFalsePositivesException() {
+    try {
+      MethodCallerWizard wiz = Proxies.simpleProxy(
+          MethodCallerWizard.class, () -> {
+            throw new InvocationTargetException(
+                new TimeoutException(
+                    "time flies like an arrow"));
+          }
+      );
+      wiz.call();
+      fail("Expected an InvocationTargetException");
+    } catch(InvocationTargetException success) {
+      try {
+        throw success.getCause();
+      } catch(TimeoutException superSuccess) {
+        assertEquals("time flies like an arrow",
+            superSuccess.getMessage());
+      } catch (Throwable throwable) {
+        fail("Unexpected throwable hidden inside: " + throwable);
+      }
+    }
+  }
+
+  public interface MethodCallerWizard {
+    void call() throws InvocationTargetException;
+  }
+
+  @Test
+  public void testVirtualProxy() {
+    try {
+      Collection<String> test = Proxies.virtualProxy(
+          Collection.class, List::of);
+      test.add("Hello world");
+      fail("Expected an UnsupportedOperationException");
+    } catch(UnsupportedOperationException success) {
+    }
+  }
+  // TODO: Add tests for proxies, adapter, composite, etc.
 }
