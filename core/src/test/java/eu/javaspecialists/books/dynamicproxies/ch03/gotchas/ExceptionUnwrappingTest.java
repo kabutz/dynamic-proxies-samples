@@ -21,6 +21,7 @@
 package eu.javaspecialists.books.dynamicproxies.ch03.gotchas;
 
 import eu.javaspecialists.books.dynamicproxies.*;
+import eu.javaspecialists.books.dynamicproxies.handlers.*;
 import org.junit.*;
 
 import java.io.*;
@@ -32,13 +33,27 @@ import static org.junit.Assert.*;
 
 public class ExceptionUnwrappingTest {
   @Test
+  public void testInvocationHandler() {
+    InvocationHandler rootHandler =
+        (proxy, method, args) -> null;
+    Collection<String> test = Proxies.castProxy(
+        Collection.class, rootHandler);
+    InvocationHandler h = Proxy.getInvocationHandler(test);
+    assertTrue(
+        "expected InvocationHandler to be exception unwrapping",
+        h instanceof ExceptionUnwrappingInvocationHandler);
+    var eh = (ExceptionUnwrappingInvocationHandler)h;
+    assertSame(rootHandler, eh.getNestedInvocationHandler());
+  }
+
+  @Test
   public void testRuntimeExceptions() {
     try {
       Collection<String> test = Proxies.simpleProxy(
           Collection.class, List.of());
       test.clear();
       fail("Expected an UnsupportedOperationException");
-    } catch(UnsupportedOperationException success) {
+    } catch (UnsupportedOperationException success) {
     }
   }
 
@@ -52,7 +67,7 @@ public class ExceptionUnwrappingTest {
       );
       wiz.open();
       fail("Expected an IOException");
-    } catch(IOException success) {
+    } catch (IOException success) {
     }
   }
 
@@ -72,10 +87,10 @@ public class ExceptionUnwrappingTest {
       );
       wiz.call();
       fail("Expected an InvocationTargetException");
-    } catch(InvocationTargetException success) {
+    } catch (InvocationTargetException success) {
       try {
         throw success.getCause();
-      } catch(TimeoutException superSuccess) {
+      } catch (TimeoutException superSuccess) {
         assertEquals("time flies like an arrow",
             superSuccess.getMessage());
       } catch (Throwable throwable) {
@@ -95,7 +110,7 @@ public class ExceptionUnwrappingTest {
           Collection.class, List::of);
       test.add("Hello world");
       fail("Expected an UnsupportedOperationException");
-    } catch(UnsupportedOperationException success) {
+    } catch (UnsupportedOperationException success) {
     }
   }
   // TODO: Add tests for proxies, adapter, composite, etc.

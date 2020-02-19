@@ -40,5 +40,8 @@ public class ExceptionUnwrappingInvocationHandler
       throw ex.getCause();
     }
   }
+  public InvocationHandler getNestedInvocationHandler() {
+    return handler;
+  }
 }
 // end::listing[]
