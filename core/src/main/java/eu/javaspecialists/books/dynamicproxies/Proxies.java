@@ -36,13 +36,13 @@ public class Proxies {
   private Proxies() {}
 
   // tag::castProxy()[]
-  @SuppressWarnings("unchecked")
   /**
    * @param intf The interface to implement and cast to
    * @param handler InvocationHandler for all methods
    * @param extraIntfs Any additional interfaces that our dynamic
    *                   proxy should implement, e.g. Serializable
    */
+  @SuppressWarnings("unchecked")
   public static <S> S castProxy(Class<? super S> intf,
                                 InvocationHandler handler,
                                 Class<?>... extraIntfs) {
