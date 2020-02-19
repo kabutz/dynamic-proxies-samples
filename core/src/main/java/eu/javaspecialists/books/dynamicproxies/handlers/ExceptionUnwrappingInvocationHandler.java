@@ -20,11 +20,12 @@
 
 package eu.javaspecialists.books.dynamicproxies.handlers;
 
+import java.io.*;
 import java.lang.reflect.*;
 
 // tag::listing[]
 public class ExceptionUnwrappingInvocationHandler
-    implements InvocationHandler {
+    implements InvocationHandler, Serializable {
   private final InvocationHandler handler;
   public ExceptionUnwrappingInvocationHandler(
       InvocationHandler handler) {
