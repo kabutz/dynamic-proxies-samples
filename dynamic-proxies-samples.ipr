@@ -801,7 +801,7 @@
       <inspection_tool class="Convert2Diamond" enabled="true" level="WARNING" enabled_by_default="true" />
       <inspection_tool class="Convert2Lambda" enabled="true" level="WARNING" enabled_by_default="true" />
       <inspection_tool class="Convert2MethodRef" enabled="true" level="WARNING" enabled_by_default="true" />
-      <inspection_tool class="Convert2streamapi" enabled="true" level="WARNING" enabled_by_default="true" />
+      <inspection_tool class="Convert2streamapi" enabled="true" level="WEAK WARNING" enabled_by_default="true" />
       <inspection_tool class="ConvertCallChainIntoSequence" enabled="false" level="INFO" enabled_by_default="false" />
       <inspection_tool class="ConvertFlatMapToFlatten" enabled="false" level="WEAK WARNING" enabled_by_default="false" />
       <inspection_tool class="ConvertJavadoc" enabled="false" level="WARNING" enabled_by_default="false" />
@@ -1942,7 +1942,7 @@
       <inspection_tool class="MissingDeprecatedAnnotation" enabled="false" level="WARNING" enabled_by_default="false" />
       <inspection_tool class="MissingFinalNewline" enabled="false" level="ERROR" enabled_by_default="false" />
       <inspection_tool class="MissingMnemonic" enabled="false" level="WARNING" enabled_by_default="false" />
-      <inspection_tool class="MissingOverrideAnnotation" enabled="true" level="WARNING" enabled_by_default="true">
+      <inspection_tool class="MissingOverrideAnnotation" enabled="false" level="WARNING" enabled_by_default="false">
         <option name="ignoreObjectMethods" value="false" />
         <option name="ignoreAnonymousClassMethods" value="false" />
       </inspection_tool>
@@ -2330,7 +2330,7 @@
       <inspection_tool class="RedundantEnumConstructorInvocation" enabled="false" level="WEAK WARNING" enabled_by_default="false" />
       <inspection_tool class="RedundantExplicitClose" enabled="false" level="WARNING" enabled_by_default="false" />
       <inspection_tool class="RedundantExplicitType" enabled="false" level="WARNING" enabled_by_default="false" />
-      <inspection_tool class="RedundantExplicitVariableType" enabled="true" level="WARNING" enabled_by_default="true" />
+      <inspection_tool class="RedundantExplicitVariableType" enabled="false" level="WARNING" enabled_by_default="false" />
       <inspection_tool class="RedundantFieldInitialization" enabled="false" level="WARNING" enabled_by_default="false" />
       <inspection_tool class="RedundantGetter" enabled="false" level="WEAK WARNING" enabled_by_default="false" />
       <inspection_tool class="RedundantIf" enabled="false" level="WEAK WARNING" enabled_by_default="false" />
