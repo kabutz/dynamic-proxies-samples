@@ -113,5 +113,16 @@ public class ExceptionUnwrappingTest {
     } catch (UnsupportedOperationException success) {
     }
   }
+
+  @Test
+  public void testFilterProxy() {
+    try {
+      Collection<String> test = Proxies.filter(
+          Collection.class, List.of());
+      test.add("Hello world");
+      fail("Expected an UnsupportedOperationException");
+    } catch (UnsupportedOperationException success) {
+    }
+  }
   // TODO: Add tests for proxies, adapter, composite, etc.
 }
