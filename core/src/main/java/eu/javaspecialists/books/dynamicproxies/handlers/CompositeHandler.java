@@ -62,6 +62,8 @@ public class CompositeHandler
     // from BaseComponent
     if (matches(method, "add")) {
       requiresAllInterfaces(args[0]);
+      // We need the childMethodMap to support the visitor
+      // pattern inside our composite structures
       childMethodMap.computeIfAbsent(args[0].getClass(),
           childClass -> {
             Module childModule = childClass.getModule();
@@ -72,6 +74,9 @@ public class CompositeHandler
               // only map child class methods if it is visible to
               // the target module
               receiverClass = childClass;
+            } else if (Proxy.class.isAssignableFrom(childClass)){
+              // childClass is a Proxy, use the first interface
+              receiverClass = childClass.getInterfaces()[0];
             } else {
               receiverClass = target;
             }
