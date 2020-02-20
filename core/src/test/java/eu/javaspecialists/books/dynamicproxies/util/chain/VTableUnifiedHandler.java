@@ -23,7 +23,6 @@ package eu.javaspecialists.books.dynamicproxies.util.chain;
 import eu.javaspecialists.books.dynamicproxies.util.*;
 
 import java.lang.reflect.*;
-import java.util.stream.*;
 
 // tag::listing[]
 public class VTableUnifiedHandler

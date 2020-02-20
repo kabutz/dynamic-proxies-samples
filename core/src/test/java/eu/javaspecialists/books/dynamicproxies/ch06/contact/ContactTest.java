@@ -20,7 +20,6 @@
 
 package eu.javaspecialists.books.dynamicproxies.ch06.contact;
 
-import java.util.concurrent.*;
 import java.util.function.*;
 
 import static org.junit.Assert.*;

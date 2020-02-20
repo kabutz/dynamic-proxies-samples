@@ -20,7 +20,6 @@
 
 package eu.javaspecialists.books.dynamicproxies.util.chain;
 
-import java.lang.invoke.*;
 import java.lang.reflect.*;
 import java.util.function.*;
 import java.util.stream.*;
