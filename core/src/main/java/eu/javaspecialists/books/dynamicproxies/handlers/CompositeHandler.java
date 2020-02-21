@@ -169,6 +169,9 @@ public class CompositeHandler
                       == Object.class;
   }
 
+  /**
+   * Checks that object implements all required interfaces.
+   */
   private void requiresAllInterfaces(Object arg) {
     for (var check : typeChecks) {
       if (!check.isInstance(arg))
