@@ -61,27 +61,7 @@ public class CompositeHandler
     // from BaseComponent
     if (matches(method, "add")) {
       requiresAllInterfaces(args[0]);
-      // We need the childMethodMap to support the visitor
-      // pattern inside our composite structures
-      childMethodMap.computeIfAbsent(args[0].getClass(),
-          childClass -> {
-            Module childModule = childClass.getModule();
-            Module targetModule = target.getModule();
-            Class<?> receiverClass;
-            if (childModule.isExported(
-                childClass.getPackageName(), targetModule)) {
-              // only map child class methods if it is visible to
-              // the target module
-              receiverClass = childClass;
-            } else if (Proxy.class.isAssignableFrom(childClass)){
-              // childClass is a Proxy, use the first interface
-              receiverClass = childClass.getInterfaces()[0];
-            } else {
-              receiverClass = target;
-            }
-            return VTables.newVTableExcludingObjectMethods(
-                receiverClass, target);
-          });
+      addChildMethods(args[0].getClass());
       return children.add(args[0]);
     } else if (matches(method, "remove")) {
       return children.remove(args[0]);
@@ -128,16 +108,19 @@ public class CompositeHandler
     // suitable for methods that return void.
     var reducer = reducers.getOrDefault(
         new MethodKey(method), Reducer.NULL_REDUCER);
-    try {
-      MethodHandle match = defaultVT.lookupDefaultMethod(method);
-      Object defaultMethodResult;
-      if (match == null) {
-        defaultMethodResult = reducer.getIdentity();
-      } else {
-        defaultMethodResult =
-            match.bindTo(proxy).invokeWithArguments(args);
-      }
 
+    // Next try call the default interface method, if any.
+    // This helps support the visitor pattern in the composite.
+    MethodHandle match = defaultVT.lookupDefaultMethod(method);
+    Object defaultMethodResult;
+    if (match == null) {
+      defaultMethodResult = reducer.getIdentity();
+    } else {
+      defaultMethodResult =
+          match.bindTo(proxy).invokeWithArguments(args);
+    }
+
+    try {
       // We now need to call the method on all our children and
       // do a "reduce" on the results to return a single result.
       var merger = reducer.getMerger();
@@ -157,6 +140,30 @@ public class CompositeHandler
       // cause.
       throw ex.getCause();
     }
+  }
+
+  /**
+   * We need the childMethodMap to support the visitor pattern
+   * inside our composite structures
+   */
+  private void addChildMethods(Class<?> childClass) {
+    childMethodMap.computeIfAbsent(childClass,
+        clazz -> {
+          Class<?> receiver;
+          if (clazz.getModule().isExported(
+              clazz.getPackageName(), target.getModule())) {
+            // only map child class methods if its module is
+            // and package are exported to the target module
+            receiver = clazz;
+          } else if (Proxy.class.isAssignableFrom(clazz)) {
+            // childClass is a Proxy, use the first interface
+            receiver = clazz.getInterfaces()[0];
+          } else {
+            receiver = target;
+          }
+          return VTables.newVTableExcludingObjectMethods(
+              receiver, target);
+        });
   }
 
   /**
