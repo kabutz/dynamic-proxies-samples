@@ -124,5 +124,24 @@ public class ExceptionUnwrappingTest {
     } catch (UnsupportedOperationException success) {
     }
   }
+
+  // This test proves that we could remove the try/catch in
+  // ObjectAdapterHandler.invoke if we use Proxies.castProxy
+  @Test
+  public void testAdapterProxy() {
+    try {
+      Collection<String> test = Proxies.adapt(
+          Collection.class,  new ArrayList<>(),
+          new ArrayList<>() {
+            @Override
+            public boolean add(Object o) {
+              throw new UnsupportedOperationException();
+            }
+          });
+      test.add("Hello world");
+      fail("Expected an UnsupportedOperationException");
+    } catch (UnsupportedOperationException success) {
+    }
+  }
   // TODO: Add tests for proxies, adapter, composite, etc.
 }
