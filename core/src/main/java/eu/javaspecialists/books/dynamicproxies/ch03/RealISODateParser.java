@@ -44,6 +44,7 @@ public final class RealISODateParser implements ISODateParser {
       throw new ParseException(e.toString(), 0);
     }
   }
+  // parse String as decimal and convert to int
   private int atoi(String s, int from, int length)
       throws ParseException {
     int result = 0;

@@ -87,6 +87,10 @@ public class ISODateParserTest {
       }
       date = date.plusDays(1);
     }
+    for (ISODateParser parser : parsers) {
+      assertEquals(LocalDate.of(1987, Month.DECEMBER, 13),
+          parser.parse("1987-12-13"));
+    }
   }
 
   @Test
