@@ -20,20 +20,41 @@
 
 package eu.javaspecialists.books.dynamicproxies.ch02.remote;
 
-import spark.*;
+import org.eclipse.jetty.server.Request;
+import org.eclipse.jetty.server.Server;
+import org.eclipse.jetty.server.handler.AbstractHandler;
+
+import javax.servlet.ServletException;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import java.io.IOException;
+import java.util.regex.Pattern;
 
 // tag::listing[]
 public class ServicePublisher {
-  public static void main(String... args) {
+  public static void main(String... args) throws Exception {
     Canada canada = new RealCanada();
-    Spark.port(8080);
-    Spark.get("/canGetVisa/:name/:married/:rich",
-        (req, res) -> {
-          var name = req.params("name");
-          var married = "true".equals(req.params("married"));
-          var rich = "true".equals(req.params("rich"));
-          return canada.canGetVisa(name, married, rich);
-        });
+
+    var server = new Server(8080);
+    server.setHandler(new AbstractHandler() {
+      @Override
+      public void handle(String target, Request jettyRequest, HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
+        jettyRequest.setHandled(true);
+        var uri = request.getRequestURI();
+        var pattern = Pattern.compile("/canGetVisa/(?<name>[^/]+)/(?<married>[^/]+)/(?<rich>[^/]+)");
+        var matcher = pattern.matcher(uri);
+        if (matcher.matches()) {
+          var name = matcher.group("name");
+          var married = Boolean.valueOf(matcher.group("married"));
+          var rich = Boolean.valueOf(matcher.group("rich"));
+          var canGetVisa = canada.canGetVisa(name, married, rich);
+          response.getOutputStream().print(canGetVisa);
+        } else {
+          response.setStatus(HttpServletResponse.SC_NOT_FOUND);
+        }
+      }
+    });
+    server.start();
   }
 }
 // end::listing[]
