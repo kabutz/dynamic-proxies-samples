@@ -36,9 +36,9 @@ public class ISODateParserTest {
       Proxies.simpleProxy(ISODateParser.class,
           new RealISODateParser()),
       Proxies.simpleProxy(ISODateParser.class,
-          new TimeISODateParser()),
-      new TimeISODateParser(),
+          new FastISODateParser()),
       new RealISODateParser(),
+      new FastISODateParser(),
   };
 
   private static volatile Object leak;
