@@ -20,20 +20,51 @@
 
 package eu.javaspecialists.books.dynamicproxies.ch02.remote;
 
-import spark.*;
+import org.eclipse.jetty.server.*;
+import org.eclipse.jetty.server.handler.*;
+
+import javax.servlet.http.*;
+import java.io.*;
+import java.util.regex.*;
 
 // tag::listing[]
-public class ServicePublisher {
-  public static void main(String... args) {
+/**
+ * @author Simone Bordet
+ */
+public class ServicePublisher extends AbstractHandler {
+  private static final Pattern PATTERN =
+      Pattern.compile("/canGetVisa/" +
+                          "(?<name>[^/]+)/" +
+                          "(?<married>[^/]+)/" +
+                          "(?<rich>[^/]+)");
+  private final Canada canada;
+
+  public ServicePublisher(Canada canada) {
+    this.canada = canada;
+  }
+
+  @Override
+  public void handle(String target, Request jettyRequest,
+                     HttpServletRequest request,
+                     HttpServletResponse response)
+      throws IOException {
+    jettyRequest.setHandled(true);
+    var matcher = PATTERN.matcher(request.getRequestURI());
+    if (matcher.matches()) {
+      var name = matcher.group("name");
+      var married = Boolean.valueOf(matcher.group("married"));
+      var rich = Boolean.valueOf(matcher.group("rich"));
+      var canGetVisa = canada.canGetVisa(name, married, rich);
+      response.getOutputStream().print(canGetVisa);
+    } else {
+      response.setStatus(HttpServletResponse.SC_NOT_FOUND);
+    }
+  }
+  public static void main(String... args) throws Exception {
     Canada canada = new RealCanada();
-    Spark.port(8080);
-    Spark.get("/canGetVisa/:name/:married/:rich",
-        (req, res) -> {
-          var name = req.params("name");
-          var married = "true".equals(req.params("married"));
-          var rich = "true".equals(req.params("rich"));
-          return canada.canGetVisa(name, married, rich);
-        });
+    var server = new Server(8080);
+    server.setHandler(new ServicePublisher(canada));
+    server.start();
   }
 }
 // end::listing[]
