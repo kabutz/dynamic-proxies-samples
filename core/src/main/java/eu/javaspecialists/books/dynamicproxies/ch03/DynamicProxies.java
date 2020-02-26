@@ -34,10 +34,6 @@ public class DynamicProxies {
     LocalDate palindrome = parser.parse("2020-02-02");
     System.out.println("palindrome = \"" + palindrome + "\"");
     System.out.println(parser);
-
-    System.out.println(realParser.equals(parser));
-    System.out.println(parser.equals(realParser));
-
     LocalDate funnyDate = parser.parse("2020-04-31");
     // end::listing[]
   }
