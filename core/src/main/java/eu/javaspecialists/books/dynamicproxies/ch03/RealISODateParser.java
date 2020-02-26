@@ -25,6 +25,7 @@ import java.time.*;
 
 // tag::listing[]
 public final class RealISODateParser implements ISODateParser {
+  // Super fast date ISO parser that does not allocate memory
   @Override
   public LocalDate parse(String date) throws ParseException {
     if (date == null) throw new NullPointerException();
@@ -43,19 +44,19 @@ public final class RealISODateParser implements ISODateParser {
       throw new ParseException(e.toString(), 0);
     }
   }
-  private int atoi(String date, int from, int length)
+  private int atoi(String s, int from, int length)
       throws ParseException {
     int result = 0;
     for (int i = from; i < from + length; i++) {
       result *= 10;
-      result += atoi(date, i);
+      result += atoi(s, i);
     }
     return result;
   }
-  private int atoi(String date, int i) throws ParseException {
-    int val = date.charAt(i) - '0';
+  private int atoi(String s, int index) throws ParseException {
+    int val = s.charAt(index) - '0';
     if (val < 0 || val > 9)
-      throw new ParseException("Bad digit", i);
+      throw new ParseException("Bad digit", index);
     return val;
   }
 

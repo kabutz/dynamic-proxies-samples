@@ -23,6 +23,7 @@ package eu.javaspecialists.books.dynamicproxies.ch03;
 import eu.javaspecialists.books.dynamicproxies.*;
 import org.junit.*;
 
+import java.lang.reflect.*;
 import java.text.*;
 import java.time.*;
 import java.time.format.*;
@@ -31,9 +32,28 @@ import java.util.stream.*;
 import static org.junit.Assert.*;
 
 public class ISODateParserTest {
-  private final ISODateParser parser =
+  private final ISODateParser[] parsers = {
       Proxies.simpleProxy(ISODateParser.class,
-          new RealISODateParser());
+          new RealISODateParser()),
+      Proxies.simpleProxy(ISODateParser.class,
+          new TimeISODateParser()),
+      new TimeISODateParser(),
+      new RealISODateParser(),
+  };
+
+  private static volatile Object leak;
+
+  @Test
+  public void testNullDate() throws ParseException {
+    for (ISODateParser parser : parsers) {
+      try {
+        parser.parse(null);
+        fail("Expected NullPointerException");
+      } catch (NullPointerException success) {
+      }
+    }
+  }
+
   @Test
   public void testInvalidDate() {
     checkBadDate("2020.02-02");
@@ -45,10 +65,12 @@ public class ISODateParserTest {
   }
 
   private void checkBadDate(String date) {
-    try {
-      parser.parse(date);
-      fail("Expected ParseException for date=" + date);
-    } catch (ParseException success) {
+    for (ISODateParser parser : parsers) {
+      try {
+        parser.parse(date);
+        fail("Expected ParseException for date=" + date);
+      } catch (ParseException success) {
+      }
     }
   }
 
@@ -56,9 +78,13 @@ public class ISODateParserTest {
   public void testCorrectDates() throws ParseException {
     LocalDate date = LocalDate.of(2020, Month.JANUARY, 1);
     for (int i = 0; i < 366; i++) {
-      String text = DateTimeFormatter.ISO_LOCAL_DATE.format(date);
-      assertEquals(LocalDate.parse(text, DateTimeFormatter.ISO_LOCAL_DATE),
-          parser.parse(text));
+      String text =
+          DateTimeFormatter.ISO_LOCAL_DATE.format(date);
+      for (ISODateParser parser : parsers) {
+        assertEquals(LocalDate.parse(text,
+            DateTimeFormatter.ISO_LOCAL_DATE),
+            leak = parser.parse(text));
+      }
       date = date.plusDays(1);
     }
   }
@@ -66,15 +92,26 @@ public class ISODateParserTest {
   @Test
   public void testThreadSafety() throws ParseException {
     LocalDate date = LocalDate.of(2020, Month.FEBRUARY, 2);
-    IntStream.range(0, 10_000_000)
-        .parallel()
-        .forEach(i -> {
-          try {
-            assertEquals(date, parser.parse("2020-02-02"));
-          } catch (ParseException e) {
-            throw new AssertionError(e);
-          }
-        });
-
+    for (ISODateParser parser : parsers) {
+      if (parser instanceof Proxy) {
+        System.out.print("Dynamic Proxy of ");
+      }
+      System.out.println(parser);
+      long time = System.nanoTime();
+      try {
+        IntStream.range(0, 10_000_000)
+            .parallel()
+            .forEach(i -> {
+              try {
+                assertEquals(date, parser.parse("2020-02-02"));
+              } catch (ParseException e) {
+                throw new AssertionError(e);
+              }
+            });
+      } finally {
+        time = System.nanoTime() - time;
+        System.out.printf("time = %dms%n", (time / 1_000_000));
+      }
+    }
   }
 }
