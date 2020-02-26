@@ -35,14 +35,14 @@ public class VTableTest {
   @Test
   public void testSimpleVTable() throws ReflectiveOperationException {
     VTable vt = VTables.newVTableExcludingObjectMethods(
-        RealSubject.class, Subject.class
+        RealISODateParser.class, ISODateParser.class
     );
     assertEquals(1, vt.size());
 
-    Method subjectMethod = Subject.class.getMethod(
-        "uppercaseTrim", String.class);
-    Method realSubjectMethod = RealSubject.class.getMethod(
-        "uppercaseTrim", String.class);
+    Method subjectMethod = ISODateParser.class.getMethod(
+        "parse", String.class);
+    Method realSubjectMethod = RealISODateParser.class.getMethod(
+        "parse", String.class);
     Method lookup = vt.lookup(subjectMethod);
     assertEquals(lookup, realSubjectMethod);
     assertFalse(isOverloaded(vt, subjectMethod));
@@ -51,15 +51,15 @@ public class VTableTest {
   @Test
   public void testVTableIncludingObjectMethods() throws ReflectiveOperationException {
     VTable vt = VTables.newVTable(
-        RealSubject.class, Subject.class
+        RealISODateParser.class, ISODateParser.class
     );
 
     assertEquals(4, vt.size());
 
-    Method subjectMethod = Subject.class.getMethod(
-        "uppercaseTrim", String.class);
-    Method realSubjectMethod = RealSubject.class.getMethod(
-        "uppercaseTrim", String.class);
+    Method subjectMethod = ISODateParser.class.getMethod(
+        "parse", String.class);
+    Method realSubjectMethod = RealISODateParser.class.getMethod(
+        "parse", String.class);
     Method lookup = vt.lookup(subjectMethod);
     assertEquals(lookup, realSubjectMethod);
     assertFalse(isOverloaded(vt, subjectMethod));

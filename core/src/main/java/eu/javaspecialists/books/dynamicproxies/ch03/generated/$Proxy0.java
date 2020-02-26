@@ -25,8 +25,10 @@ import eu.javaspecialists.books.dynamicproxies.ch03.*;
 
 import java.lang.reflect.*;
 import java.text.*;
+import java.time.*;
 
-public final class $Proxy0 extends Proxy implements Subject {
+public final class $Proxy0 extends Proxy
+    implements ISODateParser {
   private static Method m0;
   private static Method m1;
   private static Method m2;
@@ -36,9 +38,9 @@ public final class $Proxy0 extends Proxy implements Subject {
     super(h);
   }
 
-  public final String uppercaseTrim(String s) throws ParseException {
+  public final LocalDate parse(String s) throws ParseException {
     try {
-      return (String) h.invoke(this, m3, new Object[] {s});
+      return (LocalDate) h.invoke(this, m3, new Object[] {s});
     } catch (RuntimeException | ParseException | Error e) {
       throw e;
     } catch (Throwable e) {
@@ -86,8 +88,9 @@ public final class $Proxy0 extends Proxy implements Subject {
       m2 = Class.forName("java.lang.Object")
                .getMethod("toString");
       m3 = Class.forName(
-          "eu.javaspecialists.books.dynamicproxies.ch03.Subject")
-               .getMethod("uppercaseTrim",
+          "eu.javaspecialists.books.dynamicproxies.ch03" +
+              ".ISODateParser")
+               .getMethod("parse",
                    Class.forName("java.lang.String"));
     } catch (NoSuchMethodException e) {
       throw new NoSuchMethodError(e.getMessage());

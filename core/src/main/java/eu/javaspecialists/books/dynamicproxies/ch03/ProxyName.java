@@ -27,8 +27,8 @@ public class ProxyName {
   public static void main(String... args) {
     System.out.println(
         Proxy.newProxyInstance(
-            Subject.class.getClassLoader(),
-            new Class<?>[] {Subject.class},
+            ISODateParser.class.getClassLoader(),
+            new Class<?>[] {ISODateParser.class},
             (proxy, method, arguments) -> null
         ).getClass()
     );

@@ -23,19 +23,20 @@ package eu.javaspecialists.books.dynamicproxies.ch03;
 import eu.javaspecialists.books.dynamicproxies.*;
 
 import java.text.*;
+import java.time.*;
 
 public class DynamicProxies {
   public static void main(String... args) throws ParseException {
     // tag::listing[]
-    RealSubject realSubject = new RealSubject(42);
-    Subject subject = Proxies.simpleProxy(
-        Subject.class, realSubject);
-    String hello = subject.uppercaseTrim("  Hello\t\t");
-    System.out.println("hello = \"" + hello + "\"");
-    System.out.println(subject);
+    RealISODateParser realParser = new RealISODateParser();
+    ISODateParser parser = Proxies.simpleProxy(
+        ISODateParser.class, realParser);
+    LocalDate palindrome = parser.parse("2020-02-02");
+    System.out.println("palindrome = \"" + palindrome + "\"");
+    System.out.println(parser);
 
-    System.out.println(realSubject.equals(subject));
-    System.out.println(subject.equals(realSubject));
+    System.out.println(realParser.equals(parser));
+    System.out.println(parser.equals(realParser));
     // end::listing[]
   }
 }

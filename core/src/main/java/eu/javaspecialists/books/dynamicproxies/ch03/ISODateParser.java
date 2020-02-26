@@ -20,29 +20,14 @@
 
 package eu.javaspecialists.books.dynamicproxies.ch03;
 
+import java.text.*;
+import java.time.*;
+
 // tag::listing[]
-public final class RealSubject implements Subject {
-  private final int value;
-  public RealSubject(int value) {
-    this.value = value;
-  }
-  @Override
-  public String uppercaseTrim(String str) {
-    return str.trim().toUpperCase();
-  }
-  @Override
-  public String toString() {
-    return "RealSubject";
-  }
-  @Override
-  public boolean equals(Object o) {
-    if (!(o instanceof Subject)) return false;
-    if (getClass() == o.getClass()) {
-      RealSubject that = (RealSubject) o;
-      return this.value == that.value;
-    }
-    // reversing equals call, see previous chapter
-    return o.equals(this);
-  }
+/**
+ * Parses String of the format yyyy-MM-dd and returns LocalDate.
+ */
+public interface ISODateParser {
+  LocalDate parse(String date) throws ParseException;
 }
 // end::listing[]
