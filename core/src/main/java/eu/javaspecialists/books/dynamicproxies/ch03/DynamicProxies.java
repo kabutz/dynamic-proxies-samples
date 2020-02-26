@@ -37,6 +37,8 @@ public class DynamicProxies {
 
     System.out.println(realParser.equals(parser));
     System.out.println(parser.equals(realParser));
+
+    LocalDate funnyDate = parser.parse("2020-04-31");
     // end::listing[]
   }
 }
