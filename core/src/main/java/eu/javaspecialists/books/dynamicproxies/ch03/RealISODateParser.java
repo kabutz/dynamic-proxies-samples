@@ -39,7 +39,7 @@ public final class RealISODateParser implements ISODateParser {
 
   @Override
   public String toString() {
-    return "TimeISODateParser";
+    return getClass().getSimpleName();
   }
 }
 // end::listing[]

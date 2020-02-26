@@ -63,7 +63,7 @@ public final class FastISODateParser implements ISODateParser {
 
   @Override
   public String toString() {
-    return "RealISODateParser";
+    return getClass().getSimpleName();
   }
 }
 // end::listing[]
