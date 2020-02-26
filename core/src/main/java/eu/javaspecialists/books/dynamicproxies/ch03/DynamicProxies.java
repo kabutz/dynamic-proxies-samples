@@ -22,8 +22,10 @@ package eu.javaspecialists.books.dynamicproxies.ch03;
 
 import eu.javaspecialists.books.dynamicproxies.*;
 
+import java.text.*;
+
 public class DynamicProxies {
-  public static void main(String... args) {
+  public static void main(String... args) throws ParseException {
     // tag::listing[]
     RealSubject realSubject = new RealSubject(42);
     Subject subject = Proxies.simpleProxy(

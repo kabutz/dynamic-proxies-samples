@@ -24,6 +24,7 @@ package eu.javaspecialists.books.dynamicproxies.ch03.generated;
 import eu.javaspecialists.books.dynamicproxies.ch03.*;
 
 import java.lang.reflect.*;
+import java.text.*;
 
 public final class $Proxy0 extends Proxy implements Subject {
   private static Method m0;
@@ -33,6 +34,16 @@ public final class $Proxy0 extends Proxy implements Subject {
 
   public $Proxy0(InvocationHandler h) {
     super(h);
+  }
+
+  public final String uppercaseTrim(String s) throws ParseException {
+    try {
+      return (String) h.invoke(this, m3, new Object[] {s});
+    } catch (RuntimeException | ParseException | Error e) {
+      throw e;
+    } catch (Throwable e) {
+      throw new UndeclaredThrowableException(e);
+    }
   }
 
   public final int hashCode() {
@@ -58,16 +69,6 @@ public final class $Proxy0 extends Proxy implements Subject {
   public final String toString() {
     try {
       return (String) h.invoke(this, m2, (Object[]) null);
-    } catch (RuntimeException | Error e) {
-      throw e;
-    } catch (Throwable e) {
-      throw new UndeclaredThrowableException(e);
-    }
-  }
-
-  public final String uppercaseTrim(String s) {
-    try {
-      return (String) h.invoke(this, m3, new Object[] {s});
     } catch (RuntimeException | Error e) {
       throw e;
     } catch (Throwable e) {

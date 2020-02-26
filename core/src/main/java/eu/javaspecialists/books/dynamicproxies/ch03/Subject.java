@@ -20,8 +20,10 @@
 
 package eu.javaspecialists.books.dynamicproxies.ch03;
 
+import java.text.*;
+
 // tag::listing[]
 public interface Subject {
-  String uppercaseTrim(String str);
+  String uppercaseTrim(String str) throws ParseException;
 }
 // end::listing[]
