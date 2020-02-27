@@ -26,12 +26,11 @@ public class RecastingExceptionsBroken {
   public static void main(String... args) {
     // tag::listing[]
     Comparable<String> comp =
-        (Comparable<String>)
-            Proxy.newProxyInstance(
-                Comparable.class.getClassLoader(),
-                new Class<?>[] {Comparable.class},
-                (proxy, method, arguments) ->
-                    method.invoke(arguments[0], proxy));
+        (Comparable<String>) Proxy.newProxyInstance(
+            Comparable.class.getClassLoader(),
+            new Class<?>[] {Comparable.class},
+            (proxy, method, params) ->
+                method.invoke(params[0], proxy));
     System.out.println(comp.compareTo("hello"));
     // end::listing[]
   }

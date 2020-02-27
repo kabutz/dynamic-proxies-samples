@@ -28,13 +28,12 @@ public class RecastingExceptionsFixed {
   public static void main(String... args) {
     // tag::listing[]
     Comparable<String> comp =
-        (Comparable<String>)
-            Proxy.newProxyInstance(
-                Comparable.class.getClassLoader(),
-                new Class<?>[] {Comparable.class},
-                new ExceptionUnwrappingInvocationHandler(
-                    (proxy, method, arguments) ->
-                        method.invoke(arguments[0], proxy)));
+        (Comparable<String>) Proxy.newProxyInstance(
+            Comparable.class.getClassLoader(),
+            new Class<?>[] {Comparable.class},
+            new ExceptionUnwrappingInvocationHandler(
+                (proxy, method, params) ->
+                    method.invoke(params[0], proxy)));
     System.out.println(comp.compareTo("hello"));
     // end::listing[]
   }
