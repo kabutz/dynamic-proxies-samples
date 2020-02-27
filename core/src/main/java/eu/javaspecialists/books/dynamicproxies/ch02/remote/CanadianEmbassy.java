@@ -45,7 +45,8 @@ public class CanadianEmbassy implements Canada {
                     .build();
       var res = httpClient.send(
           req, HttpResponse.BodyHandlers.ofString());
-      return "true".equals(res.body());
+      return res.statusCode() == HttpURLConnection.HTTP_OK &&
+                 Boolean.parseBoolean(res.body());
     } catch (IOException e) {
       throw new UncheckedIOException(e);
     } catch (InterruptedException e) {
