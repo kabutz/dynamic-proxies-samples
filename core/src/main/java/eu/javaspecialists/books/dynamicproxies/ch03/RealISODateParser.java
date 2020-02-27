@@ -25,7 +25,7 @@ import java.time.*;
 import java.time.format.*;
 
 // tag::listing[]
-public final class RealISODateParser implements ISODateParser {
+public class RealISODateParser implements ISODateParser {
   private static final DateTimeFormatter formatter =
       DateTimeFormatter.ISO_LOCAL_DATE;
   @Override

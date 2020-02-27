@@ -24,7 +24,7 @@ import java.text.*;
 import java.time.*;
 
 // tag::listing[]
-public final class FastISODateParser implements ISODateParser {
+public class FastISODateParser implements ISODateParser {
   // Super fast date ISO parser that does not allocate memory
   @Override
   public LocalDate parse(String date) throws ParseException {
