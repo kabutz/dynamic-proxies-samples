@@ -21,6 +21,7 @@
 package eu.javaspecialists.books.dynamicproxies.ch03.gotchas;
 
 import eu.javaspecialists.books.dynamicproxies.*;
+import eu.javaspecialists.books.dynamicproxies.ch06.contact.*;
 import eu.javaspecialists.books.dynamicproxies.handlers.*;
 import org.junit.*;
 
@@ -28,6 +29,7 @@ import java.io.*;
 import java.lang.reflect.*;
 import java.util.*;
 import java.util.concurrent.*;
+import java.util.logging.*;
 
 import static org.junit.Assert.*;
 
@@ -42,7 +44,7 @@ public class ExceptionUnwrappingTest {
     assertTrue(
         "expected InvocationHandler to be exception unwrapping",
         h instanceof ExceptionUnwrappingInvocationHandler);
-    var eh = (ExceptionUnwrappingInvocationHandler)h;
+    var eh = (ExceptionUnwrappingInvocationHandler) h;
     assertSame(rootHandler, eh.getNestedInvocationHandler());
   }
 
@@ -115,6 +117,17 @@ public class ExceptionUnwrappingTest {
   }
 
   @Test
+  public void testSynchronizedProxy() {
+    try {
+      Collection<String> test = Proxies.synchronizedProxy(
+          Collection.class, List.of());
+      test.add("Hello world");
+      fail("Expected an UnsupportedOperationException");
+    } catch (UnsupportedOperationException success) {
+    }
+  }
+
+  @Test
   public void testFilterProxy() {
     try {
       Collection<String> test = Proxies.filter(
@@ -125,23 +138,144 @@ public class ExceptionUnwrappingTest {
     }
   }
 
-  // This test proves that we could remove the try/catch in
-  // ObjectAdapterHandler.invoke if we use Proxies.castProxy
   @Test
   public void testAdapterProxy() {
+    testAdapter(createStandard(), true);
+    testAdapter(createWithoutProxiesCast(), false);
+    testAdapter(createWithoutProxiesWrapped(), true);
+  }
+
+  private void testAdapter(List<String> greeting,
+                           boolean correctExceptionExpected) {
+    assertEquals(2, greeting.size());
     try {
-      Collection<String> test = Proxies.adapt(
-          Collection.class,  new ArrayList<>(),
-          new ArrayList<>() {
-            @Override
-            public boolean add(Object o) {
-              throw new UnsupportedOperationException();
-            }
-          });
-      test.add("Hello world");
+      greeting.add("Hello world");
       fail("Expected an UnsupportedOperationException");
-    } catch (UnsupportedOperationException success) {
+    } catch (UndeclaredThrowableException ex) {
+      if (correctExceptionExpected) {
+        fail("Expected to see an UndeclaredThrowableException");
+      }
+    } catch (UnsupportedOperationException ex) {
+      if (!correctExceptionExpected)
+        fail("Expected to see an UnsupportedOperationException" +
+                 " in this case");
+    }
+    greeting.remove(1);
+    assertEquals(1, greeting.size());
+  }
+
+  private static List<String> createStandard() {
+    return Proxies.adapt(
+        List.class, new ArrayList<>(
+            List.of("Hello", "World")), new HideAdd());
+  }
+
+  @SuppressWarnings("unchecked")
+  private static List<String> createWithoutProxiesCast() {
+    return (List<String>) Proxy.newProxyInstance(
+        List.class.getClassLoader(),
+        new Class<?>[] {List.class},
+        createAdapterHandler());
+  }
+
+  @SuppressWarnings("unchecked")
+  private static List<String> createWithoutProxiesWrapped() {
+    return (List<String>) Proxy.newProxyInstance(
+        List.class.getClassLoader(),
+        new Class<?>[] {List.class},
+        new ExceptionUnwrappingInvocationHandler(
+            createAdapterHandler()));
+  }
+
+  private static ObjectAdapterHandler createAdapterHandler() {
+    return new ObjectAdapterHandler(
+        List.class, new ArrayList<>(
+        List.of("Hello", "World")), new HideAdd());
+  }
+
+  public static class HideAdd {
+    public boolean add(Object o) {
+      throw new UnsupportedOperationException("no add");
     }
   }
-  // TODO: Add tests for proxies, adapter, composite, etc.
+
+  @Test
+  public void testLoggingProxy() {
+    Logger log = Logger.getGlobal();
+    for (Handler handler : log.getParent().getHandlers()) {
+      if (handler instanceof ConsoleHandler) {
+        handler.setLevel(Level.FINE);
+      }
+    }
+    log.setLevel(Level.FINE);
+
+    testLogging(createLoggingMapWithoutExceptionUnwrapper(Map.of(), log), false);
+    testLogging(createLoggingMapUsingProxiesLogging(Map.of(),
+        log), true);
+  }
+
+  private void testLogging(Map<String, Integer> map,
+                           boolean correctExceptionExpected) {
+    assertEquals(0, map.size());
+    try {
+      map.put("One", 1);
+      fail("Expected an UnsupportedOperationException");
+    } catch (UndeclaredThrowableException ex) {
+      if (correctExceptionExpected) {
+        fail("Expected to see an UndeclaredThrowableException");
+      }
+    } catch (UnsupportedOperationException ex) {
+      if (!correctExceptionExpected)
+        fail("Expected to see an UnsupportedOperationException" +
+                 " in this case");
+    }
+    System.out.println(map);
+  }
+
+  @SuppressWarnings("unchecked")
+  private Map<String, Integer> createLoggingMapWithoutExceptionUnwrapper(
+      Map<String, Integer> map, Logger log) {
+    var handler = new LoggingInvocationHandler(log, map);
+    return (Map<String, Integer>)
+               Proxy.newProxyInstance(
+                   Map.class.getClassLoader(),
+                   new Class<?>[] {Map.class},
+                   handler);
+  }
+
+  private Map<String, Integer> createLoggingMapUsingProxiesLogging(
+      Map<String, Integer> map, Logger log) {
+    return Proxies.loggingProxy(Map.class, map, log);
+  }
+
+  @Test
+  public void testComposite() {
+    Contact tjsn = Proxies.compose(Contact.class);
+    Contact students = Proxies.compose(Contact.class);
+    tjsn.add(students);
+    students.add(new Person("john@aol.com"));
+    students.add(new Person("peter@aol.com"));
+    tjsn.add(new Person("heinz@javaspecialists.eu"));
+
+    tjsn.sendMail("Hello from TJSN");
+
+    students.add(new Incognito());
+
+    try {
+      tjsn.sendMail("hello again from TJSN");
+      fail("Expected to see an IllegalStateException");
+    } catch (IllegalStateException success) {
+    }
+  }
+
+  public static class Incognito implements Contact {
+    @Override
+    public void sendMail(String body) {
+      throw new IllegalStateException("anon");
+    }
+    @Override
+    public int count() {
+      return 1;
+    }
+  }
 }
