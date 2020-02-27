@@ -148,18 +148,7 @@ public class ExceptionUnwrappingTest {
   private void testAdapter(List<String> greeting,
                            boolean correctExceptionExpected) {
     assertEquals(2, greeting.size());
-    try {
-      greeting.add("Hello world");
-      fail("Expected an UnsupportedOperationException");
-    } catch (UndeclaredThrowableException ex) {
-      if (correctExceptionExpected) {
-        fail("Expected to see an UndeclaredThrowableException");
-      }
-    } catch (UnsupportedOperationException ex) {
-      if (!correctExceptionExpected)
-        fail("Expected to see an UnsupportedOperationException" +
-                 " in this case");
-    }
+    checkExceptions(() -> greeting.add("Hello world"), correctExceptionExpected);
     greeting.remove(1);
     assertEquals(1, greeting.size());
   }
@@ -217,20 +206,25 @@ public class ExceptionUnwrappingTest {
   private void testLogging(Map<String, Integer> map,
                            boolean correctExceptionExpected) {
     assertEquals(0, map.size());
+    checkExceptions(() -> map.put("One", 1), correctExceptionExpected);
+    System.out.println(map);
+  }
+
+  private void checkExceptions(Runnable job,
+                               boolean correctExceptionExpected) {
     try {
-      map.put("One", 1);
+      job.run();
       fail("Expected an UnsupportedOperationException");
     } catch (UndeclaredThrowableException ex) {
       if (correctExceptionExpected) {
-        fail("Expected to see an UndeclaredThrowableException");
+        fail("Expected to see an UnsupportedOperationException");
       }
     } catch (UnsupportedOperationException ex) {
       if (!correctExceptionExpected)
-        fail("Expected to see an UnsupportedOperationException" +
-                 " in this case");
+        fail("Expected to see an UndeclaredThrowableException");
     }
-    System.out.println(map);
   }
+
 
   @SuppressWarnings("unchecked")
   private Map<String, Integer> createLoggingMapWithoutExceptionUnwrapper(
