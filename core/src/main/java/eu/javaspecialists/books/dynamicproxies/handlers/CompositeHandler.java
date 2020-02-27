@@ -95,10 +95,8 @@ public class CompositeHandler
         Method childMethod = vt.lookup(method);
         Objects.requireNonNull(childMethod, "childMethod==null");
         return childMethod.invoke(child, args);
-      } catch (IllegalAccessException e) {
+      } catch (ReflectiveOperationException e) {
         throw new UncheckedException(e);
-      } catch (InvocationTargetException e) {
-        throw new UncheckedException(e.getCause());
       }
     };
 
