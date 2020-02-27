@@ -138,14 +138,11 @@ public class Proxies {
    * @param reducers   map from MethodKey to Reducer, default of
    *                   empty map with Map.of().
    * @param typeChecks object parameter passed to add() must
-   *                   implement all these interfaces, default of
-   *                   only the component interface.
+   *                   extends all these types
    */
   public static <T extends BaseComponent<? super T>> T compose(
       Class<T> component, Map<MethodKey, Reducer> reducers,
       Class<?>... typeChecks) {
-    // all objects that we add to the composite have to implement
-    // all the interfaces in typeChecks
     return castProxy(component,
         new CompositeHandler(component, reducers, typeChecks));
   }
