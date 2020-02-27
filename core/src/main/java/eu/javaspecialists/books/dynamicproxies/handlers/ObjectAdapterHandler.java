@@ -48,11 +48,7 @@ public class ObjectAdapterHandler implements InvocationHandler {
   @Override
   public Object invoke(Object proxy, Method method,
                        Object[] args) throws Throwable {
-    try {
-      return chain.invoke(proxy, method, args);
-    } catch (InvocationTargetException e) {
-      throw e.getCause();
-    }
+    return chain.invoke(proxy, method, args);
   }
 }
 // end::listing[]
