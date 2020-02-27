@@ -114,6 +114,7 @@ public class CompositeHandler
     if (match == null) {
       defaultMethodResult = reducer.getIdentity();
     } else {
+      // invoke default interface method on component interface
       defaultMethodResult =
           match.bindTo(proxy).invokeWithArguments(args);
     }
