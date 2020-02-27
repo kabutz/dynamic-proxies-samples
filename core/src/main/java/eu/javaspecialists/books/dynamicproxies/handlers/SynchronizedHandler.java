@@ -23,7 +23,7 @@ package eu.javaspecialists.books.dynamicproxies.handlers;
 import java.lang.reflect.*;
 
 // tag::listing[]
-public class SynchronizedHandler<S>
+public final class SynchronizedHandler<S>
     implements InvocationHandler {
   private final S subject;
   public SynchronizedHandler(S subject) {

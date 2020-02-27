@@ -26,7 +26,8 @@ import eu.javaspecialists.books.dynamicproxies.util.chain.*;
 import java.lang.reflect.*;
 
 // tag::listing[]
-public class ObjectAdapterHandler implements InvocationHandler {
+public final class ObjectAdapterHandler
+    implements InvocationHandler {
   private final ChainedInvocationHandler chain;
 
   public ObjectAdapterHandler(Class<?> target,

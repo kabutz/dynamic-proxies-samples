@@ -21,7 +21,7 @@
 package eu.javaspecialists.books.dynamicproxies.util;
 
 // tag::listing[]
-public class VTables {
+public final class VTables {
   private VTables() {}
 
   public static VTable newDefaultMethodVTable(Class<?> clazz) {

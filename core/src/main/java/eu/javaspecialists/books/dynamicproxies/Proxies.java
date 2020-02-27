@@ -32,7 +32,7 @@ import java.util.logging.*;
  * Facade for all our dynamic proxies and related pattern
  * implementations.
  */
-public class Proxies {
+public final class Proxies {
   private Proxies() {}
 
   // tag::castProxy()[]

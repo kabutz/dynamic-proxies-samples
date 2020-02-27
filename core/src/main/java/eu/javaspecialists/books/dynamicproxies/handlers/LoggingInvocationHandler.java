@@ -25,7 +25,7 @@ import java.util.logging.*;
 import java.util.stream.*;
 
 // tag::listing[]
-public class LoggingInvocationHandler
+public final class LoggingInvocationHandler
     implements InvocationHandler {
   private final Logger log;
   private final Object obj;

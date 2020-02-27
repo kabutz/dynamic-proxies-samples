@@ -24,7 +24,7 @@ import java.lang.reflect.*;
 import java.util.*;
 
 // tag::listing[]
-public class UnhandledMethodException
+public final class UnhandledMethodException
     extends IllegalArgumentException {
   private final Collection<Method> unhandled;
   UnhandledMethodException(Collection<Method> unhandled) {

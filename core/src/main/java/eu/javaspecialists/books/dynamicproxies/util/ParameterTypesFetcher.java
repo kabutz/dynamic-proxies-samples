@@ -30,7 +30,7 @@ import java.lang.reflect.*;
  * -Deu.javaspecialists.books.dynamicproxies.util. \
  * ParameterTypesFetcher.enabled=true
  */
-public class ParameterTypesFetcher {
+public final class ParameterTypesFetcher {
   private final static ParameterFetcher PARAMETER_FETCHER =
       Boolean.getBoolean(
           ParameterTypesFetcher.class.getName() + ".enabled") ?

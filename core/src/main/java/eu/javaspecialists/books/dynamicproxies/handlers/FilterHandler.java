@@ -26,7 +26,7 @@ import eu.javaspecialists.books.dynamicproxies.util.chain.*;
 import java.lang.reflect.*;
 
 // tag::listing[]
-public class FilterHandler implements InvocationHandler {
+public final class FilterHandler implements InvocationHandler {
   private final ChainedInvocationHandler chain;
 
   public FilterHandler(Class<?> filter, Object component) {

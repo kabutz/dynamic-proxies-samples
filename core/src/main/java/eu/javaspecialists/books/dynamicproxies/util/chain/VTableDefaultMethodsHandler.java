@@ -28,7 +28,7 @@ import java.util.*;
 import java.util.stream.*;
 
 // tag::listing[]
-public class VTableDefaultMethodsHandler
+public final class VTableDefaultMethodsHandler
     extends ChainedInvocationHandler {
   private final VTable vtable;
   public VTableDefaultMethodsHandler(

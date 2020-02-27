@@ -32,7 +32,7 @@ import java.lang.reflect.*;
  * -Deu.javaspecialists.books.dynamicproxies.util.\
  * MethodTurboBooster.disabled=true
  */
-public class MethodTurboBooster {
+public final class MethodTurboBooster {
   private final static Booster BOOSTER =
       Boolean.getBoolean(
           MethodTurboBooster.class.getName() + ".disabled") ?

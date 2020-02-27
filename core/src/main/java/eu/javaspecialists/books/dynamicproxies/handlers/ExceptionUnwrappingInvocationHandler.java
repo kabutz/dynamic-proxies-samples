@@ -24,7 +24,7 @@ import java.io.*;
 import java.lang.reflect.*;
 
 // tag::listing[]
-public class ExceptionUnwrappingInvocationHandler
+public final class ExceptionUnwrappingInvocationHandler
     implements InvocationHandler, Serializable {
   private final InvocationHandler handler;
   public ExceptionUnwrappingInvocationHandler(

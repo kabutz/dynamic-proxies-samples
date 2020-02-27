@@ -29,7 +29,7 @@ import java.util.concurrent.*;
 import java.util.function.*;
 
 // tag::listing[]
-public class CompositeHandler
+public final class CompositeHandler
     implements InvocationHandler {
   private final Map<MethodKey, Reducer> reducers;
   private final Class<?>[] typeChecks;

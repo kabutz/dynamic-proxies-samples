@@ -40,7 +40,7 @@ import java.util.stream.*;
  * The most important methods in terms of performance are
  * lookup() and lookupDefaultMethod().
  */
-public class VTable {
+public final class VTable {
   private final Method[] entries;
   private final Class<?>[][] paramTypes;
   private final boolean[] distinctName;

@@ -27,7 +27,7 @@ package eu.javaspecialists.books.dynamicproxies.handlers;
 // tag::listing[]
 import java.util.function.*;
 
-public class Reducer {
+public final class Reducer {
   private final Object identity;
   private final BinaryOperator<Object> merger;
   public Reducer(Object identity,

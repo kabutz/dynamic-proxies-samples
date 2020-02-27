@@ -24,7 +24,7 @@ import java.lang.reflect.*;
 import java.util.function.*;
 
 // tag::listing[]
-public class VirtualProxyHandler<S>
+public final class VirtualProxyHandler<S>
     implements InvocationHandler {
   private final Supplier<? extends S> subjectSupplier;
   private S subject;
