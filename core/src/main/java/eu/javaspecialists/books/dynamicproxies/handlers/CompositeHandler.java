@@ -37,20 +37,20 @@ public class CompositeHandler
   private final VTable defaultVT;
   private final Map<Class<?>, VTable> childMethodMap =
       new ConcurrentHashMap<>();
-  private final Class<?> target;
+  private final Class<?> component;
 
   @SuppressWarnings({"unchecked", "rawtypes"})
   public <E extends BaseComponent<? super E>> CompositeHandler(
-      Class<? super E> target,
+      Class<? super E> component,
       Map<MethodKey, Reducer> reducers,
       Class<?>[] typeChecks) {
-    if (!BaseComponent.class.isAssignableFrom(target))
+    if (!BaseComponent.class.isAssignableFrom(component))
       throw new IllegalArgumentException(
-          "target is not derived from BaseComponent");
-    this.target = target;
+          "component is not derived from BaseComponent");
+    this.component = component;
     this.reducers = Objects.requireNonNull(reducers);
     this.typeChecks = Objects.requireNonNull(typeChecks);
-    this.defaultVT = VTables.newDefaultMethodVTable(target);
+    this.defaultVT = VTables.newDefaultMethodVTable(component);
   }
 
   @Override
@@ -151,7 +151,7 @@ public class CompositeHandler
         clazz -> {
           Class<?> receiver;
           if (clazz.getModule().isExported(
-              clazz.getPackageName(), target.getModule())) {
+              clazz.getPackageName(), component.getModule())) {
             // only map child class methods if its module is
             // and package are exported to the target module
             receiver = clazz;
@@ -159,10 +159,10 @@ public class CompositeHandler
             // childClass is a Proxy, use the first interface
             receiver = clazz.getInterfaces()[0];
           } else {
-            receiver = target;
+            receiver = component;
           }
           return VTables.newVTableExcludingObjectMethods(
-              receiver, target);
+              receiver, component);
         });
   }
 
