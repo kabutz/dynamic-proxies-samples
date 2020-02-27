@@ -121,33 +121,33 @@ public class Proxies {
 
   // tag::compose()[]
   public static <T extends BaseComponent<? super T>> T compose(
-      Class<T> target) {
-    return compose(target, target);
+      Class<T> component) {
+    return compose(component, component);
   }
   public static <T extends BaseComponent<? super T>> T compose(
-      Class<T> target, Map<MethodKey, Reducer> reducers) {
-    return compose(target, reducers, target);
+      Class<T> component, Map<MethodKey, Reducer> reducers) {
+    return compose(component, reducers, component);
   }
   public static <T extends BaseComponent<? super T>> T compose(
-      Class<T> target, Class<?>... typeChecks) {
-    return compose(target, Map.of(), typeChecks);
+      Class<T> component, Class<?>... typeChecks) {
+    return compose(component, Map.of(), typeChecks);
   }
   /**
-   * @param target     interface to proxy. Must extend
+   * @param component     interface to proxy. Must extend
    *                   BaseComponent
    * @param reducers   map from MethodKey to Reducer, default of
    *                   empty map with Map.of().
    * @param typeChecks object parameter passed to add() must
    *                   implement all these interfaces, default of
-   *                   only the target interface.
+   *                   only the component interface.
    */
   public static <T extends BaseComponent<? super T>> T compose(
-      Class<T> target, Map<MethodKey, Reducer> reducers,
+      Class<T> component, Map<MethodKey, Reducer> reducers,
       Class<?>... typeChecks) {
     // all objects that we add to the composite have to implement
     // all the interfaces in typeChecks
-    return castProxy(target,
-        new CompositeHandler(target, reducers, typeChecks));
+    return castProxy(component,
+        new CompositeHandler(component, reducers, typeChecks));
   }
   // end::compose()[]
 }
