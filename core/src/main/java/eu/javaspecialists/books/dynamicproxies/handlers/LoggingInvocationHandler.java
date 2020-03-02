@@ -20,13 +20,14 @@
 
 package eu.javaspecialists.books.dynamicproxies.handlers;
 
+import java.io.*;
 import java.lang.reflect.*;
 import java.util.logging.*;
 import java.util.stream.*;
 
 // tag::listing[]
 public final class LoggingInvocationHandler
-    implements InvocationHandler {
+    implements InvocationHandler, Serializable {
   private final Logger log;
   private final Object obj;
   public LoggingInvocationHandler(Logger log, Object obj) {

@@ -25,9 +25,10 @@ package eu.javaspecialists.books.dynamicproxies.handlers;
  */
 
 // tag::listing[]
+import java.io.*;
 import java.util.function.*;
 
-public final class Reducer {
+public final class Reducer implements Serializable {
   private final Object identity;
   private final BinaryOperator<Object> merger;
   public Reducer(Object identity,
