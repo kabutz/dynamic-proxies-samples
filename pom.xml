@@ -161,7 +161,7 @@
 
     <profiles>
         <profile>
-            <id>release</id>
+            <id>ossrh</id>
             <build>
                 <plugins>
                     <plugin>

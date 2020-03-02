@@ -5,7 +5,7 @@ The documentation by Sonatype is at
 
 To create a new release, run the following in a terminal:
  
- 1. mvn release:prepare
+ 1. mvn -P ossrh release:prepare
  2. mvn -P ossrh release:perform
  3. mvn release:clean
  
@@ -52,7 +52,8 @@ The following is required in ~/.m2/settings.xml
 </settings>
 ```
 
-Step 3 deletes support files used by `release:perform`.
+Step 2 deletes support files created by `release:prepare`, but if it fails
+these can be removed using Step 3.
  
 The release jar, sources jar and javadoc jar can also be found in the target 
  directory and can be rebuilt at any time by checking out the tag and running
