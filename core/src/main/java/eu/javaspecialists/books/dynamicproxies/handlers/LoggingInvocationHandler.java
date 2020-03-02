@@ -20,7 +20,6 @@
 
 package eu.javaspecialists.books.dynamicproxies.handlers;
 
-import java.io.*;
 import java.lang.reflect.*;
 import java.util.logging.*;
 import java.util.stream.*;
