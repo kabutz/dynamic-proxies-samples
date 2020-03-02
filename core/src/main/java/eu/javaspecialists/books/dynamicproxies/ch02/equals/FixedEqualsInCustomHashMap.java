@@ -58,7 +58,7 @@ public class FixedEqualsInCustomHashMap {
       if (this == o) return true;
       if (!(o instanceof CustomMap)) return false;
 
-      if (getClass() == o.getClass()) {
+      if (o instanceof CustomHashMap) {
         CustomHashMap<?, ?> that = (CustomHashMap<?, ?>) o;
         return this.map.equals(that.map);
       }
