@@ -26,6 +26,7 @@ import java.lang.reflect.*;
 // tag::listing[]
 public final class ExceptionUnwrappingInvocationHandler
     implements InvocationHandler, Serializable {
+  private static final long serialVersionUID = 1L;
   private final InvocationHandler handler;
   public ExceptionUnwrappingInvocationHandler(
       InvocationHandler handler) {

@@ -37,7 +37,7 @@ import java.util.stream.*;
  * #checkAllMethodsAreHandled(targets).
  */
 public abstract class ChainedInvocationHandler
-    implements InvocationHandler, Serializable {
+    implements InvocationHandler {
   private final ChainedInvocationHandler next;
 
   public ChainedInvocationHandler(
