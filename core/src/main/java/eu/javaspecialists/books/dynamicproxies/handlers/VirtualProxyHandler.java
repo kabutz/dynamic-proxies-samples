@@ -27,6 +27,7 @@ import java.util.function.*;
 // tag::listing[]
 public final class VirtualProxyHandler<S>
     implements InvocationHandler, Serializable {
+  private static final long serialVersionUID = 1L;
   private final Supplier<? extends S> subjectSupplier;
   private S subject;
 

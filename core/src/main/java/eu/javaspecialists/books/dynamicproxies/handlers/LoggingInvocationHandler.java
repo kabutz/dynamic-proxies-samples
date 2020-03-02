@@ -27,7 +27,7 @@ import java.util.stream.*;
 
 // tag::listing[]
 public final class LoggingInvocationHandler
-    implements InvocationHandler, Serializable {
+    implements InvocationHandler {
   private final Logger log;
   private final Object obj;
   public LoggingInvocationHandler(Logger log, Object obj) {

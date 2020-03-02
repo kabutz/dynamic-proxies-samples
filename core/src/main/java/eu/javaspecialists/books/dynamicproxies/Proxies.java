@@ -23,6 +23,7 @@ package eu.javaspecialists.books.dynamicproxies;
 import eu.javaspecialists.books.dynamicproxies.handlers.*;
 import eu.javaspecialists.books.dynamicproxies.util.*;
 
+import java.io.*;
 import java.lang.reflect.*;
 import java.util.*;
 import java.util.function.*;
@@ -57,6 +58,7 @@ public final class Proxies {
   public static <S> S simpleProxy(
       Class<? super S> subjectInterface, S subject) {
     return castProxy(subjectInterface,
+        (InvocationHandler & Serializable)
         (proxy, method, args) -> method.invoke(subject, args)
     );
   }
