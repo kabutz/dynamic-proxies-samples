@@ -24,11 +24,21 @@
 
     <groupId>eu.javaspecialists.books.dynamicproxies</groupId>
     <artifactId>dynamic-proxies-samples</artifactId>
+    <version>1.2.1-SNAPSHOT</version>
+    <packaging>pom</packaging>
+
     <name>dynamic-proxies-samples</name>
     <description>InfoQ Dynamic Proxies</description>
-    <version>1.2.1-SNAPSHOT</version>
+    <url>https://github.com/kabutz/dynamic-proxies-samples</url>
 
-    <packaging>pom</packaging>
+    <developers>
+        <developer>
+            <name>Dr. Heinz M. Kabutz</name>
+            <email>heinz@javaspecialists.eu</email>
+            <organization>The JavaSpecialists</organization>
+            <organizationUrl>https://www.javaspecialists.eu</organizationUrl>
+        </developer>
+    </developers>
 
     <modules>
         <module>core</module>
@@ -36,10 +46,11 @@
     </modules>
 
     <scm>
+        <connection>scm:git:https://github.com/kabutz/dynamic-proxies-samples.git</connection>
         <developerConnection>scm:git:https://github.com/kabutz/dynamic-proxies-samples.git</developerConnection>
         <url>https://github.com/kabutz/dynamic-proxies-samples/tree/master</url>
-      <tag>HEAD</tag>
-  </scm>
+        <tag>HEAD</tag>
+    </scm>
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -100,6 +111,15 @@
                     <artifactId>maven-source-plugin</artifactId>
                     <version>3.2.1</version>
                 </plugin>
+                <plugin>
+                    <artifactId>maven-javadoc-plugin</artifactId>
+                    <version>3.1.1</version>
+                </plugin>
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-gpg-plugin</artifactId>
+                    <version>1.6</version>
+                </plugin>
             </plugins>
         </pluginManagement>
         <plugins>
@@ -121,6 +141,19 @@
                     <autoVersionSubmodules>true</autoVersionSubmodules>
                 </configuration>
             </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-gpg-plugin</artifactId>
+                <executions>
+                    <execution>
+                        <id>sign-artifacts</id>
+                        <phase>verify</phase>
+                        <goals>
+                            <goal>sign</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
         </plugins>
     </build>
 
@@ -131,4 +164,15 @@
             </url>
         </license>
     </licenses>
+
+    <distributionManagement>
+        <snapshotRepository>
+            <id>ossrh</id>
+            <url>https://oss.sonatype.org/content/repositories/snapshots</url>
+        </snapshotRepository>
+        <repository>
+            <id>ossrh</id>
+            <url>https://oss.sonatype.org/service/local/staging/deploy/maven2/</url>
+        </repository>
+    </distributionManagement>
 </project>
