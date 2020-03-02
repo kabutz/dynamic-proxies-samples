@@ -20,6 +20,7 @@
 
 package eu.javaspecialists.books.dynamicproxies.util.chain;
 
+import java.io.*;
 import java.lang.reflect.*;
 import java.util.*;
 import java.util.function.*;
@@ -36,7 +37,7 @@ import java.util.stream.*;
  * #checkAllMethodsAreHandled(targets).
  */
 public abstract class ChainedInvocationHandler
-    implements InvocationHandler {
+    implements InvocationHandler, Serializable {
   private final ChainedInvocationHandler next;
 
   public ChainedInvocationHandler(

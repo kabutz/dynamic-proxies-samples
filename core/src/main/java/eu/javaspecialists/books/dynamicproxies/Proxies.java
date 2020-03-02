@@ -39,23 +39,16 @@ public final class Proxies {
   /**
    * @param intf       The interface to implement and cast to
    * @param handler    InvocationHandler for all methods
-   * @param extraIntfs Any additional interfaces that our dynamic
-   *                   proxy should implement, e.g. Serializable
    */
   @SuppressWarnings("unchecked")
   public static <S> S castProxy(Class<? super S> intf,
-                                InvocationHandler handler,
-                                Class<?>... extraIntfs) {
+                                InvocationHandler handler) {
     Objects.requireNonNull(intf, "intf==null");
     Objects.requireNonNull(handler, "handler==null");
-    Objects.requireNonNull(extraIntfs, "extraIntfs==null");
-    Class<?>[] intfs = new Class[extraIntfs.length + 1];
-    intfs[0] = intf;
-    System.arraycopy(extraIntfs, 0, intfs, 1, extraIntfs.length);
     return MethodTurboBooster.boost(
         (S) Proxy.newProxyInstance(
             intf.getClassLoader(),
-            intfs,
+            new Class<?>[] {intf},
             new ExceptionUnwrappingInvocationHandler(handler)));
   }
   // end::castProxy()[]

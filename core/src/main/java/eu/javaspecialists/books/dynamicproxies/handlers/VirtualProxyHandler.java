@@ -20,12 +20,13 @@
 
 package eu.javaspecialists.books.dynamicproxies.handlers;
 
+import java.io.*;
 import java.lang.reflect.*;
 import java.util.function.*;
 
 // tag::listing[]
 public final class VirtualProxyHandler<S>
-    implements InvocationHandler {
+    implements InvocationHandler, Serializable {
   private final Supplier<? extends S> subjectSupplier;
   private S subject;
 
