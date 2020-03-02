@@ -22,23 +22,21 @@ Two commits will be added similar to:
 Step 2 sends the release to Maven Central.
  You must be registered with Sonatype in order to do a release.
  Your user token can be found in your profile at https://oss.sonatype.org/
- Signing of jars is done using a GPG key as described at
+ Signing of jars is done using a PGP private key, set up as described at
  https://central.sonatype.org/pages/working-with-pgp-signatures.html
 
-The following is required in ~/.m2/settings.xml
+The following is required in ~/.m2/settings.xml.
+The gpg profile will prompt for a password for the PGP private key.
+The server element holds credentials for Sonatype.
 
 ```
 <?xml version="1.0" encoding="UTF-8"?>
 <settings>
     <profiles>
         <profile>
-            <id>ossrh</id>
-            <activation>
-                <activeByDefault>false</activeByDefault>
-            </activation>
+            <id>gpg</id>
             <properties>
-                <gpg.executable>gpg</gpg.executable>
-                <gpg.passphrase>your-gpg-passphrase</gpg.passphrase>
+                <gpg.useagent>true</gpg.useagent>
             </properties>
         </profile>
     </profiles>
