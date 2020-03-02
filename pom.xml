@@ -42,7 +42,7 @@
 
     <modules>
         <module>core</module>
-        <module>benchmark</module>
+<!--        <module>benchmark</module>-->
     </modules>
 
     <scm>
