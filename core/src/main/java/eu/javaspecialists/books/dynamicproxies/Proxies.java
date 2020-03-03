@@ -133,7 +133,7 @@ public final class Proxies {
    * @param reducers   map from MethodKey to Reducer, default of
    *                   empty map with Map.of().
    * @param typeChecks object parameter passed to add() must
-   *                   extends all these types
+   *                   extend all these types
    */
   public static <T extends BaseComponent<? super T>> T compose(
       Class<T> component, Map<MethodKey, Reducer> reducers,
