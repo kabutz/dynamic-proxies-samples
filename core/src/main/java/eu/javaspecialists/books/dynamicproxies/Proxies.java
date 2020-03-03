@@ -38,8 +38,8 @@ public final class Proxies {
 
   // tag::castProxy()[]
   /**
-   * @param intf       The interface to implement and cast to
-   * @param handler    InvocationHandler for all methods
+   * @param intf    The interface to implement and cast to
+   * @param handler InvocationHandler for all methods
    */
   @SuppressWarnings("unchecked")
   public static <S> S castProxy(Class<? super S> intf,
@@ -59,7 +59,7 @@ public final class Proxies {
       Class<? super S> subjectInterface, S subject) {
     return castProxy(subjectInterface,
         (InvocationHandler & Serializable)
-        (proxy, method, args) -> method.invoke(subject, args)
+            (proxy, method, args) -> method.invoke(subject, args)
     );
   }
   // end::simpleProxy()[]
@@ -128,7 +128,7 @@ public final class Proxies {
     return compose(component, Map.of(), typeChecks);
   }
   /**
-   * @param component     interface to proxy. Must extend
+   * @param component  interface to proxy. Must extend
    *                   BaseComponent
    * @param reducers   map from MethodKey to Reducer, default of
    *                   empty map with Map.of().
