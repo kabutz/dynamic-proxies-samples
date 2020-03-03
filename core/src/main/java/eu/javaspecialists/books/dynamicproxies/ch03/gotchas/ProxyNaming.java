@@ -21,22 +21,24 @@
 package eu.javaspecialists.books.dynamicproxies.ch03.gotchas;
 
 import eu.javaspecialists.books.dynamicproxies.*;
+import eu.javaspecialists.books.dynamicproxies.handlers.*;
 
 // tag::listing[]
 public class ProxyNaming {
-  public interface Public {
+  public interface PublicNotExported {
     void open();
   }
   interface Hidden {
     void mystery();
   }
   public static void main(String... args) {
+    show(BaseComponent.class); // exported from module
+    show(PublicNotExported.class);
+    show(Hidden.class);
+  }
+  private static void show(Class<?> intf) {
     System.out.println(Proxies.simpleProxy(
-        Public.class, () -> {}
-    ).getClass());
-    System.out.println(Proxies.simpleProxy(
-        Hidden.class, () -> {}
-    ).getClass());
+        intf, null).getClass());
   }
 }
 // end::listing[]
