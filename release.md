@@ -7,7 +7,6 @@ To create a new release, run the following in a terminal:
  
  1. mvn -P ossrh release:prepare
  2. mvn -P ossrh release:perform
- 3. mvn release:clean
  
 Step 1 creates a git tag after committing a change to the POMs with a release
  version number. The user is prompted for the release version number and the
@@ -23,7 +22,10 @@ Step 2 sends the release to Maven Central.
  You must be registered with Sonatype in order to do a release.
  Your user token can be found in your profile at https://oss.sonatype.org/
  Signing of jars is done using a PGP private key, set up as described at
- https://central.sonatype.org/pages/working-with-pgp-signatures.html
+ https://central.sonatype.org/pages/working-with-pgp-signatures.html.
+ The bare minimum from this document is to run
+ `gpg --gen-key` and
+ `gpg2 --keyserver hkp://pool.sks-keyservers.net --send-keys <keyid>`
 
 The following is required in ~/.m2/settings.xml.
 The gpg profile will prompt for a password for the PGP private key.
@@ -50,12 +52,12 @@ The server element holds credentials for Sonatype.
 </settings>
 ```
 
-Step 2 deletes support files created by `release:prepare`, but if it fails
-these can be removed using Step 3.
- 
+To ensure that the password prompting is done by the GPG agent, add
+ `export GPG_TTY=$(tty)` to ~/.zprofile or equivalent.
+
 The release jar, sources jar and javadoc jar can also be found in the target 
  directory and can be rebuilt at any time by checking out the tag and running
  `mvn package`.
- 
+
 The release is done by the
  [Maven Release Plugin](https://maven.apache.org/maven-release/maven-release-plugin/).
