@@ -28,9 +28,8 @@ import java.time.*;
 public class DynamicProxies {
   public static void main(String... args) throws ParseException {
     // tag::listing[]
-    RealISODateParser realParser = new RealISODateParser();
     ISODateParser parser = Proxies.simpleProxy(
-        ISODateParser.class, realParser);
+        ISODateParser.class, new RealISODateParser());
     LocalDate palindrome = parser.parse("2020-02-02");
     System.out.println("palindrome = \"" + palindrome + "\"");
     System.out.println(parser);
