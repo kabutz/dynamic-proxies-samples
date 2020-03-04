@@ -4,12 +4,8 @@
 
 To exercise the benchmarks, run the following in a terminal:
 
- 1. mvn clean install
- 2. mvn verify -DskipTests -Prun-benchmarks
+`mvn verify -P run-benchmarks`
  
-The first command will install the JAR for the core project in your local Maven
- repository. The second command will use the core JAR to run the benchmarks.
-
 The forking required by JMH does not work when running the benchmarks using the
  Maven plugin in IntelliJ IDEA 2019.2.4.
  
