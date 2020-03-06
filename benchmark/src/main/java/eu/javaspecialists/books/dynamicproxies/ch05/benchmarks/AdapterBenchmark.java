@@ -35,6 +35,7 @@ import org.openjdk.jmh.runner.options.*;
 import java.lang.invoke.*;
 import java.util.*;
 import java.util.concurrent.*;
+import java.util.function.*;
 
 // tag::listing[]
 @Fork(3)
@@ -108,21 +109,28 @@ public class AdapterBenchmark {
     return dynamicObjectAdapter.toArray();
   }
 
+  private static final Predicate<String> shortNames =
+      s -> s.length() < 10;
+
   @Benchmark
   public void plainForEach() {
-    plain.forEach(Objects::requireNonNull);
+    plain.stream().filter(shortNames).forEach(
+        Objects::requireNonNull);
   }
   @Benchmark
   public void classAdapterForEach() {
-    classAdapter.forEach(Objects::requireNonNull);
+    classAdapter.forEachFiltered(
+        shortNames, Objects::requireNonNull);
   }
   @Benchmark
   public void objectAdapterForEach() {
-    objectAdapter.forEach(Objects::requireNonNull);
+    objectAdapter.forEachFiltered(
+        shortNames, Objects::requireNonNull);
   }
   @Benchmark
   public void dynamicObjectAdapterForEach() {
-    dynamicObjectAdapter.forEach(Objects::requireNonNull);
+    dynamicObjectAdapter.forEachFiltered(
+        shortNames, Objects::requireNonNull);
   }
 
   public static void main(String... args) throws RunnerException {

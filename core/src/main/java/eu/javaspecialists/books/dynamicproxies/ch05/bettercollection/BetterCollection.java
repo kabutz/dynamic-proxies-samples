@@ -21,10 +21,19 @@
 package eu.javaspecialists.books.dynamicproxies.ch05.bettercollection;
 
 import java.util.*;
+import java.util.function.*;
 
 // tag::listing[]
 public interface BetterCollection<E> extends Collection<E> {
   @Override
   E[] toArray();
+  default void forEachFiltered(Predicate<E> predicate,
+                               Consumer<E> action) {
+    Objects.requireNonNull(predicate, "predicate==null");
+    Objects.requireNonNull(action, "action==null");
+    for (E e : this) {
+      if (predicate.test(e)) action.accept(e);
+    }
+  }
 }
 // end::listing[]
