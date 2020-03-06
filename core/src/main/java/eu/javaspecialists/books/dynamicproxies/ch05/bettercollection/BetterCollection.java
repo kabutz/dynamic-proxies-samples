@@ -27,8 +27,8 @@ import java.util.function.*;
 public interface BetterCollection<E> extends Collection<E> {
   @Override
   E[] toArray();
-  default void forEachFiltered(Predicate<E> predicate,
-                               Consumer<E> action) {
+  default void forEachFiltered(Predicate<? super E> predicate,
+                               Consumer<? super E> action) {
     Objects.requireNonNull(predicate, "predicate==null");
     Objects.requireNonNull(action, "action==null");
     for (E e : this) {

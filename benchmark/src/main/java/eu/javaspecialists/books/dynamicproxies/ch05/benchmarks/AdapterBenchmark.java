@@ -29,6 +29,7 @@ package eu.javaspecialists.books.dynamicproxies.ch05.benchmarks;
  */
 import eu.javaspecialists.books.dynamicproxies.ch05.bettercollection.*;
 import org.openjdk.jmh.annotations.*;
+import org.openjdk.jmh.infra.*;
 import org.openjdk.jmh.runner.*;
 import org.openjdk.jmh.runner.options.*;
 
@@ -109,28 +110,24 @@ public class AdapterBenchmark {
     return dynamicObjectAdapter.toArray();
   }
 
-  private static final Predicate<String> shortNames =
+  private static final Predicate<String> predicate =
       s -> s.length() < 10;
 
   @Benchmark
-  public void plainForEach() {
-    plain.stream().filter(shortNames).forEach(
-        Objects::requireNonNull);
+  public void plainForEach(Blackhole bh) {
+    plain.stream().filter(predicate).forEach(bh::consume);
   }
   @Benchmark
-  public void classAdapterForEach() {
-    classAdapter.forEachFiltered(
-        shortNames, Objects::requireNonNull);
+  public void classAdapterForEach(Blackhole bh) {
+    classAdapter.forEachFiltered(predicate, bh::consume);
   }
   @Benchmark
-  public void objectAdapterForEach() {
-    objectAdapter.forEachFiltered(
-        shortNames, Objects::requireNonNull);
+  public void objectAdapterForEach(Blackhole bh) {
+    objectAdapter.forEachFiltered(predicate, bh::consume);
   }
   @Benchmark
-  public void dynamicObjectAdapterForEach() {
-    dynamicObjectAdapter.forEachFiltered(
-        shortNames, Objects::requireNonNull);
+  public void dynamicObjectAdapterForEach(Blackhole bh) {
+    dynamicObjectAdapter.forEachFiltered(predicate, bh::consume);
   }
 
   public static void main(String... args) throws RunnerException {
