@@ -11,9 +11,9 @@
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
-      <module name="benchmark" target="11" />
-      <module name="core" target="11" />
-      <module name="dynamic-proxies-samples" target="11" />
+      <module name="benchmark" target="13" />
+      <module name="core" target="13" />
+      <module name="dynamic-proxies-samples" target="13" />
     </bytecodeTargetLevel>
   </component>
   <component name="CopyrightManager" default="infoq2020">
@@ -3378,38 +3378,10 @@
   <component name="ProjectRootManager" version="2" languageLevel="JDK_12" default="false" project-jdk-name="14" project-jdk-type="JavaSDK">
     <output url="file://$PROJECT_DIR$/out" />
   </component>
-  <component name="RemoteRepositoriesConfiguration">
-    <remote-repository>
-      <option name="id" value="central" />
-      <option name="name" value="Central Repository" />
-      <option name="url" value="https://repo.maven.apache.org/maven2" />
-    </remote-repository>
-    <remote-repository>
-      <option name="id" value="central" />
-      <option name="name" value="Maven Central repository" />
-      <option name="url" value="https://repo1.maven.org/maven2" />
-    </remote-repository>
-    <remote-repository>
-      <option name="id" value="jboss.community" />
-      <option name="name" value="JBoss Community repository" />
-      <option name="url" value="https://repository.jboss.org/nexus/content/repositories/public/" />
-    </remote-repository>
-  </component>
   <component name="VcsDirectoryMappings">
     <mapping directory="" vcs="Git" />
   </component>
   <component name="libraryTable">
-    <library name="Maven: eu.javaspecialists.books.dynamicproxies:core:1.3.3-SNAPSHOT">
-      <CLASSES>
-        <root url="jar://$PROJECT_DIR$/core/pom.xml!/" />
-      </CLASSES>
-      <JAVADOC>
-        <root url="jar://$PROJECT_DIR$/core/core-1.3.3-SNAPSHOT-javadoc.jar!/" />
-      </JAVADOC>
-      <SOURCES>
-        <root url="jar://$PROJECT_DIR$/core/core-1.3.3-SNAPSHOT-sources.jar!/" />
-      </SOURCES>
-    </library>
     <library name="Maven: junit:junit:4.11">
       <CLASSES>
         <root url="jar://$MAVEN_REPOSITORY$/junit/junit/4.11/junit-4.11.jar!/" />
