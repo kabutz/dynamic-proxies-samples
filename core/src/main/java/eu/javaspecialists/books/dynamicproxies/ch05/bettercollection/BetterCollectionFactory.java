@@ -43,21 +43,23 @@ public class BetterCollectionFactory {
   public static class AdaptationObject<E> {
     private final Collection<E> adaptee;
     private final E[] seedArray;
-    private final Class<?> valueType;
     public AdaptationObject(Collection<E> adaptee,
                             E[] seedArray) {
       this.adaptee = adaptee;
       this.seedArray = seedArray;
-      this.valueType = seedArray.getClass()
-                           .getComponentType();
     }
     public E[] toArray() {
       return adaptee.toArray(seedArray);
+    }
+    @Override
+    public String toString() {
+      return "--" + adaptee + "--";
     }
     // Whilst we are at it, we could also make it into
     // a checked collection, see java.util.Collections
     // for an example.
     public boolean add(E e) {
+      var valueType = seedArray.getClass().getComponentType();
       if (!valueType.isInstance(e))
         throw new ClassCastException(
             "Attempt to insert " + e.getClass() +
@@ -66,11 +68,6 @@ public class BetterCollectionFactory {
       return adaptee.add(e);
     }
     // addAll() left as an exercise for the reader :-)
-
-    @Override
-    public String toString() {
-      return "--" + adaptee + "--";
-    }
   }
 }
 // end::listing[]
