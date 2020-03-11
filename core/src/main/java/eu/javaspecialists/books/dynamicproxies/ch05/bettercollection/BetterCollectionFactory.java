@@ -59,12 +59,12 @@ public class BetterCollectionFactory {
     // a checked collection, see java.util.Collections
     // for an example.
     public boolean add(E e) {
-      var valueType = seedArray.getClass().getComponentType();
-      if (!valueType.isInstance(e))
+      var type = seedArray.getClass().getComponentType();
+      if (!type.isInstance(e))
         throw new ClassCastException(
             "Attempt to insert " + e.getClass() +
                 " value into collection " +
-                "with value type " + valueType);
+                "with type " + type);
       return adaptee.add(e);
     }
     // addAll() left as an exercise for the reader :-)
