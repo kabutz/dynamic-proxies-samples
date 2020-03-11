@@ -31,8 +31,8 @@ public class BetterCollectionObjectAdapterDemo {
             new String[0]
         );
     names.add("Wolfgang");
-    names.add("Bobby Tables");
     names.add("Leander");
+    names.add("Bobby Tables");
     names.add("Klaus");
     names.add("Menongahela");
     String[] nameArray = names.toArray();
