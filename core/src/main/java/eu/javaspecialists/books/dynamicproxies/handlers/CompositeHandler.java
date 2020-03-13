@@ -31,13 +31,13 @@ import java.util.function.*;
 // tag::listing[]
 public final class CompositeHandler
     implements InvocationHandler {
+  private final Class<?> component;
   private final Map<MethodKey, Reducer> reducers;
   private final Class<?>[] typeChecks;
-  private final Collection<Object> children = new ArrayList<>();
   private final VTable defaultVT;
+  private final Collection<Object> children = new ArrayList<>();
   private final Map<Class<?>, VTable> childMethodMap =
       new ConcurrentHashMap<>();
-  private final Class<?> component;
 
   @SuppressWarnings({"unchecked", "rawtypes"})
   public <E extends BaseComponent<? super E>> CompositeHandler(
