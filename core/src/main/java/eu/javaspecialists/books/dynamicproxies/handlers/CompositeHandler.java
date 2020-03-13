@@ -169,7 +169,7 @@ public final class CompositeHandler
    * Specific match for add(Object) and remove(Object) methods.
    */
   private boolean matches(Method method, String name) {
-    return name.equals(method.getName())
+    return name == method.getName()
                && method.getParameterCount() == 1
                && ParameterTypesFetcher.get(method)[0]
                       == Object.class;
