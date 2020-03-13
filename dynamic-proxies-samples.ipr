@@ -11,9 +11,9 @@
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
-      <module name="benchmark" target="13" />
-      <module name="core" target="13" />
-      <module name="dynamic-proxies-samples" target="13" />
+      <module name="benchmark" target="11" />
+      <module name="core" target="11" />
+      <module name="dynamic-proxies-samples" target="11" />
     </bytecodeTargetLevel>
   </component>
   <component name="CopyrightManager" default="infoq2020">
