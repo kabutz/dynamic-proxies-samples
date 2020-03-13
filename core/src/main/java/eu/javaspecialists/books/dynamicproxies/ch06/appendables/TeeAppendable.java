@@ -26,10 +26,9 @@ import java.util.*;
 // tag::listing[]
 public class TeeAppendable<E extends
                                  Appendable
-                                 & Closeable
-                                 & Flushable>
-    implements Appendable, Closeable,
-                   Flushable {
+                                 & Flushable
+                                 & Closeable>
+    implements Appendable, Flushable, Closeable {
   private final Collection<E> children = new ArrayList<>();
 
   public boolean add(E child) {
@@ -57,12 +56,12 @@ public class TeeAppendable<E extends
     return this;
   }
   @Override
-  public void close() throws IOException {
-    for (var child : children) child.close();
-  }
-  @Override
   public void flush() throws IOException {
     for (var child : children) child.flush();
+  }
+  @Override
+  public void close() throws IOException {
+    for (var child : children) child.close();
   }
 }
 // end::listing[]

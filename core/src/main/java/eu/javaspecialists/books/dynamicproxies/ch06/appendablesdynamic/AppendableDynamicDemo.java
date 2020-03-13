@@ -28,9 +28,9 @@ import java.io.*;
 public class AppendableDynamicDemo {
   public static void main(String... args) throws IOException {
     // tag::listing[]
-    var tee = Proxies.compose(AppendableCloseableFlushable.class,
-        AppendableCloseableFlushable.getReducers(),
-        Appendable.class, Closeable.class, Flushable.class
+    var tee = Proxies.compose(AppendableFlushableCloseable.class,
+        AppendableFlushableCloseable.getReducers(),
+        Appendable.class, Flushable.class, Closeable.class
     );
     var sw = new StringWriter();
     tee.add(new OutputStreamWriter(System.out));

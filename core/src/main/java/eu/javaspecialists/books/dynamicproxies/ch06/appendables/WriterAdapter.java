@@ -23,13 +23,13 @@ package eu.javaspecialists.books.dynamicproxies.ch06.appendables;
 import java.io.*;
 
 // tag::listing[]
-public class WriterAdapter<T extends Appendable &
-                                 Closeable &
-                                 Flushable>
+public class WriterAdapter<E extends Appendable
+                                 & Flushable
+                                 & Closeable>
     extends Writer {
-  private final T adaptee;
+  private final E adaptee;
 
-  public WriterAdapter(T adaptee) {
+  public WriterAdapter(E adaptee) {
     this.adaptee = adaptee;
   }
   @Override
