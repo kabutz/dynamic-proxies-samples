@@ -1,3 +1,4 @@
 dynamic-proxies-samples.iws
 target
 *.class
+.DS_Store
