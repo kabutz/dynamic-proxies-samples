@@ -24,9 +24,9 @@ import eu.javaspecialists.books.dynamicproxies.handlers.*;
 
 // tag::listing[]
 public interface Contact {
-  void sendMail(String body);
-  int count();
   default boolean add(Contact c) { return false; }
   default boolean remove(Contact c) { return false; }
+  void sendMail(String body);
+  int count();
 }
 // end::listing[]
