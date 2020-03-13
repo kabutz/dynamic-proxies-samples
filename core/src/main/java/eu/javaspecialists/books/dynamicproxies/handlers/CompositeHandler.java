@@ -91,9 +91,9 @@ public final class CompositeHandler
     Function<Object, Object> mapFunction = child -> {
       try {
         VTable vt = childMethodMap.get(child.getClass());
-        Objects.requireNonNull(vt, "vt==null");
+        assert vt != null : "vt==null";
         Method childMethod = vt.lookup(method);
-        Objects.requireNonNull(childMethod, "childMethod==null");
+        assert childMethod != null : "childMethod==null";
         return childMethod.invoke(child, args);
       } catch (ReflectiveOperationException e) {
         throw new UncheckedException(e);
