@@ -21,7 +21,7 @@
 package eu.javaspecialists.books.dynamicproxies.ch03.gotchas;
 
 import eu.javaspecialists.books.dynamicproxies.*;
-import eu.javaspecialists.books.dynamicproxies.ch06.contact.*;
+import eu.javaspecialists.books.dynamicproxies.ch06.contactdynamic.*;
 import eu.javaspecialists.books.dynamicproxies.handlers.*;
 import org.junit.*;
 

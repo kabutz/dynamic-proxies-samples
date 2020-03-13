@@ -18,15 +18,13 @@
  * License.
  */
 
-package eu.javaspecialists.books.dynamicproxies.ch06.contact;
+package eu.javaspecialists.books.dynamicproxies.ch06.contactdynamic;
 
 import eu.javaspecialists.books.dynamicproxies.handlers.*;
 
 // tag::listing[]
-public interface Contact {
+public interface Contact extends BaseComponent<Contact> {
   void sendMail(String body);
   int count();
-  default boolean add(Contact c) { return false; }
-  default boolean remove(Contact c) { return false; }
 }
 // end::listing[]

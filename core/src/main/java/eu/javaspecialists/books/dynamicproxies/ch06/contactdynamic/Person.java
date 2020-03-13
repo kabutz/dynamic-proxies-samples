@@ -18,15 +18,20 @@
  * License.
  */
 
-package eu.javaspecialists.books.dynamicproxies.ch06.contact;
-
-import eu.javaspecialists.books.dynamicproxies.handlers.*;
+package eu.javaspecialists.books.dynamicproxies.ch06.contactdynamic;
 
 // tag::listing[]
-public interface Contact {
-  void sendMail(String body);
-  int count();
-  default boolean add(Contact c) { return false; }
-  default boolean remove(Contact c) { return false; }
+public class Person implements Contact {
+  private final String email;
+  public Person(String email) {this.email = email;}
+  @Override
+  public void sendMail(String body) {
+    // connecting to JavaMail and off it goes ...
+    System.out.println("Sending " + body + " to " + email);
+  }
+  @Override
+  public int count() {
+    return 1;
+  }
 }
 // end::listing[]
