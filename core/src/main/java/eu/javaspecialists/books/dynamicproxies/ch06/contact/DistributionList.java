@@ -24,7 +24,7 @@ package eu.javaspecialists.books.dynamicproxies.ch06.contact;
 import java.util.*;
 
 public class DistributionList implements Contact {
-  private final List<Contact> contacts = new ArrayList<>();
+  private final Collection<Contact> contacts = new ArrayList<>();
 
   @Override
   public boolean add(Contact c) {

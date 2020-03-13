@@ -33,7 +33,7 @@ public final class CompositeHandler
     implements InvocationHandler {
   private final Map<MethodKey, Reducer> reducers;
   private final Class<?>[] typeChecks;
-  private final List<Object> children = new ArrayList<>();
+  private final Collection<Object> children = new ArrayList<>();
   private final VTable defaultVT;
   private final Map<Class<?>, VTable> childMethodMap =
       new ConcurrentHashMap<>();
