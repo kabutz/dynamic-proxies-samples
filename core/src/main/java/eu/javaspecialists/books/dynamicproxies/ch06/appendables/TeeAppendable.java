@@ -31,15 +31,13 @@ public class TeeAppendable<E extends
                                  & Closeable
                                  & Flushable>
     implements Appendable, Closeable,
-                   Flushable, BaseComponent<E> {
+                   Flushable {
   private final Collection<E> children = new ArrayList<>();
 
-  @Override
   public boolean add(E child) {
     return children.add(child);
   }
 
-  @Override
   public boolean remove(E child) {
     return children.remove(child);
   }

@@ -18,26 +18,36 @@
  * License.
  */
 
-package eu.javaspecialists.books.dynamicproxies.ch06.appendables;
+package eu.javaspecialists.books.dynamicproxies.ch06.appendablesdynamic;
 
 import eu.javaspecialists.books.dynamicproxies.*;
-import org.junit.*;
+import eu.javaspecialists.books.dynamicproxies.ch06.appendables.*;
 
 import java.io.*;
 
-public class AppendableDynamicTest extends AppendableTest {
-  @Test
-  public void dynamicComposite() throws IOException {
+public class AppendableDynamicDemo {
+  public static void main(String... args) throws IOException {
+    // tag::listing[]
     var tee = Proxies.compose(AppendableCloseableFlushable.class,
         AppendableCloseableFlushable.getReducers(),
-        Appendable.class, Closeable.class, Flushable.class);
-    var sw1 = new StringWriter();
-    var sw2 = new StringWriter();
-    var sw3 = new StringWriter();
-    tee.add(sw1);
-    tee.add(sw2);
-    tee.add(sw3);
+        Appendable.class, Closeable.class, Flushable.class
+    );
+    var sw = new StringWriter();
+    tee.add(new OutputStreamWriter(System.out));
+    tee.add(new FileWriter("output.txt"));
+    tee.add(sw);
 
-    test(tee, sw1, sw2, sw3);
+    var out = new PrintWriter(new WriterAdapter<>(tee));
+    out.println("Hello World Dynamic");
+    out.flush();
+
+    tee.append("TestingAppenderDynamic")
+        .append('\n')
+        .append("Does this work?")
+        .append('\n');
+    tee.flush();
+
+    System.out.println("sw = " + sw);
+    // end::listing[]
   }
 }

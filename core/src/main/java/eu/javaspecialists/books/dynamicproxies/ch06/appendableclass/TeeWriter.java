@@ -18,26 +18,30 @@
  * License.
  */
 
-package eu.javaspecialists.books.dynamicproxies.ch06.appendables;
-
-import eu.javaspecialists.books.dynamicproxies.handlers.*;
+package eu.javaspecialists.books.dynamicproxies.ch06.appendableclass;
 
 import java.io.*;
 import java.util.*;
 
 // tag::listing[]
-public class TeeOutputStream extends OutputStream
-    implements BaseComponent<OutputStream> {
-  private final Collection<OutputStream> streams =
+public class TeeWriter extends Writer {
+  private final Collection<Writer> streams =
       new ArrayList<>();
-  @Override
-  public boolean add(OutputStream out) {
+  public boolean add(Writer out) {
     return streams.add(out);
   }
-  @Override
-  public boolean remove(OutputStream out) {
+  public boolean remove(Writer out) {
     return streams.remove(out);
   }
+
+  @Override
+  public void write(char[] cbuf, int off, int len)
+      throws IOException {
+    for (var out : streams) {
+      out.write(cbuf, off, len);
+    }
+  }
+
   @Override
   public void write(int b) throws IOException {
     for (var out : streams) {
