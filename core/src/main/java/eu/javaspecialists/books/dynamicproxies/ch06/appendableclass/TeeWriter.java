@@ -33,7 +33,6 @@ public class TeeWriter extends Writer {
   public boolean remove(Writer out) {
     return streams.remove(out);
   }
-
   @Override
   public void write(char[] cbuf, int off, int len)
       throws IOException {
@@ -41,7 +40,6 @@ public class TeeWriter extends Writer {
       out.write(cbuf, off, len);
     }
   }
-
   @Override
   public void write(int b) throws IOException {
     for (var out : streams) {
