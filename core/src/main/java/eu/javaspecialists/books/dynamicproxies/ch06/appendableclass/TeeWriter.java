@@ -49,15 +49,15 @@ public class TeeWriter extends Writer {
     }
   }
   @Override
-  public void flush() throws IOException {
-    for (var out : streams) {
-      out.flush();
-    }
-  }
-  @Override
   public void close() throws IOException {
     for (var out : streams) {
       out.close();
+    }
+  }
+  @Override
+  public void flush() throws IOException {
+    for (var out : streams) {
+      out.flush();
     }
   }
 }
