@@ -26,7 +26,7 @@ public class AppendableDemo {
   public static void main(String... args) throws IOException {
     // tag::listing[]
     // "var" is a lifesaver here.  The "correct" definition would
-    // be TeeAppendable<Appendable & Closeable & Flushable>, but
+    // be TeeAppendable<Appendable & Flushable & Closeable>, but
     // that is not possible in Java.  "var" takes care of it.
     var tee = new TeeAppendable<>();
     var sw = new StringWriter();
