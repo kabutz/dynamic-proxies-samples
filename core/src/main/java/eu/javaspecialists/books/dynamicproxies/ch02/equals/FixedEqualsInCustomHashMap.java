@@ -64,10 +64,10 @@ public class FixedEqualsInCustomHashMap {
       }
       return o.equals(this); // reversing the equals() condition
     }
-    // end::listing[]
     @Override
-    public int hashCode() {
+    public final int hashCode() {
       return map.hashCode();
     }
+    // end::listing[]
   }
 }

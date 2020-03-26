@@ -68,12 +68,11 @@ public class BrokenEqualsInHandCraftedProxy {
 
       return true;
     }
-    // end::listing[]
-
     @Override
     public int hashCode() {
       return map.hashCode();
     }
+    // end::listing[]
   }
 
 }

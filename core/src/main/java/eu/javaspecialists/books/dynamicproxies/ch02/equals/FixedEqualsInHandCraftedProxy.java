@@ -60,11 +60,10 @@ public class FixedEqualsInHandCraftedProxy {
     public boolean equals(Object o) {
       return map.equals(o);
     }
-    // end::listing[]
-
     @Override
     public int hashCode() {
       return map.hashCode();
     }
+    // end::listing[]
   }
 }
