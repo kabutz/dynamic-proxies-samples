@@ -163,6 +163,9 @@ public final class VTable {
         MethodHandles.Lookup lookup = MethodHandles.lookup();
         return MethodHandles.privateLookupIn(target, lookup)
                    .unreflectSpecial(method, target)
+                   // asSpreader() avoids having to call
+                   // invokeWithArguments() and was about 10x
+                   // faster
                    .asSpreader(Object[].class,
                        method.getParameterCount());
       }
