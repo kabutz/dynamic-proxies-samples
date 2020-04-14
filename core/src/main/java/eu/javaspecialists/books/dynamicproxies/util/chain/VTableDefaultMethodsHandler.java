@@ -37,17 +37,14 @@ public final class VTableDefaultMethodsHandler
     this.vtable = Objects.requireNonNull(vtable);
   }
 
-  private final static Object[] EMPTY_ARGS = {};
-
   @Override
   public Object invoke(Object proxy, Method method,
                        Object[] args) throws Throwable {
     MethodHandle match = vtable.lookupDefaultMethod(method);
     if (match != null) {
       return match.invoke(proxy, args);
-    } else {
-      return super.invoke(proxy, method, args);
     }
+    return super.invoke(proxy, method, args);
   }
 
   @Override
