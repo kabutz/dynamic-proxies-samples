@@ -162,7 +162,9 @@ public final class VTable {
         // Thanks Thomas Darimont for this idea
         MethodHandles.Lookup lookup = MethodHandles.lookup();
         return MethodHandles.privateLookupIn(target, lookup)
-                   .unreflectSpecial(method, target);
+                   .unreflectSpecial(method, target)
+                   .asSpreader(Object[].class,
+                       method.getParameterCount());
       }
       return null;
     } catch (IllegalAccessException e) {

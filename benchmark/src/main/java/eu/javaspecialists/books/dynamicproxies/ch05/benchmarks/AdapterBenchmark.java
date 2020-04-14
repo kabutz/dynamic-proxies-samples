@@ -69,7 +69,6 @@ public class AdapterBenchmark {
   @Setup
   public void init() {
     all.forEach(Collection::clear);
-
     all.forEach(c -> c.add("John"));
     all.forEach(c -> c.add("Mary"));
     all.forEach(c -> c.add("Menongahela"));
@@ -125,9 +124,23 @@ public class AdapterBenchmark {
   public void objectAdapterForEach(Blackhole bh) {
     objectAdapter.forEachFiltered(predicate, bh::consume);
   }
+
   @Benchmark
   public void dynamicObjectAdapterForEach(Blackhole bh) {
     dynamicObjectAdapter.forEachFiltered(predicate, bh::consume);
+  }
+
+  @Benchmark
+  public void manualForEach(Blackhole bh) {
+    Consumer<? super String> consumer = bh::consume;
+    filterAndConsume("Bobby Tables", consumer);
+    filterAndConsume("John", consumer);
+    filterAndConsume("Mary", consumer);
+    filterAndConsume("Menongahela", consumer);
+  }
+
+  private void filterAndConsume(String s, Consumer<? super String> consumer) {
+    if (predicate.test(s)) consumer.accept(s);
   }
 
   public static void main(String... args) throws RunnerException {

@@ -3375,7 +3375,7 @@
       <module fileurl="file://$PROJECT_DIR$/dynamic-proxies-samples.iml" filepath="$PROJECT_DIR$/dynamic-proxies-samples.iml" group="dynamic-proxies-samples and modules" />
     </modules>
   </component>
-  <component name="ProjectRootManager" version="2" languageLevel="JDK_12" default="false" project-jdk-name="14" project-jdk-type="JavaSDK">
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_14" default="false" project-jdk-name="14" project-jdk-type="JavaSDK">
     <output url="file://$PROJECT_DIR$/out" />
   </component>
   <component name="RemoteRepositoriesConfiguration">
