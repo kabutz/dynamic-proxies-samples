@@ -272,16 +272,14 @@ public class VTableTest {
     assertEquals(String.class,
         vt.lookup(parentGetMethod).getReturnType());
     assertEquals("Child", vt.lookupDefaultMethod(parentGetMethod)
-                              .bindTo(child)
-                              .invokeWithArguments((Object[]) null));
+                              .invoke(child, (Object[]) null));
 
     Method childGetMethod = Child.class.getMethod("get");
     assertEquals(String.class, childGetMethod.getReturnType());
     assertEquals(String.class,
         vt.lookup(childGetMethod).getReturnType());
     assertEquals("Child", vt.lookupDefaultMethod(childGetMethod)
-                              .bindTo(child)
-                              .invokeWithArguments((Object[]) null));
+                              .invoke(child, (Object[]) null));
   }
 
   @Test

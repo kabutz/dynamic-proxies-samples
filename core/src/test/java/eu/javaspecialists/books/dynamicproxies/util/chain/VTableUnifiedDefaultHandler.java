@@ -31,7 +31,7 @@ public class VTableUnifiedDefaultHandler
       VTable vtable, ChainedInvocationHandler next) {
     super(vtable::lookupDefaultMethod,
         (match, receiver, args) ->
-            match.bindTo(receiver).invokeWithArguments(args),
+            match.invoke(receiver, args),
         next);
   }
   @Override
