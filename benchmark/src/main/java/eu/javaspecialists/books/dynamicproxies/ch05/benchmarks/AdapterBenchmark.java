@@ -130,19 +130,6 @@ public class AdapterBenchmark {
     dynamicObjectAdapter.forEachFiltered(predicate, bh::consume);
   }
 
-  @Benchmark
-  public void manualForEach(Blackhole bh) {
-    Consumer<? super String> consumer = bh::consume;
-    filterAndConsume("Bobby Tables", consumer);
-    filterAndConsume("John", consumer);
-    filterAndConsume("Mary", consumer);
-    filterAndConsume("Menongahela", consumer);
-  }
-
-  private void filterAndConsume(String s, Consumer<? super String> consumer) {
-    if (predicate.test(s)) consumer.accept(s);
-  }
-
   public static void main(String... args) throws RunnerException {
     Options opt = new OptionsBuilder()
                       .include(MethodHandles.lookup().lookupClass().getName())
