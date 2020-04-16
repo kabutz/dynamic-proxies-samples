@@ -24,7 +24,6 @@ import eu.javaspecialists.books.dynamicproxies.util.*;
 
 import java.lang.reflect.*;
 
-// tag::listing[]
 public class VTableUnifiedHandler
     extends UnifiedInvocationHandler<Method> {
   private Object receiver;
@@ -40,4 +39,3 @@ public class VTableUnifiedHandler
     return receiver;
   }
 }
-// end::listing[]

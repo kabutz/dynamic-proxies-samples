@@ -24,7 +24,6 @@ import eu.javaspecialists.books.dynamicproxies.util.*;
 
 import java.lang.invoke.*;
 
-// tag::listing[]
 public class VTableUnifiedDefaultHandler
     extends UnifiedInvocationHandler<MethodHandle> {
   public VTableUnifiedDefaultHandler(
@@ -39,4 +38,3 @@ public class VTableUnifiedDefaultHandler
     return proxy;
   }
 }
-// end::listing[]
