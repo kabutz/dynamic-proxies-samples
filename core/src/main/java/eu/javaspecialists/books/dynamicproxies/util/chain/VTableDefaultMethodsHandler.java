@@ -41,9 +41,8 @@ public final class VTableDefaultMethodsHandler
   public Object invoke(Object proxy, Method method,
                        Object[] args) throws Throwable {
     MethodHandle match = vtable.lookupDefaultMethod(method);
-    if (match != null) {
+    if (match != null)
       return match.invoke(proxy, args);
-    }
     return super.invoke(proxy, method, args);
   }
 
