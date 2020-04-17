@@ -158,13 +158,13 @@ public final class VTable {
   private MethodHandle getDefaultMethodHandle(Method method) {
     try {
       Class<?> target = method.getDeclaringClass();
-      if (isMethodDeclaredInOpenModule(method)) {
+      if (isTargetClassInOpenModule(target)) {
         // Thanks Thomas Darimont for this idea
         MethodHandles.Lookup lookup = MethodHandles.lookup();
         return MethodHandles.privateLookupIn(target, lookup)
                    .unreflectSpecial(method, target)
                    // asSpreader() avoids having to call
-                   // invokeWithArguments() and was about 10x
+                   // invokeWithArguments() and is about 10x
                    // faster
                    .asSpreader(Object[].class,
                        method.getParameterCount());
@@ -183,11 +183,11 @@ public final class VTable {
    * to explicitly open that module with --add-opens \
    * java.base/java.util=eu.javaspecialists.books.dynamicproxies
    */
-  private boolean isMethodDeclaredInOpenModule(Method method) {
-    Class<?> target = method.getDeclaringClass();
-    String packageName = target.getPackageName();
-    Module module = VTable.class.getModule();
-    return target.getModule().isOpen(packageName, module);
+  private boolean isTargetClassInOpenModule(Class<?> target) {
+    Module targetModule = target.getModule();
+    String targetPackage = target.getPackageName();
+    Module ourModule = VTable.class.getModule();
+    return targetModule.isOpen(targetPackage, ourModule);
   }
 
   /**
