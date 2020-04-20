@@ -19,7 +19,14 @@ Two commits will be added similar to:
 * [maven-release-plugin] prepare for next development
  
 Step 2 sends the release to Maven Central.
- You must be registered with Sonatype in order to do a release.
+
+Finally, update the parent POM version in the benchmark module to
+ match the new snapshot release number. This module is excluded
+ from the release so its version is not updated by the release plugin.
+
+## Prerequisites
+
+You must be registered with Sonatype in order to do a release.
  Your user token can be found in your profile at https://oss.sonatype.org/
  Signing of jars is done using a PGP private key, set up as described at
  https://central.sonatype.org/pages/working-with-pgp-signatures.html.
