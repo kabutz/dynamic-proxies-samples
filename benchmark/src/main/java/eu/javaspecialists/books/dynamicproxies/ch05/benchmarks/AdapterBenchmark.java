@@ -153,7 +153,7 @@ public class AdapterBenchmark {
             .include(name)
             .forks(1)
             .jvmArgsAppend(
-                "-XX:+DoEscapeAnalyis",
+                "-XX:+DoEscapeAnalysis",
                 "-XX:+UseParallelGC")
             .warmupIterations(3)
             .warmupTime(TimeValue.seconds(1))
@@ -167,7 +167,7 @@ public class AdapterBenchmark {
             .include(name)
             .forks(1)
             .jvmArgsAppend(
-                "-XX:-DoEscapeAnalyis",
+                "-XX:-DoEscapeAnalysis",
                 "-XX:+UseParallelGC")
             .warmupIterations(3)
             .warmupTime(TimeValue.seconds(1))
