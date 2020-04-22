@@ -20,13 +20,6 @@
 
 package eu.javaspecialists.books.dynamicproxies.ch05.benchmarks;
 
-/*
- -Deu.javaspecialists.books.dynamicproxies.util
- .ParameterTypesFetcher.enabled=true
- -Deu.javaspecialists.books.dynamicproxies.util
- .MethodTurboBooster.disabled=false
-
- */
 import eu.javaspecialists.books.dynamicproxies.ch05.bettercollection.*;
 import org.openjdk.jmh.annotations.*;
 import org.openjdk.jmh.infra.*;
@@ -112,35 +105,76 @@ public class AdapterBenchmark {
   private static final Predicate<String> predicate =
       s -> s.length() < 10;
 
-  @Benchmark
-  public void plainForEach(Blackhole bh) {
-    plain.stream().filter(predicate).forEach(bh::consume);
+  private static class Counter implements Consumer<Object> {
+    private int count;
+    @Override
+    public void accept(Object o) { count++;}
+    public void reset() { count = 0;}
+    public int get() { return count;}
   }
+
+  private static final Counter COUNTER = new Counter();
+
   @Benchmark
-  public void classAdapterForEach(Blackhole bh) {
-    classAdapter.forEachFiltered(predicate, bh::consume);
-  }
-  @Benchmark
-  public void objectAdapterForEach(Blackhole bh) {
-    objectAdapter.forEachFiltered(predicate, bh::consume);
+  public int plainForEach(Blackhole bh) {
+    COUNTER.reset();
+    Objects.requireNonNull(predicate, "predicate==null");
+    Objects.requireNonNull(COUNTER, "action==null");
+    for (String e : plain) {
+      if (predicate.test(e)) COUNTER.accept(e);
+    }
+    return COUNTER.get();
   }
 
   @Benchmark
-  public void dynamicObjectAdapterForEach(Blackhole bh) {
-    dynamicObjectAdapter.forEachFiltered(predicate, bh::consume);
+  public int classAdapterForEach(Blackhole bh) {
+    COUNTER.reset();
+    classAdapter.forEachFiltered(predicate, COUNTER);
+    return COUNTER.get();
+  }
+  @Benchmark
+  public int objectAdapterForEach(Blackhole bh) {
+    COUNTER.reset();
+    objectAdapter.forEachFiltered(predicate, COUNTER);
+    return COUNTER.get();
+  }
+
+  @Benchmark
+  public int dynamicObjectAdapterForEach() {
+    COUNTER.reset();
+    dynamicObjectAdapter.forEachFiltered(predicate, COUNTER);
+    return COUNTER.get();
   }
 
   public static void main(String... args) throws RunnerException {
-    Options opt = new OptionsBuilder()
-                      .include(MethodHandles.lookup().lookupClass().getName())
-                      .forks(3)
-                      .warmupIterations(5)
-                      .warmupTime(TimeValue.seconds(3))
-                      .measurementIterations(10)
-                      .measurementTime(TimeValue.seconds(3))
-                      .addProfiler("gc")
-                      .build();
-    new Runner(opt).run();
+    String name = MethodHandles.lookup().lookupClass().getName();
+    new Runner(
+        new OptionsBuilder()
+            .include(name)
+            .forks(1)
+            .jvmArgsAppend(
+                "-XX:+UseParallelGC")
+            .warmupIterations(3)
+            .warmupTime(TimeValue.seconds(1))
+            .measurementIterations(3)
+            .measurementTime(TimeValue.seconds(1))
+            .addProfiler("gc")
+            .build()).run();
+    new Runner(
+        new OptionsBuilder()
+            .include(name)
+            .forks(1)
+            .jvmArgsAppend(
+                "-XX:+UseParallelGC",
+                "-Deu.javaspecialists.books" +
+                    ".dynamicproxies.util" +
+                    ".ParameterTypesFetcher" +
+                    ".enabled=true")
+            .warmupIterations(5)
+            .warmupTime(TimeValue.seconds(3))
+            .measurementIterations(10)
+            .measurementTime(TimeValue.seconds(3))
+            .build()).run();
   }
 }
 // end::listing[]
