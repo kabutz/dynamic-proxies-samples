@@ -22,7 +22,6 @@ package eu.javaspecialists.books.dynamicproxies.ch05.benchmarks;
 
 import eu.javaspecialists.books.dynamicproxies.ch05.bettercollection.*;
 import org.openjdk.jmh.annotations.*;
-import org.openjdk.jmh.infra.*;
 import org.openjdk.jmh.runner.*;
 import org.openjdk.jmh.runner.options.*;
 
@@ -116,7 +115,7 @@ public class AdapterBenchmark {
   private static final Counter COUNTER = new Counter();
 
   @Benchmark
-  public int plainForEach(Blackhole bh) {
+  public int plainForEach() {
     COUNTER.reset();
     Objects.requireNonNull(predicate, "predicate==null");
     Objects.requireNonNull(COUNTER, "action==null");
@@ -127,13 +126,13 @@ public class AdapterBenchmark {
   }
 
   @Benchmark
-  public int classAdapterForEach(Blackhole bh) {
+  public int classAdapterForEach() {
     COUNTER.reset();
     classAdapter.forEachFiltered(predicate, COUNTER);
     return COUNTER.get();
   }
   @Benchmark
-  public int objectAdapterForEach(Blackhole bh) {
+  public int objectAdapterForEach() {
     COUNTER.reset();
     objectAdapter.forEachFiltered(predicate, COUNTER);
     return COUNTER.get();
