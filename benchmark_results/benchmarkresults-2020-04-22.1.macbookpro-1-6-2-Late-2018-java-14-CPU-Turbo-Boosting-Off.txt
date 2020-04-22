@@ -1,4 +1,4 @@
-/Library/Java/JavaVirtualMachines/jdk-14.jdk/Contents/Home/bin/java -javaagent:/Applications/000/IntelliJ IDEA 2020.1.app/Contents/lib/idea_rt.jar=49941:/Applications/000/IntelliJ IDEA 2020.1.app/Contents/bin -Dfile.encoding=UTF-8 -classpath /Users/heinz/Dropbox (HIC Straws)/heinz/git/hexie/dynamic-proxies-mini-book-infoq/dynamic-proxies-samples/benchmark/target/classes:/Users/heinz/Dropbox (HIC Straws)/heinz/git/hexie/dynamic-proxies-mini-book-infoq/dynamic-proxies-samples/core/target/classes:/Users/heinz/.m2/repository/org/eclipse/jetty/jetty-server/10.0.0.alpha1/jetty-server-10.0.0.alpha1.jar:/Users/heinz/.m2/repository/org/eclipse/jetty/toolchain/jetty-servlet-api/4.0.2/jetty-servlet-api-4.0.2.jar:/Users/heinz/.m2/repository/org/eclipse/jetty/jetty-http/10.0.0.alpha1/jetty-http-10.0.0.alpha1.jar:/Users/heinz/.m2/repository/org/eclipse/jetty/jetty-util/10.0.0.alpha1/jetty-util-10.0.0.alpha1.jar:/Users/heinz/.m2/repository/org/eclipse/jetty/jetty-io/10.0.0.alpha1/jetty-io-10.0.0.alpha1.jar:/Users/heinz/.m2/repository/junit/junit/4.11/junit-4.11.jar:/Users/heinz/.m2/repository/org/hamcrest/hamcrest-core/1.3/hamcrest-core-1.3.jar:/Users/heinz/.m2/repository/org/openjdk/jmh/jmh-core/1.21/jmh-core-1.21.jar:/Users/heinz/.m2/repository/net/sf/jopt-simple/jopt-simple/4.6/jopt-simple-4.6.jar:/Users/heinz/.m2/repository/org/apache/commons/commons-math3/3.2/commons-math3-3.2.jar:/Users/heinz/.m2/repository/org/openjdk/jmh/jmh-generator-annprocess/1.21/jmh-generator-annprocess-1.21.jar eu.javaspecialists.books.dynamicproxies.ch05.benchmarks.AdapterBenchmark
+/Library/Java/JavaVirtualMachines/jdk-14.jdk/Contents/Home/bin/java -XX:+UseParallelGC -Deu.javaspecialists.books.dynamicproxies.util.ParameterTypesFetcher.enabled=true -javaagent:/Applications/000/IntelliJ IDEA 2020.1.app/Contents/lib/idea_rt.jar=51846:/Applications/000/IntelliJ IDEA 2020.1.app/Contents/bin -Dfile.encoding=UTF-8 -classpath /Users/heinz/Dropbox (HIC Straws)/heinz/git/hexie/dynamic-proxies-mini-book-infoq/dynamic-proxies-samples/benchmark/target/classes:/Users/heinz/Dropbox (HIC Straws)/heinz/git/hexie/dynamic-proxies-mini-book-infoq/dynamic-proxies-samples/core/target/classes:/Users/heinz/.m2/repository/org/eclipse/jetty/jetty-server/10.0.0.alpha1/jetty-server-10.0.0.alpha1.jar:/Users/heinz/.m2/repository/org/eclipse/jetty/toolchain/jetty-servlet-api/4.0.2/jetty-servlet-api-4.0.2.jar:/Users/heinz/.m2/repository/org/eclipse/jetty/jetty-http/10.0.0.alpha1/jetty-http-10.0.0.alpha1.jar:/Users/heinz/.m2/repository/org/eclipse/jetty/jetty-util/10.0.0.alpha1/jetty-util-10.0.0.alpha1.jar:/Users/heinz/.m2/repository/org/eclipse/jetty/jetty-io/10.0.0.alpha1/jetty-io-10.0.0.alpha1.jar:/Users/heinz/.m2/repository/junit/junit/4.11/junit-4.11.jar:/Users/heinz/.m2/repository/org/hamcrest/hamcrest-core/1.3/hamcrest-core-1.3.jar:/Users/heinz/.m2/repository/org/openjdk/jmh/jmh-core/1.21/jmh-core-1.21.jar:/Users/heinz/.m2/repository/net/sf/jopt-simple/jopt-simple/4.6/jopt-simple-4.6.jar:/Users/heinz/.m2/repository/org/apache/commons/commons-math3/3.2/commons-math3-3.2.jar:/Users/heinz/.m2/repository/org/openjdk/jmh/jmh-generator-annprocess/1.21/jmh-generator-annprocess-1.21.jar eu.javaspecialists.books.dynamicproxies.ch05.benchmarks.AdapterBenchmark
 WARNING: An illegal reflective access operation has occurred
 WARNING: Illegal reflective access by org.openjdk.jmh.util.Utils (file:/Users/heinz/.m2/repository/org/openjdk/jmh/jmh-core/1.21/jmh-core-1.21.jar) to field java.io.PrintStream.charOut
 WARNING: Please consider reporting this to the maintainers of org.openjdk.jmh.util.Utils
@@ -7,254 +7,96 @@ WARNING: All illegal access operations will be denied in a future release
 # JMH version: 1.21
 # VM version: JDK 14, OpenJDK 64-Bit Server VM, 14+36-1461
 # VM invoker: /Users/heinz/Dropbox (HIC Straws)/heinz/JavaVirtualMachines/openjdk-14.jdk/Contents/Home/bin/java
-# VM options: -javaagent:/Applications/000/IntelliJ IDEA 2020.1.app/Contents/lib/idea_rt.jar=49941:/Applications/000/IntelliJ IDEA 2020.1.app/Contents/bin -Dfile.encoding=UTF-8
+# VM options: -XX:+UseParallelGC -Deu.javaspecialists.books.dynamicproxies.util.ParameterTypesFetcher.enabled=true -javaagent:/Applications/000/IntelliJ IDEA 2020.1.app/Contents/lib/idea_rt.jar=51846:/Applications/000/IntelliJ IDEA 2020.1.app/Contents/bin -Dfile.encoding=UTF-8
 # Warmup: 5 iterations, 3 s each
-# Measurement: 5 iterations, 5 s each
+# Measurement: 10 iterations, 3 s each
 # Timeout: 10 min per iteration
 # Threads: 1 thread, will synchronize iterations
 # Benchmark mode: Average time, time/op
 # Benchmark: eu.javaspecialists.books.dynamicproxies.ch05.benchmarks.AdapterBenchmark.classAdapterForEach
 
-# Run progress: 0,00% complete, ETA 00:08:00
+# Run progress: 0,00% complete, ETA 00:09:00
 # Fork: 1 of 3
 # Warmup Iteration   1: WARNING: An illegal reflective access operation has occurred
-WARNING: Illegal reflective access using Lookup on eu.javaspecialists.books.dynamicproxies.util.VTable (file:/Users/heinz/Dropbox%20(HIC%20Straws)/heinz/git/hexie/dynamic-proxies-mini-book-infoq/dynamic-proxies-samples/core/target/classes/) to interface java.util.Collection
-WARNING: Please consider reporting this to the maintainers of eu.javaspecialists.books.dynamicproxies.util.VTable
+WARNING: Illegal reflective access using Lookup on eu.javaspecialists.books.dynamicproxies.util.ParameterTypesFetcher$FastParameterFetcher (file:/Users/heinz/Dropbox%20(HIC%20Straws)/heinz/git/hexie/dynamic-proxies-mini-book-infoq/dynamic-proxies-samples/core/target/classes/) to class java.lang.reflect.Method
+WARNING: Please consider reporting this to the maintainers of eu.javaspecialists.books.dynamicproxies.util.ParameterTypesFetcher$FastParameterFetcher
 WARNING: Use --illegal-access=warn to enable warnings of further illegal reflective access operations
 WARNING: All illegal access operations will be denied in a future release
-29,241 ns/op
-# Warmup Iteration   2: 29,139 ns/op
-# Warmup Iteration   3: 25,827 ns/op
-# Warmup Iteration   4: 25,780 ns/op
-# Warmup Iteration   5: 25,707 ns/op
-Iteration   1: 25,712 ns/op
-                 ·gc.alloc.rate:                   539,420 MB/sec
-                 ·gc.alloc.rate.norm:              16,001 B/op
-                 ·gc.churn.G1_Eden_Space:          552,118 MB/sec
-                 ·gc.churn.G1_Eden_Space.norm:     16,378 B/op
-                 ·gc.churn.G1_Survivor_Space:      0,004 MB/sec
-                 ·gc.churn.G1_Survivor_Space.norm: ≈ 10⁻⁴ B/op
-                 ·gc.count:                        10,000 counts
-                 ·gc.time:                         7,000 ms
+27,879 ns/op
+# Warmup Iteration   2: 28,597 ns/op
+# Warmup Iteration   3: 26,934 ns/op
+# Warmup Iteration   4: 26,906 ns/op
+# Warmup Iteration   5: 26,913 ns/op
+Iteration   1: 26,925 ns/op
+Iteration   2: 26,938 ns/op
+Iteration   3: 26,925 ns/op
+Iteration   4: 26,950 ns/op
+Iteration   5: 26,967 ns/op
+Iteration   6: 26,894 ns/op
+Iteration   7: 26,944 ns/op
+Iteration   8: 26,935 ns/op
+Iteration   9: 26,967 ns/op
+Iteration  10: 26,979 ns/op
 
-Iteration   2: 25,770 ns/op
-                 ·gc.alloc.rate:                   537,972 MB/sec
-                 ·gc.alloc.rate.norm:              16,001 B/op
-                 ·gc.churn.G1_Eden_Space:          551,870 MB/sec
-                 ·gc.churn.G1_Eden_Space.norm:     16,415 B/op
-                 ·gc.churn.G1_Survivor_Space:      0,001 MB/sec
-                 ·gc.churn.G1_Survivor_Space.norm: ≈ 10⁻⁵ B/op
-                 ·gc.count:                        10,000 counts
-                 ·gc.time:                         7,000 ms
-
-Iteration   3: 25,795 ns/op
-                 ·gc.alloc.rate:                   537,529 MB/sec
-                 ·gc.alloc.rate.norm:              16,001 B/op
-                 ·gc.churn.G1_Eden_Space:          552,419 MB/sec
-                 ·gc.churn.G1_Eden_Space.norm:     16,445 B/op
-                 ·gc.churn.G1_Survivor_Space:      0,001 MB/sec
-                 ·gc.churn.G1_Survivor_Space.norm: ≈ 10⁻⁴ B/op
-                 ·gc.count:                        10,000 counts
-                 ·gc.time:                         7,000 ms
-
-Iteration   4: 25,795 ns/op
-                 ·gc.alloc.rate:                   537,750 MB/sec
-                 ·gc.alloc.rate.norm:              16,001 B/op
-                 ·gc.churn.G1_Eden_Space:          497,121 MB/sec
-                 ·gc.churn.G1_Eden_Space.norm:     14,792 B/op
-                 ·gc.churn.G1_Survivor_Space:      0,002 MB/sec
-                 ·gc.churn.G1_Survivor_Space.norm: ≈ 10⁻⁴ B/op
-                 ·gc.count:                        9,000 counts
-                 ·gc.time:                         6,000 ms
-
-Iteration   5: 25,743 ns/op
-                 ·gc.alloc.rate:                   538,517 MB/sec
-                 ·gc.alloc.rate.norm:              16,001 B/op
-                 ·gc.churn.G1_Eden_Space:          552,329 MB/sec
-                 ·gc.churn.G1_Eden_Space.norm:     16,412 B/op
-                 ·gc.churn.G1_Survivor_Space:      0,002 MB/sec
-                 ·gc.churn.G1_Survivor_Space.norm: ≈ 10⁻⁴ B/op
-                 ·gc.count:                        10,000 counts
-                 ·gc.time:                         7,000 ms
-
-
-# Run progress: 8,33% complete, ETA 00:08:25
+# Run progress: 8,33% complete, ETA 00:08:28
 # Fork: 2 of 3
 # Warmup Iteration   1: WARNING: An illegal reflective access operation has occurred
-WARNING: Illegal reflective access using Lookup on eu.javaspecialists.books.dynamicproxies.util.VTable (file:/Users/heinz/Dropbox%20(HIC%20Straws)/heinz/git/hexie/dynamic-proxies-mini-book-infoq/dynamic-proxies-samples/core/target/classes/) to interface java.util.Collection
-WARNING: Please consider reporting this to the maintainers of eu.javaspecialists.books.dynamicproxies.util.VTable
+WARNING: Illegal reflective access using Lookup on eu.javaspecialists.books.dynamicproxies.util.ParameterTypesFetcher$FastParameterFetcher (file:/Users/heinz/Dropbox%20(HIC%20Straws)/heinz/git/hexie/dynamic-proxies-mini-book-infoq/dynamic-proxies-samples/core/target/classes/) to class java.lang.reflect.Method
+WARNING: Please consider reporting this to the maintainers of eu.javaspecialists.books.dynamicproxies.util.ParameterTypesFetcher$FastParameterFetcher
 WARNING: Use --illegal-access=warn to enable warnings of further illegal reflective access operations
 WARNING: All illegal access operations will be denied in a future release
-28,399 ns/op
-# Warmup Iteration   2: 29,146 ns/op
-# Warmup Iteration   3: 25,901 ns/op
-# Warmup Iteration   4: 25,734 ns/op
-# Warmup Iteration   5: 25,731 ns/op
-Iteration   1: 25,679 ns/op
-                 ·gc.alloc.rate:                   539,977 MB/sec
-                 ·gc.alloc.rate.norm:              16,001 B/op
-                 ·gc.churn.G1_Eden_Space:          497,025 MB/sec
-                 ·gc.churn.G1_Eden_Space.norm:     14,728 B/op
-                 ·gc.churn.G1_Survivor_Space:      0,001 MB/sec
-                 ·gc.churn.G1_Survivor_Space.norm: ≈ 10⁻⁴ B/op
-                 ·gc.count:                        9,000 counts
-                 ·gc.time:                         7,000 ms
+27,444 ns/op
+# Warmup Iteration   2: 28,228 ns/op
+# Warmup Iteration   3: 26,807 ns/op
+# Warmup Iteration   4: 26,853 ns/op
+# Warmup Iteration   5: 26,877 ns/op
+Iteration   1: 26,895 ns/op
+Iteration   2: 26,920 ns/op
+Iteration   3: 26,896 ns/op
+Iteration   4: 26,929 ns/op
+Iteration   5: 26,986 ns/op
+Iteration   6: 27,379 ns/op
+Iteration   7: 26,912 ns/op
+Iteration   8: 26,879 ns/op
+Iteration   9: 26,877 ns/op
+Iteration  10: 26,906 ns/op
 
-Iteration   2: 25,694 ns/op
-                 ·gc.alloc.rate:                   539,594 MB/sec
-                 ·gc.alloc.rate.norm:              16,001 B/op
-                 ·gc.churn.G1_Eden_Space:          552,377 MB/sec
-                 ·gc.churn.G1_Eden_Space.norm:     16,380 B/op
-                 ·gc.churn.G1_Survivor_Space:      0,001 MB/sec
-                 ·gc.churn.G1_Survivor_Space.norm: ≈ 10⁻⁴ B/op
-                 ·gc.count:                        10,000 counts
-                 ·gc.time:                         7,000 ms
-
-Iteration   3: 25,669 ns/op
-                 ·gc.alloc.rate:                   539,867 MB/sec
-                 ·gc.alloc.rate.norm:              16,001 B/op
-                 ·gc.churn.G1_Eden_Space:          551,949 MB/sec
-                 ·gc.churn.G1_Eden_Space.norm:     16,359 B/op
-                 ·gc.churn.G1_Survivor_Space:      0,003 MB/sec
-                 ·gc.churn.G1_Survivor_Space.norm: ≈ 10⁻⁴ B/op
-                 ·gc.count:                        10,000 counts
-                 ·gc.time:                         7,000 ms
-
-Iteration   4: 25,722 ns/op
-                 ·gc.alloc.rate:                   539,141 MB/sec
-                 ·gc.alloc.rate.norm:              16,001 B/op
-                 ·gc.churn.G1_Eden_Space:          552,500 MB/sec
-                 ·gc.churn.G1_Eden_Space.norm:     16,398 B/op
-                 ·gc.churn.G1_Survivor_Space:      0,002 MB/sec
-                 ·gc.churn.G1_Survivor_Space.norm: ≈ 10⁻⁴ B/op
-                 ·gc.count:                        10,000 counts
-                 ·gc.time:                         7,000 ms
-
-Iteration   5: 25,718 ns/op
-                 ·gc.alloc.rate:                   539,375 MB/sec
-                 ·gc.alloc.rate.norm:              16,001 B/op
-                 ·gc.churn.G1_Eden_Space:          497,026 MB/sec
-                 ·gc.churn.G1_Eden_Space.norm:     14,745 B/op
-                 ·gc.churn.G1_Survivor_Space:      0,001 MB/sec
-                 ·gc.churn.G1_Survivor_Space.norm: ≈ 10⁻⁴ B/op
-                 ·gc.count:                        9,000 counts
-                 ·gc.time:                         6,000 ms
-
-
-# Run progress: 16,67% complete, ETA 00:07:38
+# Run progress: 16,67% complete, ETA 00:07:40
 # Fork: 3 of 3
 # Warmup Iteration   1: WARNING: An illegal reflective access operation has occurred
-WARNING: Illegal reflective access using Lookup on eu.javaspecialists.books.dynamicproxies.util.VTable (file:/Users/heinz/Dropbox%20(HIC%20Straws)/heinz/git/hexie/dynamic-proxies-mini-book-infoq/dynamic-proxies-samples/core/target/classes/) to interface java.util.Collection
-WARNING: Please consider reporting this to the maintainers of eu.javaspecialists.books.dynamicproxies.util.VTable
+WARNING: Illegal reflective access using Lookup on eu.javaspecialists.books.dynamicproxies.util.ParameterTypesFetcher$FastParameterFetcher (file:/Users/heinz/Dropbox%20(HIC%20Straws)/heinz/git/hexie/dynamic-proxies-mini-book-infoq/dynamic-proxies-samples/core/target/classes/) to class java.lang.reflect.Method
+WARNING: Please consider reporting this to the maintainers of eu.javaspecialists.books.dynamicproxies.util.ParameterTypesFetcher$FastParameterFetcher
 WARNING: Use --illegal-access=warn to enable warnings of further illegal reflective access operations
 WARNING: All illegal access operations will be denied in a future release
-28,272 ns/op
-# Warmup Iteration   2: 28,882 ns/op
-# Warmup Iteration   3: 25,898 ns/op
-# Warmup Iteration   4: 25,839 ns/op
-# Warmup Iteration   5: 25,856 ns/op
-Iteration   1: 25,855 ns/op
-                 ·gc.alloc.rate:                   536,083 MB/sec
-                 ·gc.alloc.rate.norm:              16,001 B/op
-                 ·gc.churn.G1_Eden_Space:          496,756 MB/sec
-                 ·gc.churn.G1_Eden_Space.norm:     14,827 B/op
-                 ·gc.churn.G1_Survivor_Space:      0,002 MB/sec
-                 ·gc.churn.G1_Survivor_Space.norm: ≈ 10⁻⁴ B/op
-                 ·gc.count:                        9,000 counts
-                 ·gc.time:                         6,000 ms
-
-Iteration   2: 25,829 ns/op
-                 ·gc.alloc.rate:                   536,772 MB/sec
-                 ·gc.alloc.rate.norm:              16,001 B/op
-                 ·gc.churn.G1_Eden_Space:          551,980 MB/sec
-                 ·gc.churn.G1_Eden_Space.norm:     16,455 B/op
-                 ·gc.churn.G1_Survivor_Space:      0,003 MB/sec
-                 ·gc.churn.G1_Survivor_Space.norm: ≈ 10⁻⁴ B/op
-                 ·gc.count:                        10,000 counts
-                 ·gc.time:                         8,000 ms
-
-Iteration   3: 25,961 ns/op
-                 ·gc.alloc.rate:                   534,147 MB/sec
-                 ·gc.alloc.rate.norm:              16,001 B/op
-                 ·gc.churn.G1_Eden_Space:          552,106 MB/sec
-                 ·gc.churn.G1_Eden_Space.norm:     16,539 B/op
-                 ·gc.churn.G1_Survivor_Space:      0,003 MB/sec
-                 ·gc.churn.G1_Survivor_Space.norm: ≈ 10⁻⁴ B/op
-                 ·gc.count:                        10,000 counts
-                 ·gc.time:                         7,000 ms
-
-Iteration   4: 25,825 ns/op
-                 ·gc.alloc.rate:                   536,658 MB/sec
-                 ·gc.alloc.rate.norm:              16,001 B/op
-                 ·gc.churn.G1_Eden_Space:          496,594 MB/sec
-                 ·gc.churn.G1_Eden_Space.norm:     14,807 B/op
-                 ·gc.churn.G1_Survivor_Space:      0,003 MB/sec
-                 ·gc.churn.G1_Survivor_Space.norm: ≈ 10⁻⁴ B/op
-                 ·gc.count:                        9,000 counts
-                 ·gc.time:                         6,000 ms
-
-Iteration   5: 25,753 ns/op
-                 ·gc.alloc.rate:                   538,321 MB/sec
-                 ·gc.alloc.rate.norm:              16,001 B/op
-                 ·gc.churn.G1_Eden_Space:          552,035 MB/sec
-                 ·gc.churn.G1_Eden_Space.norm:     16,409 B/op
-                 ·gc.churn.G1_Survivor_Space:      0,003 MB/sec
-                 ·gc.churn.G1_Survivor_Space.norm: ≈ 10⁻⁴ B/op
-                 ·gc.count:                        10,000 counts
-                 ·gc.time:                         7,000 ms
-
+27,359 ns/op
+# Warmup Iteration   2: 28,277 ns/op
+# Warmup Iteration   3: 26,881 ns/op
+# Warmup Iteration   4: 26,878 ns/op
+# Warmup Iteration   5: 26,917 ns/op
+Iteration   1: 26,942 ns/op
+Iteration   2: 26,921 ns/op
+Iteration   3: 26,922 ns/op
+Iteration   4: 27,003 ns/op
+Iteration   5: 26,922 ns/op
+Iteration   6: 26,930 ns/op
+Iteration   7: 26,921 ns/op
+Iteration   8: 26,921 ns/op
+Iteration   9: 26,913 ns/op
+Iteration  10: 26,915 ns/op
 
 
 Result "eu.javaspecialists.books.dynamicproxies.ch05.benchmarks.AdapterBenchmark.classAdapterForEach":
-  25,768 ±(99.9%) 0,083 ns/op [Average]
-  (min, avg, max) = (25,669, 25,768, 25,961), stdev = 0,078
-  CI (99.9%): [25,685, 25,851] (assumes normal distribution)
-
-Secondary result "eu.javaspecialists.books.dynamicproxies.ch05.benchmarks.AdapterBenchmark.classAdapterForEach:·gc.alloc.rate":
-  538,075 ±(99.9%) 1,751 MB/sec [Average]
-  (min, avg, max) = (534,147, 538,075, 539,977), stdev = 1,638
-  CI (99.9%): [536,324, 539,826] (assumes normal distribution)
-
-Secondary result "eu.javaspecialists.books.dynamicproxies.ch05.benchmarks.AdapterBenchmark.classAdapterForEach:·gc.alloc.rate.norm":
-  16,001 ±(99.9%) 0,001 B/op [Average]
-  (min, avg, max) = (16,001, 16,001, 16,001), stdev = 0,001
-  CI (99.9%): [16,001, 16,001] (assumes normal distribution)
-
-Secondary result "eu.javaspecialists.books.dynamicproxies.ch05.benchmarks.AdapterBenchmark.classAdapterForEach:·gc.churn.G1_Eden_Space":
-  533,747 ±(99.9%) 28,829 MB/sec [Average]
-  (min, avg, max) = (496,594, 533,747, 552,500), stdev = 26,967
-  CI (99.9%): [504,918, 562,576] (assumes normal distribution)
-
-Secondary result "eu.javaspecialists.books.dynamicproxies.ch05.benchmarks.AdapterBenchmark.classAdapterForEach:·gc.churn.G1_Eden_Space.norm":
-  15,873 ±(99.9%) 0,856 B/op [Average]
-  (min, avg, max) = (14,728, 15,873, 16,539), stdev = 0,801
-  CI (99.9%): [15,016, 16,729] (assumes normal distribution)
-
-Secondary result "eu.javaspecialists.books.dynamicproxies.ch05.benchmarks.AdapterBenchmark.classAdapterForEach:·gc.churn.G1_Survivor_Space":
-  0,002 ±(99.9%) 0,001 MB/sec [Average]
-  (min, avg, max) = (0,001, 0,002, 0,004), stdev = 0,001
-  CI (99.9%): [0,001, 0,003] (assumes normal distribution)
-
-Secondary result "eu.javaspecialists.books.dynamicproxies.ch05.benchmarks.AdapterBenchmark.classAdapterForEach:·gc.churn.G1_Survivor_Space.norm":
-  ≈ 10⁻⁴ B/op
-
-Secondary result "eu.javaspecialists.books.dynamicproxies.ch05.benchmarks.AdapterBenchmark.classAdapterForEach:·gc.count":
-  145,000 ±(99.9%) 0,001 counts [Sum]
-  (min, avg, max) = (9,000, 9,667, 10,000), stdev = 0,488
-  CI (99.9%): [145,000, 145,000] (assumes normal distribution)
-
-Secondary result "eu.javaspecialists.books.dynamicproxies.ch05.benchmarks.AdapterBenchmark.classAdapterForEach:·gc.time":
-  102,000 ±(99.9%) 0,001 ms [Sum]
-  (min, avg, max) = (6,000, 6,800, 8,000), stdev = 0,561
-  CI (99.9%): [102,000, 102,000] (assumes normal distribution)
+  26,944 ±(99.9%) 0,058 ns/op [Average]
+  (min, avg, max) = (26,877, 26,944, 27,379), stdev = 0,087
+  CI (99.9%): [26,885, 27,002] (assumes normal distribution)
 
 
 # JMH version: 1.21
 # VM version: JDK 14, OpenJDK 64-Bit Server VM, 14+36-1461
 # VM invoker: /Users/heinz/Dropbox (HIC Straws)/heinz/JavaVirtualMachines/openjdk-14.jdk/Contents/Home/bin/java
-# VM options: -javaagent:/Applications/000/IntelliJ IDEA 2020.1.app/Contents/lib/idea_rt.jar=49941:/Applications/000/IntelliJ IDEA 2020.1.app/Contents/bin -Dfile.encoding=UTF-8
+# VM options: -XX:+UseParallelGC -Deu.javaspecialists.books.dynamicproxies.util.ParameterTypesFetcher.enabled=true -javaagent:/Applications/000/IntelliJ IDEA 2020.1.app/Contents/lib/idea_rt.jar=51846:/Applications/000/IntelliJ IDEA 2020.1.app/Contents/bin -Dfile.encoding=UTF-8
 # Warmup: 5 iterations, 3 s each
-# Measurement: 5 iterations, 5 s each
+# Measurement: 10 iterations, 3 s each
 # Timeout: 10 min per iteration
 # Threads: 1 thread, will synchronize iterations
 # Benchmark mode: Average time, time/op
@@ -263,243 +105,85 @@ Secondary result "eu.javaspecialists.books.dynamicproxies.ch05.benchmarks.Adapte
 # Run progress: 25,00% complete, ETA 00:06:53
 # Fork: 1 of 3
 # Warmup Iteration   1: WARNING: An illegal reflective access operation has occurred
-WARNING: Illegal reflective access using Lookup on eu.javaspecialists.books.dynamicproxies.util.VTable (file:/Users/heinz/Dropbox%20(HIC%20Straws)/heinz/git/hexie/dynamic-proxies-mini-book-infoq/dynamic-proxies-samples/core/target/classes/) to interface java.util.Collection
-WARNING: Please consider reporting this to the maintainers of eu.javaspecialists.books.dynamicproxies.util.VTable
+WARNING: Illegal reflective access using Lookup on eu.javaspecialists.books.dynamicproxies.util.ParameterTypesFetcher$FastParameterFetcher (file:/Users/heinz/Dropbox%20(HIC%20Straws)/heinz/git/hexie/dynamic-proxies-mini-book-infoq/dynamic-proxies-samples/core/target/classes/) to class java.lang.reflect.Method
+WARNING: Please consider reporting this to the maintainers of eu.javaspecialists.books.dynamicproxies.util.ParameterTypesFetcher$FastParameterFetcher
 WARNING: Use --illegal-access=warn to enable warnings of further illegal reflective access operations
 WARNING: All illegal access operations will be denied in a future release
-102,824 ns/op
-# Warmup Iteration   2: 95,144 ns/op
-# Warmup Iteration   3: 94,720 ns/op
-# Warmup Iteration   4: 94,659 ns/op
-# Warmup Iteration   5: 94,620 ns/op
-Iteration   1: 94,686 ns/op
-                 ·gc.alloc.rate:                   658,947 MB/sec
-                 ·gc.alloc.rate.norm:              72,006 B/op
-                 ·gc.churn.G1_Eden_Space:          662,369 MB/sec
-                 ·gc.churn.G1_Eden_Space.norm:     72,380 B/op
-                 ·gc.churn.G1_Survivor_Space:      0,002 MB/sec
-                 ·gc.churn.G1_Survivor_Space.norm: ≈ 10⁻⁴ B/op
-                 ·gc.count:                        12,000 counts
-                 ·gc.time:                         9,000 ms
-
-Iteration   2: 94,763 ns/op
-                 ·gc.alloc.rate:                   658,220 MB/sec
-                 ·gc.alloc.rate.norm:              72,006 B/op
-                 ·gc.churn.G1_Eden_Space:          662,555 MB/sec
-                 ·gc.churn.G1_Eden_Space.norm:     72,480 B/op
-                 ·gc.churn.G1_Survivor_Space:      0,001 MB/sec
-                 ·gc.churn.G1_Survivor_Space.norm: ≈ 10⁻⁴ B/op
-                 ·gc.count:                        12,000 counts
-                 ·gc.time:                         8,000 ms
-
-Iteration   3: 94,609 ns/op
-                 ·gc.alloc.rate:                   659,198 MB/sec
-                 ·gc.alloc.rate.norm:              72,006 B/op
-                 ·gc.churn.G1_Eden_Space:          662,004 MB/sec
-                 ·gc.churn.G1_Eden_Space.norm:     72,313 B/op
-                 ·gc.churn.G1_Survivor_Space:      0,002 MB/sec
-                 ·gc.churn.G1_Survivor_Space.norm: ≈ 10⁻⁴ B/op
-                 ·gc.count:                        12,000 counts
-                 ·gc.time:                         9,000 ms
-
-Iteration   4: 94,628 ns/op
-                 ·gc.alloc.rate:                   659,061 MB/sec
-                 ·gc.alloc.rate.norm:              72,006 B/op
-                 ·gc.churn.G1_Eden_Space:          662,264 MB/sec
-                 ·gc.churn.G1_Eden_Space.norm:     72,356 B/op
-                 ·gc.churn.G1_Survivor_Space:      0,004 MB/sec
-                 ·gc.churn.G1_Survivor_Space.norm: ≈ 10⁻³ B/op
-                 ·gc.count:                        12,000 counts
-                 ·gc.time:                         8,000 ms
-
-Iteration   5: 94,739 ns/op
-                 ·gc.alloc.rate:                   658,450 MB/sec
-                 ·gc.alloc.rate.norm:              72,006 B/op
-                 ·gc.churn.G1_Eden_Space:          607,386 MB/sec
-                 ·gc.churn.G1_Eden_Space.norm:     66,421 B/op
-                 ·gc.churn.G1_Survivor_Space:      0,002 MB/sec
-                 ·gc.churn.G1_Survivor_Space.norm: ≈ 10⁻⁴ B/op
-                 ·gc.count:                        11,000 counts
-                 ·gc.time:                         8,000 ms
-
+75,271 ns/op
+# Warmup Iteration   2: 71,525 ns/op
+# Warmup Iteration   3: 71,468 ns/op
+# Warmup Iteration   4: 71,446 ns/op
+# Warmup Iteration   5: 71,415 ns/op
+Iteration   1: 71,424 ns/op
+Iteration   2: 71,488 ns/op
+Iteration   3: 71,478 ns/op
+Iteration   4: 71,451 ns/op
+Iteration   5: 71,464 ns/op
+Iteration   6: 71,492 ns/op
+Iteration   7: 71,483 ns/op
+Iteration   8: 71,444 ns/op
+Iteration   9: 71,464 ns/op
+Iteration  10: 71,411 ns/op
 
 # Run progress: 33,33% complete, ETA 00:06:07
 # Fork: 2 of 3
 # Warmup Iteration   1: WARNING: An illegal reflective access operation has occurred
-WARNING: Illegal reflective access using Lookup on eu.javaspecialists.books.dynamicproxies.util.VTable (file:/Users/heinz/Dropbox%20(HIC%20Straws)/heinz/git/hexie/dynamic-proxies-mini-book-infoq/dynamic-proxies-samples/core/target/classes/) to interface java.util.Collection
-WARNING: Please consider reporting this to the maintainers of eu.javaspecialists.books.dynamicproxies.util.VTable
+WARNING: Illegal reflective access using Lookup on eu.javaspecialists.books.dynamicproxies.util.ParameterTypesFetcher$FastParameterFetcher (file:/Users/heinz/Dropbox%20(HIC%20Straws)/heinz/git/hexie/dynamic-proxies-mini-book-infoq/dynamic-proxies-samples/core/target/classes/) to class java.lang.reflect.Method
+WARNING: Please consider reporting this to the maintainers of eu.javaspecialists.books.dynamicproxies.util.ParameterTypesFetcher$FastParameterFetcher
 WARNING: Use --illegal-access=warn to enable warnings of further illegal reflective access operations
 WARNING: All illegal access operations will be denied in a future release
-101,792 ns/op
-# Warmup Iteration   2: 95,407 ns/op
-# Warmup Iteration   3: 94,287 ns/op
-# Warmup Iteration   4: 94,411 ns/op
-# Warmup Iteration   5: 94,148 ns/op
-Iteration   1: 93,974 ns/op
-                 ·gc.alloc.rate:                   664,150 MB/sec
-                 ·gc.alloc.rate.norm:              72,006 B/op
-                 ·gc.churn.G1_Eden_Space:          662,561 MB/sec
-                 ·gc.churn.G1_Eden_Space.norm:     71,834 B/op
-                 ·gc.churn.G1_Survivor_Space:      0,001 MB/sec
-                 ·gc.churn.G1_Survivor_Space.norm: ≈ 10⁻⁴ B/op
-                 ·gc.count:                        12,000 counts
-                 ·gc.time:                         9,000 ms
-
-Iteration   2: 94,274 ns/op
-                 ·gc.alloc.rate:                   662,025 MB/sec
-                 ·gc.alloc.rate.norm:              72,006 B/op
-                 ·gc.churn.G1_Eden_Space:          662,569 MB/sec
-                 ·gc.churn.G1_Eden_Space.norm:     72,065 B/op
-                 ·gc.churn.G1_Survivor_Space:      0,001 MB/sec
-                 ·gc.churn.G1_Survivor_Space.norm: ≈ 10⁻⁴ B/op
-                 ·gc.count:                        12,000 counts
-                 ·gc.time:                         8,000 ms
-
-Iteration   3: 94,213 ns/op
-                 ·gc.alloc.rate:                   662,318 MB/sec
-                 ·gc.alloc.rate.norm:              72,006 B/op
-                 ·gc.churn.G1_Eden_Space:          662,902 MB/sec
-                 ·gc.churn.G1_Eden_Space.norm:     72,069 B/op
-                 ·gc.churn.G1_Survivor_Space:      0,002 MB/sec
-                 ·gc.churn.G1_Survivor_Space.norm: ≈ 10⁻⁴ B/op
-                 ·gc.count:                        12,000 counts
-                 ·gc.time:                         9,000 ms
-
-Iteration   4: 94,290 ns/op
-                 ·gc.alloc.rate:                   662,022 MB/sec
-                 ·gc.alloc.rate.norm:              72,006 B/op
-                 ·gc.churn.G1_Eden_Space:          663,055 MB/sec
-                 ·gc.churn.G1_Eden_Space.norm:     72,118 B/op
-                 ·gc.churn.G1_Survivor_Space:      0,004 MB/sec
-                 ·gc.churn.G1_Survivor_Space.norm: ≈ 10⁻³ B/op
-                 ·gc.count:                        12,000 counts
-                 ·gc.time:                         8,000 ms
-
-Iteration   5: 94,314 ns/op
-                 ·gc.alloc.rate:                   661,464 MB/sec
-                 ·gc.alloc.rate.norm:              72,006 B/op
-                 ·gc.churn.G1_Eden_Space:          662,755 MB/sec
-                 ·gc.churn.G1_Eden_Space.norm:     72,146 B/op
-                 ·gc.churn.G1_Survivor_Space:      0,004 MB/sec
-                 ·gc.churn.G1_Survivor_Space.norm: ≈ 10⁻³ B/op
-                 ·gc.count:                        12,000 counts
-                 ·gc.time:                         8,000 ms
-
+71,807 ns/op
+# Warmup Iteration   2: 69,348 ns/op
+# Warmup Iteration   3: 69,019 ns/op
+# Warmup Iteration   4: 69,195 ns/op
+# Warmup Iteration   5: 69,214 ns/op
+Iteration   1: 69,240 ns/op
+Iteration   2: 69,201 ns/op
+Iteration   3: 69,160 ns/op
+Iteration   4: 69,245 ns/op
+Iteration   5: 69,180 ns/op
+Iteration   6: 69,215 ns/op
+Iteration   7: 69,293 ns/op
+Iteration   8: 69,283 ns/op
+Iteration   9: 69,229 ns/op
+Iteration  10: 69,262 ns/op
 
 # Run progress: 41,67% complete, ETA 00:05:21
 # Fork: 3 of 3
 # Warmup Iteration   1: WARNING: An illegal reflective access operation has occurred
-WARNING: Illegal reflective access using Lookup on eu.javaspecialists.books.dynamicproxies.util.VTable (file:/Users/heinz/Dropbox%20(HIC%20Straws)/heinz/git/hexie/dynamic-proxies-mini-book-infoq/dynamic-proxies-samples/core/target/classes/) to interface java.util.Collection
-WARNING: Please consider reporting this to the maintainers of eu.javaspecialists.books.dynamicproxies.util.VTable
+WARNING: Illegal reflective access using Lookup on eu.javaspecialists.books.dynamicproxies.util.ParameterTypesFetcher$FastParameterFetcher (file:/Users/heinz/Dropbox%20(HIC%20Straws)/heinz/git/hexie/dynamic-proxies-mini-book-infoq/dynamic-proxies-samples/core/target/classes/) to class java.lang.reflect.Method
+WARNING: Please consider reporting this to the maintainers of eu.javaspecialists.books.dynamicproxies.util.ParameterTypesFetcher$FastParameterFetcher
 WARNING: Use --illegal-access=warn to enable warnings of further illegal reflective access operations
 WARNING: All illegal access operations will be denied in a future release
-107,557 ns/op
-# Warmup Iteration   2: 94,681 ns/op
-# Warmup Iteration   3: 95,558 ns/op
-# Warmup Iteration   4: 95,307 ns/op
-# Warmup Iteration   5: 95,371 ns/op
-Iteration   1: 95,347 ns/op
-                 ·gc.alloc.rate:                   654,059 MB/sec
-                 ·gc.alloc.rate.norm:              72,006 B/op
-                 ·gc.churn.G1_Eden_Space:          662,356 MB/sec
-                 ·gc.churn.G1_Eden_Space.norm:     72,919 B/op
-                 ·gc.churn.G1_Survivor_Space:      0,001 MB/sec
-                 ·gc.churn.G1_Survivor_Space.norm: ≈ 10⁻⁴ B/op
-                 ·gc.count:                        12,000 counts
-                 ·gc.time:                         8,000 ms
-
-Iteration   2: 95,274 ns/op
-                 ·gc.alloc.rate:                   655,136 MB/sec
-                 ·gc.alloc.rate.norm:              72,006 B/op
-                 ·gc.churn.G1_Eden_Space:          662,836 MB/sec
-                 ·gc.churn.G1_Eden_Space.norm:     72,852 B/op
-                 ·gc.churn.G1_Survivor_Space:      0,001 MB/sec
-                 ·gc.churn.G1_Survivor_Space.norm: ≈ 10⁻⁴ B/op
-                 ·gc.count:                        12,000 counts
-                 ·gc.time:                         9,000 ms
-
-Iteration   3: 95,278 ns/op
-                 ·gc.alloc.rate:                   655,104 MB/sec
-                 ·gc.alloc.rate.norm:              72,006 B/op
-                 ·gc.churn.G1_Eden_Space:          663,008 MB/sec
-                 ·gc.churn.G1_Eden_Space.norm:     72,875 B/op
-                 ·gc.churn.G1_Survivor_Space:      0,002 MB/sec
-                 ·gc.churn.G1_Survivor_Space.norm: ≈ 10⁻⁴ B/op
-                 ·gc.count:                        12,000 counts
-                 ·gc.time:                         8,000 ms
-
-Iteration   4: 95,331 ns/op
-                 ·gc.alloc.rate:                   654,445 MB/sec
-                 ·gc.alloc.rate.norm:              72,006 B/op
-                 ·gc.churn.G1_Eden_Space:          662,351 MB/sec
-                 ·gc.churn.G1_Eden_Space.norm:     72,876 B/op
-                 ·gc.churn.G1_Survivor_Space:      0,002 MB/sec
-                 ·gc.churn.G1_Survivor_Space.norm: ≈ 10⁻⁴ B/op
-                 ·gc.count:                        12,000 counts
-                 ·gc.time:                         8,000 ms
-
-Iteration   5: 95,372 ns/op
-                 ·gc.alloc.rate:                   653,931 MB/sec
-                 ·gc.alloc.rate.norm:              72,006 B/op
-                 ·gc.churn.G1_Eden_Space:          662,186 MB/sec
-                 ·gc.churn.G1_Eden_Space.norm:     72,915 B/op
-                 ·gc.churn.G1_Survivor_Space:      0,001 MB/sec
-                 ·gc.churn.G1_Survivor_Space.norm: ≈ 10⁻⁴ B/op
-                 ·gc.count:                        12,000 counts
-                 ·gc.time:                         8,000 ms
-
+71,926 ns/op
+# Warmup Iteration   2: 69,237 ns/op
+# Warmup Iteration   3: 68,549 ns/op
+# Warmup Iteration   4: 68,610 ns/op
+# Warmup Iteration   5: 68,643 ns/op
+Iteration   1: 68,484 ns/op
+Iteration   2: 68,503 ns/op
+Iteration   3: 68,463 ns/op
+Iteration   4: 68,578 ns/op
+Iteration   5: 68,635 ns/op
+Iteration   6: 68,503 ns/op
+Iteration   7: 68,422 ns/op
+Iteration   8: 68,652 ns/op
+Iteration   9: 68,747 ns/op
+Iteration  10: 68,561 ns/op
 
 
 Result "eu.javaspecialists.books.dynamicproxies.ch05.benchmarks.AdapterBenchmark.dynamicObjectAdapterForEach":
-  94,739 ±(99.9%) 0,511 ns/op [Average]
-  (min, avg, max) = (93,974, 94,739, 95,372), stdev = 0,478
-  CI (99.9%): [94,229, 95,250] (assumes normal distribution)
-
-Secondary result "eu.javaspecialists.books.dynamicproxies.ch05.benchmarks.AdapterBenchmark.dynamicObjectAdapterForEach:·gc.alloc.rate":
-  658,569 ±(99.9%) 3,626 MB/sec [Average]
-  (min, avg, max) = (653,931, 658,569, 664,150), stdev = 3,391
-  CI (99.9%): [654,943, 662,194] (assumes normal distribution)
-
-Secondary result "eu.javaspecialists.books.dynamicproxies.ch05.benchmarks.AdapterBenchmark.dynamicObjectAdapterForEach:·gc.alloc.rate.norm":
-  72,006 ±(99.9%) 0,001 B/op [Average]
-  (min, avg, max) = (72,006, 72,006, 72,006), stdev = 0,001
-  CI (99.9%): [72,006, 72,006] (assumes normal distribution)
-
-Secondary result "eu.javaspecialists.books.dynamicproxies.ch05.benchmarks.AdapterBenchmark.dynamicObjectAdapterForEach:·gc.churn.G1_Eden_Space":
-  658,877 ±(99.9%) 15,232 MB/sec [Average]
-  (min, avg, max) = (607,386, 658,877, 663,055), stdev = 14,248
-  CI (99.9%): [643,645, 674,109] (assumes normal distribution)
-
-Secondary result "eu.javaspecialists.books.dynamicproxies.ch05.benchmarks.AdapterBenchmark.dynamicObjectAdapterForEach:·gc.churn.G1_Eden_Space.norm":
-  72,041 ±(99.9%) 1,707 B/op [Average]
-  (min, avg, max) = (66,421, 72,041, 72,919), stdev = 1,597
-  CI (99.9%): [70,334, 73,749] (assumes normal distribution)
-
-Secondary result "eu.javaspecialists.books.dynamicproxies.ch05.benchmarks.AdapterBenchmark.dynamicObjectAdapterForEach:·gc.churn.G1_Survivor_Space":
-  0,002 ±(99.9%) 0,001 MB/sec [Average]
-  (min, avg, max) = (0,001, 0,002, 0,004), stdev = 0,001
-  CI (99.9%): [0,001, 0,003] (assumes normal distribution)
-
-Secondary result "eu.javaspecialists.books.dynamicproxies.ch05.benchmarks.AdapterBenchmark.dynamicObjectAdapterForEach:·gc.churn.G1_Survivor_Space.norm":
-  ≈ 10⁻⁴ B/op
-
-Secondary result "eu.javaspecialists.books.dynamicproxies.ch05.benchmarks.AdapterBenchmark.dynamicObjectAdapterForEach:·gc.count":
-  179,000 ±(99.9%) 0,001 counts [Sum]
-  (min, avg, max) = (11,000, 11,933, 12,000), stdev = 0,258
-  CI (99.9%): [179,000, 179,000] (assumes normal distribution)
-
-Secondary result "eu.javaspecialists.books.dynamicproxies.ch05.benchmarks.AdapterBenchmark.dynamicObjectAdapterForEach:·gc.time":
-  125,000 ±(99.9%) 0,001 ms [Sum]
-  (min, avg, max) = (8,000, 8,333, 9,000), stdev = 0,488
-  CI (99.9%): [125,000, 125,000] (assumes normal distribution)
+  69,749 ±(99.9%) 0,844 ns/op [Average]
+  (min, avg, max) = (68,422, 69,749, 71,492), stdev = 1,264
+  CI (99.9%): [68,904, 70,593] (assumes normal distribution)
 
 
 # JMH version: 1.21
 # VM version: JDK 14, OpenJDK 64-Bit Server VM, 14+36-1461
 # VM invoker: /Users/heinz/Dropbox (HIC Straws)/heinz/JavaVirtualMachines/openjdk-14.jdk/Contents/Home/bin/java
-# VM options: -javaagent:/Applications/000/IntelliJ IDEA 2020.1.app/Contents/lib/idea_rt.jar=49941:/Applications/000/IntelliJ IDEA 2020.1.app/Contents/bin -Dfile.encoding=UTF-8
+# VM options: -XX:+UseParallelGC -Deu.javaspecialists.books.dynamicproxies.util.ParameterTypesFetcher.enabled=true -javaagent:/Applications/000/IntelliJ IDEA 2020.1.app/Contents/lib/idea_rt.jar=51846:/Applications/000/IntelliJ IDEA 2020.1.app/Contents/bin -Dfile.encoding=UTF-8
 # Warmup: 5 iterations, 3 s each
-# Measurement: 5 iterations, 5 s each
+# Measurement: 10 iterations, 3 s each
 # Timeout: 10 min per iteration
 # Threads: 1 thread, will synchronize iterations
 # Benchmark mode: Average time, time/op
@@ -508,243 +192,85 @@ Secondary result "eu.javaspecialists.books.dynamicproxies.ch05.benchmarks.Adapte
 # Run progress: 50,00% complete, ETA 00:04:35
 # Fork: 1 of 3
 # Warmup Iteration   1: WARNING: An illegal reflective access operation has occurred
-WARNING: Illegal reflective access using Lookup on eu.javaspecialists.books.dynamicproxies.util.VTable (file:/Users/heinz/Dropbox%20(HIC%20Straws)/heinz/git/hexie/dynamic-proxies-mini-book-infoq/dynamic-proxies-samples/core/target/classes/) to interface java.util.Collection
-WARNING: Please consider reporting this to the maintainers of eu.javaspecialists.books.dynamicproxies.util.VTable
+WARNING: Illegal reflective access using Lookup on eu.javaspecialists.books.dynamicproxies.util.ParameterTypesFetcher$FastParameterFetcher (file:/Users/heinz/Dropbox%20(HIC%20Straws)/heinz/git/hexie/dynamic-proxies-mini-book-infoq/dynamic-proxies-samples/core/target/classes/) to class java.lang.reflect.Method
+WARNING: Please consider reporting this to the maintainers of eu.javaspecialists.books.dynamicproxies.util.ParameterTypesFetcher$FastParameterFetcher
 WARNING: Use --illegal-access=warn to enable warnings of further illegal reflective access operations
 WARNING: All illegal access operations will be denied in a future release
-30,137 ns/op
-# Warmup Iteration   2: 30,374 ns/op
-# Warmup Iteration   3: 27,677 ns/op
-# Warmup Iteration   4: 27,674 ns/op
-# Warmup Iteration   5: 27,649 ns/op
-Iteration   1: 27,635 ns/op
-                 ·gc.alloc.rate:                   501,816 MB/sec
-                 ·gc.alloc.rate.norm:              16,001 B/op
-                 ·gc.churn.G1_Eden_Space:          496,786 MB/sec
-                 ·gc.churn.G1_Eden_Space.norm:     15,841 B/op
-                 ·gc.churn.G1_Survivor_Space:      0,001 MB/sec
-                 ·gc.churn.G1_Survivor_Space.norm: ≈ 10⁻⁴ B/op
-                 ·gc.count:                        9,000 counts
-                 ·gc.time:                         6,000 ms
-
-Iteration   2: 27,747 ns/op
-                 ·gc.alloc.rate:                   499,596 MB/sec
-                 ·gc.alloc.rate.norm:              16,001 B/op
-                 ·gc.churn.G1_Eden_Space:          497,032 MB/sec
-                 ·gc.churn.G1_Eden_Space.norm:     15,919 B/op
-                 ·gc.churn.G1_Survivor_Space:      0,001 MB/sec
-                 ·gc.churn.G1_Survivor_Space.norm: ≈ 10⁻⁵ B/op
-                 ·gc.count:                        9,000 counts
-                 ·gc.time:                         7,000 ms
-
-Iteration   3: 27,708 ns/op
-                 ·gc.alloc.rate:                   500,556 MB/sec
-                 ·gc.alloc.rate.norm:              16,001 B/op
-                 ·gc.churn.G1_Eden_Space:          496,848 MB/sec
-                 ·gc.churn.G1_Eden_Space.norm:     15,883 B/op
-                 ·gc.churn.G1_Survivor_Space:      ≈ 10⁻³ MB/sec
-                 ·gc.churn.G1_Survivor_Space.norm: ≈ 10⁻⁵ B/op
-                 ·gc.count:                        9,000 counts
-                 ·gc.time:                         6,000 ms
-
-Iteration   4: 27,748 ns/op
-                 ·gc.alloc.rate:                   499,676 MB/sec
-                 ·gc.alloc.rate.norm:              16,001 B/op
-                 ·gc.churn.G1_Eden_Space:          496,882 MB/sec
-                 ·gc.churn.G1_Eden_Space.norm:     15,912 B/op
-                 ·gc.churn.G1_Survivor_Space:      0,004 MB/sec
-                 ·gc.churn.G1_Survivor_Space.norm: ≈ 10⁻⁴ B/op
-                 ·gc.count:                        9,000 counts
-                 ·gc.time:                         6,000 ms
-
-Iteration   5: 27,717 ns/op
-                 ·gc.alloc.rate:                   500,385 MB/sec
-                 ·gc.alloc.rate.norm:              16,001 B/op
-                 ·gc.churn.G1_Eden_Space:          497,053 MB/sec
-                 ·gc.churn.G1_Eden_Space.norm:     15,895 B/op
-                 ·gc.churn.G1_Survivor_Space:      0,002 MB/sec
-                 ·gc.churn.G1_Survivor_Space.norm: ≈ 10⁻⁴ B/op
-                 ·gc.count:                        9,000 counts
-                 ·gc.time:                         7,000 ms
-
+29,663 ns/op
+# Warmup Iteration   2: 30,922 ns/op
+# Warmup Iteration   3: 30,952 ns/op
+# Warmup Iteration   4: 31,000 ns/op
+# Warmup Iteration   5: 31,003 ns/op
+Iteration   1: 30,987 ns/op
+Iteration   2: 31,041 ns/op
+Iteration   3: 31,014 ns/op
+Iteration   4: 30,990 ns/op
+Iteration   5: 30,983 ns/op
+Iteration   6: 31,002 ns/op
+Iteration   7: 31,025 ns/op
+Iteration   8: 31,089 ns/op
+Iteration   9: 31,141 ns/op
+Iteration  10: 31,166 ns/op
 
 # Run progress: 58,33% complete, ETA 00:03:49
 # Fork: 2 of 3
 # Warmup Iteration   1: WARNING: An illegal reflective access operation has occurred
-WARNING: Illegal reflective access using Lookup on eu.javaspecialists.books.dynamicproxies.util.VTable (file:/Users/heinz/Dropbox%20(HIC%20Straws)/heinz/git/hexie/dynamic-proxies-mini-book-infoq/dynamic-proxies-samples/core/target/classes/) to interface java.util.Collection
-WARNING: Please consider reporting this to the maintainers of eu.javaspecialists.books.dynamicproxies.util.VTable
+WARNING: Illegal reflective access using Lookup on eu.javaspecialists.books.dynamicproxies.util.ParameterTypesFetcher$FastParameterFetcher (file:/Users/heinz/Dropbox%20(HIC%20Straws)/heinz/git/hexie/dynamic-proxies-mini-book-infoq/dynamic-proxies-samples/core/target/classes/) to class java.lang.reflect.Method
+WARNING: Please consider reporting this to the maintainers of eu.javaspecialists.books.dynamicproxies.util.ParameterTypesFetcher$FastParameterFetcher
 WARNING: Use --illegal-access=warn to enable warnings of further illegal reflective access operations
 WARNING: All illegal access operations will be denied in a future release
-30,112 ns/op
-# Warmup Iteration   2: 30,500 ns/op
-# Warmup Iteration   3: 27,700 ns/op
-# Warmup Iteration   4: 27,589 ns/op
-# Warmup Iteration   5: 27,614 ns/op
-Iteration   1: 27,574 ns/op
-                 ·gc.alloc.rate:                   502,486 MB/sec
-                 ·gc.alloc.rate.norm:              16,001 B/op
-                 ·gc.churn.G1_Eden_Space:          496,380 MB/sec
-                 ·gc.churn.G1_Eden_Space.norm:     15,807 B/op
-                 ·gc.churn.G1_Survivor_Space:      0,002 MB/sec
-                 ·gc.churn.G1_Survivor_Space.norm: ≈ 10⁻⁴ B/op
-                 ·gc.count:                        9,000 counts
-                 ·gc.time:                         7,000 ms
-
-Iteration   2: 27,641 ns/op
-                 ·gc.alloc.rate:                   501,647 MB/sec
-                 ·gc.alloc.rate.norm:              16,001 B/op
-                 ·gc.churn.G1_Eden_Space:          496,225 MB/sec
-                 ·gc.churn.G1_Eden_Space.norm:     15,828 B/op
-                 ·gc.churn.G1_Survivor_Space:      0,001 MB/sec
-                 ·gc.churn.G1_Survivor_Space.norm: ≈ 10⁻⁵ B/op
-                 ·gc.count:                        9,000 counts
-                 ·gc.time:                         6,000 ms
-
-Iteration   3: 27,637 ns/op
-                 ·gc.alloc.rate:                   501,814 MB/sec
-                 ·gc.alloc.rate.norm:              16,001 B/op
-                 ·gc.churn.G1_Eden_Space:          497,285 MB/sec
-                 ·gc.churn.G1_Eden_Space.norm:     15,857 B/op
-                 ·gc.churn.G1_Survivor_Space:      0,001 MB/sec
-                 ·gc.churn.G1_Survivor_Space.norm: ≈ 10⁻⁵ B/op
-                 ·gc.count:                        9,000 counts
-                 ·gc.time:                         6,000 ms
-
-Iteration   4: 27,591 ns/op
-                 ·gc.alloc.rate:                   502,707 MB/sec
-                 ·gc.alloc.rate.norm:              16,001 B/op
-                 ·gc.churn.G1_Eden_Space:          497,335 MB/sec
-                 ·gc.churn.G1_Eden_Space.norm:     15,830 B/op
-                 ·gc.churn.G1_Survivor_Space:      0,002 MB/sec
-                 ·gc.churn.G1_Survivor_Space.norm: ≈ 10⁻⁴ B/op
-                 ·gc.count:                        9,000 counts
-                 ·gc.time:                         7,000 ms
-
-Iteration   5: 27,574 ns/op
-                 ·gc.alloc.rate:                   502,211 MB/sec
-                 ·gc.alloc.rate.norm:              16,001 B/op
-                 ·gc.churn.G1_Eden_Space:          496,225 MB/sec
-                 ·gc.churn.G1_Eden_Space.norm:     15,811 B/op
-                 ·gc.churn.G1_Survivor_Space:      0,001 MB/sec
-                 ·gc.churn.G1_Survivor_Space.norm: ≈ 10⁻⁴ B/op
-                 ·gc.count:                        9,000 counts
-                 ·gc.time:                         6,000 ms
-
+29,322 ns/op
+# Warmup Iteration   2: 30,329 ns/op
+# Warmup Iteration   3: 28,630 ns/op
+# Warmup Iteration   4: 28,603 ns/op
+# Warmup Iteration   5: 28,604 ns/op
+Iteration   1: 28,710 ns/op
+Iteration   2: 28,661 ns/op
+Iteration   3: 28,668 ns/op
+Iteration   4: 28,744 ns/op
+Iteration   5: 28,737 ns/op
+Iteration   6: 28,636 ns/op
+Iteration   7: 28,594 ns/op
+Iteration   8: 28,651 ns/op
+Iteration   9: 28,632 ns/op
+Iteration  10: 28,577 ns/op
 
 # Run progress: 66,67% complete, ETA 00:03:03
 # Fork: 3 of 3
 # Warmup Iteration   1: WARNING: An illegal reflective access operation has occurred
-WARNING: Illegal reflective access using Lookup on eu.javaspecialists.books.dynamicproxies.util.VTable (file:/Users/heinz/Dropbox%20(HIC%20Straws)/heinz/git/hexie/dynamic-proxies-mini-book-infoq/dynamic-proxies-samples/core/target/classes/) to interface java.util.Collection
-WARNING: Please consider reporting this to the maintainers of eu.javaspecialists.books.dynamicproxies.util.VTable
+WARNING: Illegal reflective access using Lookup on eu.javaspecialists.books.dynamicproxies.util.ParameterTypesFetcher$FastParameterFetcher (file:/Users/heinz/Dropbox%20(HIC%20Straws)/heinz/git/hexie/dynamic-proxies-mini-book-infoq/dynamic-proxies-samples/core/target/classes/) to class java.lang.reflect.Method
+WARNING: Please consider reporting this to the maintainers of eu.javaspecialists.books.dynamicproxies.util.ParameterTypesFetcher$FastParameterFetcher
 WARNING: Use --illegal-access=warn to enable warnings of further illegal reflective access operations
 WARNING: All illegal access operations will be denied in a future release
-30,097 ns/op
-# Warmup Iteration   2: 30,310 ns/op
-# Warmup Iteration   3: 27,446 ns/op
-# Warmup Iteration   4: 28,474 ns/op
-# Warmup Iteration   5: 28,461 ns/op
-Iteration   1: 28,452 ns/op
-                 ·gc.alloc.rate:                   486,780 MB/sec
-                 ·gc.alloc.rate.norm:              16,001 B/op
-                 ·gc.churn.G1_Eden_Space:          441,448 MB/sec
-                 ·gc.churn.G1_Eden_Space.norm:     14,511 B/op
-                 ·gc.churn.G1_Survivor_Space:      0,001 MB/sec
-                 ·gc.churn.G1_Survivor_Space.norm: ≈ 10⁻⁴ B/op
-                 ·gc.count:                        8,000 counts
-                 ·gc.time:                         6,000 ms
-
-Iteration   2: 28,463 ns/op
-                 ·gc.alloc.rate:                   486,880 MB/sec
-                 ·gc.alloc.rate.norm:              16,001 B/op
-                 ·gc.churn.G1_Eden_Space:          496,170 MB/sec
-                 ·gc.churn.G1_Eden_Space.norm:     16,307 B/op
-                 ·gc.churn.G1_Survivor_Space:      0,001 MB/sec
-                 ·gc.churn.G1_Survivor_Space.norm: ≈ 10⁻⁵ B/op
-                 ·gc.count:                        9,000 counts
-                 ·gc.time:                         6,000 ms
-
-Iteration   3: 28,415 ns/op
-                 ·gc.alloc.rate:                   487,889 MB/sec
-                 ·gc.alloc.rate.norm:              16,001 B/op
-                 ·gc.churn.G1_Eden_Space:          496,219 MB/sec
-                 ·gc.churn.G1_Eden_Space.norm:     16,275 B/op
-                 ·gc.churn.G1_Survivor_Space:      0,002 MB/sec
-                 ·gc.churn.G1_Survivor_Space.norm: ≈ 10⁻⁴ B/op
-                 ·gc.count:                        9,000 counts
-                 ·gc.time:                         6,000 ms
-
-Iteration   4: 28,437 ns/op
-                 ·gc.alloc.rate:                   487,423 MB/sec
-                 ·gc.alloc.rate.norm:              16,001 B/op
-                 ·gc.churn.G1_Eden_Space:          496,602 MB/sec
-                 ·gc.churn.G1_Eden_Space.norm:     16,303 B/op
-                 ·gc.churn.G1_Survivor_Space:      0,002 MB/sec
-                 ·gc.churn.G1_Survivor_Space.norm: ≈ 10⁻⁴ B/op
-                 ·gc.count:                        9,000 counts
-                 ·gc.time:                         7,000 ms
-
-Iteration   5: 28,463 ns/op
-                 ·gc.alloc.rate:                   486,601 MB/sec
-                 ·gc.alloc.rate.norm:              16,001 B/op
-                 ·gc.churn.G1_Eden_Space:          495,979 MB/sec
-                 ·gc.churn.G1_Eden_Space.norm:     16,310 B/op
-                 ·gc.churn.G1_Survivor_Space:      0,001 MB/sec
-                 ·gc.churn.G1_Survivor_Space.norm: ≈ 10⁻⁴ B/op
-                 ·gc.count:                        9,000 counts
-                 ·gc.time:                         6,000 ms
-
+31,260 ns/op
+# Warmup Iteration   2: 35,632 ns/op
+# Warmup Iteration   3: 28,615 ns/op
+# Warmup Iteration   4: 28,643 ns/op
+# Warmup Iteration   5: 28,691 ns/op
+Iteration   1: 28,668 ns/op
+Iteration   2: 28,661 ns/op
+Iteration   3: 28,677 ns/op
+Iteration   4: 28,664 ns/op
+Iteration   5: 28,663 ns/op
+Iteration   6: 28,685 ns/op
+Iteration   7: 28,685 ns/op
+Iteration   8: 28,671 ns/op
+Iteration   9: 28,670 ns/op
+Iteration  10: 28,721 ns/op
 
 
 Result "eu.javaspecialists.books.dynamicproxies.ch05.benchmarks.AdapterBenchmark.objectAdapterForEach":
-  27,920 ±(99.9%) 0,416 ns/op [Average]
-  (min, avg, max) = (27,574, 27,920, 28,463), stdev = 0,389
-  CI (99.9%): [27,504, 28,336] (assumes normal distribution)
-
-Secondary result "eu.javaspecialists.books.dynamicproxies.ch05.benchmarks.AdapterBenchmark.objectAdapterForEach:·gc.alloc.rate":
-  496,564 ±(99.9%) 7,465 MB/sec [Average]
-  (min, avg, max) = (486,601, 496,564, 502,707), stdev = 6,983
-  CI (99.9%): [489,099, 504,029] (assumes normal distribution)
-
-Secondary result "eu.javaspecialists.books.dynamicproxies.ch05.benchmarks.AdapterBenchmark.objectAdapterForEach:·gc.alloc.rate.norm":
-  16,001 ±(99.9%) 0,001 B/op [Average]
-  (min, avg, max) = (16,001, 16,001, 16,001), stdev = 0,001
-  CI (99.9%): [16,001, 16,001] (assumes normal distribution)
-
-Secondary result "eu.javaspecialists.books.dynamicproxies.ch05.benchmarks.AdapterBenchmark.objectAdapterForEach:·gc.churn.G1_Eden_Space":
-  492,965 ±(99.9%) 15,243 MB/sec [Average]
-  (min, avg, max) = (441,448, 492,965, 497,335), stdev = 14,258
-  CI (99.9%): [477,722, 508,207] (assumes normal distribution)
-
-Secondary result "eu.javaspecialists.books.dynamicproxies.ch05.benchmarks.AdapterBenchmark.objectAdapterForEach:·gc.churn.G1_Eden_Space.norm":
-  15,886 ±(99.9%) 0,460 B/op [Average]
-  (min, avg, max) = (14,511, 15,886, 16,310), stdev = 0,431
-  CI (99.9%): [15,426, 16,346] (assumes normal distribution)
-
-Secondary result "eu.javaspecialists.books.dynamicproxies.ch05.benchmarks.AdapterBenchmark.objectAdapterForEach:·gc.churn.G1_Survivor_Space":
-  0,002 ±(99.9%) 0,001 MB/sec [Average]
-  (min, avg, max) = (≈ 10⁻³, 0,002, 0,004), stdev = 0,001
-  CI (99.9%): [0,001, 0,003] (assumes normal distribution)
-
-Secondary result "eu.javaspecialists.books.dynamicproxies.ch05.benchmarks.AdapterBenchmark.objectAdapterForEach:·gc.churn.G1_Survivor_Space.norm":
-  ≈ 10⁻⁴ B/op
-
-Secondary result "eu.javaspecialists.books.dynamicproxies.ch05.benchmarks.AdapterBenchmark.objectAdapterForEach:·gc.count":
-  134,000 ±(99.9%) 0,001 counts [Sum]
-  (min, avg, max) = (8,000, 8,933, 9,000), stdev = 0,258
-  CI (99.9%): [134,000, 134,000] (assumes normal distribution)
-
-Secondary result "eu.javaspecialists.books.dynamicproxies.ch05.benchmarks.AdapterBenchmark.objectAdapterForEach:·gc.time":
-  95,000 ±(99.9%) 0,001 ms [Sum]
-  (min, avg, max) = (6,000, 6,333, 7,000), stdev = 0,488
-  CI (99.9%): [95,000, 95,000] (assumes normal distribution)
+  29,460 ±(99.9%) 0,762 ns/op [Average]
+  (min, avg, max) = (28,577, 29,460, 31,166), stdev = 1,140
+  CI (99.9%): [28,699, 30,222] (assumes normal distribution)
 
 
 # JMH version: 1.21
 # VM version: JDK 14, OpenJDK 64-Bit Server VM, 14+36-1461
 # VM invoker: /Users/heinz/Dropbox (HIC Straws)/heinz/JavaVirtualMachines/openjdk-14.jdk/Contents/Home/bin/java
-# VM options: -javaagent:/Applications/000/IntelliJ IDEA 2020.1.app/Contents/lib/idea_rt.jar=49941:/Applications/000/IntelliJ IDEA 2020.1.app/Contents/bin -Dfile.encoding=UTF-8
+# VM options: -XX:+UseParallelGC -Deu.javaspecialists.books.dynamicproxies.util.ParameterTypesFetcher.enabled=true -javaagent:/Applications/000/IntelliJ IDEA 2020.1.app/Contents/lib/idea_rt.jar=51846:/Applications/000/IntelliJ IDEA 2020.1.app/Contents/bin -Dfile.encoding=UTF-8
 # Warmup: 5 iterations, 3 s each
-# Measurement: 5 iterations, 5 s each
+# Measurement: 10 iterations, 3 s each
 # Timeout: 10 min per iteration
 # Threads: 1 thread, will synchronize iterations
 # Benchmark mode: Average time, time/op
@@ -753,237 +279,77 @@ Secondary result "eu.javaspecialists.books.dynamicproxies.ch05.benchmarks.Adapte
 # Run progress: 75,00% complete, ETA 00:02:17
 # Fork: 1 of 3
 # Warmup Iteration   1: WARNING: An illegal reflective access operation has occurred
-WARNING: Illegal reflective access using Lookup on eu.javaspecialists.books.dynamicproxies.util.VTable (file:/Users/heinz/Dropbox%20(HIC%20Straws)/heinz/git/hexie/dynamic-proxies-mini-book-infoq/dynamic-proxies-samples/core/target/classes/) to interface java.util.Collection
-WARNING: Please consider reporting this to the maintainers of eu.javaspecialists.books.dynamicproxies.util.VTable
+WARNING: Illegal reflective access using Lookup on eu.javaspecialists.books.dynamicproxies.util.ParameterTypesFetcher$FastParameterFetcher (file:/Users/heinz/Dropbox%20(HIC%20Straws)/heinz/git/hexie/dynamic-proxies-mini-book-infoq/dynamic-proxies-samples/core/target/classes/) to class java.lang.reflect.Method
+WARNING: Please consider reporting this to the maintainers of eu.javaspecialists.books.dynamicproxies.util.ParameterTypesFetcher$FastParameterFetcher
 WARNING: Use --illegal-access=warn to enable warnings of further illegal reflective access operations
 WARNING: All illegal access operations will be denied in a future release
-94,286 ns/op
-# Warmup Iteration   2: 86,971 ns/op
-# Warmup Iteration   3: 87,764 ns/op
-# Warmup Iteration   4: 87,854 ns/op
-# Warmup Iteration   5: 87,851 ns/op
-Iteration   1: 87,752 ns/op
-                 ·gc.alloc.rate:                   2211,948 MB/sec
-                 ·gc.alloc.rate.norm:              224,015 B/op
-                 ·gc.churn.G1_Eden_Space:          2216,805 MB/sec
-                 ·gc.churn.G1_Eden_Space.norm:     224,507 B/op
-                 ·gc.churn.G1_Survivor_Space:      0,006 MB/sec
-                 ·gc.churn.G1_Survivor_Space.norm: 0,001 B/op
-                 ·gc.count:                        33,000 counts
-                 ·gc.time:                         23,000 ms
-
-Iteration   2: 87,822 ns/op
-                 ·gc.alloc.rate:                   2207,720 MB/sec
-                 ·gc.alloc.rate.norm:              224,015 B/op
-                 ·gc.churn.G1_Eden_Space:          2215,963 MB/sec
-                 ·gc.churn.G1_Eden_Space.norm:     224,852 B/op
-                 ·gc.churn.G1_Survivor_Space:      0,006 MB/sec
-                 ·gc.churn.G1_Survivor_Space.norm: 0,001 B/op
-                 ·gc.count:                        33,000 counts
-                 ·gc.time:                         24,000 ms
-
-Iteration   3: 87,785 ns/op
-                 ·gc.alloc.rate:                   2208,534 MB/sec
-                 ·gc.alloc.rate.norm:              224,015 B/op
-                 ·gc.churn.G1_Eden_Space:          2213,427 MB/sec
-                 ·gc.churn.G1_Eden_Space.norm:     224,511 B/op
-                 ·gc.churn.G1_Survivor_Space:      0,009 MB/sec
-                 ·gc.churn.G1_Survivor_Space.norm: 0,001 B/op
-                 ·gc.count:                        33,000 counts
-                 ·gc.time:                         24,000 ms
-
-Iteration   4: 87,826 ns/op
-                 ·gc.alloc.rate:                   2209,373 MB/sec
-                 ·gc.alloc.rate.norm:              224,015 B/op
-                 ·gc.churn.G1_Eden_Space:          2214,945 MB/sec
-                 ·gc.churn.G1_Eden_Space.norm:     224,580 B/op
-                 ·gc.churn.G1_Survivor_Space:      0,005 MB/sec
-                 ·gc.churn.G1_Survivor_Space.norm: ≈ 10⁻³ B/op
-                 ·gc.count:                        33,000 counts
-                 ·gc.time:                         23,000 ms
-
-Iteration   5: 87,782 ns/op
-                 ·gc.alloc.rate:                   2211,055 MB/sec
-                 ·gc.alloc.rate.norm:              224,015 B/op
-                 ·gc.churn.G1_Eden_Space:          2217,943 MB/sec
-                 ·gc.churn.G1_Eden_Space.norm:     224,713 B/op
-                 ·gc.churn.G1_Survivor_Space:      0,007 MB/sec
-                 ·gc.churn.G1_Survivor_Space.norm: 0,001 B/op
-                 ·gc.count:                        33,000 counts
-                 ·gc.time:                         23,000 ms
-
+91,824 ns/op
+# Warmup Iteration   2: 80,133 ns/op
+# Warmup Iteration   3: 79,961 ns/op
+# Warmup Iteration   4: 80,618 ns/op
+# Warmup Iteration   5: 81,058 ns/op
+Iteration   1: 81,075 ns/op
+Iteration   2: 81,136 ns/op
+Iteration   3: 81,702 ns/op
+Iteration   4: 81,597 ns/op
+Iteration   5: 81,535 ns/op
+Iteration   6: 81,561 ns/op
+Iteration   7: 81,593 ns/op
+Iteration   8: 81,597 ns/op
+Iteration   9: 81,552 ns/op
+Iteration  10: 81,494 ns/op
 
 # Run progress: 83,33% complete, ETA 00:01:31
 # Fork: 2 of 3
 # Warmup Iteration   1: WARNING: An illegal reflective access operation has occurred
-WARNING: Illegal reflective access using Lookup on eu.javaspecialists.books.dynamicproxies.util.VTable (file:/Users/heinz/Dropbox%20(HIC%20Straws)/heinz/git/hexie/dynamic-proxies-mini-book-infoq/dynamic-proxies-samples/core/target/classes/) to interface java.util.Collection
-WARNING: Please consider reporting this to the maintainers of eu.javaspecialists.books.dynamicproxies.util.VTable
+WARNING: Illegal reflective access using Lookup on eu.javaspecialists.books.dynamicproxies.util.ParameterTypesFetcher$FastParameterFetcher (file:/Users/heinz/Dropbox%20(HIC%20Straws)/heinz/git/hexie/dynamic-proxies-mini-book-infoq/dynamic-proxies-samples/core/target/classes/) to class java.lang.reflect.Method
+WARNING: Please consider reporting this to the maintainers of eu.javaspecialists.books.dynamicproxies.util.ParameterTypesFetcher$FastParameterFetcher
 WARNING: Use --illegal-access=warn to enable warnings of further illegal reflective access operations
 WARNING: All illegal access operations will be denied in a future release
-94,087 ns/op
-# Warmup Iteration   2: 86,558 ns/op
-# Warmup Iteration   3: 88,015 ns/op
-# Warmup Iteration   4: 87,950 ns/op
-# Warmup Iteration   5: 88,072 ns/op
-Iteration   1: 87,955 ns/op
-                 ·gc.alloc.rate:                   2207,678 MB/sec
-                 ·gc.alloc.rate.norm:              224,015 B/op
-                 ·gc.churn.G1_Eden_Space:          2218,043 MB/sec
-                 ·gc.churn.G1_Eden_Space.norm:     225,067 B/op
-                 ·gc.churn.G1_Survivor_Space:      0,006 MB/sec
-                 ·gc.churn.G1_Survivor_Space.norm: 0,001 B/op
-                 ·gc.count:                        33,000 counts
-                 ·gc.time:                         24,000 ms
-
-Iteration   2: 87,905 ns/op
-                 ·gc.alloc.rate:                   2209,335 MB/sec
-                 ·gc.alloc.rate.norm:              224,015 B/op
-                 ·gc.churn.G1_Eden_Space:          2216,369 MB/sec
-                 ·gc.churn.G1_Eden_Space.norm:     224,729 B/op
-                 ·gc.churn.G1_Survivor_Space:      0,007 MB/sec
-                 ·gc.churn.G1_Survivor_Space.norm: 0,001 B/op
-                 ·gc.count:                        33,000 counts
-                 ·gc.time:                         24,000 ms
-
-Iteration   3: 87,858 ns/op
-                 ·gc.alloc.rate:                   2207,183 MB/sec
-                 ·gc.alloc.rate.norm:              224,014 B/op
-                 ·gc.churn.G1_Eden_Space:          2146,832 MB/sec
-                 ·gc.churn.G1_Eden_Space.norm:     217,889 B/op
-                 ·gc.churn.G1_Survivor_Space:      0,006 MB/sec
-                 ·gc.churn.G1_Survivor_Space.norm: 0,001 B/op
-                 ·gc.count:                        32,000 counts
-                 ·gc.time:                         23,000 ms
-
-Iteration   4: 87,976 ns/op
-                 ·gc.alloc.rate:                   2204,137 MB/sec
-                 ·gc.alloc.rate.norm:              224,015 B/op
-                 ·gc.churn.G1_Eden_Space:          2214,581 MB/sec
-                 ·gc.churn.G1_Eden_Space.norm:     225,076 B/op
-                 ·gc.churn.G1_Survivor_Space:      0,005 MB/sec
-                 ·gc.churn.G1_Survivor_Space.norm: 0,001 B/op
-                 ·gc.count:                        33,000 counts
-                 ·gc.time:                         23,000 ms
-
-Iteration   5: 88,009 ns/op
-                 ·gc.alloc.rate:                   2203,404 MB/sec
-                 ·gc.alloc.rate.norm:              224,015 B/op
-                 ·gc.churn.G1_Eden_Space:          2214,910 MB/sec
-                 ·gc.churn.G1_Eden_Space.norm:     225,185 B/op
-                 ·gc.churn.G1_Survivor_Space:      0,006 MB/sec
-                 ·gc.churn.G1_Survivor_Space.norm: 0,001 B/op
-                 ·gc.count:                        33,000 counts
-                 ·gc.time:                         23,000 ms
-
+94,306 ns/op
+# Warmup Iteration   2: 82,655 ns/op
+# Warmup Iteration   3: 81,728 ns/op
+# Warmup Iteration   4: 82,474 ns/op
+# Warmup Iteration   5: 82,836 ns/op
+Iteration   1: 82,915 ns/op
+Iteration   2: 82,990 ns/op
+Iteration   3: 82,889 ns/op
+Iteration   4: 83,209 ns/op
+Iteration   5: 83,063 ns/op
+Iteration   6: 83,499 ns/op
+Iteration   7: 83,491 ns/op
+Iteration   8: 83,499 ns/op
+Iteration   9: 83,484 ns/op
+Iteration  10: 83,018 ns/op
 
 # Run progress: 91,67% complete, ETA 00:00:45
 # Fork: 3 of 3
 # Warmup Iteration   1: WARNING: An illegal reflective access operation has occurred
-WARNING: Illegal reflective access using Lookup on eu.javaspecialists.books.dynamicproxies.util.VTable (file:/Users/heinz/Dropbox%20(HIC%20Straws)/heinz/git/hexie/dynamic-proxies-mini-book-infoq/dynamic-proxies-samples/core/target/classes/) to interface java.util.Collection
-WARNING: Please consider reporting this to the maintainers of eu.javaspecialists.books.dynamicproxies.util.VTable
+WARNING: Illegal reflective access using Lookup on eu.javaspecialists.books.dynamicproxies.util.ParameterTypesFetcher$FastParameterFetcher (file:/Users/heinz/Dropbox%20(HIC%20Straws)/heinz/git/hexie/dynamic-proxies-mini-book-infoq/dynamic-proxies-samples/core/target/classes/) to class java.lang.reflect.Method
+WARNING: Please consider reporting this to the maintainers of eu.javaspecialists.books.dynamicproxies.util.ParameterTypesFetcher$FastParameterFetcher
 WARNING: Use --illegal-access=warn to enable warnings of further illegal reflective access operations
 WARNING: All illegal access operations will be denied in a future release
-94,356 ns/op
-# Warmup Iteration   2: 86,498 ns/op
-# Warmup Iteration   3: 87,364 ns/op
-# Warmup Iteration   4: 87,231 ns/op
-# Warmup Iteration   5: 87,466 ns/op
-Iteration   1: 87,523 ns/op
-                 ·gc.alloc.rate:                   2215,965 MB/sec
-                 ·gc.alloc.rate.norm:              224,015 B/op
-                 ·gc.churn.G1_Eden_Space:          2214,074 MB/sec
-                 ·gc.churn.G1_Eden_Space.norm:     223,824 B/op
-                 ·gc.churn.G1_Survivor_Space:      0,008 MB/sec
-                 ·gc.churn.G1_Survivor_Space.norm: 0,001 B/op
-                 ·gc.count:                        33,000 counts
-                 ·gc.time:                         23,000 ms
-
-Iteration   2: 87,479 ns/op
-                 ·gc.alloc.rate:                   2216,238 MB/sec
-                 ·gc.alloc.rate.norm:              224,015 B/op
-                 ·gc.churn.G1_Eden_Space:          2212,311 MB/sec
-                 ·gc.churn.G1_Eden_Space.norm:     223,618 B/op
-                 ·gc.churn.G1_Survivor_Space:      0,008 MB/sec
-                 ·gc.churn.G1_Survivor_Space.norm: 0,001 B/op
-                 ·gc.count:                        33,000 counts
-                 ·gc.time:                         24,000 ms
-
-Iteration   3: 87,463 ns/op
-                 ·gc.alloc.rate:                   2218,461 MB/sec
-                 ·gc.alloc.rate.norm:              224,015 B/op
-                 ·gc.churn.G1_Eden_Space:          2214,263 MB/sec
-                 ·gc.churn.G1_Eden_Space.norm:     223,591 B/op
-                 ·gc.churn.G1_Survivor_Space:      0,008 MB/sec
-                 ·gc.churn.G1_Survivor_Space.norm: 0,001 B/op
-                 ·gc.count:                        33,000 counts
-                 ·gc.time:                         23,000 ms
-
-Iteration   4: 87,522 ns/op
-                 ·gc.alloc.rate:                   2219,082 MB/sec
-                 ·gc.alloc.rate.norm:              224,015 B/op
-                 ·gc.churn.G1_Eden_Space:          2216,235 MB/sec
-                 ·gc.churn.G1_Eden_Space.norm:     223,727 B/op
-                 ·gc.churn.G1_Survivor_Space:      0,005 MB/sec
-                 ·gc.churn.G1_Survivor_Space.norm: 0,001 B/op
-                 ·gc.count:                        33,000 counts
-                 ·gc.time:                         24,000 ms
-
-Iteration   5: 87,457 ns/op
-                 ·gc.alloc.rate:                   2219,993 MB/sec
-                 ·gc.alloc.rate.norm:              224,015 B/op
-                 ·gc.churn.G1_Eden_Space:          2216,308 MB/sec
-                 ·gc.churn.G1_Eden_Space.norm:     223,643 B/op
-                 ·gc.churn.G1_Survivor_Space:      0,004 MB/sec
-                 ·gc.churn.G1_Survivor_Space.norm: ≈ 10⁻³ B/op
-                 ·gc.count:                        33,000 counts
-                 ·gc.time:                         23,000 ms
-
+66,226 ns/op
+# Warmup Iteration   2: 60,289 ns/op
+# Warmup Iteration   3: 60,655 ns/op
+# Warmup Iteration   4: 60,953 ns/op
+# Warmup Iteration   5: 61,108 ns/op
+Iteration   1: 60,911 ns/op
+Iteration   2: 61,502 ns/op
+Iteration   3: 60,901 ns/op
+Iteration   4: 60,966 ns/op
+Iteration   5: 61,005 ns/op
+Iteration   6: 60,882 ns/op
+Iteration   7: 60,925 ns/op
+Iteration   8: 60,790 ns/op
+Iteration   9: 61,008 ns/op
+Iteration  10: 61,104 ns/op
 
 
 Result "eu.javaspecialists.books.dynamicproxies.ch05.benchmarks.AdapterBenchmark.plainForEach":
-  87,741 ±(99.9%) 0,212 ns/op [Average]
-  (min, avg, max) = (87,457, 87,741, 88,009), stdev = 0,199
-  CI (99.9%): [87,528, 87,953] (assumes normal distribution)
-
-Secondary result "eu.javaspecialists.books.dynamicproxies.ch05.benchmarks.AdapterBenchmark.plainForEach:·gc.alloc.rate":
-  2211,340 ±(99.9%) 5,755 MB/sec [Average]
-  (min, avg, max) = (2203,404, 2211,340, 2219,993), stdev = 5,384
-  CI (99.9%): [2205,585, 2217,096] (assumes normal distribution)
-
-Secondary result "eu.javaspecialists.books.dynamicproxies.ch05.benchmarks.AdapterBenchmark.plainForEach:·gc.alloc.rate.norm":
-  224,015 ±(99.9%) 0,001 B/op [Average]
-  (min, avg, max) = (224,014, 224,015, 224,015), stdev = 0,001
-  CI (99.9%): [224,015, 224,015] (assumes normal distribution)
-
-Secondary result "eu.javaspecialists.books.dynamicproxies.ch05.benchmarks.AdapterBenchmark.plainForEach:·gc.churn.G1_Eden_Space":
-  2210,867 ±(99.9%) 19,015 MB/sec [Average]
-  (min, avg, max) = (2146,832, 2210,867, 2218,043), stdev = 17,787
-  CI (99.9%): [2191,852, 2229,882] (assumes normal distribution)
-
-Secondary result "eu.javaspecialists.books.dynamicproxies.ch05.benchmarks.AdapterBenchmark.plainForEach:·gc.churn.G1_Eden_Space.norm":
-  223,967 ±(99.9%) 1,899 B/op [Average]
-  (min, avg, max) = (217,889, 223,967, 225,185), stdev = 1,777
-  CI (99.9%): [222,068, 225,867] (assumes normal distribution)
-
-Secondary result "eu.javaspecialists.books.dynamicproxies.ch05.benchmarks.AdapterBenchmark.plainForEach:·gc.churn.G1_Survivor_Space":
-  0,006 ±(99.9%) 0,001 MB/sec [Average]
-  (min, avg, max) = (0,004, 0,006, 0,009), stdev = 0,001
-  CI (99.9%): [0,005, 0,008] (assumes normal distribution)
-
-Secondary result "eu.javaspecialists.books.dynamicproxies.ch05.benchmarks.AdapterBenchmark.plainForEach:·gc.churn.G1_Survivor_Space.norm":
-  0,001 ±(99.9%) 0,001 B/op [Average]
-  (min, avg, max) = (≈ 10⁻³, 0,001, 0,001), stdev = 0,001
-  CI (99.9%): [≈ 10⁻³, 0,001] (assumes normal distribution)
-
-Secondary result "eu.javaspecialists.books.dynamicproxies.ch05.benchmarks.AdapterBenchmark.plainForEach:·gc.count":
-  494,000 ±(99.9%) 0,001 counts [Sum]
-  (min, avg, max) = (32,000, 32,933, 33,000), stdev = 0,258
-  CI (99.9%): [494,000, 494,000] (assumes normal distribution)
-
-Secondary result "eu.javaspecialists.books.dynamicproxies.ch05.benchmarks.AdapterBenchmark.plainForEach:·gc.time":
-  351,000 ±(99.9%) 0,001 ms [Sum]
-  (min, avg, max) = (23,000, 23,400, 24,000), stdev = 0,507
-  CI (99.9%): [351,000, 351,000] (assumes normal distribution)
+  75,230 ±(99.9%) 6,856 ns/op [Average]
+  (min, avg, max) = (60,790, 75,230, 83,499), stdev = 10,262
+  CI (99.9%): [68,374, 82,086] (assumes normal distribution)
 
 
 # Run complete. Total time: 00:09:10
@@ -994,43 +360,10 @@ experiments, perform baseline and negative tests that provide experimental contr
 the benchmarking environment is safe on JVM/OS/HW level, ask for reviews from the domain experts.
 Do not assume the numbers tell you what you want them to tell.
 
-Benchmark                                                                      Mode  Cnt     Score    Error   Units
-AdapterBenchmark.classAdapterForEach                                           avgt   15    25,768 ±  0,083   ns/op
-AdapterBenchmark.classAdapterForEach:·gc.alloc.rate                            avgt   15   538,075 ±  1,751  MB/sec
-AdapterBenchmark.classAdapterForEach:·gc.alloc.rate.norm                       avgt   15    16,001 ±  0,001    B/op
-AdapterBenchmark.classAdapterForEach:·gc.churn.G1_Eden_Space                   avgt   15   533,747 ± 28,829  MB/sec
-AdapterBenchmark.classAdapterForEach:·gc.churn.G1_Eden_Space.norm              avgt   15    15,873 ±  0,856    B/op
-AdapterBenchmark.classAdapterForEach:·gc.churn.G1_Survivor_Space               avgt   15     0,002 ±  0,001  MB/sec
-AdapterBenchmark.classAdapterForEach:·gc.churn.G1_Survivor_Space.norm          avgt   15    ≈ 10⁻⁴             B/op
-AdapterBenchmark.classAdapterForEach:·gc.count                                 avgt   15   145,000           counts
-AdapterBenchmark.classAdapterForEach:·gc.time                                  avgt   15   102,000               ms
-AdapterBenchmark.dynamicObjectAdapterForEach                                   avgt   15    94,739 ±  0,511   ns/op
-AdapterBenchmark.dynamicObjectAdapterForEach:·gc.alloc.rate                    avgt   15   658,569 ±  3,626  MB/sec
-AdapterBenchmark.dynamicObjectAdapterForEach:·gc.alloc.rate.norm               avgt   15    72,006 ±  0,001    B/op
-AdapterBenchmark.dynamicObjectAdapterForEach:·gc.churn.G1_Eden_Space           avgt   15   658,877 ± 15,232  MB/sec
-AdapterBenchmark.dynamicObjectAdapterForEach:·gc.churn.G1_Eden_Space.norm      avgt   15    72,041 ±  1,707    B/op
-AdapterBenchmark.dynamicObjectAdapterForEach:·gc.churn.G1_Survivor_Space       avgt   15     0,002 ±  0,001  MB/sec
-AdapterBenchmark.dynamicObjectAdapterForEach:·gc.churn.G1_Survivor_Space.norm  avgt   15    ≈ 10⁻⁴             B/op
-AdapterBenchmark.dynamicObjectAdapterForEach:·gc.count                         avgt   15   179,000           counts
-AdapterBenchmark.dynamicObjectAdapterForEach:·gc.time                          avgt   15   125,000               ms
-AdapterBenchmark.objectAdapterForEach                                          avgt   15    27,920 ±  0,416   ns/op
-AdapterBenchmark.objectAdapterForEach:·gc.alloc.rate                           avgt   15   496,564 ±  7,465  MB/sec
-AdapterBenchmark.objectAdapterForEach:·gc.alloc.rate.norm                      avgt   15    16,001 ±  0,001    B/op
-AdapterBenchmark.objectAdapterForEach:·gc.churn.G1_Eden_Space                  avgt   15   492,965 ± 15,243  MB/sec
-AdapterBenchmark.objectAdapterForEach:·gc.churn.G1_Eden_Space.norm             avgt   15    15,886 ±  0,460    B/op
-AdapterBenchmark.objectAdapterForEach:·gc.churn.G1_Survivor_Space              avgt   15     0,002 ±  0,001  MB/sec
-AdapterBenchmark.objectAdapterForEach:·gc.churn.G1_Survivor_Space.norm         avgt   15    ≈ 10⁻⁴             B/op
-AdapterBenchmark.objectAdapterForEach:·gc.count                                avgt   15   134,000           counts
-AdapterBenchmark.objectAdapterForEach:·gc.time                                 avgt   15    95,000               ms
-AdapterBenchmark.plainForEach                                                  avgt   15    87,741 ±  0,212   ns/op
-AdapterBenchmark.plainForEach:·gc.alloc.rate                                   avgt   15  2211,340 ±  5,755  MB/sec
-AdapterBenchmark.plainForEach:·gc.alloc.rate.norm                              avgt   15   224,015 ±  0,001    B/op
-AdapterBenchmark.plainForEach:·gc.churn.G1_Eden_Space                          avgt   15  2210,867 ± 19,015  MB/sec
-AdapterBenchmark.plainForEach:·gc.churn.G1_Eden_Space.norm                     avgt   15   223,967 ±  1,899    B/op
-AdapterBenchmark.plainForEach:·gc.churn.G1_Survivor_Space                      avgt   15     0,006 ±  0,001  MB/sec
-AdapterBenchmark.plainForEach:·gc.churn.G1_Survivor_Space.norm                 avgt   15     0,001 ±  0,001    B/op
-AdapterBenchmark.plainForEach:·gc.count                                        avgt   15   494,000           counts
-AdapterBenchmark.plainForEach:·gc.time                                         avgt   15   351,000               ms
+Benchmark                                     Mode  Cnt   Score   Error  Units
+AdapterBenchmark.classAdapterForEach          avgt   30  26,944 ± 0,058  ns/op
+AdapterBenchmark.dynamicObjectAdapterForEach  avgt   30  69,749 ± 0,844  ns/op
+AdapterBenchmark.objectAdapterForEach         avgt   30  29,460 ± 0,762  ns/op
+AdapterBenchmark.plainForEach                 avgt   30  75,230 ± 6,856  ns/op
 
 Process finished with exit code 0
-
