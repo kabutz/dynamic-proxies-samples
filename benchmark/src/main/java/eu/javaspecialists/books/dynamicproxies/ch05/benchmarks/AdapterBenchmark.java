@@ -147,11 +147,27 @@ public class AdapterBenchmark {
 
   public static void main(String... args) throws RunnerException {
     String name = MethodHandles.lookup().lookupClass().getName();
+    // Object Allocation with Escape Analysis ON
     new Runner(
         new OptionsBuilder()
             .include(name)
             .forks(1)
             .jvmArgsAppend(
+                "-XX:+DoEscapeAnalyis",
+                "-XX:+UseParallelGC")
+            .warmupIterations(3)
+            .warmupTime(TimeValue.seconds(1))
+            .measurementIterations(3)
+            .measurementTime(TimeValue.seconds(1))
+            .addProfiler("gc")
+            .build()).run();
+    // Object Allocation with Escape Analysis OFF
+    new Runner(
+        new OptionsBuilder()
+            .include(name)
+            .forks(1)
+            .jvmArgsAppend(
+                "-XX:-DoEscapeAnalyis",
                 "-XX:+UseParallelGC")
             .warmupIterations(3)
             .warmupTime(TimeValue.seconds(1))
