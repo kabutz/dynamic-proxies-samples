@@ -107,9 +107,9 @@ public class AdapterBenchmark {
   private static class Counter implements Consumer<Object> {
     private int count;
     @Override
-    public void accept(Object o) { count++;}
-    public void reset() { count = 0;}
-    public int get() { return count;}
+    public void accept(Object o) { count++; }
+    public void reset() { count = 0; }
+    public int get() { return count; }
   }
 
   private static final Counter COUNTER = new Counter();
