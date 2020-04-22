@@ -178,7 +178,7 @@ public class AdapterBenchmark {
     new Runner(
         new OptionsBuilder()
             .include(name)
-            .forks(1)
+            .forks(3)
             .jvmArgsAppend(
                 "-XX:+UseParallelGC",
                 "-Deu.javaspecialists.books" +
