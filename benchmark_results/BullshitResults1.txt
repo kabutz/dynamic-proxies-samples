@@ -1,0 +1,109 @@
+### Results showing three forks of plainForEach when we used
+### plain.stream().filter(...).forEach() with completely
+### different results
+
+/Library/Java/JavaVirtualMachines/jdk-14.jdk/Contents/Home/bin/java -XX:+UseParallelGC -Deu.javaspecialists.books.dynamicproxies.util.ParameterTypesFetcher.enabled=true -XX:+DoEscapeAnalysis -javaagent:/Applications/000/IntelliJ IDEA 2020.1.app/Contents/lib/idea_rt.jar=53590:/Applications/000/IntelliJ IDEA 2020.1.app/Contents/bin -Dfile.encoding=UTF-8 -classpath /Users/heinz/Dropbox (HIC Straws)/heinz/git/hexie/dynamic-proxies-mini-book-infoq/dynamic-proxies-samples/benchmark/target/classes:/Users/heinz/Dropbox (HIC Straws)/heinz/git/hexie/dynamic-proxies-mini-book-infoq/dynamic-proxies-samples/core/target/classes:/Users/heinz/.m2/repository/org/eclipse/jetty/jetty-server/10.0.0.alpha1/jetty-server-10.0.0.alpha1.jar:/Users/heinz/.m2/repository/org/eclipse/jetty/toolchain/jetty-servlet-api/4.0.2/jetty-servlet-api-4.0.2.jar:/Users/heinz/.m2/repository/org/eclipse/jetty/jetty-http/10.0.0.alpha1/jetty-http-10.0.0.alpha1.jar:/Users/heinz/.m2/repository/org/eclipse/jetty/jetty-util/10.0.0.alpha1/jetty-util-10.0.0.alpha1.jar:/Users/heinz/.m2/repository/org/eclipse/jetty/jetty-io/10.0.0.alpha1/jetty-io-10.0.0.alpha1.jar:/Users/heinz/.m2/repository/junit/junit/4.11/junit-4.11.jar:/Users/heinz/.m2/repository/org/hamcrest/hamcrest-core/1.3/hamcrest-core-1.3.jar:/Users/heinz/.m2/repository/org/openjdk/jmh/jmh-core/1.21/jmh-core-1.21.jar:/Users/heinz/.m2/repository/net/sf/jopt-simple/jopt-simple/4.6/jopt-simple-4.6.jar:/Users/heinz/.m2/repository/org/apache/commons/commons-math3/3.2/commons-math3-3.2.jar:/Users/heinz/.m2/repository/org/openjdk/jmh/jmh-generator-annprocess/1.21/jmh-generator-annprocess-1.21.jar eu.javaspecialists.books.dynamicproxies.ch05.benchmarks.AdapterBenchmark
+WARNING: An illegal reflective access operation has occurred
+WARNING: Illegal reflective access by org.openjdk.jmh.util.Utils (file:/Users/heinz/.m2/repository/org/openjdk/jmh/jmh-core/1.21/jmh-core-1.21.jar) to field java.io.PrintStream.charOut
+WARNING: Please consider reporting this to the maintainers of org.openjdk.jmh.util.Utils
+WARNING: Use --illegal-access=warn to enable warnings of further illegal reflective access operations
+WARNING: All illegal access operations will be denied in a future release
+# JMH version: 1.21
+# VM version: JDK 14, OpenJDK 64-Bit Server VM, 14+36-1461
+# VM invoker: /Users/heinz/Dropbox (HIC Straws)/heinz/JavaVirtualMachines/openjdk-14.jdk/Contents/Home/bin/java
+# VM options: -XX:+UseParallelGC -Deu.javaspecialists.books.dynamicproxies.util.ParameterTypesFetcher.enabled=true -XX:+DoEscapeAnalysis -javaagent:/Applications/000/IntelliJ IDEA 2020.1.app/Contents/lib/idea_rt.jar=53590:/Applications/000/IntelliJ IDEA 2020.1.app/Contents/bin -Dfile.encoding=UTF-8
+# Warmup: 5 iterations, 3 s each
+# Measurement: 10 iterations, 3 s each
+# Timeout: 10 min per iteration
+# Threads: 1 thread, will synchronize iterations
+# Benchmark mode: Average time, time/op
+# Benchmark: eu.javaspecialists.books.dynamicproxies.ch05.benchmarks.AdapterBenchmark.plainForEach
+
+# Run progress: 0,00% complete, ETA 00:02:15
+# Fork: 1 of 3
+# Warmup Iteration   1: WARNING: An illegal reflective access operation has occurred
+WARNING: Illegal reflective access using Lookup on eu.javaspecialists.books.dynamicproxies.util.ParameterTypesFetcher$FastParameterFetcher (file:/Users/heinz/Dropbox%20(HIC%20Straws)/heinz/git/hexie/dynamic-proxies-mini-book-infoq/dynamic-proxies-samples/core/target/classes/) to class java.lang.reflect.Method
+WARNING: Please consider reporting this to the maintainers of eu.javaspecialists.books.dynamicproxies.util.ParameterTypesFetcher$FastParameterFetcher
+WARNING: Use --illegal-access=warn to enable warnings of further illegal reflective access operations
+WARNING: All illegal access operations will be denied in a future release
+69,528 ns/op
+# Warmup Iteration   2: 56,371 ns/op
+# Warmup Iteration   3: 56,615 ns/op
+# Warmup Iteration   4: 59,341 ns/op
+# Warmup Iteration   5: 56,961 ns/op
+Iteration   1: 58,307 ns/op
+Iteration   2: 57,656 ns/op
+Iteration   3: 57,998 ns/op
+Iteration   4: 58,034 ns/op
+Iteration   5: 59,459 ns/op
+Iteration   6: 57,976 ns/op
+Iteration   7: 58,579 ns/op
+Iteration   8: 59,525 ns/op
+Iteration   9: 60,138 ns/op
+Iteration  10: 59,424 ns/op
+
+# Run progress: 33,33% complete, ETA 00:01:32
+# Fork: 2 of 3
+# Warmup Iteration   1: WARNING: An illegal reflective access operation has occurred
+WARNING: Illegal reflective access using Lookup on eu.javaspecialists.books.dynamicproxies.util.ParameterTypesFetcher$FastParameterFetcher (file:/Users/heinz/Dropbox%20(HIC%20Straws)/heinz/git/hexie/dynamic-proxies-mini-book-infoq/dynamic-proxies-samples/core/target/classes/) to class java.lang.reflect.Method
+WARNING: Please consider reporting this to the maintainers of eu.javaspecialists.books.dynamicproxies.util.ParameterTypesFetcher$FastParameterFetcher
+WARNING: Use --illegal-access=warn to enable warnings of further illegal reflective access operations
+WARNING: All illegal access operations will be denied in a future release
+52,628 ns/op
+# Warmup Iteration   2: 43,530 ns/op
+# Warmup Iteration   3: 42,136 ns/op
+# Warmup Iteration   4: 43,602 ns/op
+# Warmup Iteration   5: 44,363 ns/op
+Iteration   1: 42,708 ns/op
+Iteration   2: 42,588 ns/op
+Iteration   3: 41,343 ns/op
+Iteration   4: 42,478 ns/op
+Iteration   5: 41,777 ns/op
+Iteration   6: 41,892 ns/op
+Iteration   7: 42,297 ns/op
+Iteration   8: 42,783 ns/op
+Iteration   9: 43,137 ns/op
+Iteration  10: 43,208 ns/op
+
+# Run progress: 66,67% complete, ETA 00:00:45
+# Fork: 3 of 3
+# Warmup Iteration   1: WARNING: An illegal reflective access operation has occurred
+WARNING: Illegal reflective access using Lookup on eu.javaspecialists.books.dynamicproxies.util.ParameterTypesFetcher$FastParameterFetcher (file:/Users/heinz/Dropbox%20(HIC%20Straws)/heinz/git/hexie/dynamic-proxies-mini-book-infoq/dynamic-proxies-samples/core/target/classes/) to class java.lang.reflect.Method
+WARNING: Please consider reporting this to the maintainers of eu.javaspecialists.books.dynamicproxies.util.ParameterTypesFetcher$FastParameterFetcher
+WARNING: Use --illegal-access=warn to enable warnings of further illegal reflective access operations
+WARNING: All illegal access operations will be denied in a future release
+55,080 ns/op
+# Warmup Iteration   2: 42,785 ns/op
+# Warmup Iteration   3: 43,896 ns/op
+# Warmup Iteration   4: 43,847 ns/op
+# Warmup Iteration   5: 44,909 ns/op
+Iteration   1: 46,982 ns/op
+Iteration   2: 45,242 ns/op
+Iteration   3: 45,996 ns/op
+Iteration   4: 45,657 ns/op
+Iteration   5: 45,677 ns/op
+Iteration   6: 48,795 ns/op
+Iteration   7: 45,525 ns/op
+Iteration   8: 53,154 ns/op
+Iteration   9: 46,129 ns/op
+Iteration  10: 44,734 ns/op
+
+
+Result "eu.javaspecialists.books.dynamicproxies.ch05.benchmarks.AdapterBenchmark.plainForEach":
+  49,307 ±(99.9%) 4,785 ns/op [Average]
+  (min, avg, max) = (41,343, 49,307, 60,138), stdev = 7,163
+  CI (99.9%): [44,521, 54,092] (assumes normal distribution)
+
+
+# Run complete. Total time: 00:02:17
+
+REMEMBER: The numbers below are just data. To gain reusable insights, you need to follow up on
+why the numbers are the way they are. Use profilers (see -prof, -lprof), design factorial
+experiments, perform baseline and negative tests that provide experimental control, make sure
+the benchmarking environment is safe on JVM/OS/HW level, ask for reviews from the domain experts.
+Do not assume the numbers tell you what you want them to tell.
+
+Benchmark                      Mode  Cnt   Score   Error  Units
+AdapterBenchmark.plainForEach  avgt   30  49,307 ± 4,785  ns/op
+
+Process finished with exit code 0
