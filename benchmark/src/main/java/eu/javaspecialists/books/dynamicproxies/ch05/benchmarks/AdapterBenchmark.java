@@ -117,7 +117,7 @@ public class AdapterBenchmark {
   public int plainForEach() {
     COUNTER.reset();
     Objects.requireNonNull(predicate, "predicate==null");
-    Objects.requireNonNull(COUNTER, "action==null");
+    Objects.requireNonNull(COUNTER, "COUNTER==null");
     for (String e : plain) {
       if (predicate.test(e)) COUNTER.accept(e);
     }
