@@ -1,8 +1,3 @@
-WARNING: An illegal reflective access operation has occurred
-WARNING: Illegal reflective access by org.openjdk.jmh.util.Utils (file:/home/kabutz/.m2/repository/org/openjdk/jmh/jmh-core/1.21/jmh-core-1.21.jar) to field java.io.PrintStream.charOut
-WARNING: Please consider reporting this to the maintainers of org.openjdk.jmh.util.Utils
-WARNING: Use --illegal-access=warn to enable warnings of further illegal reflective access operations
-WARNING: All illegal access operations will be denied in a future release
 # JMH version: 1.21
 # VM version: JDK 14, OpenJDK 64-Bit Server VM, 14+36-1461
 # VM invoker: /opt/jdk-14/bin/java

@@ -1,0 +1,2655 @@
+# JMH version: 1.21
+# VM version: JDK 14, OpenJDK 64-Bit Server VM, 14+36-1461
+# VM invoker: /Users/heinz/Dropbox (HIC Straws)/heinz/JavaVirtualMachines/openjdk-14.jdk/Contents/Home/bin/java
+# VM options: -XX:+DoEscapeAnalysis -XX:+UseParallelGC
+# Warmup: 3 iterations, 1 s each
+# Measurement: 3 iterations, 1 s each
+# Timeout: 10 min per iteration
+# Threads: 1 thread, will synchronize iterations
+# Benchmark mode: Average time, time/op
+# Benchmark: eu.javaspecialists.books.dynamicproxies.ch03.benchmarks.MethodCallBenchmark.directCallConsumeCPU
+
+# Run progress: 0,00% complete, ETA 00:00:48
+# Fork: 1 of 1
+# Warmup Iteration   1: 3,741 ns/op
+# Warmup Iteration   2: 3,430 ns/op
+# Warmup Iteration   3: 3,212 ns/op
+Iteration   1: 3,206 ns/op
+                 ·gc.alloc.rate:      ≈ 10⁻⁴ MB/sec
+                 ·gc.alloc.rate.norm: ≈ 10⁻⁶ B/op
+                 ·gc.count:           ≈ 0 counts
+
+Iteration   2: 3,260 ns/op
+                 ·gc.alloc.rate:      ≈ 10⁻⁴ MB/sec
+                 ·gc.alloc.rate.norm: ≈ 10⁻⁶ B/op
+                 ·gc.count:           ≈ 0 counts
+
+Iteration   3: 3,198 ns/op
+                 ·gc.alloc.rate:      ≈ 10⁻⁴ MB/sec
+                 ·gc.alloc.rate.norm: ≈ 10⁻⁶ B/op
+                 ·gc.count:           ≈ 0 counts
+
+
+
+Result "eu.javaspecialists.books.dynamicproxies.ch03.benchmarks.MethodCallBenchmark.directCallConsumeCPU":
+  3,221 ±(99.9%) 0,619 ns/op [Average]
+  (min, avg, max) = (3,198, 3,221, 3,260), stdev = 0,034
+  CI (99.9%): [2,602, 3,841] (assumes normal distribution)
+
+Secondary result "eu.javaspecialists.books.dynamicproxies.ch03.benchmarks.MethodCallBenchmark.directCallConsumeCPU:·gc.alloc.rate":
+  ≈ 10⁻⁴ MB/sec
+
+Secondary result "eu.javaspecialists.books.dynamicproxies.ch03.benchmarks.MethodCallBenchmark.directCallConsumeCPU:·gc.alloc.rate.norm":
+  ≈ 10⁻⁶ B/op
+
+Secondary result "eu.javaspecialists.books.dynamicproxies.ch03.benchmarks.MethodCallBenchmark.directCallConsumeCPU:·gc.count":
+  ≈ 0 counts
+
+
+# JMH version: 1.21
+# VM version: JDK 14, OpenJDK 64-Bit Server VM, 14+36-1461
+# VM invoker: /Users/heinz/Dropbox (HIC Straws)/heinz/JavaVirtualMachines/openjdk-14.jdk/Contents/Home/bin/java
+# VM options: -XX:+DoEscapeAnalysis -XX:+UseParallelGC
+# Warmup: 3 iterations, 1 s each
+# Measurement: 3 iterations, 1 s each
+# Timeout: 10 min per iteration
+# Threads: 1 thread, will synchronize iterations
+# Benchmark mode: Average time, time/op
+# Benchmark: eu.javaspecialists.books.dynamicproxies.ch03.benchmarks.MethodCallBenchmark.directCallIncrement
+
+# Run progress: 12,50% complete, ETA 00:01:05
+# Fork: 1 of 1
+# Warmup Iteration   1: 2,424 ns/op
+# Warmup Iteration   2: 2,422 ns/op
+# Warmup Iteration   3: 1,912 ns/op
+Iteration   1: 1,913 ns/op
+                 ·gc.alloc.rate:      ≈ 10⁻⁴ MB/sec
+                 ·gc.alloc.rate.norm: ≈ 10⁻⁶ B/op
+                 ·gc.count:           ≈ 0 counts
+
+Iteration   2: 1,914 ns/op
+                 ·gc.alloc.rate:      ≈ 10⁻⁴ MB/sec
+                 ·gc.alloc.rate.norm: ≈ 10⁻⁶ B/op
+                 ·gc.count:           ≈ 0 counts
+
+Iteration   3: 1,914 ns/op
+                 ·gc.alloc.rate:      ≈ 10⁻⁴ MB/sec
+                 ·gc.alloc.rate.norm: ≈ 10⁻⁶ B/op
+                 ·gc.count:           ≈ 0 counts
+
+
+
+Result "eu.javaspecialists.books.dynamicproxies.ch03.benchmarks.MethodCallBenchmark.directCallIncrement":
+  1,914 ±(99.9%) 0,007 ns/op [Average]
+  (min, avg, max) = (1,913, 1,914, 1,914), stdev = 0,001
+  CI (99.9%): [1,907, 1,921] (assumes normal distribution)
+
+Secondary result "eu.javaspecialists.books.dynamicproxies.ch03.benchmarks.MethodCallBenchmark.directCallIncrement:·gc.alloc.rate":
+  ≈ 10⁻⁴ MB/sec
+
+Secondary result "eu.javaspecialists.books.dynamicproxies.ch03.benchmarks.MethodCallBenchmark.directCallIncrement:·gc.alloc.rate.norm":
+  ≈ 10⁻⁶ B/op
+
+Secondary result "eu.javaspecialists.books.dynamicproxies.ch03.benchmarks.MethodCallBenchmark.directCallIncrement:·gc.count":
+  ≈ 0 counts
+
+
+# JMH version: 1.21
+# VM version: JDK 14, OpenJDK 64-Bit Server VM, 14+36-1461
+# VM invoker: /Users/heinz/Dropbox (HIC Straws)/heinz/JavaVirtualMachines/openjdk-14.jdk/Contents/Home/bin/java
+# VM options: -XX:+DoEscapeAnalysis -XX:+UseParallelGC
+# Warmup: 3 iterations, 1 s each
+# Measurement: 3 iterations, 1 s each
+# Timeout: 10 min per iteration
+# Threads: 1 thread, will synchronize iterations
+# Benchmark mode: Average time, time/op
+# Benchmark: eu.javaspecialists.books.dynamicproxies.ch03.benchmarks.MethodCallBenchmark.dynamicProxyDirectCallConsumeCPU
+
+# Run progress: 25,00% complete, ETA 00:00:56
+# Fork: 1 of 1
+# Warmup Iteration   1: 4,312 ns/op
+# Warmup Iteration   2: 5,736 ns/op
+# Warmup Iteration   3: 4,394 ns/op
+Iteration   1: 4,318 ns/op
+                 ·gc.alloc.rate:      ≈ 10⁻⁴ MB/sec
+                 ·gc.alloc.rate.norm: ≈ 10⁻⁶ B/op
+                 ·gc.count:           ≈ 0 counts
+
+Iteration   2: 4,365 ns/op
+                 ·gc.alloc.rate:      ≈ 10⁻⁴ MB/sec
+                 ·gc.alloc.rate.norm: ≈ 10⁻⁶ B/op
+                 ·gc.count:           ≈ 0 counts
+
+Iteration   3: 4,361 ns/op
+                 ·gc.alloc.rate:      ≈ 10⁻⁴ MB/sec
+                 ·gc.alloc.rate.norm: ≈ 10⁻⁶ B/op
+                 ·gc.count:           ≈ 0 counts
+
+
+
+Result "eu.javaspecialists.books.dynamicproxies.ch03.benchmarks.MethodCallBenchmark.dynamicProxyDirectCallConsumeCPU":
+  4,348 ±(99.9%) 0,481 ns/op [Average]
+  (min, avg, max) = (4,318, 4,348, 4,365), stdev = 0,026
+  CI (99.9%): [3,868, 4,829] (assumes normal distribution)
+
+Secondary result "eu.javaspecialists.books.dynamicproxies.ch03.benchmarks.MethodCallBenchmark.dynamicProxyDirectCallConsumeCPU:·gc.alloc.rate":
+  ≈ 10⁻⁴ MB/sec
+
+Secondary result "eu.javaspecialists.books.dynamicproxies.ch03.benchmarks.MethodCallBenchmark.dynamicProxyDirectCallConsumeCPU:·gc.alloc.rate.norm":
+  ≈ 10⁻⁶ B/op
+
+Secondary result "eu.javaspecialists.books.dynamicproxies.ch03.benchmarks.MethodCallBenchmark.dynamicProxyDirectCallConsumeCPU:·gc.count":
+  ≈ 0 counts
+
+
+# JMH version: 1.21
+# VM version: JDK 14, OpenJDK 64-Bit Server VM, 14+36-1461
+# VM invoker: /Users/heinz/Dropbox (HIC Straws)/heinz/JavaVirtualMachines/openjdk-14.jdk/Contents/Home/bin/java
+# VM options: -XX:+DoEscapeAnalysis -XX:+UseParallelGC
+# Warmup: 3 iterations, 1 s each
+# Measurement: 3 iterations, 1 s each
+# Timeout: 10 min per iteration
+# Threads: 1 thread, will synchronize iterations
+# Benchmark mode: Average time, time/op
+# Benchmark: eu.javaspecialists.books.dynamicproxies.ch03.benchmarks.MethodCallBenchmark.dynamicProxyDirectCallIncrement
+
+# Run progress: 37,50% complete, ETA 00:00:46
+# Fork: 1 of 1
+# Warmup Iteration   1: 3,974 ns/op
+# Warmup Iteration   2: 3,888 ns/op
+# Warmup Iteration   3: 3,683 ns/op
+Iteration   1: 3,707 ns/op
+                 ·gc.alloc.rate:      ≈ 10⁻⁴ MB/sec
+                 ·gc.alloc.rate.norm: ≈ 10⁻⁶ B/op
+                 ·gc.count:           ≈ 0 counts
+
+Iteration   2: 3,711 ns/op
+                 ·gc.alloc.rate:      ≈ 10⁻⁴ MB/sec
+                 ·gc.alloc.rate.norm: ≈ 10⁻⁶ B/op
+                 ·gc.count:           ≈ 0 counts
+
+Iteration   3: 3,707 ns/op
+                 ·gc.alloc.rate:      ≈ 10⁻⁴ MB/sec
+                 ·gc.alloc.rate.norm: ≈ 10⁻⁶ B/op
+                 ·gc.count:           ≈ 0 counts
+
+
+
+Result "eu.javaspecialists.books.dynamicproxies.ch03.benchmarks.MethodCallBenchmark.dynamicProxyDirectCallIncrement":
+  3,708 ±(99.9%) 0,040 ns/op [Average]
+  (min, avg, max) = (3,707, 3,708, 3,711), stdev = 0,002
+  CI (99.9%): [3,668, 3,748] (assumes normal distribution)
+
+Secondary result "eu.javaspecialists.books.dynamicproxies.ch03.benchmarks.MethodCallBenchmark.dynamicProxyDirectCallIncrement:·gc.alloc.rate":
+  ≈ 10⁻⁴ MB/sec
+
+Secondary result "eu.javaspecialists.books.dynamicproxies.ch03.benchmarks.MethodCallBenchmark.dynamicProxyDirectCallIncrement:·gc.alloc.rate.norm":
+  ≈ 10⁻⁶ B/op
+
+Secondary result "eu.javaspecialists.books.dynamicproxies.ch03.benchmarks.MethodCallBenchmark.dynamicProxyDirectCallIncrement:·gc.count":
+  ≈ 0 counts
+
+
+# JMH version: 1.21
+# VM version: JDK 14, OpenJDK 64-Bit Server VM, 14+36-1461
+# VM invoker: /Users/heinz/Dropbox (HIC Straws)/heinz/JavaVirtualMachines/openjdk-14.jdk/Contents/Home/bin/java
+# VM options: -XX:+DoEscapeAnalysis -XX:+UseParallelGC
+# Warmup: 3 iterations, 1 s each
+# Measurement: 3 iterations, 1 s each
+# Timeout: 10 min per iteration
+# Threads: 1 thread, will synchronize iterations
+# Benchmark mode: Average time, time/op
+# Benchmark: eu.javaspecialists.books.dynamicproxies.ch03.benchmarks.MethodCallBenchmark.dynamicProxyReflectiveCallConsumeCPU
+
+# Run progress: 50,00% complete, ETA 00:00:37
+# Fork: 1 of 1
+# Warmup Iteration   1: 5,037 ns/op
+# Warmup Iteration   2: 5,293 ns/op
+# Warmup Iteration   3: 5,046 ns/op
+Iteration   1: 5,095 ns/op
+                 ·gc.alloc.rate:      ≈ 10⁻⁴ MB/sec
+                 ·gc.alloc.rate.norm: ≈ 10⁻⁶ B/op
+                 ·gc.count:           ≈ 0 counts
+
+Iteration   2: 5,044 ns/op
+                 ·gc.alloc.rate:      ≈ 10⁻⁴ MB/sec
+                 ·gc.alloc.rate.norm: ≈ 10⁻⁶ B/op
+                 ·gc.count:           ≈ 0 counts
+
+Iteration   3: 5,050 ns/op
+                 ·gc.alloc.rate:      ≈ 10⁻⁴ MB/sec
+                 ·gc.alloc.rate.norm: ≈ 10⁻⁶ B/op
+                 ·gc.count:           ≈ 0 counts
+
+
+
+Result "eu.javaspecialists.books.dynamicproxies.ch03.benchmarks.MethodCallBenchmark.dynamicProxyReflectiveCallConsumeCPU":
+  5,063 ±(99.9%) 0,512 ns/op [Average]
+  (min, avg, max) = (5,044, 5,063, 5,095), stdev = 0,028
+  CI (99.9%): [4,551, 5,574] (assumes normal distribution)
+
+Secondary result "eu.javaspecialists.books.dynamicproxies.ch03.benchmarks.MethodCallBenchmark.dynamicProxyReflectiveCallConsumeCPU:·gc.alloc.rate":
+  ≈ 10⁻⁴ MB/sec
+
+Secondary result "eu.javaspecialists.books.dynamicproxies.ch03.benchmarks.MethodCallBenchmark.dynamicProxyReflectiveCallConsumeCPU:·gc.alloc.rate.norm":
+  ≈ 10⁻⁶ B/op
+
+Secondary result "eu.javaspecialists.books.dynamicproxies.ch03.benchmarks.MethodCallBenchmark.dynamicProxyReflectiveCallConsumeCPU:·gc.count":
+  ≈ 0 counts
+
+
+# JMH version: 1.21
+# VM version: JDK 14, OpenJDK 64-Bit Server VM, 14+36-1461
+# VM invoker: /Users/heinz/Dropbox (HIC Straws)/heinz/JavaVirtualMachines/openjdk-14.jdk/Contents/Home/bin/java
+# VM options: -XX:+DoEscapeAnalysis -XX:+UseParallelGC
+# Warmup: 3 iterations, 1 s each
+# Measurement: 3 iterations, 1 s each
+# Timeout: 10 min per iteration
+# Threads: 1 thread, will synchronize iterations
+# Benchmark mode: Average time, time/op
+# Benchmark: eu.javaspecialists.books.dynamicproxies.ch03.benchmarks.MethodCallBenchmark.dynamicProxyReflectiveCallIncrement
+
+# Run progress: 62,50% complete, ETA 00:00:27
+# Fork: 1 of 1
+# Warmup Iteration   1: 4,697 ns/op
+# Warmup Iteration   2: 8,873 ns/op
+# Warmup Iteration   3: 7,743 ns/op
+Iteration   1: 6,599 ns/op
+                 ·gc.alloc.rate:                   2307,354 MB/sec
+                 ·gc.alloc.rate.norm:              24,001 B/op
+                 ·gc.churn.PS_Eden_Space:          2227,540 MB/sec
+                 ·gc.churn.PS_Eden_Space.norm:     23,170 B/op
+                 ·gc.churn.PS_Survivor_Space:      0,186 MB/sec
+                 ·gc.churn.PS_Survivor_Space.norm: 0,002 B/op
+                 ·gc.count:                        4,000 counts
+                 ·gc.time:                         2,000 ms
+
+Iteration   2: 6,682 ns/op
+                 ·gc.alloc.rate:                   2279,581 MB/sec
+                 ·gc.alloc.rate.norm:              24,001 B/op
+                 ·gc.churn.PS_Eden_Space:          2694,786 MB/sec
+                 ·gc.churn.PS_Eden_Space.norm:     28,373 B/op
+                 ·gc.churn.PS_Survivor_Space:      0,207 MB/sec
+                 ·gc.churn.PS_Survivor_Space.norm: 0,002 B/op
+                 ·gc.count:                        6,000 counts
+                 ·gc.time:                         2,000 ms
+
+Iteration   3: 6,623 ns/op
+                 ·gc.alloc.rate:                   2302,210 MB/sec
+                 ·gc.alloc.rate.norm:              24,001 B/op
+                 ·gc.churn.PS_Eden_Space:          2098,655 MB/sec
+                 ·gc.churn.PS_Eden_Space.norm:     21,879 B/op
+                 ·gc.churn.PS_Survivor_Space:      0,186 MB/sec
+                 ·gc.churn.PS_Survivor_Space.norm: 0,002 B/op
+                 ·gc.count:                        6,000 counts
+                 ·gc.time:                         2,000 ms
+
+
+
+Result "eu.javaspecialists.books.dynamicproxies.ch03.benchmarks.MethodCallBenchmark.dynamicProxyReflectiveCallIncrement":
+  6,634 ±(99.9%) 0,775 ns/op [Average]
+  (min, avg, max) = (6,599, 6,634, 6,682), stdev = 0,043
+  CI (99.9%): [5,859, 7,410] (assumes normal distribution)
+
+Secondary result "eu.javaspecialists.books.dynamicproxies.ch03.benchmarks.MethodCallBenchmark.dynamicProxyReflectiveCallIncrement:·gc.alloc.rate":
+  2296,382 ±(99.9%) 269,554 MB/sec [Average]
+  (min, avg, max) = (2279,581, 2296,382, 2307,354), stdev = 14,775
+  CI (99.9%): [2026,828, 2565,935] (assumes normal distribution)
+
+Secondary result "eu.javaspecialists.books.dynamicproxies.ch03.benchmarks.MethodCallBenchmark.dynamicProxyReflectiveCallIncrement:·gc.alloc.rate.norm":
+  24,001 ±(99.9%) 0,005 B/op [Average]
+  (min, avg, max) = (24,001, 24,001, 24,001), stdev = 0,001
+  CI (99.9%): [23,996, 24,006] (assumes normal distribution)
+
+Secondary result "eu.javaspecialists.books.dynamicproxies.ch03.benchmarks.MethodCallBenchmark.dynamicProxyReflectiveCallIncrement:·gc.churn.PS_Eden_Space":
+  2340,327 ±(99.9%) 5722,352 MB/sec [Average]
+  (min, avg, max) = (2098,655, 2340,327, 2694,786), stdev = 313,661
+  CI (99.9%): [≈ 0, 8062,679] (assumes normal distribution)
+
+Secondary result "eu.javaspecialists.books.dynamicproxies.ch03.benchmarks.MethodCallBenchmark.dynamicProxyReflectiveCallIncrement:·gc.churn.PS_Eden_Space.norm":
+  24,474 ±(99.9%) 62,715 B/op [Average]
+  (min, avg, max) = (21,879, 24,474, 28,373), stdev = 3,438
+  CI (99.9%): [≈ 0, 87,190] (assumes normal distribution)
+
+Secondary result "eu.javaspecialists.books.dynamicproxies.ch03.benchmarks.MethodCallBenchmark.dynamicProxyReflectiveCallIncrement:·gc.churn.PS_Survivor_Space":
+  0,193 ±(99.9%) 0,218 MB/sec [Average]
+  (min, avg, max) = (0,186, 0,193, 0,207), stdev = 0,012
+  CI (99.9%): [≈ 0, 0,411] (assumes normal distribution)
+
+Secondary result "eu.javaspecialists.books.dynamicproxies.ch03.benchmarks.MethodCallBenchmark.dynamicProxyReflectiveCallIncrement:·gc.churn.PS_Survivor_Space.norm":
+  0,002 ±(99.9%) 0,003 B/op [Average]
+  (min, avg, max) = (0,002, 0,002, 0,002), stdev = 0,001
+  CI (99.9%): [≈ 0, 0,005] (assumes normal distribution)
+
+Secondary result "eu.javaspecialists.books.dynamicproxies.ch03.benchmarks.MethodCallBenchmark.dynamicProxyReflectiveCallIncrement:·gc.count":
+  16,000 ±(99.9%) 0,001 counts [Sum]
+  (min, avg, max) = (4,000, 5,333, 6,000), stdev = 1,155
+  CI (99.9%): [16,000, 16,000] (assumes normal distribution)
+
+Secondary result "eu.javaspecialists.books.dynamicproxies.ch03.benchmarks.MethodCallBenchmark.dynamicProxyReflectiveCallIncrement:·gc.time":
+  6,000 ±(99.9%) 0,001 ms [Sum]
+  (min, avg, max) = (2,000, 2,000, 2,000), stdev = 0,001
+  CI (99.9%): [6,000, 6,000] (assumes normal distribution)
+
+
+# JMH version: 1.21
+# VM version: JDK 14, OpenJDK 64-Bit Server VM, 14+36-1461
+# VM invoker: /Users/heinz/Dropbox (HIC Straws)/heinz/JavaVirtualMachines/openjdk-14.jdk/Contents/Home/bin/java
+# VM options: -XX:+DoEscapeAnalysis -XX:+UseParallelGC
+# Warmup: 3 iterations, 1 s each
+# Measurement: 3 iterations, 1 s each
+# Timeout: 10 min per iteration
+# Threads: 1 thread, will synchronize iterations
+# Benchmark mode: Average time, time/op
+# Benchmark: eu.javaspecialists.books.dynamicproxies.ch03.benchmarks.MethodCallBenchmark.staticProxyConsumeCPU
+
+# Run progress: 75,00% complete, ETA 00:00:18
+# Fork: 1 of 1
+# Warmup Iteration   1: 4,150 ns/op
+# Warmup Iteration   2: 3,966 ns/op
+# Warmup Iteration   3: 3,694 ns/op
+Iteration   1: 3,684 ns/op
+                 ·gc.alloc.rate:      ≈ 10⁻⁴ MB/sec
+                 ·gc.alloc.rate.norm: ≈ 10⁻⁶ B/op
+                 ·gc.count:           ≈ 0 counts
+
+Iteration   2: 3,697 ns/op
+                 ·gc.alloc.rate:      ≈ 10⁻⁴ MB/sec
+                 ·gc.alloc.rate.norm: ≈ 10⁻⁶ B/op
+                 ·gc.count:           ≈ 0 counts
+
+Iteration   3: 3,697 ns/op
+                 ·gc.alloc.rate:      ≈ 10⁻⁴ MB/sec
+                 ·gc.alloc.rate.norm: ≈ 10⁻⁶ B/op
+                 ·gc.count:           ≈ 0 counts
+
+
+
+Result "eu.javaspecialists.books.dynamicproxies.ch03.benchmarks.MethodCallBenchmark.staticProxyConsumeCPU":
+  3,693 ±(99.9%) 0,140 ns/op [Average]
+  (min, avg, max) = (3,684, 3,693, 3,697), stdev = 0,008
+  CI (99.9%): [3,553, 3,833] (assumes normal distribution)
+
+Secondary result "eu.javaspecialists.books.dynamicproxies.ch03.benchmarks.MethodCallBenchmark.staticProxyConsumeCPU:·gc.alloc.rate":
+  ≈ 10⁻⁴ MB/sec
+
+Secondary result "eu.javaspecialists.books.dynamicproxies.ch03.benchmarks.MethodCallBenchmark.staticProxyConsumeCPU:·gc.alloc.rate.norm":
+  ≈ 10⁻⁶ B/op
+
+Secondary result "eu.javaspecialists.books.dynamicproxies.ch03.benchmarks.MethodCallBenchmark.staticProxyConsumeCPU:·gc.count":
+  ≈ 0 counts
+
+
+# JMH version: 1.21
+# VM version: JDK 14, OpenJDK 64-Bit Server VM, 14+36-1461
+# VM invoker: /Users/heinz/Dropbox (HIC Straws)/heinz/JavaVirtualMachines/openjdk-14.jdk/Contents/Home/bin/java
+# VM options: -XX:+DoEscapeAnalysis -XX:+UseParallelGC
+# Warmup: 3 iterations, 1 s each
+# Measurement: 3 iterations, 1 s each
+# Timeout: 10 min per iteration
+# Threads: 1 thread, will synchronize iterations
+# Benchmark mode: Average time, time/op
+# Benchmark: eu.javaspecialists.books.dynamicproxies.ch03.benchmarks.MethodCallBenchmark.staticProxyIncrement
+
+# Run progress: 87,50% complete, ETA 00:00:09
+# Fork: 1 of 1
+# Warmup Iteration   1: 2,600 ns/op
+# Warmup Iteration   2: 2,615 ns/op
+# Warmup Iteration   3: 2,298 ns/op
+Iteration   1: 2,325 ns/op
+                 ·gc.alloc.rate:      ≈ 10⁻⁴ MB/sec
+                 ·gc.alloc.rate.norm: ≈ 10⁻⁶ B/op
+                 ·gc.count:           ≈ 0 counts
+
+Iteration   2: 2,304 ns/op
+                 ·gc.alloc.rate:      ≈ 10⁻⁴ MB/sec
+                 ·gc.alloc.rate.norm: ≈ 10⁻⁶ B/op
+                 ·gc.count:           ≈ 0 counts
+
+Iteration   3: 2,301 ns/op
+                 ·gc.alloc.rate:      ≈ 10⁻⁴ MB/sec
+                 ·gc.alloc.rate.norm: ≈ 10⁻⁶ B/op
+                 ·gc.count:           ≈ 0 counts
+
+
+
+Result "eu.javaspecialists.books.dynamicproxies.ch03.benchmarks.MethodCallBenchmark.staticProxyIncrement":
+  2,310 ±(99.9%) 0,233 ns/op [Average]
+  (min, avg, max) = (2,301, 2,310, 2,325), stdev = 0,013
+  CI (99.9%): [2,077, 2,543] (assumes normal distribution)
+
+Secondary result "eu.javaspecialists.books.dynamicproxies.ch03.benchmarks.MethodCallBenchmark.staticProxyIncrement:·gc.alloc.rate":
+  ≈ 10⁻⁴ MB/sec
+
+Secondary result "eu.javaspecialists.books.dynamicproxies.ch03.benchmarks.MethodCallBenchmark.staticProxyIncrement:·gc.alloc.rate.norm":
+  ≈ 10⁻⁶ B/op
+
+Secondary result "eu.javaspecialists.books.dynamicproxies.ch03.benchmarks.MethodCallBenchmark.staticProxyIncrement:·gc.count":
+  ≈ 0 counts
+
+
+# Run complete. Total time: 00:01:14
+
+REMEMBER: The numbers below are just data. To gain reusable insights, you need to follow up on
+why the numbers are the way they are. Use profilers (see -prof, -lprof), design factorial
+experiments, perform baseline and negative tests that provide experimental control, make sure
+the benchmarking environment is safe on JVM/OS/HW level, ask for reviews from the domain experts.
+Do not assume the numbers tell you what you want them to tell.
+
+Benchmark                                                                                 Mode  Cnt     Score      Error   Units
+MethodCallBenchmark.directCallConsumeCPU:·gc.alloc.rate                                   avgt    3    ≈ 10⁻⁴             MB/sec
+MethodCallBenchmark.directCallConsumeCPU:·gc.alloc.rate.norm                              avgt    3    ≈ 10⁻⁶               B/op
+MethodCallBenchmark.directCallIncrement:·gc.alloc.rate                                    avgt    3    ≈ 10⁻⁴             MB/sec
+MethodCallBenchmark.directCallIncrement:·gc.alloc.rate.norm                               avgt    3    ≈ 10⁻⁶               B/op
+MethodCallBenchmark.dynamicProxyDirectCallConsumeCPU:·gc.alloc.rate                       avgt    3    ≈ 10⁻⁴             MB/sec
+MethodCallBenchmark.dynamicProxyDirectCallConsumeCPU:·gc.alloc.rate.norm                  avgt    3    ≈ 10⁻⁶               B/op
+MethodCallBenchmark.dynamicProxyDirectCallIncrement:·gc.alloc.rate                        avgt    3    ≈ 10⁻⁴             MB/sec
+MethodCallBenchmark.dynamicProxyDirectCallIncrement:·gc.alloc.rate.norm                   avgt    3    ≈ 10⁻⁶               B/op
+MethodCallBenchmark.dynamicProxyReflectiveCallConsumeCPU:·gc.alloc.rate                   avgt    3    ≈ 10⁻⁴             MB/sec
+MethodCallBenchmark.dynamicProxyReflectiveCallConsumeCPU:·gc.alloc.rate.norm              avgt    3    ≈ 10⁻⁶               B/op
+MethodCallBenchmark.dynamicProxyReflectiveCallIncrement:·gc.alloc.rate                    avgt    3  2296,382 ±  269,554  MB/sec
+MethodCallBenchmark.dynamicProxyReflectiveCallIncrement:·gc.alloc.rate.norm               avgt    3    24,001 ±    0,005    B/op
+MethodCallBenchmark.staticProxyConsumeCPU:·gc.alloc.rate                                  avgt    3    ≈ 10⁻⁴             MB/sec
+MethodCallBenchmark.staticProxyConsumeCPU:·gc.alloc.rate.norm                             avgt    3    ≈ 10⁻⁶               B/op
+MethodCallBenchmark.staticProxyIncrement:·gc.alloc.rate                                   avgt    3    ≈ 10⁻⁴             MB/sec
+MethodCallBenchmark.staticProxyIncrement:·gc.alloc.rate.norm                              avgt    3    ≈ 10⁻⁶               B/op
+
+
+
+# JMH version: 1.21
+# VM version: JDK 14, OpenJDK 64-Bit Server VM, 14+36-1461
+# VM invoker: /Users/heinz/Dropbox (HIC Straws)/heinz/JavaVirtualMachines/openjdk-14.jdk/Contents/Home/bin/java
+# VM options: -XX:-DoEscapeAnalysis -XX:+UseParallelGC
+# Warmup: 3 iterations, 1 s each
+# Measurement: 3 iterations, 1 s each
+# Timeout: 10 min per iteration
+# Threads: 1 thread, will synchronize iterations
+# Benchmark mode: Average time, time/op
+# Benchmark: eu.javaspecialists.books.dynamicproxies.ch03.benchmarks.MethodCallBenchmark.directCallConsumeCPU
+
+# Run progress: 0,00% complete, ETA 00:00:48
+# Fork: 1 of 1
+# Warmup Iteration   1: 3,766 ns/op
+# Warmup Iteration   2: 3,460 ns/op
+# Warmup Iteration   3: 3,214 ns/op
+Iteration   1: 3,210 ns/op
+                 ·gc.alloc.rate:      ≈ 10⁻⁴ MB/sec
+                 ·gc.alloc.rate.norm: ≈ 10⁻⁶ B/op
+                 ·gc.count:           ≈ 0 counts
+
+Iteration   2: 3,228 ns/op
+                 ·gc.alloc.rate:      ≈ 10⁻⁴ MB/sec
+                 ·gc.alloc.rate.norm: ≈ 10⁻⁶ B/op
+                 ·gc.count:           ≈ 0 counts
+
+Iteration   3: 3,287 ns/op
+                 ·gc.alloc.rate:      ≈ 10⁻⁴ MB/sec
+                 ·gc.alloc.rate.norm: ≈ 10⁻⁶ B/op
+                 ·gc.count:           ≈ 0 counts
+
+
+
+Result "eu.javaspecialists.books.dynamicproxies.ch03.benchmarks.MethodCallBenchmark.directCallConsumeCPU":
+  3,241 ±(99.9%) 0,735 ns/op [Average]
+  (min, avg, max) = (3,210, 3,241, 3,287), stdev = 0,040
+  CI (99.9%): [2,506, 3,977] (assumes normal distribution)
+
+Secondary result "eu.javaspecialists.books.dynamicproxies.ch03.benchmarks.MethodCallBenchmark.directCallConsumeCPU:·gc.alloc.rate":
+  ≈ 10⁻⁴ MB/sec
+
+Secondary result "eu.javaspecialists.books.dynamicproxies.ch03.benchmarks.MethodCallBenchmark.directCallConsumeCPU:·gc.alloc.rate.norm":
+  ≈ 10⁻⁶ B/op
+
+Secondary result "eu.javaspecialists.books.dynamicproxies.ch03.benchmarks.MethodCallBenchmark.directCallConsumeCPU:·gc.count":
+  ≈ 0 counts
+
+
+# JMH version: 1.21
+# VM version: JDK 14, OpenJDK 64-Bit Server VM, 14+36-1461
+# VM invoker: /Users/heinz/Dropbox (HIC Straws)/heinz/JavaVirtualMachines/openjdk-14.jdk/Contents/Home/bin/java
+# VM options: -XX:-DoEscapeAnalysis -XX:+UseParallelGC
+# Warmup: 3 iterations, 1 s each
+# Measurement: 3 iterations, 1 s each
+# Timeout: 10 min per iteration
+# Threads: 1 thread, will synchronize iterations
+# Benchmark mode: Average time, time/op
+# Benchmark: eu.javaspecialists.books.dynamicproxies.ch03.benchmarks.MethodCallBenchmark.directCallIncrement
+
+# Run progress: 12,50% complete, ETA 00:01:04
+# Fork: 1 of 1
+# Warmup Iteration   1: 2,398 ns/op
+# Warmup Iteration   2: 2,436 ns/op
+# Warmup Iteration   3: 1,914 ns/op
+Iteration   1: 1,914 ns/op
+                 ·gc.alloc.rate:      ≈ 10⁻⁴ MB/sec
+                 ·gc.alloc.rate.norm: ≈ 10⁻⁶ B/op
+                 ·gc.count:           ≈ 0 counts
+
+Iteration   2: 1,911 ns/op
+                 ·gc.alloc.rate:      ≈ 10⁻⁴ MB/sec
+                 ·gc.alloc.rate.norm: ≈ 10⁻⁶ B/op
+                 ·gc.count:           ≈ 0 counts
+
+Iteration   3: 1,913 ns/op
+                 ·gc.alloc.rate:      ≈ 10⁻⁴ MB/sec
+                 ·gc.alloc.rate.norm: ≈ 10⁻⁶ B/op
+                 ·gc.count:           ≈ 0 counts
+
+
+
+Result "eu.javaspecialists.books.dynamicproxies.ch03.benchmarks.MethodCallBenchmark.directCallIncrement":
+  1,913 ±(99.9%) 0,024 ns/op [Average]
+  (min, avg, max) = (1,911, 1,913, 1,914), stdev = 0,001
+  CI (99.9%): [1,889, 1,936] (assumes normal distribution)
+
+Secondary result "eu.javaspecialists.books.dynamicproxies.ch03.benchmarks.MethodCallBenchmark.directCallIncrement:·gc.alloc.rate":
+  ≈ 10⁻⁴ MB/sec
+
+Secondary result "eu.javaspecialists.books.dynamicproxies.ch03.benchmarks.MethodCallBenchmark.directCallIncrement:·gc.alloc.rate.norm":
+  ≈ 10⁻⁶ B/op
+
+Secondary result "eu.javaspecialists.books.dynamicproxies.ch03.benchmarks.MethodCallBenchmark.directCallIncrement:·gc.count":
+  ≈ 0 counts
+
+
+# JMH version: 1.21
+# VM version: JDK 14, OpenJDK 64-Bit Server VM, 14+36-1461
+# VM invoker: /Users/heinz/Dropbox (HIC Straws)/heinz/JavaVirtualMachines/openjdk-14.jdk/Contents/Home/bin/java
+# VM options: -XX:-DoEscapeAnalysis -XX:+UseParallelGC
+# Warmup: 3 iterations, 1 s each
+# Measurement: 3 iterations, 1 s each
+# Timeout: 10 min per iteration
+# Threads: 1 thread, will synchronize iterations
+# Benchmark mode: Average time, time/op
+# Benchmark: eu.javaspecialists.books.dynamicproxies.ch03.benchmarks.MethodCallBenchmark.dynamicProxyDirectCallConsumeCPU
+
+# Run progress: 25,00% complete, ETA 00:00:55
+# Fork: 1 of 1
+# Warmup Iteration   1: 4,343 ns/op
+# Warmup Iteration   2: 5,706 ns/op
+# Warmup Iteration   3: 4,454 ns/op
+Iteration   1: 4,381 ns/op
+                 ·gc.alloc.rate:      ≈ 10⁻⁴ MB/sec
+                 ·gc.alloc.rate.norm: ≈ 10⁻⁶ B/op
+                 ·gc.count:           ≈ 0 counts
+
+Iteration   2: 4,341 ns/op
+                 ·gc.alloc.rate:      ≈ 10⁻⁴ MB/sec
+                 ·gc.alloc.rate.norm: ≈ 10⁻⁶ B/op
+                 ·gc.count:           ≈ 0 counts
+
+Iteration   3: 4,366 ns/op
+                 ·gc.alloc.rate:      ≈ 10⁻⁴ MB/sec
+                 ·gc.alloc.rate.norm: ≈ 10⁻⁶ B/op
+                 ·gc.count:           ≈ 0 counts
+
+
+
+Result "eu.javaspecialists.books.dynamicproxies.ch03.benchmarks.MethodCallBenchmark.dynamicProxyDirectCallConsumeCPU":
+  4,363 ±(99.9%) 0,367 ns/op [Average]
+  (min, avg, max) = (4,341, 4,363, 4,381), stdev = 0,020
+  CI (99.9%): [3,996, 4,730] (assumes normal distribution)
+
+Secondary result "eu.javaspecialists.books.dynamicproxies.ch03.benchmarks.MethodCallBenchmark.dynamicProxyDirectCallConsumeCPU:·gc.alloc.rate":
+  ≈ 10⁻⁴ MB/sec
+
+Secondary result "eu.javaspecialists.books.dynamicproxies.ch03.benchmarks.MethodCallBenchmark.dynamicProxyDirectCallConsumeCPU:·gc.alloc.rate.norm":
+  ≈ 10⁻⁶ B/op
+
+Secondary result "eu.javaspecialists.books.dynamicproxies.ch03.benchmarks.MethodCallBenchmark.dynamicProxyDirectCallConsumeCPU:·gc.count":
+  ≈ 0 counts
+
+
+# JMH version: 1.21
+# VM version: JDK 14, OpenJDK 64-Bit Server VM, 14+36-1461
+# VM invoker: /Users/heinz/Dropbox (HIC Straws)/heinz/JavaVirtualMachines/openjdk-14.jdk/Contents/Home/bin/java
+# VM options: -XX:-DoEscapeAnalysis -XX:+UseParallelGC
+# Warmup: 3 iterations, 1 s each
+# Measurement: 3 iterations, 1 s each
+# Timeout: 10 min per iteration
+# Threads: 1 thread, will synchronize iterations
+# Benchmark mode: Average time, time/op
+# Benchmark: eu.javaspecialists.books.dynamicproxies.ch03.benchmarks.MethodCallBenchmark.dynamicProxyDirectCallIncrement
+
+# Run progress: 37,50% complete, ETA 00:00:46
+# Fork: 1 of 1
+# Warmup Iteration   1: 7,783 ns/op
+# Warmup Iteration   2: 6,469 ns/op
+# Warmup Iteration   3: 5,305 ns/op
+Iteration   1: 5,292 ns/op
+                 ·gc.alloc.rate:                   2879,233 MB/sec
+                 ·gc.alloc.rate.norm:              24,001 B/op
+                 ·gc.churn.PS_Eden_Space:          3310,318 MB/sec
+                 ·gc.churn.PS_Eden_Space.norm:     27,595 B/op
+                 ·gc.churn.PS_Survivor_Space:      0,228 MB/sec
+                 ·gc.churn.PS_Survivor_Space.norm: 0,002 B/op
+                 ·gc.count:                        8,000 counts
+                 ·gc.time:                         2,000 ms
+
+Iteration   2: 5,296 ns/op
+                 ·gc.alloc.rate:                   2879,243 MB/sec
+                 ·gc.alloc.rate.norm:              24,001 B/op
+                 ·gc.churn.PS_Eden_Space:          2893,413 MB/sec
+                 ·gc.churn.PS_Eden_Space.norm:     24,120 B/op
+                 ·gc.churn.PS_Survivor_Space:      0,312 MB/sec
+                 ·gc.churn.PS_Survivor_Space.norm: 0,003 B/op
+                 ·gc.count:                        10,000 counts
+                 ·gc.time:                         3,000 ms
+
+Iteration   3: 5,320 ns/op
+                 ·gc.alloc.rate:                   2859,843 MB/sec
+                 ·gc.alloc.rate.norm:              24,002 B/op
+                 ·gc.churn.PS_Eden_Space:          2762,571 MB/sec
+                 ·gc.churn.PS_Eden_Space.norm:     23,186 B/op
+                 ·gc.churn.PS_Survivor_Space:      0,373 MB/sec
+                 ·gc.churn.PS_Survivor_Space.norm: 0,003 B/op
+                 ·gc.count:                        15,000 counts
+                 ·gc.time:                         4,000 ms
+
+
+
+Result "eu.javaspecialists.books.dynamicproxies.ch03.benchmarks.MethodCallBenchmark.dynamicProxyDirectCallIncrement":
+  5,303 ±(99.9%) 0,276 ns/op [Average]
+  (min, avg, max) = (5,292, 5,303, 5,320), stdev = 0,015
+  CI (99.9%): [5,027, 5,579] (assumes normal distribution)
+
+Secondary result "eu.javaspecialists.books.dynamicproxies.ch03.benchmarks.MethodCallBenchmark.dynamicProxyDirectCallIncrement:·gc.alloc.rate":
+  2872,773 ±(99.9%) 204,289 MB/sec [Average]
+  (min, avg, max) = (2859,843, 2872,773, 2879,243), stdev = 11,198
+  CI (99.9%): [2668,484, 3077,062] (assumes normal distribution)
+
+Secondary result "eu.javaspecialists.books.dynamicproxies.ch03.benchmarks.MethodCallBenchmark.dynamicProxyDirectCallIncrement:·gc.alloc.rate.norm":
+  24,002 ±(99.9%) 0,009 B/op [Average]
+  (min, avg, max) = (24,001, 24,002, 24,002), stdev = 0,001
+  CI (99.9%): [23,992, 24,011] (assumes normal distribution)
+
+Secondary result "eu.javaspecialists.books.dynamicproxies.ch03.benchmarks.MethodCallBenchmark.dynamicProxyDirectCallIncrement:·gc.churn.PS_Eden_Space":
+  2988,767 ±(99.9%) 5218,668 MB/sec [Average]
+  (min, avg, max) = (2762,571, 2988,767, 3310,318), stdev = 286,053
+  CI (99.9%): [≈ 0, 8207,435] (assumes normal distribution)
+
+Secondary result "eu.javaspecialists.books.dynamicproxies.ch03.benchmarks.MethodCallBenchmark.dynamicProxyDirectCallIncrement:·gc.churn.PS_Eden_Space.norm":
+  24,967 ±(99.9%) 42,386 B/op [Average]
+  (min, avg, max) = (23,186, 24,967, 27,595), stdev = 2,323
+  CI (99.9%): [≈ 0, 67,352] (assumes normal distribution)
+
+Secondary result "eu.javaspecialists.books.dynamicproxies.ch03.benchmarks.MethodCallBenchmark.dynamicProxyDirectCallIncrement:·gc.churn.PS_Survivor_Space":
+  0,304 ±(99.9%) 1,333 MB/sec [Average]
+  (min, avg, max) = (0,228, 0,304, 0,373), stdev = 0,073
+  CI (99.9%): [≈ 0, 1,637] (assumes normal distribution)
+
+Secondary result "eu.javaspecialists.books.dynamicproxies.ch03.benchmarks.MethodCallBenchmark.dynamicProxyDirectCallIncrement:·gc.churn.PS_Survivor_Space.norm":
+  0,003 ±(99.9%) 0,011 B/op [Average]
+  (min, avg, max) = (0,002, 0,003, 0,003), stdev = 0,001
+  CI (99.9%): [≈ 0, 0,014] (assumes normal distribution)
+
+Secondary result "eu.javaspecialists.books.dynamicproxies.ch03.benchmarks.MethodCallBenchmark.dynamicProxyDirectCallIncrement:·gc.count":
+  33,000 ±(99.9%) 0,001 counts [Sum]
+  (min, avg, max) = (8,000, 11,000, 15,000), stdev = 3,606
+  CI (99.9%): [33,000, 33,000] (assumes normal distribution)
+
+Secondary result "eu.javaspecialists.books.dynamicproxies.ch03.benchmarks.MethodCallBenchmark.dynamicProxyDirectCallIncrement:·gc.time":
+  9,000 ±(99.9%) 0,001 ms [Sum]
+  (min, avg, max) = (2,000, 3,000, 4,000), stdev = 1,000
+  CI (99.9%): [9,000, 9,000] (assumes normal distribution)
+
+
+# JMH version: 1.21
+# VM version: JDK 14, OpenJDK 64-Bit Server VM, 14+36-1461
+# VM invoker: /Users/heinz/Dropbox (HIC Straws)/heinz/JavaVirtualMachines/openjdk-14.jdk/Contents/Home/bin/java
+# VM options: -XX:-DoEscapeAnalysis -XX:+UseParallelGC
+# Warmup: 3 iterations, 1 s each
+# Measurement: 3 iterations, 1 s each
+# Timeout: 10 min per iteration
+# Threads: 1 thread, will synchronize iterations
+# Benchmark mode: Average time, time/op
+# Benchmark: eu.javaspecialists.books.dynamicproxies.ch03.benchmarks.MethodCallBenchmark.dynamicProxyReflectiveCallConsumeCPU
+
+# Run progress: 50,00% complete, ETA 00:00:37
+# Fork: 1 of 1
+# Warmup Iteration   1: 5,041 ns/op
+# Warmup Iteration   2: 5,293 ns/op
+# Warmup Iteration   3: 5,052 ns/op
+Iteration   1: 5,068 ns/op
+                 ·gc.alloc.rate:      ≈ 10⁻⁴ MB/sec
+                 ·gc.alloc.rate.norm: ≈ 10⁻⁶ B/op
+                 ·gc.count:           ≈ 0 counts
+
+Iteration   2: 5,120 ns/op
+                 ·gc.alloc.rate:      ≈ 10⁻⁴ MB/sec
+                 ·gc.alloc.rate.norm: ≈ 10⁻⁶ B/op
+                 ·gc.count:           ≈ 0 counts
+
+Iteration   3: 5,067 ns/op
+                 ·gc.alloc.rate:      ≈ 10⁻⁴ MB/sec
+                 ·gc.alloc.rate.norm: ≈ 10⁻⁶ B/op
+                 ·gc.count:           ≈ 0 counts
+
+
+
+Result "eu.javaspecialists.books.dynamicproxies.ch03.benchmarks.MethodCallBenchmark.dynamicProxyReflectiveCallConsumeCPU":
+  5,085 ±(99.9%) 0,557 ns/op [Average]
+  (min, avg, max) = (5,067, 5,085, 5,120), stdev = 0,031
+  CI (99.9%): [4,528, 5,642] (assumes normal distribution)
+
+Secondary result "eu.javaspecialists.books.dynamicproxies.ch03.benchmarks.MethodCallBenchmark.dynamicProxyReflectiveCallConsumeCPU:·gc.alloc.rate":
+  ≈ 10⁻⁴ MB/sec
+
+Secondary result "eu.javaspecialists.books.dynamicproxies.ch03.benchmarks.MethodCallBenchmark.dynamicProxyReflectiveCallConsumeCPU:·gc.alloc.rate.norm":
+  ≈ 10⁻⁶ B/op
+
+Secondary result "eu.javaspecialists.books.dynamicproxies.ch03.benchmarks.MethodCallBenchmark.dynamicProxyReflectiveCallConsumeCPU:·gc.count":
+  ≈ 0 counts
+
+
+# JMH version: 1.21
+# VM version: JDK 14, OpenJDK 64-Bit Server VM, 14+36-1461
+# VM invoker: /Users/heinz/Dropbox (HIC Straws)/heinz/JavaVirtualMachines/openjdk-14.jdk/Contents/Home/bin/java
+# VM options: -XX:-DoEscapeAnalysis -XX:+UseParallelGC
+# Warmup: 3 iterations, 1 s each
+# Measurement: 3 iterations, 1 s each
+# Timeout: 10 min per iteration
+# Threads: 1 thread, will synchronize iterations
+# Benchmark mode: Average time, time/op
+# Benchmark: eu.javaspecialists.books.dynamicproxies.ch03.benchmarks.MethodCallBenchmark.dynamicProxyReflectiveCallIncrement
+
+# Run progress: 62,50% complete, ETA 00:00:27
+# Fork: 1 of 1
+# Warmup Iteration   1: 8,411 ns/op
+# Warmup Iteration   2: 8,022 ns/op
+# Warmup Iteration   3: 6,606 ns/op
+Iteration   1: 6,608 ns/op
+                 ·gc.alloc.rate:                   2307,823 MB/sec
+                 ·gc.alloc.rate.norm:              24,001 B/op
+                 ·gc.churn.PS_Eden_Space:          2202,850 MB/sec
+                 ·gc.churn.PS_Eden_Space.norm:     22,909 B/op
+                 ·gc.churn.PS_Survivor_Space:      0,145 MB/sec
+                 ·gc.churn.PS_Survivor_Space.norm: 0,002 B/op
+                 ·gc.count:                        5,000 counts
+                 ·gc.time:                         2,000 ms
+
+Iteration   2: 6,608 ns/op
+                 ·gc.alloc.rate:                   2305,345 MB/sec
+                 ·gc.alloc.rate.norm:              24,001 B/op
+                 ·gc.churn.PS_Eden_Space:          2404,384 MB/sec
+                 ·gc.churn.PS_Eden_Space.norm:     25,032 B/op
+                 ·gc.churn.PS_Survivor_Space:      0,228 MB/sec
+                 ·gc.churn.PS_Survivor_Space.norm: 0,002 B/op
+                 ·gc.count:                        7,000 counts
+                 ·gc.time:                         2,000 ms
+
+Iteration   3: 6,679 ns/op
+                 ·gc.alloc.rate:                   2285,184 MB/sec
+                 ·gc.alloc.rate.norm:              24,002 B/op
+                 ·gc.churn.PS_Eden_Space:          2270,317 MB/sec
+                 ·gc.churn.PS_Eden_Space.norm:     23,845 B/op
+                 ·gc.churn.PS_Survivor_Space:      0,228 MB/sec
+                 ·gc.churn.PS_Survivor_Space.norm: 0,002 B/op
+                 ·gc.count:                        9,000 counts
+                 ·gc.time:                         3,000 ms
+
+
+
+Result "eu.javaspecialists.books.dynamicproxies.ch03.benchmarks.MethodCallBenchmark.dynamicProxyReflectiveCallIncrement":
+  6,632 ±(99.9%) 0,753 ns/op [Average]
+  (min, avg, max) = (6,608, 6,632, 6,679), stdev = 0,041
+  CI (99.9%): [5,879, 7,384] (assumes normal distribution)
+
+Secondary result "eu.javaspecialists.books.dynamicproxies.ch03.benchmarks.MethodCallBenchmark.dynamicProxyReflectiveCallIncrement:·gc.alloc.rate":
+  2299,450 ±(99.9%) 226,535 MB/sec [Average]
+  (min, avg, max) = (2285,184, 2299,450, 2307,823), stdev = 12,417
+  CI (99.9%): [2072,915, 2525,985] (assumes normal distribution)
+
+Secondary result "eu.javaspecialists.books.dynamicproxies.ch03.benchmarks.MethodCallBenchmark.dynamicProxyReflectiveCallIncrement:·gc.alloc.rate.norm":
+  24,001 ±(99.9%) 0,005 B/op [Average]
+  (min, avg, max) = (24,001, 24,001, 24,002), stdev = 0,001
+  CI (99.9%): [23,997, 24,006] (assumes normal distribution)
+
+Secondary result "eu.javaspecialists.books.dynamicproxies.ch03.benchmarks.MethodCallBenchmark.dynamicProxyReflectiveCallIncrement:·gc.churn.PS_Eden_Space":
+  2292,517 ±(99.9%) 1871,529 MB/sec [Average]
+  (min, avg, max) = (2202,850, 2292,517, 2404,384), stdev = 102,585
+  CI (99.9%): [420,988, 4164,047] (assumes normal distribution)
+
+Secondary result "eu.javaspecialists.books.dynamicproxies.ch03.benchmarks.MethodCallBenchmark.dynamicProxyReflectiveCallIncrement:·gc.churn.PS_Eden_Space.norm":
+  23,929 ±(99.9%) 19,410 B/op [Average]
+  (min, avg, max) = (22,909, 23,929, 25,032), stdev = 1,064
+  CI (99.9%): [4,519, 43,339] (assumes normal distribution)
+
+Secondary result "eu.javaspecialists.books.dynamicproxies.ch03.benchmarks.MethodCallBenchmark.dynamicProxyReflectiveCallIncrement:·gc.churn.PS_Survivor_Space":
+  0,201 ±(99.9%) 0,873 MB/sec [Average]
+  (min, avg, max) = (0,145, 0,201, 0,228), stdev = 0,048
+  CI (99.9%): [≈ 0, 1,074] (assumes normal distribution)
+
+Secondary result "eu.javaspecialists.books.dynamicproxies.ch03.benchmarks.MethodCallBenchmark.dynamicProxyReflectiveCallIncrement:·gc.churn.PS_Survivor_Space.norm":
+  0,002 ±(99.9%) 0,009 B/op [Average]
+  (min, avg, max) = (0,002, 0,002, 0,002), stdev = 0,001
+  CI (99.9%): [≈ 0, 0,011] (assumes normal distribution)
+
+Secondary result "eu.javaspecialists.books.dynamicproxies.ch03.benchmarks.MethodCallBenchmark.dynamicProxyReflectiveCallIncrement:·gc.count":
+  21,000 ±(99.9%) 0,001 counts [Sum]
+  (min, avg, max) = (5,000, 7,000, 9,000), stdev = 2,000
+  CI (99.9%): [21,000, 21,000] (assumes normal distribution)
+
+Secondary result "eu.javaspecialists.books.dynamicproxies.ch03.benchmarks.MethodCallBenchmark.dynamicProxyReflectiveCallIncrement:·gc.time":
+  7,000 ±(99.9%) 0,001 ms [Sum]
+  (min, avg, max) = (2,000, 2,333, 3,000), stdev = 0,577
+  CI (99.9%): [7,000, 7,000] (assumes normal distribution)
+
+
+# JMH version: 1.21
+# VM version: JDK 14, OpenJDK 64-Bit Server VM, 14+36-1461
+# VM invoker: /Users/heinz/Dropbox (HIC Straws)/heinz/JavaVirtualMachines/openjdk-14.jdk/Contents/Home/bin/java
+# VM options: -XX:-DoEscapeAnalysis -XX:+UseParallelGC
+# Warmup: 3 iterations, 1 s each
+# Measurement: 3 iterations, 1 s each
+# Timeout: 10 min per iteration
+# Threads: 1 thread, will synchronize iterations
+# Benchmark mode: Average time, time/op
+# Benchmark: eu.javaspecialists.books.dynamicproxies.ch03.benchmarks.MethodCallBenchmark.staticProxyConsumeCPU
+
+# Run progress: 75,00% complete, ETA 00:00:18
+# Fork: 1 of 1
+# Warmup Iteration   1: 4,066 ns/op
+# Warmup Iteration   2: 3,921 ns/op
+# Warmup Iteration   3: 3,698 ns/op
+Iteration   1: 3,695 ns/op
+                 ·gc.alloc.rate:      ≈ 10⁻⁴ MB/sec
+                 ·gc.alloc.rate.norm: ≈ 10⁻⁶ B/op
+                 ·gc.count:           ≈ 0 counts
+
+Iteration   2: 3,690 ns/op
+                 ·gc.alloc.rate:      ≈ 10⁻⁴ MB/sec
+                 ·gc.alloc.rate.norm: ≈ 10⁻⁶ B/op
+                 ·gc.count:           ≈ 0 counts
+
+Iteration   3: 3,687 ns/op
+                 ·gc.alloc.rate:      ≈ 10⁻⁴ MB/sec
+                 ·gc.alloc.rate.norm: ≈ 10⁻⁶ B/op
+                 ·gc.count:           ≈ 0 counts
+
+
+
+Result "eu.javaspecialists.books.dynamicproxies.ch03.benchmarks.MethodCallBenchmark.staticProxyConsumeCPU":
+  3,691 ±(99.9%) 0,077 ns/op [Average]
+  (min, avg, max) = (3,687, 3,691, 3,695), stdev = 0,004
+  CI (99.9%): [3,614, 3,768] (assumes normal distribution)
+
+Secondary result "eu.javaspecialists.books.dynamicproxies.ch03.benchmarks.MethodCallBenchmark.staticProxyConsumeCPU:·gc.alloc.rate":
+  ≈ 10⁻⁴ MB/sec
+
+Secondary result "eu.javaspecialists.books.dynamicproxies.ch03.benchmarks.MethodCallBenchmark.staticProxyConsumeCPU:·gc.alloc.rate.norm":
+  ≈ 10⁻⁶ B/op
+
+Secondary result "eu.javaspecialists.books.dynamicproxies.ch03.benchmarks.MethodCallBenchmark.staticProxyConsumeCPU:·gc.count":
+  ≈ 0 counts
+
+
+# JMH version: 1.21
+# VM version: JDK 14, OpenJDK 64-Bit Server VM, 14+36-1461
+# VM invoker: /Users/heinz/Dropbox (HIC Straws)/heinz/JavaVirtualMachines/openjdk-14.jdk/Contents/Home/bin/java
+# VM options: -XX:-DoEscapeAnalysis -XX:+UseParallelGC
+# Warmup: 3 iterations, 1 s each
+# Measurement: 3 iterations, 1 s each
+# Timeout: 10 min per iteration
+# Threads: 1 thread, will synchronize iterations
+# Benchmark mode: Average time, time/op
+# Benchmark: eu.javaspecialists.books.dynamicproxies.ch03.benchmarks.MethodCallBenchmark.staticProxyIncrement
+
+# Run progress: 87,50% complete, ETA 00:00:09
+# Fork: 1 of 1
+# Warmup Iteration   1: 2,598 ns/op
+# Warmup Iteration   2: 2,622 ns/op
+# Warmup Iteration   3: 2,305 ns/op
+Iteration   1: 2,342 ns/op
+                 ·gc.alloc.rate:      ≈ 10⁻⁴ MB/sec
+                 ·gc.alloc.rate.norm: ≈ 10⁻⁶ B/op
+                 ·gc.count:           ≈ 0 counts
+
+Iteration   2: 2,305 ns/op
+                 ·gc.alloc.rate:      ≈ 10⁻⁴ MB/sec
+                 ·gc.alloc.rate.norm: ≈ 10⁻⁶ B/op
+                 ·gc.count:           ≈ 0 counts
+
+Iteration   3: 2,310 ns/op
+                 ·gc.alloc.rate:      ≈ 10⁻⁴ MB/sec
+                 ·gc.alloc.rate.norm: ≈ 10⁻⁶ B/op
+                 ·gc.count:           ≈ 0 counts
+
+
+
+Result "eu.javaspecialists.books.dynamicproxies.ch03.benchmarks.MethodCallBenchmark.staticProxyIncrement":
+  2,319 ±(99.9%) 0,360 ns/op [Average]
+  (min, avg, max) = (2,305, 2,319, 2,342), stdev = 0,020
+  CI (99.9%): [1,959, 2,679] (assumes normal distribution)
+
+Secondary result "eu.javaspecialists.books.dynamicproxies.ch03.benchmarks.MethodCallBenchmark.staticProxyIncrement:·gc.alloc.rate":
+  ≈ 10⁻⁴ MB/sec
+
+Secondary result "eu.javaspecialists.books.dynamicproxies.ch03.benchmarks.MethodCallBenchmark.staticProxyIncrement:·gc.alloc.rate.norm":
+  ≈ 10⁻⁶ B/op
+
+Secondary result "eu.javaspecialists.books.dynamicproxies.ch03.benchmarks.MethodCallBenchmark.staticProxyIncrement:·gc.count":
+  ≈ 0 counts
+
+
+# Run complete. Total time: 00:01:14
+
+REMEMBER: The numbers below are just data. To gain reusable insights, you need to follow up on
+why the numbers are the way they are. Use profilers (see -prof, -lprof), design factorial
+experiments, perform baseline and negative tests that provide experimental control, make sure
+the benchmarking environment is safe on JVM/OS/HW level, ask for reviews from the domain experts.
+Do not assume the numbers tell you what you want them to tell.
+
+Benchmark                                                                                 Mode  Cnt     Score      Error   Units
+MethodCallBenchmark.directCallConsumeCPU:·gc.alloc.rate                                   avgt    3    ≈ 10⁻⁴             MB/sec
+MethodCallBenchmark.directCallConsumeCPU:·gc.alloc.rate.norm                              avgt    3    ≈ 10⁻⁶               B/op
+MethodCallBenchmark.directCallIncrement:·gc.alloc.rate                                    avgt    3    ≈ 10⁻⁴             MB/sec
+MethodCallBenchmark.directCallIncrement:·gc.alloc.rate.norm                               avgt    3    ≈ 10⁻⁶               B/op
+MethodCallBenchmark.dynamicProxyDirectCallConsumeCPU:·gc.alloc.rate                       avgt    3    ≈ 10⁻⁴             MB/sec
+MethodCallBenchmark.dynamicProxyDirectCallConsumeCPU:·gc.alloc.rate.norm                  avgt    3    ≈ 10⁻⁶               B/op
+MethodCallBenchmark.dynamicProxyDirectCallIncrement:·gc.alloc.rate                        avgt    3  2872,773 ±  204,289  MB/sec
+MethodCallBenchmark.dynamicProxyDirectCallIncrement:·gc.alloc.rate.norm                   avgt    3    24,002 ±    0,009    B/op
+MethodCallBenchmark.dynamicProxyReflectiveCallConsumeCPU:·gc.alloc.rate                   avgt    3    ≈ 10⁻⁴             MB/sec
+MethodCallBenchmark.dynamicProxyReflectiveCallConsumeCPU:·gc.alloc.rate.norm              avgt    3    ≈ 10⁻⁶               B/op
+MethodCallBenchmark.dynamicProxyReflectiveCallIncrement:·gc.alloc.rate                    avgt    3  2299,450 ±  226,535  MB/sec
+MethodCallBenchmark.dynamicProxyReflectiveCallIncrement:·gc.alloc.rate.norm               avgt    3    24,001 ±    0,005    B/op
+MethodCallBenchmark.staticProxyConsumeCPU:·gc.alloc.rate                                  avgt    3    ≈ 10⁻⁴             MB/sec
+MethodCallBenchmark.staticProxyConsumeCPU:·gc.alloc.rate.norm                             avgt    3    ≈ 10⁻⁶               B/op
+MethodCallBenchmark.staticProxyIncrement:·gc.alloc.rate                                   avgt    3    ≈ 10⁻⁴             MB/sec
+MethodCallBenchmark.staticProxyIncrement:·gc.alloc.rate.norm                              avgt    3    ≈ 10⁻⁶               B/op
+
+
+
+# JMH version: 1.21
+# VM version: JDK 14, OpenJDK 64-Bit Server VM, 14+36-1461
+# VM invoker: /Users/heinz/Dropbox (HIC Straws)/heinz/JavaVirtualMachines/openjdk-14.jdk/Contents/Home/bin/java
+# VM options: -XX:-DoEscapeAnalysis -XX:+UseParallelGC -Deu.javaspecialists.books.dynamicproxies.util.MethodTurboBooster.disabled=true
+# Warmup: 3 iterations, 1 s each
+# Measurement: 3 iterations, 1 s each
+# Timeout: 10 min per iteration
+# Threads: 1 thread, will synchronize iterations
+# Benchmark mode: Average time, time/op
+# Benchmark: eu.javaspecialists.books.dynamicproxies.ch03.benchmarks.MethodCallBenchmark.directCallConsumeCPU
+
+# Run progress: 0,00% complete, ETA 00:00:48
+# Fork: 1 of 1
+# Warmup Iteration   1: 3,753 ns/op
+# Warmup Iteration   2: 3,455 ns/op
+# Warmup Iteration   3: 3,231 ns/op
+Iteration   1: 3,245 ns/op
+                 ·gc.alloc.rate:      ≈ 10⁻⁴ MB/sec
+                 ·gc.alloc.rate.norm: ≈ 10⁻⁶ B/op
+                 ·gc.count:           ≈ 0 counts
+
+Iteration   2: 3,224 ns/op
+                 ·gc.alloc.rate:      ≈ 10⁻⁴ MB/sec
+                 ·gc.alloc.rate.norm: ≈ 10⁻⁶ B/op
+                 ·gc.count:           ≈ 0 counts
+
+Iteration   3: 3,273 ns/op
+                 ·gc.alloc.rate:      ≈ 10⁻⁴ MB/sec
+                 ·gc.alloc.rate.norm: ≈ 10⁻⁶ B/op
+                 ·gc.count:           ≈ 0 counts
+
+
+
+Result "eu.javaspecialists.books.dynamicproxies.ch03.benchmarks.MethodCallBenchmark.directCallConsumeCPU":
+  3,247 ±(99.9%) 0,450 ns/op [Average]
+  (min, avg, max) = (3,224, 3,247, 3,273), stdev = 0,025
+  CI (99.9%): [2,797, 3,697] (assumes normal distribution)
+
+Secondary result "eu.javaspecialists.books.dynamicproxies.ch03.benchmarks.MethodCallBenchmark.directCallConsumeCPU:·gc.alloc.rate":
+  ≈ 10⁻⁴ MB/sec
+
+Secondary result "eu.javaspecialists.books.dynamicproxies.ch03.benchmarks.MethodCallBenchmark.directCallConsumeCPU:·gc.alloc.rate.norm":
+  ≈ 10⁻⁶ B/op
+
+Secondary result "eu.javaspecialists.books.dynamicproxies.ch03.benchmarks.MethodCallBenchmark.directCallConsumeCPU:·gc.count":
+  ≈ 0 counts
+
+
+# JMH version: 1.21
+# VM version: JDK 14, OpenJDK 64-Bit Server VM, 14+36-1461
+# VM invoker: /Users/heinz/Dropbox (HIC Straws)/heinz/JavaVirtualMachines/openjdk-14.jdk/Contents/Home/bin/java
+# VM options: -XX:-DoEscapeAnalysis -XX:+UseParallelGC -Deu.javaspecialists.books.dynamicproxies.util.MethodTurboBooster.disabled=true
+# Warmup: 3 iterations, 1 s each
+# Measurement: 3 iterations, 1 s each
+# Timeout: 10 min per iteration
+# Threads: 1 thread, will synchronize iterations
+# Benchmark mode: Average time, time/op
+# Benchmark: eu.javaspecialists.books.dynamicproxies.ch03.benchmarks.MethodCallBenchmark.directCallIncrement
+
+# Run progress: 12,50% complete, ETA 00:01:04
+# Fork: 1 of 1
+# Warmup Iteration   1: 2,405 ns/op
+# Warmup Iteration   2: 2,439 ns/op
+# Warmup Iteration   3: 1,942 ns/op
+Iteration   1: 1,916 ns/op
+                 ·gc.alloc.rate:      ≈ 10⁻⁴ MB/sec
+                 ·gc.alloc.rate.norm: ≈ 10⁻⁶ B/op
+                 ·gc.count:           ≈ 0 counts
+
+Iteration   2: 1,922 ns/op
+                 ·gc.alloc.rate:      ≈ 10⁻⁴ MB/sec
+                 ·gc.alloc.rate.norm: ≈ 10⁻⁶ B/op
+                 ·gc.count:           ≈ 0 counts
+
+Iteration   3: 1,937 ns/op
+                 ·gc.alloc.rate:      ≈ 10⁻⁴ MB/sec
+                 ·gc.alloc.rate.norm: ≈ 10⁻⁶ B/op
+                 ·gc.count:           ≈ 0 counts
+
+
+
+Result "eu.javaspecialists.books.dynamicproxies.ch03.benchmarks.MethodCallBenchmark.directCallIncrement":
+  1,925 ±(99.9%) 0,198 ns/op [Average]
+  (min, avg, max) = (1,916, 1,925, 1,937), stdev = 0,011
+  CI (99.9%): [1,727, 2,123] (assumes normal distribution)
+
+Secondary result "eu.javaspecialists.books.dynamicproxies.ch03.benchmarks.MethodCallBenchmark.directCallIncrement:·gc.alloc.rate":
+  ≈ 10⁻⁴ MB/sec
+
+Secondary result "eu.javaspecialists.books.dynamicproxies.ch03.benchmarks.MethodCallBenchmark.directCallIncrement:·gc.alloc.rate.norm":
+  ≈ 10⁻⁶ B/op
+
+Secondary result "eu.javaspecialists.books.dynamicproxies.ch03.benchmarks.MethodCallBenchmark.directCallIncrement:·gc.count":
+  ≈ 0 counts
+
+
+# JMH version: 1.21
+# VM version: JDK 14, OpenJDK 64-Bit Server VM, 14+36-1461
+# VM invoker: /Users/heinz/Dropbox (HIC Straws)/heinz/JavaVirtualMachines/openjdk-14.jdk/Contents/Home/bin/java
+# VM options: -XX:-DoEscapeAnalysis -XX:+UseParallelGC -Deu.javaspecialists.books.dynamicproxies.util.MethodTurboBooster.disabled=true
+# Warmup: 3 iterations, 1 s each
+# Measurement: 3 iterations, 1 s each
+# Timeout: 10 min per iteration
+# Threads: 1 thread, will synchronize iterations
+# Benchmark mode: Average time, time/op
+# Benchmark: eu.javaspecialists.books.dynamicproxies.ch03.benchmarks.MethodCallBenchmark.dynamicProxyDirectCallConsumeCPU
+
+# Run progress: 25,00% complete, ETA 00:00:55
+# Fork: 1 of 1
+# Warmup Iteration   1: 4,302 ns/op
+# Warmup Iteration   2: 5,749 ns/op
+# Warmup Iteration   3: 4,378 ns/op
+Iteration   1: 4,367 ns/op
+                 ·gc.alloc.rate:      ≈ 10⁻⁴ MB/sec
+                 ·gc.alloc.rate.norm: ≈ 10⁻⁶ B/op
+                 ·gc.count:           ≈ 0 counts
+
+Iteration   2: 4,375 ns/op
+                 ·gc.alloc.rate:      ≈ 10⁻⁴ MB/sec
+                 ·gc.alloc.rate.norm: ≈ 10⁻⁶ B/op
+                 ·gc.count:           ≈ 0 counts
+
+Iteration   3: 4,371 ns/op
+                 ·gc.alloc.rate:      ≈ 10⁻⁴ MB/sec
+                 ·gc.alloc.rate.norm: ≈ 10⁻⁶ B/op
+                 ·gc.count:           ≈ 0 counts
+
+
+
+Result "eu.javaspecialists.books.dynamicproxies.ch03.benchmarks.MethodCallBenchmark.dynamicProxyDirectCallConsumeCPU":
+  4,371 ±(99.9%) 0,076 ns/op [Average]
+  (min, avg, max) = (4,367, 4,371, 4,375), stdev = 0,004
+  CI (99.9%): [4,295, 4,447] (assumes normal distribution)
+
+Secondary result "eu.javaspecialists.books.dynamicproxies.ch03.benchmarks.MethodCallBenchmark.dynamicProxyDirectCallConsumeCPU:·gc.alloc.rate":
+  ≈ 10⁻⁴ MB/sec
+
+Secondary result "eu.javaspecialists.books.dynamicproxies.ch03.benchmarks.MethodCallBenchmark.dynamicProxyDirectCallConsumeCPU:·gc.alloc.rate.norm":
+  ≈ 10⁻⁶ B/op
+
+Secondary result "eu.javaspecialists.books.dynamicproxies.ch03.benchmarks.MethodCallBenchmark.dynamicProxyDirectCallConsumeCPU:·gc.count":
+  ≈ 0 counts
+
+
+# JMH version: 1.21
+# VM version: JDK 14, OpenJDK 64-Bit Server VM, 14+36-1461
+# VM invoker: /Users/heinz/Dropbox (HIC Straws)/heinz/JavaVirtualMachines/openjdk-14.jdk/Contents/Home/bin/java
+# VM options: -XX:-DoEscapeAnalysis -XX:+UseParallelGC -Deu.javaspecialists.books.dynamicproxies.util.MethodTurboBooster.disabled=true
+# Warmup: 3 iterations, 1 s each
+# Measurement: 3 iterations, 1 s each
+# Timeout: 10 min per iteration
+# Threads: 1 thread, will synchronize iterations
+# Benchmark mode: Average time, time/op
+# Benchmark: eu.javaspecialists.books.dynamicproxies.ch03.benchmarks.MethodCallBenchmark.dynamicProxyDirectCallIncrement
+
+# Run progress: 37,50% complete, ETA 00:00:46
+# Fork: 1 of 1
+# Warmup Iteration   1: 7,782 ns/op
+# Warmup Iteration   2: 6,234 ns/op
+# Warmup Iteration   3: 5,252 ns/op
+Iteration   1: 5,311 ns/op
+                 ·gc.alloc.rate:                   2867,276 MB/sec
+                 ·gc.alloc.rate.norm:              24,001 B/op
+                 ·gc.churn.PS_Eden_Space:          3043,062 MB/sec
+                 ·gc.churn.PS_Eden_Space.norm:     25,473 B/op
+                 ·gc.churn.PS_Survivor_Space:      0,207 MB/sec
+                 ·gc.churn.PS_Survivor_Space.norm: 0,002 B/op
+                 ·gc.count:                        8,000 counts
+                 ·gc.time:                         2,000 ms
+
+Iteration   2: 5,323 ns/op
+                 ·gc.alloc.rate:                   2864,667 MB/sec
+                 ·gc.alloc.rate.norm:              24,002 B/op
+                 ·gc.churn.PS_Eden_Space:          2896,598 MB/sec
+                 ·gc.churn.PS_Eden_Space.norm:     24,269 B/op
+                 ·gc.churn.PS_Survivor_Space:      0,374 MB/sec
+                 ·gc.churn.PS_Survivor_Space.norm: 0,003 B/op
+                 ·gc.count:                        11,000 counts
+                 ·gc.time:                         4,000 ms
+
+Iteration   3: 5,371 ns/op
+                 ·gc.alloc.rate:                   2838,715 MB/sec
+                 ·gc.alloc.rate.norm:              24,003 B/op
+                 ·gc.churn.PS_Eden_Space:          2879,351 MB/sec
+                 ·gc.churn.PS_Eden_Space.norm:     24,346 B/op
+                 ·gc.churn.PS_Survivor_Space:      0,249 MB/sec
+                 ·gc.churn.PS_Survivor_Space.norm: 0,002 B/op
+                 ·gc.count:                        18,000 counts
+                 ·gc.time:                         5,000 ms
+
+
+
+Result "eu.javaspecialists.books.dynamicproxies.ch03.benchmarks.MethodCallBenchmark.dynamicProxyDirectCallIncrement":
+  5,335 ±(99.9%) 0,577 ns/op [Average]
+  (min, avg, max) = (5,311, 5,335, 5,371), stdev = 0,032
+  CI (99.9%): [4,757, 5,912] (assumes normal distribution)
+
+Secondary result "eu.javaspecialists.books.dynamicproxies.ch03.benchmarks.MethodCallBenchmark.dynamicProxyDirectCallIncrement:·gc.alloc.rate":
+  2856,886 ±(99.9%) 288,084 MB/sec [Average]
+  (min, avg, max) = (2838,715, 2856,886, 2867,276), stdev = 15,791
+  CI (99.9%): [2568,802, 3144,969] (assumes normal distribution)
+
+Secondary result "eu.javaspecialists.books.dynamicproxies.ch03.benchmarks.MethodCallBenchmark.dynamicProxyDirectCallIncrement:·gc.alloc.rate.norm":
+  24,002 ±(99.9%) 0,013 B/op [Average]
+  (min, avg, max) = (24,001, 24,002, 24,003), stdev = 0,001
+  CI (99.9%): [23,988, 24,015] (assumes normal distribution)
+
+Secondary result "eu.javaspecialists.books.dynamicproxies.ch03.benchmarks.MethodCallBenchmark.dynamicProxyDirectCallIncrement:·gc.churn.PS_Eden_Space":
+  2939,670 ±(99.9%) 1641,095 MB/sec [Average]
+  (min, avg, max) = (2879,351, 2939,670, 3043,062), stdev = 89,954
+  CI (99.9%): [1298,576, 4580,765] (assumes normal distribution)
+
+Secondary result "eu.javaspecialists.books.dynamicproxies.ch03.benchmarks.MethodCallBenchmark.dynamicProxyDirectCallIncrement:·gc.churn.PS_Eden_Space.norm":
+  24,696 ±(99.9%) 12,291 B/op [Average]
+  (min, avg, max) = (24,269, 24,696, 25,473), stdev = 0,674
+  CI (99.9%): [12,405, 36,986] (assumes normal distribution)
+
+Secondary result "eu.javaspecialists.books.dynamicproxies.ch03.benchmarks.MethodCallBenchmark.dynamicProxyDirectCallIncrement:·gc.churn.PS_Survivor_Space":
+  0,277 ±(99.9%) 1,589 MB/sec [Average]
+  (min, avg, max) = (0,207, 0,277, 0,374), stdev = 0,087
+  CI (99.9%): [≈ 0, 1,866] (assumes normal distribution)
+
+Secondary result "eu.javaspecialists.books.dynamicproxies.ch03.benchmarks.MethodCallBenchmark.dynamicProxyDirectCallIncrement:·gc.churn.PS_Survivor_Space.norm":
+  0,002 ±(99.9%) 0,013 B/op [Average]
+  (min, avg, max) = (0,002, 0,002, 0,003), stdev = 0,001
+  CI (99.9%): [≈ 0, 0,016] (assumes normal distribution)
+
+Secondary result "eu.javaspecialists.books.dynamicproxies.ch03.benchmarks.MethodCallBenchmark.dynamicProxyDirectCallIncrement:·gc.count":
+  37,000 ±(99.9%) 0,001 counts [Sum]
+  (min, avg, max) = (8,000, 12,333, 18,000), stdev = 5,132
+  CI (99.9%): [37,000, 37,000] (assumes normal distribution)
+
+Secondary result "eu.javaspecialists.books.dynamicproxies.ch03.benchmarks.MethodCallBenchmark.dynamicProxyDirectCallIncrement:·gc.time":
+  11,000 ±(99.9%) 0,001 ms [Sum]
+  (min, avg, max) = (2,000, 3,667, 5,000), stdev = 1,528
+  CI (99.9%): [11,000, 11,000] (assumes normal distribution)
+
+
+# JMH version: 1.21
+# VM version: JDK 14, OpenJDK 64-Bit Server VM, 14+36-1461
+# VM invoker: /Users/heinz/Dropbox (HIC Straws)/heinz/JavaVirtualMachines/openjdk-14.jdk/Contents/Home/bin/java
+# VM options: -XX:-DoEscapeAnalysis -XX:+UseParallelGC -Deu.javaspecialists.books.dynamicproxies.util.MethodTurboBooster.disabled=true
+# Warmup: 3 iterations, 1 s each
+# Measurement: 3 iterations, 1 s each
+# Timeout: 10 min per iteration
+# Threads: 1 thread, will synchronize iterations
+# Benchmark mode: Average time, time/op
+# Benchmark: eu.javaspecialists.books.dynamicproxies.ch03.benchmarks.MethodCallBenchmark.dynamicProxyReflectiveCallConsumeCPU
+
+# Run progress: 50,00% complete, ETA 00:00:37
+# Fork: 1 of 1
+# Warmup Iteration   1: 7,225 ns/op
+# Warmup Iteration   2: 8,231 ns/op
+# Warmup Iteration   3: 7,440 ns/op
+Iteration   1: 7,377 ns/op
+                 ·gc.alloc.rate:      ≈ 10⁻⁴ MB/sec
+                 ·gc.alloc.rate.norm: ≈ 10⁻⁵ B/op
+                 ·gc.count:           ≈ 0 counts
+
+Iteration   2: 7,327 ns/op
+                 ·gc.alloc.rate:      ≈ 10⁻⁴ MB/sec
+                 ·gc.alloc.rate.norm: ≈ 10⁻⁵ B/op
+                 ·gc.count:           ≈ 0 counts
+
+Iteration   3: 7,386 ns/op
+                 ·gc.alloc.rate:      ≈ 10⁻⁴ MB/sec
+                 ·gc.alloc.rate.norm: ≈ 10⁻⁵ B/op
+                 ·gc.count:           ≈ 0 counts
+
+
+
+Result "eu.javaspecialists.books.dynamicproxies.ch03.benchmarks.MethodCallBenchmark.dynamicProxyReflectiveCallConsumeCPU":
+  7,363 ±(99.9%) 0,579 ns/op [Average]
+  (min, avg, max) = (7,327, 7,363, 7,386), stdev = 0,032
+  CI (99.9%): [6,785, 7,942] (assumes normal distribution)
+
+Secondary result "eu.javaspecialists.books.dynamicproxies.ch03.benchmarks.MethodCallBenchmark.dynamicProxyReflectiveCallConsumeCPU:·gc.alloc.rate":
+  ≈ 10⁻⁴ MB/sec
+
+Secondary result "eu.javaspecialists.books.dynamicproxies.ch03.benchmarks.MethodCallBenchmark.dynamicProxyReflectiveCallConsumeCPU:·gc.alloc.rate.norm":
+  ≈ 10⁻⁵ B/op
+
+Secondary result "eu.javaspecialists.books.dynamicproxies.ch03.benchmarks.MethodCallBenchmark.dynamicProxyReflectiveCallConsumeCPU:·gc.count":
+  ≈ 0 counts
+
+
+# JMH version: 1.21
+# VM version: JDK 14, OpenJDK 64-Bit Server VM, 14+36-1461
+# VM invoker: /Users/heinz/Dropbox (HIC Straws)/heinz/JavaVirtualMachines/openjdk-14.jdk/Contents/Home/bin/java
+# VM options: -XX:-DoEscapeAnalysis -XX:+UseParallelGC -Deu.javaspecialists.books.dynamicproxies.util.MethodTurboBooster.disabled=true
+# Warmup: 3 iterations, 1 s each
+# Measurement: 3 iterations, 1 s each
+# Timeout: 10 min per iteration
+# Threads: 1 thread, will synchronize iterations
+# Benchmark mode: Average time, time/op
+# Benchmark: eu.javaspecialists.books.dynamicproxies.ch03.benchmarks.MethodCallBenchmark.dynamicProxyReflectiveCallIncrement
+
+# Run progress: 62,50% complete, ETA 00:00:27
+# Fork: 1 of 1
+# Warmup Iteration   1: 8,920 ns/op
+# Warmup Iteration   2: 9,926 ns/op
+# Warmup Iteration   3: 9,060 ns/op
+Iteration   1: 9,118 ns/op
+                 ·gc.alloc.rate:                   1667,532 MB/sec
+                 ·gc.alloc.rate.norm:              24,001 B/op
+                 ·gc.churn.PS_Eden_Space:          2047,500 MB/sec
+                 ·gc.churn.PS_Eden_Space.norm:     29,470 B/op
+                 ·gc.churn.PS_Survivor_Space:      0,187 MB/sec
+                 ·gc.churn.PS_Survivor_Space.norm: 0,003 B/op
+                 ·gc.count:                        4,000 counts
+                 ·gc.time:                         2,000 ms
+
+Iteration   2: 9,173 ns/op
+                 ·gc.alloc.rate:                   1663,076 MB/sec
+                 ·gc.alloc.rate.norm:              24,001 B/op
+                 ·gc.churn.PS_Eden_Space:          1729,036 MB/sec
+                 ·gc.churn.PS_Eden_Space.norm:     24,953 B/op
+                 ·gc.churn.PS_Survivor_Space:      0,187 MB/sec
+                 ·gc.churn.PS_Survivor_Space.norm: 0,003 B/op
+                 ·gc.count:                        4,000 counts
+                 ·gc.time:                         1,000 ms
+
+Iteration   3: 9,068 ns/op
+                 ·gc.alloc.rate:                   1682,234 MB/sec
+                 ·gc.alloc.rate.norm:              24,001 B/op
+                 ·gc.churn.PS_Eden_Space:          1457,203 MB/sec
+                 ·gc.churn.PS_Eden_Space.norm:     20,790 B/op
+                 ·gc.churn.PS_Survivor_Space:      0,187 MB/sec
+                 ·gc.churn.PS_Survivor_Space.norm: 0,003 B/op
+                 ·gc.count:                        4,000 counts
+                 ·gc.time:                         2,000 ms
+
+
+
+Result "eu.javaspecialists.books.dynamicproxies.ch03.benchmarks.MethodCallBenchmark.dynamicProxyReflectiveCallIncrement":
+  9,120 ±(99.9%) 0,953 ns/op [Average]
+  (min, avg, max) = (9,068, 9,120, 9,173), stdev = 0,052
+  CI (99.9%): [8,167, 10,073] (assumes normal distribution)
+
+Secondary result "eu.javaspecialists.books.dynamicproxies.ch03.benchmarks.MethodCallBenchmark.dynamicProxyReflectiveCallIncrement:·gc.alloc.rate":
+  1670,947 ±(99.9%) 182,900 MB/sec [Average]
+  (min, avg, max) = (1663,076, 1670,947, 1682,234), stdev = 10,025
+  CI (99.9%): [1488,047, 1853,848] (assumes normal distribution)
+
+Secondary result "eu.javaspecialists.books.dynamicproxies.ch03.benchmarks.MethodCallBenchmark.dynamicProxyReflectiveCallIncrement:·gc.alloc.rate.norm":
+  24,001 ±(99.9%) 0,003 B/op [Average]
+  (min, avg, max) = (24,001, 24,001, 24,001), stdev = 0,001
+  CI (99.9%): [23,998, 24,004] (assumes normal distribution)
+
+Secondary result "eu.javaspecialists.books.dynamicproxies.ch03.benchmarks.MethodCallBenchmark.dynamicProxyReflectiveCallIncrement:·gc.churn.PS_Eden_Space":
+  1744,580 ±(99.9%) 5390,211 MB/sec [Average]
+  (min, avg, max) = (1457,203, 1744,580, 2047,500), stdev = 295,456
+  CI (99.9%): [≈ 0, 7134,790] (assumes normal distribution)
+
+Secondary result "eu.javaspecialists.books.dynamicproxies.ch03.benchmarks.MethodCallBenchmark.dynamicProxyReflectiveCallIncrement:·gc.churn.PS_Eden_Space.norm":
+  25,071 ±(99.9%) 79,199 B/op [Average]
+  (min, avg, max) = (20,790, 25,071, 29,470), stdev = 4,341
+  CI (99.9%): [≈ 0, 104,270] (assumes normal distribution)
+
+Secondary result "eu.javaspecialists.books.dynamicproxies.ch03.benchmarks.MethodCallBenchmark.dynamicProxyReflectiveCallIncrement:·gc.churn.PS_Survivor_Space":
+  0,187 ±(99.9%) 0,008 MB/sec [Average]
+  (min, avg, max) = (0,187, 0,187, 0,187), stdev = 0,001
+  CI (99.9%): [0,179, 0,194] (assumes normal distribution)
+
+Secondary result "eu.javaspecialists.books.dynamicproxies.ch03.benchmarks.MethodCallBenchmark.dynamicProxyReflectiveCallIncrement:·gc.churn.PS_Survivor_Space.norm":
+  0,003 ±(99.9%) 0,001 B/op [Average]
+  (min, avg, max) = (0,003, 0,003, 0,003), stdev = 0,001
+  CI (99.9%): [0,002, 0,003] (assumes normal distribution)
+
+Secondary result "eu.javaspecialists.books.dynamicproxies.ch03.benchmarks.MethodCallBenchmark.dynamicProxyReflectiveCallIncrement:·gc.count":
+  12,000 ±(99.9%) 0,001 counts [Sum]
+  (min, avg, max) = (4,000, 4,000, 4,000), stdev = 0,001
+  CI (99.9%): [12,000, 12,000] (assumes normal distribution)
+
+Secondary result "eu.javaspecialists.books.dynamicproxies.ch03.benchmarks.MethodCallBenchmark.dynamicProxyReflectiveCallIncrement:·gc.time":
+  5,000 ±(99.9%) 0,001 ms [Sum]
+  (min, avg, max) = (1,000, 1,667, 2,000), stdev = 0,577
+  CI (99.9%): [5,000, 5,000] (assumes normal distribution)
+
+
+# JMH version: 1.21
+# VM version: JDK 14, OpenJDK 64-Bit Server VM, 14+36-1461
+# VM invoker: /Users/heinz/Dropbox (HIC Straws)/heinz/JavaVirtualMachines/openjdk-14.jdk/Contents/Home/bin/java
+# VM options: -XX:-DoEscapeAnalysis -XX:+UseParallelGC -Deu.javaspecialists.books.dynamicproxies.util.MethodTurboBooster.disabled=true
+# Warmup: 3 iterations, 1 s each
+# Measurement: 3 iterations, 1 s each
+# Timeout: 10 min per iteration
+# Threads: 1 thread, will synchronize iterations
+# Benchmark mode: Average time, time/op
+# Benchmark: eu.javaspecialists.books.dynamicproxies.ch03.benchmarks.MethodCallBenchmark.staticProxyConsumeCPU
+
+# Run progress: 75,00% complete, ETA 00:00:18
+# Fork: 1 of 1
+# Warmup Iteration   1: 3,879 ns/op
+# Warmup Iteration   2: 3,965 ns/op
+# Warmup Iteration   3: 3,707 ns/op
+Iteration   1: 3,701 ns/op
+                 ·gc.alloc.rate:      ≈ 10⁻⁴ MB/sec
+                 ·gc.alloc.rate.norm: ≈ 10⁻⁶ B/op
+                 ·gc.count:           ≈ 0 counts
+
+Iteration   2: 3,694 ns/op
+                 ·gc.alloc.rate:      ≈ 10⁻⁴ MB/sec
+                 ·gc.alloc.rate.norm: ≈ 10⁻⁶ B/op
+                 ·gc.count:           ≈ 0 counts
+
+Iteration   3: 3,712 ns/op
+                 ·gc.alloc.rate:      ≈ 10⁻⁴ MB/sec
+                 ·gc.alloc.rate.norm: ≈ 10⁻⁶ B/op
+                 ·gc.count:           ≈ 0 counts
+
+
+
+Result "eu.javaspecialists.books.dynamicproxies.ch03.benchmarks.MethodCallBenchmark.staticProxyConsumeCPU":
+  3,702 ±(99.9%) 0,166 ns/op [Average]
+  (min, avg, max) = (3,694, 3,702, 3,712), stdev = 0,009
+  CI (99.9%): [3,537, 3,868] (assumes normal distribution)
+
+Secondary result "eu.javaspecialists.books.dynamicproxies.ch03.benchmarks.MethodCallBenchmark.staticProxyConsumeCPU:·gc.alloc.rate":
+  ≈ 10⁻⁴ MB/sec
+
+Secondary result "eu.javaspecialists.books.dynamicproxies.ch03.benchmarks.MethodCallBenchmark.staticProxyConsumeCPU:·gc.alloc.rate.norm":
+  ≈ 10⁻⁶ B/op
+
+Secondary result "eu.javaspecialists.books.dynamicproxies.ch03.benchmarks.MethodCallBenchmark.staticProxyConsumeCPU:·gc.count":
+  ≈ 0 counts
+
+
+# JMH version: 1.21
+# VM version: JDK 14, OpenJDK 64-Bit Server VM, 14+36-1461
+# VM invoker: /Users/heinz/Dropbox (HIC Straws)/heinz/JavaVirtualMachines/openjdk-14.jdk/Contents/Home/bin/java
+# VM options: -XX:-DoEscapeAnalysis -XX:+UseParallelGC -Deu.javaspecialists.books.dynamicproxies.util.MethodTurboBooster.disabled=true
+# Warmup: 3 iterations, 1 s each
+# Measurement: 3 iterations, 1 s each
+# Timeout: 10 min per iteration
+# Threads: 1 thread, will synchronize iterations
+# Benchmark mode: Average time, time/op
+# Benchmark: eu.javaspecialists.books.dynamicproxies.ch03.benchmarks.MethodCallBenchmark.staticProxyIncrement
+
+# Run progress: 87,50% complete, ETA 00:00:09
+# Fork: 1 of 1
+# Warmup Iteration   1: 2,605 ns/op
+# Warmup Iteration   2: 2,613 ns/op
+# Warmup Iteration   3: 2,329 ns/op
+Iteration   1: 2,310 ns/op
+                 ·gc.alloc.rate:      ≈ 10⁻⁴ MB/sec
+                 ·gc.alloc.rate.norm: ≈ 10⁻⁶ B/op
+                 ·gc.count:           ≈ 0 counts
+
+Iteration   2: 2,311 ns/op
+                 ·gc.alloc.rate:      ≈ 10⁻⁴ MB/sec
+                 ·gc.alloc.rate.norm: ≈ 10⁻⁶ B/op
+                 ·gc.count:           ≈ 0 counts
+
+Iteration   3: 2,376 ns/op
+                 ·gc.alloc.rate:      ≈ 10⁻⁴ MB/sec
+                 ·gc.alloc.rate.norm: ≈ 10⁻⁶ B/op
+                 ·gc.count:           ≈ 0 counts
+
+
+
+Result "eu.javaspecialists.books.dynamicproxies.ch03.benchmarks.MethodCallBenchmark.staticProxyIncrement":
+  2,332 ±(99.9%) 0,692 ns/op [Average]
+  (min, avg, max) = (2,310, 2,332, 2,376), stdev = 0,038
+  CI (99.9%): [1,641, 3,024] (assumes normal distribution)
+
+Secondary result "eu.javaspecialists.books.dynamicproxies.ch03.benchmarks.MethodCallBenchmark.staticProxyIncrement:·gc.alloc.rate":
+  ≈ 10⁻⁴ MB/sec
+
+Secondary result "eu.javaspecialists.books.dynamicproxies.ch03.benchmarks.MethodCallBenchmark.staticProxyIncrement:·gc.alloc.rate.norm":
+  ≈ 10⁻⁶ B/op
+
+Secondary result "eu.javaspecialists.books.dynamicproxies.ch03.benchmarks.MethodCallBenchmark.staticProxyIncrement:·gc.count":
+  ≈ 0 counts
+
+
+# Run complete. Total time: 00:01:14
+
+REMEMBER: The numbers below are just data. To gain reusable insights, you need to follow up on
+why the numbers are the way they are. Use profilers (see -prof, -lprof), design factorial
+experiments, perform baseline and negative tests that provide experimental control, make sure
+the benchmarking environment is safe on JVM/OS/HW level, ask for reviews from the domain experts.
+Do not assume the numbers tell you what you want them to tell.
+
+Benchmark                                                                                 Mode  Cnt     Score      Error   Units
+MethodCallBenchmark.directCallConsumeCPU:·gc.alloc.rate                                   avgt    3    ≈ 10⁻⁴             MB/sec
+MethodCallBenchmark.directCallConsumeCPU:·gc.alloc.rate.norm                              avgt    3    ≈ 10⁻⁶               B/op
+MethodCallBenchmark.directCallIncrement:·gc.alloc.rate                                    avgt    3    ≈ 10⁻⁴             MB/sec
+MethodCallBenchmark.directCallIncrement:·gc.alloc.rate.norm                               avgt    3    ≈ 10⁻⁶               B/op
+MethodCallBenchmark.dynamicProxyDirectCallConsumeCPU:·gc.alloc.rate                       avgt    3    ≈ 10⁻⁴             MB/sec
+MethodCallBenchmark.dynamicProxyDirectCallConsumeCPU:·gc.alloc.rate.norm                  avgt    3    ≈ 10⁻⁶               B/op
+MethodCallBenchmark.dynamicProxyDirectCallIncrement:·gc.alloc.rate                        avgt    3  2856,886 ±  288,084  MB/sec
+MethodCallBenchmark.dynamicProxyDirectCallIncrement:·gc.alloc.rate.norm                   avgt    3    24,002 ±    0,013    B/op
+MethodCallBenchmark.dynamicProxyReflectiveCallConsumeCPU:·gc.alloc.rate                   avgt    3    ≈ 10⁻⁴             MB/sec
+MethodCallBenchmark.dynamicProxyReflectiveCallConsumeCPU:·gc.alloc.rate.norm              avgt    3    ≈ 10⁻⁵               B/op
+MethodCallBenchmark.dynamicProxyReflectiveCallIncrement:·gc.alloc.rate                    avgt    3  1670,947 ±  182,900  MB/sec
+MethodCallBenchmark.dynamicProxyReflectiveCallIncrement:·gc.alloc.rate.norm               avgt    3    24,001 ±    0,003    B/op
+MethodCallBenchmark.staticProxyConsumeCPU:·gc.alloc.rate                                  avgt    3    ≈ 10⁻⁴             MB/sec
+MethodCallBenchmark.staticProxyConsumeCPU:·gc.alloc.rate.norm                             avgt    3    ≈ 10⁻⁶               B/op
+MethodCallBenchmark.staticProxyIncrement:·gc.alloc.rate                                   avgt    3    ≈ 10⁻⁴             MB/sec
+MethodCallBenchmark.staticProxyIncrement:·gc.alloc.rate.norm                              avgt    3    ≈ 10⁻⁶               B/op
+
+
+
+# JMH version: 1.21
+# VM version: JDK 14, OpenJDK 64-Bit Server VM, 14+36-1461
+# VM invoker: /Users/heinz/Dropbox (HIC Straws)/heinz/JavaVirtualMachines/openjdk-14.jdk/Contents/Home/bin/java
+# VM options: -XX:+UseParallelGC -Deu.javaspecialists.books.dynamicproxies.util.MethodTurboBooster.disabled=false
+# Warmup: 5 iterations, 3 s each
+# Measurement: 10 iterations, 3 s each
+# Timeout: 10 min per iteration
+# Threads: 1 thread, will synchronize iterations
+# Benchmark mode: Average time, time/op
+# Benchmark: eu.javaspecialists.books.dynamicproxies.ch03.benchmarks.MethodCallBenchmark.directCallConsumeCPU
+
+# Run progress: 0,00% complete, ETA 00:18:00
+# Fork: 1 of 3
+# Warmup Iteration   1: 3,848 ns/op
+# Warmup Iteration   2: 3,396 ns/op
+# Warmup Iteration   3: 3,170 ns/op
+# Warmup Iteration   4: 3,173 ns/op
+# Warmup Iteration   5: 3,188 ns/op
+Iteration   1: 3,181 ns/op
+Iteration   2: 3,182 ns/op
+Iteration   3: 3,208 ns/op
+Iteration   4: 3,197 ns/op
+Iteration   5: 3,183 ns/op
+Iteration   6: 3,183 ns/op
+Iteration   7: 3,180 ns/op
+Iteration   8: 3,196 ns/op
+Iteration   9: 3,201 ns/op
+Iteration  10: 3,196 ns/op
+
+# Run progress: 4,17% complete, ETA 00:17:21
+# Fork: 2 of 3
+# Warmup Iteration   1: 3,851 ns/op
+# Warmup Iteration   2: 3,429 ns/op
+# Warmup Iteration   3: 3,198 ns/op
+# Warmup Iteration   4: 3,172 ns/op
+# Warmup Iteration   5: 3,183 ns/op
+Iteration   1: 3,186 ns/op
+Iteration   2: 3,169 ns/op
+Iteration   3: 3,167 ns/op
+Iteration   4: 3,169 ns/op
+Iteration   5: 3,179 ns/op
+Iteration   6: 3,159 ns/op
+Iteration   7: 3,158 ns/op
+Iteration   8: 3,176 ns/op
+Iteration   9: 3,172 ns/op
+Iteration  10: 3,164 ns/op
+
+# Run progress: 8,33% complete, ETA 00:16:38
+# Fork: 3 of 3
+# Warmup Iteration   1: 3,855 ns/op
+# Warmup Iteration   2: 3,572 ns/op
+# Warmup Iteration   3: 3,170 ns/op
+# Warmup Iteration   4: 3,158 ns/op
+# Warmup Iteration   5: 3,207 ns/op
+Iteration   1: 3,162 ns/op
+Iteration   2: 3,165 ns/op
+Iteration   3: 3,221 ns/op
+Iteration   4: 3,160 ns/op
+Iteration   5: 3,206 ns/op
+Iteration   6: 3,198 ns/op
+Iteration   7: 3,187 ns/op
+Iteration   8: 3,184 ns/op
+Iteration   9: 3,169 ns/op
+Iteration  10: 3,169 ns/op
+
+
+Result "eu.javaspecialists.books.dynamicproxies.ch03.benchmarks.MethodCallBenchmark.directCallConsumeCPU":
+  3,181 ±(99.9%) 0,011 ns/op [Average]
+  (min, avg, max) = (3,158, 3,181, 3,221), stdev = 0,016
+  CI (99.9%): [3,170, 3,192] (assumes normal distribution)
+
+
+# JMH version: 1.21
+# VM version: JDK 14, OpenJDK 64-Bit Server VM, 14+36-1461
+# VM invoker: /Users/heinz/Dropbox (HIC Straws)/heinz/JavaVirtualMachines/openjdk-14.jdk/Contents/Home/bin/java
+# VM options: -XX:+UseParallelGC -Deu.javaspecialists.books.dynamicproxies.util.MethodTurboBooster.disabled=false
+# Warmup: 5 iterations, 3 s each
+# Measurement: 10 iterations, 3 s each
+# Timeout: 10 min per iteration
+# Threads: 1 thread, will synchronize iterations
+# Benchmark mode: Average time, time/op
+# Benchmark: eu.javaspecialists.books.dynamicproxies.ch03.benchmarks.MethodCallBenchmark.directCallIncrement
+
+# Run progress: 12,50% complete, ETA 00:15:52
+# Fork: 1 of 3
+# Warmup Iteration   1: 2,408 ns/op
+# Warmup Iteration   2: 2,389 ns/op
+# Warmup Iteration   3: 1,897 ns/op
+# Warmup Iteration   4: 1,939 ns/op
+# Warmup Iteration   5: 1,891 ns/op
+Iteration   1: 1,967 ns/op
+Iteration   2: 1,888 ns/op
+Iteration   3: 1,909 ns/op
+Iteration   4: 1,908 ns/op
+Iteration   5: 1,948 ns/op
+Iteration   6: 1,893 ns/op
+Iteration   7: 1,905 ns/op
+Iteration   8: 1,960 ns/op
+Iteration   9: 1,918 ns/op
+Iteration  10: 1,918 ns/op
+
+# Run progress: 16,67% complete, ETA 00:15:06
+# Fork: 2 of 3
+# Warmup Iteration   1: 2,404 ns/op
+# Warmup Iteration   2: 2,401 ns/op
+# Warmup Iteration   3: 1,926 ns/op
+# Warmup Iteration   4: 1,938 ns/op
+# Warmup Iteration   5: 1,971 ns/op
+Iteration   1: 1,902 ns/op
+Iteration   2: 1,923 ns/op
+Iteration   3: 1,898 ns/op
+Iteration   4: 1,921 ns/op
+Iteration   5: 1,917 ns/op
+Iteration   6: 1,940 ns/op
+Iteration   7: 1,935 ns/op
+Iteration   8: 1,908 ns/op
+Iteration   9: 1,921 ns/op
+Iteration  10: 1,915 ns/op
+
+# Run progress: 20,83% complete, ETA 00:14:21
+# Fork: 3 of 3
+# Warmup Iteration   1: 2,423 ns/op
+# Warmup Iteration   2: 2,396 ns/op
+# Warmup Iteration   3: 1,902 ns/op
+# Warmup Iteration   4: 1,956 ns/op
+# Warmup Iteration   5: 1,898 ns/op
+Iteration   1: 1,903 ns/op
+Iteration   2: 1,905 ns/op
+Iteration   3: 1,917 ns/op
+Iteration   4: 1,886 ns/op
+Iteration   5: 1,923 ns/op
+Iteration   6: 1,908 ns/op
+Iteration   7: 1,961 ns/op
+Iteration   8: 1,915 ns/op
+Iteration   9: 1,919 ns/op
+Iteration  10: 1,968 ns/op
+
+
+Result "eu.javaspecialists.books.dynamicproxies.ch03.benchmarks.MethodCallBenchmark.directCallIncrement":
+  1,920 ±(99.9%) 0,015 ns/op [Average]
+  (min, avg, max) = (1,886, 1,920, 1,968), stdev = 0,022
+  CI (99.9%): [1,905, 1,935] (assumes normal distribution)
+
+
+# JMH version: 1.21
+# VM version: JDK 14, OpenJDK 64-Bit Server VM, 14+36-1461
+# VM invoker: /Users/heinz/Dropbox (HIC Straws)/heinz/JavaVirtualMachines/openjdk-14.jdk/Contents/Home/bin/java
+# VM options: -XX:+UseParallelGC -Deu.javaspecialists.books.dynamicproxies.util.MethodTurboBooster.disabled=false
+# Warmup: 5 iterations, 3 s each
+# Measurement: 10 iterations, 3 s each
+# Timeout: 10 min per iteration
+# Threads: 1 thread, will synchronize iterations
+# Benchmark mode: Average time, time/op
+# Benchmark: eu.javaspecialists.books.dynamicproxies.ch03.benchmarks.MethodCallBenchmark.dynamicProxyDirectCallConsumeCPU
+
+# Run progress: 25,00% complete, ETA 00:13:36
+# Fork: 1 of 3
+# Warmup Iteration   1: 4,299 ns/op
+# Warmup Iteration   2: 5,739 ns/op
+# Warmup Iteration   3: 4,903 ns/op
+# Warmup Iteration   4: 4,825 ns/op
+# Warmup Iteration   5: 4,825 ns/op
+Iteration   1: 4,807 ns/op
+Iteration   2: 4,908 ns/op
+Iteration   3: 4,940 ns/op
+Iteration   4: 4,852 ns/op
+Iteration   5: 4,885 ns/op
+Iteration   6: 4,968 ns/op
+Iteration   7: 4,837 ns/op
+Iteration   8: 4,864 ns/op
+Iteration   9: 5,041 ns/op
+Iteration  10: 4,809 ns/op
+
+# Run progress: 29,17% complete, ETA 00:12:50
+# Fork: 2 of 3
+# Warmup Iteration   1: 4,295 ns/op
+# Warmup Iteration   2: 5,592 ns/op
+# Warmup Iteration   3: 4,390 ns/op
+# Warmup Iteration   4: 4,495 ns/op
+# Warmup Iteration   5: 4,458 ns/op
+Iteration   1: 4,520 ns/op
+Iteration   2: 4,472 ns/op
+Iteration   3: 4,472 ns/op
+Iteration   4: 4,459 ns/op
+Iteration   5: 4,497 ns/op
+Iteration   6: 4,428 ns/op
+Iteration   7: 4,456 ns/op
+Iteration   8: 4,489 ns/op
+Iteration   9: 4,374 ns/op
+Iteration  10: 4,407 ns/op
+
+# Run progress: 33,33% complete, ETA 00:12:05
+# Fork: 3 of 3
+# Warmup Iteration   1: 4,300 ns/op
+# Warmup Iteration   2: 5,634 ns/op
+# Warmup Iteration   3: 4,281 ns/op
+# Warmup Iteration   4: 4,302 ns/op
+# Warmup Iteration   5: 4,392 ns/op
+Iteration   1: 4,424 ns/op
+Iteration   2: 4,371 ns/op
+Iteration   3: 4,387 ns/op
+Iteration   4: 4,497 ns/op
+Iteration   5: 4,375 ns/op
+Iteration   6: 4,425 ns/op
+Iteration   7: 4,361 ns/op
+Iteration   8: 4,338 ns/op
+Iteration   9: 4,431 ns/op
+Iteration  10: 4,288 ns/op
+
+
+Result "eu.javaspecialists.books.dynamicproxies.ch03.benchmarks.MethodCallBenchmark.dynamicProxyDirectCallConsumeCPU":
+  4,579 ±(99.9%) 0,156 ns/op [Average]
+  (min, avg, max) = (4,288, 4,579, 5,041), stdev = 0,233
+  CI (99.9%): [4,424, 4,735] (assumes normal distribution)
+
+
+# JMH version: 1.21
+# VM version: JDK 14, OpenJDK 64-Bit Server VM, 14+36-1461
+# VM invoker: /Users/heinz/Dropbox (HIC Straws)/heinz/JavaVirtualMachines/openjdk-14.jdk/Contents/Home/bin/java
+# VM options: -XX:+UseParallelGC -Deu.javaspecialists.books.dynamicproxies.util.MethodTurboBooster.disabled=false
+# Warmup: 5 iterations, 3 s each
+# Measurement: 10 iterations, 3 s each
+# Timeout: 10 min per iteration
+# Threads: 1 thread, will synchronize iterations
+# Benchmark mode: Average time, time/op
+# Benchmark: eu.javaspecialists.books.dynamicproxies.ch03.benchmarks.MethodCallBenchmark.dynamicProxyDirectCallIncrement
+
+# Run progress: 37,50% complete, ETA 00:11:20
+# Fork: 1 of 3
+# Warmup Iteration   1: 3,952 ns/op
+# Warmup Iteration   2: 3,804 ns/op
+# Warmup Iteration   3: 3,613 ns/op
+# Warmup Iteration   4: 3,616 ns/op
+# Warmup Iteration   5: 3,616 ns/op
+Iteration   1: 3,615 ns/op
+Iteration   2: 3,678 ns/op
+Iteration   3: 3,633 ns/op
+Iteration   4: 3,659 ns/op
+Iteration   5: 3,649 ns/op
+Iteration   6: 3,626 ns/op
+Iteration   7: 3,663 ns/op
+Iteration   8: 3,627 ns/op
+Iteration   9: 3,637 ns/op
+Iteration  10: 3,643 ns/op
+
+# Run progress: 41,67% complete, ETA 00:10:35
+# Fork: 2 of 3
+# Warmup Iteration   1: 3,942 ns/op
+# Warmup Iteration   2: 3,807 ns/op
+# Warmup Iteration   3: 3,609 ns/op
+# Warmup Iteration   4: 3,635 ns/op
+# Warmup Iteration   5: 3,678 ns/op
+Iteration   1: 3,631 ns/op
+Iteration   2: 3,644 ns/op
+Iteration   3: 3,611 ns/op
+Iteration   4: 3,616 ns/op
+Iteration   5: 3,629 ns/op
+Iteration   6: 3,609 ns/op
+Iteration   7: 3,626 ns/op
+Iteration   8: 3,609 ns/op
+Iteration   9: 3,621 ns/op
+Iteration  10: 3,608 ns/op
+
+# Run progress: 45,83% complete, ETA 00:09:49
+# Fork: 3 of 3
+# Warmup Iteration   1: 3,939 ns/op
+# Warmup Iteration   2: 4,167 ns/op
+# Warmup Iteration   3: 3,630 ns/op
+# Warmup Iteration   4: 3,625 ns/op
+# Warmup Iteration   5: 3,615 ns/op
+Iteration   1: 3,606 ns/op
+Iteration   2: 3,636 ns/op
+Iteration   3: 3,610 ns/op
+Iteration   4: 3,636 ns/op
+Iteration   5: 3,622 ns/op
+Iteration   6: 3,628 ns/op
+Iteration   7: 3,638 ns/op
+Iteration   8: 3,616 ns/op
+Iteration   9: 3,997 ns/op
+Iteration  10: 4,008 ns/op
+
+
+Result "eu.javaspecialists.books.dynamicproxies.ch03.benchmarks.MethodCallBenchmark.dynamicProxyDirectCallIncrement":
+  3,654 ±(99.9%) 0,064 ns/op [Average]
+  (min, avg, max) = (3,606, 3,654, 4,008), stdev = 0,096
+  CI (99.9%): [3,590, 3,719] (assumes normal distribution)
+
+
+# JMH version: 1.21
+# VM version: JDK 14, OpenJDK 64-Bit Server VM, 14+36-1461
+# VM invoker: /Users/heinz/Dropbox (HIC Straws)/heinz/JavaVirtualMachines/openjdk-14.jdk/Contents/Home/bin/java
+# VM options: -XX:+UseParallelGC -Deu.javaspecialists.books.dynamicproxies.util.MethodTurboBooster.disabled=false
+# Warmup: 5 iterations, 3 s each
+# Measurement: 10 iterations, 3 s each
+# Timeout: 10 min per iteration
+# Threads: 1 thread, will synchronize iterations
+# Benchmark mode: Average time, time/op
+# Benchmark: eu.javaspecialists.books.dynamicproxies.ch03.benchmarks.MethodCallBenchmark.dynamicProxyReflectiveCallConsumeCPU
+
+# Run progress: 50,00% complete, ETA 00:09:04
+# Fork: 1 of 3
+# Warmup Iteration   1: 4,987 ns/op
+# Warmup Iteration   2: 5,207 ns/op
+# Warmup Iteration   3: 5,006 ns/op
+# Warmup Iteration   4: 5,013 ns/op
+# Warmup Iteration   5: 5,000 ns/op
+Iteration   1: 4,999 ns/op
+Iteration   2: 5,021 ns/op
+Iteration   3: 5,027 ns/op
+Iteration   4: 5,015 ns/op
+Iteration   5: 4,999 ns/op
+Iteration   6: 5,001 ns/op
+Iteration   7: 5,055 ns/op
+Iteration   8: 5,002 ns/op
+Iteration   9: 5,014 ns/op
+Iteration  10: 5,004 ns/op
+
+# Run progress: 54,17% complete, ETA 00:08:19
+# Fork: 2 of 3
+# Warmup Iteration   1: 4,995 ns/op
+# Warmup Iteration   2: 5,223 ns/op
+# Warmup Iteration   3: 4,957 ns/op
+# Warmup Iteration   4: 4,965 ns/op
+# Warmup Iteration   5: 4,991 ns/op
+Iteration   1: 4,955 ns/op
+Iteration   2: 5,005 ns/op
+Iteration   3: 4,962 ns/op
+Iteration   4: 5,167 ns/op
+Iteration   5: 5,105 ns/op
+Iteration   6: 4,952 ns/op
+Iteration   7: 5,099 ns/op
+Iteration   8: 5,058 ns/op
+Iteration   9: 5,054 ns/op
+Iteration  10: 5,005 ns/op
+
+# Run progress: 58,33% complete, ETA 00:07:33
+# Fork: 3 of 3
+# Warmup Iteration   1: 5,049 ns/op
+# Warmup Iteration   2: 5,217 ns/op
+# Warmup Iteration   3: 5,147 ns/op
+# Warmup Iteration   4: 5,062 ns/op
+# Warmup Iteration   5: 5,110 ns/op
+Iteration   1: 5,114 ns/op
+Iteration   2: 5,086 ns/op
+Iteration   3: 5,107 ns/op
+Iteration   4: 5,136 ns/op
+Iteration   5: 5,148 ns/op
+Iteration   6: 5,101 ns/op
+Iteration   7: 5,126 ns/op
+Iteration   8: 5,127 ns/op
+Iteration   9: 5,148 ns/op
+Iteration  10: 5,161 ns/op
+
+
+Result "eu.javaspecialists.books.dynamicproxies.ch03.benchmarks.MethodCallBenchmark.dynamicProxyReflectiveCallConsumeCPU":
+  5,058 ±(99.9%) 0,044 ns/op [Average]
+  (min, avg, max) = (4,952, 5,058, 5,167), stdev = 0,066
+  CI (99.9%): [5,015, 5,102] (assumes normal distribution)
+
+
+# JMH version: 1.21
+# VM version: JDK 14, OpenJDK 64-Bit Server VM, 14+36-1461
+# VM invoker: /Users/heinz/Dropbox (HIC Straws)/heinz/JavaVirtualMachines/openjdk-14.jdk/Contents/Home/bin/java
+# VM options: -XX:+UseParallelGC -Deu.javaspecialists.books.dynamicproxies.util.MethodTurboBooster.disabled=false
+# Warmup: 5 iterations, 3 s each
+# Measurement: 10 iterations, 3 s each
+# Timeout: 10 min per iteration
+# Threads: 1 thread, will synchronize iterations
+# Benchmark mode: Average time, time/op
+# Benchmark: eu.javaspecialists.books.dynamicproxies.ch03.benchmarks.MethodCallBenchmark.dynamicProxyReflectiveCallIncrement
+
+# Run progress: 62,50% complete, ETA 00:06:48
+# Fork: 1 of 3
+# Warmup Iteration   1: 4,490 ns/op
+# Warmup Iteration   2: 7,419 ns/op
+# Warmup Iteration   3: 6,455 ns/op
+# Warmup Iteration   4: 6,469 ns/op
+# Warmup Iteration   5: 6,365 ns/op
+Iteration   1: 6,368 ns/op
+Iteration   2: 6,374 ns/op
+Iteration   3: 6,411 ns/op
+Iteration   4: 6,366 ns/op
+Iteration   5: 6,365 ns/op
+Iteration   6: 6,434 ns/op
+Iteration   7: 6,376 ns/op
+Iteration   8: 6,380 ns/op
+Iteration   9: 6,412 ns/op
+Iteration  10: 6,370 ns/op
+
+# Run progress: 66,67% complete, ETA 00:06:02
+# Fork: 2 of 3
+# Warmup Iteration   1: 4,468 ns/op
+# Warmup Iteration   2: 7,851 ns/op
+# Warmup Iteration   3: 6,330 ns/op
+# Warmup Iteration   4: 6,368 ns/op
+# Warmup Iteration   5: 6,376 ns/op
+Iteration   1: 6,436 ns/op
+Iteration   2: 6,414 ns/op
+Iteration   3: 6,384 ns/op
+Iteration   4: 6,385 ns/op
+Iteration   5: 6,389 ns/op
+Iteration   6: 6,405 ns/op
+Iteration   7: 6,392 ns/op
+Iteration   8: 6,433 ns/op
+Iteration   9: 6,378 ns/op
+Iteration  10: 6,396 ns/op
+
+# Run progress: 70,83% complete, ETA 00:05:17
+# Fork: 3 of 3
+# Warmup Iteration   1: 4,544 ns/op
+# Warmup Iteration   2: 7,336 ns/op
+# Warmup Iteration   3: 6,337 ns/op
+# Warmup Iteration   4: 6,400 ns/op
+# Warmup Iteration   5: 6,384 ns/op
+Iteration   1: 6,400 ns/op
+Iteration   2: 6,389 ns/op
+Iteration   3: 6,410 ns/op
+Iteration   4: 6,387 ns/op
+Iteration   5: 6,561 ns/op
+Iteration   6: 6,590 ns/op
+Iteration   7: 6,577 ns/op
+Iteration   8: 6,559 ns/op
+Iteration   9: 6,538 ns/op
+Iteration  10: 6,556 ns/op
+
+
+Result "eu.javaspecialists.books.dynamicproxies.ch03.benchmarks.MethodCallBenchmark.dynamicProxyReflectiveCallIncrement":
+  6,428 ±(99.9%) 0,048 ns/op [Average]
+  (min, avg, max) = (6,365, 6,428, 6,590), stdev = 0,072
+  CI (99.9%): [6,380, 6,476] (assumes normal distribution)
+
+
+# JMH version: 1.21
+# VM version: JDK 14, OpenJDK 64-Bit Server VM, 14+36-1461
+# VM invoker: /Users/heinz/Dropbox (HIC Straws)/heinz/JavaVirtualMachines/openjdk-14.jdk/Contents/Home/bin/java
+# VM options: -XX:+UseParallelGC -Deu.javaspecialists.books.dynamicproxies.util.MethodTurboBooster.disabled=false
+# Warmup: 5 iterations, 3 s each
+# Measurement: 10 iterations, 3 s each
+# Timeout: 10 min per iteration
+# Threads: 1 thread, will synchronize iterations
+# Benchmark mode: Average time, time/op
+# Benchmark: eu.javaspecialists.books.dynamicproxies.ch03.benchmarks.MethodCallBenchmark.staticProxyConsumeCPU
+
+# Run progress: 75,00% complete, ETA 00:04:32
+# Fork: 1 of 3
+# Warmup Iteration   1: 4,155 ns/op
+# Warmup Iteration   2: 3,884 ns/op
+# Warmup Iteration   3: 3,679 ns/op
+# Warmup Iteration   4: 3,655 ns/op
+# Warmup Iteration   5: 3,652 ns/op
+Iteration   1: 3,672 ns/op
+Iteration   2: 3,639 ns/op
+Iteration   3: 3,641 ns/op
+Iteration   4: 3,646 ns/op
+Iteration   5: 3,641 ns/op
+Iteration   6: 3,643 ns/op
+Iteration   7: 3,632 ns/op
+Iteration   8: 3,653 ns/op
+Iteration   9: 3,637 ns/op
+Iteration  10: 3,641 ns/op
+
+# Run progress: 79,17% complete, ETA 00:03:46
+# Fork: 2 of 3
+# Warmup Iteration   1: 3,884 ns/op
+# Warmup Iteration   2: 3,873 ns/op
+# Warmup Iteration   3: 3,632 ns/op
+# Warmup Iteration   4: 3,627 ns/op
+# Warmup Iteration   5: 3,628 ns/op
+Iteration   1: 3,648 ns/op
+Iteration   2: 3,652 ns/op
+Iteration   3: 3,639 ns/op
+Iteration   4: 3,633 ns/op
+Iteration   5: 3,632 ns/op
+Iteration   6: 3,656 ns/op
+Iteration   7: 3,625 ns/op
+Iteration   8: 3,627 ns/op
+Iteration   9: 3,636 ns/op
+Iteration  10: 3,637 ns/op
+
+# Run progress: 83,33% complete, ETA 00:03:01
+# Fork: 3 of 3
+# Warmup Iteration   1: 4,126 ns/op
+# Warmup Iteration   2: 3,858 ns/op
+# Warmup Iteration   3: 3,647 ns/op
+# Warmup Iteration   4: 3,629 ns/op
+# Warmup Iteration   5: 3,634 ns/op
+Iteration   1: 3,643 ns/op
+Iteration   2: 3,641 ns/op
+Iteration   3: 3,627 ns/op
+Iteration   4: 3,620 ns/op
+Iteration   5: 3,624 ns/op
+Iteration   6: 3,634 ns/op
+Iteration   7: 3,645 ns/op
+Iteration   8: 3,642 ns/op
+Iteration   9: 3,619 ns/op
+Iteration  10: 3,641 ns/op
+
+
+Result "eu.javaspecialists.books.dynamicproxies.ch03.benchmarks.MethodCallBenchmark.staticProxyConsumeCPU":
+  3,639 ±(99.9%) 0,007 ns/op [Average]
+  (min, avg, max) = (3,619, 3,639, 3,672), stdev = 0,011
+  CI (99.9%): [3,631, 3,646] (assumes normal distribution)
+
+
+# JMH version: 1.21
+# VM version: JDK 14, OpenJDK 64-Bit Server VM, 14+36-1461
+# VM invoker: /Users/heinz/Dropbox (HIC Straws)/heinz/JavaVirtualMachines/openjdk-14.jdk/Contents/Home/bin/java
+# VM options: -XX:+UseParallelGC -Deu.javaspecialists.books.dynamicproxies.util.MethodTurboBooster.disabled=false
+# Warmup: 5 iterations, 3 s each
+# Measurement: 10 iterations, 3 s each
+# Timeout: 10 min per iteration
+# Threads: 1 thread, will synchronize iterations
+# Benchmark mode: Average time, time/op
+# Benchmark: eu.javaspecialists.books.dynamicproxies.ch03.benchmarks.MethodCallBenchmark.staticProxyIncrement
+
+# Run progress: 87,50% complete, ETA 00:02:16
+# Fork: 1 of 3
+# Warmup Iteration   1: 2,610 ns/op
+# Warmup Iteration   2: 2,536 ns/op
+# Warmup Iteration   3: 2,258 ns/op
+# Warmup Iteration   4: 2,274 ns/op
+# Warmup Iteration   5: 2,283 ns/op
+Iteration   1: 2,408 ns/op
+Iteration   2: 2,282 ns/op
+Iteration   3: 2,262 ns/op
+Iteration   4: 2,265 ns/op
+Iteration   5: 2,347 ns/op
+Iteration   6: 2,337 ns/op
+Iteration   7: 2,294 ns/op
+Iteration   8: 2,372 ns/op
+Iteration   9: 2,235 ns/op
+Iteration  10: 2,314 ns/op
+
+# Run progress: 91,67% complete, ETA 00:01:30
+# Fork: 2 of 3
+# Warmup Iteration   1: 2,620 ns/op
+# Warmup Iteration   2: 2,520 ns/op
+# Warmup Iteration   3: 2,337 ns/op
+# Warmup Iteration   4: 2,249 ns/op
+# Warmup Iteration   5: 2,340 ns/op
+Iteration   1: 2,310 ns/op
+Iteration   2: 2,303 ns/op
+Iteration   3: 2,261 ns/op
+Iteration   4: 2,348 ns/op
+Iteration   5: 2,257 ns/op
+Iteration   6: 2,286 ns/op
+Iteration   7: 2,303 ns/op
+Iteration   8: 2,253 ns/op
+Iteration   9: 2,289 ns/op
+Iteration  10: 2,282 ns/op
+
+# Run progress: 95,83% complete, ETA 00:00:45
+# Fork: 3 of 3
+# Warmup Iteration   1: 2,577 ns/op
+# Warmup Iteration   2: 2,585 ns/op
+# Warmup Iteration   3: 2,231 ns/op
+# Warmup Iteration   4: 2,267 ns/op
+# Warmup Iteration   5: 2,268 ns/op
+Iteration   1: 2,342 ns/op
+Iteration   2: 2,255 ns/op
+Iteration   3: 2,516 ns/op
+Iteration   4: 2,304 ns/op
+Iteration   5: 2,290 ns/op
+Iteration   6: 2,293 ns/op
+Iteration   7: 2,291 ns/op
+Iteration   8: 2,322 ns/op
+Iteration   9: 2,296 ns/op
+Iteration  10: 2,331 ns/op
+
+
+Result "eu.javaspecialists.books.dynamicproxies.ch03.benchmarks.MethodCallBenchmark.staticProxyIncrement":
+  2,308 ±(99.9%) 0,036 ns/op [Average]
+  (min, avg, max) = (2,235, 2,308, 2,516), stdev = 0,055
+  CI (99.9%): [2,272, 2,345] (assumes normal distribution)
+
+
+# Run complete. Total time: 00:18:09
+
+REMEMBER: The numbers below are just data. To gain reusable insights, you need to follow up on
+why the numbers are the way they are. Use profilers (see -prof, -lprof), design factorial
+experiments, perform baseline and negative tests that provide experimental control, make sure
+the benchmarking environment is safe on JVM/OS/HW level, ask for reviews from the domain experts.
+Do not assume the numbers tell you what you want them to tell.
+
+Benchmark                                                 Mode  Cnt  Score   Error  Units
+MethodCallBenchmark.directCallConsumeCPU                  avgt   30  3,181 ± 0,011  ns/op
+MethodCallBenchmark.directCallIncrement                   avgt   30  1,920 ± 0,015  ns/op
+MethodCallBenchmark.dynamicProxyDirectCallConsumeCPU      avgt   30  4,579 ± 0,156  ns/op
+MethodCallBenchmark.dynamicProxyDirectCallIncrement       avgt   30  3,654 ± 0,064  ns/op
+MethodCallBenchmark.dynamicProxyReflectiveCallConsumeCPU  avgt   30  5,058 ± 0,044  ns/op
+MethodCallBenchmark.dynamicProxyReflectiveCallIncrement   avgt   30  6,428 ± 0,048  ns/op
+MethodCallBenchmark.staticProxyConsumeCPU                 avgt   30  3,639 ± 0,007  ns/op
+MethodCallBenchmark.staticProxyIncrement                  avgt   30  2,308 ± 0,036  ns/op
+
+
+
+# JMH version: 1.21
+# VM version: JDK 14, OpenJDK 64-Bit Server VM, 14+36-1461
+# VM invoker: /Users/heinz/Dropbox (HIC Straws)/heinz/JavaVirtualMachines/openjdk-14.jdk/Contents/Home/bin/java
+# VM options: -XX:+UseParallelGC -Deu.javaspecialists.books.dynamicproxies.util.MethodTurboBooster.disabled=true
+# Warmup: 5 iterations, 3 s each
+# Measurement: 10 iterations, 3 s each
+# Timeout: 10 min per iteration
+# Threads: 1 thread, will synchronize iterations
+# Benchmark mode: Average time, time/op
+# Benchmark: eu.javaspecialists.books.dynamicproxies.ch03.benchmarks.MethodCallBenchmark.directCallConsumeCPU
+
+# Run progress: 0,00% complete, ETA 00:18:00
+# Fork: 1 of 3
+# Warmup Iteration   1: 3,925 ns/op
+# Warmup Iteration   2: 3,446 ns/op
+# Warmup Iteration   3: 3,203 ns/op
+# Warmup Iteration   4: 3,191 ns/op
+# Warmup Iteration   5: 3,121 ns/op
+Iteration   1: 3,265 ns/op
+Iteration   2: 3,111 ns/op
+Iteration   3: 3,226 ns/op
+Iteration   4: 3,108 ns/op
+Iteration   5: 3,189 ns/op
+Iteration   6: 3,146 ns/op
+Iteration   7: 3,184 ns/op
+Iteration   8: 3,148 ns/op
+Iteration   9: 3,203 ns/op
+Iteration  10: 3,197 ns/op
+
+# Run progress: 4,17% complete, ETA 00:17:22
+# Fork: 2 of 3
+# Warmup Iteration   1: 3,796 ns/op
+# Warmup Iteration   2: 3,409 ns/op
+# Warmup Iteration   3: 3,174 ns/op
+# Warmup Iteration   4: 3,135 ns/op
+# Warmup Iteration   5: 3,186 ns/op
+Iteration   1: 3,237 ns/op
+Iteration   2: 3,145 ns/op
+Iteration   3: 3,216 ns/op
+Iteration   4: 3,301 ns/op
+Iteration   5: 3,190 ns/op
+Iteration   6: 3,117 ns/op
+Iteration   7: 3,123 ns/op
+Iteration   8: 3,146 ns/op
+Iteration   9: 3,125 ns/op
+Iteration  10: 3,209 ns/op
+
+# Run progress: 8,33% complete, ETA 00:16:39
+# Fork: 3 of 3
+# Warmup Iteration   1: 3,847 ns/op
+# Warmup Iteration   2: 3,403 ns/op
+# Warmup Iteration   3: 3,164 ns/op
+# Warmup Iteration   4: 3,155 ns/op
+# Warmup Iteration   5: 3,317 ns/op
+Iteration   1: 3,118 ns/op
+Iteration   2: 3,175 ns/op
+Iteration   3: 3,142 ns/op
+Iteration   4: 3,196 ns/op
+Iteration   5: 3,197 ns/op
+Iteration   6: 3,121 ns/op
+Iteration   7: 3,172 ns/op
+Iteration   8: 3,161 ns/op
+Iteration   9: 3,167 ns/op
+Iteration  10: 3,192 ns/op
+
+
+Result "eu.javaspecialists.books.dynamicproxies.ch03.benchmarks.MethodCallBenchmark.directCallConsumeCPU":
+  3,174 ±(99.9%) 0,031 ns/op [Average]
+  (min, avg, max) = (3,108, 3,174, 3,301), stdev = 0,047
+  CI (99.9%): [3,143, 3,206] (assumes normal distribution)
+
+
+# JMH version: 1.21
+# VM version: JDK 14, OpenJDK 64-Bit Server VM, 14+36-1461
+# VM invoker: /Users/heinz/Dropbox (HIC Straws)/heinz/JavaVirtualMachines/openjdk-14.jdk/Contents/Home/bin/java
+# VM options: -XX:+UseParallelGC -Deu.javaspecialists.books.dynamicproxies.util.MethodTurboBooster.disabled=true
+# Warmup: 5 iterations, 3 s each
+# Measurement: 10 iterations, 3 s each
+# Timeout: 10 min per iteration
+# Threads: 1 thread, will synchronize iterations
+# Benchmark mode: Average time, time/op
+# Benchmark: eu.javaspecialists.books.dynamicproxies.ch03.benchmarks.MethodCallBenchmark.directCallIncrement
+
+# Run progress: 12,50% complete, ETA 00:15:53
+# Fork: 1 of 3
+# Warmup Iteration   1: 2,420 ns/op
+# Warmup Iteration   2: 2,411 ns/op
+# Warmup Iteration   3: 1,941 ns/op
+# Warmup Iteration   4: 1,939 ns/op
+# Warmup Iteration   5: 1,939 ns/op
+Iteration   1: 1,875 ns/op
+Iteration   2: 1,927 ns/op
+Iteration   3: 1,945 ns/op
+Iteration   4: 1,895 ns/op
+Iteration   5: 1,939 ns/op
+Iteration   6: 1,918 ns/op
+Iteration   7: 1,926 ns/op
+Iteration   8: 1,906 ns/op
+Iteration   9: 1,961 ns/op
+Iteration  10: 1,904 ns/op
+
+# Run progress: 16,67% complete, ETA 00:15:07
+# Fork: 2 of 3
+# Warmup Iteration   1: 2,387 ns/op
+# Warmup Iteration   2: 2,485 ns/op
+# Warmup Iteration   3: 1,859 ns/op
+# Warmup Iteration   4: 1,958 ns/op
+# Warmup Iteration   5: 1,891 ns/op
+Iteration   1: 1,956 ns/op
+Iteration   2: 1,898 ns/op
+Iteration   3: 1,935 ns/op
+Iteration   4: 1,895 ns/op
+Iteration   5: 1,982 ns/op
+Iteration   6: 1,885 ns/op
+Iteration   7: 1,956 ns/op
+Iteration   8: 1,894 ns/op
+Iteration   9: 1,944 ns/op
+Iteration  10: 1,892 ns/op
+
+# Run progress: 20,83% complete, ETA 00:14:22
+# Fork: 3 of 3
+# Warmup Iteration   1: 2,383 ns/op
+# Warmup Iteration   2: 2,390 ns/op
+# Warmup Iteration   3: 1,911 ns/op
+# Warmup Iteration   4: 1,927 ns/op
+# Warmup Iteration   5: 1,913 ns/op
+Iteration   1: 1,909 ns/op
+Iteration   2: 1,884 ns/op
+Iteration   3: 1,908 ns/op
+Iteration   4: 1,916 ns/op
+Iteration   5: 1,999 ns/op
+Iteration   6: 1,912 ns/op
+Iteration   7: 1,961 ns/op
+Iteration   8: 1,937 ns/op
+Iteration   9: 1,950 ns/op
+Iteration  10: 1,875 ns/op
+
+
+Result "eu.javaspecialists.books.dynamicproxies.ch03.benchmarks.MethodCallBenchmark.directCallIncrement":
+  1,923 ±(99.9%) 0,021 ns/op [Average]
+  (min, avg, max) = (1,875, 1,923, 1,999), stdev = 0,032
+  CI (99.9%): [1,902, 1,944] (assumes normal distribution)
+
+
+# JMH version: 1.21
+# VM version: JDK 14, OpenJDK 64-Bit Server VM, 14+36-1461
+# VM invoker: /Users/heinz/Dropbox (HIC Straws)/heinz/JavaVirtualMachines/openjdk-14.jdk/Contents/Home/bin/java
+# VM options: -XX:+UseParallelGC -Deu.javaspecialists.books.dynamicproxies.util.MethodTurboBooster.disabled=true
+# Warmup: 5 iterations, 3 s each
+# Measurement: 10 iterations, 3 s each
+# Timeout: 10 min per iteration
+# Threads: 1 thread, will synchronize iterations
+# Benchmark mode: Average time, time/op
+# Benchmark: eu.javaspecialists.books.dynamicproxies.ch03.benchmarks.MethodCallBenchmark.dynamicProxyDirectCallConsumeCPU
+
+# Run progress: 25,00% complete, ETA 00:13:36
+# Fork: 1 of 3
+# Warmup Iteration   1: 4,394 ns/op
+# Warmup Iteration   2: 5,537 ns/op
+# Warmup Iteration   3: 4,516 ns/op
+# Warmup Iteration   4: 4,274 ns/op
+# Warmup Iteration   5: 4,441 ns/op
+Iteration   1: 4,436 ns/op
+Iteration   2: 4,455 ns/op
+Iteration   3: 4,310 ns/op
+Iteration   4: 4,402 ns/op
+Iteration   5: 4,440 ns/op
+Iteration   6: 4,578 ns/op
+Iteration   7: 4,448 ns/op
+Iteration   8: 4,376 ns/op
+Iteration   9: 4,410 ns/op
+Iteration  10: 4,442 ns/op
+
+# Run progress: 29,17% complete, ETA 00:12:51
+# Fork: 2 of 3
+# Warmup Iteration   1: 4,286 ns/op
+# Warmup Iteration   2: 5,654 ns/op
+# Warmup Iteration   3: 4,803 ns/op
+# Warmup Iteration   4: 4,979 ns/op
+# Warmup Iteration   5: 4,844 ns/op
+Iteration   1: 4,813 ns/op
+Iteration   2: 4,831 ns/op
+Iteration   3: 4,970 ns/op
+Iteration   4: 5,011 ns/op
+Iteration   5: 5,053 ns/op
+Iteration   6: 4,747 ns/op
+Iteration   7: 4,896 ns/op
+Iteration   8: 4,953 ns/op
+Iteration   9: 4,858 ns/op
+Iteration  10: 4,886 ns/op
+
+# Run progress: 33,33% complete, ETA 00:12:06
+# Fork: 3 of 3
+# Warmup Iteration   1: 4,308 ns/op
+# Warmup Iteration   2: 5,563 ns/op
+# Warmup Iteration   3: 4,312 ns/op
+# Warmup Iteration   4: 4,287 ns/op
+# Warmup Iteration   5: 4,293 ns/op
+Iteration   1: 4,334 ns/op
+Iteration   2: 4,285 ns/op
+Iteration   3: 4,326 ns/op
+Iteration   4: 4,388 ns/op
+Iteration   5: 4,369 ns/op
+Iteration   6: 4,349 ns/op
+Iteration   7: 4,390 ns/op
+Iteration   8: 4,331 ns/op
+Iteration   9: 4,382 ns/op
+Iteration  10: 4,457 ns/op
+
+
+Result "eu.javaspecialists.books.dynamicproxies.ch03.benchmarks.MethodCallBenchmark.dynamicProxyDirectCallConsumeCPU":
+  4,564 ±(99.9%) 0,170 ns/op [Average]
+  (min, avg, max) = (4,285, 4,564, 5,053), stdev = 0,254
+  CI (99.9%): [4,394, 4,734] (assumes normal distribution)
+
+
+# JMH version: 1.21
+# VM version: JDK 14, OpenJDK 64-Bit Server VM, 14+36-1461
+# VM invoker: /Users/heinz/Dropbox (HIC Straws)/heinz/JavaVirtualMachines/openjdk-14.jdk/Contents/Home/bin/java
+# VM options: -XX:+UseParallelGC -Deu.javaspecialists.books.dynamicproxies.util.MethodTurboBooster.disabled=true
+# Warmup: 5 iterations, 3 s each
+# Measurement: 10 iterations, 3 s each
+# Timeout: 10 min per iteration
+# Threads: 1 thread, will synchronize iterations
+# Benchmark mode: Average time, time/op
+# Benchmark: eu.javaspecialists.books.dynamicproxies.ch03.benchmarks.MethodCallBenchmark.dynamicProxyDirectCallIncrement
+
+# Run progress: 37,50% complete, ETA 00:11:20
+# Fork: 1 of 3
+# Warmup Iteration   1: 3,900 ns/op
+# Warmup Iteration   2: 3,760 ns/op
+# Warmup Iteration   3: 3,584 ns/op
+# Warmup Iteration   4: 3,595 ns/op
+# Warmup Iteration   5: 3,579 ns/op
+Iteration   1: 3,578 ns/op
+Iteration   2: 3,598 ns/op
+Iteration   3: 3,586 ns/op
+Iteration   4: 3,609 ns/op
+Iteration   5: 3,590 ns/op
+Iteration   6: 3,577 ns/op
+Iteration   7: 3,570 ns/op
+Iteration   8: 3,583 ns/op
+Iteration   9: 3,634 ns/op
+Iteration  10: 3,723 ns/op
+
+# Run progress: 41,67% complete, ETA 00:10:35
+# Fork: 2 of 3
+# Warmup Iteration   1: 3,897 ns/op
+# Warmup Iteration   2: 3,750 ns/op
+# Warmup Iteration   3: 3,598 ns/op
+# Warmup Iteration   4: 3,604 ns/op
+# Warmup Iteration   5: 3,589 ns/op
+Iteration   1: 3,590 ns/op
+Iteration   2: 3,586 ns/op
+Iteration   3: 3,563 ns/op
+Iteration   4: 3,586 ns/op
+Iteration   5: 3,612 ns/op
+Iteration   6: 3,602 ns/op
+Iteration   7: 3,582 ns/op
+Iteration   8: 3,577 ns/op
+Iteration   9: 3,570 ns/op
+Iteration  10: 3,600 ns/op
+
+# Run progress: 45,83% complete, ETA 00:09:50
+# Fork: 3 of 3
+# Warmup Iteration   1: 4,079 ns/op
+# Warmup Iteration   2: 3,752 ns/op
+# Warmup Iteration   3: 3,664 ns/op
+# Warmup Iteration   4: 3,786 ns/op
+# Warmup Iteration   5: 3,658 ns/op
+Iteration   1: 3,630 ns/op
+Iteration   2: 3,623 ns/op
+Iteration   3: 3,622 ns/op
+Iteration   4: 3,613 ns/op
+Iteration   5: 3,589 ns/op
+Iteration   6: 3,669 ns/op
+Iteration   7: 3,601 ns/op
+Iteration   8: 3,654 ns/op
+Iteration   9: 3,634 ns/op
+Iteration  10: 3,597 ns/op
+
+
+Result "eu.javaspecialists.books.dynamicproxies.ch03.benchmarks.MethodCallBenchmark.dynamicProxyDirectCallIncrement":
+  3,605 ±(99.9%) 0,023 ns/op [Average]
+  (min, avg, max) = (3,563, 3,605, 3,723), stdev = 0,034
+  CI (99.9%): [3,582, 3,627] (assumes normal distribution)
+
+
+# JMH version: 1.21
+# VM version: JDK 14, OpenJDK 64-Bit Server VM, 14+36-1461
+# VM invoker: /Users/heinz/Dropbox (HIC Straws)/heinz/JavaVirtualMachines/openjdk-14.jdk/Contents/Home/bin/java
+# VM options: -XX:+UseParallelGC -Deu.javaspecialists.books.dynamicproxies.util.MethodTurboBooster.disabled=true
+# Warmup: 5 iterations, 3 s each
+# Measurement: 10 iterations, 3 s each
+# Timeout: 10 min per iteration
+# Threads: 1 thread, will synchronize iterations
+# Benchmark mode: Average time, time/op
+# Benchmark: eu.javaspecialists.books.dynamicproxies.ch03.benchmarks.MethodCallBenchmark.dynamicProxyReflectiveCallConsumeCPU
+
+# Run progress: 50,00% complete, ETA 00:09:04
+# Fork: 1 of 3
+# Warmup Iteration   1: 6,993 ns/op
+# Warmup Iteration   2: 8,018 ns/op
+# Warmup Iteration   3: 7,675 ns/op
+# Warmup Iteration   4: 7,729 ns/op
+# Warmup Iteration   5: 7,816 ns/op
+Iteration   1: 7,692 ns/op
+Iteration   2: 7,814 ns/op
+Iteration   3: 7,809 ns/op
+Iteration   4: 7,695 ns/op
+Iteration   5: 7,812 ns/op
+Iteration   6: 7,882 ns/op
+Iteration   7: 7,842 ns/op
+Iteration   8: 7,919 ns/op
+Iteration   9: 8,047 ns/op
+Iteration  10: 7,752 ns/op
+
+# Run progress: 54,17% complete, ETA 00:08:19
+# Fork: 2 of 3
+# Warmup Iteration   1: 6,987 ns/op
+# Warmup Iteration   2: 9,006 ns/op
+# Warmup Iteration   3: 7,307 ns/op
+# Warmup Iteration   4: 7,642 ns/op
+# Warmup Iteration   5: 7,303 ns/op
+Iteration   1: 7,488 ns/op
+Iteration   2: 7,409 ns/op
+Iteration   3: 7,428 ns/op
+Iteration   4: 7,615 ns/op
+Iteration   5: 7,352 ns/op
+Iteration   6: 7,421 ns/op
+Iteration   7: 7,510 ns/op
+Iteration   8: 7,425 ns/op
+Iteration   9: 7,475 ns/op
+Iteration  10: 7,457 ns/op
+
+# Run progress: 58,33% complete, ETA 00:07:33
+# Fork: 3 of 3
+# Warmup Iteration   1: 6,938 ns/op
+# Warmup Iteration   2: 8,091 ns/op
+# Warmup Iteration   3: 7,264 ns/op
+# Warmup Iteration   4: 7,232 ns/op
+# Warmup Iteration   5: 7,206 ns/op
+Iteration   1: 7,353 ns/op
+Iteration   2: 7,239 ns/op
+Iteration   3: 7,367 ns/op
+Iteration   4: 7,350 ns/op
+Iteration   5: 7,236 ns/op
+Iteration   6: 7,375 ns/op
+Iteration   7: 7,208 ns/op
+Iteration   8: 7,390 ns/op
+Iteration   9: 7,415 ns/op
+Iteration  10: 7,336 ns/op
+
+
+Result "eu.javaspecialists.books.dynamicproxies.ch03.benchmarks.MethodCallBenchmark.dynamicProxyReflectiveCallConsumeCPU":
+  7,537 ±(99.9%) 0,154 ns/op [Average]
+  (min, avg, max) = (7,208, 7,537, 8,047), stdev = 0,230
+  CI (99.9%): [7,383, 7,691] (assumes normal distribution)
+
+
+# JMH version: 1.21
+# VM version: JDK 14, OpenJDK 64-Bit Server VM, 14+36-1461
+# VM invoker: /Users/heinz/Dropbox (HIC Straws)/heinz/JavaVirtualMachines/openjdk-14.jdk/Contents/Home/bin/java
+# VM options: -XX:+UseParallelGC -Deu.javaspecialists.books.dynamicproxies.util.MethodTurboBooster.disabled=true
+# Warmup: 5 iterations, 3 s each
+# Measurement: 10 iterations, 3 s each
+# Timeout: 10 min per iteration
+# Threads: 1 thread, will synchronize iterations
+# Benchmark mode: Average time, time/op
+# Benchmark: eu.javaspecialists.books.dynamicproxies.ch03.benchmarks.MethodCallBenchmark.dynamicProxyReflectiveCallIncrement
+
+# Run progress: 62,50% complete, ETA 00:06:48
+# Fork: 1 of 3
+# Warmup Iteration   1: 5,236 ns/op
+# Warmup Iteration   2: 9,062 ns/op
+# Warmup Iteration   3: 8,411 ns/op
+# Warmup Iteration   4: 8,037 ns/op
+# Warmup Iteration   5: 8,121 ns/op
+Iteration   1: 8,031 ns/op
+Iteration   2: 8,099 ns/op
+Iteration   3: 8,114 ns/op
+Iteration   4: 8,056 ns/op
+Iteration   5: 8,040 ns/op
+Iteration   6: 8,082 ns/op
+Iteration   7: 8,042 ns/op
+Iteration   8: 8,099 ns/op
+Iteration   9: 8,045 ns/op
+Iteration  10: 8,095 ns/op
+
+# Run progress: 66,67% complete, ETA 00:06:02
+# Fork: 2 of 3
+# Warmup Iteration   1: 5,238 ns/op
+# Warmup Iteration   2: 8,903 ns/op
+# Warmup Iteration   3: 8,542 ns/op
+# Warmup Iteration   4: 8,194 ns/op
+# Warmup Iteration   5: 8,194 ns/op
+Iteration   1: 8,172 ns/op
+Iteration   2: 8,188 ns/op
+Iteration   3: 8,228 ns/op
+Iteration   4: 8,181 ns/op
+Iteration   5: 8,283 ns/op
+Iteration   6: 8,181 ns/op
+Iteration   7: 8,211 ns/op
+Iteration   8: 8,229 ns/op
+Iteration   9: 8,207 ns/op
+Iteration  10: 8,206 ns/op
+
+# Run progress: 70,83% complete, ETA 00:05:17
+# Fork: 3 of 3
+# Warmup Iteration   1: 5,266 ns/op
+# Warmup Iteration   2: 8,773 ns/op
+# Warmup Iteration   3: 8,193 ns/op
+# Warmup Iteration   4: 8,163 ns/op
+# Warmup Iteration   5: 8,211 ns/op
+Iteration   1: 8,192 ns/op
+Iteration   2: 8,191 ns/op
+Iteration   3: 8,219 ns/op
+Iteration   4: 8,216 ns/op
+Iteration   5: 8,194 ns/op
+Iteration   6: 8,199 ns/op
+Iteration   7: 8,213 ns/op
+Iteration   8: 8,219 ns/op
+Iteration   9: 8,242 ns/op
+Iteration  10: 8,187 ns/op
+
+
+Result "eu.javaspecialists.books.dynamicproxies.ch03.benchmarks.MethodCallBenchmark.dynamicProxyReflectiveCallIncrement":
+  8,162 ±(99.9%) 0,048 ns/op [Average]
+  (min, avg, max) = (8,031, 8,162, 8,283), stdev = 0,071
+  CI (99.9%): [8,114, 8,210] (assumes normal distribution)
+
+
+# JMH version: 1.21
+# VM version: JDK 14, OpenJDK 64-Bit Server VM, 14+36-1461
+# VM invoker: /Users/heinz/Dropbox (HIC Straws)/heinz/JavaVirtualMachines/openjdk-14.jdk/Contents/Home/bin/java
+# VM options: -XX:+UseParallelGC -Deu.javaspecialists.books.dynamicproxies.util.MethodTurboBooster.disabled=true
+# Warmup: 5 iterations, 3 s each
+# Measurement: 10 iterations, 3 s each
+# Timeout: 10 min per iteration
+# Threads: 1 thread, will synchronize iterations
+# Benchmark mode: Average time, time/op
+# Benchmark: eu.javaspecialists.books.dynamicproxies.ch03.benchmarks.MethodCallBenchmark.staticProxyConsumeCPU
+
+# Run progress: 75,00% complete, ETA 00:04:32
+# Fork: 1 of 3
+# Warmup Iteration   1: 3,898 ns/op
+# Warmup Iteration   2: 3,894 ns/op
+# Warmup Iteration   3: 3,664 ns/op
+# Warmup Iteration   4: 3,647 ns/op
+# Warmup Iteration   5: 3,647 ns/op
+Iteration   1: 3,640 ns/op
+Iteration   2: 3,639 ns/op
+Iteration   3: 3,677 ns/op
+Iteration   4: 3,635 ns/op
+Iteration   5: 3,651 ns/op
+Iteration   6: 3,634 ns/op
+Iteration   7: 3,630 ns/op
+Iteration   8: 3,653 ns/op
+Iteration   9: 3,657 ns/op
+Iteration  10: 3,635 ns/op
+
+# Run progress: 79,17% complete, ETA 00:03:46
+# Fork: 2 of 3
+# Warmup Iteration   1: 3,860 ns/op
+# Warmup Iteration   2: 3,849 ns/op
+# Warmup Iteration   3: 3,653 ns/op
+# Warmup Iteration   4: 3,641 ns/op
+# Warmup Iteration   5: 3,642 ns/op
+Iteration   1: 3,625 ns/op
+Iteration   2: 3,641 ns/op
+Iteration   3: 3,687 ns/op
+Iteration   4: 3,633 ns/op
+Iteration   5: 3,633 ns/op
+Iteration   6: 3,640 ns/op
+Iteration   7: 3,625 ns/op
+Iteration   8: 3,640 ns/op
+Iteration   9: 3,627 ns/op
+Iteration  10: 3,649 ns/op
+
+# Run progress: 83,33% complete, ETA 00:03:01
+# Fork: 3 of 3
+# Warmup Iteration   1: 4,070 ns/op
+# Warmup Iteration   2: 3,880 ns/op
+# Warmup Iteration   3: 3,702 ns/op
+# Warmup Iteration   4: 3,690 ns/op
+# Warmup Iteration   5: 3,669 ns/op
+Iteration   1: 3,680 ns/op
+Iteration   2: 3,684 ns/op
+Iteration   3: 3,687 ns/op
+Iteration   4: 3,683 ns/op
+Iteration   5: 3,698 ns/op
+Iteration   6: 3,668 ns/op
+Iteration   7: 3,701 ns/op
+Iteration   8: 3,785 ns/op
+Iteration   9: 3,724 ns/op
+Iteration  10: 3,747 ns/op
+
+
+Result "eu.javaspecialists.books.dynamicproxies.ch03.benchmarks.MethodCallBenchmark.staticProxyConsumeCPU":
+  3,664 ±(99.9%) 0,026 ns/op [Average]
+  (min, avg, max) = (3,625, 3,664, 3,785), stdev = 0,039
+  CI (99.9%): [3,638, 3,690] (assumes normal distribution)
+
+
+# JMH version: 1.21
+# VM version: JDK 14, OpenJDK 64-Bit Server VM, 14+36-1461
+# VM invoker: /Users/heinz/Dropbox (HIC Straws)/heinz/JavaVirtualMachines/openjdk-14.jdk/Contents/Home/bin/java
+# VM options: -XX:+UseParallelGC -Deu.javaspecialists.books.dynamicproxies.util.MethodTurboBooster.disabled=true
+# Warmup: 5 iterations, 3 s each
+# Measurement: 10 iterations, 3 s each
+# Timeout: 10 min per iteration
+# Threads: 1 thread, will synchronize iterations
+# Benchmark mode: Average time, time/op
+# Benchmark: eu.javaspecialists.books.dynamicproxies.ch03.benchmarks.MethodCallBenchmark.staticProxyIncrement
+
+# Run progress: 87,50% complete, ETA 00:02:16
+# Fork: 1 of 3
+# Warmup Iteration   1: 2,606 ns/op
+# Warmup Iteration   2: 2,533 ns/op
+# Warmup Iteration   3: 2,267 ns/op
+# Warmup Iteration   4: 2,309 ns/op
+# Warmup Iteration   5: 2,265 ns/op
+Iteration   1: 2,310 ns/op
+Iteration   2: 2,307 ns/op
+Iteration   3: 2,301 ns/op
+Iteration   4: 2,303 ns/op
+Iteration   5: 2,293 ns/op
+Iteration   6: 2,315 ns/op
+Iteration   7: 2,280 ns/op
+Iteration   8: 2,294 ns/op
+Iteration   9: 2,287 ns/op
+Iteration  10: 2,263 ns/op
+
+# Run progress: 91,67% complete, ETA 00:01:30
+# Fork: 2 of 3
+# Warmup Iteration   1: 2,595 ns/op
+# Warmup Iteration   2: 2,538 ns/op
+# Warmup Iteration   3: 2,282 ns/op
+# Warmup Iteration   4: 2,281 ns/op
+# Warmup Iteration   5: 2,297 ns/op
+Iteration   1: 2,327 ns/op
+Iteration   2: 2,260 ns/op
+Iteration   3: 2,311 ns/op
+Iteration   4: 2,259 ns/op
+Iteration   5: 2,320 ns/op
+Iteration   6: 2,291 ns/op
+Iteration   7: 2,286 ns/op
+Iteration   8: 2,279 ns/op
+Iteration   9: 2,283 ns/op
+Iteration  10: 2,283 ns/op
+
+# Run progress: 95,83% complete, ETA 00:00:45
+# Fork: 3 of 3
+# Warmup Iteration   1: 2,609 ns/op
+# Warmup Iteration   2: 2,581 ns/op
+# Warmup Iteration   3: 2,274 ns/op
+# Warmup Iteration   4: 2,300 ns/op
+# Warmup Iteration   5: 2,265 ns/op
+Iteration   1: 2,297 ns/op
+Iteration   2: 2,308 ns/op
+Iteration   3: 2,268 ns/op
+Iteration   4: 2,265 ns/op
+Iteration   5: 2,296 ns/op
+Iteration   6: 2,276 ns/op
+Iteration   7: 2,316 ns/op
+Iteration   8: 2,282 ns/op
+Iteration   9: 2,324 ns/op
+Iteration  10: 2,300 ns/op
+
+
+Result "eu.javaspecialists.books.dynamicproxies.ch03.benchmarks.MethodCallBenchmark.staticProxyIncrement":
+  2,293 ±(99.9%) 0,013 ns/op [Average]
+  (min, avg, max) = (2,259, 2,293, 2,327), stdev = 0,019
+  CI (99.9%): [2,280, 2,306] (assumes normal distribution)
+
+
+# Run complete. Total time: 00:18:08
+
+REMEMBER: The numbers below are just data. To gain reusable insights, you need to follow up on
+why the numbers are the way they are. Use profilers (see -prof, -lprof), design factorial
+experiments, perform baseline and negative tests that provide experimental control, make sure
+the benchmarking environment is safe on JVM/OS/HW level, ask for reviews from the domain experts.
+Do not assume the numbers tell you what you want them to tell.
+
+Benchmark                                                 Mode  Cnt  Score   Error  Units
+MethodCallBenchmark.directCallConsumeCPU                  avgt   30  3,174 ± 0,031  ns/op
+MethodCallBenchmark.directCallIncrement                   avgt   30  1,923 ± 0,021  ns/op
+MethodCallBenchmark.dynamicProxyDirectCallConsumeCPU      avgt   30  4,564 ± 0,170  ns/op
+MethodCallBenchmark.dynamicProxyDirectCallIncrement       avgt   30  3,605 ± 0,023  ns/op
+MethodCallBenchmark.dynamicProxyReflectiveCallConsumeCPU  avgt   30  7,537 ± 0,154  ns/op
+MethodCallBenchmark.dynamicProxyReflectiveCallIncrement   avgt   30  8,162 ± 0,048  ns/op
+MethodCallBenchmark.staticProxyConsumeCPU                 avgt   30  3,664 ± 0,026  ns/op
+MethodCallBenchmark.staticProxyIncrement                  avgt   30  2,293 ± 0,013  ns/op
