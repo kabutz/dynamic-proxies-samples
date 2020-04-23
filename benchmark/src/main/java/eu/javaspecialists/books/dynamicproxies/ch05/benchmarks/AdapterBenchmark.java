@@ -22,16 +22,15 @@ package eu.javaspecialists.books.dynamicproxies.ch05.benchmarks;
 
 import eu.javaspecialists.books.dynamicproxies.ch05.bettercollection.*;
 import org.openjdk.jmh.annotations.*;
-import org.openjdk.jmh.runner.*;
-import org.openjdk.jmh.runner.options.*;
 
-import java.lang.invoke.*;
 import java.util.*;
 import java.util.concurrent.*;
 import java.util.function.*;
 
 // tag::listing[]
-@Fork(3)
+@Fork(value = 3, jvmArgsAppend = {"-XX:+UseParallelGC",
+    "-Deu.javaspecialists.books.dynamicproxies.util" +
+        ".ParameterTypesFetcher.enabled=true"})
 @Warmup(iterations = 5, time = 5)
 @Measurement(iterations = 10, time = 5)
 @BenchmarkMode(Mode.AverageTime)
@@ -143,53 +142,6 @@ public class AdapterBenchmark {
     COUNTER.reset();
     dynamicObjectAdapter.forEachFiltered(predicate, COUNTER);
     return COUNTER.get();
-  }
-
-  public static void main(String... args) throws RunnerException {
-    String name = MethodHandles.lookup().lookupClass().getName();
-    // Object Allocation with Escape Analysis ON
-    new Runner(
-        new OptionsBuilder()
-            .include(name)
-            .forks(1)
-            .jvmArgsAppend(
-                "-XX:+DoEscapeAnalysis",
-                "-XX:+UseParallelGC")
-            .warmupIterations(3)
-            .warmupTime(TimeValue.seconds(1))
-            .measurementIterations(3)
-            .measurementTime(TimeValue.seconds(1))
-            .addProfiler("gc")
-            .build()).run();
-    // Object Allocation with Escape Analysis OFF
-    new Runner(
-        new OptionsBuilder()
-            .include(name)
-            .forks(1)
-            .jvmArgsAppend(
-                "-XX:-DoEscapeAnalysis",
-                "-XX:+UseParallelGC")
-            .warmupIterations(3)
-            .warmupTime(TimeValue.seconds(1))
-            .measurementIterations(3)
-            .measurementTime(TimeValue.seconds(1))
-            .addProfiler("gc")
-            .build()).run();
-    new Runner(
-        new OptionsBuilder()
-            .include(name)
-            .forks(3)
-            .jvmArgsAppend(
-                "-XX:+UseParallelGC",
-                "-Deu.javaspecialists.books" +
-                    ".dynamicproxies.util" +
-                    ".ParameterTypesFetcher" +
-                    ".enabled=true")
-            .warmupIterations(5)
-            .warmupTime(TimeValue.seconds(3))
-            .measurementIterations(10)
-            .measurementTime(TimeValue.seconds(3))
-            .build()).run();
   }
 }
 // end::listing[]

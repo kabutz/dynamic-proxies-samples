@@ -22,27 +22,21 @@ package eu.javaspecialists.books.dynamicproxies.ch03.benchmarks;
 
 import eu.javaspecialists.books.dynamicproxies.*;
 import org.openjdk.jmh.annotations.*;
-import org.openjdk.jmh.runner.*;
-import org.openjdk.jmh.runner.options.*;
 
-import java.lang.invoke.*;
 import java.util.concurrent.*;
 
 /*
- -Deu.javaspecialists.books.dynamicproxies.util
- .ParameterTypesFetcher.enabled=true
  -Deu.javaspecialists.books.dynamicproxies.util
  .MethodTurboBooster.disabled=false
 */
 
 // tag::listing[]
-@Fork(3)
+@Fork(value = 3, jvmArgsAppend = "-XX:+UseParallelGC")
 @Warmup(iterations = 5, time = 3)
 @Measurement(iterations = 10, time = 3)
 @BenchmarkMode(Mode.AverageTime)
 @OutputTimeUnit(TimeUnit.NANOSECONDS)
 @State(Scope.Benchmark)
-
 public class MethodCallBenchmark {
   // direct call to RealWorker
   private final RealWorker realWorker = new RealWorker();
@@ -97,19 +91,6 @@ public class MethodCallBenchmark {
   @Benchmark
   public void dynamicProxyReflectiveCallConsumeCPU() {
     dynamicProxyReflectiveCall.consumeCPU();
-  }
-
-  public static void main(String... args) throws RunnerException {
-    Options opt = new OptionsBuilder()
-                      .include(MethodHandles.lookup().lookupClass().getName())
-                      .forks(3)
-                      .warmupIterations(5)
-                      .warmupTime(TimeValue.seconds(3))
-                      .measurementIterations(10)
-                      .measurementTime(TimeValue.seconds(3))
-                      .addProfiler("gc")
-                      .build();
-    new Runner(opt).run();
   }
 }
 // end::listing[]
