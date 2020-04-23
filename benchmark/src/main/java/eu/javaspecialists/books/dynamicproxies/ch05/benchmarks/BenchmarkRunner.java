@@ -55,7 +55,7 @@ public class BenchmarkRunner {
             .measurementIterations(3)
             .measurementTime(TimeValue.seconds(1))
             .addProfiler("gc")
-            .build());//.run();
+            .build()).run();
     new Runner(
         new OptionsBuilder()
             .include(name)
@@ -66,8 +66,8 @@ public class BenchmarkRunner {
                     ".util.ParameterTypesFetcher.enabled=true")
             .warmupIterations(5)
             .warmupTime(TimeValue.seconds(3))
-            .measurementIterations(10)
+            .measurementIterations(1000)
             .measurementTime(TimeValue.seconds(3))
-            .build());//.run();
+            .build()).run();
   }
 }

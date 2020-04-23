@@ -143,5 +143,15 @@ public class AdapterBenchmark {
     dynamicObjectAdapter.forEachFiltered(predicate, COUNTER);
     return COUNTER.get();
   }
+
+  @Benchmark
+  public Iterator<String> iterator() {
+    return plain.iterator();
+  }
+
+  @Benchmark
+  public Object[] parameterArray() {
+    return new Object[] {predicate, COUNTER};
+  }
 }
 // end::listing[]
