@@ -123,7 +123,6 @@ public class AdapterBenchmark {
     }
     return COUNTER.get();
   }
-
   @Benchmark
   public int classAdapterForEach() {
     COUNTER.reset();
@@ -136,7 +135,6 @@ public class AdapterBenchmark {
     objectAdapter.forEachFiltered(predicate, COUNTER);
     return COUNTER.get();
   }
-
   @Benchmark
   public int dynamicObjectAdapterForEach() {
     COUNTER.reset();
