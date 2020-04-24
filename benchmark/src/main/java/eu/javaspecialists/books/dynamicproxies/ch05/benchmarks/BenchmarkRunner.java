@@ -66,7 +66,7 @@ public class BenchmarkRunner {
                     ".util.ParameterTypesFetcher.enabled=true")
             .warmupIterations(5)
             .warmupTime(TimeValue.seconds(3))
-            .measurementIterations(1000)
+            .measurementIterations(10)
             .measurementTime(TimeValue.seconds(3))
             .build()).run();
   }
