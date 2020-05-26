@@ -22,11 +22,14 @@ package eu.javaspecialists.books.dynamicproxies.samples.ch05.bettercollection;
 
 import java.util.*;
 
+// To run this demo, add the following to the VM arguments:
+//
 // To include default methods of HashSet's interfaces, use
-// --add-opens java.base/java.util=eu.javaspecialists.books
-// .dynamicproxies
-// --add-opens java.base/java.lang=eu.javaspecialists.books
-// .dynamicproxies
+// --add-opens java.base/java.util=eu.javaspecialists.books.dynamicproxies
+// --add-opens java.base/java.lang=eu.javaspecialists.books.dynamicproxies
+//
+// To allow the core module to use reflection on BetterCollection
+// --add-reads eu.javaspecialists.books.dynamicproxies=eu.javaspecialists.books.dynamicproxies.samples
 @SuppressWarnings("unchecked")
 public class BetterCollectionDynamicObjectAdapterDemo {
   public static void main(String... args) {

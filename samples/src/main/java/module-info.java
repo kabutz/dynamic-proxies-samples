@@ -30,7 +30,9 @@ module eu.javaspecialists.books.dynamicproxies.samples {
   opens eu.javaspecialists.books.dynamicproxies.samples.ch03 to eu.javaspecialists.books.dynamicproxies;
   opens eu.javaspecialists.books.dynamicproxies.samples.ch03.gotchas to eu.javaspecialists.books.dynamicproxies;
   opens eu.javaspecialists.books.dynamicproxies.samples.ch04.immutablecollection to eu.javaspecialists.books.dynamicproxies;
+  opens eu.javaspecialists.books.dynamicproxies.samples.ch04.infiniterandom to eu.javaspecialists.books.dynamicproxies;
   opens eu.javaspecialists.books.dynamicproxies.samples.ch05.bettercollection to eu.javaspecialists.books.dynamicproxies;
+  opens eu.javaspecialists.books.dynamicproxies.samples.ch05 to eu.javaspecialists.books.dynamicproxies;
   opens eu.javaspecialists.books.dynamicproxies.samples.ch05.singer to eu.javaspecialists.books.dynamicproxies;
   opens eu.javaspecialists.books.dynamicproxies.samples.ch06.contactdynamic to eu.javaspecialists.books.dynamicproxies;
 }

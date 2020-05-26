@@ -24,6 +24,8 @@ import eu.javaspecialists.books.dynamicproxies.*;
 
 import java.util.*;
 
+// To run this demo, add the following to the VM arguments:
+// --add-reads eu.javaspecialists.books.dynamicproxies=eu.javaspecialists.books.dynamicproxies.samples
 public class DynamicFilterDemo {
   public static void main(String... args) {
     // tag::listing[]

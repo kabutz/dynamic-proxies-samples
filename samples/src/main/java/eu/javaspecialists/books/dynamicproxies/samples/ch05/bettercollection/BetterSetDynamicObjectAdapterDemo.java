@@ -23,6 +23,8 @@ package eu.javaspecialists.books.dynamicproxies.samples.ch05.bettercollection;
 import java.util.*;
 import java.util.concurrent.*;
 
+// To run this demo, add the following to the VM arguments:
+// --add-reads eu.javaspecialists.books.dynamicproxies=eu.javaspecialists.books.dynamicproxies.samples
 @SuppressWarnings("unchecked")
 public class BetterSetDynamicObjectAdapterDemo {
   public static void main(String... args) {
