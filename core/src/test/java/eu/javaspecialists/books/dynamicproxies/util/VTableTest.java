@@ -21,17 +21,28 @@
 package eu.javaspecialists.books.dynamicproxies.util;
 
 import eu.javaspecialists.books.dynamicproxies.*;
-import eu.javaspecialists.books.dynamicproxies.ch03.*;
-import eu.javaspecialists.books.dynamicproxies.ch05.bettercollection.*;
 import org.junit.*;
 
 import java.lang.reflect.*;
+import java.text.*;
+import java.time.*;
 import java.util.*;
 import java.util.function.*;
 
 import static org.junit.Assert.*;
 
 public class VTableTest {
+  // TODO --- to be improved START
+  interface ISODateParser {
+    LocalDate parse(String date) throws ParseException;
+  }
+  public static class RealISODateParser implements ISODateParser {
+    public LocalDate parse(String date) {
+      return LocalDate.now();
+    }
+  }
+  // TODO --- to be improved END
+
   @Test
   public void testSimpleVTable() throws ReflectiveOperationException {
     VTable vt = VTables.newVTableExcludingObjectMethods(
@@ -282,12 +293,35 @@ public class VTableTest {
                               .invoke(child, (Object[]) null));
   }
 
+  // TODO --- to be improved START
+  interface BetterCollection<E> extends Collection<E> {
+    E[] toArray();
+    default void forEachFiltered(Predicate<? super E> predicate,
+                                 Consumer<? super E> action) {}
+  }
+  public static class AdaptationObject<E> {
+    private final Collection<E> adaptee;
+    private final E[] seedArray;
+    public AdaptationObject(Collection<E> adaptee,
+                            E[] seedArray) {
+      this.adaptee = adaptee;
+      this.seedArray = seedArray;
+    }
+    public E[] toArray() {
+      return adaptee.toArray(seedArray);
+    }
+    public boolean add(E e) {
+      return adaptee.add(e);
+    }
+  }
+  // TODO --- to be improved END
+
   @Test
   public void objectAdapterTest() {
     HashSet<String> adaptee = new HashSet<>();
     String[] seedArray = new String[0];
     Object adapter =
-        new BetterCollectionFactory.AdaptationObject<>(
+        new AdaptationObject<>(
             adaptee, seedArray);
     Class<?> target = BetterCollection.class;
 

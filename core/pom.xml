@@ -33,11 +33,6 @@
 
     <dependencies>
         <dependency>
-            <groupId>org.eclipse.jetty</groupId>
-            <artifactId>jetty-server</artifactId>
-            <version>${jetty-version}</version>
-        </dependency>
-        <dependency>
             <groupId>junit</groupId>
             <artifactId>junit</artifactId>
             <scope>test</scope>
@@ -55,7 +50,6 @@
                         <configuration>
                             <compilerArgs>
                                 <compilerArg>--add-modules=java.sql</compilerArg>
-                                <compilerArg>--add-modules=java.compiler</compilerArg>
                             </compilerArgs>
                         </configuration>
                     </execution>
