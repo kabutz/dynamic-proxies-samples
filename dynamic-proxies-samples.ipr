@@ -7,15 +7,15 @@
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <module name="core" />
-        <module name="chapters" />
+        <module name="samples" />
         <module name="benchmark" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
       <module name="benchmark" target="11" />
-      <module name="chapters" target="11" />
       <module name="core" target="11" />
       <module name="dynamic-proxies-samples" target="11" />
+      <module name="samples" target="11" />
     </bytecodeTargetLevel>
   </component>
   <component name="CopyrightManager" default="infoq2020">
@@ -28,9 +28,9 @@
     <file url="file://$PROJECT_DIR$" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/benchmark" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/benchmark/src/main/java" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/chapters/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/core" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/core/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/samples/src/main/java" charset="UTF-8" />
   </component>
   <component name="InspectionProjectProfileManager">
     <profile version="1.0" is_locked="true">
@@ -3199,9 +3199,9 @@
     <option name="ADDITIONAL_OPTIONS_STRING" value="-Xlint:all" />
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
       <module name="benchmark" options="" />
-      <module name="chapters" options="" />
       <module name="core" options="" />
       <module name="dynamic-proxies-samples" options="" />
+      <module name="samples" options="" />
     </option>
   </component>
   <component name="MavenProjectsManager">
@@ -3375,9 +3375,9 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/benchmark/benchmark.iml" filepath="$PROJECT_DIR$/benchmark/benchmark.iml" />
-      <module fileurl="file://$PROJECT_DIR$/chapters/chapters.iml" filepath="$PROJECT_DIR$/chapters/chapters.iml" group="dynamic-proxies-samples and modules" />
       <module fileurl="file://$PROJECT_DIR$/core/core.iml" filepath="$PROJECT_DIR$/core/core.iml" group="dynamic-proxies-samples and modules" />
       <module fileurl="file://$PROJECT_DIR$/dynamic-proxies-samples.iml" filepath="$PROJECT_DIR$/dynamic-proxies-samples.iml" group="dynamic-proxies-samples and modules" />
+      <module fileurl="file://$PROJECT_DIR$/samples/samples.iml" filepath="$PROJECT_DIR$/samples/samples.iml" group="dynamic-proxies-samples and modules" />
     </modules>
   </component>
   <component name="ProjectRootManager" version="2" languageLevel="JDK_14" default="false" project-jdk-name="14" project-jdk-type="JavaSDK">
