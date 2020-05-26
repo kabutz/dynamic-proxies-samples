@@ -26,6 +26,9 @@ import org.junit.*;
 
 import static org.junit.Assert.*;
 
+// To run this test, add the following to the VM arguments:
+// --add-opens eu.javaspecialists.books.dynamicproxies.chapters/eu.javaspecialists.books.dynamicproxies.chapters.ch06=eu.javaspecialists.books.dynamicproxies
+// --add-reads eu.javaspecialists.books.dynamicproxies=eu.javaspecialists.books.dynamicproxies.chapters
 public class DeepCompositeTest {
   public interface TestComponent extends BaseComponent<TestComponent> {
     void accept(Visitor visitor);

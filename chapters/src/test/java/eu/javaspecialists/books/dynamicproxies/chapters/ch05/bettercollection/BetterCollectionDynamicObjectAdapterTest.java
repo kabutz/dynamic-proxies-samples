@@ -25,6 +25,8 @@ import org.junit.*;
 import java.util.*;
 import java.util.concurrent.*;
 
+// To run this test, add the following to the VM arguments:
+// --add-reads eu.javaspecialists.books.dynamicproxies=eu.javaspecialists.books.dynamicproxies.chapters
 @SuppressWarnings("unchecked")
 public class BetterCollectionDynamicObjectAdapterTest extends BetterCollectionTest {
   @Test

@@ -25,6 +25,8 @@ import org.junit.*;
 
 import java.util.*;
 
+// To run this test, add the following to the VM arguments:
+// --add-reads eu.javaspecialists.books.dynamicproxies=eu.javaspecialists.books.dynamicproxies.chapters
 public class DynamicFilterTest extends ImmutableCollectionTest {
   @Test
   public void testDynamicFilterCreation() throws NoSuchMethodException {

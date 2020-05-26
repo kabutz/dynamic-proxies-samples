@@ -25,4 +25,12 @@ module eu.javaspecialists.books.dynamicproxies.chapters {
   requires org.eclipse.jetty.server;
 
   requires eu.javaspecialists.books.dynamicproxies;
+
+  opens eu.javaspecialists.books.dynamicproxies.chapters.ch02.virtual to eu.javaspecialists.books.dynamicproxies;
+  opens eu.javaspecialists.books.dynamicproxies.chapters.ch03 to eu.javaspecialists.books.dynamicproxies;
+  opens eu.javaspecialists.books.dynamicproxies.chapters.ch03.gotchas to eu.javaspecialists.books.dynamicproxies;
+  opens eu.javaspecialists.books.dynamicproxies.chapters.ch04.immutablecollection to eu.javaspecialists.books.dynamicproxies;
+  opens eu.javaspecialists.books.dynamicproxies.chapters.ch05.bettercollection to eu.javaspecialists.books.dynamicproxies;
+  opens eu.javaspecialists.books.dynamicproxies.chapters.ch05.singer to eu.javaspecialists.books.dynamicproxies;
+  opens eu.javaspecialists.books.dynamicproxies.chapters.ch06.contactdynamic to eu.javaspecialists.books.dynamicproxies;
 }

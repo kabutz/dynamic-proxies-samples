@@ -59,7 +59,6 @@
                         <id>default-testCompile</id>
                         <configuration>
                             <compilerArgs>
-                                <compilerArg>--add-modules=java.sql</compilerArg>
                                 <compilerArg>--add-modules=java.compiler</compilerArg>
                             </compilerArgs>
                         </configuration>
@@ -70,7 +69,7 @@
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-surefire-plugin</artifactId>
                 <configuration>
-                    <argLine>--add-opens java.base/java.lang=eu.javaspecialists.books.dynamicproxies --add-reads eu.javaspecialists.books.dynamicproxies=java.sql</argLine>
+                    <argLine>--add-opens eu.javaspecialists.books.dynamicproxies.chapters/eu.javaspecialists.books.dynamicproxies.chapters.ch06=eu.javaspecialists.books.dynamicproxies --add-reads eu.javaspecialists.books.dynamicproxies=eu.javaspecialists.books.dynamicproxies.chapters</argLine>
                 </configuration>
             </plugin>
         </plugins>
