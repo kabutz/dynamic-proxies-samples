@@ -20,7 +20,7 @@
 
 package eu.javaspecialists.books.dynamicproxies.ch03.benchmarks.enhancedstream;
 
-import eu.javaspecialists.books.dynamicproxies.ch03.enhancedstream.*;
+import eu.javaspecialists.books.dynamicproxies.samples.ch03.enhancedstream.*;
 import org.openjdk.jmh.annotations.*;
 import org.openjdk.jmh.runner.*;
 import org.openjdk.jmh.runner.options.*;

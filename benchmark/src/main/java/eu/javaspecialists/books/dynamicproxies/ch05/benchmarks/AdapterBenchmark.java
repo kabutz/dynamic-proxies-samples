@@ -20,7 +20,7 @@
 
 package eu.javaspecialists.books.dynamicproxies.ch05.benchmarks;
 
-import eu.javaspecialists.books.dynamicproxies.ch05.bettercollection.*;
+import eu.javaspecialists.books.dynamicproxies.samples.ch05.bettercollection.*;
 import org.openjdk.jmh.annotations.*;
 
 import java.util.*;
