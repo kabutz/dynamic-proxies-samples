@@ -43,6 +43,7 @@
     <modules>
         <module>core</module>
         <module>samples</module>
+        <module>benchmark</module>
     </modules>
 
     <scm>
@@ -160,20 +161,12 @@
 
     <profiles>
         <profile>
-            <id>run-benchmarks</id>
-            <modules>
-                <module>benchmark</module>
-            </modules>
-        </profile>
-        <profile>
             <id>ossrh</id>
             <build>
                 <plugins>
                     <plugin>
-                        <groupId>org.apache.maven.plugins
-                        </groupId>
-                        <artifactId>maven-source-plugin
-                        </artifactId>
+                        <groupId>org.apache.maven.plugins</groupId>
+                        <artifactId>maven-source-plugin</artifactId>
                         <executions>
                             <execution>
                                 <id>attach-sources</id>
@@ -185,10 +178,8 @@
                         </executions>
                     </plugin>
                     <plugin>
-                        <groupId>org.apache.maven.plugins
-                        </groupId>
-                        <artifactId>maven-javadoc-plugin
-                        </artifactId>
+                        <groupId>org.apache.maven.plugins</groupId>
+                        <artifactId>maven-javadoc-plugin</artifactId>
                         <executions>
                             <execution>
                                 <id>attach-javadocs</id>

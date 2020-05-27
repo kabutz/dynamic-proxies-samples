@@ -17,6 +17,9 @@ Two commits will be added similar to:
 
 * [maven-release-plugin] prepare release dynamic-proxies-samples-1.0.0
 * [maven-release-plugin] prepare for next development
+
+(To do a dry run without these commits, add `-DdryRun=true`
+and to clean up after a dry run, use `mvn -P ossrh release:clean`)
  
 Step 2 sends the release to Maven Central.
 
