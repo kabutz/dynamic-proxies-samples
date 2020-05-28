@@ -76,7 +76,10 @@
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-surefire-plugin</artifactId>
                 <configuration>
-                    <argLine>--add-opens eu.javaspecialists.books.dynamicproxies.samples/eu.javaspecialists.books.dynamicproxies.samples.ch06=eu.javaspecialists.books.dynamicproxies --add-reads eu.javaspecialists.books.dynamicproxies=eu.javaspecialists.books.dynamicproxies.samples</argLine>
+                    <argLine>
+                        --add-opens eu.javaspecialists.books.dynamicproxies.samples/eu.javaspecialists.books.dynamicproxies.samples.ch06=eu.javaspecialists.books.dynamicproxies
+                        --add-reads eu.javaspecialists.books.dynamicproxies=eu.javaspecialists.books.dynamicproxies.samples
+                    </argLine>
                 </configuration>
             </plugin>
 
