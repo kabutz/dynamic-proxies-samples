@@ -25,35 +25,33 @@ import org.junit.*;
 
 import java.lang.reflect.*;
 import java.text.*;
-import java.time.*;
 import java.util.*;
 import java.util.function.*;
 
 import static org.junit.Assert.*;
 
 public class VTableTest {
-  // TODO --- to be improved START
-  interface ISODateParser {
-    LocalDate parse(String date) throws ParseException;
+  public interface Subject {
+    void request(String s);
   }
-  public static class RealISODateParser implements ISODateParser {
-    public LocalDate parse(String date) {
-      return LocalDate.now();
+  public static class RealSubject implements Subject {
+    @Override
+    public void request(String s) {
+      // Implementation not needed for the test
     }
   }
-  // TODO --- to be improved END
 
   @Test
   public void testSimpleVTable() throws ReflectiveOperationException {
     VTable vt = VTables.newVTableExcludingObjectMethods(
-        RealISODateParser.class, ISODateParser.class
+        RealSubject.class, Subject.class
     );
     assertEquals(1, vt.size());
 
-    Method subjectMethod = ISODateParser.class.getMethod(
-        "parse", String.class);
-    Method realSubjectMethod = RealISODateParser.class.getMethod(
-        "parse", String.class);
+    Method subjectMethod = Subject.class.getMethod(
+        "request", String.class);
+    Method realSubjectMethod = RealSubject.class.getMethod(
+        "request", String.class);
     Method lookup = vt.lookup(subjectMethod);
     assertEquals(lookup, realSubjectMethod);
     assertFalse(isOverloaded(vt, subjectMethod));
@@ -62,15 +60,15 @@ public class VTableTest {
   @Test
   public void testVTableIncludingObjectMethods() throws ReflectiveOperationException {
     VTable vt = VTables.newVTable(
-        RealISODateParser.class, ISODateParser.class
+        RealSubject.class, Subject.class
     );
 
     assertEquals(4, vt.size());
 
-    Method subjectMethod = ISODateParser.class.getMethod(
-        "parse", String.class);
-    Method realSubjectMethod = RealISODateParser.class.getMethod(
-        "parse", String.class);
+    Method subjectMethod = Subject.class.getMethod(
+        "request", String.class);
+    Method realSubjectMethod = RealSubject.class.getMethod(
+        "request", String.class);
     Method lookup = vt.lookup(subjectMethod);
     assertEquals(lookup, realSubjectMethod);
     assertFalse(isOverloaded(vt, subjectMethod));
@@ -293,11 +291,13 @@ public class VTableTest {
                               .invoke(child, (Object[]) null));
   }
 
-  // TODO --- to be improved START
-  interface BetterCollection<E> extends Collection<E> {
+  public interface BetterCollection<E> extends Collection<E> {
+    @Override
     E[] toArray();
     default void forEachFiltered(Predicate<? super E> predicate,
-                                 Consumer<? super E> action) {}
+                                 Consumer<? super E> action) {
+      // Implementation not needed for the test
+    }
   }
   public static class AdaptationObject<E> {
     private final Collection<E> adaptee;
@@ -314,7 +314,6 @@ public class VTableTest {
       return adaptee.add(e);
     }
   }
-  // TODO --- to be improved END
 
   @Test
   public void objectAdapterTest() {
@@ -342,6 +341,7 @@ public class VTableTest {
     VTable defaultVT = VTables.newDefaultMethodVTable(target);
     System.out.println("defaultVT:");
     defaultVT.streamDefaultMethods().forEach(System.out::println);
+    assertEquals(7, defaultVT.streamDefaultMethods().count());
   }
 
   public static class AllSupplier<E> {
