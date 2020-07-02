@@ -77,10 +77,10 @@ public class BenchmarkRunner {
                 "-XX:+UseParallelGC",
                 "-Deu.javaspecialists.books.dynamicproxies" +
                     ".util.MethodTurboBooster.disabled=false")
-            .warmupIterations(5)
-            .warmupTime(TimeValue.seconds(3))
-            .measurementIterations(10)
-            .measurementTime(TimeValue.seconds(3))
+            .warmupIterations(50)
+            .warmupTime(TimeValue.seconds(1))
+            .measurementIterations(50)
+            .measurementTime(TimeValue.seconds(1))
             .build()).run();
     new Runner(
         new OptionsBuilder()
@@ -90,10 +90,10 @@ public class BenchmarkRunner {
                 "-XX:+UseParallelGC",
                 "-Deu.javaspecialists.books.dynamicproxies" +
                     ".util.MethodTurboBooster.disabled=true")
-            .warmupIterations(5)
-            .warmupTime(TimeValue.seconds(3))
-            .measurementIterations(10)
-            .measurementTime(TimeValue.seconds(3))
+            .warmupIterations(50)
+            .warmupTime(TimeValue.seconds(1))
+            .measurementIterations(50)
+            .measurementTime(TimeValue.seconds(1))
             .build()).run();
   }
 }

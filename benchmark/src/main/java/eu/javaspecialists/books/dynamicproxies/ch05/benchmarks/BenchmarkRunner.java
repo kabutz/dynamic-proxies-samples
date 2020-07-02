@@ -56,6 +56,7 @@ public class BenchmarkRunner {
             .measurementTime(TimeValue.seconds(1))
             .addProfiler("gc")
             .build()).run();
+
     new Runner(
         new OptionsBuilder()
             .include(name)
@@ -64,10 +65,23 @@ public class BenchmarkRunner {
                 "-XX:+UseParallelGC",
                 "-Deu.javaspecialists.books.dynamicproxies" +
                     ".util.ParameterTypesFetcher.enabled=true")
-            .warmupIterations(5)
-            .warmupTime(TimeValue.seconds(3))
-            .measurementIterations(10)
-            .measurementTime(TimeValue.seconds(3))
+            .warmupIterations(50)
+            .warmupTime(TimeValue.seconds(1))
+            .measurementIterations(50)
+            .measurementTime(TimeValue.seconds(1))
+            .build()).run();
+    new Runner(
+        new OptionsBuilder()
+            .include(name)
+            .forks(3)
+            .jvmArgsAppend(
+                "-XX:+UseParallelGC",
+                "-Deu.javaspecialists.books.dynamicproxies" +
+                    ".util.ParameterTypesFetcher.enabled=false")
+            .warmupIterations(50)
+            .warmupTime(TimeValue.seconds(1))
+            .measurementIterations(50)
+            .measurementTime(TimeValue.seconds(1))
             .build()).run();
   }
 }
