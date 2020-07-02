@@ -81,6 +81,10 @@ public final class MethodKey implements Comparable<MethodKey> {
     return false;
   }
 
+  /**
+   * Convenience method for quickly matching a Method to our
+   * MethodKey.
+   */
   public boolean matches(Method method) {
     return name == method.getName() &&
                equalParamTypes(paramTypes,
