@@ -81,6 +81,12 @@ public final class MethodKey implements Comparable<MethodKey> {
     return false;
   }
 
+  public boolean matches(Method method) {
+    return name == method.getName() &&
+               equalParamTypes(paramTypes,
+                   ParameterTypesFetcher.get(method));
+  }
+
   @Override
   public int hashCode() {
     return name.hashCode() + paramTypes.length;

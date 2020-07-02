@@ -78,4 +78,38 @@ public class MethodKeyTest {
       fail("Expected NullPointerException");
     } catch(NullPointerException expected) {}
   }
+
+  @Test
+  public void matches() throws ReflectiveOperationException {
+    checkMatches(Object.class, "hashCode");
+    checkMatches(Object.class, "equals", Object.class);
+    checkMatches(List.class, "set", int.class, Object.class);
+
+    Method ourHashCodeMethod = getClass().getMethod("hashCode");
+    MethodKey ourMethodKey = new MethodKey(ourHashCodeMethod);
+    assertEquals(ourMethodKey, new MethodKey(Object.class, "hashCode"));
+
+    MethodKey objectMethodKey = new MethodKey(Object.class.getMethod("hashCode"));
+    assertEquals(objectMethodKey, new MethodKey(Object.class, "hashCode"));
+
+    assertEquals(ourMethodKey, objectMethodKey);
+
+    assertTrue(objectMethodKey.matches(Object.class.getMethod("hashCode")));
+    assertTrue(ourMethodKey.matches(Object.class.getMethod("hashCode")));
+    assertTrue(objectMethodKey.matches(getClass().getMethod("hashCode")));
+    assertTrue(ourMethodKey.matches(getClass().getMethod("hashCode")));
+  }
+
+  @Override
+  public int hashCode() {
+    return 0;
+  }
+
+  private void checkMatches(Class<?> clazz, String methodName, Class<?>... parameterTypes) throws ReflectiveOperationException {
+    Method method = clazz.getMethod(methodName, parameterTypes);
+    MethodKey methodKey = new MethodKey(method);
+    assertEquals(methodKey, new MethodKey(clazz, methodName, parameterTypes));
+    assertTrue(methodKey.matches(method));
+    assertTrue(methodKey.matches(clazz.getMethod(methodName, parameterTypes)));
+  }
 }
