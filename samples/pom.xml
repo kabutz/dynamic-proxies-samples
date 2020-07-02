@@ -79,6 +79,8 @@
                     <argLine>
                         --add-opens eu.javaspecialists.books.dynamicproxies.samples/eu.javaspecialists.books.dynamicproxies.samples.ch06=eu.javaspecialists.books.dynamicproxies
                         --add-reads eu.javaspecialists.books.dynamicproxies=eu.javaspecialists.books.dynamicproxies.samples
+                        --add-opens java.base/java.util=eu.javaspecialists.books.dynamicproxies
+                        --add-opens java.base/java.lang=eu.javaspecialists.books.dynamicproxies
                     </argLine>
                 </configuration>
             </plugin>
