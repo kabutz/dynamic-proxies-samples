@@ -24,6 +24,7 @@ import org.junit.*;
 
 import java.lang.reflect.*;
 import java.util.*;
+import java.util.function.*;
 import java.util.stream.*;
 
 import static org.junit.Assert.*;
@@ -111,5 +112,15 @@ public class MethodKeyTest {
     assertEquals(methodKey, new MethodKey(clazz, methodName, parameterTypes));
     assertTrue(methodKey.matches(method));
     assertTrue(methodKey.matches(clazz.getMethod(methodName, parameterTypes)));
+  }
+
+  @Test
+  public void testInterningMethodNames() throws ReflectiveOperationException {
+    Method m1 = Collection.class.getMethod("toArray");
+    Method m2 = Collection.class.getMethod("toArray", Object[].class);
+    Method m3 = Collection.class.getMethod("toArray", IntFunction.class);
+
+    assertSame(m1.getName(), m2.getName());
+    assertSame(m1.getName(), m3.getName());
   }
 }
