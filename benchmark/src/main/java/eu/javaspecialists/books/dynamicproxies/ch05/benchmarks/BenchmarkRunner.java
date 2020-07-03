@@ -57,6 +57,38 @@ public class BenchmarkRunner {
             .addProfiler("gc")
             .build()).run();
 
+    // ParameterTypesFetcher=false
+    // Object Allocation with Escape Analysis ON
+    new Runner(
+        new OptionsBuilder()
+            .include(name)
+            .forks(1)
+            .jvmArgsAppend(
+                "-XX:+DoEscapeAnalysis", "-XX:+UseParallelGC",
+                "-Deu.javaspecialists.books.dynamicproxies" +
+                    ".util.ParameterTypesFetcher.enabled=false")
+            .warmupIterations(3)
+            .warmupTime(TimeValue.seconds(1))
+            .measurementIterations(3)
+            .measurementTime(TimeValue.seconds(1))
+            .addProfiler("gc")
+            .build()).run();
+    // Object Allocation with Escape Analysis OFF
+    new Runner(
+        new OptionsBuilder()
+            .include(name)
+            .forks(1)
+            .jvmArgsAppend(
+                "-XX:-DoEscapeAnalysis", "-XX:+UseParallelGC",
+                "-Deu.javaspecialists.books.dynamicproxies" +
+                    ".util.ParameterTypesFetcher.enabled=false")
+            .warmupIterations(3)
+            .warmupTime(TimeValue.seconds(1))
+            .measurementIterations(3)
+            .measurementTime(TimeValue.seconds(1))
+            .addProfiler("gc")
+            .build()).run();
+
     new Runner(
         new OptionsBuilder()
             .include(name)
