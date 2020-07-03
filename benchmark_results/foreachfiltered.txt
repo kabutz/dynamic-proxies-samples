@@ -1,0 +1,618 @@
+[0.008s][info][gc] Using G1
+[0.024s][info][gc] Periodic GC disabled
+[0.354s][info][gc] GC(0) Pause Young (Normal) (G1 Evacuation Pause) 25M->4M(516M) 3.209ms
+[0.673s][info][gc] GC(1) Pause Young (Normal) (G1 Evacuation Pause) 36M->6M(516M) 2.785ms
+[INFO] Scanning for projects...
+[INFO] Inspecting build with total of 4 modules...
+[INFO] Installing Nexus Staging features:
+[INFO]   ... total of 4 executions of maven-deploy-plugin replaced with nexus-staging-maven-plugin
+[INFO] ------------------------------------------------------------------------
+[INFO] Reactor Build Order:
+[INFO] 
+[INFO] eu.javaspecialists.books.dynamicproxies:dynamic-proxies-samples    [pom]
+[INFO] core                                                               [jar]
+[INFO] samples                                                            [jar]
+[INFO] benchmark                                                          [jar]
+[INFO] 
+[INFO] --< eu.javaspecialists.books.dynamicproxies:dynamic-proxies-samples >---
+[INFO] Building eu.javaspecialists.books.dynamicproxies:dynamic-proxies-samples 1.3.8-SNAPSHOT [1/4]
+[INFO] --------------------------------[ pom ]---------------------------------
+[INFO] 
+[INFO] --- maven-clean-plugin:3.1.0:clean (default-clean) @ dynamic-proxies-samples ---
+[INFO] 
+[INFO] ------------< eu.javaspecialists.books.dynamicproxies:core >------------
+[INFO] Building core 1.3.8-SNAPSHOT                                       [2/4]
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] --- maven-clean-plugin:3.1.0:clean (default-clean) @ core ---
+[INFO] Deleting /Users/heinz/Dropbox (HIC Straws)/heinz/git/hexie/dynamic-proxies-mini-book-infoq/dynamic-proxies-samples/core/target
+[INFO] 
+[INFO] --- maven-resources-plugin:3.1.0:resources (default-resources) @ core ---
+[INFO] Using 'UTF-8' encoding to copy filtered resources.
+[INFO] skip non existing resourceDirectory /Users/heinz/Dropbox (HIC Straws)/heinz/git/hexie/dynamic-proxies-mini-book-infoq/dynamic-proxies-samples/core/src/main/resources
+[INFO] 
+[INFO] --- maven-compiler-plugin:3.8.1:compile (default-compile) @ core ---
+[INFO] Changes detected - recompiling the module!
+[INFO] Compiling 20 source files to /Users/heinz/Dropbox (HIC Straws)/heinz/git/hexie/dynamic-proxies-mini-book-infoq/dynamic-proxies-samples/core/target/classes
+[1.723s][info][gc] GC(2) Pause Young (Concurrent Start) (Metadata GC Threshold) 131M->14M(516M) 7.756ms
+[1.723s][info][gc] GC(3) Concurrent Cycle
+[1.733s][info][gc] GC(3) Pause Remark 15M->15M(68M) 4.945ms
+[1.734s][info][gc] GC(3) Pause Cleanup 15M->15M(68M) 0.111ms
+[1.734s][info][gc] GC(3) Concurrent Cycle 11.064ms
+[2.169s][info][gc] GC(4) Pause Young (Normal) (G1 Evacuation Pause) 40M->20M(68M) 15.299ms
+[WARNING] system modules path not set in conjunction with -source 11
+[INFO] 
+[INFO] --- maven-resources-plugin:3.1.0:testResources (default-testResources) @ core ---
+[2.654s][info][gc] GC(5) Pause Young (Normal) (G1 Evacuation Pause) 44M->22M(290M) 6.345ms
+[INFO] Using 'UTF-8' encoding to copy filtered resources.
+[INFO] skip non existing resourceDirectory /Users/heinz/Dropbox (HIC Straws)/heinz/git/hexie/dynamic-proxies-mini-book-infoq/dynamic-proxies-samples/core/src/test/resources
+[INFO] 
+[INFO] --- maven-compiler-plugin:3.8.1:testCompile (default-testCompile) @ core ---
+[INFO] Changes detected - recompiling the module!
+[INFO] Compiling 12 source files to /Users/heinz/Dropbox (HIC Straws)/heinz/git/hexie/dynamic-proxies-mini-book-infoq/dynamic-proxies-samples/core/target/test-classes
+[WARNING] system modules path not set in conjunction with -source 11
+[INFO] /Users/heinz/Dropbox (HIC Straws)/heinz/git/hexie/dynamic-proxies-mini-book-infoq/dynamic-proxies-samples/core/src/test/java/eu/javaspecialists/books/dynamicproxies/SerializableTest.java: /Users/heinz/Dropbox (HIC Straws)/heinz/git/hexie/dynamic-proxies-mini-book-infoq/dynamic-proxies-samples/core/src/test/java/eu/javaspecialists/books/dynamicproxies/SerializableTest.java uses unchecked or unsafe operations.
+[INFO] /Users/heinz/Dropbox (HIC Straws)/heinz/git/hexie/dynamic-proxies-mini-book-infoq/dynamic-proxies-samples/core/src/test/java/eu/javaspecialists/books/dynamicproxies/SerializableTest.java: Recompile with -Xlint:unchecked for details.
+[INFO] 
+[INFO] --- maven-surefire-plugin:3.0.0-M4:test (default-test) @ core ---
+[INFO] Tests are skipped.
+[INFO] 
+[INFO] --- maven-jar-plugin:3.2.0:jar (default-jar) @ core ---
+[INFO] Building jar: /Users/heinz/Dropbox (HIC Straws)/heinz/git/hexie/dynamic-proxies-mini-book-infoq/dynamic-proxies-samples/core/target/eu.javaspecialists.books.dynamicproxies-core-1.3.8-SNAPSHOT.jar
+[INFO] 
+[INFO] ----------< eu.javaspecialists.books.dynamicproxies:samples >-----------
+[INFO] Building samples 1.3.8-SNAPSHOT                                    [3/4]
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] --- maven-clean-plugin:3.1.0:clean (default-clean) @ samples ---
+[INFO] Deleting /Users/heinz/Dropbox (HIC Straws)/heinz/git/hexie/dynamic-proxies-mini-book-infoq/dynamic-proxies-samples/samples/target
+[INFO] 
+[INFO] --- maven-resources-plugin:3.1.0:resources (default-resources) @ samples ---
+[INFO] Using 'UTF-8' encoding to copy filtered resources.
+[INFO] skip non existing resourceDirectory /Users/heinz/Dropbox (HIC Straws)/heinz/git/hexie/dynamic-proxies-mini-book-infoq/dynamic-proxies-samples/samples/src/main/resources
+[INFO] 
+[INFO] --- maven-compiler-plugin:3.8.1:compile (default-compile) @ samples ---
+[INFO] Changes detected - recompiling the module!
+[INFO] Compiling 95 source files to /Users/heinz/Dropbox (HIC Straws)/heinz/git/hexie/dynamic-proxies-mini-book-infoq/dynamic-proxies-samples/samples/target/classes
+[4.263s][info][gc] GC(6) Pause Young (Normal) (G1 Evacuation Pause) 184M->35M(290M) 11.380ms
+[WARNING] system modules path not set in conjunction with -source 11
+[INFO] /Users/heinz/Dropbox (HIC Straws)/heinz/git/hexie/dynamic-proxies-mini-book-infoq/dynamic-proxies-samples/samples/src/main/java/eu/javaspecialists/books/dynamicproxies/samples/ch03/gotchas/RecastingExceptionsBroken.java: Some input files use unchecked or unsafe operations.
+[INFO] /Users/heinz/Dropbox (HIC Straws)/heinz/git/hexie/dynamic-proxies-mini-book-infoq/dynamic-proxies-samples/samples/src/main/java/eu/javaspecialists/books/dynamicproxies/samples/ch03/gotchas/RecastingExceptionsBroken.java: Recompile with -Xlint:unchecked for details.
+[INFO] 
+[INFO] --- maven-resources-plugin:3.1.0:testResources (default-testResources) @ samples ---
+[INFO] Using 'UTF-8' encoding to copy filtered resources.
+[INFO] skip non existing resourceDirectory /Users/heinz/Dropbox (HIC Straws)/heinz/git/hexie/dynamic-proxies-mini-book-infoq/dynamic-proxies-samples/samples/src/test/resources
+[INFO] 
+[INFO] --- maven-compiler-plugin:3.8.1:testCompile (default-testCompile) @ samples ---
+[INFO] Changes detected - recompiling the module!
+[INFO] Compiling 55 source files to /Users/heinz/Dropbox (HIC Straws)/heinz/git/hexie/dynamic-proxies-mini-book-infoq/dynamic-proxies-samples/samples/target/test-classes
+[WARNING] system modules path not set in conjunction with -source 11
+[INFO] /Users/heinz/Dropbox (HIC Straws)/heinz/git/hexie/dynamic-proxies-mini-book-infoq/dynamic-proxies-samples/samples/src/test/java/eu/javaspecialists/books/dynamicproxies/samples/ch05/bettercollection/BetterCollectionTest.java: Some input files use unchecked or unsafe operations.
+[INFO] /Users/heinz/Dropbox (HIC Straws)/heinz/git/hexie/dynamic-proxies-mini-book-infoq/dynamic-proxies-samples/samples/src/test/java/eu/javaspecialists/books/dynamicproxies/samples/ch05/bettercollection/BetterCollectionTest.java: Recompile with -Xlint:unchecked for details.
+[INFO] 
+[INFO] --- maven-surefire-plugin:3.0.0-M4:test (default-test) @ samples ---
+[INFO] Tests are skipped.
+[INFO] 
+[INFO] --- maven-jar-plugin:3.2.0:jar (default-jar) @ samples ---
+[INFO] Building jar: /Users/heinz/Dropbox (HIC Straws)/heinz/git/hexie/dynamic-proxies-mini-book-infoq/dynamic-proxies-samples/samples/target/eu.javaspecialists.books.dynamicproxies-samples-1.3.8-SNAPSHOT.jar
+[INFO] 
+[INFO] ---------< eu.javaspecialists.books.dynamicproxies:benchmark >----------
+[INFO] Building benchmark 1.3.8-SNAPSHOT                                  [4/4]
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] --- maven-clean-plugin:3.1.0:clean (default-clean) @ benchmark ---
+[INFO] Deleting /Users/heinz/Dropbox (HIC Straws)/heinz/git/hexie/dynamic-proxies-mini-book-infoq/dynamic-proxies-samples/benchmark/target
+[INFO] 
+[INFO] --- maven-resources-plugin:3.1.0:resources (default-resources) @ benchmark ---
+[INFO] Using 'UTF-8' encoding to copy filtered resources.
+[INFO] skip non existing resourceDirectory /Users/heinz/Dropbox (HIC Straws)/heinz/git/hexie/dynamic-proxies-mini-book-infoq/dynamic-proxies-samples/benchmark/src/main/resources
+[INFO] 
+[INFO] --- maven-compiler-plugin:3.8.1:compile (default-compile) @ benchmark ---
+[INFO] Changes detected - recompiling the module!
+[INFO] Compiling 13 source files to /Users/heinz/Dropbox (HIC Straws)/heinz/git/hexie/dynamic-proxies-mini-book-infoq/dynamic-proxies-samples/benchmark/target/classes
+[5.356s][info][gc] GC(7) Pause Young (Concurrent Start) (Metadata GC Threshold) 178M->35M(290M) 8.442ms
+[5.356s][info][gc] GC(8) Concurrent Cycle
+[5.387s][info][gc] GC(8) Pause Remark 38M->38M(148M) 9.125ms
+[5.400s][info][gc] GC(8) Pause Cleanup 40M->40M(148M) 0.089ms
+[5.401s][info][gc] GC(8) Concurrent Cycle 45.725ms
+[5.811s][info][gc] GC(9) Pause Young (Normal) (G1 Evacuation Pause) 115M->42M(148M) 13.389ms
+[6.216s][info][gc] GC(10) Pause Young (Normal) (G1 Evacuation Pause) 104M->44M(178M) 11.669ms
+[WARNING] system modules path not set in conjunction with -source 11
+[INFO] /Users/heinz/Dropbox (HIC Straws)/heinz/git/hexie/dynamic-proxies-mini-book-infoq/dynamic-proxies-samples/benchmark/src/main/java/eu/javaspecialists/books/dynamicproxies/ch03/benchmarks/enhancedstream/EnhancedStreamBenchmark.java: /Users/heinz/Dropbox (HIC Straws)/heinz/git/hexie/dynamic-proxies-mini-book-infoq/dynamic-proxies-samples/benchmark/src/main/java/eu/javaspecialists/books/dynamicproxies/ch03/benchmarks/enhancedstream/EnhancedStreamBenchmark.java uses unchecked or unsafe operations.
+[INFO] /Users/heinz/Dropbox (HIC Straws)/heinz/git/hexie/dynamic-proxies-mini-book-infoq/dynamic-proxies-samples/benchmark/src/main/java/eu/javaspecialists/books/dynamicproxies/ch03/benchmarks/enhancedstream/EnhancedStreamBenchmark.java: Recompile with -Xlint:unchecked for details.
+[INFO] 
+[INFO] --- maven-resources-plugin:3.1.0:testResources (default-testResources) @ benchmark ---
+[INFO] Using 'UTF-8' encoding to copy filtered resources.
+[INFO] skip non existing resourceDirectory /Users/heinz/Dropbox (HIC Straws)/heinz/git/hexie/dynamic-proxies-mini-book-infoq/dynamic-proxies-samples/benchmark/src/test/resources
+[INFO] 
+[INFO] --- maven-compiler-plugin:3.8.1:testCompile (default-testCompile) @ benchmark ---
+[INFO] No sources to compile
+[INFO] 
+[INFO] --- maven-surefire-plugin:3.0.0-M4:test (default-test) @ benchmark ---
+[INFO] Tests are skipped.
+[INFO] 
+[INFO] --- maven-jar-plugin:3.2.0:jar (default-jar) @ benchmark ---
+[INFO] Building jar: /Users/heinz/Dropbox (HIC Straws)/heinz/git/hexie/dynamic-proxies-mini-book-infoq/dynamic-proxies-samples/benchmark/target/eu.javaspecialists.books.dynamicproxies-benchmark-1.3.8-SNAPSHOT.jar
+[INFO] 
+[INFO] --- exec-maven-plugin:1.6.0:exec (default) @ benchmark ---
+# JMH version: 1.21
+# VM version: JDK 14.0.1, OpenJDK 64-Bit Server VM, 14.0.1+7
+# VM invoker: /Users/heinz/Dropbox (HIC Straws)/heinz/JavaVirtualMachines/openjdk-14.jdk/Contents/Home/bin/java
+# VM options: -XX:+DoEscapeAnalysis -XX:+UseParallelGC -Deu.javaspecialists.books.dynamicproxies.util.ParameterTypesFetcher.enabled=false
+# Warmup: 3 iterations, 1 s each
+# Measurement: 3 iterations, 1 s each
+# Timeout: 10 min per iteration
+# Threads: 1 thread, will synchronize iterations
+# Benchmark mode: Average time, time/op
+# Benchmark: eu.javaspecialists.books.dynamicproxies.ch05.benchmarks.AdapterBenchmark.dynamicObjectAdapterToArray
+
+# Run progress: 0,00% complete, ETA 00:00:06
+# Fork: 1 of 1
+# Warmup Iteration   1: WARNING: An illegal reflective access operation has occurred
+WARNING: Illegal reflective access using Lookup on eu.javaspecialists.books.dynamicproxies.util.VTable (file:/Users/heinz/Dropbox%20(HIC%20Straws)/heinz/git/hexie/dynamic-proxies-mini-book-infoq/dynamic-proxies-samples/core/target/eu.javaspecialists.books.dynamicproxies-core-1.3.8-SNAPSHOT.jar) to interface java.util.Collection
+WARNING: Please consider reporting this to the maintainers of eu.javaspecialists.books.dynamicproxies.util.VTable
+WARNING: Use --illegal-access=warn to enable warnings of further illegal reflective access operations
+WARNING: All illegal access operations will be denied in a future release
+60,004 ns/op
+# Warmup Iteration   2: 46,355 ns/op
+# Warmup Iteration   3: 43,682 ns/op
+Iteration   1: 44,737 ns/op
+                 ·gc.alloc.rate:                   1136,775 MB/sec
+                 ·gc.alloc.rate.norm:              80,015 B/op
+                 ·gc.churn.PS_Eden_Space:          1133,375 MB/sec
+                 ·gc.churn.PS_Eden_Space.norm:     79,776 B/op
+                 ·gc.churn.PS_Survivor_Space:      0,229 MB/sec
+                 ·gc.churn.PS_Survivor_Space.norm: 0,016 B/op
+                 ·gc.count:                        13,000 counts
+                 ·gc.time:                         3,000 ms
+
+Iteration   2: 43,838 ns/op
+                 ·gc.alloc.rate:                   1159,798 MB/sec
+                 ·gc.alloc.rate.norm:              80,022 B/op
+                 ·gc.churn.PS_Eden_Space:          1183,925 MB/sec
+                 ·gc.churn.PS_Eden_Space.norm:     81,687 B/op
+                 ·gc.churn.PS_Survivor_Space:      0,416 MB/sec
+                 ·gc.churn.PS_Survivor_Space.norm: 0,029 B/op
+                 ·gc.count:                        19,000 counts
+                 ·gc.time:                         5,000 ms
+
+Iteration   3: 42,715 ns/op
+                 ·gc.alloc.rate:                   1188,650 MB/sec
+                 ·gc.alloc.rate.norm:              80,031 B/op
+                 ·gc.churn.PS_Eden_Space:          1210,264 MB/sec
+                 ·gc.churn.PS_Eden_Space.norm:     81,486 B/op
+                 ·gc.churn.PS_Survivor_Space:      0,477 MB/sec
+                 ·gc.churn.PS_Survivor_Space.norm: 0,032 B/op
+                 ·gc.count:                        28,000 counts
+                 ·gc.time:                         6,000 ms
+
+
+
+Result "eu.javaspecialists.books.dynamicproxies.ch05.benchmarks.AdapterBenchmark.dynamicObjectAdapterToArray":
+  43,763 ±(99.9%) 18,478 ns/op [Average]
+  (min, avg, max) = (42,715, 43,763, 44,737), stdev = 1,013
+  CI (99.9%): [25,285, 62,241] (assumes normal distribution)
+
+Secondary result "eu.javaspecialists.books.dynamicproxies.ch05.benchmarks.AdapterBenchmark.dynamicObjectAdapterToArray:·gc.alloc.rate":
+  1161,741 ±(99.9%) 474,190 MB/sec [Average]
+  (min, avg, max) = (1136,775, 1161,741, 1188,650), stdev = 25,992
+  CI (99.9%): [687,551, 1635,931] (assumes normal distribution)
+
+Secondary result "eu.javaspecialists.books.dynamicproxies.ch05.benchmarks.AdapterBenchmark.dynamicObjectAdapterToArray:·gc.alloc.rate.norm":
+  80,023 ±(99.9%) 0,144 B/op [Average]
+  (min, avg, max) = (80,015, 80,023, 80,031), stdev = 0,008
+  CI (99.9%): [79,879, 80,167] (assumes normal distribution)
+
+Secondary result "eu.javaspecialists.books.dynamicproxies.ch05.benchmarks.AdapterBenchmark.dynamicObjectAdapterToArray:·gc.churn.PS_Eden_Space":
+  1175,854 ±(99.9%) 712,864 MB/sec [Average]
+  (min, avg, max) = (1133,375, 1175,854, 1210,264), stdev = 39,074
+  CI (99.9%): [462,990, 1888,719] (assumes normal distribution)
+
+Secondary result "eu.javaspecialists.books.dynamicproxies.ch05.benchmarks.AdapterBenchmark.dynamicObjectAdapterToArray:·gc.churn.PS_Eden_Space.norm":
+  80,983 ±(99.9%) 19,157 B/op [Average]
+  (min, avg, max) = (79,776, 80,983, 81,687), stdev = 1,050
+  CI (99.9%): [61,827, 100,140] (assumes normal distribution)
+
+Secondary result "eu.javaspecialists.books.dynamicproxies.ch05.benchmarks.AdapterBenchmark.dynamicObjectAdapterToArray:·gc.churn.PS_Survivor_Space":
+  0,374 ±(99.9%) 2,353 MB/sec [Average]
+  (min, avg, max) = (0,229, 0,374, 0,477), stdev = 0,129
+  CI (99.9%): [≈ 0, 2,727] (assumes normal distribution)
+
+Secondary result "eu.javaspecialists.books.dynamicproxies.ch05.benchmarks.AdapterBenchmark.dynamicObjectAdapterToArray:·gc.churn.PS_Survivor_Space.norm":
+  0,026 ±(99.9%) 0,153 B/op [Average]
+  (min, avg, max) = (0,016, 0,026, 0,032), stdev = 0,008
+  CI (99.9%): [≈ 0, 0,179] (assumes normal distribution)
+
+Secondary result "eu.javaspecialists.books.dynamicproxies.ch05.benchmarks.AdapterBenchmark.dynamicObjectAdapterToArray:·gc.count":
+  60,000 ±(99.9%) 0,001 counts [Sum]
+  (min, avg, max) = (13,000, 20,000, 28,000), stdev = 7,550
+  CI (99.9%): [60,000, 60,000] (assumes normal distribution)
+
+Secondary result "eu.javaspecialists.books.dynamicproxies.ch05.benchmarks.AdapterBenchmark.dynamicObjectAdapterToArray:·gc.time":
+  14,000 ±(99.9%) 0,001 ms [Sum]
+  (min, avg, max) = (3,000, 4,667, 6,000), stdev = 1,528
+  CI (99.9%): [14,000, 14,000] (assumes normal distribution)
+
+
+# Run complete. Total time: 00:00:09
+
+REMEMBER: The numbers below are just data. To gain reusable insights, you need to follow up on
+why the numbers are the way they are. Use profilers (see -prof, -lprof), design factorial
+experiments, perform baseline and negative tests that provide experimental control, make sure
+the benchmarking environment is safe on JVM/OS/HW level, ask for reviews from the domain experts.
+Do not assume the numbers tell you what you want them to tell.
+
+Benchmark                                                                      Mode  Cnt     Score     Error   Units
+AdapterBenchmark.dynamicObjectAdapterToArray                                   avgt    3    43,763 ±  18,478   ns/op
+AdapterBenchmark.dynamicObjectAdapterToArray:·gc.alloc.rate                    avgt    3  1161,741 ± 474,190  MB/sec
+AdapterBenchmark.dynamicObjectAdapterToArray:·gc.alloc.rate.norm               avgt    3    80,023 ±   0,144    B/op
+AdapterBenchmark.dynamicObjectAdapterToArray:·gc.churn.PS_Eden_Space           avgt    3  1175,854 ± 712,864  MB/sec
+AdapterBenchmark.dynamicObjectAdapterToArray:·gc.churn.PS_Eden_Space.norm      avgt    3    80,983 ±  19,157    B/op
+AdapterBenchmark.dynamicObjectAdapterToArray:·gc.churn.PS_Survivor_Space       avgt    3     0,374 ±   2,353  MB/sec
+AdapterBenchmark.dynamicObjectAdapterToArray:·gc.churn.PS_Survivor_Space.norm  avgt    3     0,026 ±   0,153    B/op
+AdapterBenchmark.dynamicObjectAdapterToArray:·gc.count                         avgt    3    60,000            counts
+AdapterBenchmark.dynamicObjectAdapterToArray:·gc.time                          avgt    3    14,000                ms
+# JMH version: 1.21
+# VM version: JDK 14.0.1, OpenJDK 64-Bit Server VM, 14.0.1+7
+# VM invoker: /Users/heinz/Dropbox (HIC Straws)/heinz/JavaVirtualMachines/openjdk-14.jdk/Contents/Home/bin/java
+# VM options: -XX:-DoEscapeAnalysis -XX:+UseParallelGC -Deu.javaspecialists.books.dynamicproxies.util.ParameterTypesFetcher.enabled=false
+# Warmup: 3 iterations, 1 s each
+# Measurement: 3 iterations, 1 s each
+# Timeout: 10 min per iteration
+# Threads: 1 thread, will synchronize iterations
+# Benchmark mode: Average time, time/op
+# Benchmark: eu.javaspecialists.books.dynamicproxies.ch05.benchmarks.AdapterBenchmark.dynamicObjectAdapterToArray
+
+# Run progress: 0,00% complete, ETA 00:00:06
+# Fork: 1 of 1
+# Warmup Iteration   1: WARNING: An illegal reflective access operation has occurred
+WARNING: Illegal reflective access using Lookup on eu.javaspecialists.books.dynamicproxies.util.VTable (file:/Users/heinz/Dropbox%20(HIC%20Straws)/heinz/git/hexie/dynamic-proxies-mini-book-infoq/dynamic-proxies-samples/core/target/eu.javaspecialists.books.dynamicproxies-core-1.3.8-SNAPSHOT.jar) to interface java.util.Collection
+WARNING: Please consider reporting this to the maintainers of eu.javaspecialists.books.dynamicproxies.util.VTable
+WARNING: Use --illegal-access=warn to enable warnings of further illegal reflective access operations
+WARNING: All illegal access operations will be denied in a future release
+56,061 ns/op
+# Warmup Iteration   2: 44,623 ns/op
+# Warmup Iteration   3: 40,460 ns/op
+Iteration   1: 39,947 ns/op
+                 ·gc.alloc.rate:                   1273,759 MB/sec
+                 ·gc.alloc.rate.norm:              80,007 B/op
+                 ·gc.churn.PS_Eden_Space:          1121,132 MB/sec
+                 ·gc.churn.PS_Eden_Space.norm:     70,420 B/op
+                 ·gc.churn.PS_Survivor_Space:      0,166 MB/sec
+                 ·gc.churn.PS_Survivor_Space.norm: 0,010 B/op
+                 ·gc.count:                        5,000 counts
+                 ·gc.time:                         1,000 ms
+
+Iteration   2: 40,065 ns/op
+                 ·gc.alloc.rate:                   1269,277 MB/sec
+                 ·gc.alloc.rate.norm:              80,008 B/op
+                 ·gc.churn.PS_Eden_Space:          1429,620 MB/sec
+                 ·gc.churn.PS_Eden_Space.norm:     90,116 B/op
+                 ·gc.churn.PS_Survivor_Space:      0,249 MB/sec
+                 ·gc.churn.PS_Survivor_Space.norm: 0,016 B/op
+                 ·gc.count:                        8,000 counts
+                 ·gc.time:                         2,000 ms
+
+Iteration   3: 48,807 ns/op
+                 ·gc.alloc.rate:                   1038,484 MB/sec
+                 ·gc.alloc.rate.norm:              80,009 B/op
+                 ·gc.churn.PS_Eden_Space:          980,648 MB/sec
+                 ·gc.churn.PS_Eden_Space.norm:     75,553 B/op
+                 ·gc.churn.PS_Survivor_Space:      0,187 MB/sec
+                 ·gc.churn.PS_Survivor_Space.norm: 0,014 B/op
+                 ·gc.count:                        7,000 counts
+                 ·gc.time:                         2,000 ms
+
+
+
+Result "eu.javaspecialists.books.dynamicproxies.ch05.benchmarks.AdapterBenchmark.dynamicObjectAdapterToArray":
+  42,939 ±(99.9%) 92,704 ns/op [Average]
+  (min, avg, max) = (39,947, 42,939, 48,807), stdev = 5,081
+  CI (99.9%): [≈ 0, 135,643] (assumes normal distribution)
+
+Secondary result "eu.javaspecialists.books.dynamicproxies.ch05.benchmarks.AdapterBenchmark.dynamicObjectAdapterToArray:·gc.alloc.rate":
+  1193,840 ±(99.9%) 2454,894 MB/sec [Average]
+  (min, avg, max) = (1038,484, 1193,840, 1273,759), stdev = 134,561
+  CI (99.9%): [≈ 0, 3648,735] (assumes normal distribution)
+
+Secondary result "eu.javaspecialists.books.dynamicproxies.ch05.benchmarks.AdapterBenchmark.dynamicObjectAdapterToArray:·gc.alloc.rate.norm":
+  80,008 ±(99.9%) 0,023 B/op [Average]
+  (min, avg, max) = (80,007, 80,008, 80,009), stdev = 0,001
+  CI (99.9%): [79,985, 80,031] (assumes normal distribution)
+
+Secondary result "eu.javaspecialists.books.dynamicproxies.ch05.benchmarks.AdapterBenchmark.dynamicObjectAdapterToArray:·gc.churn.PS_Eden_Space":
+  1177,133 ±(99.9%) 4189,945 MB/sec [Average]
+  (min, avg, max) = (980,648, 1177,133, 1429,620), stdev = 229,665
+  CI (99.9%): [≈ 0, 5367,079] (assumes normal distribution)
+
+Secondary result "eu.javaspecialists.books.dynamicproxies.ch05.benchmarks.AdapterBenchmark.dynamicObjectAdapterToArray:·gc.churn.PS_Eden_Space.norm":
+  78,696 ±(99.9%) 186,398 B/op [Average]
+  (min, avg, max) = (70,420, 78,696, 90,116), stdev = 10,217
+  CI (99.9%): [≈ 0, 265,094] (assumes normal distribution)
+
+Secondary result "eu.javaspecialists.books.dynamicproxies.ch05.benchmarks.AdapterBenchmark.dynamicObjectAdapterToArray:·gc.churn.PS_Survivor_Space":
+  0,201 ±(99.9%) 0,790 MB/sec [Average]
+  (min, avg, max) = (0,166, 0,201, 0,249), stdev = 0,043
+  CI (99.9%): [≈ 0, 0,990] (assumes normal distribution)
+
+Secondary result "eu.javaspecialists.books.dynamicproxies.ch05.benchmarks.AdapterBenchmark.dynamicObjectAdapterToArray:·gc.churn.PS_Survivor_Space.norm":
+  0,014 ±(99.9%) 0,050 B/op [Average]
+  (min, avg, max) = (0,010, 0,014, 0,016), stdev = 0,003
+  CI (99.9%): [≈ 0, 0,064] (assumes normal distribution)
+
+Secondary result "eu.javaspecialists.books.dynamicproxies.ch05.benchmarks.AdapterBenchmark.dynamicObjectAdapterToArray:·gc.count":
+  20,000 ±(99.9%) 0,001 counts [Sum]
+  (min, avg, max) = (5,000, 6,667, 8,000), stdev = 1,528
+  CI (99.9%): [20,000, 20,000] (assumes normal distribution)
+
+Secondary result "eu.javaspecialists.books.dynamicproxies.ch05.benchmarks.AdapterBenchmark.dynamicObjectAdapterToArray:·gc.time":
+  5,000 ±(99.9%) 0,001 ms [Sum]
+  (min, avg, max) = (1,000, 1,667, 2,000), stdev = 0,577
+  CI (99.9%): [5,000, 5,000] (assumes normal distribution)
+
+
+# Run complete. Total time: 00:00:09
+
+REMEMBER: The numbers below are just data. To gain reusable insights, you need to follow up on
+why the numbers are the way they are. Use profilers (see -prof, -lprof), design factorial
+experiments, perform baseline and negative tests that provide experimental control, make sure
+the benchmarking environment is safe on JVM/OS/HW level, ask for reviews from the domain experts.
+Do not assume the numbers tell you what you want them to tell.
+
+Benchmark                                                                      Mode  Cnt     Score      Error   Units
+AdapterBenchmark.dynamicObjectAdapterToArray                                   avgt    3    42,939 ±   92,704   ns/op
+AdapterBenchmark.dynamicObjectAdapterToArray:·gc.alloc.rate                    avgt    3  1193,840 ± 2454,894  MB/sec
+AdapterBenchmark.dynamicObjectAdapterToArray:·gc.alloc.rate.norm               avgt    3    80,008 ±    0,023    B/op
+AdapterBenchmark.dynamicObjectAdapterToArray:·gc.churn.PS_Eden_Space           avgt    3  1177,133 ± 4189,945  MB/sec
+AdapterBenchmark.dynamicObjectAdapterToArray:·gc.churn.PS_Eden_Space.norm      avgt    3    78,696 ±  186,398    B/op
+AdapterBenchmark.dynamicObjectAdapterToArray:·gc.churn.PS_Survivor_Space       avgt    3     0,201 ±    0,790  MB/sec
+AdapterBenchmark.dynamicObjectAdapterToArray:·gc.churn.PS_Survivor_Space.norm  avgt    3     0,014 ±    0,050    B/op
+AdapterBenchmark.dynamicObjectAdapterToArray:·gc.count                         avgt    3    20,000             counts
+AdapterBenchmark.dynamicObjectAdapterToArray:·gc.time                          avgt    3     5,000                 ms
+# JMH version: 1.21
+# VM version: JDK 14.0.1, OpenJDK 64-Bit Server VM, 14.0.1+7
+# VM invoker: /Users/heinz/Dropbox (HIC Straws)/heinz/JavaVirtualMachines/openjdk-14.jdk/Contents/Home/bin/java
+# VM options: -XX:+DoEscapeAnalysis -XX:+UseParallelGC -Deu.javaspecialists.books.dynamicproxies.util.ParameterTypesFetcher.enabled=true
+# Warmup: 3 iterations, 1 s each
+# Measurement: 3 iterations, 1 s each
+# Timeout: 10 min per iteration
+# Threads: 1 thread, will synchronize iterations
+# Benchmark mode: Average time, time/op
+# Benchmark: eu.javaspecialists.books.dynamicproxies.ch05.benchmarks.AdapterBenchmark.dynamicObjectAdapterToArray
+
+# Run progress: 0,00% complete, ETA 00:00:06
+# Fork: 1 of 1
+# Warmup Iteration   1: WARNING: An illegal reflective access operation has occurred
+WARNING: Illegal reflective access using Lookup on eu.javaspecialists.books.dynamicproxies.util.ParameterTypesFetcher$FastParameterFetcher (file:/Users/heinz/Dropbox%20(HIC%20Straws)/heinz/git/hexie/dynamic-proxies-mini-book-infoq/dynamic-proxies-samples/core/target/eu.javaspecialists.books.dynamicproxies-core-1.3.8-SNAPSHOT.jar) to class java.lang.reflect.Method
+WARNING: Please consider reporting this to the maintainers of eu.javaspecialists.books.dynamicproxies.util.ParameterTypesFetcher$FastParameterFetcher
+WARNING: Use --illegal-access=warn to enable warnings of further illegal reflective access operations
+WARNING: All illegal access operations will be denied in a future release
+46,688 ns/op
+# Warmup Iteration   2: 39,159 ns/op
+# Warmup Iteration   3: 43,390 ns/op
+Iteration   1: 40,358 ns/op
+                 ·gc.alloc.rate:                   1006,420 MB/sec
+                 ·gc.alloc.rate.norm:              64,012 B/op
+                 ·gc.churn.PS_Eden_Space:          999,573 MB/sec
+                 ·gc.churn.PS_Eden_Space.norm:     63,576 B/op
+                 ·gc.churn.PS_Survivor_Space:      0,207 MB/sec
+                 ·gc.churn.PS_Survivor_Space.norm: 0,013 B/op
+                 ·gc.count:                        11,000 counts
+                 ·gc.time:                         3,000 ms
+
+Iteration   2: 39,796 ns/op
+                 ·gc.alloc.rate:                   1021,084 MB/sec
+                 ·gc.alloc.rate.norm:              64,017 B/op
+                 ·gc.churn.PS_Eden_Space:          1083,040 MB/sec
+                 ·gc.churn.PS_Eden_Space.norm:     67,901 B/op
+                 ·gc.churn.PS_Survivor_Space:      0,353 MB/sec
+                 ·gc.churn.PS_Survivor_Space.norm: 0,022 B/op
+                 ·gc.count:                        16,000 counts
+                 ·gc.time:                         3,000 ms
+
+Iteration   3: 36,070 ns/op
+                 ·gc.alloc.rate:                   1126,630 MB/sec
+                 ·gc.alloc.rate.norm:              64,022 B/op
+                 ·gc.churn.PS_Eden_Space:          1116,706 MB/sec
+                 ·gc.churn.PS_Eden_Space.norm:     63,458 B/op
+                 ·gc.churn.PS_Survivor_Space:      0,333 MB/sec
+                 ·gc.churn.PS_Survivor_Space.norm: 0,019 B/op
+                 ·gc.count:                        23,000 counts
+                 ·gc.time:                         5,000 ms
+
+
+
+Result "eu.javaspecialists.books.dynamicproxies.ch05.benchmarks.AdapterBenchmark.dynamicObjectAdapterToArray":
+  38,742 ±(99.9%) 42,518 ns/op [Average]
+  (min, avg, max) = (36,070, 38,742, 40,358), stdev = 2,331
+  CI (99.9%): [≈ 0, 81,260] (assumes normal distribution)
+
+Secondary result "eu.javaspecialists.books.dynamicproxies.ch05.benchmarks.AdapterBenchmark.dynamicObjectAdapterToArray:·gc.alloc.rate":
+  1051,378 ±(99.9%) 1196,452 MB/sec [Average]
+  (min, avg, max) = (1006,420, 1051,378, 1126,630), stdev = 65,582
+  CI (99.9%): [≈ 0, 2247,830] (assumes normal distribution)
+
+Secondary result "eu.javaspecialists.books.dynamicproxies.ch05.benchmarks.AdapterBenchmark.dynamicObjectAdapterToArray:·gc.alloc.rate.norm":
+  64,017 ±(99.9%) 0,093 B/op [Average]
+  (min, avg, max) = (64,012, 64,017, 64,022), stdev = 0,005
+  CI (99.9%): [63,924, 64,110] (assumes normal distribution)
+
+Secondary result "eu.javaspecialists.books.dynamicproxies.ch05.benchmarks.AdapterBenchmark.dynamicObjectAdapterToArray:·gc.churn.PS_Eden_Space":
+  1066,440 ±(99.9%) 1100,190 MB/sec [Average]
+  (min, avg, max) = (999,573, 1066,440, 1116,706), stdev = 60,305
+  CI (99.9%): [≈ 0, 2166,629] (assumes normal distribution)
+
+Secondary result "eu.javaspecialists.books.dynamicproxies.ch05.benchmarks.AdapterBenchmark.dynamicObjectAdapterToArray:·gc.churn.PS_Eden_Space.norm":
+  64,978 ±(99.9%) 46,190 B/op [Average]
+  (min, avg, max) = (63,458, 64,978, 67,901), stdev = 2,532
+  CI (99.9%): [18,789, 111,168] (assumes normal distribution)
+
+Secondary result "eu.javaspecialists.books.dynamicproxies.ch05.benchmarks.AdapterBenchmark.dynamicObjectAdapterToArray:·gc.churn.PS_Survivor_Space":
+  0,297 ±(99.9%) 1,439 MB/sec [Average]
+  (min, avg, max) = (0,207, 0,297, 0,353), stdev = 0,079
+  CI (99.9%): [≈ 0, 1,736] (assumes normal distribution)
+
+Secondary result "eu.javaspecialists.books.dynamicproxies.ch05.benchmarks.AdapterBenchmark.dynamicObjectAdapterToArray:·gc.churn.PS_Survivor_Space.norm":
+  0,018 ±(99.9%) 0,083 B/op [Average]
+  (min, avg, max) = (0,013, 0,018, 0,022), stdev = 0,005
+  CI (99.9%): [≈ 0, 0,101] (assumes normal distribution)
+
+Secondary result "eu.javaspecialists.books.dynamicproxies.ch05.benchmarks.AdapterBenchmark.dynamicObjectAdapterToArray:·gc.count":
+  50,000 ±(99.9%) 0,001 counts [Sum]
+  (min, avg, max) = (11,000, 16,667, 23,000), stdev = 6,028
+  CI (99.9%): [50,000, 50,000] (assumes normal distribution)
+
+Secondary result "eu.javaspecialists.books.dynamicproxies.ch05.benchmarks.AdapterBenchmark.dynamicObjectAdapterToArray:·gc.time":
+  11,000 ±(99.9%) 0,001 ms [Sum]
+  (min, avg, max) = (3,000, 3,667, 5,000), stdev = 1,155
+  CI (99.9%): [11,000, 11,000] (assumes normal distribution)
+
+
+# Run complete. Total time: 00:00:09
+
+REMEMBER: The numbers below are just data. To gain reusable insights, you need to follow up on
+why the numbers are the way they are. Use profilers (see -prof, -lprof), design factorial
+experiments, perform baseline and negative tests that provide experimental control, make sure
+the benchmarking environment is safe on JVM/OS/HW level, ask for reviews from the domain experts.
+Do not assume the numbers tell you what you want them to tell.
+
+Benchmark                                                                      Mode  Cnt     Score      Error   Units
+AdapterBenchmark.dynamicObjectAdapterToArray                                   avgt    3    38,742 ±   42,518   ns/op
+AdapterBenchmark.dynamicObjectAdapterToArray:·gc.alloc.rate                    avgt    3  1051,378 ± 1196,452  MB/sec
+AdapterBenchmark.dynamicObjectAdapterToArray:·gc.alloc.rate.norm               avgt    3    64,017 ±    0,093    B/op
+AdapterBenchmark.dynamicObjectAdapterToArray:·gc.churn.PS_Eden_Space           avgt    3  1066,440 ± 1100,190  MB/sec
+AdapterBenchmark.dynamicObjectAdapterToArray:·gc.churn.PS_Eden_Space.norm      avgt    3    64,978 ±   46,190    B/op
+AdapterBenchmark.dynamicObjectAdapterToArray:·gc.churn.PS_Survivor_Space       avgt    3     0,297 ±    1,439  MB/sec
+AdapterBenchmark.dynamicObjectAdapterToArray:·gc.churn.PS_Survivor_Space.norm  avgt    3     0,018 ±    0,083    B/op
+AdapterBenchmark.dynamicObjectAdapterToArray:·gc.count                         avgt    3    50,000             counts
+AdapterBenchmark.dynamicObjectAdapterToArray:·gc.time                          avgt    3    11,000                 ms
+# JMH version: 1.21
+# VM version: JDK 14.0.1, OpenJDK 64-Bit Server VM, 14.0.1+7
+# VM invoker: /Users/heinz/Dropbox (HIC Straws)/heinz/JavaVirtualMachines/openjdk-14.jdk/Contents/Home/bin/java
+# VM options: -XX:-DoEscapeAnalysis -XX:+UseParallelGC -Deu.javaspecialists.books.dynamicproxies.util.ParameterTypesFetcher.enabled=true
+# Warmup: 3 iterations, 1 s each
+# Measurement: 3 iterations, 1 s each
+# Timeout: 10 min per iteration
+# Threads: 1 thread, will synchronize iterations
+# Benchmark mode: Average time, time/op
+# Benchmark: eu.javaspecialists.books.dynamicproxies.ch05.benchmarks.AdapterBenchmark.dynamicObjectAdapterToArray
+
+# Run progress: 0,00% complete, ETA 00:00:06
+# Fork: 1 of 1
+# Warmup Iteration   1: WARNING: An illegal reflective access operation has occurred
+WARNING: Illegal reflective access using Lookup on eu.javaspecialists.books.dynamicproxies.util.ParameterTypesFetcher$FastParameterFetcher (file:/Users/heinz/Dropbox%20(HIC%20Straws)/heinz/git/hexie/dynamic-proxies-mini-book-infoq/dynamic-proxies-samples/core/target/eu.javaspecialists.books.dynamicproxies-core-1.3.8-SNAPSHOT.jar) to class java.lang.reflect.Method
+WARNING: Please consider reporting this to the maintainers of eu.javaspecialists.books.dynamicproxies.util.ParameterTypesFetcher$FastParameterFetcher
+WARNING: Use --illegal-access=warn to enable warnings of further illegal reflective access operations
+WARNING: All illegal access operations will be denied in a future release
+45,931 ns/op
+# Warmup Iteration   2: 47,232 ns/op
+# Warmup Iteration   3: 39,617 ns/op
+Iteration   1: 41,705 ns/op
+                 ·gc.alloc.rate:                   973,768 MB/sec
+                 ·gc.alloc.rate.norm:              64,006 B/op
+                 ·gc.churn.PS_Eden_Space:          1018,124 MB/sec
+                 ·gc.churn.PS_Eden_Space.norm:     66,921 B/op
+                 ·gc.churn.PS_Survivor_Space:      0,104 MB/sec
+                 ·gc.churn.PS_Survivor_Space.norm: 0,007 B/op
+                 ·gc.count:                        4,000 counts
+                 ·gc.time:                         1,000 ms
+
+Iteration   2: 38,314 ns/op
+                 ·gc.alloc.rate:                   1063,076 MB/sec
+                 ·gc.alloc.rate.norm:              64,005 B/op
+                 ·gc.churn.PS_Eden_Space:          1080,004 MB/sec
+                 ·gc.churn.PS_Eden_Space.norm:     65,024 B/op
+                 ·gc.churn.PS_Survivor_Space:      0,166 MB/sec
+                 ·gc.churn.PS_Survivor_Space.norm: 0,010 B/op
+                 ·gc.count:                        5,000 counts
+                 ·gc.time:                         1,000 ms
+
+Iteration   3: 37,187 ns/op
+                 ·gc.alloc.rate:                   1092,032 MB/sec
+                 ·gc.alloc.rate.norm:              64,007 B/op
+                 ·gc.churn.PS_Eden_Space:          1228,831 MB/sec
+                 ·gc.churn.PS_Eden_Space.norm:     72,025 B/op
+                 ·gc.churn.PS_Survivor_Space:      0,187 MB/sec
+                 ·gc.churn.PS_Survivor_Space.norm: 0,011 B/op
+                 ·gc.count:                        7,000 counts
+                 ·gc.time:                         2,000 ms
+
+
+
+Result "eu.javaspecialists.books.dynamicproxies.ch05.benchmarks.AdapterBenchmark.dynamicObjectAdapterToArray":
+  39,069 ±(99.9%) 42,894 ns/op [Average]
+  (min, avg, max) = (37,187, 39,069, 41,705), stdev = 2,351
+  CI (99.9%): [≈ 0, 81,962] (assumes normal distribution)
+
+Secondary result "eu.javaspecialists.books.dynamicproxies.ch05.benchmarks.AdapterBenchmark.dynamicObjectAdapterToArray:·gc.alloc.rate":
+  1042,959 ±(99.9%) 1124,641 MB/sec [Average]
+  (min, avg, max) = (973,768, 1042,959, 1092,032), stdev = 61,645
+  CI (99.9%): [≈ 0, 2167,600] (assumes normal distribution)
+
+Secondary result "eu.javaspecialists.books.dynamicproxies.ch05.benchmarks.AdapterBenchmark.dynamicObjectAdapterToArray:·gc.alloc.rate.norm":
+  64,006 ±(99.9%) 0,017 B/op [Average]
+  (min, avg, max) = (64,005, 64,006, 64,007), stdev = 0,001
+  CI (99.9%): [63,989, 64,023] (assumes normal distribution)
+
+Secondary result "eu.javaspecialists.books.dynamicproxies.ch05.benchmarks.AdapterBenchmark.dynamicObjectAdapterToArray:·gc.churn.PS_Eden_Space":
+  1108,986 ±(99.9%) 1975,827 MB/sec [Average]
+  (min, avg, max) = (1018,124, 1108,986, 1228,831), stdev = 108,302
+  CI (99.9%): [≈ 0, 3084,813] (assumes normal distribution)
+
+Secondary result "eu.javaspecialists.books.dynamicproxies.ch05.benchmarks.AdapterBenchmark.dynamicObjectAdapterToArray:·gc.churn.PS_Eden_Space.norm":
+  67,990 ±(99.9%) 66,055 B/op [Average]
+  (min, avg, max) = (65,024, 67,990, 72,025), stdev = 3,621
+  CI (99.9%): [1,935, 134,045] (assumes normal distribution)
+
+Secondary result "eu.javaspecialists.books.dynamicproxies.ch05.benchmarks.AdapterBenchmark.dynamicObjectAdapterToArray:·gc.churn.PS_Survivor_Space":
+  0,152 ±(99.9%) 0,791 MB/sec [Average]
+  (min, avg, max) = (0,104, 0,152, 0,187), stdev = 0,043
+  CI (99.9%): [≈ 0, 0,944] (assumes normal distribution)
+
+Secondary result "eu.javaspecialists.books.dynamicproxies.ch05.benchmarks.AdapterBenchmark.dynamicObjectAdapterToArray:·gc.churn.PS_Survivor_Space.norm":
+  0,009 ±(99.9%) 0,040 B/op [Average]
+  (min, avg, max) = (0,007, 0,009, 0,011), stdev = 0,002
+  CI (99.9%): [≈ 0, 0,049] (assumes normal distribution)
+
+Secondary result "eu.javaspecialists.books.dynamicproxies.ch05.benchmarks.AdapterBenchmark.dynamicObjectAdapterToArray:·gc.count":
+  16,000 ±(99.9%) 0,001 counts [Sum]
+  (min, avg, max) = (4,000, 5,333, 7,000), stdev = 1,528
+  CI (99.9%): [16,000, 16,000] (assumes normal distribution)
+
+Secondary result "eu.javaspecialists.books.dynamicproxies.ch05.benchmarks.AdapterBenchmark.dynamicObjectAdapterToArray:·gc.time":
+  4,000 ±(99.9%) 0,001 ms [Sum]
+  (min, avg, max) = (1,000, 1,333, 2,000), stdev = 0,577
+  CI (99.9%): [4,000, 4,000] (assumes normal distribution)
+
+
+# Run complete. Total time: 00:00:09
+
+REMEMBER: The numbers below are just data. To gain reusable insights, you need to follow up on
+why the numbers are the way they are. Use profilers (see -prof, -lprof), design factorial
+experiments, perform baseline and negative tests that provide experimental control, make sure
+the benchmarking environment is safe on JVM/OS/HW level, ask for reviews from the domain experts.
+Do not assume the numbers tell you what you want them to tell.
+
+Benchmark                                                                      Mode  Cnt     Score      Error   Units
+AdapterBenchmark.dynamicObjectAdapterToArray                                   avgt    3    39,069 ±   42,894   ns/op
+AdapterBenchmark.dynamicObjectAdapterToArray:·gc.alloc.rate                    avgt    3  1042,959 ± 1124,641  MB/sec
+AdapterBenchmark.dynamicObjectAdapterToArray:·gc.alloc.rate.norm               avgt    3    64,006 ±    0,017    B/op
+AdapterBenchmark.dynamicObjectAdapterToArray:·gc.churn.PS_Eden_Space           avgt    3  1108,986 ± 1975,827  MB/sec
+AdapterBenchmark.dynamicObjectAdapterToArray:·gc.churn.PS_Eden_Space.norm      avgt    3    67,990 ±   66,055    B/op
+AdapterBenchmark.dynamicObjectAdapterToArray:·gc.churn.PS_Survivor_Space       avgt    3     0,152 ±    0,791  MB/sec
+AdapterBenchmark.dynamicObjectAdapterToArray:·gc.churn.PS_Survivor_Space.norm  avgt    3     0,009 ±    0,040    B/op
+AdapterBenchmark.dynamicObjectAdapterToArray:·gc.count                         avgt    3    16,000             counts
+AdapterBenchmark.dynamicObjectAdapterToArray:·gc.time                          avgt    3     4,000                 ms
+[INFO] ------------------------------------------------------------------------
+[INFO] Reactor Summary for eu.javaspecialists.books.dynamicproxies:dynamic-proxies-samples 1.3.8-SNAPSHOT:
+[INFO] 
+[INFO] eu.javaspecialists.books.dynamicproxies:dynamic-proxies-samples SUCCESS [  0.084 s]
+[INFO] core ............................................... SUCCESS [  2.323 s]
+[INFO] samples ............................................ SUCCESS [  1.550 s]
+[INFO] benchmark .......................................... SUCCESS [ 39.811 s]
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD SUCCESS
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time:  44.219 s
+[INFO] Finished at: 2020-07-03T08:43:50+03:00
+[INFO] ------------------------------------------------------------------------

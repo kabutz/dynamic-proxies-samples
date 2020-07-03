@@ -1,0 +1,1974 @@
+[0.011s][info][gc] Using G1
+[0.029s][info][gc] Periodic GC disabled
+[0.506s][info][gc] GC(0) Pause Young (Normal) (G1 Evacuation Pause) 25M->4M(516M) 9.719ms
+[INFO] Scanning for projects...
+[INFO] Inspecting build with total of 4 modules...
+[INFO] Installing Nexus Staging features:
+[INFO]   ... total of 4 executions of maven-deploy-plugin replaced with nexus-staging-maven-plugin
+[INFO] ------------------------------------------------------------------------
+[INFO] Reactor Build Order:
+[INFO] 
+[INFO] eu.javaspecialists.books.dynamicproxies:dynamic-proxies-samples    [pom]
+[INFO] core                                                               [jar]
+[INFO] samples                                                            [jar]
+[INFO] benchmark                                                          [jar]
+[INFO] 
+[INFO] --< eu.javaspecialists.books.dynamicproxies:dynamic-proxies-samples >---
+[INFO] Building eu.javaspecialists.books.dynamicproxies:dynamic-proxies-samples 1.3.8-SNAPSHOT [1/4]
+[INFO] --------------------------------[ pom ]---------------------------------
+[INFO] 
+[INFO] --- maven-clean-plugin:3.1.0:clean (default-clean) @ dynamic-proxies-samples ---
+[INFO] 
+[INFO] ------------< eu.javaspecialists.books.dynamicproxies:core >------------
+[INFO] Building core 1.3.8-SNAPSHOT                                       [2/4]
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] --- maven-clean-plugin:3.1.0:clean (default-clean) @ core ---
+[INFO] Deleting /Users/heinz/Dropbox (HIC Straws)/heinz/git/hexie/dynamic-proxies-mini-book-infoq/dynamic-proxies-samples/core/target
+[INFO] 
+[INFO] --- maven-resources-plugin:3.1.0:resources (default-resources) @ core ---
+[INFO] Using 'UTF-8' encoding to copy filtered resources.
+[INFO] skip non existing resourceDirectory /Users/heinz/Dropbox (HIC Straws)/heinz/git/hexie/dynamic-proxies-mini-book-infoq/dynamic-proxies-samples/core/src/main/resources
+[INFO] 
+[INFO] --- maven-compiler-plugin:3.8.1:compile (default-compile) @ core ---
+[INFO] Changes detected - recompiling the module!
+[INFO] Compiling 20 source files to /Users/heinz/Dropbox (HIC Straws)/heinz/git/hexie/dynamic-proxies-mini-book-infoq/dynamic-proxies-samples/core/target/classes
+[2.237s][info][gc] GC(1) Pause Young (Concurrent Start) (Metadata GC Threshold) 162M->14M(516M) 28.682ms
+[2.237s][info][gc] GC(2) Concurrent Cycle
+[2.248s][info][gc] GC(2) Pause Remark 15M->15M(68M) 3.797ms
+[2.249s][info][gc] GC(2) Pause Cleanup 15M->15M(68M) 0.079ms
+[2.249s][info][gc] GC(2) Concurrent Cycle 12.419ms
+[2.693s][info][gc] GC(3) Pause Young (Normal) (G1 Evacuation Pause) 40M->20M(68M) 15.112ms
+[WARNING] bootstrap class path not set in conjunction with -source 11
+[INFO] 
+[INFO] --- maven-resources-plugin:3.1.0:testResources (default-testResources) @ core ---
+[INFO] Using 'UTF-8' encoding to copy filtered resources.
+[INFO] skip non existing resourceDirectory /Users/heinz/Dropbox (HIC Straws)/heinz/git/hexie/dynamic-proxies-mini-book-infoq/dynamic-proxies-samples/core/src/test/resources
+[INFO] 
+[INFO] --- maven-compiler-plugin:3.8.1:testCompile (default-testCompile) @ core ---
+[INFO] Changes detected - recompiling the module!
+[INFO] Compiling 12 source files to /Users/heinz/Dropbox (HIC Straws)/heinz/git/hexie/dynamic-proxies-mini-book-infoq/dynamic-proxies-samples/core/target/test-classes
+[3.225s][info][gc] GC(4) Pause Young (Normal) (G1 Evacuation Pause) 44M->22M(68M) 7.686ms
+[3.499s][info][gc] GC(5) Pause Young (Normal) (G1 Evacuation Pause) 46M->27M(290M) 7.630ms
+[WARNING] bootstrap class path not set in conjunction with -source 11
+[INFO] /Users/heinz/Dropbox (HIC Straws)/heinz/git/hexie/dynamic-proxies-mini-book-infoq/dynamic-proxies-samples/core/src/test/java/eu/javaspecialists/books/dynamicproxies/SerializableTest.java: /Users/heinz/Dropbox (HIC Straws)/heinz/git/hexie/dynamic-proxies-mini-book-infoq/dynamic-proxies-samples/core/src/test/java/eu/javaspecialists/books/dynamicproxies/SerializableTest.java uses unchecked or unsafe operations.
+[INFO] /Users/heinz/Dropbox (HIC Straws)/heinz/git/hexie/dynamic-proxies-mini-book-infoq/dynamic-proxies-samples/core/src/test/java/eu/javaspecialists/books/dynamicproxies/SerializableTest.java: Recompile with -Xlint:unchecked for details.
+[INFO] 
+[INFO] --- maven-surefire-plugin:3.0.0-M4:test (default-test) @ core ---
+[INFO] Tests are skipped.
+[INFO] 
+[INFO] --- maven-jar-plugin:3.2.0:jar (default-jar) @ core ---
+[INFO] Building jar: /Users/heinz/Dropbox (HIC Straws)/heinz/git/hexie/dynamic-proxies-mini-book-infoq/dynamic-proxies-samples/core/target/eu.javaspecialists.books.dynamicproxies-core-1.3.8-SNAPSHOT.jar
+[INFO] 
+[INFO] ----------< eu.javaspecialists.books.dynamicproxies:samples >-----------
+[INFO] Building samples 1.3.8-SNAPSHOT                                    [3/4]
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] --- maven-clean-plugin:3.1.0:clean (default-clean) @ samples ---
+[INFO] Deleting /Users/heinz/Dropbox (HIC Straws)/heinz/git/hexie/dynamic-proxies-mini-book-infoq/dynamic-proxies-samples/samples/target
+[INFO] 
+[INFO] --- maven-resources-plugin:3.1.0:resources (default-resources) @ samples ---
+[INFO] Using 'UTF-8' encoding to copy filtered resources.
+[INFO] skip non existing resourceDirectory /Users/heinz/Dropbox (HIC Straws)/heinz/git/hexie/dynamic-proxies-mini-book-infoq/dynamic-proxies-samples/samples/src/main/resources
+[INFO] 
+[INFO] --- maven-compiler-plugin:3.8.1:compile (default-compile) @ samples ---
+[INFO] Changes detected - recompiling the module!
+[INFO] Compiling 95 source files to /Users/heinz/Dropbox (HIC Straws)/heinz/git/hexie/dynamic-proxies-mini-book-infoq/dynamic-proxies-samples/samples/target/classes
+[4.350s][info][gc] GC(6) Pause Young (Normal) (G1 Evacuation Pause) 147M->37M(290M) 11.858ms
+[WARNING] bootstrap class path not set in conjunction with -source 11
+[INFO] /Users/heinz/Dropbox (HIC Straws)/heinz/git/hexie/dynamic-proxies-mini-book-infoq/dynamic-proxies-samples/samples/src/main/java/eu/javaspecialists/books/dynamicproxies/samples/ch03/gotchas/RecastingExceptionsBroken.java: Some input files use unchecked or unsafe operations.
+[INFO] /Users/heinz/Dropbox (HIC Straws)/heinz/git/hexie/dynamic-proxies-mini-book-infoq/dynamic-proxies-samples/samples/src/main/java/eu/javaspecialists/books/dynamicproxies/samples/ch03/gotchas/RecastingExceptionsBroken.java: Recompile with -Xlint:unchecked for details.
+[INFO] 
+[INFO] --- maven-resources-plugin:3.1.0:testResources (default-testResources) @ samples ---
+[INFO] Using 'UTF-8' encoding to copy filtered resources.
+[INFO] skip non existing resourceDirectory /Users/heinz/Dropbox (HIC Straws)/heinz/git/hexie/dynamic-proxies-mini-book-infoq/dynamic-proxies-samples/samples/src/test/resources
+[INFO] 
+[INFO] --- maven-compiler-plugin:3.8.1:testCompile (default-testCompile) @ samples ---
+[INFO] Changes detected - recompiling the module!
+[INFO] Compiling 55 source files to /Users/heinz/Dropbox (HIC Straws)/heinz/git/hexie/dynamic-proxies-mini-book-infoq/dynamic-proxies-samples/samples/target/test-classes
+[WARNING] bootstrap class path not set in conjunction with -source 11
+[INFO] /Users/heinz/Dropbox (HIC Straws)/heinz/git/hexie/dynamic-proxies-mini-book-infoq/dynamic-proxies-samples/samples/src/test/java/eu/javaspecialists/books/dynamicproxies/samples/ch05/bettercollection/BetterCollectionTest.java: Some input files use unchecked or unsafe operations.
+[INFO] /Users/heinz/Dropbox (HIC Straws)/heinz/git/hexie/dynamic-proxies-mini-book-infoq/dynamic-proxies-samples/samples/src/test/java/eu/javaspecialists/books/dynamicproxies/samples/ch05/bettercollection/BetterCollectionTest.java: Recompile with -Xlint:unchecked for details.
+[INFO] 
+[INFO] --- maven-surefire-plugin:3.0.0-M4:test (default-test) @ samples ---
+[INFO] Tests are skipped.
+[INFO] 
+[INFO] --- maven-jar-plugin:3.2.0:jar (default-jar) @ samples ---
+[INFO] Building jar: /Users/heinz/Dropbox (HIC Straws)/heinz/git/hexie/dynamic-proxies-mini-book-infoq/dynamic-proxies-samples/samples/target/eu.javaspecialists.books.dynamicproxies-samples-1.3.8-SNAPSHOT.jar
+[5.270s][info][gc] GC(7) Pause Young (Normal) (G1 Evacuation Pause) 163M->52M(290M) 11.318ms
+[INFO] 
+[INFO] ---------< eu.javaspecialists.books.dynamicproxies:benchmark >----------
+[INFO] Building benchmark 1.3.8-SNAPSHOT                                  [4/4]
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] --- maven-clean-plugin:3.1.0:clean (default-clean) @ benchmark ---
+[INFO] Deleting /Users/heinz/Dropbox (HIC Straws)/heinz/git/hexie/dynamic-proxies-mini-book-infoq/dynamic-proxies-samples/benchmark/target
+[INFO] 
+[INFO] --- maven-resources-plugin:3.1.0:resources (default-resources) @ benchmark ---
+[INFO] Using 'UTF-8' encoding to copy filtered resources.
+[INFO] skip non existing resourceDirectory /Users/heinz/Dropbox (HIC Straws)/heinz/git/hexie/dynamic-proxies-mini-book-infoq/dynamic-proxies-samples/benchmark/src/main/resources
+[INFO] 
+[INFO] --- maven-compiler-plugin:3.8.1:compile (default-compile) @ benchmark ---
+[INFO] Changes detected - recompiling the module!
+[INFO] Compiling 13 source files to /Users/heinz/Dropbox (HIC Straws)/heinz/git/hexie/dynamic-proxies-mini-book-infoq/dynamic-proxies-samples/benchmark/target/classes
+[5.929s][info][gc] GC(8) Pause Young (Normal) (G1 Evacuation Pause) 172M->49M(290M) 8.139ms
+[6.019s][info][gc] GC(9) Pause Young (Concurrent Start) (Metadata GC Threshold) 65M->50M(348M) 30.133ms
+[6.019s][info][gc] GC(10) Concurrent Cycle
+[6.047s][info][gc] GC(10) Pause Remark 54M->54M(194M) 5.253ms
+[6.075s][info][gc] GC(10) Pause Cleanup 59M->59M(194M) 0.099ms
+[6.077s][info][gc] GC(10) Concurrent Cycle 57.723ms
+[6.839s][info][gc] GC(11) Pause Young (Prepare Mixed) (G1 Evacuation Pause) 164M->54M(194M) 7.926ms
+[6.867s][info][gc] GC(12) Pause Young (Mixed) (G1 Evacuation Pause) 56M->43M(194M) 14.565ms
+[WARNING] bootstrap class path not set in conjunction with -source 11
+[INFO] /Users/heinz/Dropbox (HIC Straws)/heinz/git/hexie/dynamic-proxies-mini-book-infoq/dynamic-proxies-samples/benchmark/src/main/java/eu/javaspecialists/books/dynamicproxies/ch03/benchmarks/enhancedstream/EnhancedStreamBenchmark.java: /Users/heinz/Dropbox (HIC Straws)/heinz/git/hexie/dynamic-proxies-mini-book-infoq/dynamic-proxies-samples/benchmark/src/main/java/eu/javaspecialists/books/dynamicproxies/ch03/benchmarks/enhancedstream/EnhancedStreamBenchmark.java uses unchecked or unsafe operations.
+[INFO] /Users/heinz/Dropbox (HIC Straws)/heinz/git/hexie/dynamic-proxies-mini-book-infoq/dynamic-proxies-samples/benchmark/src/main/java/eu/javaspecialists/books/dynamicproxies/ch03/benchmarks/enhancedstream/EnhancedStreamBenchmark.java: Recompile with -Xlint:unchecked for details.
+[INFO] 
+[INFO] --- maven-resources-plugin:3.1.0:testResources (default-testResources) @ benchmark ---
+[INFO] Using 'UTF-8' encoding to copy filtered resources.
+[INFO] skip non existing resourceDirectory /Users/heinz/Dropbox (HIC Straws)/heinz/git/hexie/dynamic-proxies-mini-book-infoq/dynamic-proxies-samples/benchmark/src/test/resources
+[INFO] 
+[INFO] --- maven-compiler-plugin:3.8.1:testCompile (default-testCompile) @ benchmark ---
+[INFO] No sources to compile
+[INFO] 
+[INFO] --- maven-surefire-plugin:3.0.0-M4:test (default-test) @ benchmark ---
+[INFO] Tests are skipped.
+[INFO] 
+[INFO] --- maven-jar-plugin:3.2.0:jar (default-jar) @ benchmark ---
+[INFO] Building jar: /Users/heinz/Dropbox (HIC Straws)/heinz/git/hexie/dynamic-proxies-mini-book-infoq/dynamic-proxies-samples/benchmark/target/eu.javaspecialists.books.dynamicproxies-benchmark-1.3.8-SNAPSHOT.jar
+[INFO] 
+[INFO] --- exec-maven-plugin:1.6.0:exec (bla) @ benchmark ---
+# JMH version: 1.21
+# VM version: JDK 13.0.3, OpenJDK 64-Bit Server VM, 13.0.3+3-MTS
+# VM invoker: /Users/heinz/Dropbox (HIC Straws)/heinz/JavaVirtualMachines/zulu-13.jdk/Contents/Home/bin/java
+# VM options: -XX:+DoEscapeAnalysis -XX:+UseParallelGC
+# Warmup: 3 iterations, 1 s each
+# Measurement: 3 iterations, 1 s each
+# Timeout: 10 min per iteration
+# Threads: 1 thread, will synchronize iterations
+# Benchmark mode: Average time, time/op
+# Benchmark: eu.javaspecialists.books.dynamicproxies.ch03.benchmarks.MethodCallBenchmark.dynamicProxyDirectCallIncrement
+
+# Run progress: 0,00% complete, ETA 00:00:12
+# Fork: 1 of 1
+# Warmup Iteration   1: 11,819 ns/op
+# Warmup Iteration   2: 11,750 ns/op
+# Warmup Iteration   3: 8,034 ns/op
+Iteration   1: 8,002 ns/op
+                 ·gc.alloc.rate:                   1904,143 MB/sec
+                 ·gc.alloc.rate.norm:              24,000 B/op
+                 ·gc.churn.PS_Eden_Space:          1569,897 MB/sec
+                 ·gc.churn.PS_Eden_Space.norm:     19,787 B/op
+                 ·gc.churn.PS_Survivor_Space:      0,166 MB/sec
+                 ·gc.churn.PS_Survivor_Space.norm: 0,002 B/op
+                 ·gc.count:                        3,000 counts
+                 ·gc.time:                         1,000 ms
+
+Iteration   2: 8,008 ns/op
+                 ·gc.alloc.rate:                   1899,321 MB/sec
+                 ·gc.alloc.rate.norm:              24,000 B/op
+                 ·gc.churn.PS_Eden_Space:          2199,865 MB/sec
+                 ·gc.churn.PS_Eden_Space.norm:     27,798 B/op
+                 ·gc.churn.PS_Survivor_Space:      0,166 MB/sec
+                 ·gc.churn.PS_Survivor_Space.norm: 0,002 B/op
+                 ·gc.count:                        5,000 counts
+                 ·gc.time:                         2,000 ms
+
+Iteration   3: 8,009 ns/op
+                 ·gc.alloc.rate:                   1897,942 MB/sec
+                 ·gc.alloc.rate.norm:              24,000 B/op
+                 ·gc.churn.PS_Eden_Space:          1787,643 MB/sec
+                 ·gc.churn.PS_Eden_Space.norm:     22,605 B/op
+                 ·gc.churn.PS_Survivor_Space:      0,124 MB/sec
+                 ·gc.churn.PS_Survivor_Space.norm: 0,002 B/op
+                 ·gc.count:                        5,000 counts
+                 ·gc.time:                         2,000 ms
+
+
+
+Result "eu.javaspecialists.books.dynamicproxies.ch03.benchmarks.MethodCallBenchmark.dynamicProxyDirectCallIncrement":
+  8,006 ±(99.9%) 0,073 ns/op [Average]
+  (min, avg, max) = (8,002, 8,006, 8,009), stdev = 0,004
+  CI (99.9%): [7,934, 8,079] (assumes normal distribution)
+
+Secondary result "eu.javaspecialists.books.dynamicproxies.ch03.benchmarks.MethodCallBenchmark.dynamicProxyDirectCallIncrement:·gc.alloc.rate":
+  1900,469 ±(99.9%) 59,399 MB/sec [Average]
+  (min, avg, max) = (1897,942, 1900,469, 1904,143), stdev = 3,256
+  CI (99.9%): [1841,070, 1959,867] (assumes normal distribution)
+
+Secondary result "eu.javaspecialists.books.dynamicproxies.ch03.benchmarks.MethodCallBenchmark.dynamicProxyDirectCallIncrement:·gc.alloc.rate.norm":
+  24,000 ±(99.9%) 0,001 B/op [Average]
+  (min, avg, max) = (24,000, 24,000, 24,000), stdev = 0,001
+  CI (99.9%): [24,000, 24,000] (assumes normal distribution)
+
+Secondary result "eu.javaspecialists.books.dynamicproxies.ch03.benchmarks.MethodCallBenchmark.dynamicProxyDirectCallIncrement:·gc.churn.PS_Eden_Space":
+  1852,468 ±(99.9%) 5837,047 MB/sec [Average]
+  (min, avg, max) = (1569,897, 1852,468, 2199,865), stdev = 319,948
+  CI (99.9%): [≈ 0, 7689,515] (assumes normal distribution)
+
+Secondary result "eu.javaspecialists.books.dynamicproxies.ch03.benchmarks.MethodCallBenchmark.dynamicProxyDirectCallIncrement:·gc.churn.PS_Eden_Space.norm":
+  23,397 ±(99.9%) 74,134 B/op [Average]
+  (min, avg, max) = (19,787, 23,397, 27,798), stdev = 4,064
+  CI (99.9%): [≈ 0, 97,530] (assumes normal distribution)
+
+Secondary result "eu.javaspecialists.books.dynamicproxies.ch03.benchmarks.MethodCallBenchmark.dynamicProxyDirectCallIncrement:·gc.churn.PS_Survivor_Space":
+  0,152 ±(99.9%) 0,437 MB/sec [Average]
+  (min, avg, max) = (0,124, 0,152, 0,166), stdev = 0,024
+  CI (99.9%): [≈ 0, 0,589] (assumes normal distribution)
+
+Secondary result "eu.javaspecialists.books.dynamicproxies.ch03.benchmarks.MethodCallBenchmark.dynamicProxyDirectCallIncrement:·gc.churn.PS_Survivor_Space.norm":
+  0,002 ±(99.9%) 0,005 B/op [Average]
+  (min, avg, max) = (0,002, 0,002, 0,002), stdev = 0,001
+  CI (99.9%): [≈ 0, 0,007] (assumes normal distribution)
+
+Secondary result "eu.javaspecialists.books.dynamicproxies.ch03.benchmarks.MethodCallBenchmark.dynamicProxyDirectCallIncrement:·gc.count":
+  13,000 ±(99.9%) 0,001 counts [Sum]
+  (min, avg, max) = (3,000, 4,333, 5,000), stdev = 1,155
+  CI (99.9%): [13,000, 13,000] (assumes normal distribution)
+
+Secondary result "eu.javaspecialists.books.dynamicproxies.ch03.benchmarks.MethodCallBenchmark.dynamicProxyDirectCallIncrement:·gc.time":
+  5,000 ±(99.9%) 0,001 ms [Sum]
+  (min, avg, max) = (1,000, 1,667, 2,000), stdev = 0,577
+  CI (99.9%): [5,000, 5,000] (assumes normal distribution)
+
+
+# JMH version: 1.21
+# VM version: JDK 13.0.3, OpenJDK 64-Bit Server VM, 13.0.3+3-MTS
+# VM invoker: /Users/heinz/Dropbox (HIC Straws)/heinz/JavaVirtualMachines/zulu-13.jdk/Contents/Home/bin/java
+# VM options: -XX:+DoEscapeAnalysis -XX:+UseParallelGC
+# Warmup: 3 iterations, 1 s each
+# Measurement: 3 iterations, 1 s each
+# Timeout: 10 min per iteration
+# Threads: 1 thread, will synchronize iterations
+# Benchmark mode: Average time, time/op
+# Benchmark: eu.javaspecialists.books.dynamicproxies.ch03.benchmarks.MethodCallBenchmark.staticProxyIncrement
+
+# Run progress: 50,00% complete, ETA 00:00:09
+# Fork: 1 of 1
+# Warmup Iteration   1: 4,042 ns/op
+# Warmup Iteration   2: 3,958 ns/op
+# Warmup Iteration   3: 3,555 ns/op
+Iteration   1: 3,548 ns/op
+                 ·gc.alloc.rate:      ≈ 10⁻⁴ MB/sec
+                 ·gc.alloc.rate.norm: ≈ 10⁻⁶ B/op
+                 ·gc.count:           ≈ 0 counts
+
+Iteration   2: 3,545 ns/op
+                 ·gc.alloc.rate:      ≈ 10⁻⁴ MB/sec
+                 ·gc.alloc.rate.norm: ≈ 10⁻⁶ B/op
+                 ·gc.count:           ≈ 0 counts
+
+Iteration   3: 3,543 ns/op
+                 ·gc.alloc.rate:      ≈ 10⁻⁴ MB/sec
+                 ·gc.alloc.rate.norm: ≈ 10⁻⁶ B/op
+                 ·gc.count:           ≈ 0 counts
+
+
+
+Result "eu.javaspecialists.books.dynamicproxies.ch03.benchmarks.MethodCallBenchmark.staticProxyIncrement":
+  3,545 ±(99.9%) 0,039 ns/op [Average]
+  (min, avg, max) = (3,543, 3,545, 3,548), stdev = 0,002
+  CI (99.9%): [3,507, 3,584] (assumes normal distribution)
+
+Secondary result "eu.javaspecialists.books.dynamicproxies.ch03.benchmarks.MethodCallBenchmark.staticProxyIncrement:·gc.alloc.rate":
+  ≈ 10⁻⁴ MB/sec
+
+Secondary result "eu.javaspecialists.books.dynamicproxies.ch03.benchmarks.MethodCallBenchmark.staticProxyIncrement:·gc.alloc.rate.norm":
+  ≈ 10⁻⁶ B/op
+
+Secondary result "eu.javaspecialists.books.dynamicproxies.ch03.benchmarks.MethodCallBenchmark.staticProxyIncrement:·gc.count":
+  ≈ 0 counts
+
+
+# Run complete. Total time: 00:00:18
+
+REMEMBER: The numbers below are just data. To gain reusable insights, you need to follow up on
+why the numbers are the way they are. Use profilers (see -prof, -lprof), design factorial
+experiments, perform baseline and negative tests that provide experimental control, make sure
+the benchmarking environment is safe on JVM/OS/HW level, ask for reviews from the domain experts.
+Do not assume the numbers tell you what you want them to tell.
+
+Benchmark                                                                             Mode  Cnt     Score      Error   Units
+MethodCallBenchmark.dynamicProxyDirectCallIncrement                                   avgt    3     8,006 ±    0,073   ns/op
+MethodCallBenchmark.dynamicProxyDirectCallIncrement:·gc.alloc.rate                    avgt    3  1900,469 ±   59,399  MB/sec
+MethodCallBenchmark.dynamicProxyDirectCallIncrement:·gc.alloc.rate.norm               avgt    3    24,000 ±    0,001    B/op
+MethodCallBenchmark.dynamicProxyDirectCallIncrement:·gc.churn.PS_Eden_Space           avgt    3  1852,468 ± 5837,047  MB/sec
+MethodCallBenchmark.dynamicProxyDirectCallIncrement:·gc.churn.PS_Eden_Space.norm      avgt    3    23,397 ±   74,134    B/op
+MethodCallBenchmark.dynamicProxyDirectCallIncrement:·gc.churn.PS_Survivor_Space       avgt    3     0,152 ±    0,437  MB/sec
+MethodCallBenchmark.dynamicProxyDirectCallIncrement:·gc.churn.PS_Survivor_Space.norm  avgt    3     0,002 ±    0,005    B/op
+MethodCallBenchmark.dynamicProxyDirectCallIncrement:·gc.count                         avgt    3    13,000             counts
+MethodCallBenchmark.dynamicProxyDirectCallIncrement:·gc.time                          avgt    3     5,000                 ms
+MethodCallBenchmark.staticProxyIncrement                                              avgt    3     3,545 ±    0,039   ns/op
+MethodCallBenchmark.staticProxyIncrement:·gc.alloc.rate                               avgt    3    ≈ 10⁻⁴             MB/sec
+MethodCallBenchmark.staticProxyIncrement:·gc.alloc.rate.norm                          avgt    3    ≈ 10⁻⁶               B/op
+MethodCallBenchmark.staticProxyIncrement:·gc.count                                    avgt    3       ≈ 0             counts
+# JMH version: 1.21
+# VM version: JDK 13.0.3, OpenJDK 64-Bit Server VM, 13.0.3+3-MTS
+# VM invoker: /Users/heinz/Dropbox (HIC Straws)/heinz/JavaVirtualMachines/zulu-13.jdk/Contents/Home/bin/java
+# VM options: -XX:-DoEscapeAnalysis -XX:+UseParallelGC
+# Warmup: 3 iterations, 1 s each
+# Measurement: 3 iterations, 1 s each
+# Timeout: 10 min per iteration
+# Threads: 1 thread, will synchronize iterations
+# Benchmark mode: Average time, time/op
+# Benchmark: eu.javaspecialists.books.dynamicproxies.ch03.benchmarks.MethodCallBenchmark.dynamicProxyDirectCallIncrement
+
+# Run progress: 0,00% complete, ETA 00:00:12
+# Fork: 1 of 1
+# Warmup Iteration   1: 11,260 ns/op
+# Warmup Iteration   2: 11,863 ns/op
+# Warmup Iteration   3: 8,029 ns/op
+Iteration   1: 8,000 ns/op
+                 ·gc.alloc.rate:                   1901,277 MB/sec
+                 ·gc.alloc.rate.norm:              24,000 B/op
+                 ·gc.churn.PS_Eden_Space:          1566,702 MB/sec
+                 ·gc.churn.PS_Eden_Space.norm:     19,777 B/op
+                 ·gc.churn.PS_Survivor_Space:      0,124 MB/sec
+                 ·gc.churn.PS_Survivor_Space.norm: 0,002 B/op
+                 ·gc.count:                        3,000 counts
+                 ·gc.time:                         1,000 ms
+
+Iteration   2: 8,007 ns/op
+                 ·gc.alloc.rate:                   1898,432 MB/sec
+                 ·gc.alloc.rate.norm:              24,000 B/op
+                 ·gc.churn.PS_Eden_Space:          2202,540 MB/sec
+                 ·gc.churn.PS_Eden_Space.norm:     27,845 B/op
+                 ·gc.churn.PS_Survivor_Space:      0,207 MB/sec
+                 ·gc.churn.PS_Survivor_Space.norm: 0,003 B/op
+                 ·gc.count:                        5,000 counts
+                 ·gc.time:                         2,000 ms
+
+Iteration   3: 8,018 ns/op
+                 ·gc.alloc.rate:                   1898,855 MB/sec
+                 ·gc.alloc.rate.norm:              24,000 B/op
+                 ·gc.churn.PS_Eden_Space:          1781,970 MB/sec
+                 ·gc.churn.PS_Eden_Space.norm:     22,523 B/op
+                 ·gc.churn.PS_Survivor_Space:      0,124 MB/sec
+                 ·gc.churn.PS_Survivor_Space.norm: 0,002 B/op
+                 ·gc.count:                        5,000 counts
+                 ·gc.time:                         2,000 ms
+
+
+
+Result "eu.javaspecialists.books.dynamicproxies.ch03.benchmarks.MethodCallBenchmark.dynamicProxyDirectCallIncrement":
+  8,008 ±(99.9%) 0,168 ns/op [Average]
+  (min, avg, max) = (8,000, 8,008, 8,018), stdev = 0,009
+  CI (99.9%): [7,840, 8,177] (assumes normal distribution)
+
+Secondary result "eu.javaspecialists.books.dynamicproxies.ch03.benchmarks.MethodCallBenchmark.dynamicProxyDirectCallIncrement:·gc.alloc.rate":
+  1899,521 ±(99.9%) 28,012 MB/sec [Average]
+  (min, avg, max) = (1898,432, 1899,521, 1901,277), stdev = 1,535
+  CI (99.9%): [1871,509, 1927,534] (assumes normal distribution)
+
+Secondary result "eu.javaspecialists.books.dynamicproxies.ch03.benchmarks.MethodCallBenchmark.dynamicProxyDirectCallIncrement:·gc.alloc.rate.norm":
+  24,000 ±(99.9%) 0,001 B/op [Average]
+  (min, avg, max) = (24,000, 24,000, 24,000), stdev = 0,001
+  CI (99.9%): [24,000, 24,000] (assumes normal distribution)
+
+Secondary result "eu.javaspecialists.books.dynamicproxies.ch03.benchmarks.MethodCallBenchmark.dynamicProxyDirectCallIncrement:·gc.churn.PS_Eden_Space":
+  1850,404 ±(99.9%) 5899,943 MB/sec [Average]
+  (min, avg, max) = (1566,702, 1850,404, 2202,540), stdev = 323,396
+  CI (99.9%): [≈ 0, 7750,347] (assumes normal distribution)
+
+Secondary result "eu.javaspecialists.books.dynamicproxies.ch03.benchmarks.MethodCallBenchmark.dynamicProxyDirectCallIncrement:·gc.churn.PS_Eden_Space.norm":
+  23,381 ±(99.9%) 74,834 B/op [Average]
+  (min, avg, max) = (19,777, 23,381, 27,845), stdev = 4,102
+  CI (99.9%): [≈ 0, 98,215] (assumes normal distribution)
+
+Secondary result "eu.javaspecialists.books.dynamicproxies.ch03.benchmarks.MethodCallBenchmark.dynamicProxyDirectCallIncrement:·gc.churn.PS_Survivor_Space":
+  0,152 ±(99.9%) 0,877 MB/sec [Average]
+  (min, avg, max) = (0,124, 0,152, 0,207), stdev = 0,048
+  CI (99.9%): [≈ 0, 1,029] (assumes normal distribution)
+
+Secondary result "eu.javaspecialists.books.dynamicproxies.ch03.benchmarks.MethodCallBenchmark.dynamicProxyDirectCallIncrement:·gc.churn.PS_Survivor_Space.norm":
+  0,002 ±(99.9%) 0,011 B/op [Average]
+  (min, avg, max) = (0,002, 0,002, 0,003), stdev = 0,001
+  CI (99.9%): [≈ 0, 0,013] (assumes normal distribution)
+
+Secondary result "eu.javaspecialists.books.dynamicproxies.ch03.benchmarks.MethodCallBenchmark.dynamicProxyDirectCallIncrement:·gc.count":
+  13,000 ±(99.9%) 0,001 counts [Sum]
+  (min, avg, max) = (3,000, 4,333, 5,000), stdev = 1,155
+  CI (99.9%): [13,000, 13,000] (assumes normal distribution)
+
+Secondary result "eu.javaspecialists.books.dynamicproxies.ch03.benchmarks.MethodCallBenchmark.dynamicProxyDirectCallIncrement:·gc.time":
+  5,000 ±(99.9%) 0,001 ms [Sum]
+  (min, avg, max) = (1,000, 1,667, 2,000), stdev = 0,577
+  CI (99.9%): [5,000, 5,000] (assumes normal distribution)
+
+
+# JMH version: 1.21
+# VM version: JDK 13.0.3, OpenJDK 64-Bit Server VM, 13.0.3+3-MTS
+# VM invoker: /Users/heinz/Dropbox (HIC Straws)/heinz/JavaVirtualMachines/zulu-13.jdk/Contents/Home/bin/java
+# VM options: -XX:-DoEscapeAnalysis -XX:+UseParallelGC
+# Warmup: 3 iterations, 1 s each
+# Measurement: 3 iterations, 1 s each
+# Timeout: 10 min per iteration
+# Threads: 1 thread, will synchronize iterations
+# Benchmark mode: Average time, time/op
+# Benchmark: eu.javaspecialists.books.dynamicproxies.ch03.benchmarks.MethodCallBenchmark.staticProxyIncrement
+
+# Run progress: 50,00% complete, ETA 00:00:09
+# Fork: 1 of 1
+# Warmup Iteration   1: 4,093 ns/op
+# Warmup Iteration   2: 3,991 ns/op
+# Warmup Iteration   3: 3,546 ns/op
+Iteration   1: 3,548 ns/op
+                 ·gc.alloc.rate:      ≈ 10⁻⁴ MB/sec
+                 ·gc.alloc.rate.norm: ≈ 10⁻⁶ B/op
+                 ·gc.count:           ≈ 0 counts
+
+Iteration   2: 3,546 ns/op
+                 ·gc.alloc.rate:      ≈ 10⁻⁴ MB/sec
+                 ·gc.alloc.rate.norm: ≈ 10⁻⁶ B/op
+                 ·gc.count:           ≈ 0 counts
+
+Iteration   3: 3,547 ns/op
+                 ·gc.alloc.rate:      ≈ 10⁻⁴ MB/sec
+                 ·gc.alloc.rate.norm: ≈ 10⁻⁶ B/op
+                 ·gc.count:           ≈ 0 counts
+
+
+
+Result "eu.javaspecialists.books.dynamicproxies.ch03.benchmarks.MethodCallBenchmark.staticProxyIncrement":
+  3,547 ±(99.9%) 0,011 ns/op [Average]
+  (min, avg, max) = (3,546, 3,547, 3,548), stdev = 0,001
+  CI (99.9%): [3,536, 3,558] (assumes normal distribution)
+
+Secondary result "eu.javaspecialists.books.dynamicproxies.ch03.benchmarks.MethodCallBenchmark.staticProxyIncrement:·gc.alloc.rate":
+  ≈ 10⁻⁴ MB/sec
+
+Secondary result "eu.javaspecialists.books.dynamicproxies.ch03.benchmarks.MethodCallBenchmark.staticProxyIncrement:·gc.alloc.rate.norm":
+  ≈ 10⁻⁶ B/op
+
+Secondary result "eu.javaspecialists.books.dynamicproxies.ch03.benchmarks.MethodCallBenchmark.staticProxyIncrement:·gc.count":
+  ≈ 0 counts
+
+
+# Run complete. Total time: 00:00:18
+
+REMEMBER: The numbers below are just data. To gain reusable insights, you need to follow up on
+why the numbers are the way they are. Use profilers (see -prof, -lprof), design factorial
+experiments, perform baseline and negative tests that provide experimental control, make sure
+the benchmarking environment is safe on JVM/OS/HW level, ask for reviews from the domain experts.
+Do not assume the numbers tell you what you want them to tell.
+
+Benchmark                                                                             Mode  Cnt     Score      Error   Units
+MethodCallBenchmark.dynamicProxyDirectCallIncrement                                   avgt    3     8,008 ±    0,168   ns/op
+MethodCallBenchmark.dynamicProxyDirectCallIncrement:·gc.alloc.rate                    avgt    3  1899,521 ±   28,012  MB/sec
+MethodCallBenchmark.dynamicProxyDirectCallIncrement:·gc.alloc.rate.norm               avgt    3    24,000 ±    0,001    B/op
+MethodCallBenchmark.dynamicProxyDirectCallIncrement:·gc.churn.PS_Eden_Space           avgt    3  1850,404 ± 5899,943  MB/sec
+MethodCallBenchmark.dynamicProxyDirectCallIncrement:·gc.churn.PS_Eden_Space.norm      avgt    3    23,381 ±   74,834    B/op
+MethodCallBenchmark.dynamicProxyDirectCallIncrement:·gc.churn.PS_Survivor_Space       avgt    3     0,152 ±    0,877  MB/sec
+MethodCallBenchmark.dynamicProxyDirectCallIncrement:·gc.churn.PS_Survivor_Space.norm  avgt    3     0,002 ±    0,011    B/op
+MethodCallBenchmark.dynamicProxyDirectCallIncrement:·gc.count                         avgt    3    13,000             counts
+MethodCallBenchmark.dynamicProxyDirectCallIncrement:·gc.time                          avgt    3     5,000                 ms
+MethodCallBenchmark.staticProxyIncrement                                              avgt    3     3,547 ±    0,011   ns/op
+MethodCallBenchmark.staticProxyIncrement:·gc.alloc.rate                               avgt    3    ≈ 10⁻⁴             MB/sec
+MethodCallBenchmark.staticProxyIncrement:·gc.alloc.rate.norm                          avgt    3    ≈ 10⁻⁶               B/op
+MethodCallBenchmark.staticProxyIncrement:·gc.count                                    avgt    3       ≈ 0             counts
+# JMH version: 1.21
+# VM version: JDK 13.0.3, OpenJDK 64-Bit Server VM, 13.0.3+3-MTS
+# VM invoker: /Users/heinz/Dropbox (HIC Straws)/heinz/JavaVirtualMachines/zulu-13.jdk/Contents/Home/bin/java
+# VM options: -XX:-DoEscapeAnalysis -XX:+UseParallelGC -Deu.javaspecialists.books.dynamicproxies.util.MethodTurboBooster.disabled=true
+# Warmup: 3 iterations, 1 s each
+# Measurement: 3 iterations, 1 s each
+# Timeout: 10 min per iteration
+# Threads: 1 thread, will synchronize iterations
+# Benchmark mode: Average time, time/op
+# Benchmark: eu.javaspecialists.books.dynamicproxies.ch03.benchmarks.MethodCallBenchmark.dynamicProxyDirectCallIncrement
+
+# Run progress: 0,00% complete, ETA 00:00:12
+# Fork: 1 of 1
+# Warmup Iteration   1: 11,524 ns/op
+# Warmup Iteration   2: 11,801 ns/op
+# Warmup Iteration   3: 8,067 ns/op
+Iteration   1: 8,017 ns/op
+                 ·gc.alloc.rate:                   1899,032 MB/sec
+                 ·gc.alloc.rate.norm:              24,000 B/op
+                 ·gc.churn.PS_Eden_Space:          1563,849 MB/sec
+                 ·gc.churn.PS_Eden_Space.norm:     19,764 B/op
+                 ·gc.churn.PS_Survivor_Space:      0,124 MB/sec
+                 ·gc.churn.PS_Survivor_Space.norm: 0,002 B/op
+                 ·gc.count:                        3,000 counts
+                 ·gc.time:                         1,000 ms
+
+Iteration   2: 7,985 ns/op
+                 ·gc.alloc.rate:                   1906,713 MB/sec
+                 ·gc.alloc.rate.norm:              24,000 B/op
+                 ·gc.churn.PS_Eden_Space:          2195,679 MB/sec
+                 ·gc.churn.PS_Eden_Space.norm:     27,637 B/op
+                 ·gc.churn.PS_Survivor_Space:      0,186 MB/sec
+                 ·gc.churn.PS_Survivor_Space.norm: 0,002 B/op
+                 ·gc.count:                        5,000 counts
+                 ·gc.time:                         2,000 ms
+
+Iteration   3: 7,985 ns/op
+                 ·gc.alloc.rate:                   1903,960 MB/sec
+                 ·gc.alloc.rate.norm:              24,000 B/op
+                 ·gc.churn.PS_Eden_Space:          1787,215 MB/sec
+                 ·gc.churn.PS_Eden_Space.norm:     22,528 B/op
+                 ·gc.churn.PS_Survivor_Space:      0,207 MB/sec
+                 ·gc.churn.PS_Survivor_Space.norm: 0,003 B/op
+                 ·gc.count:                        5,000 counts
+                 ·gc.time:                         2,000 ms
+
+
+
+Result "eu.javaspecialists.books.dynamicproxies.ch03.benchmarks.MethodCallBenchmark.dynamicProxyDirectCallIncrement":
+  7,996 ±(99.9%) 0,339 ns/op [Average]
+  (min, avg, max) = (7,985, 7,996, 8,017), stdev = 0,019
+  CI (99.9%): [7,657, 8,335] (assumes normal distribution)
+
+Secondary result "eu.javaspecialists.books.dynamicproxies.ch03.benchmarks.MethodCallBenchmark.dynamicProxyDirectCallIncrement:·gc.alloc.rate":
+  1903,235 ±(99.9%) 70,993 MB/sec [Average]
+  (min, avg, max) = (1899,032, 1903,235, 1906,713), stdev = 3,891
+  CI (99.9%): [1832,241, 1974,228] (assumes normal distribution)
+
+Secondary result "eu.javaspecialists.books.dynamicproxies.ch03.benchmarks.MethodCallBenchmark.dynamicProxyDirectCallIncrement:·gc.alloc.rate.norm":
+  24,000 ±(99.9%) 0,001 B/op [Average]
+  (min, avg, max) = (24,000, 24,000, 24,000), stdev = 0,001
+  CI (99.9%): [24,000, 24,000] (assumes normal distribution)
+
+Secondary result "eu.javaspecialists.books.dynamicproxies.ch03.benchmarks.MethodCallBenchmark.dynamicProxyDirectCallIncrement:·gc.churn.PS_Eden_Space":
+  1848,914 ±(99.9%) 5845,322 MB/sec [Average]
+  (min, avg, max) = (1563,849, 1848,914, 2195,679), stdev = 320,402
+  CI (99.9%): [≈ 0, 7694,237] (assumes normal distribution)
+
+Secondary result "eu.javaspecialists.books.dynamicproxies.ch03.benchmarks.MethodCallBenchmark.dynamicProxyDirectCallIncrement:·gc.churn.PS_Eden_Space.norm":
+  23,310 ±(99.9%) 72,873 B/op [Average]
+  (min, avg, max) = (19,764, 23,310, 27,637), stdev = 3,994
+  CI (99.9%): [≈ 0, 96,183] (assumes normal distribution)
+
+Secondary result "eu.javaspecialists.books.dynamicproxies.ch03.benchmarks.MethodCallBenchmark.dynamicProxyDirectCallIncrement:·gc.churn.PS_Survivor_Space":
+  0,173 ±(99.9%) 0,790 MB/sec [Average]
+  (min, avg, max) = (0,124, 0,173, 0,207), stdev = 0,043
+  CI (99.9%): [≈ 0, 0,963] (assumes normal distribution)
+
+Secondary result "eu.javaspecialists.books.dynamicproxies.ch03.benchmarks.MethodCallBenchmark.dynamicProxyDirectCallIncrement:·gc.churn.PS_Survivor_Space.norm":
+  0,002 ±(99.9%) 0,010 B/op [Average]
+  (min, avg, max) = (0,002, 0,002, 0,003), stdev = 0,001
+  CI (99.9%): [≈ 0, 0,012] (assumes normal distribution)
+
+Secondary result "eu.javaspecialists.books.dynamicproxies.ch03.benchmarks.MethodCallBenchmark.dynamicProxyDirectCallIncrement:·gc.count":
+  13,000 ±(99.9%) 0,001 counts [Sum]
+  (min, avg, max) = (3,000, 4,333, 5,000), stdev = 1,155
+  CI (99.9%): [13,000, 13,000] (assumes normal distribution)
+
+Secondary result "eu.javaspecialists.books.dynamicproxies.ch03.benchmarks.MethodCallBenchmark.dynamicProxyDirectCallIncrement:·gc.time":
+  5,000 ±(99.9%) 0,001 ms [Sum]
+  (min, avg, max) = (1,000, 1,667, 2,000), stdev = 0,577
+  CI (99.9%): [5,000, 5,000] (assumes normal distribution)
+
+
+# JMH version: 1.21
+# VM version: JDK 13.0.3, OpenJDK 64-Bit Server VM, 13.0.3+3-MTS
+# VM invoker: /Users/heinz/Dropbox (HIC Straws)/heinz/JavaVirtualMachines/zulu-13.jdk/Contents/Home/bin/java
+# VM options: -XX:-DoEscapeAnalysis -XX:+UseParallelGC -Deu.javaspecialists.books.dynamicproxies.util.MethodTurboBooster.disabled=true
+# Warmup: 3 iterations, 1 s each
+# Measurement: 3 iterations, 1 s each
+# Timeout: 10 min per iteration
+# Threads: 1 thread, will synchronize iterations
+# Benchmark mode: Average time, time/op
+# Benchmark: eu.javaspecialists.books.dynamicproxies.ch03.benchmarks.MethodCallBenchmark.staticProxyIncrement
+
+# Run progress: 50,00% complete, ETA 00:00:09
+# Fork: 1 of 1
+# Warmup Iteration   1: 4,044 ns/op
+# Warmup Iteration   2: 4,627 ns/op
+# Warmup Iteration   3: 3,547 ns/op
+Iteration   1: 3,546 ns/op
+                 ·gc.alloc.rate:      ≈ 10⁻⁴ MB/sec
+                 ·gc.alloc.rate.norm: ≈ 10⁻⁶ B/op
+                 ·gc.count:           ≈ 0 counts
+
+Iteration   2: 3,547 ns/op
+                 ·gc.alloc.rate:      ≈ 10⁻⁴ MB/sec
+                 ·gc.alloc.rate.norm: ≈ 10⁻⁶ B/op
+                 ·gc.count:           ≈ 0 counts
+
+Iteration   3: 3,547 ns/op
+                 ·gc.alloc.rate:      ≈ 10⁻⁴ MB/sec
+                 ·gc.alloc.rate.norm: ≈ 10⁻⁶ B/op
+                 ·gc.count:           ≈ 0 counts
+
+
+
+Result "eu.javaspecialists.books.dynamicproxies.ch03.benchmarks.MethodCallBenchmark.staticProxyIncrement":
+  3,547 ±(99.9%) 0,012 ns/op [Average]
+  (min, avg, max) = (3,546, 3,547, 3,547), stdev = 0,001
+  CI (99.9%): [3,535, 3,558] (assumes normal distribution)
+
+Secondary result "eu.javaspecialists.books.dynamicproxies.ch03.benchmarks.MethodCallBenchmark.staticProxyIncrement:·gc.alloc.rate":
+  ≈ 10⁻⁴ MB/sec
+
+Secondary result "eu.javaspecialists.books.dynamicproxies.ch03.benchmarks.MethodCallBenchmark.staticProxyIncrement:·gc.alloc.rate.norm":
+  ≈ 10⁻⁶ B/op
+
+Secondary result "eu.javaspecialists.books.dynamicproxies.ch03.benchmarks.MethodCallBenchmark.staticProxyIncrement:·gc.count":
+  ≈ 0 counts
+
+
+# Run complete. Total time: 00:00:19
+
+REMEMBER: The numbers below are just data. To gain reusable insights, you need to follow up on
+why the numbers are the way they are. Use profilers (see -prof, -lprof), design factorial
+experiments, perform baseline and negative tests that provide experimental control, make sure
+the benchmarking environment is safe on JVM/OS/HW level, ask for reviews from the domain experts.
+Do not assume the numbers tell you what you want them to tell.
+
+Benchmark                                                                             Mode  Cnt     Score      Error   Units
+MethodCallBenchmark.dynamicProxyDirectCallIncrement                                   avgt    3     7,996 ±    0,339   ns/op
+MethodCallBenchmark.dynamicProxyDirectCallIncrement:·gc.alloc.rate                    avgt    3  1903,235 ±   70,993  MB/sec
+MethodCallBenchmark.dynamicProxyDirectCallIncrement:·gc.alloc.rate.norm               avgt    3    24,000 ±    0,001    B/op
+MethodCallBenchmark.dynamicProxyDirectCallIncrement:·gc.churn.PS_Eden_Space           avgt    3  1848,914 ± 5845,322  MB/sec
+MethodCallBenchmark.dynamicProxyDirectCallIncrement:·gc.churn.PS_Eden_Space.norm      avgt    3    23,310 ±   72,873    B/op
+MethodCallBenchmark.dynamicProxyDirectCallIncrement:·gc.churn.PS_Survivor_Space       avgt    3     0,173 ±    0,790  MB/sec
+MethodCallBenchmark.dynamicProxyDirectCallIncrement:·gc.churn.PS_Survivor_Space.norm  avgt    3     0,002 ±    0,010    B/op
+MethodCallBenchmark.dynamicProxyDirectCallIncrement:·gc.count                         avgt    3    13,000             counts
+MethodCallBenchmark.dynamicProxyDirectCallIncrement:·gc.time                          avgt    3     5,000                 ms
+MethodCallBenchmark.staticProxyIncrement                                              avgt    3     3,547 ±    0,012   ns/op
+MethodCallBenchmark.staticProxyIncrement:·gc.alloc.rate                               avgt    3    ≈ 10⁻⁴             MB/sec
+MethodCallBenchmark.staticProxyIncrement:·gc.alloc.rate.norm                          avgt    3    ≈ 10⁻⁶               B/op
+MethodCallBenchmark.staticProxyIncrement:·gc.count                                    avgt    3       ≈ 0             counts
+# JMH version: 1.21
+# VM version: JDK 13.0.3, OpenJDK 64-Bit Server VM, 13.0.3+3-MTS
+# VM invoker: /Users/heinz/Dropbox (HIC Straws)/heinz/JavaVirtualMachines/zulu-13.jdk/Contents/Home/bin/java
+# VM options: -XX:+UseParallelGC -Deu.javaspecialists.books.dynamicproxies.util.MethodTurboBooster.disabled=false
+# Warmup: 50 iterations, 1 s each
+# Measurement: 50 iterations, 1 s each
+# Timeout: 10 min per iteration
+# Threads: 1 thread, will synchronize iterations
+# Benchmark mode: Average time, time/op
+# Benchmark: eu.javaspecialists.books.dynamicproxies.ch03.benchmarks.MethodCallBenchmark.dynamicProxyDirectCallIncrement
+
+# Run progress: 0,00% complete, ETA 00:10:00
+# Fork: 1 of 3
+# Warmup Iteration   1: 11,346 ns/op
+# Warmup Iteration   2: 9,028 ns/op
+# Warmup Iteration   3: 8,089 ns/op
+# Warmup Iteration   4: 8,105 ns/op
+# Warmup Iteration   5: 8,118 ns/op
+# Warmup Iteration   6: 8,167 ns/op
+# Warmup Iteration   7: 8,172 ns/op
+# Warmup Iteration   8: 8,173 ns/op
+# Warmup Iteration   9: 8,173 ns/op
+# Warmup Iteration  10: 8,156 ns/op
+# Warmup Iteration  11: 8,165 ns/op
+# Warmup Iteration  12: 8,180 ns/op
+# Warmup Iteration  13: 8,173 ns/op
+# Warmup Iteration  14: 8,167 ns/op
+# Warmup Iteration  15: 8,172 ns/op
+# Warmup Iteration  16: 8,173 ns/op
+# Warmup Iteration  17: 8,170 ns/op
+# Warmup Iteration  18: 8,179 ns/op
+# Warmup Iteration  19: 8,171 ns/op
+# Warmup Iteration  20: 8,161 ns/op
+# Warmup Iteration  21: 8,168 ns/op
+# Warmup Iteration  22: 8,171 ns/op
+# Warmup Iteration  23: 8,177 ns/op
+# Warmup Iteration  24: 8,174 ns/op
+# Warmup Iteration  25: 8,175 ns/op
+# Warmup Iteration  26: 8,165 ns/op
+# Warmup Iteration  27: 8,170 ns/op
+# Warmup Iteration  28: 8,170 ns/op
+# Warmup Iteration  29: 8,173 ns/op
+# Warmup Iteration  30: 8,173 ns/op
+# Warmup Iteration  31: 8,172 ns/op
+# Warmup Iteration  32: 8,173 ns/op
+# Warmup Iteration  33: 8,174 ns/op
+# Warmup Iteration  34: 8,168 ns/op
+# Warmup Iteration  35: 8,180 ns/op
+# Warmup Iteration  36: 8,183 ns/op
+# Warmup Iteration  37: 8,159 ns/op
+# Warmup Iteration  38: 8,201 ns/op
+# Warmup Iteration  39: 8,208 ns/op
+# Warmup Iteration  40: 8,211 ns/op
+# Warmup Iteration  41: 8,210 ns/op
+# Warmup Iteration  42: 8,170 ns/op
+# Warmup Iteration  43: 8,181 ns/op
+# Warmup Iteration  44: 8,184 ns/op
+# Warmup Iteration  45: 8,179 ns/op
+# Warmup Iteration  46: 8,183 ns/op
+# Warmup Iteration  47: 8,144 ns/op
+# Warmup Iteration  48: 8,182 ns/op
+# Warmup Iteration  49: 8,168 ns/op
+# Warmup Iteration  50: 8,180 ns/op
+Iteration   1: 8,176 ns/op
+Iteration   2: 8,202 ns/op
+Iteration   3: 8,166 ns/op
+Iteration   4: 8,173 ns/op
+Iteration   5: 8,172 ns/op
+Iteration   6: 8,181 ns/op
+Iteration   7: 8,164 ns/op
+Iteration   8: 8,170 ns/op
+Iteration   9: 8,171 ns/op
+Iteration  10: 8,175 ns/op
+Iteration  11: 8,171 ns/op
+Iteration  12: 8,176 ns/op
+Iteration  13: 8,195 ns/op
+Iteration  14: 8,407 ns/op
+Iteration  15: 8,181 ns/op
+Iteration  16: 8,173 ns/op
+Iteration  17: 8,174 ns/op
+Iteration  18: 8,162 ns/op
+Iteration  19: 8,168 ns/op
+Iteration  20: 8,180 ns/op
+Iteration  21: 8,171 ns/op
+Iteration  22: 8,179 ns/op
+Iteration  23: 8,172 ns/op
+Iteration  24: 8,164 ns/op
+Iteration  25: 8,168 ns/op
+Iteration  26: 8,178 ns/op
+Iteration  27: 8,166 ns/op
+Iteration  28: 8,174 ns/op
+Iteration  29: 8,161 ns/op
+Iteration  30: 8,173 ns/op
+Iteration  31: 8,167 ns/op
+Iteration  32: 8,174 ns/op
+Iteration  33: 8,169 ns/op
+Iteration  34: 8,166 ns/op
+Iteration  35: 8,181 ns/op
+Iteration  36: 8,174 ns/op
+Iteration  37: 8,171 ns/op
+Iteration  38: 8,174 ns/op
+Iteration  39: 8,172 ns/op
+Iteration  40: 8,171 ns/op
+Iteration  41: 8,160 ns/op
+Iteration  42: 8,171 ns/op
+Iteration  43: 8,163 ns/op
+Iteration  44: 8,174 ns/op
+Iteration  45: 8,193 ns/op
+Iteration  46: 8,199 ns/op
+Iteration  47: 8,207 ns/op
+Iteration  48: 8,222 ns/op
+Iteration  49: 8,205 ns/op
+Iteration  50: 8,220 ns/op
+
+# Run progress: 16,67% complete, ETA 00:08:23
+# Fork: 2 of 3
+# Warmup Iteration   1: 11,566 ns/op
+# Warmup Iteration   2: 11,763 ns/op
+# Warmup Iteration   3: 8,025 ns/op
+# Warmup Iteration   4: 7,998 ns/op
+# Warmup Iteration   5: 8,004 ns/op
+# Warmup Iteration   6: 8,001 ns/op
+# Warmup Iteration   7: 8,011 ns/op
+# Warmup Iteration   8: 8,019 ns/op
+# Warmup Iteration   9: 8,032 ns/op
+# Warmup Iteration  10: 8,059 ns/op
+# Warmup Iteration  11: 8,095 ns/op
+# Warmup Iteration  12: 8,089 ns/op
+# Warmup Iteration  13: 8,099 ns/op
+# Warmup Iteration  14: 8,097 ns/op
+# Warmup Iteration  15: 8,099 ns/op
+# Warmup Iteration  16: 8,089 ns/op
+# Warmup Iteration  17: 8,132 ns/op
+# Warmup Iteration  18: 8,128 ns/op
+# Warmup Iteration  19: 8,099 ns/op
+# Warmup Iteration  20: 8,137 ns/op
+# Warmup Iteration  21: 8,091 ns/op
+# Warmup Iteration  22: 8,138 ns/op
+# Warmup Iteration  23: 8,134 ns/op
+# Warmup Iteration  24: 8,132 ns/op
+# Warmup Iteration  25: 8,141 ns/op
+# Warmup Iteration  26: 8,130 ns/op
+# Warmup Iteration  27: 8,098 ns/op
+# Warmup Iteration  28: 8,088 ns/op
+# Warmup Iteration  29: 8,140 ns/op
+# Warmup Iteration  30: 8,085 ns/op
+# Warmup Iteration  31: 8,088 ns/op
+# Warmup Iteration  32: 8,132 ns/op
+# Warmup Iteration  33: 8,144 ns/op
+# Warmup Iteration  34: 8,082 ns/op
+# Warmup Iteration  35: 8,138 ns/op
+# Warmup Iteration  36: 8,132 ns/op
+# Warmup Iteration  37: 8,097 ns/op
+# Warmup Iteration  38: 8,140 ns/op
+# Warmup Iteration  39: 8,088 ns/op
+# Warmup Iteration  40: 8,130 ns/op
+# Warmup Iteration  41: 8,083 ns/op
+# Warmup Iteration  42: 8,127 ns/op
+# Warmup Iteration  43: 8,140 ns/op
+# Warmup Iteration  44: 8,096 ns/op
+# Warmup Iteration  45: 8,139 ns/op
+# Warmup Iteration  46: 8,132 ns/op
+# Warmup Iteration  47: 8,140 ns/op
+# Warmup Iteration  48: 8,145 ns/op
+# Warmup Iteration  49: 8,093 ns/op
+# Warmup Iteration  50: 8,077 ns/op
+Iteration   1: 8,139 ns/op
+Iteration   2: 8,138 ns/op
+Iteration   3: 8,094 ns/op
+Iteration   4: 8,128 ns/op
+Iteration   5: 8,141 ns/op
+Iteration   6: 8,130 ns/op
+Iteration   7: 8,141 ns/op
+Iteration   8: 8,091 ns/op
+Iteration   9: 8,142 ns/op
+Iteration  10: 8,135 ns/op
+Iteration  11: 8,093 ns/op
+Iteration  12: 8,121 ns/op
+Iteration  13: 8,091 ns/op
+Iteration  14: 8,139 ns/op
+Iteration  15: 8,133 ns/op
+Iteration  16: 8,096 ns/op
+Iteration  17: 8,138 ns/op
+Iteration  18: 8,140 ns/op
+Iteration  19: 8,136 ns/op
+Iteration  20: 8,138 ns/op
+Iteration  21: 8,093 ns/op
+Iteration  22: 8,098 ns/op
+Iteration  23: 8,142 ns/op
+Iteration  24: 8,139 ns/op
+Iteration  25: 8,098 ns/op
+Iteration  26: 8,077 ns/op
+Iteration  27: 8,091 ns/op
+Iteration  28: 8,132 ns/op
+Iteration  29: 8,131 ns/op
+Iteration  30: 8,139 ns/op
+Iteration  31: 8,141 ns/op
+Iteration  32: 8,088 ns/op
+Iteration  33: 8,091 ns/op
+Iteration  34: 8,135 ns/op
+Iteration  35: 8,143 ns/op
+Iteration  36: 8,098 ns/op
+Iteration  37: 8,082 ns/op
+Iteration  38: 8,083 ns/op
+Iteration  39: 8,085 ns/op
+Iteration  40: 8,092 ns/op
+Iteration  41: 8,087 ns/op
+Iteration  42: 8,133 ns/op
+Iteration  43: 8,136 ns/op
+Iteration  44: 8,140 ns/op
+Iteration  45: 8,136 ns/op
+Iteration  46: 8,130 ns/op
+Iteration  47: 8,088 ns/op
+Iteration  48: 8,093 ns/op
+Iteration  49: 8,095 ns/op
+Iteration  50: 8,092 ns/op
+
+# Run progress: 33,33% complete, ETA 00:06:42
+# Fork: 3 of 3
+# Warmup Iteration   1: 11,189 ns/op
+# Warmup Iteration   2: 9,179 ns/op
+# Warmup Iteration   3: 8,015 ns/op
+# Warmup Iteration   4: 8,026 ns/op
+# Warmup Iteration   5: 8,046 ns/op
+# Warmup Iteration   6: 8,088 ns/op
+# Warmup Iteration   7: 8,094 ns/op
+# Warmup Iteration   8: 8,110 ns/op
+# Warmup Iteration   9: 8,079 ns/op
+# Warmup Iteration  10: 8,102 ns/op
+# Warmup Iteration  11: 8,111 ns/op
+# Warmup Iteration  12: 8,095 ns/op
+# Warmup Iteration  13: 8,103 ns/op
+# Warmup Iteration  14: 8,089 ns/op
+# Warmup Iteration  15: 8,097 ns/op
+# Warmup Iteration  16: 8,093 ns/op
+# Warmup Iteration  17: 8,099 ns/op
+# Warmup Iteration  18: 8,079 ns/op
+# Warmup Iteration  19: 8,091 ns/op
+# Warmup Iteration  20: 8,092 ns/op
+# Warmup Iteration  21: 8,093 ns/op
+# Warmup Iteration  22: 8,086 ns/op
+# Warmup Iteration  23: 8,086 ns/op
+# Warmup Iteration  24: 8,084 ns/op
+# Warmup Iteration  25: 8,091 ns/op
+# Warmup Iteration  26: 8,091 ns/op
+# Warmup Iteration  27: 8,102 ns/op
+# Warmup Iteration  28: 8,107 ns/op
+# Warmup Iteration  29: 8,097 ns/op
+# Warmup Iteration  30: 8,093 ns/op
+# Warmup Iteration  31: 8,096 ns/op
+# Warmup Iteration  32: 8,108 ns/op
+# Warmup Iteration  33: 8,086 ns/op
+# Warmup Iteration  34: 8,108 ns/op
+# Warmup Iteration  35: 8,082 ns/op
+# Warmup Iteration  36: 8,108 ns/op
+# Warmup Iteration  37: 8,123 ns/op
+# Warmup Iteration  38: 8,099 ns/op
+# Warmup Iteration  39: 8,096 ns/op
+# Warmup Iteration  40: 8,100 ns/op
+# Warmup Iteration  41: 8,106 ns/op
+# Warmup Iteration  42: 8,098 ns/op
+# Warmup Iteration  43: 8,102 ns/op
+# Warmup Iteration  44: 8,102 ns/op
+# Warmup Iteration  45: 8,103 ns/op
+# Warmup Iteration  46: 8,100 ns/op
+# Warmup Iteration  47: 8,099 ns/op
+# Warmup Iteration  48: 8,105 ns/op
+# Warmup Iteration  49: 8,098 ns/op
+# Warmup Iteration  50: 8,117 ns/op
+Iteration   1: 8,117 ns/op
+Iteration   2: 8,109 ns/op
+Iteration   3: 8,090 ns/op
+Iteration   4: 8,111 ns/op
+Iteration   5: 8,095 ns/op
+Iteration   6: 8,094 ns/op
+Iteration   7: 8,094 ns/op
+Iteration   8: 8,096 ns/op
+Iteration   9: 8,092 ns/op
+Iteration  10: 8,094 ns/op
+Iteration  11: 8,095 ns/op
+Iteration  12: 8,098 ns/op
+Iteration  13: 8,108 ns/op
+Iteration  14: 8,093 ns/op
+Iteration  15: 8,100 ns/op
+Iteration  16: 8,096 ns/op
+Iteration  17: 8,089 ns/op
+Iteration  18: 8,095 ns/op
+Iteration  19: 8,093 ns/op
+Iteration  20: 8,103 ns/op
+Iteration  21: 8,094 ns/op
+Iteration  22: 8,101 ns/op
+Iteration  23: 8,090 ns/op
+Iteration  24: 8,103 ns/op
+Iteration  25: 8,100 ns/op
+Iteration  26: 8,103 ns/op
+Iteration  27: 8,095 ns/op
+Iteration  28: 8,098 ns/op
+Iteration  29: 8,094 ns/op
+Iteration  30: 8,097 ns/op
+Iteration  31: 8,103 ns/op
+Iteration  32: 8,106 ns/op
+Iteration  33: 8,094 ns/op
+Iteration  34: 8,110 ns/op
+Iteration  35: 8,095 ns/op
+Iteration  36: 8,099 ns/op
+Iteration  37: 8,091 ns/op
+Iteration  38: 8,101 ns/op
+Iteration  39: 8,084 ns/op
+Iteration  40: 8,099 ns/op
+Iteration  41: 8,085 ns/op
+Iteration  42: 8,108 ns/op
+Iteration  43: 8,091 ns/op
+Iteration  44: 8,091 ns/op
+Iteration  45: 8,103 ns/op
+Iteration  46: 8,085 ns/op
+Iteration  47: 8,095 ns/op
+Iteration  48: 8,096 ns/op
+Iteration  49: 8,095 ns/op
+Iteration  50: 8,105 ns/op
+
+
+Result "eu.javaspecialists.books.dynamicproxies.ch03.benchmarks.MethodCallBenchmark.dynamicProxyDirectCallIncrement":
+  8,132 ±(99.9%) 0,012 ns/op [Average]
+  (min, avg, max) = (8,077, 8,132, 8,407), stdev = 0,044
+  CI (99.9%): [8,120, 8,144] (assumes normal distribution)
+
+
+# JMH version: 1.21
+# VM version: JDK 13.0.3, OpenJDK 64-Bit Server VM, 13.0.3+3-MTS
+# VM invoker: /Users/heinz/Dropbox (HIC Straws)/heinz/JavaVirtualMachines/zulu-13.jdk/Contents/Home/bin/java
+# VM options: -XX:+UseParallelGC -Deu.javaspecialists.books.dynamicproxies.util.MethodTurboBooster.disabled=false
+# Warmup: 50 iterations, 1 s each
+# Measurement: 50 iterations, 1 s each
+# Timeout: 10 min per iteration
+# Threads: 1 thread, will synchronize iterations
+# Benchmark mode: Average time, time/op
+# Benchmark: eu.javaspecialists.books.dynamicproxies.ch03.benchmarks.MethodCallBenchmark.staticProxyIncrement
+
+# Run progress: 50,00% complete, ETA 00:05:02
+# Fork: 1 of 3
+# Warmup Iteration   1: 4,045 ns/op
+# Warmup Iteration   2: 3,964 ns/op
+# Warmup Iteration   3: 3,530 ns/op
+# Warmup Iteration   4: 3,531 ns/op
+# Warmup Iteration   5: 3,531 ns/op
+# Warmup Iteration   6: 3,531 ns/op
+# Warmup Iteration   7: 3,530 ns/op
+# Warmup Iteration   8: 3,530 ns/op
+# Warmup Iteration   9: 3,530 ns/op
+# Warmup Iteration  10: 3,530 ns/op
+# Warmup Iteration  11: 3,528 ns/op
+# Warmup Iteration  12: 3,531 ns/op
+# Warmup Iteration  13: 3,529 ns/op
+# Warmup Iteration  14: 3,531 ns/op
+# Warmup Iteration  15: 3,530 ns/op
+# Warmup Iteration  16: 3,531 ns/op
+# Warmup Iteration  17: 3,530 ns/op
+# Warmup Iteration  18: 3,530 ns/op
+# Warmup Iteration  19: 3,530 ns/op
+# Warmup Iteration  20: 3,530 ns/op
+# Warmup Iteration  21: 3,529 ns/op
+# Warmup Iteration  22: 3,529 ns/op
+# Warmup Iteration  23: 3,528 ns/op
+# Warmup Iteration  24: 3,529 ns/op
+# Warmup Iteration  25: 3,529 ns/op
+# Warmup Iteration  26: 3,528 ns/op
+# Warmup Iteration  27: 3,529 ns/op
+# Warmup Iteration  28: 3,529 ns/op
+# Warmup Iteration  29: 3,529 ns/op
+# Warmup Iteration  30: 3,538 ns/op
+# Warmup Iteration  31: 3,529 ns/op
+# Warmup Iteration  32: 3,528 ns/op
+# Warmup Iteration  33: 3,530 ns/op
+# Warmup Iteration  34: 3,530 ns/op
+# Warmup Iteration  35: 3,528 ns/op
+# Warmup Iteration  36: 3,531 ns/op
+# Warmup Iteration  37: 3,529 ns/op
+# Warmup Iteration  38: 3,528 ns/op
+# Warmup Iteration  39: 3,528 ns/op
+# Warmup Iteration  40: 3,543 ns/op
+# Warmup Iteration  41: 3,528 ns/op
+# Warmup Iteration  42: 3,530 ns/op
+# Warmup Iteration  43: 3,529 ns/op
+# Warmup Iteration  44: 3,529 ns/op
+# Warmup Iteration  45: 3,529 ns/op
+# Warmup Iteration  46: 3,528 ns/op
+# Warmup Iteration  47: 3,529 ns/op
+# Warmup Iteration  48: 3,528 ns/op
+# Warmup Iteration  49: 3,529 ns/op
+# Warmup Iteration  50: 3,530 ns/op
+Iteration   1: 3,544 ns/op
+Iteration   2: 3,535 ns/op
+Iteration   3: 3,527 ns/op
+Iteration   4: 3,529 ns/op
+Iteration   5: 3,528 ns/op
+Iteration   6: 3,529 ns/op
+Iteration   7: 3,529 ns/op
+Iteration   8: 3,529 ns/op
+Iteration   9: 3,529 ns/op
+Iteration  10: 3,529 ns/op
+Iteration  11: 3,528 ns/op
+Iteration  12: 3,528 ns/op
+Iteration  13: 3,528 ns/op
+Iteration  14: 3,529 ns/op
+Iteration  15: 3,528 ns/op
+Iteration  16: 3,529 ns/op
+Iteration  17: 3,528 ns/op
+Iteration  18: 3,530 ns/op
+Iteration  19: 3,528 ns/op
+Iteration  20: 3,528 ns/op
+Iteration  21: 3,528 ns/op
+Iteration  22: 3,528 ns/op
+Iteration  23: 3,529 ns/op
+Iteration  24: 3,530 ns/op
+Iteration  25: 3,544 ns/op
+Iteration  26: 3,530 ns/op
+Iteration  27: 3,530 ns/op
+Iteration  28: 3,529 ns/op
+Iteration  29: 3,530 ns/op
+Iteration  30: 3,529 ns/op
+Iteration  31: 3,529 ns/op
+Iteration  32: 3,528 ns/op
+Iteration  33: 3,544 ns/op
+Iteration  34: 3,529 ns/op
+Iteration  35: 3,535 ns/op
+Iteration  36: 3,528 ns/op
+Iteration  37: 3,530 ns/op
+Iteration  38: 3,529 ns/op
+Iteration  39: 3,530 ns/op
+Iteration  40: 3,529 ns/op
+Iteration  41: 3,528 ns/op
+Iteration  42: 3,544 ns/op
+Iteration  43: 3,530 ns/op
+Iteration  44: 3,529 ns/op
+Iteration  45: 3,530 ns/op
+Iteration  46: 3,529 ns/op
+Iteration  47: 3,530 ns/op
+Iteration  48: 3,530 ns/op
+Iteration  49: 3,529 ns/op
+Iteration  50: 3,543 ns/op
+
+# Run progress: 66,67% complete, ETA 00:03:21
+# Fork: 2 of 3
+# Warmup Iteration   1: 4,045 ns/op
+# Warmup Iteration   2: 3,949 ns/op
+# Warmup Iteration   3: 3,530 ns/op
+# Warmup Iteration   4: 3,545 ns/op
+# Warmup Iteration   5: 3,529 ns/op
+# Warmup Iteration   6: 3,529 ns/op
+# Warmup Iteration   7: 3,529 ns/op
+# Warmup Iteration   8: 3,529 ns/op
+# Warmup Iteration   9: 3,530 ns/op
+# Warmup Iteration  10: 3,529 ns/op
+# Warmup Iteration  11: 3,530 ns/op
+# Warmup Iteration  12: 3,529 ns/op
+# Warmup Iteration  13: 3,529 ns/op
+# Warmup Iteration  14: 3,529 ns/op
+# Warmup Iteration  15: 3,530 ns/op
+# Warmup Iteration  16: 3,529 ns/op
+# Warmup Iteration  17: 3,531 ns/op
+# Warmup Iteration  18: 3,529 ns/op
+# Warmup Iteration  19: 3,529 ns/op
+# Warmup Iteration  20: 3,528 ns/op
+# Warmup Iteration  21: 3,530 ns/op
+# Warmup Iteration  22: 3,532 ns/op
+# Warmup Iteration  23: 3,529 ns/op
+# Warmup Iteration  24: 3,529 ns/op
+# Warmup Iteration  25: 3,531 ns/op
+# Warmup Iteration  26: 3,529 ns/op
+# Warmup Iteration  27: 3,529 ns/op
+# Warmup Iteration  28: 3,531 ns/op
+# Warmup Iteration  29: 3,530 ns/op
+# Warmup Iteration  30: 3,544 ns/op
+# Warmup Iteration  31: 3,529 ns/op
+# Warmup Iteration  32: 3,529 ns/op
+# Warmup Iteration  33: 3,529 ns/op
+# Warmup Iteration  34: 3,529 ns/op
+# Warmup Iteration  35: 3,545 ns/op
+# Warmup Iteration  36: 3,530 ns/op
+# Warmup Iteration  37: 3,530 ns/op
+# Warmup Iteration  38: 3,529 ns/op
+# Warmup Iteration  39: 3,529 ns/op
+# Warmup Iteration  40: 3,529 ns/op
+# Warmup Iteration  41: 3,529 ns/op
+# Warmup Iteration  42: 3,528 ns/op
+# Warmup Iteration  43: 3,529 ns/op
+# Warmup Iteration  44: 3,529 ns/op
+# Warmup Iteration  45: 3,529 ns/op
+# Warmup Iteration  46: 3,546 ns/op
+# Warmup Iteration  47: 3,528 ns/op
+# Warmup Iteration  48: 3,529 ns/op
+# Warmup Iteration  49: 3,530 ns/op
+# Warmup Iteration  50: 3,529 ns/op
+Iteration   1: 3,546 ns/op
+Iteration   2: 3,530 ns/op
+Iteration   3: 3,531 ns/op
+Iteration   4: 3,529 ns/op
+Iteration   5: 3,529 ns/op
+Iteration   6: 3,530 ns/op
+Iteration   7: 3,529 ns/op
+Iteration   8: 3,530 ns/op
+Iteration   9: 3,529 ns/op
+Iteration  10: 3,529 ns/op
+Iteration  11: 3,530 ns/op
+Iteration  12: 3,531 ns/op
+Iteration  13: 3,529 ns/op
+Iteration  14: 3,530 ns/op
+Iteration  15: 3,528 ns/op
+Iteration  16: 3,529 ns/op
+Iteration  17: 3,530 ns/op
+Iteration  18: 3,529 ns/op
+Iteration  19: 3,529 ns/op
+Iteration  20: 3,531 ns/op
+Iteration  21: 3,529 ns/op
+Iteration  22: 3,530 ns/op
+Iteration  23: 3,529 ns/op
+Iteration  24: 3,530 ns/op
+Iteration  25: 3,528 ns/op
+Iteration  26: 3,529 ns/op
+Iteration  27: 3,530 ns/op
+Iteration  28: 3,530 ns/op
+Iteration  29: 3,528 ns/op
+Iteration  30: 3,529 ns/op
+Iteration  31: 3,529 ns/op
+Iteration  32: 3,530 ns/op
+Iteration  33: 3,529 ns/op
+Iteration  34: 3,531 ns/op
+Iteration  35: 3,528 ns/op
+Iteration  36: 3,530 ns/op
+Iteration  37: 3,528 ns/op
+Iteration  38: 3,531 ns/op
+Iteration  39: 3,530 ns/op
+Iteration  40: 3,529 ns/op
+Iteration  41: 3,528 ns/op
+Iteration  42: 3,529 ns/op
+Iteration  43: 3,529 ns/op
+Iteration  44: 3,530 ns/op
+Iteration  45: 3,529 ns/op
+Iteration  46: 3,530 ns/op
+Iteration  47: 3,530 ns/op
+Iteration  48: 3,530 ns/op
+Iteration  49: 3,528 ns/op
+Iteration  50: 3,551 ns/op
+
+# Run progress: 83,33% complete, ETA 00:01:40
+# Fork: 3 of 3
+# Warmup Iteration   1: 4,045 ns/op
+# Warmup Iteration   2: 4,009 ns/op
+# Warmup Iteration   3: 3,529 ns/op
+# Warmup Iteration   4: 3,529 ns/op
+# Warmup Iteration   5: 3,529 ns/op
+# Warmup Iteration   6: 3,529 ns/op
+# Warmup Iteration   7: 3,528 ns/op
+# Warmup Iteration   8: 3,529 ns/op
+# Warmup Iteration   9: 3,528 ns/op
+# Warmup Iteration  10: 3,529 ns/op
+# Warmup Iteration  11: 3,528 ns/op
+# Warmup Iteration  12: 3,530 ns/op
+# Warmup Iteration  13: 3,529 ns/op
+# Warmup Iteration  14: 3,529 ns/op
+# Warmup Iteration  15: 3,528 ns/op
+# Warmup Iteration  16: 3,529 ns/op
+# Warmup Iteration  17: 3,528 ns/op
+# Warmup Iteration  18: 3,528 ns/op
+# Warmup Iteration  19: 3,528 ns/op
+# Warmup Iteration  20: 3,529 ns/op
+# Warmup Iteration  21: 3,529 ns/op
+# Warmup Iteration  22: 3,529 ns/op
+# Warmup Iteration  23: 3,528 ns/op
+# Warmup Iteration  24: 3,529 ns/op
+# Warmup Iteration  25: 3,528 ns/op
+# Warmup Iteration  26: 3,529 ns/op
+# Warmup Iteration  27: 3,530 ns/op
+# Warmup Iteration  28: 3,530 ns/op
+# Warmup Iteration  29: 3,528 ns/op
+# Warmup Iteration  30: 3,528 ns/op
+# Warmup Iteration  31: 3,529 ns/op
+# Warmup Iteration  32: 3,529 ns/op
+# Warmup Iteration  33: 3,529 ns/op
+# Warmup Iteration  34: 3,528 ns/op
+# Warmup Iteration  35: 3,527 ns/op
+# Warmup Iteration  36: 3,529 ns/op
+# Warmup Iteration  37: 3,529 ns/op
+# Warmup Iteration  38: 3,528 ns/op
+# Warmup Iteration  39: 3,529 ns/op
+# Warmup Iteration  40: 3,544 ns/op
+# Warmup Iteration  41: 3,528 ns/op
+# Warmup Iteration  42: 3,528 ns/op
+# Warmup Iteration  43: 3,529 ns/op
+# Warmup Iteration  44: 3,528 ns/op
+# Warmup Iteration  45: 3,529 ns/op
+# Warmup Iteration  46: 3,528 ns/op
+# Warmup Iteration  47: 3,529 ns/op
+# Warmup Iteration  48: 3,531 ns/op
+# Warmup Iteration  49: 3,529 ns/op
+# Warmup Iteration  50: 3,530 ns/op
+Iteration   1: 3,544 ns/op
+Iteration   2: 3,529 ns/op
+Iteration   3: 3,529 ns/op
+Iteration   4: 3,528 ns/op
+Iteration   5: 3,528 ns/op
+Iteration   6: 3,528 ns/op
+Iteration   7: 3,528 ns/op
+Iteration   8: 3,529 ns/op
+Iteration   9: 3,530 ns/op
+Iteration  10: 3,528 ns/op
+Iteration  11: 3,946 ns/op
+Iteration  12: 3,528 ns/op
+Iteration  13: 3,528 ns/op
+Iteration  14: 3,528 ns/op
+Iteration  15: 3,528 ns/op
+Iteration  16: 3,529 ns/op
+Iteration  17: 3,543 ns/op
+Iteration  18: 3,529 ns/op
+Iteration  19: 3,529 ns/op
+Iteration  20: 3,530 ns/op
+Iteration  21: 3,528 ns/op
+Iteration  22: 3,529 ns/op
+Iteration  23: 3,529 ns/op
+Iteration  24: 3,529 ns/op
+Iteration  25: 3,544 ns/op
+Iteration  26: 3,529 ns/op
+Iteration  27: 3,529 ns/op
+Iteration  28: 3,528 ns/op
+Iteration  29: 3,529 ns/op
+Iteration  30: 3,529 ns/op
+Iteration  31: 3,529 ns/op
+Iteration  32: 3,527 ns/op
+Iteration  33: 3,529 ns/op
+Iteration  34: 3,528 ns/op
+Iteration  35: 3,530 ns/op
+Iteration  36: 3,529 ns/op
+Iteration  37: 3,529 ns/op
+Iteration  38: 3,529 ns/op
+Iteration  39: 3,530 ns/op
+Iteration  40: 3,529 ns/op
+Iteration  41: 3,530 ns/op
+Iteration  42: 3,544 ns/op
+Iteration  43: 3,529 ns/op
+Iteration  44: 3,528 ns/op
+Iteration  45: 3,529 ns/op
+Iteration  46: 3,528 ns/op
+Iteration  47: 3,530 ns/op
+Iteration  48: 3,528 ns/op
+Iteration  49: 3,530 ns/op
+Iteration  50: 3,528 ns/op
+
+
+Result "eu.javaspecialists.books.dynamicproxies.ch03.benchmarks.MethodCallBenchmark.staticProxyIncrement":
+  3,533 ±(99.9%) 0,009 ns/op [Average]
+  (min, avg, max) = (3,527, 3,533, 3,946), stdev = 0,034
+  CI (99.9%): [3,524, 3,542] (assumes normal distribution)
+
+
+# Run complete. Total time: 00:10:04
+
+REMEMBER: The numbers below are just data. To gain reusable insights, you need to follow up on
+why the numbers are the way they are. Use profilers (see -prof, -lprof), design factorial
+experiments, perform baseline and negative tests that provide experimental control, make sure
+the benchmarking environment is safe on JVM/OS/HW level, ask for reviews from the domain experts.
+Do not assume the numbers tell you what you want them to tell.
+
+Benchmark                                            Mode  Cnt  Score   Error  Units
+MethodCallBenchmark.dynamicProxyDirectCallIncrement  avgt  150  8,132 ± 0,012  ns/op
+MethodCallBenchmark.staticProxyIncrement             avgt  150  3,533 ± 0,009  ns/op
+# JMH version: 1.21
+# VM version: JDK 13.0.3, OpenJDK 64-Bit Server VM, 13.0.3+3-MTS
+# VM invoker: /Users/heinz/Dropbox (HIC Straws)/heinz/JavaVirtualMachines/zulu-13.jdk/Contents/Home/bin/java
+# VM options: -XX:+UseParallelGC -Deu.javaspecialists.books.dynamicproxies.util.MethodTurboBooster.disabled=true
+# Warmup: 50 iterations, 1 s each
+# Measurement: 50 iterations, 1 s each
+# Timeout: 10 min per iteration
+# Threads: 1 thread, will synchronize iterations
+# Benchmark mode: Average time, time/op
+# Benchmark: eu.javaspecialists.books.dynamicproxies.ch03.benchmarks.MethodCallBenchmark.dynamicProxyDirectCallIncrement
+
+# Run progress: 0,00% complete, ETA 00:10:00
+# Fork: 1 of 3
+# Warmup Iteration   1: 11,137 ns/op
+# Warmup Iteration   2: 9,174 ns/op
+# Warmup Iteration   3: 8,017 ns/op
+# Warmup Iteration   4: 8,023 ns/op
+# Warmup Iteration   5: 8,052 ns/op
+# Warmup Iteration   6: 8,087 ns/op
+# Warmup Iteration   7: 8,099 ns/op
+# Warmup Iteration   8: 8,096 ns/op
+# Warmup Iteration   9: 8,093 ns/op
+# Warmup Iteration  10: 8,098 ns/op
+# Warmup Iteration  11: 8,091 ns/op
+# Warmup Iteration  12: 8,093 ns/op
+# Warmup Iteration  13: 8,097 ns/op
+# Warmup Iteration  14: 8,093 ns/op
+# Warmup Iteration  15: 8,095 ns/op
+# Warmup Iteration  16: 8,091 ns/op
+# Warmup Iteration  17: 8,101 ns/op
+# Warmup Iteration  18: 8,080 ns/op
+# Warmup Iteration  19: 8,091 ns/op
+# Warmup Iteration  20: 8,099 ns/op
+# Warmup Iteration  21: 8,097 ns/op
+# Warmup Iteration  22: 8,085 ns/op
+# Warmup Iteration  23: 8,097 ns/op
+# Warmup Iteration  24: 8,088 ns/op
+# Warmup Iteration  25: 8,092 ns/op
+# Warmup Iteration  26: 8,091 ns/op
+# Warmup Iteration  27: 8,085 ns/op
+# Warmup Iteration  28: 8,093 ns/op
+# Warmup Iteration  29: 8,089 ns/op
+# Warmup Iteration  30: 8,092 ns/op
+# Warmup Iteration  31: 8,087 ns/op
+# Warmup Iteration  32: 8,092 ns/op
+# Warmup Iteration  33: 8,096 ns/op
+# Warmup Iteration  34: 8,096 ns/op
+# Warmup Iteration  35: 8,093 ns/op
+# Warmup Iteration  36: 8,093 ns/op
+# Warmup Iteration  37: 8,091 ns/op
+# Warmup Iteration  38: 8,094 ns/op
+# Warmup Iteration  39: 8,095 ns/op
+# Warmup Iteration  40: 8,088 ns/op
+# Warmup Iteration  41: 8,091 ns/op
+# Warmup Iteration  42: 8,082 ns/op
+# Warmup Iteration  43: 8,097 ns/op
+# Warmup Iteration  44: 8,084 ns/op
+# Warmup Iteration  45: 8,098 ns/op
+# Warmup Iteration  46: 8,093 ns/op
+# Warmup Iteration  47: 8,095 ns/op
+# Warmup Iteration  48: 8,078 ns/op
+# Warmup Iteration  49: 8,102 ns/op
+# Warmup Iteration  50: 8,097 ns/op
+Iteration   1: 8,091 ns/op
+Iteration   2: 8,088 ns/op
+Iteration   3: 8,089 ns/op
+Iteration   4: 8,093 ns/op
+Iteration   5: 8,091 ns/op
+Iteration   6: 8,087 ns/op
+Iteration   7: 8,088 ns/op
+Iteration   8: 8,084 ns/op
+Iteration   9: 8,096 ns/op
+Iteration  10: 8,091 ns/op
+Iteration  11: 8,092 ns/op
+Iteration  12: 8,085 ns/op
+Iteration  13: 8,096 ns/op
+Iteration  14: 8,098 ns/op
+Iteration  15: 8,085 ns/op
+Iteration  16: 8,096 ns/op
+Iteration  17: 8,084 ns/op
+Iteration  18: 8,094 ns/op
+Iteration  19: 8,096 ns/op
+Iteration  20: 8,092 ns/op
+Iteration  21: 8,093 ns/op
+Iteration  22: 8,096 ns/op
+Iteration  23: 8,080 ns/op
+Iteration  24: 8,102 ns/op
+Iteration  25: 8,091 ns/op
+Iteration  26: 8,089 ns/op
+Iteration  27: 8,090 ns/op
+Iteration  28: 8,098 ns/op
+Iteration  29: 8,095 ns/op
+Iteration  30: 8,090 ns/op
+Iteration  31: 8,093 ns/op
+Iteration  32: 8,098 ns/op
+Iteration  33: 8,082 ns/op
+Iteration  34: 8,096 ns/op
+Iteration  35: 8,095 ns/op
+Iteration  36: 8,087 ns/op
+Iteration  37: 8,095 ns/op
+Iteration  38: 8,092 ns/op
+Iteration  39: 8,093 ns/op
+Iteration  40: 8,085 ns/op
+Iteration  41: 8,083 ns/op
+Iteration  42: 8,099 ns/op
+Iteration  43: 8,090 ns/op
+Iteration  44: 8,089 ns/op
+Iteration  45: 8,087 ns/op
+Iteration  46: 8,095 ns/op
+Iteration  47: 8,082 ns/op
+Iteration  48: 8,093 ns/op
+Iteration  49: 8,095 ns/op
+Iteration  50: 8,101 ns/op
+
+# Run progress: 16,67% complete, ETA 00:08:25
+# Fork: 2 of 3
+# Warmup Iteration   1: 12,018 ns/op
+# Warmup Iteration   2: 9,264 ns/op
+# Warmup Iteration   3: 8,351 ns/op
+# Warmup Iteration   4: 8,370 ns/op
+# Warmup Iteration   5: 8,387 ns/op
+# Warmup Iteration   6: 8,427 ns/op
+# Warmup Iteration   7: 8,441 ns/op
+# Warmup Iteration   8: 8,447 ns/op
+# Warmup Iteration   9: 8,440 ns/op
+# Warmup Iteration  10: 8,444 ns/op
+# Warmup Iteration  11: 8,443 ns/op
+# Warmup Iteration  12: 8,453 ns/op
+# Warmup Iteration  13: 8,443 ns/op
+# Warmup Iteration  14: 8,445 ns/op
+# Warmup Iteration  15: 8,453 ns/op
+# Warmup Iteration  16: 8,450 ns/op
+# Warmup Iteration  17: 8,101 ns/op
+# Warmup Iteration  18: 8,096 ns/op
+# Warmup Iteration  19: 8,107 ns/op
+# Warmup Iteration  20: 8,106 ns/op
+# Warmup Iteration  21: 8,102 ns/op
+# Warmup Iteration  22: 8,086 ns/op
+# Warmup Iteration  23: 8,099 ns/op
+# Warmup Iteration  24: 8,096 ns/op
+# Warmup Iteration  25: 8,096 ns/op
+# Warmup Iteration  26: 8,100 ns/op
+# Warmup Iteration  27: 8,096 ns/op
+# Warmup Iteration  28: 8,099 ns/op
+# Warmup Iteration  29: 8,105 ns/op
+# Warmup Iteration  30: 8,106 ns/op
+# Warmup Iteration  31: 8,086 ns/op
+# Warmup Iteration  32: 8,107 ns/op
+# Warmup Iteration  33: 8,097 ns/op
+# Warmup Iteration  34: 8,113 ns/op
+# Warmup Iteration  35: 8,090 ns/op
+# Warmup Iteration  36: 8,095 ns/op
+# Warmup Iteration  37: 8,107 ns/op
+# Warmup Iteration  38: 8,105 ns/op
+# Warmup Iteration  39: 8,095 ns/op
+# Warmup Iteration  40: 8,107 ns/op
+# Warmup Iteration  41: 8,101 ns/op
+# Warmup Iteration  42: 8,105 ns/op
+# Warmup Iteration  43: 8,106 ns/op
+# Warmup Iteration  44: 8,094 ns/op
+# Warmup Iteration  45: 8,091 ns/op
+# Warmup Iteration  46: 8,103 ns/op
+# Warmup Iteration  47: 8,099 ns/op
+# Warmup Iteration  48: 8,096 ns/op
+# Warmup Iteration  49: 8,103 ns/op
+# Warmup Iteration  50: 8,095 ns/op
+Iteration   1: 8,102 ns/op
+Iteration   2: 8,079 ns/op
+Iteration   3: 8,100 ns/op
+Iteration   4: 8,109 ns/op
+Iteration   5: 8,100 ns/op
+Iteration   6: 8,099 ns/op
+Iteration   7: 8,092 ns/op
+Iteration   8: 8,102 ns/op
+Iteration   9: 8,108 ns/op
+Iteration  10: 8,106 ns/op
+Iteration  11: 8,096 ns/op
+Iteration  12: 8,109 ns/op
+Iteration  13: 8,100 ns/op
+Iteration  14: 8,092 ns/op
+Iteration  15: 8,104 ns/op
+Iteration  16: 8,099 ns/op
+Iteration  17: 8,100 ns/op
+Iteration  18: 8,117 ns/op
+Iteration  19: 8,105 ns/op
+Iteration  20: 8,113 ns/op
+Iteration  21: 8,095 ns/op
+Iteration  22: 8,102 ns/op
+Iteration  23: 8,099 ns/op
+Iteration  24: 8,102 ns/op
+Iteration  25: 8,104 ns/op
+Iteration  26: 8,105 ns/op
+Iteration  27: 8,092 ns/op
+Iteration  28: 8,115 ns/op
+Iteration  29: 8,082 ns/op
+Iteration  30: 8,099 ns/op
+Iteration  31: 8,102 ns/op
+Iteration  32: 8,099 ns/op
+Iteration  33: 8,107 ns/op
+Iteration  34: 8,104 ns/op
+Iteration  35: 8,103 ns/op
+Iteration  36: 8,097 ns/op
+Iteration  37: 8,108 ns/op
+Iteration  38: 8,110 ns/op
+Iteration  39: 8,095 ns/op
+Iteration  40: 8,095 ns/op
+Iteration  41: 8,104 ns/op
+Iteration  42: 8,096 ns/op
+Iteration  43: 8,103 ns/op
+Iteration  44: 8,116 ns/op
+Iteration  45: 8,091 ns/op
+Iteration  46: 8,101 ns/op
+Iteration  47: 8,098 ns/op
+Iteration  48: 8,103 ns/op
+Iteration  49: 8,109 ns/op
+Iteration  50: 8,084 ns/op
+
+# Run progress: 33,33% complete, ETA 00:06:44
+# Fork: 3 of 3
+# Warmup Iteration   1: 11,142 ns/op
+# Warmup Iteration   2: 9,173 ns/op
+# Warmup Iteration   3: 8,015 ns/op
+# Warmup Iteration   4: 8,026 ns/op
+# Warmup Iteration   5: 8,051 ns/op
+# Warmup Iteration   6: 8,083 ns/op
+# Warmup Iteration   7: 8,103 ns/op
+# Warmup Iteration   8: 8,090 ns/op
+# Warmup Iteration   9: 8,092 ns/op
+# Warmup Iteration  10: 8,095 ns/op
+# Warmup Iteration  11: 8,086 ns/op
+# Warmup Iteration  12: 8,086 ns/op
+# Warmup Iteration  13: 8,097 ns/op
+# Warmup Iteration  14: 8,079 ns/op
+# Warmup Iteration  15: 8,092 ns/op
+# Warmup Iteration  16: 8,091 ns/op
+# Warmup Iteration  17: 8,076 ns/op
+# Warmup Iteration  18: 8,071 ns/op
+# Warmup Iteration  19: 8,092 ns/op
+# Warmup Iteration  20: 8,093 ns/op
+# Warmup Iteration  21: 8,092 ns/op
+# Warmup Iteration  22: 8,084 ns/op
+# Warmup Iteration  23: 8,081 ns/op
+# Warmup Iteration  24: 8,095 ns/op
+# Warmup Iteration  25: 8,098 ns/op
+# Warmup Iteration  26: 8,083 ns/op
+# Warmup Iteration  27: 8,085 ns/op
+# Warmup Iteration  28: 8,079 ns/op
+# Warmup Iteration  29: 8,082 ns/op
+# Warmup Iteration  30: 8,090 ns/op
+# Warmup Iteration  31: 8,086 ns/op
+# Warmup Iteration  32: 8,090 ns/op
+# Warmup Iteration  33: 8,090 ns/op
+# Warmup Iteration  34: 8,076 ns/op
+# Warmup Iteration  35: 8,095 ns/op
+# Warmup Iteration  36: 8,084 ns/op
+# Warmup Iteration  37: 8,090 ns/op
+# Warmup Iteration  38: 8,074 ns/op
+# Warmup Iteration  39: 8,093 ns/op
+# Warmup Iteration  40: 8,085 ns/op
+# Warmup Iteration  41: 8,088 ns/op
+# Warmup Iteration  42: 8,079 ns/op
+# Warmup Iteration  43: 8,090 ns/op
+# Warmup Iteration  44: 8,086 ns/op
+# Warmup Iteration  45: 8,095 ns/op
+# Warmup Iteration  46: 8,095 ns/op
+# Warmup Iteration  47: 8,091 ns/op
+# Warmup Iteration  48: 8,087 ns/op
+# Warmup Iteration  49: 8,088 ns/op
+# Warmup Iteration  50: 8,093 ns/op
+Iteration   1: 8,087 ns/op
+Iteration   2: 8,084 ns/op
+Iteration   3: 8,090 ns/op
+Iteration   4: 8,086 ns/op
+Iteration   5: 8,090 ns/op
+Iteration   6: 8,088 ns/op
+Iteration   7: 8,086 ns/op
+Iteration   8: 8,079 ns/op
+Iteration   9: 8,090 ns/op
+Iteration  10: 8,087 ns/op
+Iteration  11: 8,089 ns/op
+Iteration  12: 8,077 ns/op
+Iteration  13: 8,089 ns/op
+Iteration  14: 8,082 ns/op
+Iteration  15: 8,085 ns/op
+Iteration  16: 8,090 ns/op
+Iteration  17: 8,086 ns/op
+Iteration  18: 8,083 ns/op
+Iteration  19: 8,095 ns/op
+Iteration  20: 8,076 ns/op
+Iteration  21: 8,084 ns/op
+Iteration  22: 8,074 ns/op
+Iteration  23: 8,091 ns/op
+Iteration  24: 8,082 ns/op
+Iteration  25: 8,084 ns/op
+Iteration  26: 8,095 ns/op
+Iteration  27: 8,089 ns/op
+Iteration  28: 8,083 ns/op
+Iteration  29: 8,090 ns/op
+Iteration  30: 8,084 ns/op
+Iteration  31: 8,081 ns/op
+Iteration  32: 8,089 ns/op
+Iteration  33: 8,081 ns/op
+Iteration  34: 8,089 ns/op
+Iteration  35: 8,092 ns/op
+Iteration  36: 8,089 ns/op
+Iteration  37: 8,088 ns/op
+Iteration  38: 8,094 ns/op
+Iteration  39: 8,081 ns/op
+Iteration  40: 8,093 ns/op
+Iteration  41: 8,083 ns/op
+Iteration  42: 8,085 ns/op
+Iteration  43: 8,077 ns/op
+Iteration  44: 8,087 ns/op
+Iteration  45: 8,086 ns/op
+Iteration  46: 8,089 ns/op
+Iteration  47: 8,073 ns/op
+Iteration  48: 8,090 ns/op
+Iteration  49: 8,078 ns/op
+Iteration  50: 8,094 ns/op
+
+
+Result "eu.javaspecialists.books.dynamicproxies.ch03.benchmarks.MethodCallBenchmark.dynamicProxyDirectCallIncrement":
+  8,093 ±(99.9%) 0,002 ns/op [Average]
+  (min, avg, max) = (8,073, 8,093, 8,117), stdev = 0,009
+  CI (99.9%): [8,090, 8,095] (assumes normal distribution)
+
+
+# JMH version: 1.21
+# VM version: JDK 13.0.3, OpenJDK 64-Bit Server VM, 13.0.3+3-MTS
+# VM invoker: /Users/heinz/Dropbox (HIC Straws)/heinz/JavaVirtualMachines/zulu-13.jdk/Contents/Home/bin/java
+# VM options: -XX:+UseParallelGC -Deu.javaspecialists.books.dynamicproxies.util.MethodTurboBooster.disabled=true
+# Warmup: 50 iterations, 1 s each
+# Measurement: 50 iterations, 1 s each
+# Timeout: 10 min per iteration
+# Threads: 1 thread, will synchronize iterations
+# Benchmark mode: Average time, time/op
+# Benchmark: eu.javaspecialists.books.dynamicproxies.ch03.benchmarks.MethodCallBenchmark.staticProxyIncrement
+
+# Run progress: 50,00% complete, ETA 00:05:03
+# Fork: 1 of 3
+# Warmup Iteration   1: 4,043 ns/op
+# Warmup Iteration   2: 3,971 ns/op
+# Warmup Iteration   3: 3,530 ns/op
+# Warmup Iteration   4: 3,529 ns/op
+# Warmup Iteration   5: 3,528 ns/op
+# Warmup Iteration   6: 3,529 ns/op
+# Warmup Iteration   7: 3,530 ns/op
+# Warmup Iteration   8: 3,530 ns/op
+# Warmup Iteration   9: 3,529 ns/op
+# Warmup Iteration  10: 3,529 ns/op
+# Warmup Iteration  11: 3,528 ns/op
+# Warmup Iteration  12: 3,530 ns/op
+# Warmup Iteration  13: 3,529 ns/op
+# Warmup Iteration  14: 3,530 ns/op
+# Warmup Iteration  15: 3,529 ns/op
+# Warmup Iteration  16: 3,530 ns/op
+# Warmup Iteration  17: 3,528 ns/op
+# Warmup Iteration  18: 3,530 ns/op
+# Warmup Iteration  19: 3,529 ns/op
+# Warmup Iteration  20: 3,529 ns/op
+# Warmup Iteration  21: 3,530 ns/op
+# Warmup Iteration  22: 3,529 ns/op
+# Warmup Iteration  23: 3,529 ns/op
+# Warmup Iteration  24: 3,529 ns/op
+# Warmup Iteration  25: 3,529 ns/op
+# Warmup Iteration  26: 3,528 ns/op
+# Warmup Iteration  27: 3,529 ns/op
+# Warmup Iteration  28: 3,529 ns/op
+# Warmup Iteration  29: 3,528 ns/op
+# Warmup Iteration  30: 3,529 ns/op
+# Warmup Iteration  31: 3,529 ns/op
+# Warmup Iteration  32: 3,530 ns/op
+# Warmup Iteration  33: 3,530 ns/op
+# Warmup Iteration  34: 3,528 ns/op
+# Warmup Iteration  35: 3,529 ns/op
+# Warmup Iteration  36: 3,530 ns/op
+# Warmup Iteration  37: 3,530 ns/op
+# Warmup Iteration  38: 3,529 ns/op
+# Warmup Iteration  39: 3,529 ns/op
+# Warmup Iteration  40: 3,545 ns/op
+# Warmup Iteration  41: 3,530 ns/op
+# Warmup Iteration  42: 3,529 ns/op
+# Warmup Iteration  43: 3,530 ns/op
+# Warmup Iteration  44: 3,530 ns/op
+# Warmup Iteration  45: 3,529 ns/op
+# Warmup Iteration  46: 3,530 ns/op
+# Warmup Iteration  47: 3,530 ns/op
+# Warmup Iteration  48: 3,531 ns/op
+# Warmup Iteration  49: 3,530 ns/op
+# Warmup Iteration  50: 3,530 ns/op
+Iteration   1: 3,545 ns/op
+Iteration   2: 3,530 ns/op
+Iteration   3: 3,529 ns/op
+Iteration   4: 3,530 ns/op
+Iteration   5: 3,529 ns/op
+Iteration   6: 3,530 ns/op
+Iteration   7: 3,529 ns/op
+Iteration   8: 3,529 ns/op
+Iteration   9: 3,529 ns/op
+Iteration  10: 3,529 ns/op
+Iteration  11: 3,528 ns/op
+Iteration  12: 3,528 ns/op
+Iteration  13: 3,530 ns/op
+Iteration  14: 3,530 ns/op
+Iteration  15: 3,529 ns/op
+Iteration  16: 3,529 ns/op
+Iteration  17: 3,530 ns/op
+Iteration  18: 3,530 ns/op
+Iteration  19: 3,530 ns/op
+Iteration  20: 3,530 ns/op
+Iteration  21: 3,529 ns/op
+Iteration  22: 3,529 ns/op
+Iteration  23: 3,529 ns/op
+Iteration  24: 3,530 ns/op
+Iteration  25: 3,544 ns/op
+Iteration  26: 3,529 ns/op
+Iteration  27: 3,530 ns/op
+Iteration  28: 3,531 ns/op
+Iteration  29: 3,528 ns/op
+Iteration  30: 3,529 ns/op
+Iteration  31: 3,529 ns/op
+Iteration  32: 3,530 ns/op
+Iteration  33: 3,545 ns/op
+Iteration  34: 3,530 ns/op
+Iteration  35: 3,529 ns/op
+Iteration  36: 3,530 ns/op
+Iteration  37: 3,530 ns/op
+Iteration  38: 3,529 ns/op
+Iteration  39: 3,529 ns/op
+Iteration  40: 3,529 ns/op
+Iteration  41: 3,530 ns/op
+Iteration  42: 3,546 ns/op
+Iteration  43: 3,529 ns/op
+Iteration  44: 3,529 ns/op
+Iteration  45: 3,527 ns/op
+Iteration  46: 3,530 ns/op
+Iteration  47: 3,530 ns/op
+Iteration  48: 3,529 ns/op
+Iteration  49: 3,530 ns/op
+Iteration  50: 3,544 ns/op
+
+# Run progress: 66,67% complete, ETA 00:03:21
+# Fork: 2 of 3
+# Warmup Iteration   1: 4,052 ns/op
+# Warmup Iteration   2: 3,954 ns/op
+# Warmup Iteration   3: 3,530 ns/op
+# Warmup Iteration   4: 3,530 ns/op
+# Warmup Iteration   5: 3,530 ns/op
+# Warmup Iteration   6: 3,529 ns/op
+# Warmup Iteration   7: 3,551 ns/op
+# Warmup Iteration   8: 3,528 ns/op
+# Warmup Iteration   9: 3,529 ns/op
+# Warmup Iteration  10: 3,530 ns/op
+# Warmup Iteration  11: 3,530 ns/op
+# Warmup Iteration  12: 3,529 ns/op
+# Warmup Iteration  13: 3,530 ns/op
+# Warmup Iteration  14: 3,529 ns/op
+# Warmup Iteration  15: 3,530 ns/op
+# Warmup Iteration  16: 3,529 ns/op
+# Warmup Iteration  17: 3,529 ns/op
+# Warmup Iteration  18: 3,529 ns/op
+# Warmup Iteration  19: 3,529 ns/op
+# Warmup Iteration  20: 3,529 ns/op
+# Warmup Iteration  21: 3,530 ns/op
+# Warmup Iteration  22: 3,548 ns/op
+# Warmup Iteration  23: 3,529 ns/op
+# Warmup Iteration  24: 3,529 ns/op
+# Warmup Iteration  25: 3,529 ns/op
+# Warmup Iteration  26: 3,528 ns/op
+# Warmup Iteration  27: 3,529 ns/op
+# Warmup Iteration  28: 3,548 ns/op
+# Warmup Iteration  29: 3,529 ns/op
+# Warmup Iteration  30: 3,529 ns/op
+# Warmup Iteration  31: 3,530 ns/op
+# Warmup Iteration  32: 3,529 ns/op
+# Warmup Iteration  33: 3,530 ns/op
+# Warmup Iteration  34: 3,529 ns/op
+# Warmup Iteration  35: 3,530 ns/op
+# Warmup Iteration  36: 3,530 ns/op
+# Warmup Iteration  37: 3,530 ns/op
+# Warmup Iteration  38: 3,529 ns/op
+# Warmup Iteration  39: 3,530 ns/op
+# Warmup Iteration  40: 3,529 ns/op
+# Warmup Iteration  41: 3,529 ns/op
+# Warmup Iteration  42: 3,530 ns/op
+# Warmup Iteration  43: 3,530 ns/op
+# Warmup Iteration  44: 3,548 ns/op
+# Warmup Iteration  45: 3,529 ns/op
+# Warmup Iteration  46: 3,528 ns/op
+# Warmup Iteration  47: 3,529 ns/op
+# Warmup Iteration  48: 3,531 ns/op
+# Warmup Iteration  49: 3,530 ns/op
+# Warmup Iteration  50: 3,529 ns/op
+Iteration   1: 3,530 ns/op
+Iteration   2: 3,529 ns/op
+Iteration   3: 3,530 ns/op
+Iteration   4: 3,529 ns/op
+Iteration   5: 3,529 ns/op
+Iteration   6: 3,529 ns/op
+Iteration   7: 3,529 ns/op
+Iteration   8: 3,529 ns/op
+Iteration   9: 3,529 ns/op
+Iteration  10: 3,529 ns/op
+Iteration  11: 3,531 ns/op
+Iteration  12: 3,529 ns/op
+Iteration  13: 3,530 ns/op
+Iteration  14: 3,532 ns/op
+Iteration  15: 3,583 ns/op
+Iteration  16: 3,531 ns/op
+Iteration  17: 3,530 ns/op
+Iteration  18: 3,529 ns/op
+Iteration  19: 3,530 ns/op
+Iteration  20: 3,533 ns/op
+Iteration  21: 3,529 ns/op
+Iteration  22: 3,529 ns/op
+Iteration  23: 3,530 ns/op
+Iteration  24: 3,528 ns/op
+Iteration  25: 3,529 ns/op
+Iteration  26: 3,530 ns/op
+Iteration  27: 3,529 ns/op
+Iteration  28: 3,529 ns/op
+Iteration  29: 3,529 ns/op
+Iteration  30: 3,529 ns/op
+Iteration  31: 3,548 ns/op
+Iteration  32: 3,530 ns/op
+Iteration  33: 3,529 ns/op
+Iteration  34: 3,530 ns/op
+Iteration  35: 3,529 ns/op
+Iteration  36: 3,530 ns/op
+Iteration  37: 3,529 ns/op
+Iteration  38: 3,530 ns/op
+Iteration  39: 3,528 ns/op
+Iteration  40: 3,530 ns/op
+Iteration  41: 3,529 ns/op
+Iteration  42: 3,530 ns/op
+Iteration  43: 3,529 ns/op
+Iteration  44: 3,529 ns/op
+Iteration  45: 3,529 ns/op
+Iteration  46: 3,532 ns/op
+Iteration  47: 3,530 ns/op
+Iteration  48: 3,549 ns/op
+Iteration  49: 3,529 ns/op
+Iteration  50: 3,530 ns/op
+
+# Run progress: 83,33% complete, ETA 00:01:40
+# Fork: 3 of 3
+# Warmup Iteration   1: 4,053 ns/op
+# Warmup Iteration   2: 3,958 ns/op
+# Warmup Iteration   3: 3,527 ns/op
+# Warmup Iteration   4: 3,544 ns/op
+# Warmup Iteration   5: 3,529 ns/op
+# Warmup Iteration   6: 3,529 ns/op
+# Warmup Iteration   7: 3,530 ns/op
+# Warmup Iteration   8: 3,528 ns/op
+# Warmup Iteration   9: 3,529 ns/op
+# Warmup Iteration  10: 3,530 ns/op
+# Warmup Iteration  11: 3,528 ns/op
+# Warmup Iteration  12: 3,529 ns/op
+# Warmup Iteration  13: 3,529 ns/op
+# Warmup Iteration  14: 3,529 ns/op
+# Warmup Iteration  15: 3,529 ns/op
+# Warmup Iteration  16: 3,529 ns/op
+# Warmup Iteration  17: 3,528 ns/op
+# Warmup Iteration  18: 3,529 ns/op
+# Warmup Iteration  19: 3,528 ns/op
+# Warmup Iteration  20: 3,529 ns/op
+# Warmup Iteration  21: 3,530 ns/op
+# Warmup Iteration  22: 3,529 ns/op
+# Warmup Iteration  23: 3,529 ns/op
+# Warmup Iteration  24: 3,530 ns/op
+# Warmup Iteration  25: 3,529 ns/op
+# Warmup Iteration  26: 3,617 ns/op
+# Warmup Iteration  27: 3,548 ns/op
+# Warmup Iteration  28: 3,528 ns/op
+# Warmup Iteration  29: 3,529 ns/op
+# Warmup Iteration  30: 3,544 ns/op
+# Warmup Iteration  31: 3,526 ns/op
+# Warmup Iteration  32: 3,530 ns/op
+# Warmup Iteration  33: 3,529 ns/op
+# Warmup Iteration  34: 3,528 ns/op
+# Warmup Iteration  35: 3,543 ns/op
+# Warmup Iteration  36: 3,527 ns/op
+# Warmup Iteration  37: 3,530 ns/op
+# Warmup Iteration  38: 3,528 ns/op
+# Warmup Iteration  39: 3,528 ns/op
+# Warmup Iteration  40: 3,528 ns/op
+# Warmup Iteration  41: 3,528 ns/op
+# Warmup Iteration  42: 3,529 ns/op
+# Warmup Iteration  43: 3,528 ns/op
+# Warmup Iteration  44: 3,528 ns/op
+# Warmup Iteration  45: 3,528 ns/op
+# Warmup Iteration  46: 3,544 ns/op
+# Warmup Iteration  47: 3,530 ns/op
+# Warmup Iteration  48: 3,528 ns/op
+# Warmup Iteration  49: 3,529 ns/op
+# Warmup Iteration  50: 3,527 ns/op
+Iteration   1: 3,527 ns/op
+Iteration   2: 3,527 ns/op
+Iteration   3: 3,528 ns/op
+Iteration   4: 3,528 ns/op
+Iteration   5: 3,528 ns/op
+Iteration   6: 3,529 ns/op
+Iteration   7: 3,530 ns/op
+Iteration   8: 3,529 ns/op
+Iteration   9: 3,529 ns/op
+Iteration  10: 3,530 ns/op
+Iteration  11: 3,529 ns/op
+Iteration  12: 3,528 ns/op
+Iteration  13: 3,528 ns/op
+Iteration  14: 3,529 ns/op
+Iteration  15: 3,529 ns/op
+Iteration  16: 3,528 ns/op
+Iteration  17: 3,529 ns/op
+Iteration  18: 3,528 ns/op
+Iteration  19: 3,528 ns/op
+Iteration  20: 3,528 ns/op
+Iteration  21: 3,528 ns/op
+Iteration  22: 3,528 ns/op
+Iteration  23: 3,529 ns/op
+Iteration  24: 3,527 ns/op
+Iteration  25: 3,528 ns/op
+Iteration  26: 3,527 ns/op
+Iteration  27: 3,529 ns/op
+Iteration  28: 3,529 ns/op
+Iteration  29: 3,528 ns/op
+Iteration  30: 3,529 ns/op
+Iteration  31: 3,529 ns/op
+Iteration  32: 3,528 ns/op
+Iteration  33: 3,529 ns/op
+Iteration  34: 3,527 ns/op
+Iteration  35: 3,527 ns/op
+Iteration  36: 3,530 ns/op
+Iteration  37: 3,528 ns/op
+Iteration  38: 3,528 ns/op
+Iteration  39: 3,528 ns/op
+Iteration  40: 3,528 ns/op
+Iteration  41: 3,529 ns/op
+Iteration  42: 3,528 ns/op
+Iteration  43: 3,528 ns/op
+Iteration  44: 3,528 ns/op
+Iteration  45: 3,527 ns/op
+Iteration  46: 3,528 ns/op
+Iteration  47: 3,527 ns/op
+Iteration  48: 3,528 ns/op
+Iteration  49: 3,528 ns/op
+Iteration  50: 3,543 ns/op
+
+
+Result "eu.javaspecialists.books.dynamicproxies.ch03.benchmarks.MethodCallBenchmark.staticProxyIncrement":
+  3,530 ±(99.9%) 0,002 ns/op [Average]
+  (min, avg, max) = (3,527, 3,530, 3,583), stdev = 0,006
+  CI (99.9%): [3,529, 3,532] (assumes normal distribution)
+
+
+# Run complete. Total time: 00:10:05
+
+REMEMBER: The numbers below are just data. To gain reusable insights, you need to follow up on
+why the numbers are the way they are. Use profilers (see -prof, -lprof), design factorial
+experiments, perform baseline and negative tests that provide experimental control, make sure
+the benchmarking environment is safe on JVM/OS/HW level, ask for reviews from the domain experts.
+Do not assume the numbers tell you what you want them to tell.
+
+Benchmark                                            Mode  Cnt  Score   Error  Units
+MethodCallBenchmark.dynamicProxyDirectCallIncrement  avgt  150  8,093 ± 0,002  ns/op
+MethodCallBenchmark.staticProxyIncrement             avgt  150  3,530 ± 0,002  ns/op
+[INFO] ------------------------------------------------------------------------
+[INFO] Reactor Summary for eu.javaspecialists.books.dynamicproxies:dynamic-proxies-samples 1.3.8-SNAPSHOT:
+[INFO] 
+[INFO] eu.javaspecialists.books.dynamicproxies:dynamic-proxies-samples SUCCESS [  0.103 s]
+[INFO] core ............................................... SUCCESS [  2.250 s]
+[INFO] samples ............................................ SUCCESS [  1.312 s]
+[INFO] benchmark .......................................... SUCCESS [21:10 min]
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD SUCCESS
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time:  21:14 min
+[INFO] Finished at: 2020-07-03T10:48:20+03:00
+[INFO] ------------------------------------------------------------------------

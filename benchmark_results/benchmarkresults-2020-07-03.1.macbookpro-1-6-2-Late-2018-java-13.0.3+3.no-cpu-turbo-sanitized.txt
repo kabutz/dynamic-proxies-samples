@@ -1,0 +1,55 @@
+# VM version: JDK 13.0.3, OpenJDK 64-Bit Server VM, 13.0.3+3-MTS (Azul Zulu)
+CPU Turbo turned off, running at 2.9 GHz
+
+Memory Profile MethodCallBenchmark -XX:+DoEscapeAnalysis -XX:+UseParallelGC
+Benchmark                                                                             Mode  Cnt     Score      Error   Units
+MethodCallBenchmark.dynamicProxyDirectCallIncrement:·gc.alloc.rate.norm               avgt    3    24,000 ±    0,001    B/op
+MethodCallBenchmark.staticProxyIncrement:·gc.alloc.rate.norm                          avgt    3    ≈ 10⁻⁶               B/op
+
+Memory Profile MethodCallBenchmark -XX:-DoEscapeAnalysis -XX:+UseParallelGC
+Benchmark                                                                             Mode  Cnt     Score      Error   Units
+MethodCallBenchmark.dynamicProxyDirectCallIncrement:·gc.alloc.rate.norm               avgt    3    24,000 ±    0,001    B/op
+MethodCallBenchmark.staticProxyIncrement:·gc.alloc.rate.norm                          avgt    3    ≈ 10⁻⁶               B/op
+
+Memory Profile MethodCallBenchmark -XX:-DoEscapeAnalysis -XX:+UseParallelGC -Deu.javaspecialists.books.dynamicproxies.util.MethodTurboBooster.disabled=true
+Benchmark                                                                             Mode  Cnt     Score      Error   Units
+MethodCallBenchmark.dynamicProxyDirectCallIncrement:·gc.alloc.rate.norm               avgt    3    24,000 ±    0,001    B/op
+MethodCallBenchmark.staticProxyIncrement:·gc.alloc.rate.norm                          avgt    3    ≈ 10⁻⁶               B/op
+
+
+CPU Profile MethodCallBenchmark -XX:+UseParallelGC -Deu.javaspecialists.books.dynamicproxies.util.MethodTurboBooster.disabled=false
+Result "eu.javaspecialists.books.dynamicproxies.ch03.benchmarks.MethodCallBenchmark.dynamicProxyDirectCallIncrement":
+  8,132 ±(99.9%) 0,012 ns/op [Average]
+  (min, avg, max) = (8,077, 8,132, 8,407), stdev = 0,044
+  CI (99.9%): [8,120, 8,144] (assumes normal distribution)
+Result "eu.javaspecialists.books.dynamicproxies.ch03.benchmarks.MethodCallBenchmark.staticProxyIncrement":
+  3,533 ±(99.9%) 0,009 ns/op [Average]
+  (min, avg, max) = (3,527, 3,533, 3,946), stdev = 0,034
+  CI (99.9%): [3,524, 3,542] (assumes normal distribution)
+
+Benchmark                                            Mode  Cnt  Score   Error  Units
+MethodCallBenchmark.staticProxyIncrement             avgt  150  3,533 ± 0,009  ns/op
+MethodCallBenchmark.dynamicProxyDirectCallIncrement  avgt  150  8,132 ± 0,012  ns/op
+
+Benchmark                                           Mode  Cnt  Score  Units
+MethodCallBenchmark.staticProxyIncrement            mint  150  3,527  ns/op
+MethodCallBenchmark.dynamicProxyDirectCallIncrement mint  150  8,120  ns/op
+
+
+CPU Profile MethodCallBenchmark -XX:+UseParallelGC -Deu.javaspecialists.books.dynamicproxies.util.MethodTurboBooster.disabled=true
+Result "eu.javaspecialists.books.dynamicproxies.ch03.benchmarks.MethodCallBenchmark.dynamicProxyDirectCallIncrement":
+  8,093 ±(99.9%) 0,002 ns/op [Average]
+  (min, avg, max) = (8,073, 8,093, 8,117), stdev = 0,009
+  CI (99.9%): [8,090, 8,095] (assumes normal distribution)
+Result "eu.javaspecialists.books.dynamicproxies.ch03.benchmarks.MethodCallBenchmark.staticProxyIncrement":
+  3,530 ±(99.9%) 0,002 ns/op [Average]
+  (min, avg, max) = (3,527, 3,530, 3,583), stdev = 0,006
+  CI (99.9%): [3,529, 3,532] (assumes normal distribution)
+
+Benchmark                                            Mode  Cnt  Score   Error  Units
+MethodCallBenchmark.staticProxyIncrement             avgt  150  3,530 ± 0,002  ns/op
+MethodCallBenchmark.dynamicProxyDirectCallIncrement  avgt  150  8,093 ± 0,002  ns/op
+
+Benchmark                                            Mode  Cnt  Score  Units
+MethodCallBenchmark.staticProxyIncrement             mint  150  3,527  ns/op
+MethodCallBenchmark.dynamicProxyDirectCallIncrement  mint  150  8,090  ns/op

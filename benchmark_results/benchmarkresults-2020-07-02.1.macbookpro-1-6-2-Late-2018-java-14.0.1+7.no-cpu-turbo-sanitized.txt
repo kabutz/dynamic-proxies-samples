@@ -1,0 +1,397 @@
+# VM version: JDK 14.0.1, OpenJDK 64-Bit Server VM, 14.0.1+7
+CPU Turbo turned off, running at 2.9 GHz
+
+Memory Profile MethodCallBenchmark -XX:+DoEscapeAnalysis -XX:+UseParallelGC
+Benchmark                                                                                 Mode  Cnt     Score     Error   Units
+MethodCallBenchmark.directCallConsumeCPU:·gc.alloc.rate.norm                              avgt    3    0                   B/op
+MethodCallBenchmark.directCallIncrement:·gc.alloc.rate.norm                               avgt    3    0                   B/op
+MethodCallBenchmark.dynamicProxyDirectCallConsumeCPU:·gc.alloc.rate.norm                  avgt    3    0                   B/op
+MethodCallBenchmark.dynamicProxyDirectCallIncrement:·gc.alloc.rate.norm                   avgt    3    0                   B/op
+MethodCallBenchmark.dynamicProxyReflectiveCallConsumeCPU:·gc.alloc.rate.norm              avgt    3    0                   B/op
+MethodCallBenchmark.dynamicProxyReflectiveCallIncrement:·gc.alloc.rate.norm               avgt    3    24,002 ±   0,007    B/op
+MethodCallBenchmark.staticProxyConsumeCPU:·gc.alloc.rate.norm                             avgt    3    0                   B/op
+MethodCallBenchmark.staticProxyIncrement:·gc.alloc.rate.norm                              avgt    3    0                   B/op
+
+Memory Profile MethodCallBenchmark -XX:-DoEscapeAnalysis -XX:+UseParallelGC
+Benchmark                                                                                 Mode  Cnt     Score      Error   Units
+MethodCallBenchmark.directCallConsumeCPU:·gc.alloc.rate.norm                              avgt    3    0                    B/op
+MethodCallBenchmark.directCallIncrement:·gc.alloc.rate.norm                               avgt    3    0                    B/op
+MethodCallBenchmark.dynamicProxyDirectCallConsumeCPU:·gc.alloc.rate.norm                  avgt    3    0                    B/op
+MethodCallBenchmark.dynamicProxyDirectCallIncrement:·gc.alloc.rate.norm                   avgt    3    24,004 ±    0,037    B/op
+MethodCallBenchmark.dynamicProxyReflectiveCallConsumeCPU:·gc.alloc.rate.norm              avgt    3    0                    B/op
+MethodCallBenchmark.dynamicProxyReflectiveCallIncrement:·gc.alloc.rate.norm               avgt    3    24,003 ±    0,018    B/op
+MethodCallBenchmark.staticProxyConsumeCPU:·gc.alloc.rate.norm                             avgt    3    0                    B/op
+MethodCallBenchmark.staticProxyIncrement:·gc.alloc.rate.norm                              avgt    3    0                    B/op
+
+Memory Profile MethodCallBenchmark -XX:-DoEscapeAnalysis -XX:+UseParallelGC -Deu.javaspecialists.books.dynamicproxies.util.MethodTurboBooster.disabled=true
+Benchmark                                                                                 Mode  Cnt     Score      Error   Units
+MethodCallBenchmark.directCallConsumeCPU:·gc.alloc.rate.norm                              avgt    3    0                    B/op
+MethodCallBenchmark.directCallIncrement:·gc.alloc.rate.norm                               avgt    3    0                    B/op
+MethodCallBenchmark.dynamicProxyDirectCallConsumeCPU:·gc.alloc.rate.norm                  avgt    3    0                    B/op
+MethodCallBenchmark.dynamicProxyDirectCallIncrement:·gc.alloc.rate.norm                   avgt    3    24,004 ±    0,039    B/op
+MethodCallBenchmark.dynamicProxyReflectiveCallConsumeCPU:·gc.alloc.rate.norm              avgt    3    0                    B/op
+MethodCallBenchmark.dynamicProxyReflectiveCallIncrement:·gc.alloc.rate.norm               avgt    3    24,002 ±    0,003    B/op
+MethodCallBenchmark.staticProxyConsumeCPU:·gc.alloc.rate.norm                             avgt    3    0                    B/op
+MethodCallBenchmark.staticProxyIncrement:·gc.alloc.rate.norm                              avgt    3    0                    B/op
+
+CPU Profile MethodCallBenchmark -XX:+UseParallelGC -Deu.javaspecialists.books.dynamicproxies.util.MethodTurboBooster.disabled=false
+Result "eu.javaspecialists.books.dynamicproxies.ch03.benchmarks.MethodCallBenchmark.directCallConsumeCPU":
+  4,911 ±(99.9%) 0,025 ns/op [Average]
+  (min, avg, max) = (4,841, 4,911, 5,064), stdev = 0,090
+  CI (99.9%): [4,886, 4,935] (assumes normal distribution)
+Result "eu.javaspecialists.books.dynamicproxies.ch03.benchmarks.MethodCallBenchmark.directCallIncrement":
+  2,887 ±(99.9%) 0,010 ns/op [Average]
+  (min, avg, max) = (2,873, 2,887, 3,308), stdev = 0,035
+  CI (99.9%): [2,877, 2,896] (assumes normal distribution)
+Result "eu.javaspecialists.books.dynamicproxies.ch03.benchmarks.MethodCallBenchmark.dynamicProxyDirectCallConsumeCPU":
+  6,675 ±(99.9%) 0,045 ns/op [Average]
+  (min, avg, max) = (6,570, 6,675, 8,495), stdev = 0,163
+  CI (99.9%): [6,630, 6,719] (assumes normal distribution)
+Result "eu.javaspecialists.books.dynamicproxies.ch03.benchmarks.MethodCallBenchmark.dynamicProxyDirectCallIncrement":
+  5,603 ±(99.9%) 0,004 ns/op [Average]
+  (min, avg, max) = (5,598, 5,603, 5,788), stdev = 0,015
+  CI (99.9%): [5,598, 5,607] (assumes normal distribution)
+Result "eu.javaspecialists.books.dynamicproxies.ch03.benchmarks.MethodCallBenchmark.dynamicProxyReflectiveCallConsumeCPU":
+  7,788 ±(99.9%) 0,059 ns/op [Average]
+  (min, avg, max) = (7,644, 7,788, 8,308), stdev = 0,216
+  CI (99.9%): [7,729, 7,847] (assumes normal distribution)
+Result "eu.javaspecialists.books.dynamicproxies.ch03.benchmarks.MethodCallBenchmark.dynamicProxyReflectiveCallIncrement":
+  9,744 ±(99.9%) 0,005 ns/op [Average]
+  (min, avg, max) = (9,714, 9,744, 9,820), stdev = 0,019
+  CI (99.9%): [9,739, 9,750] (assumes normal distribution)
+Result "eu.javaspecialists.books.dynamicproxies.ch03.benchmarks.MethodCallBenchmark.staticProxyConsumeCPU":
+  5,546 ±(99.9%) 0,001 ns/op [Average]
+  (min, avg, max) = (5,536, 5,546, 5,559), stdev = 0,005
+  CI (99.9%): [5,545, 5,548] (assumes normal distribution)
+Result "eu.javaspecialists.books.dynamicproxies.ch03.benchmarks.MethodCallBenchmark.staticProxyIncrement":
+  3,493 ±(99.9%) 0,002 ns/op [Average]
+  (min, avg, max) = (3,485, 3,493, 3,518), stdev = 0,006
+  CI (99.9%): [3,491, 3,495] (assumes normal distribution)
+
+Benchmark                                                 Mode  Cnt  Score   Error  Units
+MethodCallBenchmark.directCallIncrement                   avgt  150  2,887 ± 0,010  ns/op
+MethodCallBenchmark.staticProxyIncrement                  avgt  150  3,493 ± 0,002  ns/op
+MethodCallBenchmark.dynamicProxyDirectCallIncrement       avgt  150  5,603 ± 0,004  ns/op
+MethodCallBenchmark.dynamicProxyReflectiveCallIncrement   avgt  150  9,744 ± 0,005  ns/op
+MethodCallBenchmark.directCallConsumeCPU                  avgt  150  4,911 ± 0,025  ns/op
+MethodCallBenchmark.staticProxyConsumeCPU                 avgt  150  5,546 ± 0,001  ns/op
+MethodCallBenchmark.dynamicProxyDirectCallConsumeCPU      avgt  150  6,675 ± 0,045  ns/op
+MethodCallBenchmark.dynamicProxyReflectiveCallConsumeCPU  avgt  150  7,788 ± 0,059  ns/op
+
+Benchmark                                                 Mode  Cnt  Score  Units
+MethodCallBenchmark.directCallIncrement                   mint  150  2,873  ns/op
+MethodCallBenchmark.staticProxyIncrement                  mint  150  3,485  ns/op
+MethodCallBenchmark.dynamicProxyDirectCallIncrement       mint  150  5,598  ns/op
+MethodCallBenchmark.dynamicProxyReflectiveCallIncrement   mint  150  9,714  ns/op
+MethodCallBenchmark.directCallConsumeCPU                  mint  150  4,841  ns/op
+MethodCallBenchmark.staticProxyConsumeCPU                 mint  150  5,536  ns/op
+MethodCallBenchmark.dynamicProxyDirectCallConsumeCPU      mint  150  6,570  ns/op
+MethodCallBenchmark.dynamicProxyReflectiveCallConsumeCPU  mint  150  7,644  ns/op
+
+CPU Profile MethodCallBenchmark -XX:+UseParallelGC -Deu.javaspecialists.books.dynamicproxies.util.MethodTurboBooster.disabled=true
+Result "eu.javaspecialists.books.dynamicproxies.ch03.benchmarks.MethodCallBenchmark.directCallConsumeCPU":
+  4,848 ±(99.9%) 0,021 ns/op [Average]
+  (min, avg, max) = (4,840, 4,848, 5,759), stdev = 0,075
+  CI (99.9%): [4,828, 4,869] (assumes normal distribution)
+Result "eu.javaspecialists.books.dynamicproxies.ch03.benchmarks.MethodCallBenchmark.directCallIncrement":
+  2,876 ±(99.9%) 0,003 ns/op [Average]
+  (min, avg, max) = (2,855, 2,876, 2,891), stdev = 0,009
+  CI (99.9%): [2,874, 2,879] (assumes normal distribution)
+Result "eu.javaspecialists.books.dynamicproxies.ch03.benchmarks.MethodCallBenchmark.dynamicProxyDirectCallConsumeCPU":
+  7,178 ±(99.9%) 0,096 ns/op [Average]
+  (min, avg, max) = (6,685, 7,178, 7,811), stdev = 0,351
+  CI (99.9%): [7,082, 7,274] (assumes normal distribution)
+Result "eu.javaspecialists.books.dynamicproxies.ch03.benchmarks.MethodCallBenchmark.dynamicProxyDirectCallIncrement":
+  5,601 ±(99.9%) 0,001 ns/op [Average]
+  (min, avg, max) = (5,596, 5,601, 5,651), stdev = 0,005
+  CI (99.9%): [5,600, 5,603] (assumes normal distribution)
+Result "eu.javaspecialists.books.dynamicproxies.ch03.benchmarks.MethodCallBenchmark.dynamicProxyReflectiveCallConsumeCPU":
+  11,539 ±(99.9%) 0,136 ns/op [Average]
+  (min, avg, max) = (11,064, 11,539, 12,485), stdev = 0,496
+  CI (99.9%): [11,403, 11,675] (assumes normal distribution)
+Result "eu.javaspecialists.books.dynamicproxies.ch03.benchmarks.MethodCallBenchmark.dynamicProxyReflectiveCallIncrement":
+  12,456 ±(99.9%) 0,002 ns/op [Average]
+  (min, avg, max) = (12,444, 12,456, 12,494), stdev = 0,008
+  CI (99.9%): [12,454, 12,459] (assumes normal distribution)
+Result "eu.javaspecialists.books.dynamicproxies.ch03.benchmarks.MethodCallBenchmark.staticProxyConsumeCPU":
+  5,546 ±(99.9%) 0,002 ns/op [Average]
+  (min, avg, max) = (5,536, 5,546, 5,587), stdev = 0,007
+  CI (99.9%): [5,545, 5,548] (assumes normal distribution)
+Result "eu.javaspecialists.books.dynamicproxies.ch03.benchmarks.MethodCallBenchmark.staticProxyIncrement":
+  3,500 ±(99.9%) 0,013 ns/op [Average]
+  (min, avg, max) = (3,487, 3,500, 3,881), stdev = 0,046
+  CI (99.9%): [3,488, 3,513] (assumes normal distribution)
+
+Benchmark                                                 Mode  Cnt   Score   Error  Units
+MethodCallBenchmark.directCallIncrement                   avgt  150   2,876 ± 0,003  ns/op
+MethodCallBenchmark.staticProxyIncrement                  avgt  150   3,500 ± 0,013  ns/op
+MethodCallBenchmark.dynamicProxyDirectCallIncrement       avgt  150   5,601 ± 0,001  ns/op
+MethodCallBenchmark.dynamicProxyReflectiveCallIncrement   avgt  150  12,456 ± 0,002  ns/op
+MethodCallBenchmark.directCallConsumeCPU                  avgt  150   4,848 ± 0,021  ns/op
+MethodCallBenchmark.staticProxyConsumeCPU                 avgt  150   5,546 ± 0,002  ns/op
+MethodCallBenchmark.dynamicProxyDirectCallConsumeCPU      avgt  150   7,178 ± 0,096  ns/op
+MethodCallBenchmark.dynamicProxyReflectiveCallConsumeCPU  avgt  150  11,539 ± 0,136  ns/op
+
+Benchmark                                                 Mode  Cnt  Score  Units
+MethodCallBenchmark.directCallIncrement                   mint  150  2,855  ns/op
+MethodCallBenchmark.staticProxyIncrement                  mint  150  3,487  ns/op
+MethodCallBenchmark.dynamicProxyDirectCallIncrement       mint  150  5,596  ns/op
+MethodCallBenchmark.dynamicProxyReflectiveCallIncrement   mint  150  12,444  ns/op
+MethodCallBenchmark.directCallConsumeCPU                  mint  150  4,840  ns/op
+MethodCallBenchmark.staticProxyConsumeCPU                 mint  150  5,536  ns/op
+MethodCallBenchmark.dynamicProxyDirectCallConsumeCPU      mint  150  6,685  ns/op
+MethodCallBenchmark.dynamicProxyReflectiveCallConsumeCPU  mint  150  11,064  ns/op
+
+Sanitized results:
+Benchmark                                                           Mode  Cnt  Score  Units
+MethodCallBenchmark.directCallIncrement                             mint  150  2.9  ns/op
+MethodCallBenchmark.staticProxyIncrement                            mint  150  3.5  ns/op
+MethodCallBenchmark.dynamicProxyDirectCallIncrement                 mint  150  5.6  ns/op
+MethodCallBenchmark.dynamicProxyReflectiveCallIncrement (turbo)     mint  150  9.7  ns/op
+MethodCallBenchmark.dynamicProxyReflectiveCallIncrement (no turbo)  mint  150  12.4  ns/op
+MethodCallBenchmark.directCallConsumeCPU                            mint  150  4.8  ns/op
+MethodCallBenchmark.staticProxyConsumeCPU                           mint  150  5.5  ns/op
+MethodCallBenchmark.dynamicProxyDirectCallConsumeCPU                mint  150  6.6  ns/op
+MethodCallBenchmark.dynamicProxyReflectiveCallConsumeCPU (turbo)    mint  150  7.6  ns/op
+MethodCallBenchmark.dynamicProxyReflectiveCallConsumeCPU (no turbo) mint  150  11.0  ns/op
+
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+Memory Profile AdapterBenchmark -XX:+DoEscapeAnalysis -XX:+UseParallelGC -Deu.javaspecialists.books.dynamicproxies.util.ParameterTypesFetcher.enabled=true
+Benchmark                                                                      Mode  Cnt     Score      Error   Units
+AdapterBenchmark.plainSize:·gc.alloc.rate.norm                                 avgt    3    0               B/op
+AdapterBenchmark.classAdapterSize:·gc.alloc.rate.norm                          avgt    3    0               B/op
+AdapterBenchmark.objectAdapterSize:·gc.alloc.rate.norm                         avgt    3    0               B/op
+AdapterBenchmark.dynamicObjectAdapterSize:·gc.alloc.rate.norm                  avgt    3    0               B/op
+AdapterBenchmark.plainToArray:·gc.alloc.rate.norm                              avgt    3    64,007 ±    0,034    B/op
+AdapterBenchmark.classAdapterToArray:·gc.alloc.rate.norm                       avgt    3    64,007 ±    0,030    B/op
+AdapterBenchmark.objectAdapterToArray:·gc.alloc.rate.norm                      avgt    3    64,007 ±    0,022    B/op
+AdapterBenchmark.dynamicObjectAdapterToArray:·gc.alloc.rate.norm               avgt    3    64,015 ±    0,075    B/op
+AdapterBenchmark.plainForEach:·gc.alloc.rate.norm                              avgt    3    0               B/op
+AdapterBenchmark.classAdapterForEach:·gc.alloc.rate.norm                       avgt    3    0               B/op
+AdapterBenchmark.objectAdapterForEach:·gc.alloc.rate.norm                      avgt    3    0               B/op
+AdapterBenchmark.dynamicObjectAdapterForEach:·gc.alloc.rate.norm               avgt    3    56,020 ±    0,066    B/op
+AdapterBenchmark.iterator:·gc.alloc.rate.norm                                  avgt    3    32,001 ±    0,002    B/op
+AdapterBenchmark.parameterArray:·gc.alloc.rate.norm                            avgt    3    24,002 ±    0,010    B/op
+
+Memory Profile AdapterBenchmark -XX:-DoEscapeAnalysis -XX:+UseParallelGC -Deu.javaspecialists.books.dynamicproxies.util.ParameterTypesFetcher.enabled=true
+Benchmark                                                                      Mode  Cnt     Score      Error   Units
+AdapterBenchmark.plainSize:·gc.alloc.rate.norm                                 avgt    3    0               B/op
+AdapterBenchmark.classAdapterSize:·gc.alloc.rate.norm                          avgt    3    0               B/op
+AdapterBenchmark.objectAdapterSize:·gc.alloc.rate.norm                         avgt    3    0               B/op
+AdapterBenchmark.dynamicObjectAdapterSize:·gc.alloc.rate.norm                  avgt    3    0               B/op
+AdapterBenchmark.plainToArray:·gc.alloc.rate.norm                              avgt    3    64,007 ±    0,038    B/op
+AdapterBenchmark.classAdapterToArray:·gc.alloc.rate.norm                       avgt    3    64,006 ±    0,014    B/op
+AdapterBenchmark.objectAdapterToArray:·gc.alloc.rate.norm                      avgt    3    64,007 ±    0,018    B/op
+AdapterBenchmark.dynamicObjectAdapterToArray:·gc.alloc.rate.norm               avgt    3    64,030 ±    0,140    B/op
+AdapterBenchmark.plainForEach:·gc.alloc.rate.norm                              avgt    3    32,015 ±    0,055    B/op
+AdapterBenchmark.classAdapterForEach:·gc.alloc.rate.norm                       avgt    3    32,015 ±    0,053    B/op
+AdapterBenchmark.objectAdapterForEach:·gc.alloc.rate.norm                      avgt    3    32,014 ±    0,049    B/op
+AdapterBenchmark.iterator:·gc.alloc.rate.norm                                  avgt    3    32,001 ±    0,003    B/op
+AdapterBenchmark.parameterArray:·gc.alloc.rate.norm                            avgt    3    24,001 ±    0,011    B/op
+
+CPU Profile AdapterBenchmark -XX:+UseParallelGC -Deu.javaspecialists.books.dynamicproxies.util.ParameterTypesFetcher.enabled=true
+Result "eu.javaspecialists.books.dynamicproxies.ch05.benchmarks.AdapterBenchmark.classAdapterForEach":
+  25,985 ±(99.9%) 0,345 ns/op [Average]
+  (min, avg, max) = (24,201, 25,985, 27,099), stdev = 1,258
+  CI (99.9%): [25,640, 26,330] (assumes normal distribution)
+Result "eu.javaspecialists.books.dynamicproxies.ch05.benchmarks.AdapterBenchmark.classAdapterSize":
+  5,235 ±(99.9%) 0,019 ns/op [Average]
+  (min, avg, max) = (5,186, 5,235, 5,379), stdev = 0,068
+  CI (99.9%): [5,216, 5,253] (assumes normal distribution)
+Result "eu.javaspecialists.books.dynamicproxies.ch05.benchmarks.AdapterBenchmark.classAdapterToArray":
+  33,500 ±(99.9%) 0,160 ns/op [Average]
+  (min, avg, max) = (32,837, 33,500, 34,374), stdev = 0,585
+  CI (99.9%): [33,340, 33,660] (assumes normal distribution)
+Result "eu.javaspecialists.books.dynamicproxies.ch05.benchmarks.AdapterBenchmark.dynamicObjectAdapterForEach":
+  64,210 ±(99.9%) 0,278 ns/op [Average]
+  (min, avg, max) = (62,721, 64,210, 65,343), stdev = 1,016
+  CI (99.9%): [63,932, 64,489] (assumes normal distribution)
+Result "eu.javaspecialists.books.dynamicproxies.ch05.benchmarks.AdapterBenchmark.dynamicObjectAdapterSize":
+  23,144 ±(99.9%) 0,366 ns/op [Average]
+  (min, avg, max) = (21,925, 23,144, 26,182), stdev = 1,336
+  CI (99.9%): [22,777, 23,510] (assumes normal distribution)
+Result "eu.javaspecialists.books.dynamicproxies.ch05.benchmarks.AdapterBenchmark.dynamicObjectAdapterToArray":
+  43,329 ±(99.9%) 0,055 ns/op [Average]
+  (min, avg, max) = (42,983, 43,329, 43,733), stdev = 0,202
+  CI (99.9%): [43,274, 43,385] (assumes normal distribution)
+Result "eu.javaspecialists.books.dynamicproxies.ch05.benchmarks.AdapterBenchmark.iterator":
+  10,113 ±(99.9%) 0,017 ns/op [Average]
+  (min, avg, max) = (10,043, 10,113, 10,318), stdev = 0,062
+  CI (99.9%): [10,096, 10,130] (assumes normal distribution)
+Result "eu.javaspecialists.books.dynamicproxies.ch05.benchmarks.AdapterBenchmark.objectAdapterForEach":
+  26,170 ±(99.9%) 0,007 ns/op [Average]
+  (min, avg, max) = (26,123, 26,170, 26,237), stdev = 0,026
+  CI (99.9%): [26,162, 26,177] (assumes normal distribution)
+Result "eu.javaspecialists.books.dynamicproxies.ch05.benchmarks.AdapterBenchmark.objectAdapterSize":
+  5,255 ±(99.9%) 0,005 ns/op [Average]
+  (min, avg, max) = (5,251, 5,255, 5,481), stdev = 0,019
+  CI (99.9%): [5,250, 5,260] (assumes normal distribution)
+Result "eu.javaspecialists.books.dynamicproxies.ch05.benchmarks.AdapterBenchmark.objectAdapterToArray":
+  33,886 ±(99.9%) 0,075 ns/op [Average]
+  (min, avg, max) = (33,578, 33,886, 35,637), stdev = 0,274
+  CI (99.9%): [33,811, 33,961] (assumes normal distribution)
+Result "eu.javaspecialists.books.dynamicproxies.ch05.benchmarks.AdapterBenchmark.parameterArray":
+  5,154 ±(99.9%) 0,005 ns/op [Average]
+  (min, avg, max) = (5,141, 5,154, 5,350), stdev = 0,017
+  CI (99.9%): [5,150, 5,159] (assumes normal distribution)
+Result "eu.javaspecialists.books.dynamicproxies.ch05.benchmarks.AdapterBenchmark.plainForEach":
+  24,123 ±(99.9%) 0,003 ns/op [Average]
+  (min, avg, max) = (24,100, 24,123, 24,179), stdev = 0,010
+  CI (99.9%): [24,121, 24,126] (assumes normal distribution)
+Result "eu.javaspecialists.books.dynamicproxies.ch05.benchmarks.AdapterBenchmark.plainSize":
+  5,187 ±(99.9%) 0,001 ns/op [Average]
+  (min, avg, max) = (5,186, 5,187, 5,197), stdev = 0,001
+  CI (99.9%): [5,187, 5,188] (assumes normal distribution)
+Result "eu.javaspecialists.books.dynamicproxies.ch05.benchmarks.AdapterBenchmark.plainToArray":
+  28,253 ±(99.9%) 0,056 ns/op [Average]
+  (min, avg, max) = (28,039, 28,253, 28,606), stdev = 0,206
+  CI (99.9%): [28,196, 28,309] (assumes normal distribution)
+
+Benchmark                                     Mode  Cnt   Score    Error  Units
+AdapterBenchmark.plainSize                    avgt  150   5,187 ±  0,001  ns/op
+AdapterBenchmark.classAdapterSize             avgt  150   5,235 ±  0,019  ns/op
+AdapterBenchmark.objectAdapterSize            avgt  150   5,255 ±  0,005  ns/op
+AdapterBenchmark.dynamicObjectAdapterSize     avgt  150  23,144 ±  0,366  ns/op
+AdapterBenchmark.plainToArray                 avgt  150  28,253 ±  0,056  ns/op
+AdapterBenchmark.classAdapterToArray          avgt  150  33,500 ±  0,160  ns/op
+AdapterBenchmark.objectAdapterToArray         avgt  150  33,886 ±  0,075  ns/op
+AdapterBenchmark.dynamicObjectAdapterToArray  avgt  150  43,329 ±  0,055  ns/op
+AdapterBenchmark.plainForEach                 avgt  150  24,123 ±  0,003  ns/op
+AdapterBenchmark.classAdapterForEach          avgt  150  25,985 ±  0,345  ns/op
+AdapterBenchmark.objectAdapterForEach         avgt  150  26,170 ±  0,007  ns/op
+AdapterBenchmark.dynamicObjectAdapterForEach  avgt  150  64,210 ±  0,278  ns/op
+
+Benchmark                                     Mode  Cnt   Score   Units
+AdapterBenchmark.plainSize                    mint  150   5,186   ns/op
+AdapterBenchmark.classAdapterSize             mint  150   5,186   ns/op
+AdapterBenchmark.objectAdapterSize            mint  150   5,251   ns/op
+AdapterBenchmark.dynamicObjectAdapterSize     mint  150   21,925  ns/op
+AdapterBenchmark.plainToArray                 mint  150   28,039  ns/op
+AdapterBenchmark.classAdapterToArray          mint  150   32,837  ns/op
+AdapterBenchmark.objectAdapterToArray         mint  150   33,578  ns/op
+AdapterBenchmark.dynamicObjectAdapterToArray  mint  150   42,983  ns/op
+AdapterBenchmark.plainForEach                 mint  150   24,100  ns/op
+AdapterBenchmark.classAdapterForEach          mint  150   24,201  ns/op
+AdapterBenchmark.objectAdapterForEach         mint  150   26,123  ns/op
+AdapterBenchmark.dynamicObjectAdapterForEach  mint  150   62,721  ns/op
+
+CPU Profile AdapterBenchmark -XX:+UseParallelGC -Deu.javaspecialists.books.dynamicproxies.util.ParameterTypesFetcher.enabled=false
+Result "eu.javaspecialists.books.dynamicproxies.ch05.benchmarks.AdapterBenchmark.classAdapterForEach":
+  26,028 ±(99.9%) 0,335 ns/op [Average]
+  (min, avg, max) = (24,205, 26,028, 27,113), stdev = 1,221
+  CI (99.9%): [25,693, 26,363] (assumes normal distribution)
+Result "eu.javaspecialists.books.dynamicproxies.ch05.benchmarks.AdapterBenchmark.classAdapterSize":
+  5,309 ±(99.9%) 0,007 ns/op [Average]
+  (min, avg, max) = (5,247, 5,309, 5,389), stdev = 0,027
+  CI (99.9%): [5,302, 5,317] (assumes normal distribution)
+Result "eu.javaspecialists.books.dynamicproxies.ch05.benchmarks.AdapterBenchmark.classAdapterToArray":
+  33,144 ±(99.9%) 0,194 ns/op [Average]
+  (min, avg, max) = (32,519, 33,144, 34,257), stdev = 0,708
+  CI (99.9%): [32,950, 33,338] (assumes normal distribution)
+Result "eu.javaspecialists.books.dynamicproxies.ch05.benchmarks.AdapterBenchmark.dynamicObjectAdapterForEach":
+  62,990 ±(99.9%) 0,134 ns/op [Average]
+  (min, avg, max) = (62,346, 62,990, 63,659), stdev = 0,489
+  CI (99.9%): [62,855, 63,124] (assumes normal distribution)
+Result "eu.javaspecialists.books.dynamicproxies.ch05.benchmarks.AdapterBenchmark.dynamicObjectAdapterSize":
+  22,048 ±(99.9%) 0,054 ns/op [Average]
+  (min, avg, max) = (21,910, 22,048, 23,291), stdev = 0,197
+  CI (99.9%): [21,994, 22,102] (assumes normal distribution)
+Result "eu.javaspecialists.books.dynamicproxies.ch05.benchmarks.AdapterBenchmark.dynamicObjectAdapterToArray":
+  50,271 ±(99.9%) 0,064 ns/op [Average]
+  (min, avg, max) = (49,899, 50,271, 50,581), stdev = 0,233
+  CI (99.9%): [50,207, 50,335] (assumes normal distribution)
+Result "eu.javaspecialists.books.dynamicproxies.ch05.benchmarks.AdapterBenchmark.iterator":
+  10,067 ±(99.9%) 0,003 ns/op [Average]
+  (min, avg, max) = (10,046, 10,067, 10,147), stdev = 0,012
+  CI (99.9%): [10,064, 10,071] (assumes normal distribution)
+Result "eu.javaspecialists.books.dynamicproxies.ch05.benchmarks.AdapterBenchmark.objectAdapterForEach":
+  26,150 ±(99.9%) 0,007 ns/op [Average]
+  (min, avg, max) = (26,118, 26,150, 26,218), stdev = 0,024
+  CI (99.9%): [26,143, 26,157] (assumes normal distribution)
+Result "eu.javaspecialists.books.dynamicproxies.ch05.benchmarks.AdapterBenchmark.objectAdapterSize":
+  5,255 ±(99.9%) 0,006 ns/op [Average]
+  (min, avg, max) = (5,251, 5,255, 5,449), stdev = 0,023
+  CI (99.9%): [5,249, 5,261] (assumes normal distribution)
+Result "eu.javaspecialists.books.dynamicproxies.ch05.benchmarks.AdapterBenchmark.objectAdapterToArray":
+  33,311 ±(99.9%) 0,160 ns/op [Average]
+  (min, avg, max) = (32,459, 33,311, 33,811), stdev = 0,584
+  CI (99.9%): [33,150, 33,471] (assumes normal distribution)
+Result "eu.javaspecialists.books.dynamicproxies.ch05.benchmarks.AdapterBenchmark.parameterArray":
+  5,153 ±(99.9%) 0,001 ns/op [Average]
+  (min, avg, max) = (5,145, 5,153, 5,166), stdev = 0,004
+  CI (99.9%): [5,152, 5,154] (assumes normal distribution)
+Result "eu.javaspecialists.books.dynamicproxies.ch05.benchmarks.AdapterBenchmark.plainForEach":
+  24,154 ±(99.9%) 0,013 ns/op [Average]
+  (min, avg, max) = (24,109, 24,154, 24,422), stdev = 0,047
+  CI (99.9%): [24,141, 24,167] (assumes normal distribution)
+Result "eu.javaspecialists.books.dynamicproxies.ch05.benchmarks.AdapterBenchmark.plainSize":
+  5,232 ±(99.9%) 0,018 ns/op [Average]
+  (min, avg, max) = (5,186, 5,232, 5,385), stdev = 0,065
+  CI (99.9%): [5,214, 5,250] (assumes normal distribution)
+Result "eu.javaspecialists.books.dynamicproxies.ch05.benchmarks.AdapterBenchmark.plainToArray":
+  28,218 ±(99.9%) 0,045 ns/op [Average]
+  (min, avg, max) = (28,038, 28,218, 28,502), stdev = 0,164
+  CI (99.9%): [28,173, 28,263] (assumes normal distribution)
+
+Benchmark                                     Mode  Cnt   Score   Error  Units
+AdapterBenchmark.plainSize                    avgt  150   5,232 ± 0,018  ns/op
+AdapterBenchmark.classAdapterSize             avgt  150   5,309 ± 0,007  ns/op
+AdapterBenchmark.objectAdapterSize            avgt  150   5,255 ± 0,006  ns/op
+AdapterBenchmark.dynamicObjectAdapterSize     avgt  150  22,048 ± 0,054  ns/op
+AdapterBenchmark.plainToArray                 avgt  150  28,218 ± 0,045  ns/op
+AdapterBenchmark.classAdapterToArray          avgt  150  33,144 ± 0,194  ns/op
+AdapterBenchmark.objectAdapterToArray         avgt  150  33,311 ± 0,160  ns/op
+AdapterBenchmark.dynamicObjectAdapterToArray  avgt  150  50,271 ± 0,064  ns/op
+AdapterBenchmark.plainForEach                 avgt  150  24,154 ± 0,013  ns/op
+AdapterBenchmark.classAdapterForEach          avgt  150  26,028 ± 0,335  ns/op
+AdapterBenchmark.objectAdapterForEach         avgt  150  26,150 ± 0,007  ns/op
+AdapterBenchmark.dynamicObjectAdapterForEach  avgt  150  62,990 ± 0,134  ns/op
+
+Benchmark                                     Mode  Cnt   Score
+AdapterBenchmark.plainSize                    mint  150   5,186
+AdapterBenchmark.classAdapterSize             mint  150   5,247
+AdapterBenchmark.objectAdapterSize            mint  150   5,251
+AdapterBenchmark.dynamicObjectAdapterSize     mint  150  21,910
+AdapterBenchmark.plainToArray                 mint  150  28,038
+AdapterBenchmark.classAdapterToArray          mint  150  32,519
+AdapterBenchmark.objectAdapterToArray         mint  150  32,459
+AdapterBenchmark.dynamicObjectAdapterToArray  mint  150  49,899
+AdapterBenchmark.plainForEach                 mint  150  24,109
+AdapterBenchmark.classAdapterForEach          mint  150  24,205
+AdapterBenchmark.objectAdapterForEach         mint  150  26,118
+AdapterBenchmark.dynamicObjectAdapterForEach  mint  150  62,346
+
+
+Sanitized results:
+
+Benchmark                                     Mode  Cnt   Score
+AdapterBenchmark.plainSize                    mint  150   5.2
+AdapterBenchmark.classAdapterSize             mint  150   5.2
+AdapterBenchmark.objectAdapterSize            mint  150   5.3
+AdapterBenchmark.dynamicObjectAdapterSize     mint  150  21.9
+AdapterBenchmark.plainToArray                 mint  150  28.0
+AdapterBenchmark.classAdapterToArray          mint  150  32.5
+AdapterBenchmark.objectAdapterToArray         mint  150  32.0
+AdapterBenchmark.dynamicObjectAdapterToArray (FastFetcher=true)  mint  150   43.0
+AdapterBenchmark.dynamicObjectAdapterToArray (FastFetcher=false) mint  150   49.9
+AdapterBenchmark.plainForEach                 mint  150  24.0
+AdapterBenchmark.classAdapterForEach          mint  150  24.2
+AdapterBenchmark.objectAdapterForEach         mint  150  26.1
+AdapterBenchmark.dynamicObjectAdapterForEach  mint  150  62.3
+
+Benchmark                                     Mode  Cnt   Score
+AdapterBenchmark.plainSize                    mint  150   5.2
+AdapterBenchmark.classAdapterSize             mint  150   5.2
+AdapterBenchmark.objectAdapterSize            mint  150   5.3
+AdapterBenchmark.dynamicObjectAdapterSize     mint  150  22
+AdapterBenchmark.plainToArray                 mint  150  28
+AdapterBenchmark.classAdapterToArray          mint  150  33
+AdapterBenchmark.objectAdapterToArray         mint  150  32
+AdapterBenchmark.dynamicObjectAdapterToArray (FastFetcher=true)  mint  150   43
+AdapterBenchmark.dynamicObjectAdapterToArray (FastFetcher=false) mint  150   50
+AdapterBenchmark.plainForEach                 mint  150  24
+AdapterBenchmark.classAdapterForEach          mint  150  24
+AdapterBenchmark.objectAdapterForEach         mint  150  26
+AdapterBenchmark.dynamicObjectAdapterForEach  mint  150  62
