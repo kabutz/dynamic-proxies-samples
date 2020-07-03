@@ -21,8 +21,7 @@ module eu.javaspecialists.books.dynamicproxies.samples {
   requires java.net.http;
   requires java.logging;
   requires java.desktop;
-  requires jetty.servlet.api;
-  requires org.eclipse.jetty.server;
+  requires spark.core;
 
   requires eu.javaspecialists.books.dynamicproxies;
 

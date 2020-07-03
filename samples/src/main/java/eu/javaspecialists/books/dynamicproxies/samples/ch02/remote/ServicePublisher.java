@@ -20,51 +20,20 @@
 
 package eu.javaspecialists.books.dynamicproxies.samples.ch02.remote;
 
-import org.eclipse.jetty.server.*;
-import org.eclipse.jetty.server.handler.*;
-
-import javax.servlet.http.*;
-import java.io.*;
-import java.util.regex.*;
+import spark.*;
 
 // tag::listing[]
-/**
- * @author Simone Bordet
- */
-public class ServicePublisher extends AbstractHandler {
-  private static final Pattern PATTERN =
-      Pattern.compile("/canGetVisa/" +
-                          "(?<name>[^/]+)/" +
-                          "(?<married>[^/]+)/" +
-                          "(?<rich>[^/]+)");
-  private final Canada canada;
-
-  public ServicePublisher(Canada canada) {
-    this.canada = canada;
-  }
-
-  @Override
-  public void handle(String target, Request jettyRequest,
-                     HttpServletRequest request,
-                     HttpServletResponse response)
-      throws IOException {
-    jettyRequest.setHandled(true);
-    var matcher = PATTERN.matcher(request.getRequestURI());
-    if (matcher.matches()) {
-      var name = matcher.group("name");
-      var married = Boolean.valueOf(matcher.group("married"));
-      var rich = Boolean.valueOf(matcher.group("rich"));
-      var canGetVisa = canada.canGetVisa(name, married, rich);
-      response.getOutputStream().print(canGetVisa);
-    } else {
-      response.setStatus(HttpServletResponse.SC_NOT_FOUND);
-    }
-  }
-  public static void main(String... args) throws Exception {
+public class ServicePublisher {
+  public static void main(String... args) {
     Canada canada = new RealCanada();
-    var server = new Server(8080);
-    server.setHandler(new ServicePublisher(canada));
-    server.start();
+    Spark.port(8080);
+    Spark.get("/canGetVisa/:name/:married/:rich",
+        (req, res) -> {
+          var name = req.params("name");
+          var married = "true".equals(req.params("married"));
+          var rich = "true".equals(req.params("rich"));
+          return canada.canGetVisa(name, married, rich);
+        });
   }
 }
 // end::listing[]
