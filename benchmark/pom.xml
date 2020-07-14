@@ -23,10 +23,11 @@
     <modelVersion>4.0.0</modelVersion>
 
     <parent>
-        <artifactId>dynamic-proxies-samples</artifactId>
         <groupId>eu.javaspecialists.books.dynamicproxies</groupId>
+        <artifactId>dynamic-proxies-samples</artifactId>
         <version>1.4.1-SNAPSHOT</version>
     </parent>
+    <packaging>jar</packaging>
 
     <artifactId>benchmark</artifactId>
 
@@ -71,7 +72,7 @@
                 <groupId>org.sonatype.plugins</groupId>
                 <artifactId>nexus-staging-maven-plugin</artifactId>
                 <configuration>
-                    <skipRemoteStaging>true</skipRemoteStaging>
+                    <skipNexusStagingDeployMojo>true</skipNexusStagingDeployMojo>
                 </configuration>
             </plugin>
         </plugins>
