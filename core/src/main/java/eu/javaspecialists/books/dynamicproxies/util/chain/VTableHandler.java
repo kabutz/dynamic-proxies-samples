@@ -29,8 +29,8 @@ import java.util.stream.*;
 // tag::listing[]
 public final class VTableHandler
     extends ChainedInvocationHandler {
-  private final VTable vtable;
   private final Object receiver;
+  private final VTable vtable;
   public VTableHandler(Object receiver, VTable vtable,
                        ChainedInvocationHandler next) {
     super(next);
