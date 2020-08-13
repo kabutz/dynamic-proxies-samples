@@ -27,7 +27,6 @@ import java.io.*;
 import java.lang.reflect.*;
 import java.util.*;
 import java.util.function.*;
-import java.util.logging.*;
 
 /**
  * Facade for all our dynamic proxies and related pattern
@@ -63,16 +62,6 @@ public final class Proxies {
     );
   }
   // end::simpleProxy()[]
-
-  // tag::loggingProxy()[]
-  public static <S> S loggingProxy(
-      Class<? super S> subjectInterface,
-      S subject, Logger log) {
-    Objects.requireNonNull(subject, "subject==null");
-    return castProxy(subjectInterface,
-        new LoggingInvocationHandler(log, subject));
-  }
-  // end::loggingProxy()[]
 
   // tag::virtualProxy()[]
   public static <S> S virtualProxy(

@@ -17,9 +17,24 @@
  * language governing permissions and limitations under the
  * License.
  */
-module eu.javaspecialists.books.dynamicproxies {
-  exports eu.javaspecialists.books.dynamicproxies;
-  exports eu.javaspecialists.books.dynamicproxies.handlers;
-  exports eu.javaspecialists.books.dynamicproxies.util;
-  exports eu.javaspecialists.books.dynamicproxies.util.chain;
+
+package eu.javaspecialists.books.dynamicproxies.samples.ch03.logging;
+
+import eu.javaspecialists.books.dynamicproxies.*;
+
+import java.util.*;
+import java.util.logging.*;
+
+public class Factory {
+  private Factory() {}
+
+  // tag::loggingProxy()[]
+  public static <S> S loggingProxy(
+      Class<? super S> subjectInterface,
+      S subject, Logger log) {
+    Objects.requireNonNull(subject, "subject==null");
+    return Proxies.castProxy(subjectInterface,
+        new LoggingInvocationHandler(log, subject));
+  }
+  // end::loggingProxy()[]
 }

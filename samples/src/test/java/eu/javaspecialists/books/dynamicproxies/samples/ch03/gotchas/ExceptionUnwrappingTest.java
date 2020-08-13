@@ -21,8 +21,9 @@
 package eu.javaspecialists.books.dynamicproxies.samples.ch03.gotchas;
 
 import eu.javaspecialists.books.dynamicproxies.*;
-import eu.javaspecialists.books.dynamicproxies.samples.ch06.contactdynamic.*;
 import eu.javaspecialists.books.dynamicproxies.handlers.*;
+import eu.javaspecialists.books.dynamicproxies.samples.ch03.logging.*;
+import eu.javaspecialists.books.dynamicproxies.samples.ch06.contactdynamic.*;
 import org.junit.*;
 
 import java.io.*;
@@ -239,7 +240,7 @@ public class ExceptionUnwrappingTest {
 
   private Map<String, Integer> createLoggingMapUsingProxiesLogging(
       Map<String, Integer> map, Logger log) {
-    return Proxies.loggingProxy(Map.class, map, log);
+    return Factory.loggingProxy(Map.class, map, log);
   }
 
   @Test

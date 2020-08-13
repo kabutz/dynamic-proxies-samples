@@ -17,9 +17,33 @@
  * language governing permissions and limitations under the
  * License.
  */
-module eu.javaspecialists.books.dynamicproxies {
-  exports eu.javaspecialists.books.dynamicproxies;
-  exports eu.javaspecialists.books.dynamicproxies.handlers;
-  exports eu.javaspecialists.books.dynamicproxies.util;
-  exports eu.javaspecialists.books.dynamicproxies.util.chain;
+
+package eu.javaspecialists.books.dynamicproxies.samples.ch03.logging;
+
+import org.junit.*;
+
+import java.io.*;
+import java.util.*;
+import java.util.logging.*;
+
+import static org.junit.Assert.*;
+
+public class SerializableTest {
+  @Test
+  public void testLoggingProxy() throws IOException {
+    Object proxy = Factory.loggingProxy(List.class,
+        new ArrayList<>(), Logger.getGlobal());
+    try {
+      test(proxy);
+      fail("Logging proxy should not be serializable");
+    } catch (NotSerializableException success) {
+    }
+    }
+
+  private void test(Object obj) throws IOException {
+    try (ObjectOutputStream out = new ObjectOutputStream(
+        new ByteArrayOutputStream())) {
+      out.writeObject(obj);
+    }
+  }
 }

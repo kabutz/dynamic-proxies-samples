@@ -27,7 +27,6 @@ import java.io.*;
 import java.lang.reflect.*;
 import java.util.*;
 import java.util.function.*;
-import java.util.logging.*;
 
 import static org.junit.Assert.*;
 
@@ -58,16 +57,6 @@ public class SerializableTest {
     test(proxy);
   }
 
-  @Test
-  public void testLoggingProxy() throws IOException {
-    Object proxy = Proxies.loggingProxy(List.class,
-        new ArrayList<>(), Logger.getGlobal());
-    try {
-      test(proxy);
-      fail("Logging proxy should not be serializable");
-    } catch (NotSerializableException success) {
-    }
-  }
   @Test
   public void testSynchronizedProxy() throws IOException {
     Object proxy = Proxies.synchronizedProxy(
