@@ -18,11 +18,10 @@
  * License.
  */
 
-package eu.javaspecialists.books.dynamicproxies.samples.ch03.gotchas;
+package eu.javaspecialists.books.dynamicproxies.gotchas;
 
 import eu.javaspecialists.books.dynamicproxies.*;
 import eu.javaspecialists.books.dynamicproxies.handlers.*;
-import eu.javaspecialists.books.dynamicproxies.samples.ch06.contactdynamic.*;
 import org.junit.*;
 
 import java.io.*;
@@ -199,6 +198,24 @@ public class ExceptionUnwrappingTest {
     } catch (UnsupportedOperationException ex) {
       if (!correctExceptionExpected)
         fail("Expected to see an UndeclaredThrowableException");
+    }
+  }
+
+  public interface Contact extends BaseComponent<Contact> {
+    void sendMail(String body);
+    int count();
+  }
+
+  public class Person implements Contact {
+    private final String email;
+    public Person(String email) {this.email = email;}
+    @Override
+    public void sendMail(String body) {
+      // Implementation not needed for the test
+    }
+    @Override
+    public int count() {
+      return 1;
     }
   }
 
