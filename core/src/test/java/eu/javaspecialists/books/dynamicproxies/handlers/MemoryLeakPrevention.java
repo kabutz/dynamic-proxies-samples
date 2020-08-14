@@ -18,10 +18,9 @@
  * License.
  */
 
-package eu.javaspecialists.books.dynamicproxies.samples.ch06;
+package eu.javaspecialists.books.dynamicproxies.handlers;
 
 import eu.javaspecialists.books.dynamicproxies.*;
-import eu.javaspecialists.books.dynamicproxies.handlers.*;
 
 import javax.tools.*;
 import java.io.*;

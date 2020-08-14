@@ -18,17 +18,13 @@
  * License.
  */
 
-package eu.javaspecialists.books.dynamicproxies.samples.ch06;
+package eu.javaspecialists.books.dynamicproxies.handlers;
 
 import eu.javaspecialists.books.dynamicproxies.*;
-import eu.javaspecialists.books.dynamicproxies.handlers.*;
 import org.junit.*;
 
 import static org.junit.Assert.*;
 
-// To run this test, add the following to the VM arguments:
-// --add-opens eu.javaspecialists.books.dynamicproxies.samples/eu.javaspecialists.books.dynamicproxies.samples.ch06=eu.javaspecialists.books.dynamicproxies
-// --add-reads eu.javaspecialists.books.dynamicproxies=eu.javaspecialists.books.dynamicproxies.samples
 public class DeepCompositeTest {
   public interface TestComponent extends BaseComponent<TestComponent> {
     void accept(Visitor visitor);

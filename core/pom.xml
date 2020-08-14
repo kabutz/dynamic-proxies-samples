@@ -49,6 +49,7 @@
                         <id>default-testCompile</id>
                         <configuration>
                             <compilerArgs>
+                                <compilerArg>--add-modules=java.compiler</compilerArg>
                                 <compilerArg>--add-modules=java.sql</compilerArg>
                             </compilerArgs>
                         </configuration>
