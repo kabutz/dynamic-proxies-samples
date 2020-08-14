@@ -18,8 +18,8 @@
  * License.
  */
 
-package eu.javaspecialists.books.dynamicproxies.samples.ch03.gotchas.scratch;
+package eu.javaspecialists.books.dynamicproxies.gotchas;
 
-interface Foo {
-  void baz();
+interface Bar {
+  int bar();
 }

@@ -18,7 +18,7 @@
  * License.
  */
 
-package eu.javaspecialists.books.dynamicproxies.samples.ch03.gotchas.scratch.hidden;
+package eu.javaspecialists.books.dynamicproxies.gotchas.hidden;
 
 interface Foo {
   void bar();

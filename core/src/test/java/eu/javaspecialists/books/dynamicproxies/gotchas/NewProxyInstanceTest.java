@@ -18,7 +18,7 @@
  * License.
  */
 
-package eu.javaspecialists.books.dynamicproxies.samples.ch03.gotchas.scratch;
+package eu.javaspecialists.books.dynamicproxies.gotchas;
 
 import eu.javaspecialists.books.dynamicproxies.*;
 import org.junit.*;

@@ -18,10 +18,8 @@
  * License.
  */
 
-package eu.javaspecialists.books.dynamicproxies.samples.ch03.gotchas.scratch.hidden;
+package eu.javaspecialists.books.dynamicproxies.gotchas;
 
-public class Test {
-  static {
-    System.out.println("Test.static initializer");
-  }
+interface Foo {
+  void baz();
 }
