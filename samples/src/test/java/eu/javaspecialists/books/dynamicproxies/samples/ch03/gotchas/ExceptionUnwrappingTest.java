@@ -22,7 +22,6 @@ package eu.javaspecialists.books.dynamicproxies.samples.ch03.gotchas;
 
 import eu.javaspecialists.books.dynamicproxies.*;
 import eu.javaspecialists.books.dynamicproxies.handlers.*;
-import eu.javaspecialists.books.dynamicproxies.samples.ch03.logging.*;
 import eu.javaspecialists.books.dynamicproxies.samples.ch06.contactdynamic.*;
 import org.junit.*;
 
@@ -30,7 +29,6 @@ import java.io.*;
 import java.lang.reflect.*;
 import java.util.*;
 import java.util.concurrent.*;
-import java.util.logging.*;
 
 import static org.junit.Assert.*;
 
@@ -189,28 +187,6 @@ public class ExceptionUnwrappingTest {
     }
   }
 
-  @Test
-  public void testLoggingProxy() {
-    Logger log = Logger.getGlobal();
-    for (Handler handler : log.getParent().getHandlers()) {
-      if (handler instanceof ConsoleHandler) {
-        handler.setLevel(Level.FINE);
-      }
-    }
-    log.setLevel(Level.FINE);
-
-    testLogging(createLoggingMapWithoutExceptionUnwrapper(Map.of(), log), false);
-    testLogging(createLoggingMapUsingProxiesLogging(Map.of(),
-        log), true);
-  }
-
-  private void testLogging(Map<String, Integer> map,
-                           boolean correctExceptionExpected) {
-    assertEquals(0, map.size());
-    checkExceptions(() -> map.put("One", 1), correctExceptionExpected);
-    System.out.println(map);
-  }
-
   private void checkExceptions(Runnable job,
                                boolean correctExceptionExpected) {
     try {
@@ -224,23 +200,6 @@ public class ExceptionUnwrappingTest {
       if (!correctExceptionExpected)
         fail("Expected to see an UndeclaredThrowableException");
     }
-  }
-
-
-  @SuppressWarnings("unchecked")
-  private Map<String, Integer> createLoggingMapWithoutExceptionUnwrapper(
-      Map<String, Integer> map, Logger log) {
-    var handler = new LoggingInvocationHandler(log, map);
-    return (Map<String, Integer>)
-               Proxy.newProxyInstance(
-                   Map.class.getClassLoader(),
-                   new Class<?>[] {Map.class},
-                   handler);
-  }
-
-  private Map<String, Integer> createLoggingMapUsingProxiesLogging(
-      Map<String, Integer> map, Logger log) {
-    return Factory.loggingProxy(Map.class, map, log);
   }
 
   @Test
