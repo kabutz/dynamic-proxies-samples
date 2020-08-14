@@ -28,7 +28,6 @@ import java.util.logging.*;
 public class Factory {
   private Factory() {}
 
-  // tag::loggingProxy()[]
   public static <S> S loggingProxy(
       Class<? super S> subjectInterface,
       S subject, Logger log) {
@@ -36,5 +35,4 @@ public class Factory {
     return Proxies.castProxy(subjectInterface,
         new LoggingInvocationHandler(log, subject));
   }
-  // end::loggingProxy()[]
 }
