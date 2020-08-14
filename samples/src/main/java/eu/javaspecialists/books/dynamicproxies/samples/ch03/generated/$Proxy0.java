@@ -80,22 +80,12 @@ public final class $Proxy0 extends Proxy
 
   static {
     try {
-      m0 = Class.forName("java.lang.Object")
-               .getMethod("hashCode");
-      m1 = Class.forName("java.lang.Object")
-               .getMethod("equals",
-                   Class.forName("java.lang.Object"));
-      m2 = Class.forName("java.lang.Object")
-               .getMethod("toString");
-      m3 = Class.forName(
-          "eu.javaspecialists.books.dynamicproxies.ch03" +
-              ".ISODateParser")
-               .getMethod("parse",
-                   Class.forName("java.lang.String"));
+      m0 = Object.class.getMethod("hashCode");
+      m1 = Object.class.getMethod("equals", Object.class);
+      m2 = Object.class.getMethod("toString");
+      m3 = ISODateParser.class.getMethod("parse", String.class);
     } catch (NoSuchMethodException e) {
       throw new NoSuchMethodError(e.getMessage());
-    } catch (ClassNotFoundException e) {
-      throw new NoClassDefFoundError(e.getMessage());
     }
   }
 }
