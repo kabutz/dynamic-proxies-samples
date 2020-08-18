@@ -67,5 +67,4 @@ public class LoggingTest {
     // and that the logger is called
     assertEquals(expectedCount, logCount.get());
   }
-
 }

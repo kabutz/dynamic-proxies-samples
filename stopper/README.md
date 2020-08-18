@@ -1,6 +1,6 @@
 This module is needed to deploy the `core` module to Maven
 Central Repository without also deploying the `samples` and
-`benchmark modules.
+`benchmark` modules.
  
 If `benchmark` is the last module in the Maven Reactor sequence
 and it is set not to deploy (see `skipNexusStagingDeployMojo`
