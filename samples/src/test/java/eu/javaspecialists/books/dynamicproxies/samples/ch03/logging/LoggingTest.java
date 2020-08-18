@@ -61,8 +61,10 @@ public class LoggingTest {
         List.class,
         new LoggingInvocationHandler(logger, digitPrimes));
 
-    numbersProxy.size();
+    // Call the proxy, checking that the handler invokes size()
+    assertEquals(digitPrimes.size(), numbersProxy.size());
 
+    // and that the logger is called
     assertEquals(expectedCount, logCount.get());
   }
 
