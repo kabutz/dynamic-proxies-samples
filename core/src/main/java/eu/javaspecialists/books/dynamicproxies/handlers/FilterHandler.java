@@ -34,8 +34,7 @@ public final class FilterHandler implements InvocationHandler {
     VTable defaultVT = VTables.newDefaultMethodVTable(filter);
 
     chain = new VTableHandler(component, vt,
-        new VTableDefaultMethodsHandler(
-            defaultVT, null));
+        new VTableDefaultMethodsHandler(defaultVT, null));
 
     chain.checkAllMethodsAreHandled(filter);
   }
