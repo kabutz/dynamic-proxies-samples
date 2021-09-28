@@ -14,6 +14,15 @@ It contains several modules.
    [Maven Central Repository](https://search.maven.org/artifact/eu.javaspecialists.books.dynamicproxies/core)
    and you may use it in your projects under the
    [Apache License, Version 2.0](http://www.apache.org/licenses/LICENSE-2.0).
+   The coordinates are `eu.javaspecialists.books.dynamicproxies:core:2.0.0`,
+   or add this dependency to your pom.xml:
+   ```
+   <dependency>
+       <groupId>eu.javaspecialists.books.dynamicproxies</groupId>
+       <artifactId>core</artifactId>
+       <version>2.0.0</version>
+   </dependency>
+   ```
 
 2. The `samples` module is a collection of the sample code used
    in the book.
