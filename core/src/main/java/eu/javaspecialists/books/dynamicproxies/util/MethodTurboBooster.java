@@ -25,8 +25,9 @@ import java.lang.reflect.*;
 // tag::listing[]
 /**
  * Method turbo boosting is enabled by default.  We call
- * setAccessible(true) on Method objects. Exceptions are silently
- * ignored.
+ * trySetAccessible() on fields of type Method and if we succeed,
+ * we call trySetAccessible() on these Method objects. Exceptions
+ * are silently ignored.
  * <p>
  * Method turbo boosting can be disabled with
  * -Deu.javaspecialists.books.dynamicproxies.util.\
@@ -60,13 +61,13 @@ public final class MethodTurboBooster {
         );
       try {
         for (var field : proxy.getClass().getDeclaredFields()) {
-          if (field.getType() == Method.class) {
-            field.setAccessible(true);
+          if (field.getType() == Method.class &&
+                  field.trySetAccessible()) {
             turboBoost((Method) field.get(null));
           }
         }
         return proxy;
-      } catch (IllegalAccessException | RuntimeException e) {
+      } catch (IllegalAccessException | SecurityException e) {
         // could not turbo-boost - return proxy unchanged;
         return proxy;
       }
@@ -74,8 +75,8 @@ public final class MethodTurboBooster {
     @Override
     public Method turboBoost(Method method) {
       try {
-        method.setAccessible(true);
-      } catch (RuntimeException e) {
+        method.trySetAccessible();
+      } catch (SecurityException e) {
         // could not turbo-boost - return method unchanged;
       }
       return method;
