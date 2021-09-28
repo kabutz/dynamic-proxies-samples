@@ -18,20 +18,28 @@
  * License.
  */
 module eu.javaspecialists.books.dynamicproxies.samples {
-  requires java.net.http;
-  requires java.logging;
+  requires eu.javaspecialists.books.dynamicproxies;
   requires java.desktop;
+  requires java.logging;
+  requires java.net.http;
   requires spark.core;
 
-  requires eu.javaspecialists.books.dynamicproxies;
-
-  opens eu.javaspecialists.books.dynamicproxies.samples.ch02.virtual to eu.javaspecialists.books.dynamicproxies;
-  opens eu.javaspecialists.books.dynamicproxies.samples.ch03 to eu.javaspecialists.books.dynamicproxies;
-  opens eu.javaspecialists.books.dynamicproxies.samples.ch03.gotchas to eu.javaspecialists.books.dynamicproxies;
-  opens eu.javaspecialists.books.dynamicproxies.samples.ch04.immutablecollection to eu.javaspecialists.books.dynamicproxies;
-  opens eu.javaspecialists.books.dynamicproxies.samples.ch04.infiniterandom to eu.javaspecialists.books.dynamicproxies;
-  opens eu.javaspecialists.books.dynamicproxies.samples.ch05.bettercollection to eu.javaspecialists.books.dynamicproxies;
-  opens eu.javaspecialists.books.dynamicproxies.samples.ch05 to eu.javaspecialists.books.dynamicproxies;
-  opens eu.javaspecialists.books.dynamicproxies.samples.ch05.singer to eu.javaspecialists.books.dynamicproxies;
-  opens eu.javaspecialists.books.dynamicproxies.samples.ch06.contactdynamic to eu.javaspecialists.books.dynamicproxies;
+  opens eu.javaspecialists.books.dynamicproxies.samples.ch02.virtual to
+      eu.javaspecialists.books.dynamicproxies;
+  opens eu.javaspecialists.books.dynamicproxies.samples.ch03 to
+      eu.javaspecialists.books.dynamicproxies;
+  opens eu.javaspecialists.books.dynamicproxies.samples.ch03.gotchas to
+      eu.javaspecialists.books.dynamicproxies;
+  opens eu.javaspecialists.books.dynamicproxies.samples.ch04.immutablecollection to
+      eu.javaspecialists.books.dynamicproxies;
+  opens eu.javaspecialists.books.dynamicproxies.samples.ch04.infiniterandom to
+      eu.javaspecialists.books.dynamicproxies;
+  opens eu.javaspecialists.books.dynamicproxies.samples.ch05.bettercollection to
+      eu.javaspecialists.books.dynamicproxies;
+  opens eu.javaspecialists.books.dynamicproxies.samples.ch05 to
+      eu.javaspecialists.books.dynamicproxies;
+  opens eu.javaspecialists.books.dynamicproxies.samples.ch05.singer to
+      eu.javaspecialists.books.dynamicproxies;
+  opens eu.javaspecialists.books.dynamicproxies.samples.ch06.contactdynamic to
+      eu.javaspecialists.books.dynamicproxies;
 }
