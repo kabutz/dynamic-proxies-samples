@@ -34,7 +34,7 @@ import java.lang.reflect.*;
  * MethodTurboBooster.disabled=true
  */
 public final class MethodTurboBooster {
-  private final static Booster BOOSTER =
+  private static final Booster BOOSTER =
       Boolean.getBoolean(
           MethodTurboBooster.class.getName() + ".disabled") ?
           new BoosterOff() : new BoosterOn();

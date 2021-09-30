@@ -7,9 +7,9 @@
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <module name="core" />
+        <module name="stopper" />
         <module name="samples" />
         <module name="benchmark" />
-        <module name="stopper" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
@@ -33,7 +33,6 @@
     <file url="file://$PROJECT_DIR$/core" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/core/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/samples/src/main/java" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/stopper/src/main/java" charset="UTF-8" />
   </component>
   <component name="InspectionProjectProfileManager">
     <profile version="1.0" is_locked="true">
@@ -3386,7 +3385,7 @@
       <module fileurl="file://$PROJECT_DIR$/stopper/stopper.iml" filepath="$PROJECT_DIR$/stopper/stopper.iml" />
     </modules>
   </component>
-  <component name="ProjectRootManager" version="2" languageLevel="JDK_14" default="false" project-jdk-name="14" project-jdk-type="JavaSDK">
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_14" project-jdk-name="14" project-jdk-type="JavaSDK">
     <output url="file://$PROJECT_DIR$/out" />
   </component>
   <component name="RemoteRepositoriesConfiguration">
@@ -3432,15 +3431,15 @@
         <root url="jar://$MAVEN_REPOSITORY$/javax/servlet/javax.servlet-api/3.1.0/javax.servlet-api-3.1.0-sources.jar!/" />
       </SOURCES>
     </library>
-    <library name="Maven: junit:junit:4.11">
+    <library name="Maven: junit:junit:4.13.1">
       <CLASSES>
-        <root url="jar://$MAVEN_REPOSITORY$/junit/junit/4.11/junit-4.11.jar!/" />
+        <root url="jar://$MAVEN_REPOSITORY$/junit/junit/4.13.1/junit-4.13.1.jar!/" />
       </CLASSES>
       <JAVADOC>
-        <root url="jar://$MAVEN_REPOSITORY$/junit/junit/4.11/junit-4.11-javadoc.jar!/" />
+        <root url="jar://$MAVEN_REPOSITORY$/junit/junit/4.13.1/junit-4.13.1-javadoc.jar!/" />
       </JAVADOC>
       <SOURCES>
-        <root url="jar://$MAVEN_REPOSITORY$/junit/junit/4.11/junit-4.11-sources.jar!/" />
+        <root url="jar://$MAVEN_REPOSITORY$/junit/junit/4.13.1/junit-4.13.1-sources.jar!/" />
       </SOURCES>
     </library>
     <library name="Maven: net.sf.jopt-simple:jopt-simple:4.6">

@@ -31,7 +31,7 @@ import java.lang.reflect.*;
  * ParameterTypesFetcher.enabled=true
  */
 public final class ParameterTypesFetcher {
-  private final static ParameterFetcher PARAMETER_FETCHER =
+  private static final ParameterFetcher PARAMETER_FETCHER =
       Boolean.getBoolean(
           ParameterTypesFetcher.class.getName() + ".enabled") ?
           new FastParameterFetcher() :
@@ -71,7 +71,7 @@ public final class ParameterTypesFetcher {
    */
   private static class FastParameterFetcher
       implements ParameterFetcher {
-    private final static VarHandle METHOD_PARAMETER_TYPES;
+    private static final VarHandle METHOD_PARAMETER_TYPES;
 
     static {
       try {

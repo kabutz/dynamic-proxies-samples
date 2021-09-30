@@ -224,8 +224,8 @@ public class VTableTest {
     ));
   }
 
-  private final static Method findIndexMethod;
-  private final static Field distinctNameField;
+  private static final Method findIndexMethod;
+  private static final Field distinctNameField;
 
   static {
     try {

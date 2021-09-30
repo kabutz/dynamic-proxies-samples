@@ -41,7 +41,7 @@ public class RecursiveDynamicProxy {
   }
 
   private static class Factorial implements InvocationHandler {
-    private final static MethodKey apply =
+    private static final MethodKey apply =
         new MethodKey(IntFunction.class, "apply", int.class);
     @Override
     public Object invoke(Object proxy,

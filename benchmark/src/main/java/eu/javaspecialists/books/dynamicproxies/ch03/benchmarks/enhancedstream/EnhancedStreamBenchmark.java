@@ -42,7 +42,7 @@ import java.util.stream.*;
 
 public class EnhancedStreamBenchmark {
   public static class Beach {
-    public final static String[] ELEMENTS =
+    public static final String[] ELEMENTS =
         {"Kalathas", "Stavros", "STAVROS",
             "marathi", "kalathas", "baLos", "Balos"};
     // case insensitive hashCode() and equals()
@@ -57,7 +57,7 @@ public class EnhancedStreamBenchmark {
             s1.chars().sum() < s2.chars().sum() ? s2 : s1;
   }
   public static class Methods {
-    public final static Method[] ELEMENTS =
+    public static final Method[] ELEMENTS =
         ArrayDeque.class.getMethods();
     public static final ToIntFunction<Method> HASH_CODE =
         method -> method.getName().hashCode() +

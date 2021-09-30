@@ -28,7 +28,7 @@ import java.lang.reflect.*;
 import static org.junit.Assert.*;
 
 public class NewProxyInstanceTest {
-  private final static InvocationHandler UNSUPPORTED =
+  private static final InvocationHandler UNSUPPORTED =
       (proxy, method, args) -> {
         throw new UnsupportedOperationException("not implemented");
       };
