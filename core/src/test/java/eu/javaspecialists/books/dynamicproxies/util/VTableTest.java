@@ -24,7 +24,6 @@ import eu.javaspecialists.books.dynamicproxies.*;
 import org.junit.*;
 
 import java.lang.reflect.*;
-import java.text.*;
 import java.util.*;
 import java.util.function.*;
 
@@ -487,4 +486,71 @@ public class VTableTest {
     VTable vt = VTables.newDefaultMethodVTable(Iterable.class);
     assertEquals(2, vt.streamDefaultMethods().count());
   }
+
+
+  @Test
+  public void testVTableMultipleInterfaceInheritanceWithDefaultMethods() throws NoSuchMethodException {
+
+    VTable bcVT =
+        new VTable.Builder(ABC.class).addTargetInterface(D.class)
+                      .includeDefaultMethods().build();
+
+    Assert.assertNotNull(bcVT);
+    Assert.assertEquals(4, bcVT.size());
+    var lookupMethod = bcVT.lookup(ABC.class.getMethod("fun"));
+    Assert.assertEquals(ABC.class.getMethod("fun"), lookupMethod);
+
+  }
+
+  @Test
+  public void testVTableTargetMultipleInterfaceInheritanceWithDefaultMethods() {
+
+    VTable bcVT =
+        new VTable.Builder(D.class).addTargetInterface(BCi.class)
+                      .includeDefaultMethods().build();
+
+    Assert.assertNotNull(bcVT);
+  }
+
+  public interface A {
+    default A fun() {
+      return new A() {};
+    }
+  }
+
+  public interface B {
+    default B fun() {
+      System.out.println("B fun");
+      return new B() {};
+    }
+  }
+  public class ABC implements B, C {
+
+    public ABC fun() {
+      System.out.println("ABC Function");
+      return new ABC() {};
+    }
+  }
+
+  public interface BCi extends B, C {
+
+    default BCi fun() {
+      System.out.println("BC Function");
+      return new BCi() {};
+    }
+  }
+
+  public interface C {
+
+    default C fun() {
+      System.out.println("C fun");
+      return new C() {};
+    }
+  }
+
+  public interface D {
+    ABC fun();
+  }
+
+
 }

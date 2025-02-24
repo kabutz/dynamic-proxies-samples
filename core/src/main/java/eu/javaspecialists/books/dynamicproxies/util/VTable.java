@@ -400,16 +400,58 @@ public final class VTable {
     private void addTrulyPublicMethods(
         Class<?> clazz, Map<MethodKey, Method> map) {
       if (clazz == null) return;
-      for (var method : clazz.getMethods()) {
-        if (isTrulyPublic(method)) {
-          MethodKey key = new MethodKey(method);
-          map.merge(key, method, MOST_SPECIFIC);
+      for (var method1 : clazz.getMethods()) {
+        if (isTrulyPublic(method1)) {
+          MethodKey key = new MethodKey(method1);
+
+          Method method2 = map.get(key);
+          if (method2 == null) {
+            map.put(key, method1);
+            continue;
+          }
+
+          var r1 = method1.getReturnType();
+          var r2 = method2.getReturnType();
+          if (r1.isAssignableFrom(r2)) {
+            map.put(key, method2);
+          }
+          else if (r2.isAssignableFrom(r1)) {
+            map.put(key, method1);
+          } else {
+            // try to find a method that overrides both method1 and method2
+            var method3 = findOverrideInSubclass(clazz, key, r1, r2);
+            if (method3 != null) {
+              map.put(key, method3);
+            } else {
+              throw new IllegalStateException(
+                  method1 + " and " + method2 +
+                      " have incompatible return types");
+            }
+          }
         }
       }
       for (var anInterface : clazz.getInterfaces()) {
         addTrulyPublicMethods(anInterface, map);
       }
       addTrulyPublicMethods(clazz.getSuperclass(), map);
+    }
+
+    private Method findOverrideInSubclass(Class<?> clazz,
+                                          MethodKey key,
+                                          Class<?> r1, Class<?> r2) {
+      for (var method : clazz.getMethods()) {
+
+        if (!isTrulyPublic(method)) continue;
+        var key1 = new MethodKey(method);
+        if (key.equals(key1)) {
+          var r3 = method.getReturnType();
+          if (r1.isAssignableFrom(r3) &&
+                  r2.isAssignableFrom(r3)) {
+            return method;
+          }
+        }
+      }
+      return null;
     }
 
     /**
